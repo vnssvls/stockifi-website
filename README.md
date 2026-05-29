@@ -18,8 +18,28 @@
 - **Phase 2 — Model Strapi.** Recreate each collection as a Strapi content type matching the audited schema. i18n on from the start.
 - **Phase 3 — Import pipeline.** Scripts to load CSV rows + assets into Strapi, swapping Webflow CDN URLs for R2 uploads.
 - **Phase 4 — Astro frontend.** Templates per page type, pulling from Strapi.
-- **Phase 5 — Locales.** Wire `/no/ /de/ /da/` routing to per-locale Strapi entries.
+- **Phase 5 — Locales via translation workflow.** Locales are NOT migrated from Webflow. Build the translation workflow, generate NO/DE/DA from the EN source, proof, publish, then wire `/no/ /de/ /da/` routing to the generated entries. (Customer Stories NO already captured from Webflow is kept as a free seed.)
 - **Phase 6 — SEO + cutover.** 301 redirect map, sitemap, GTM/GA4, DNS.
+
+## Content location strategy
+Not everything lives in Strapi. Choose per content type:
+
+| Content | Home | Translated by |
+|---|---|---|
+| Blog, Customer Stories, Testimonials, Integrations, Integration Categories | **Strapi** collections | translation workflow |
+| Marketing page copy (Home, Pricing, About sections) | **Strapi Single Types** if marketing edits it; else Astro component | workflow or i18n files |
+| UI chrome / micro-copy (nav, buttons, footer, forms, 404, cookie banner, calculator labels) | **i18n dictionary files in repo** (JSON/TS/YAML) | dev or agent at build time |
+
+Rule of thumb: non-dev edits it regularly or it is structured/repeated → Strapi. Tied to layout and rarely changes → code. Blog posts never go in YAML; nav labels never go in Strapi.
+
+## Translation workflow (build-phase task — Claude or a translation agent)
+Goal: every time EN content is published or updated, locales are produced automatically, then proofed before going live (never raw machine translation straight to production — that is what produced the poor Webflow translations).
+
+1. EN content published/updated in Strapi.
+2. Strapi lifecycle hook sends localizable fields to a translator (Claude API or DeepL), writes NO/DE/DA as **draft, flagged "machine, needs review."**
+3. Simon (or Claude) proofs, then publishes the locale version.
+
+Evaluate Strapi 5's built-in AI translation vs a custom hook during the build. i18n dictionary files are translated separately (few, stable, lighter touch).
 
 ## Division of labor
 
@@ -30,7 +50,7 @@
 - Build Strapi content types, import scripts, Astro templates
 
 **Only V can do (needs Webflow login):**
-- Export each CMS collection as CSV, **once per locale** (Webflow has no bulk localization export, this is the manual bottleneck)
+- Export each CMS collection as CSV **in English only** — locales are regenerated via the translation workflow, not migrated. EN export of all 5 collections: done.
 - Confirm field-level settings invisible from rendered HTML: exact field types, which fields are localized, required flags, reference vs multi-reference relationships
 - Confirm any collections with no public URL (e.g. Testimonials feeding sliders)
 
