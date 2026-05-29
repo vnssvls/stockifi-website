@@ -116,7 +116,20 @@ Recommendation: ship (A), revisit (B) as a post-migration cleanup.
 
 ---
 
+## Localization behavior — ✅ verified (Customer Stories NO)
+Source: `webflow-exports/customer-stories_no.csv`. Locale IDs: EN `67b86eb1f718fa2c5be225bd`, NO `6859acf76c351ec3a25e0115`.
+
+- Translation history: Webflow auto-translation was turned on, but output was poor, so the localized fields were hand-edited with Simon's proofread copy. **Existing translations are accurate.** Recent/draft items were never translated.
+- **8 of 10 Customer Stories are translated to NO; 2 are EN fallback** (Koie Ramen — recent published; Døgnvill Burger — draft).
+- **Localized fields** (differ per locale): Article Title, One-liner testimonial, Featured Quote, Full Testimonial, Body Paragraph (1), Body Paragraph (2), Designation/Position.
+- **Shared fields** (same across locales): all Media, Company Name, Website, Business Type.
+
+### Import rule (critical)
+Webflow exports **the EN value as the localized value for untranslated items** (not blank). So an untranslated NO row looks identical to its EN row. At import: create a Strapi NO entry **only where the text actually differs from EN**; otherwise leave it to Strapi's locale fallback. This avoids freezing stale English into the Norwegian locale and makes "still needs translating" visible rather than hidden.
+
+> Same diffing approach applies to DE and DA once exported.
+
 ## Open questions
-1. `skigeilo` vs `skigeilo-2` in sitemap — CSV shows one SkiGeilo item; second may be a stale/renamed slug still indexed. Confirm + add 301.
-2. Blog: 22 in CMS vs 11 in sitemap — confirm the other 11 are intentional drafts, not lost content.
-3. Confirm which fields are truly translated per locale (export one non-EN locale to compare).
+1. ~~`skigeilo` vs `skigeilo-2`~~ — RESOLVED: two genuinely distinct SkiGeilo stories, both translated. Two real items, both keep their slugs.
+2. Blog: 22 in CMS vs 11 in sitemap — confirm the other 11 are intentional drafts/archived, not lost content.
+3. DE and DA: export each locale per collection when ready; expect the same partial-translation pattern (diff against EN to find real translations).
