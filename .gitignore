@@ -1,0 +1,10 @@
+# Downloaded image binaries are regenerable from the CSVs via scripts/harvest-assets.py
+# Keep them out of git; they will live in Cloudflare R2 post-migration.
+assets/blog/
+assets/customer-stories/
+assets/testimonials/
+assets/integrations/
+assets/integration-categories/
+
+# Keep the mapping (small, the source of truth for old-URL -> new-file)
+!assets/asset-map.csv

@@ -65,35 +65,44 @@ Same company name / logo / photo is duplicated across the two collections. See *
 
 ---
 
-## Collection: Integrations — 🔎 69 items
-Source: `/integrations` crawl. CSV pending.
+## Collection: Integrations — ✅ 69 items
+Source: `webflow-exports/integrations_en.csv`
 
-| Field | Strapi type | Notes |
-|---|---|---|
-| name | Text | "24SevenOffice", "Square" |
-| logo | Media | brand icon |
-| category | **Relation → Integration Categories** | drives the page filter |
-| description | Text | none shown currently |
+| Webflow field | Strapi type | Localized? | Notes |
+|---|---|---|---|
+| Name | Text | shared | "24SevenOffice", "Square" |
+| Image | Media | shared | brand logo |
+| Category | Enumeration | shared | stored as lowercase string: `accounting` / `pos` / `others` |
+| Description | Text | yes | currently empty across items |
 
-## Collection: Integration Categories — 🔎 3 items
-Accounting · POS · Others. Referenced by Integrations. In Strapi: a small collection with a one-to-many relation to Integrations (mirrors Craig's setup).
+> `Category` is a plain string matching the category slug, **not** a hard Webflow reference. Model as a Strapi Enumeration (3 values). The separate Integration Categories collection is just a display-name lookup, so it can collapse into the enum.
+
+## Collection: Integration Categories — ✅ 3 items (lookup only)
+Source: `webflow-exports/integration-categories_en.csv`. Fields: Name + Slug only (Accounting, POS, Others). No images. Optional to keep as its own Strapi collection; simplest is to fold into the Integrations enum above.
 
 ---
 
-## Collection: Blog Posts — 🔎 22 items (11 published in sitemap, ~11 draft)
-Source: `/blog/theoretical-vs-actual-food-cost` crawl. CSV pending.
+## Collection: Blog Posts — ✅ 22 items (11 published, 11 draft/archived)
+Source: `webflow-exports/blog_en.csv`
 
-| Field | Strapi type | Localized? | Notes |
+| Webflow field | Strapi type | Localized? | Notes |
 |---|---|---|---|
-| title | Text | yes | |
-| slug | UID | yes | |
-| metaDescription | Text | yes | SEO |
-| thumbnail | Media | shared | |
-| body | Rich Text (Blocks) | yes | HTML, H2 structure |
-| category | Enumeration/Relation | shared | e.g. "Operations" |
-| publishedDate | Date | shared | |
-| readingTime | — | — | likely auto-computed in Astro, not a field |
-| author | Text/Relation | ❓ | confirm if a field exists |
+| Article Title | Text | yes | item Name |
+| Slug | UID | yes | |
+| Meta Title | Text | yes | SEO |
+| Meta Description | Text | yes | SEO |
+| Excerpt | Text | yes | |
+| Post Summary | Text (long) | yes | |
+| Read time | Text | yes | "4 min read" — a real field, NOT auto-computed |
+| Category | Enumeration | shared | Accounting / Operations / ... (blog's own, unrelated to Integration Categories) |
+| Custom publish date | Date | shared | display date, separate from Published On |
+| Featured? | Boolean | shared | homepage/feature placement |
+| Body Content | Rich Text (Blocks) | yes | **HTML**, may contain inline images |
+| Hero Image | Media | shared | |
+| Hero Image Alt Text | Text | yes | accessibility |
+| Related Articles (Optional) | Relation (self → Blog) | shared | multi-reference |
+| CTA Button Text (Optional) | Text | yes | |
+| CTA Button URL (Optional) | Text (URL) | shared | |
 
 ---
 

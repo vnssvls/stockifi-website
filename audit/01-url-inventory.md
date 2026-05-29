@@ -54,8 +54,10 @@ Each collection must be exported once per locale (Webflow limitation):
 
 | Collection | EN | NO | DE | DA |
 |---|---|---|---|---|
-| Blog Posts | ☐ | ☐ | ☐ | ☐ |
+| Blog Posts | ☑ | ☐ | ☐ | ☐ |
 | Customer Stories | ☑ | ☐ | ☐ | ☐ |
 | Testimonials | ☑ | ☐ | ☐ | ☐ |
-| Integrations | ☐ | ☐ | ☐ | ☐ |
-| Integration Categories | ☐ | ☐ | ☐ | ☐ |
+| Integrations | ☑ | ☐ | ☐ | ☐ |
+| Integration Categories | ☑ | ☐ | ☐ | ☐ |
+
+All EN exports captured. Next: one non-EN locale (e.g. Customer Stories NO) to verify which fields are actually translated.

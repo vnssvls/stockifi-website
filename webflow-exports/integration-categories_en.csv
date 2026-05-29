@@ -1,0 +1,4 @@
+Name,Slug,Collection ID,Locale ID,Item ID,Archived,Draft,Created On,Updated On,Published On
+POS,pos,67cc32198ae8762187f9702e,67b86eb1f718fa2c5be225bd,67cc324632f78191cfe69e28,false,true,Sat Mar 08 2025 12:04:22 GMT+0000 (Coordinated Universal Time),Mon Jan 12 2026 12:45:59 GMT+0000 (Coordinated Universal Time),Sat Mar 08 2025 12:09:53 GMT+0000 (Coordinated Universal Time)
+Accounting,accounting,67cc32198ae8762187f9702e,67b86eb1f718fa2c5be225bd,67cc323d0496c50a6f46f8e4,false,true,Sat Mar 08 2025 12:04:13 GMT+0000 (Coordinated Universal Time),Mon Jan 12 2026 12:45:49 GMT+0000 (Coordinated Universal Time),Sun May 04 2025 07:30:35 GMT+0000 (Coordinated Universal Time)
+Others,other,67cc32198ae8762187f9702e,67b86eb1f718fa2c5be225bd,67cc32524a995649dc68b6a6,false,true,Sat Mar 08 2025 12:04:34 GMT+0000 (Coordinated Universal Time),Mon Jan 12 2026 12:45:52 GMT+0000 (Coordinated Universal Time),Sun May 04 2025 07:30:35 GMT+0000 (Coordinated Universal Time)
