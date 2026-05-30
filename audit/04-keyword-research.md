@@ -6,7 +6,9 @@
 ---
 
 ## Competitive landscape
-Head category terms are owned by high-authority incumbents: Apicbase, MarketMan, WISK, meez, Supy, Restaurant365, reciProfity. Stockifi will not win "restaurant inventory software" head-on quickly.
+Head category terms are owned by high-authority incumbents. Stockifi will not win "restaurant inventory software" head-on quickly.
+
+Full competitor map + positioning is in **`05-competitors.md`**. Comparison-page shortlist: Apicbase, MarketMan, MarginEdge, WISK, Supy, FoodNotify. Caution on Munu / Lightspeed (integration partners).
 
 **Where Stockifi can realistically win:**
 1. **Differentiator long-tail** — automated invoice processing + accounting integration + supplier price tracking. Fewer competitors target these precisely.
