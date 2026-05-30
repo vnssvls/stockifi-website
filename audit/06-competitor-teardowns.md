@@ -1,7 +1,7 @@
 # Competitor Site Teardowns + Synthesis
 
-> Workstream A/C input. Content + narrative + on-page keyword teardown of 11 competitors, then a cross-analysis to guide Stockifi's IA and homepage structure.
-> Scope note: this covers story/structure/messaging. Visual/layout feel is best read from V's screenshots. Researched 2026-05-30.
+> Feeds Workstream A (Strategy & Information Architecture) and Workstream C (Content & Copy) from the master plan. Content + narrative + on-page keyword teardown of 11 competitors, then a cross-analysis to guide Stockifi's IA and homepage structure.
+> Covers story / structure / messaging. Researched 2026-05-30.
 
 ## Sites crawled (homepages, 2026-05-30)
 1. Apicbase — https://get.apicbase.com/
@@ -155,4 +155,4 @@ Automated invoice processing + **EU/Nordic accounting + POS integrations** · su
 
 ## Next (optional deeper teardowns)
 - Page-type teardowns: a competitor **feature page**, **pricing page**, **comparison page** structure (for when we build ours).
-- Pull screenshots from V for the visual/layout layer.
+- Capture full-page screenshots of all 11 homepages (headless Chrome) for the visual/layout layer → `assets/competitor-shots/`.
