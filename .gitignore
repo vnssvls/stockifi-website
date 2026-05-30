@@ -8,3 +8,9 @@ assets/integration-categories/
 
 # Keep the mapping (small, the source of truth for old-URL -> new-file)
 !assets/asset-map.csv
+
+# Competitor screenshots (regenerable via scripts/capture-competitor-shots.js) + node deps
+assets/competitor-shots/
+scripts/node_modules/
+scripts/package.json
+scripts/package-lock.json
