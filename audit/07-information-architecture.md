@@ -58,15 +58,14 @@ Integrations       · Owners & GMs
 | **Pricing** | `/pricing` | Pricing | Static | stockifi pricing |
 | **Company** | | | | |
 | About | `/about` | Company | Static | (brand) |
-| Contact | `/contact` | Company | Static | (brand) |
-| **Conversion** | | | | |
-| Demo step 1 | `/intro` | CTA | Static (existing LP) | book a demo |
-| Demo step 2 | `/intro-details` | — | Static (existing LP) | — |
+| Contact / Book a demo | `/contact` | Company + primary CTA target | Static (form) | book a demo |
 | **Legal** | | | | |
 | Privacy Policy | `/privacy-policy` | footer | Static | — |
 | Terms & Conditions | `/terms-conditions` | footer | Static | — |
 
 Comparison slots reserved (build after Simon): `/compare/apicbase` · `/compare/marketman` · `/compare/marginedge` · `/compare/wisk` · `/compare/supy` · `/compare/foodnotify`.
+
+> **Ad landing pages (out of site structure):** `/intro` + `/intro-details` are the existing paid-ads LPs. They live in the codebase but are **NOT in the nav, sitemap-as-linked, or any internal link/button.** Paid traffic only. The site's own **"Book a demo" CTA points to `/contact`**, not `/intro`. (Consider `noindex` on the ad LPs so they don't compete in organic — SEO call for Workstream B.)
 
 ---
 
@@ -113,10 +112,11 @@ Comparison slots reserved (build after Simon): `/compare/apicbase` · `/compare/
 │   └── {competitor}
 ├── pricing
 ├── about
-├── contact
-├── intro → intro-details
+├── contact                   (← "Book a demo" CTA target)
 ├── privacy-policy
 └── terms-conditions
+
+(out of site structure, no internal links: /intro → /intro-details = paid-ads LPs)
 ```
 
 **Page count (EN):** ~21 fixed pages + 4 segment + 4 role + CMS-generated (22 blog, 10 stories, 69 integrations) + 6 deferred comparisons.

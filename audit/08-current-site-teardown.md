@@ -36,7 +36,7 @@ Home · Our Process (#) · Integrations (#) · Customer Stories (#) · Pricing (
 ## Self-identified gaps (vs strong B2B SaaS)
 No demo video · pricing vague ("talk to our team", no brackets) · no competitor comparison · no security/compliance mention · ROI/savings tool not surfaced on home · differentiation thin · scalability/multi-location messaging vague.
 
-> Note: the **€3,000 / 30-day guarantee** is not surfaced on the current homepage. None of the 11 rivals have a guarantee, so it is a wasted differentiator today. **Use it as risk-reversal, not a headline:** primary home = Pricing page; on the homepage a small trust band near the final CTA (never the hero); reinforce on the demo page. Frame as "risk-free onboarding" confidence, not "money back" (decided with V, 2026-05-31).
+> Note: the **€3,000 / 30-day guarantee** is not surfaced on the current homepage. None of the 11 rivals have a guarantee, so it is a wasted differentiator today. **Use it as risk-reversal, not a headline:** primary home = Pricing page; on the homepage a small trust band near the final CTA (never the hero); reinforce on the `/contact` (book-a-demo) page. Frame as "risk-free onboarding" confidence, not "money back" (decided with V, 2026-05-31).
 
 ## What this validates
 - The current "Built for Every Role" section already uses **Owners / Finance / Operations / Chefs** — exactly the 4 by-role Solutions pages we locked. Good signal.

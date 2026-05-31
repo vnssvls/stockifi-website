@@ -148,7 +148,7 @@ Product/feature pages (grouped) · Solutions by segment (+ optionally by role) �
 9. **Comparison or FAQ** — Tenzo-style, once comparison pages exist.
 10. **Risk-reversal + final CTA + footer**: the risk-free €3,000 / 30-day guarantee lands here as the closer, then final CTA + footer.
 
-> **Guarantee placement (decided with V, 2026-05-31):** the guarantee is risk-reversal, not a headline. Primary home = **Pricing page**. On the homepage it sits **low, as a small trust band near the final CTA**, never the hero (leading with it reads cheap and dents the premium/credible positioning). Also reinforce on the demo/intro page. Frame as confidence ("risk-free onboarding"), not "money back".
+> **Guarantee placement (decided with V, 2026-05-31):** the guarantee is risk-reversal, not a headline. Primary home = **Pricing page**. On the homepage it sits **low, as a small trust band near the final CTA**, never the hero (leading with it reads cheap and dents the premium/credible positioning). Also reinforce on the `/contact` (book-a-demo) page. Frame as confidence ("risk-free onboarding"), not "money back". (The `/intro` ads LP is separate and out of site structure.)
 
 ### Differentiators to weave throughout
 Automated invoice processing + **EU/Nordic accounting + POS integrations** · supplier price tracking depth · the **risk-free guarantee** · food-cost focus (not a bloated all-in-one) · does not replace POS/accounting.
