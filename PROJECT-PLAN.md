@@ -52,7 +52,7 @@ Summary: **Product** (4 capability pages + Integrations) · **Solutions** (4 seg
 
 ## Open decisions
 1. Who provisions Firebase + deploy pipeline (V, Dev, or Claude).
-2. 5th language? (current EN/NO/DE/DA) — Sime referenced 5.
+2. ~~5th language?~~ **Locales locked:** EN (source) + NO · DA · DE · SV · NL (5 targets). French skipped.
 3. Comparison-page scope + Simon sign-off on claims.
 
 ## Notes

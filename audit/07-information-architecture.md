@@ -2,7 +2,7 @@
 
 > Workstream A. The full page set, nav, URLs, CMS-vs-static, redirects, and primary keyword per page.
 > Decisions applied: Solutions = segment + by-role · 4 capability Product pages · comparisons deferred (slots reserved) · Pricing + About + Resources hub included · Savings Calculator kept.
-> Locale pattern: EN at root, `/no/ /de/ /da/` prefix on every path (matches the LP).
+> Locale pattern: EN at root, prefix on every path for `/no/ /da/ /de/ /sv/ /nl/` (5 target languages; French skipped). Matches the LP routing.
 
 ---
 
@@ -84,7 +84,7 @@ Comparison slots reserved (build after Simon): `/compare/apicbase` · `/compare/
 
 ---
 
-## Link tree (EN; each branch repeats under /no /de /da)
+## Link tree (EN; each branch repeats under /no /da /de /sv /nl)
 
 ```
 /
