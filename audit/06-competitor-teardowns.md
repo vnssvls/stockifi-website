@@ -137,16 +137,18 @@ Product/feature pages (grouped) · Solutions by segment (+ optionally by role) �
 ## Recommended structure for Stockifi (proposal)
 
 ### Homepage arc
-1. **Hero** — lead on the outcome + EU fit, not on "invoice automation" (table stakes). Candidate angle: see exactly where your margins leak, built for European operators. Pair with the guarantee for risk reversal.
+1. **Hero** — lead on the outcome + EU fit, not on "invoice automation" (table stakes) and NOT on the guarantee. Candidate angle: see exactly where your margins leak, built for European operators.
 2. **Social proof** — 500+ restaurants, known clients (SkiGeilo, Eik&Friends, Schnitzelei…), 2–3% COGS improvement.
-3. **The €3,000 / 30-day guarantee** — none of the five lead with a risk-reversal guarantee. This is a Stockifi-only differentiator. Surface it early.
-4. **Product pillars** — Recipe Costing · Invoice & Supplier Price Tracking · POS & Consumption · Inventory & Variance.
+3. **How it works**: the 4-step model (recipes, accounting, POS, inventory + variance) as a quick overview.
+4. **Product pillars** — Recipe Costing · Supplier Price Tracking · POS & Consumption · Inventory & Variance.
 5. **Feature deep-dives** — one section each, outcome headlines.
 6. **Quantified results / testimonials** — pull from customer stories.
 7. **Segments** — independent · groups (multi-location) · hotels with F&B · bars.
 8. **Integrations** — lead with the 69-integration breadth (a real strength).
 9. **Comparison or FAQ** — Tenzo-style, once comparison pages exist.
-10. **Final CTA + footer.**
+10. **Risk-reversal + final CTA + footer**: the risk-free €3,000 / 30-day guarantee lands here as the closer, then final CTA + footer.
+
+> **Guarantee placement (decided with V, 2026-05-31):** the guarantee is risk-reversal, not a headline. Primary home = **Pricing page**. On the homepage it sits **low, as a small trust band near the final CTA**, never the hero (leading with it reads cheap and dents the premium/credible positioning). Also reinforce on the demo/intro page. Frame as confidence ("risk-free onboarding"), not "money back".
 
 ### Differentiators to weave throughout
 Automated invoice processing + **EU/Nordic accounting + POS integrations** · supplier price tracking depth · the **risk-free guarantee** · food-cost focus (not a bloated all-in-one) · does not replace POS/accounting.

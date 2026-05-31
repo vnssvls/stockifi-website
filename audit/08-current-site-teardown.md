@@ -12,7 +12,7 @@ Home · Our Process (#) · Integrations (#) · Customer Stories (#) · Pricing (
 ## Homepage section inventory (hero → footer)
 | # | Section | Current headline | New home? |
 |---|---|---|---|
-| 1 | Hero | "Cut Your Hospitality Costs. Without the Manual Work." | Keep + sharpen (EU angle + guarantee) |
+| 1 | Hero | "Cut Your Hospitality Costs. Without the Manual Work." | Keep + sharpen (EU angle, outcome-led; NOT guarantee) |
 | 2 | Social proof | "Trusted by Hospitality Experts" (20+ logos) | Keep |
 | 3 | Roles | "Built for Every Role in Hospitality" (Owners, Finance, Operations, Chefs) | → feeds **Solutions by-role** pages |
 | 4 | Testimonials | quotes w/ results (2% profit, margin control) | Keep slider (CMS) |
@@ -36,7 +36,7 @@ Home · Our Process (#) · Integrations (#) · Customer Stories (#) · Pricing (
 ## Self-identified gaps (vs strong B2B SaaS)
 No demo video · pricing vague ("talk to our team", no brackets) · no competitor comparison · no security/compliance mention · ROI/savings tool not surfaced on home · differentiation thin · scalability/multi-location messaging vague.
 
-> Note: the **€3,000 / 30-day guarantee** is not surfaced prominently on the current homepage. Competitor teardown showed none of 11 rivals have a guarantee — so this is a wasted differentiator today. Elevate it on the new home.
+> Note: the **€3,000 / 30-day guarantee** is not surfaced on the current homepage. None of the 11 rivals have a guarantee, so it is a wasted differentiator today. **Use it as risk-reversal, not a headline:** primary home = Pricing page; on the homepage a small trust band near the final CTA (never the hero); reinforce on the demo page. Frame as "risk-free onboarding" confidence, not "money back" (decided with V, 2026-05-31).
 
 ## What this validates
 - The current "Built for Every Role" section already uses **Owners / Finance / Operations / Chefs** — exactly the 4 by-role Solutions pages we locked. Good signal.
