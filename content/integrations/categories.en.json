@@ -1,0 +1,14 @@
+[
+  {
+    "name": "POS",
+    "slug": "pos"
+  },
+  {
+    "name": "Accounting",
+    "slug": "accounting"
+  },
+  {
+    "name": "Others",
+    "slug": "other"
+  }
+]

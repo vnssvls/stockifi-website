@@ -1,0 +1,623 @@
+[
+  {
+    "name": "24SevenOffice",
+    "slug": "24sevenoffice",
+    "category": "accounting",
+    "logo": "/media/integrations/67cc35cdfb950b79d8701b0d_67bdf8adb01d5c6e997ed2ae_Copy_of_23.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "67cc34b7bbe0a746a7521f11"
+  },
+  {
+    "name": "Ancon",
+    "slug": "ancon",
+    "category": "pos",
+    "logo": "/media/integrations/682d865de6d8a0d2685e30fe_integration-ancon.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "682d8662f84253d07caa03df"
+  },
+  {
+    "name": "Asko",
+    "slug": "asko",
+    "category": "other",
+    "logo": "/media/integrations/682d89a3b7222c15a15a70f8_integration-asko.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "682d89a5f38a0e7695ecaae0"
+  },
+  {
+    "name": "Azets",
+    "slug": "azets",
+    "category": "accounting",
+    "logo": "/media/integrations/67cc35d2c0a3c8fece091936_67bdf8ad70160d75614e0141_Copy_of_24.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "67cc34b73afbeca3bb07784e"
+  },
+  {
+    "name": "Baemingo",
+    "slug": "baemingo",
+    "category": "pos",
+    "logo": "/media/integrations/6817146e9d6a90168b0a4068_integration-baemingo.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "6817147721679bcf16735eea"
+  },
+  {
+    "name": "Bazaro",
+    "slug": "bazaro",
+    "category": "other",
+    "logo": "/media/integrations/67cc35dd43ed5b391f83e65c_67bdf8ae7d890f6fdcbcb8ad_Copy_of_26.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "67cc34b7b67c99b46d845dc3"
+  },
+  {
+    "name": "BluePOS",
+    "slug": "bluepos",
+    "category": "pos",
+    "logo": "/media/integrations/682d89fe58aed33f0383ebce_integration-bluePOS.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "682d8a07df6f0fa4c28db312"
+  },
+  {
+    "name": "Briljant",
+    "slug": "briljant",
+    "category": "accounting",
+    "logo": "/media/integrations/682d860e9d204eba016c577a_integration-briljant.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "682d861dbec4f672c426585e"
+  },
+  {
+    "name": "Caspeco",
+    "slug": "caspeco",
+    "category": "pos",
+    "logo": "/media/integrations/67cc3655937dc69a6b493d60_67bdf89e936d55b263ae3a4d_Copy_of_3.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "67cc34ba08ea1ae1f609b9ca"
+  },
+  {
+    "name": "Catacloud",
+    "slug": "catacloud",
+    "category": "accounting",
+    "logo": "/media/integrations/682d89d1bb218826366b286b_integration-catacloud.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "682d89d8e73e672cfd223b12"
+  },
+  {
+    "name": "Corpay",
+    "slug": "corpay",
+    "category": "accounting",
+    "logo": "/media/integrations/67cc35d7569e0531abbd7955_67bdf8ae8b2c2be172ebe59b_Copy_of_25.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "67cc34b7c3bd8bc99261c95c"
+  },
+  {
+    "name": "Datev",
+    "slug": "datev",
+    "category": "accounting",
+    "logo": "/media/integrations/6899d9e3f407cc5ff6595bc3_integration-datev.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "6899d9df32bdc8119e0e8ab7"
+  },
+  {
+    "name": "Dext",
+    "slug": "dext",
+    "category": "accounting",
+    "logo": "/media/integrations/68d641fd3bea5b42f1cb13b6_integration-dext.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "68d641e0c2fde6232273ed94"
+  },
+  {
+    "name": "Duell",
+    "slug": "duell",
+    "category": "pos",
+    "logo": "/media/integrations/67cc355208ea1ae1f60a2e9a_67bdf89f87b2aa59ad5b2d9f_Copy_of_5.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "67cc34b8e0dcec5dba59ff95"
+  },
+  {
+    "name": "E-conomic",
+    "slug": "e-conomic",
+    "category": "accounting",
+    "logo": "/media/integrations/67cc35e3374531a16bcda083_67bdf8af27c42e257c9027ac_Copy_of_27.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "67cc34b70496c50a6f488ea2"
+  },
+  {
+    "name": "Espos",
+    "slug": "espos",
+    "category": "pos",
+    "logo": "/media/integrations/681714a7936df62525bf36c1_integration-espos.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "681714afe9080f73e71ea761"
+  },
+  {
+    "name": "Event Temple",
+    "slug": "event-temple",
+    "category": "pos",
+    "logo": "/media/integrations/6899d21fac84e67331745b42_integration-eventtemple.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "6899d211971f57b0445c038d"
+  },
+  {
+    "name": "Favrit",
+    "slug": "favrit",
+    "category": "pos",
+    "logo": "/media/integrations/67cc361818859453bb1633f3_67cc3305ffa38fef87503949_67bdf89e9aa154ed2b2b629f_Copy_of_4.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "67cc34b618e094933d4a9f43"
+  },
+  {
+    "name": "Fiken",
+    "slug": "fiken",
+    "category": "accounting",
+    "logo": "/media/integrations/67cc3532da25b65ab63d14b7_67bdf8af030b4e6958c8533d_Copy_of_28.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "67cc34cd3b32df846e606c16"
+  },
+  {
+    "name": "Finago",
+    "slug": "finago",
+    "category": "accounting",
+    "logo": "/media/integrations/6957dba9e8efb53e2ca53433_integration-finago.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "6957dbcb7fcd5cd437f3fd93"
+  },
+  {
+    "name": "Foodora",
+    "slug": "foodora",
+    "category": "pos",
+    "logo": "/media/integrations/67cc354d3748d7a574ea17ef_67bdf89f55c524a1a13f571d_Copy_of_6.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "67cc34b9da25b65ab63cccd2"
+  },
+  {
+    "name": "Fortnox",
+    "slug": "fortnox",
+    "category": "accounting",
+    "logo": "/media/integrations/67cc35ee32f78191cfe8cf04_67bdf8b1cbe54ccd34f0e8f5_Copy_of_29.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "67cc34b63b32df846e605981"
+  },
+  {
+    "name": "Frontline",
+    "slug": "frontline",
+    "category": "pos",
+    "logo": "/media/integrations/682d8707f4c40d48bddf1be4_integration-frontline.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "682d870cdf6f0fa4c28b4f21"
+  },
+  {
+    "name": "Gastrobit",
+    "slug": "gastrobit",
+    "category": "pos",
+    "logo": "/media/integrations/67cc3560c256682d35660f5b_67bdf8a1a3cc4b41bb32ca4e_Copy_of_7.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "67cc34b8569e0531abbcb854"
+  },
+  {
+    "name": "Gastronovi",
+    "slug": "gastronovi",
+    "category": "pos",
+    "logo": "/media/integrations/692037fc516334176167b94c_integration-gastronovi.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "69203814cec1b40067c919ac"
+  },
+  {
+    "name": "Gastroplanner",
+    "slug": "gastroplanner",
+    "category": "other",
+    "logo": "/media/integrations/67cc353d922205e2fb78d5df_67cc32fe374531a16bcb9fea_67bdf89e8ba39e29d2b3796d_Copy_of_1.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "67cc34ba08ea1ae1f609b9cf"
+  },
+  {
+    "name": "Gmail",
+    "slug": "gmail",
+    "category": "other",
+    "logo": "/media/integrations/69203aa7a0bdfa8e1132140a_integration-gmail.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "69203ab22205c8b0684fb5a0"
+  },
+  {
+    "name": "Google Drive",
+    "slug": "google-drive",
+    "category": "other",
+    "logo": "/media/integrations/6817167238f6bb5a3096f8fb_integration-google-drive.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "67cc34b63b32df846e60597f"
+  },
+  {
+    "name": "Hypersoft",
+    "slug": "hypersoft",
+    "category": "pos",
+    "logo": "/media/integrations/6899d2389e42263092689a89_integration-hypersoft.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "6899d235e62dde5de0ce9b9d"
+  },
+  {
+    "name": "KDR",
+    "slug": "kdr-gold",
+    "category": "pos",
+    "logo": "/media/integrations/67cc355843ed5b391f839d60_67bdf8a13144dc59d646b621_Copy_of_8.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "67cc34b87ba2fa8246d2c503"
+  },
+  {
+    "name": "Lightspeed",
+    "slug": "lightspeed",
+    "category": "pos",
+    "logo": "/media/integrations/67cc362ad24498a778c6a74c_67bdf89e0e98bd6714f7e3dd_Copy_of_2.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "67cc34b68ae8762187fb25b6"
+  },
+  {
+    "name": "Loomis-Pay",
+    "slug": "loomis-pay",
+    "category": "pos",
+    "logo": "/media/integrations/67cc35676069c30ddc6a468a_67bdf8a398a52564cb52371f_Copy_of_9.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "67cc34b8022e968fe96407a9"
+  },
+  {
+    "name": "Mews",
+    "slug": "mews",
+    "category": "pos",
+    "logo": "/media/integrations/6899d1e16ab23add0b24c05f_integration-mews.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "6899d19dcd8528ff81742d09"
+  },
+  {
+    "name": "Millum",
+    "slug": "millum",
+    "category": "other",
+    "logo": "/media/integrations/67cc35e98dcac0c6206e5811_67bdf8b1936d55b263ae495a_Copy_of_30.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "67cc34b618e094933d4a9f84"
+  },
+  {
+    "name": "Munu",
+    "slug": "munu",
+    "category": "pos",
+    "logo": "/media/integrations/67cc3575c256682d356619ce_67bdf8a3fda42132660a48e1_Copy_of_10.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "67cc34b8343296bcc18b92df"
+  },
+  {
+    "name": "MyStore",
+    "slug": "mystore",
+    "category": "pos",
+    "logo": "/media/integrations/682d8a3b6aabb8c08eb5e2e1_integration-mystore.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "682d84de84d85a43a2970132"
+  },
+  {
+    "name": "Nanopos",
+    "slug": "nanopos",
+    "category": "pos",
+    "logo": "/media/integrations/67cc35859edb746837975544_67bdf8a4e112c1d10f811eec_Copy_of_11.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "67cc34b8374531a16bcd0181"
+  },
+  {
+    "name": "Ninito",
+    "slug": "ninito",
+    "category": "pos",
+    "logo": "/media/integrations/681714de9d6a90168b0a719b_integration-ninito.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "681714e6e7f5478285d67d46"
+  },
+  {
+    "name": "OnlinePOS",
+    "slug": "onlinepos",
+    "category": "pos",
+    "logo": "/media/integrations/67cc357016d55d6381b34f11_67bdf8a49048cde7729d0dd8_Copy_of_12.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "67cc34b8922205e2fb787973"
+  },
+  {
+    "name": "Open",
+    "slug": "open",
+    "category": "pos",
+    "logo": "/media/integrations/67cc357b6069c30ddc6a5304_67bdf8a587b2aa59ad5b3177_Copy_of_13.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "67cc34b84912026bb524de9f"
+  },
+  {
+    "name": "OrderX",
+    "slug": "orderx",
+    "category": "pos",
+    "logo": "/media/integrations/67cc358dfb950b79d86face7_67bdf8a5df8b621ea1b00a43_Copy_of_14.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "67cc34b8fb950b79d86f2223"
+  },
+  {
+    "name": "PCK",
+    "slug": "pck",
+    "category": "pos",
+    "logo": "/media/integrations/67cc3594e98f3b3609b441b7_67bdf8a7936d55b263ae3feb_Copy_of_15.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "67cc34b88ae8762187fb264c"
+  },
+  {
+    "name": "Pinchos",
+    "slug": "pinchos",
+    "category": "pos",
+    "logo": "/media/integrations/682d8a27ed447085e7df77ca_integration-pinchos.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "682d8a2ccab8b94aba88844d"
+  },
+  {
+    "name": "Plorea",
+    "slug": "plorea",
+    "category": "pos",
+    "logo": "/media/integrations/681713d5513c941de3dfaccc_integration-plorea.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "681713e7936df62525bedb4d"
+  },
+  {
+    "name": "PowerOffice",
+    "slug": "poweroffice",
+    "category": "accounting",
+    "logo": "/media/integrations/67cc35fd374531a16bcdaf22_67bdf8b3000885528c06bad2_Copy_of_32.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "67cc34b6fb950b79d86f21be"
+  },
+  {
+    "name": "Procountor",
+    "slug": "procountor",
+    "category": "accounting",
+    "logo": "/media/integrations/682d85e8fe7dc02529f65ab7_integration-procountor.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "682d85ec98c1fcb5ecf79a23"
+  },
+  {
+    "name": "Quickbooks",
+    "slug": "quickbooks",
+    "category": "accounting",
+    "logo": "/media/integrations/682d85c3f84253d07ca9930d_integration-quickbooks.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "682d85c9425887dd3bcaf4f9"
+  },
+  {
+    "name": "Quickorder",
+    "slug": "quickorder",
+    "category": "pos",
+    "logo": "/media/integrations/67cc35ab937dc69a6b48d0c6_67bdf8a72d7f16b0d49fc98f_Copy_of_16.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "67cc34b7937dc69a6b4846b2"
+  },
+  {
+    "name": "RMS",
+    "slug": "rms",
+    "category": "pos",
+    "logo": "/media/integrations/681715e506e3ce7310497292_integration-rms-cloud.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "681715d81ad1b7fb65ebb85c"
+  },
+  {
+    "name": "RemarisMaster",
+    "slug": "remarismaster",
+    "category": "pos",
+    "logo": "/media/integrations/67cc359889836af946114750_67bdf8a924c95209c3db4469_Copy_of_17.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "67cc34b7c0a3c8fece085481"
+  },
+  {
+    "name": "Restolution",
+    "slug": "restolution",
+    "category": "pos",
+    "logo": "/media/integrations/67cc35b930e70ffebe1d09cb_67bdf8aa296f671bc98e4410_Copy_of_18.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "67cc34b7569e0531abbcb7ac"
+  },
+  {
+    "name": "Ringnes",
+    "slug": "ringnes",
+    "category": "other",
+    "logo": "/media/integrations/682d86885701575bcc79261e_integration-ringnes.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "682d869a2c3217b2fb811d16"
+  },
+  {
+    "name": "Shopbox",
+    "slug": "shopbox",
+    "category": "pos",
+    "logo": "/media/integrations/6817138862267e226f06d818_integration-shopbox.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "681700896afe7b569c88c4d4"
+  },
+  {
+    "name": "Simphony by Oracle",
+    "slug": "simphony-by-oracle",
+    "category": "pos",
+    "logo": "/media/integrations/682d84a28c6ded2d8f3af998_integration-simphony.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "682d84aa5d5ce632bc47439f"
+  },
+  {
+    "name": "Sparebank 1",
+    "slug": "sparebank1",
+    "category": "accounting",
+    "logo": "/media/integrations/6906ebe4b82ece2f5b629401_integration-sparebank1.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "6906ec0b354cf7990ff0cba4"
+  },
+  {
+    "name": "Square",
+    "slug": "square",
+    "category": "pos",
+    "logo": "/media/integrations/68d642351dd729f3e813aec6_integration-squarepos.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "68d6424207fbf015856d4914"
+  },
+  {
+    "name": "Superb",
+    "slug": "superb",
+    "category": "pos",
+    "logo": "/media/integrations/67cc35a19323864085ff0453_67bdf8a9df8b621ea1b00e77_Copy_of_19.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "67cc34b743ed5b391f832b38"
+  },
+  {
+    "name": "Tripletex",
+    "slug": "tripletex",
+    "category": "accounting",
+    "logo": "/media/integrations/682d84f4a3c1fe4e800667ed_integration-tripletex.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "682d8513290a61c3859808b9"
+  },
+  {
+    "name": "Trivec",
+    "slug": "trivec",
+    "category": "pos",
+    "logo": "/media/integrations/67cc35b1d24498a778c645d7_67bdf8a998a52564cb524661_Copy_of_20.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "67cc34b73748d7a574e9c11f"
+  },
+  {
+    "name": "Uni 24",
+    "slug": "uni-24",
+    "category": "accounting",
+    "logo": "/media/integrations/67cc360a3748d7a574eaa4a7_67bdf8c42657b03029825046_Copy_of_33.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "67cc34b63748d7a574e9bfe3"
+  },
+  {
+    "name": "Uniconta",
+    "slug": "uniconta",
+    "category": "accounting",
+    "logo": "/media/integrations/682d8556e4366663362e9de0_integration-uniconta.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "682d8560e4bb07a6c350b32e"
+  },
+  {
+    "name": "Unimicro",
+    "slug": "unimicro",
+    "category": "accounting",
+    "logo": "/media/integrations/67cc36048ae8762187fbed2e_67bdf8b6ed483d98bb9dced9_Copy_of_34.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "67cc34b632f78191cfe80fd6"
+  },
+  {
+    "name": "Vandelanotte",
+    "slug": "vandelanotte",
+    "category": "accounting",
+    "logo": "/media/integrations/6906ebb924e5d6c80e6ed19f_integration-vandelanotte.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "6906ebd0225ee4460cee4359"
+  },
+  {
+    "name": "Visbook",
+    "slug": "visbook",
+    "category": "pos",
+    "logo": "/media/integrations/67cc35bf8dcac0c6206e3389_67bdf8abd1f805a3111a3f04_Copy_of_21.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "67cc34b7d24498a778c57bef"
+  },
+  {
+    "name": "Visma",
+    "slug": "visma",
+    "category": "accounting",
+    "logo": "/media/integrations/67cc3610c256682d356690f2_67bdf8b5a3cc4b41bb32eaf0_Copy_of_35.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "67cc34b6f56457ecf3e55563"
+  },
+  {
+    "name": "Wolt",
+    "slug": "wolt",
+    "category": "pos",
+    "logo": "/media/integrations/67cc35c8f56457ecf3e6221d_67bdf8ab5021af04bb978609_Copy_of_22.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "67cc34b717ea0563172889dc"
+  },
+  {
+    "name": "Xero",
+    "slug": "xero",
+    "category": "accounting",
+    "logo": "/media/integrations/682d857e6e35f228cb5a09a5_integration-xero.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "682d858f9f4b9123d8f1a3f1"
+  },
+  {
+    "name": "Xledger",
+    "slug": "xledger",
+    "category": "accounting",
+    "logo": "/media/integrations/67cc362230e70ffebe1d5267_67bdf8b5a3b106c5a3793836_Copy_of_36.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "67cc34b6eab50ce039e8b8fb"
+  },
+  {
+    "name": "iZettle",
+    "slug": "izettle",
+    "category": "pos",
+    "logo": "/media/integrations/681713b7e56236e59cd65687_integration-zettle.png",
+    "description": "",
+    "draft": false,
+    "webflowId": "681713c41ad1b7fb65eace1a"
+  }
+]
