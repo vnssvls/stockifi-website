@@ -1,0 +1,38 @@
+---
+// Styleguide → Footer. Both variants of the site footer (Figma 67:365 / 67:565).
+// `bare` layout so the global footer isn't also rendered — we show the variants inline.
+import Layout from '../../layouts/Layout.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="Footer — Style guide" bare>
+  <div class="sgf-head container">
+    <a class="sg-back" href="/styleguide">← Style guide</a>
+    <h1>Footer</h1>
+    <p class="text-muted">Two variants. The oversized “Stockifi” at the bottom is the real logo wordmark (SVG), half-clipped by the footer's edge and faded back. Social icons (LinkedIn + YouTube) live in the “Follow us” column.</p>
+  </div>
+
+  <p class="sg-label container">Variant 1 — Full (CTA + links)</p>
+  <Footer />
+
+  <p class="sg-label container">Variant 2 — Links only (no CTA)</p>
+  <Footer showCta={false} />
+</Layout>
+
+<style>
+  .sgf-head { padding-top: var(--space-64); }
+  .sg-back { display: inline-block; margin-bottom: var(--space-16); color: var(--muted-foreground); font-size: var(--text-body-sm); }
+  .sg-back:hover { color: var(--foreground); text-decoration: none; }
+  .sgf-head h1 { margin-bottom: var(--space-8); }
+
+  .sg-label {
+    margin-top: var(--space-64);
+    margin-bottom: var(--space-24);
+    padding-bottom: var(--space-8);
+    border-bottom: 1px solid var(--border);
+    font-size: var(--text-caption);
+    font-weight: var(--fw-semibold);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+</style>

@@ -45,10 +45,16 @@ const dateLabel = date
       {orientation === 'horizontal' ? (
         <div class="bc-meta-top">
           {category && <span class="bc-pill">{category}</span>}
-          {readTime && <span class="bc-readtime">{readTime}</span>}
+          {(dateLabel || readTime) && (
+            <span class="bc-meta-inline">
+              {dateLabel && <span>{dateLabel}</span>}
+              {dateLabel && readTime && <span aria-hidden="true">•</span>}
+              {readTime && <span>{readTime}</span>}
+            </span>
+          )}
         </div>
       ) : (
-        category && <span class="bc-category">{category}</span>
+        category && <span class="bc-pill">{category}</span>
       )}
 
       <h3 class="bc-title">{title}</h3>
@@ -100,14 +106,6 @@ const dateLabel = date
 
   .bc-body { display: flex; flex-direction: column; gap: var(--space-8); }
 
-  .bc-category {
-    font-size: var(--text-caption);
-    font-weight: var(--fw-semibold);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--primary);
-  }
-
   .bc-title {
     font-size: var(--text-h6);
     line-height: var(--lh-h6);
@@ -144,7 +142,10 @@ const dateLabel = date
   .bc--horizontal .bc-body { flex: 1; justify-content: center; }
 
   .bc-meta-top { display: flex; align-items: center; gap: var(--space-12); }
+  /* Standard category label across both orientations. width:fit-content keeps it
+     from stretching when it's a direct child of the vertical card's column flex. */
   .bc-pill {
+    width: fit-content;
     padding: var(--space-4) var(--space-12);
     background: var(--secondary);
     color: var(--secondary-foreground);
@@ -152,7 +153,13 @@ const dateLabel = date
     font-size: var(--text-caption);
     font-weight: var(--fw-medium);
   }
-  .bc-readtime { font-size: var(--text-caption); color: var(--muted-foreground); }
+  .bc-meta-inline {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-8);
+    font-size: var(--text-caption);
+    color: var(--muted-foreground);
+  }
 
   .bc-readmore {
     display: inline-flex;

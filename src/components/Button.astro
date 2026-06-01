@@ -52,7 +52,8 @@ const tagProps = href ? { href } : { type };
     color: var(--primary-foreground);
   }
   .btn-primary:hover {
-    background: var(--primary-dark);
+    background: var(--foreground);
+    color: var(--background);
   }
 
   .btn-secondary {
@@ -61,7 +62,7 @@ const tagProps = href ? { href } : { type };
     border-color: var(--border);
   }
   .btn-secondary:hover {
-    border-color: var(--primary);
+    border-color: var(--foreground);
   }
 
   /* Ghost: no border, no fill — a text link block (e.g. "View all integrations →"). */

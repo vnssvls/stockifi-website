@@ -1,0 +1,69 @@
+---
+// Integrations page (Figma 67:2342 header + 67:3442 filters + 67:3455 content).
+// Page header (heading + subhead + logo strip) → directory (search/sort/filter +
+// card grid) → CTA variant 2 (image-background email capture). Nav + Footer come
+// from the layout. DRAFT copy.
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import IntegrationsDirectory from '../components/integrations/IntegrationsDirectory.astro';
+import CtaEmail from '../components/CtaEmail.astro';
+import data from '../../content/integrations/integrations.en.json';
+
+const live = data.filter((x) => !x.draft);
+
+const CATEGORIES = [
+  { value: 'accounting', label: 'Accounting' },
+  { value: 'pos', label: 'POS' },
+  { value: 'other', label: 'Other' },
+];
+
+const items = [...live]
+  .sort((a, b) => a.name.localeCompare(b.name))
+  .map((x) => ({ name: x.name, category: x.category, logo: x.logo }));
+
+// Recognizable subset for the header strip (rendered as uniform white silhouettes).
+const stripNames = ['Square', 'Lightspeed', 'Xero', 'Quickbooks', 'Visma', 'Fortnox', 'Mews', 'Wolt', 'Tripletex', 'Trivec'];
+const strip = stripNames
+  .map((n) => live.find((x) => x.name === n))
+  .filter((x): x is (typeof live)[number] => Boolean(x));
+---
+
+<Layout
+  title="Integrations — Stockifi"
+  description="Stockifi connects to 30+ accounting and 40+ POS systems so invoices, sales, and recipe costs stay in sync."
+>
+  <PageHeader
+    eyebrow="Integrations"
+    heading="Stockifi works with the tools you already run"
+    subhead="Connect your accounting and POS systems so invoices, sales, and recipe costs stay in sync — no manual exports, no double entry."
+  >
+    <div class="int-strip">
+      {strip.map((s) => <img class="int-strip-logo" src={s.logo} alt={s.name} width="120" height="40" loading="lazy" />)}
+    </div>
+  </PageHeader>
+
+  <IntegrationsDirectory items={items} categories={CATEGORIES} />
+
+  <CtaEmail
+    heading="See it connected to your stack"
+    subhead="Drop your email and we'll show you what Stockifi surfaces in your first 30 days."
+    bgImages={['/media/cta-bg-1.jpg', '/media/cta-bg-2.jpg', '/media/cta-bg-3.jpg', '/media/cta-bg-4.jpg']}
+  />
+</Layout>
+
+<style>
+  .int-strip {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-32);
+  }
+  /* Uniform white silhouettes so the mixed brand logos read on the dark header */
+  .int-strip-logo {
+    height: 26px;
+    width: auto;
+    filter: brightness(0) invert(1);
+    opacity: 0.55;
+  }
+</style>

@@ -1,7 +1,9 @@
 ---
-// CTA variant 2 (Figma CTA/28, node 10:2188): centered heading + subhead + an
-// inline email-capture form + terms line. The form hands off to the lead-capture
-// flow (default /intro); swap `action` per use. Stacks on mobile.
+// CTA variant 2 (Figma CTA/28, node 10:2189 desktop / 10:2200 mobile): centered
+// heading + subhead + inline email-capture form + terms line, on a FULL-BLEED
+// image background (edge to edge) with a dark scrim for contrast. The form hands
+// off to the lead-capture flow (default /intro); swap `action` per use. Stacks on
+// mobile. With no bgImage it falls back to a plain section on the page background.
 import Button from './Button.astro';
 
 interface Props {
@@ -11,6 +13,9 @@ interface Props {
   buttonLabel?: string;
   action?: string;
   termsHref?: string;
+  bgImage?: string;
+  /** Pass 2+ to cycle a random one per page load. */
+  bgImages?: string[];
 }
 const {
   heading,
@@ -19,10 +24,22 @@ const {
   buttonLabel = 'Get started',
   action = '/intro',
   termsHref = '/terms',
+  bgImage,
+  bgImages,
 } = Astro.props;
+
+const imgs = bgImages?.length ? bgImages : bgImage ? [bgImage] : [];
+const hasBg = imgs.length > 0;
+// A single image is set server-side; for 2+ the client script picks one at random,
+// kept out of SSR so only the chosen image downloads (no wasted second load).
+const single = imgs.length === 1 ? imgs[0] : '';
 ---
 
-<section class="cta-email section">
+<section
+  class:list={['cta-email section', hasBg && 'cta-email--bg']}
+  style={single ? `--ce-bg: url('${single}')` : undefined}
+  data-cta-bgs={imgs.length > 1 ? JSON.stringify(imgs) : undefined}
+>
   <div class="container ce-inner">
     <h2 class="ce-heading">{heading}</h2>
     {subhead && <p class="ce-subhead text-muted">{subhead}</p>}
@@ -46,6 +63,21 @@ const {
 </section>
 
 <style>
+  /* Full-bleed image background. `background-image` (not the linted `background`
+     shorthand) layers a dark scrim over the photo so the white heading + form stay
+     legible on any image. */
+  .cta-email--bg {
+    --ce-bg: none; /* scrim-only until the client script sets the chosen image */
+    background-image:
+      linear-gradient(
+        color-mix(in srgb, var(--background) 82%, transparent),
+        color-mix(in srgb, var(--background) 82%, transparent)
+      ),
+      var(--ce-bg);
+    background-size: cover;
+    background-position: center;
+  }
+
   .ce-inner { text-align: center; }
   .ce-heading { max-width: 20ch; margin-inline: auto; }
   .ce-subhead { margin-top: var(--space-16); margin-inline: auto; max-width: 48ch; font-size: var(--text-body-lg); }
@@ -73,7 +105,30 @@ const {
   .ce-terms a { color: var(--muted-foreground); text-decoration: underline; }
   .ce-terms a:hover { color: var(--foreground); }
 
+  /* On an image background: brighten the secondary text and make the input a
+     transparent white-outlined field (matches the wireframe). */
+  .cta-email--bg .ce-subhead,
+  .cta-email--bg .ce-terms { color: color-mix(in srgb, var(--foreground) 82%, transparent); }
+  .cta-email--bg .ce-terms a { color: var(--foreground); }
+  .cta-email--bg .ce-input {
+    background: transparent;
+    border-color: color-mix(in srgb, var(--foreground) 55%, transparent);
+    color: var(--foreground);
+  }
+  .cta-email--bg .ce-input::placeholder { color: color-mix(in srgb, var(--foreground) 70%, transparent); }
+
   @media (max-width: 639px) {
     .ce-form { flex-direction: column; }
   }
 </style>
+
+<script>
+  // Pick a random background from the list on each load (re-rolls the SSR choice).
+  document.querySelectorAll<HTMLElement>('[data-cta-bgs]').forEach((el) => {
+    let imgs: string[] = [];
+    try { imgs = JSON.parse(el.dataset.ctaBgs ?? '[]'); } catch { /* ignore */ }
+    if (imgs.length < 2) return;
+    const pick = imgs[Math.floor(Math.random() * imgs.length)];
+    el.style.setProperty('--ce-bg', `url('${pick}')`);
+  });
+</script>

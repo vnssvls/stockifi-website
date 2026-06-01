@@ -24,10 +24,11 @@ import CtaEmail from '../../components/CtaEmail.astro';
       secondary={{ label: 'See how it works', href: '/#how-it-works' }}
     />
 
-    <div class="container"><p class="sg-label text-muted">Variant 2 — Centered email capture</p></div>
+    <div class="container"><p class="sg-label text-muted">Variant 2 — Centered email capture (image background)</p></div>
     <CtaEmail
       heading="Find your hidden food cost losses"
       subhead="Drop your email and we'll show you what Stockifi surfaces in your first 30 days."
+      bgImages={['/media/cta-bg-1.jpg', '/media/cta-bg-2.jpg', '/media/cta-bg-3.jpg', '/media/cta-bg-4.jpg']}
     />
   </div>
 

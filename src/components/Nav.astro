@@ -33,11 +33,6 @@ const resourcesItems = [
   { label: 'Savings Calculator', href: '/savings-calculator' },
   { label: 'Comparisons', href: null, soon: true },
 ];
-const companyItems = [
-  { label: 'About', href: '/about' },
-  { label: 'Contact', href: '/contact' },
-];
-
 const LOGIN_URL = 'https://web.stockifi.io/#/login';
 ---
 
@@ -109,16 +104,8 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
           <a class="nav-link" href="/pricing">Pricing</a>
         </li>
 
-        <li class="nav-item has-panel">
-          <button type="button" class="nav-trigger" aria-haspopup="true" aria-expanded="false" aria-controls="panel-company">
-            Company
-            <svg class="caret" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg>
-          </button>
-          <div class="nav-panel" id="panel-company">
-            <ul class="dropdown-list">
-              {companyItems.map((i) => (<li><a class="dropdown-link" href={i.href}>{i.label}</a></li>))}
-            </ul>
-          </div>
+        <li class="nav-item">
+          <a class="nav-link" href="/contact">Contact</a>
         </li>
       </ul>
     </nav>
@@ -176,16 +163,7 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
         </div>
 
         <a class="m-acc-link" href="/pricing">Pricing</a>
-
-        <div class="m-acc">
-          <button type="button" class="m-acc-trigger" aria-expanded="false" aria-controls="m-company">
-            Company
-            <svg class="caret" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
-          </button>
-          <div class="m-acc-panel" id="m-company" hidden>
-            {companyItems.map((i) => (<a class="m-link" href={i.href}>{i.label}</a>))}
-          </div>
-        </div>
+        <a class="m-acc-link" href="/contact">Contact</a>
       </nav>
 
       <div class="mobile-locale"><LocaleSwitcher current="en" /></div>
