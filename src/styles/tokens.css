@@ -18,8 +18,11 @@
   --card-foreground: #f8f8fc;
   --popover: #1a1a24;
   --popover-foreground: #f8f8fc;
-  --primary: #8950f1;
+  --primary: #9565db;
   --primary-foreground: #ffffff;
+  --primary-light: #c39df9;    /* lighter shade — taglines */
+  --primary-lighter: #d2b8f7;  /* even lighter — accents */
+  --primary-dark: #6d46aa;     /* darker — primary button hover/active */
   --secondary: #29223f;
   --secondary-foreground: #d4ccff;
   --muted: #17171c;
@@ -119,7 +122,7 @@
   --card-foreground: #15151e;
   --popover: #ffffff;
   --popover-foreground: #15151e;
-  --primary: #875dea;
+  --primary: #9565db;
   --primary-foreground: #f3f4f6;
   --secondary: #edebff;
   --secondary-foreground: #483d8b;

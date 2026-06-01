@@ -54,5 +54,5 @@ img, picture, svg, video { display: block; max-width: 100%; }
   font-weight: var(--fw-medium);
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--primary);
+  color: var(--primary-light);
 }
