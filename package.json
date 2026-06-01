@@ -1,0 +1,25 @@
+{
+  "name": "stockifi-website",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "lint:css": "stylelint \"src/**/*.{css,astro}\""
+  },
+  "dependencies": {
+    "astro": "^5",
+    "@fontsource/montserrat": "^5",
+    "@fontsource/inter": "^5"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9",
+    "typescript": "^5",
+    "stylelint": "^16",
+    "stylelint-declaration-strict-value": "^1",
+    "postcss-html": "^1"
+  }
+}
