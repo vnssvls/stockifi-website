@@ -20,10 +20,11 @@ import Unplugged404 from '../components/illustrations/Unplugged404.astro';
           </Button>
         </div>
       </div>
+    </div>
 
-      <div class="nf-art">
-        <Unplugged404 />
-      </div>
+    <!-- Full-bleed: the cable runs off both screen edges, so it sits outside .container -->
+    <div class="nf-art">
+      <Unplugged404 />
     </div>
   </section>
 </Layout>
@@ -33,5 +34,5 @@ import Unplugged404 from '../components/illustrations/Unplugged404.astro';
   .nf-copy { max-width: 42rem; margin-inline: auto; }
   .nf-sub { margin-top: var(--space-16); font-size: var(--text-body-lg); }
   .nf-cta { margin-top: var(--space-32); display: flex; justify-content: center; }
-  .nf-art { margin-top: var(--space-64); }
+  .nf-art { margin-top: var(--space-64); overflow-x: clip; }
 </style>
