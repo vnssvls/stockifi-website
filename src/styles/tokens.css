@@ -12,17 +12,17 @@
 
 :root {
   /* ── Color · Dark (default) ───────────────────────────────────────── */
-  --background: #17171c;
+  --background: #1a1a24;
   --foreground: #f8f8fc;
-  --card: #17171c;
+  --card: #1a1a24;
   --card-foreground: #f8f8fc;
-  --popover: #17171c;
+  --popover: #1a1a24;
   --popover-foreground: #f8f8fc;
   --primary: #8950f1;
   --primary-foreground: #ffffff;
   --secondary: #29223f;
   --secondary-foreground: #d4ccff;
-  --muted: #1a1a24;
+  --muted: #17171c;
   --muted-foreground: #a1a1b5;
   --accent: #2e283e;
   --accent-foreground: #f2f2f2;

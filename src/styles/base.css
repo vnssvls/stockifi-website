@@ -49,7 +49,7 @@ img, picture, svg, video { display: block; max-width: 100%; }
 /* Text role helpers */
 .text-muted { color: var(--muted-foreground); }
 .tagline {
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   font-size: var(--text-tagline);
   font-weight: var(--fw-medium);
   letter-spacing: 0.08em;

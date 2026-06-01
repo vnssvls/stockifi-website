@@ -126,7 +126,7 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
     <div class="nav-actions">
       <LocaleSwitcher current="en" />
       <Button variant="secondary" href={LOGIN_URL}>Login</Button>
-      <Button variant="primary" href="/contact">Book a demo</Button>
+      <Button variant="primary" href="/contact">Get Started</Button>
     </div>
 
     <button type="button" class="nav-burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
@@ -192,7 +192,7 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
 
       <div class="mobile-actions">
         <Button variant="secondary" href={LOGIN_URL} block>Login</Button>
-        <Button variant="primary" href="/contact" block>Book a demo</Button>
+        <Button variant="primary" href="/contact" block>Get Started</Button>
       </div>
     </div>
   </div>
@@ -271,6 +271,17 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
     visibility: visible;
     transform: none;
     pointer-events: auto;
+  }
+
+  /* Transparent bridge over the gap so the pointer can travel from trigger to
+     panel without leaving the item — keeps the mega menu open and clickable. */
+  .nav-panel::before {
+    content: '';
+    position: absolute;
+    top: calc(-1 * var(--space-8));
+    left: 0;
+    right: 0;
+    height: var(--space-8);
   }
 
   .dropdown-list {
