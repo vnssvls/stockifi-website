@@ -1,45 +1,110 @@
 ---
-// Feature Layout 1 — stacked heading/paragraph list beside one tall image.
+// Feature Layout 1 — interactive vertical list beside a swapping image.
+// Each item is a tab: the active one keeps the left accent border at full opacity,
+// inactive items dim, and the media on the right swaps to the active item's image.
 import MediaPlaceholder from './MediaPlaceholder.astro';
 
-interface Item { heading: string; body: string; }
+interface Item { heading: string; body: string; image?: { src: string; alt: string }; }
 interface Props {
   tagline?: string;
   items: Item[];
-  image?: { src: string; alt: string };
 }
-const { tagline, items, image } = Astro.props;
+const { tagline, items } = Astro.props;
 ---
 
-<section class="feature-list section">
+<section class="feature-list section" data-feature-list>
   <div class="container fl-grid">
     <div class="fl-copy">
       {tagline && <p class="tagline">{tagline}</p>}
-      <div class="fl-items">
-        {items.map((it) => (
-          <div class="fl-item">
-            <h3>{it.heading}</h3>
-            <p class="text-muted">{it.body}</p>
-          </div>
+      <div class="fl-items" role="tablist" aria-orientation="vertical">
+        {items.map((it, i) => (
+          <button class="fl-item" type="button" role="tab" data-index={i} aria-selected={i === 0 ? 'true' : 'false'}>
+            <span class="fl-item-h">{it.heading}</span>
+            <span class="fl-item-b">{it.body}</span>
+          </button>
         ))}
       </div>
     </div>
+
     <div class="fl-media">
-      {image ? <img src={image.src} alt={image.alt} /> : <MediaPlaceholder ratio="3 / 4" />}
+      {items.map((it, i) => (
+        <div class="fl-panel" role="tabpanel" data-index={i} hidden={i !== 0}>
+          {it.image ? <img src={it.image.src} alt={it.image.alt} /> : <MediaPlaceholder ratio="3 / 4" label={it.heading} />}
+        </div>
+      ))}
     </div>
   </div>
 </section>
 
 <style>
   .fl-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-48); align-items: start; }
-  .fl-items { display: flex; flex-direction: column; gap: var(--space-32); }
+  .fl-items { display: flex; flex-direction: column; gap: var(--space-8); }
   .tagline + .fl-items { margin-top: var(--space-24); }
-  .fl-item { border-left: 2px solid var(--border); padding-left: var(--space-24); }
-  .fl-item h3 { font-size: var(--text-h5); margin-bottom: var(--space-8); }
-  .fl-media img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: var(--radius-lg); }
+
+  .fl-item {
+    display: block;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    border-left: 2px solid transparent;
+    padding: var(--space-16) 0 var(--space-16) var(--space-24);
+    opacity: 0.5;
+    transition: opacity 0.2s ease, border-color 0.2s ease;
+  }
+  .fl-item:hover { opacity: 0.8; }
+  /* Keyboard focus shows as a subtle fill (not a full outline box), so the active
+     state always reads as the left accent border. */
+  .fl-item:focus-visible { outline: none; opacity: 1; background: var(--accent); }
+  .fl-item[aria-selected='true'] { opacity: 1; border-left-color: var(--primary); }
+  .fl-item-h { display: block; margin-bottom: var(--space-8); font-family: var(--font-heading); font-size: var(--text-h5); font-weight: var(--fw-semibold); color: var(--foreground); }
+  .fl-item-b { display: block; color: var(--muted-foreground); line-height: var(--lh-body); }
+
+  .fl-panel[hidden] { display: none; }
+  .fl-panel img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: var(--radius-lg); }
 
   @media (min-width: 1024px) {
     .fl-grid { grid-template-columns: 1fr 1fr; gap: var(--space-96); }
     .fl-media { position: sticky; top: var(--space-96); }
   }
 </style>
+
+<script>
+  let n = 0;
+  document.querySelectorAll('[data-feature-list]').forEach((root) => {
+    const base = `flist-${n++}`;
+    const tabs = Array.from(root.querySelectorAll<HTMLButtonElement>('.fl-item'));
+    const panels = Array.from(root.querySelectorAll<HTMLElement>('.fl-panel'));
+
+    tabs.forEach((tab, i) => {
+      tab.id = `${base}-tab-${i}`;
+      panels[i].id = `${base}-panel-${i}`;
+      tab.setAttribute('aria-controls', panels[i].id);
+      panels[i].setAttribute('aria-labelledby', tab.id);
+      tab.setAttribute('tabindex', i === 0 ? '0' : '-1');
+
+      tab.addEventListener('click', () => {
+        tabs.forEach((t, j) => {
+          const on = j === i;
+          t.setAttribute('aria-selected', String(on));
+          t.setAttribute('tabindex', on ? '0' : '-1');
+          panels[j].hidden = !on;
+        });
+        tab.focus();
+      });
+
+      tab.addEventListener('keydown', (e) => {
+        const keys = ['ArrowDown', 'ArrowUp', 'Home', 'End'];
+        if (!keys.includes(e.key)) return;
+        e.preventDefault();
+        let next = i;
+        if (e.key === 'ArrowDown') next = (i + 1) % tabs.length;
+        else if (e.key === 'ArrowUp') next = (i - 1 + tabs.length) % tabs.length;
+        else if (e.key === 'Home') next = 0;
+        else next = tabs.length - 1;
+        tabs[next].click();
+      });
+    });
+  });
+</script>

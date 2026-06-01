@@ -1,0 +1,78 @@
+---
+// Reusable accordion. Each item toggles independently. ids/aria wired client-side
+// so multiple accordions on one page never collide.
+interface Item { question: string; answer: string; }
+interface Props {
+  items: Item[];
+  openFirst?: boolean;
+}
+const { items, openFirst = false } = Astro.props;
+---
+
+<div class="accordion" data-accordion>
+  {items.map((it, i) => {
+    const open = openFirst && i === 0;
+    return (
+      <div class="acc-item">
+        <h3 class="acc-h">
+          <button class="acc-trigger" type="button" aria-expanded={open ? 'true' : 'false'}>
+            <span>{it.question}</span>
+            <svg class="acc-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+          </button>
+        </h3>
+        <div class="acc-panel" hidden={!open}>
+          <p>{it.answer}</p>
+        </div>
+      </div>
+    );
+  })}
+</div>
+
+<style>
+  .acc-item { border-top: 1px solid var(--border); }
+  .accordion .acc-item:last-child { border-bottom: 1px solid var(--border); }
+  .acc-h { margin: 0; }
+  .acc-trigger {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-16);
+    padding: var(--space-24) 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-family: var(--font-heading);
+    font-size: var(--text-h6);
+    font-weight: var(--fw-semibold);
+    color: var(--foreground);
+  }
+  .acc-chevron { flex: none; color: var(--muted-foreground); transition: transform 0.2s ease; }
+  .acc-trigger[aria-expanded='true'] .acc-chevron { transform: rotate(180deg); }
+  .acc-panel { padding-bottom: var(--space-24); }
+  .acc-panel[hidden] { display: none; }
+  .acc-panel p { max-width: 72ch; color: var(--muted-foreground); }
+</style>
+
+<script>
+  let n = 0;
+  document.querySelectorAll('[data-accordion]').forEach((root) => {
+    const base = `acc-${n++}`;
+    root.querySelectorAll('.acc-item').forEach((item, i) => {
+      const trigger = item.querySelector('.acc-trigger') as HTMLButtonElement | null;
+      const panel = item.querySelector('.acc-panel') as HTMLElement | null;
+      if (!trigger || !panel) return;
+      trigger.id = `${base}-t-${i}`;
+      panel.id = `${base}-p-${i}`;
+      trigger.setAttribute('aria-controls', panel.id);
+      panel.setAttribute('role', 'region');
+      panel.setAttribute('aria-labelledby', trigger.id);
+      trigger.addEventListener('click', () => {
+        const open = trigger.getAttribute('aria-expanded') === 'true';
+        trigger.setAttribute('aria-expanded', String(!open));
+        panel.hidden = open;
+      });
+    });
+  });
+</script>

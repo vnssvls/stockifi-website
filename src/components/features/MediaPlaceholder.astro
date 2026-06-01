@@ -1,28 +1,34 @@
 ---
 // Shared image placeholder for feature/section components until real assets land.
+// Optional label so swappable galleries visibly change which media is active.
 interface Props {
   ratio?: string;
   class?: string;
+  label?: string;
 }
-const { ratio = '4 / 3', class: className } = Astro.props;
+const { ratio = '4 / 3', class: className, label } = Astro.props;
 ---
 
-<div class:list={['media-ph', className]} style={`--ratio: ${ratio}`} role="img" aria-label="Image placeholder">
+<div class:list={['media-ph', className]} style={`--ratio: ${ratio}`} role="img" aria-label={label ? `Image placeholder: ${label}` : 'Image placeholder'}>
   <svg width="48" height="48" viewBox="0 0 24 24" fill="none" aria-hidden="true">
     <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5" />
     <circle cx="8.5" cy="8.5" r="1.5" fill="currentColor" />
     <path d="m21 15-5-5L5 21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
   </svg>
+  {label && <span class="media-ph-label">{label}</span>}
 </div>
 
 <style>
   .media-ph {
     aspect-ratio: var(--ratio, 4 / 3);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: var(--space-12);
     background: var(--muted);
     border-radius: var(--radius-lg);
     color: var(--muted-foreground);
   }
+  .media-ph-label { font-size: var(--text-body-sm); }
 </style>

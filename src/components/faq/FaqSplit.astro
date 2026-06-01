@@ -1,0 +1,38 @@
+---
+// FAQ Variant 1 — left intro (heading + body + Contact CTA), right single-column accordion.
+import Accordion from './Accordion.astro';
+import Button from '../Button.astro';
+
+interface Item { question: string; answer: string; }
+interface Props {
+  heading: string;
+  body?: string;
+  contact?: { label: string; href: string };
+  items: Item[];
+}
+const { heading, body, contact, items } = Astro.props;
+---
+
+<section class="faq-split section">
+  <div class="container fq-grid">
+    <div class="fq-intro">
+      <h2>{heading}</h2>
+      {body && <p class="fq-body text-muted">{body}</p>}
+      {contact && <div class="fq-cta"><Button variant="secondary" href={contact.href}>{contact.label}</Button></div>}
+    </div>
+    <div class="fq-list">
+      <Accordion items={items} openFirst />
+    </div>
+  </div>
+</section>
+
+<style>
+  .fq-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-48); }
+  .fq-body { margin-top: var(--space-16); }
+  .fq-cta { margin-top: var(--space-32); }
+
+  @media (min-width: 1024px) {
+    .fq-grid { grid-template-columns: 1fr 1.4fr; gap: var(--space-96); align-items: start; }
+    .fq-intro { position: sticky; top: var(--space-96); }
+  }
+</style>

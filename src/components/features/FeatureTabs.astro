@@ -61,23 +61,31 @@ const { tagline, heading, subhead, tabs } = Astro.props;
   .ft-media img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius-lg); }
   .ft-copy h3 { font-size: var(--text-h3); margin-bottom: var(--space-16); }
 
-  .ft-tabs { display: flex; border-top: 1px solid var(--border); }
+  /* Mobile: tabs stacked vertically so longer labels keep breathing room. */
+  .ft-tabs { display: flex; flex-direction: column; border-top: 1px solid var(--border); }
   .ft-tab {
     flex: 1;
     padding: var(--space-16);
+    text-align: left;
     background: transparent;
     border: none;
-    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
     color: var(--muted-foreground);
     font-family: var(--font-body);
     font-size: var(--text-body);
     font-weight: var(--fw-medium);
     cursor: pointer;
   }
-  .ft-tab:last-child { border-right: none; }
+  .ft-tab:last-child { border-bottom: none; }
   .ft-tab:hover { color: var(--foreground); }
   .ft-tab[aria-selected='true'] { background: var(--accent); color: var(--foreground); }
 
+  /* Tablet+: tabs go back to a horizontal row. */
+  @media (min-width: 768px) {
+    .ft-tabs { flex-direction: row; }
+    .ft-tab { text-align: center; border-bottom: none; border-right: 1px solid var(--border); }
+    .ft-tab:last-child { border-right: none; }
+  }
   @media (min-width: 1024px) {
     .ft-panel { grid-template-columns: 1fr 1fr; gap: var(--space-64); padding: var(--space-48); }
   }

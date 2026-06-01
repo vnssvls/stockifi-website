@@ -1,0 +1,54 @@
+---
+// FAQ Variant 2 — centered header, two-column accordion grid, bottom "still have questions" CTA.
+import Accordion from './Accordion.astro';
+import Button from '../Button.astro';
+
+interface Item { question: string; answer: string; }
+interface Props {
+  heading: string;
+  subhead?: string;
+  items: Item[];
+  cta?: { heading: string; body?: string; label: string; href: string };
+}
+const { heading, subhead, items, cta } = Astro.props;
+const mid = Math.ceil(items.length / 2);
+const colA = items.slice(0, mid);
+const colB = items.slice(mid);
+---
+
+<section class="faq-grid section">
+  <div class="container">
+    <div class="fqg-head">
+      <h2>{heading}</h2>
+      {subhead && <p class="fqg-sub text-muted">{subhead}</p>}
+    </div>
+
+    <div class="fqg-cols">
+      <Accordion items={colA} />
+      <Accordion items={colB} />
+    </div>
+
+    {cta && (
+      <div class="fqg-cta">
+        <h3>{cta.heading}</h3>
+        {cta.body && <p class="text-muted">{cta.body}</p>}
+        <Button variant="secondary" href={cta.href}>{cta.label}</Button>
+      </div>
+    )}
+  </div>
+</section>
+
+<style>
+  .fqg-head { max-width: 56ch; margin: 0 auto var(--space-64); text-align: center; }
+  .fqg-sub { margin-top: var(--space-16); font-size: var(--text-body-lg); }
+
+  .fqg-cols { display: grid; grid-template-columns: 1fr; column-gap: var(--space-64); }
+
+  .fqg-cta { margin-top: var(--space-64); text-align: center; }
+  .fqg-cta h3 { font-size: var(--text-h4); margin-bottom: var(--space-8); }
+  .fqg-cta p { margin-bottom: var(--space-24); }
+
+  @media (min-width: 1024px) {
+    .fqg-cols { grid-template-columns: 1fr 1fr; }
+  }
+</style>

@@ -1,0 +1,113 @@
+---
+// Styleguide → FAQ. Both variants, switched via the variant tab bar. Accordion items
+// toggle independently. Representative Stockifi content (draft) for review.
+import Layout from '../../layouts/Layout.astro';
+import SgThemeToggle from '../../components/SgThemeToggle.astro';
+import FaqSplit from '../../components/faq/FaqSplit.astro';
+import FaqGrid from '../../components/faq/FaqGrid.astro';
+
+const variants = [
+  { label: '1 · Split + intro' },
+  { label: '2 · Two-column grid' },
+];
+
+const faqItems = [
+  { question: 'How does Stockifi connect to my systems?', answer: 'It connects to your accounting software and POS to read invoices and sales automatically. We confirm your exact stack on a short call.' },
+  { question: 'How long does onboarding take?', answer: 'Most setups are running within a few weeks, depending on how many recipes and locations you have.' },
+  { question: 'What does it cost?', answer: 'Pricing depends on the size and complexity of your operation. It typically ranges between €150 and €400 per month.' },
+  { question: 'Is Stockifi a good fit for my restaurant?', answer: 'It works best for established operations with recipes and an accounting or POS system. Very early-stage businesses usually are not the right fit yet.' },
+  { question: 'Can my team use it in our own language?', answer: 'Your data stays in your language and the app modules are in English. We help your team get set up.' },
+  { question: 'What if it does not find savings?', answer: 'If Stockifi does not uncover at least €3,000 in hidden losses in the first 30 days, you pay nothing.' },
+  { question: 'Do you support multi-location groups?', answer: 'Yes. Groups get consolidated visibility across sites, with org-level setup on the Custom plan.' },
+  { question: 'How is this different from a POS or accounting tool?', answer: 'Stockifi sits on top of both. It connects what you buy, what you sell, and what you should have used, which neither system does on its own.' },
+];
+---
+
+<Layout title="FAQ — Style guide">
+  <div class="sg">
+    <div class="container sgf-head">
+      <a class="sg-back" href="/styleguide">← Style guide</a>
+      <h1>FAQ</h1>
+      <p class="text-muted">Two layouts, both with accordion items (click a question to toggle). Representative draft content.</p>
+      <div class="sgf-tabs" role="tablist" aria-label="FAQ layouts" data-sg-tabs>
+        {variants.map((v, i) => (
+          <button class="sgf-tab" type="button" role="tab" data-index={i} aria-selected={i === 0 ? 'true' : 'false'}>{v.label}</button>
+        ))}
+      </div>
+    </div>
+
+    <div class="sgf-panel" role="tabpanel" data-index="0">
+      <FaqSplit
+        heading="Frequently asked questions"
+        body="Common questions from operators evaluating Stockifi. If yours is not here, the team is happy to help."
+        contact={{ label: 'Contact', href: '/contact' }}
+        items={faqItems.slice(0, 6)}
+      />
+    </div>
+    <div class="sgf-panel" role="tabpanel" data-index="1" hidden>
+      <FaqGrid
+        heading="FAQs"
+        subhead="Common questions about setup, pricing, and fit."
+        items={faqItems}
+        cta={{ heading: 'Still have questions?', body: 'Talk to the team and we will map Stockifi to your setup.', label: 'Contact', href: '/contact' }}
+      />
+    </div>
+  </div>
+
+  <SgThemeToggle />
+</Layout>
+
+<style>
+  .sgf-head { padding-top: var(--section-y); }
+  .sg-back { display: inline-block; margin-bottom: var(--space-16); color: var(--muted-foreground); font-size: var(--text-body-sm); }
+  .sg-back:hover { color: var(--foreground); text-decoration: none; }
+  .sgf-head h1 { margin-bottom: var(--space-8); }
+
+  .sgf-tabs { display: flex; flex-wrap: wrap; gap: var(--space-8); margin-top: var(--space-32); }
+  .sgf-tab {
+    padding: var(--space-8) var(--space-16);
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-full);
+    color: var(--muted-foreground);
+    font-family: var(--font-body);
+    font-size: var(--text-body-sm);
+    font-weight: var(--fw-medium);
+    cursor: pointer;
+  }
+  .sgf-tab:hover { color: var(--foreground); border-color: var(--muted-foreground); }
+  .sgf-tab[aria-selected='true'] { background: var(--primary); color: var(--primary-foreground); border-color: var(--primary); }
+
+  .sgf-panel[hidden] { display: none; }
+</style>
+
+<script>
+  document.querySelectorAll('[data-sg-tabs]').forEach((tablist) => {
+    const tabs = Array.from(tablist.querySelectorAll<HTMLButtonElement>('.sgf-tab'));
+    const panels = Array.from(document.querySelectorAll<HTMLElement>('.sgf-panel'));
+
+    tabs.forEach((tab, i) => {
+      tab.setAttribute('tabindex', i === 0 ? '0' : '-1');
+      tab.addEventListener('click', () => {
+        tabs.forEach((t, j) => {
+          const on = j === i;
+          t.setAttribute('aria-selected', String(on));
+          t.setAttribute('tabindex', on ? '0' : '-1');
+          if (panels[j]) panels[j].hidden = !on;
+        });
+        tab.focus();
+      });
+      tab.addEventListener('keydown', (e) => {
+        const keys = ['ArrowRight', 'ArrowLeft', 'Home', 'End'];
+        if (!keys.includes(e.key)) return;
+        e.preventDefault();
+        let next = i;
+        if (e.key === 'ArrowRight') next = (i + 1) % tabs.length;
+        else if (e.key === 'ArrowLeft') next = (i - 1 + tabs.length) % tabs.length;
+        else if (e.key === 'Home') next = 0;
+        else next = tabs.length - 1;
+        tabs[next].click();
+      });
+    });
+  });
+</script>
