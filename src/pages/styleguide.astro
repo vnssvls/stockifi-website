@@ -1,0 +1,166 @@
+---
+// Living style guide. Renders every component + section variant with the theme
+// applied, a dark/light preview toggle, and real interactive states. Components
+// drop in here as they are built. The site itself is dark-only; the toggle is a
+// preview affordance so we can check both token sets.
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+import LocaleSwitcher from '../components/LocaleSwitcher.astro';
+
+const swatches = [
+  'background', 'foreground', 'card', 'popover', 'primary', 'primary-foreground',
+  'secondary', 'secondary-foreground', 'muted', 'muted-foreground', 'accent',
+  'border', 'ring', 'destructive', 'success', 'warning',
+];
+const typeRoles = [
+  { tag: 'h1', label: 'Heading 1' },
+  { tag: 'h2', label: 'Heading 2' },
+  { tag: 'h3', label: 'Heading 3' },
+  { tag: 'h4', label: 'Heading 4' },
+  { tag: 'h5', label: 'Heading 5' },
+  { tag: 'h6', label: 'Heading 6' },
+];
+---
+
+<Layout title="Style guide — Stockifi">
+  <section class="container section sg">
+    <header class="sg-head">
+      <p class="tagline">Design system</p>
+      <h1>Style guide</h1>
+      <p class="text-muted">Components, tokens, and states. Site is dark-only; toggle previews both modes.</p>
+    </header>
+
+    <!-- Buttons -->
+    <section class="sg-block" aria-labelledby="sg-buttons">
+      <h2 id="sg-buttons">Buttons</h2>
+      <p class="text-muted sg-note">Hover to see states. Primary flips to foreground/background; secondary borders + tints to primary.</p>
+      <div class="sg-row">
+        <Button variant="primary" href="/contact">Book a demo</Button>
+        <Button variant="secondary" href="#">Login</Button>
+        <Button variant="primary">Submit</Button>
+        <Button variant="secondary">Cancel</Button>
+      </div>
+      <div class="sg-row sg-row-narrow">
+        <Button variant="primary" block>Full-width primary</Button>
+        <Button variant="secondary" block>Full-width secondary</Button>
+      </div>
+    </section>
+
+    <!-- Locale switcher -->
+    <section class="sg-block" aria-labelledby="sg-locale">
+      <h2 id="sg-locale">Locale switcher</h2>
+      <p class="text-muted sg-note">Click to open. 6 locked locales, vendored circle-flags. Also lives in the nav between the last link and the buttons.</p>
+      <div class="sg-row"><LocaleSwitcher current="en" /></div>
+    </section>
+
+    <!-- Nav + Footer -->
+    <section class="sg-block" aria-labelledby="sg-shell">
+      <h2 id="sg-shell">Global shell</h2>
+      <p class="text-muted sg-note">Nav (sticky, with mega menus + drawer below 1024px) and Footer are live on this page, top and bottom. Resize to test the mobile drawer.</p>
+    </section>
+
+    <!-- Form inputs -->
+    <section class="sg-block" aria-labelledby="sg-inputs">
+      <h2 id="sg-inputs">Inputs</h2>
+      <p class="text-muted sg-note">Tab in to see the focus ring.</p>
+      <div class="sg-fields">
+        <label>Text<input type="text" placeholder="restaurant@example.com" /></label>
+        <label>Select
+          <select><option>Independent restaurant</option><option>Restaurant group</option><option>Hotel with F&amp;B</option></select>
+        </label>
+        <label>Message<textarea rows="3" placeholder="Tell us about your setup"></textarea></label>
+      </div>
+    </section>
+
+    <!-- Typography -->
+    <section class="sg-block" aria-labelledby="sg-type">
+      <h2 id="sg-type">Typography</h2>
+      {typeRoles.map((t) => {
+        const Tag = t.tag as any;
+        return <div class="sg-type-row"><span class="sg-type-label text-muted">{t.label}</span><Tag>The quick brown fox</Tag></div>;
+      })}
+      <div class="sg-type-row"><span class="sg-type-label text-muted">Body</span><p>Stockifi connects what was bought, sold, and should have been used so operators can see where margin goes.</p></div>
+      <div class="sg-type-row"><span class="sg-type-label text-muted">Tagline</span><p class="tagline">Built for hospitality</p></div>
+    </section>
+
+    <!-- Colors -->
+    <section class="sg-block" aria-labelledby="sg-colors">
+      <h2 id="sg-colors">Color tokens</h2>
+      <div class="sg-swatches">
+        {swatches.map((name) => (
+          <div class="sg-swatch">
+            <span class="sg-chip" style={`background: var(--${name})`}></span>
+            <code>--{name}</code>
+          </div>
+        ))}
+      </div>
+    </section>
+  </section>
+
+  <button type="button" id="sg-theme" class="sg-theme" aria-pressed="false">Preview: Dark</button>
+</Layout>
+
+<style>
+  .sg-head { margin-bottom: var(--space-48); }
+  .sg-block { padding-block: var(--space-48); border-top: 1px solid var(--border); }
+  .sg-block > h2 { margin-bottom: var(--space-8); }
+  .sg-note { margin-bottom: var(--space-24); max-width: 60ch; }
+
+  .sg-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-16); }
+  .sg-row-narrow { flex-direction: column; align-items: stretch; max-width: 320px; margin-top: var(--space-24); }
+
+  .sg-fields { display: grid; gap: var(--space-24); max-width: 420px; }
+  .sg-fields label { display: flex; flex-direction: column; gap: var(--space-8); font-size: var(--text-body-sm); color: var(--muted-foreground); }
+  .sg-fields input,
+  .sg-fields select,
+  .sg-fields textarea {
+    padding: var(--space-12) var(--space-16);
+    background: var(--card);
+    color: var(--foreground);
+    border: 1px solid var(--input);
+    border-radius: var(--radius-md);
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+  }
+
+  .sg-type-row { display: grid; grid-template-columns: 120px 1fr; gap: var(--space-24); align-items: baseline; padding-block: var(--space-12); }
+  .sg-type-label { font-size: var(--text-caption); }
+
+  .sg-swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: var(--space-16); }
+  .sg-swatch { display: flex; align-items: center; gap: var(--space-12); }
+  .sg-chip { width: 40px; height: 40px; flex: none; border-radius: var(--radius-md); border: 1px solid var(--border); }
+  .sg-swatch code { font-size: var(--text-caption); color: var(--muted-foreground); }
+
+  .sg-theme {
+    position: fixed;
+    right: var(--space-24);
+    bottom: var(--space-24);
+    z-index: 70;
+    padding: var(--space-12) var(--space-16);
+    background: var(--primary);
+    color: var(--primary-foreground);
+    border: none;
+    border-radius: var(--radius-full);
+    box-shadow: var(--shadow-lg);
+    font-family: var(--font-body);
+    font-size: var(--text-body-sm);
+    font-weight: var(--fw-semibold);
+    cursor: pointer;
+  }
+</style>
+
+<script>
+  const btn = document.getElementById('sg-theme');
+  btn?.addEventListener('click', () => {
+    const light = document.documentElement.getAttribute('data-theme') === 'light';
+    if (light) {
+      document.documentElement.removeAttribute('data-theme');
+      btn.textContent = 'Preview: Dark';
+      btn.setAttribute('aria-pressed', 'false');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+      btn.textContent = 'Preview: Light';
+      btn.setAttribute('aria-pressed', 'true');
+    }
+  });
+</script>

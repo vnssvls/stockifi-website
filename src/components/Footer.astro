@@ -1,0 +1,125 @@
+---
+// Site footer — PROVISIONAL first pass from the locked IA, pending the footer
+// wireframe. Column links mirror the nav; legal row + copyright below.
+import Logo from './Logo.astro';
+
+const columns = [
+  {
+    title: 'Product',
+    links: [
+      { label: 'Recipe Costing', href: '/product/recipe-costing' },
+      { label: 'Supplier Price Tracking', href: '/product/supplier-price-tracking' },
+      { label: 'POS & Consumption', href: '/product/pos-integration' },
+      { label: 'Inventory & Variance', href: '/product/inventory-variance' },
+      { label: 'Integrations', href: '/integrations' },
+    ],
+  },
+  {
+    title: 'Solutions',
+    links: [
+      { label: 'Independent restaurants', href: '/solutions/independent-restaurants' },
+      { label: 'Restaurant groups', href: '/solutions/restaurant-groups' },
+      { label: 'Hotels with F&B', href: '/solutions/hotels' },
+      { label: 'Bars', href: '/solutions/bars' },
+    ],
+  },
+  {
+    title: 'Resources',
+    links: [
+      { label: 'Blog', href: '/blog' },
+      { label: 'Customer Stories', href: '/customer-stories' },
+      { label: 'Savings Calculator', href: '/savings-calculator' },
+      { label: 'Pricing', href: '/pricing' },
+    ],
+  },
+  {
+    title: 'Company',
+    links: [
+      { label: 'About', href: '/about' },
+      { label: 'Contact', href: '/contact' },
+    ],
+  },
+];
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <Logo height={28} />
+      <p class="footer-tagline text-muted">Full visibility over food cost, recipe margins, and consumption.</p>
+    </div>
+
+    <nav class="footer-cols" aria-label="Footer">
+      {columns.map((col) => (
+        <div class="footer-col">
+          <p class="footer-col-title">{col.title}</p>
+          <ul>
+            {col.links.map((l) => (<li><a href={l.href}>{l.label}</a></li>))}
+          </ul>
+        </div>
+      ))}
+    </nav>
+  </div>
+
+  <div class="container footer-bottom">
+    <p class="text-muted">© {year} Stockifi. All rights reserved.</p>
+    <ul class="footer-legal">
+      <li><a href="/privacy-policy">Privacy Policy</a></li>
+      <li><a href="/terms-conditions">Terms &amp; Conditions</a></li>
+    </ul>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--muted);
+    border-top: 1px solid var(--border);
+    padding-block: var(--space-64) var(--space-32);
+  }
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-48);
+  }
+  .footer-tagline { margin-top: var(--space-16); max-width: 32ch; font-size: var(--text-body-sm); }
+
+  .footer-cols {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-32);
+  }
+  .footer-col-title {
+    margin-bottom: var(--space-16);
+    font-family: var(--font-heading);
+    font-size: var(--text-body-sm);
+    font-weight: var(--fw-semibold);
+    color: var(--foreground);
+  }
+  .footer-col ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: var(--space-12); }
+  .footer-col a { color: var(--muted-foreground); font-size: var(--text-body-sm); }
+  .footer-col a:hover { color: var(--foreground); text-decoration: none; }
+
+  .footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-16);
+    margin-top: var(--space-48);
+    padding-top: var(--space-24);
+    border-top: 1px solid var(--border);
+    font-size: var(--text-body-sm);
+  }
+  .footer-legal { display: flex; gap: var(--space-24); margin: 0; padding: 0; list-style: none; }
+  .footer-legal a { color: var(--muted-foreground); font-size: var(--text-body-sm); }
+  .footer-legal a:hover { color: var(--foreground); text-decoration: none; }
+
+  @media (min-width: 768px) {
+    .footer-cols { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  }
+  @media (min-width: 1024px) {
+    .footer-inner { grid-template-columns: 1fr 2fr; gap: var(--space-96); }
+  }
+</style>

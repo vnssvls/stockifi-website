@@ -1,0 +1,68 @@
+---
+// Button / CTA. variant: primary (filled) | secondary (outline).
+// Renders <a> when href is set, else <button>. Primary hover flips to
+// foreground/background per the design-system dark-mode treatment.
+interface Props {
+  variant?: 'primary' | 'secondary';
+  href?: string;
+  type?: 'button' | 'submit';
+  block?: boolean;
+  class?: string;
+  [key: string]: unknown;
+}
+const {
+  variant = 'primary',
+  href,
+  type = 'button',
+  block = false,
+  class: className,
+  ...rest
+} = Astro.props;
+
+const Tag = href ? 'a' : 'button';
+const tagProps = href ? { href } : { type };
+---
+
+<Tag class:list={['btn', `btn-${variant}`, block && 'btn-block', className]} {...tagProps} {...rest}>
+  <slot />
+</Tag>
+
+<style>
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-8);
+    padding: var(--space-12) var(--space-24);
+    border: 1px solid transparent;
+    border-radius: var(--radius-md);
+    font-family: var(--font-body);
+    font-size: var(--text-body-sm);
+    font-weight: var(--fw-semibold);
+    line-height: 1;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+  }
+  .btn:hover { text-decoration: none; }
+  .btn-block { width: 100%; }
+
+  .btn-primary {
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
+  .btn-primary:hover {
+    background: var(--foreground);
+    color: var(--background);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--foreground);
+    border-color: var(--border);
+  }
+  .btn-secondary:hover {
+    color: var(--primary);
+    border-color: var(--primary);
+  }
+</style>

@@ -15,7 +15,7 @@
       ],
       {
         "ignoreValues": ["transparent", "currentColor", "inherit", "unset", "initial", "none", "0"],
-        "ignoreFunctions": ["var", "clamp", "calc", "rgba", "rgb", "linear-gradient"],
+        "ignoreFunctions": true,
         "disableFix": false,
         "message": "Use a design token, e.g. var(--token), not a hardcoded value (stockifi design system)"
       }

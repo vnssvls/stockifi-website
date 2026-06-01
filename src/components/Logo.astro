@@ -1,0 +1,29 @@
+---
+// Stockifi wordmark. Static SVG (brand colors fixed); the white wordmark reads on
+// the dark shell. If light mode is ever enabled, swap in a dark-wordmark variant.
+const RATIO = 750 / 225; // intrinsic aspect of logo.svg
+
+interface Props {
+  href?: string;
+  height?: number;
+  class?: string;
+}
+const { href = '/', height = 30, class: className } = Astro.props;
+---
+
+<a class:list={['logo', className]} href={href} aria-label="Stockifi home" style={`--logo-h:${height}px`}>
+  <img src="/logo.svg" alt="Stockifi" width={Math.round(height * RATIO)} height={height} />
+</a>
+
+<style>
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    flex: none;
+  }
+  .logo img {
+    display: block;
+    height: var(--logo-h, 30px);
+    width: auto;
+  }
+</style>

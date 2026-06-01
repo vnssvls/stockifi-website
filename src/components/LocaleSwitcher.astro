@@ -1,0 +1,130 @@
+---
+// Locale switcher — circular flag + chevron, opens a list of the 6 locked locales.
+// Flags are vendored circle-flags (MIT) in /public/flags. Locale routes (/no/ /da/
+// /de/ /sv/ /nl/) are wired in DC-475; hrefs point at the eventual paths.
+const LOCALES = [
+  { code: 'en', flag: 'us', label: 'English', href: '/' },
+  { code: 'de', flag: 'de', label: 'Deutsch', href: '/de/' },
+  { code: 'nl', flag: 'nl', label: 'Nederlands', href: '/nl/' },
+  { code: 'no', flag: 'no', label: 'Norsk', href: '/no/' },
+  { code: 'da', flag: 'dk', label: 'Dansk', href: '/da/' },
+  { code: 'sv', flag: 'se', label: 'Svenska', href: '/sv/' },
+];
+
+interface Props {
+  current?: string;
+}
+const { current = 'en' } = Astro.props;
+const active = LOCALES.find((l) => l.code === current) ?? LOCALES[0];
+---
+
+<div class="locale" data-locale-switcher>
+  <button
+    type="button"
+    class="locale-trigger"
+    aria-haspopup="listbox"
+    aria-expanded="false"
+    aria-label={`Language: ${active.label}. Change language`}
+  >
+    <img class="flag" src={`/flags/${active.flag}.svg`} alt="" width="24" height="24" aria-hidden="true" />
+    <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </button>
+
+  <ul class="locale-menu" role="listbox" aria-label="Select language" hidden>
+    {LOCALES.map((l) => (
+      <li role="none">
+        <a role="option" aria-selected={l.code === active.code} href={l.href}>
+          <img class="flag" src={`/flags/${l.flag}.svg`} alt="" width="22" height="22" aria-hidden="true" />
+          <span>{l.label}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</div>
+
+<style>
+  .locale { position: relative; flex: none; }
+
+  .locale-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-4);
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: var(--radius-full);
+    color: var(--muted-foreground);
+    cursor: pointer;
+    transition: border-color 0.18s ease, color 0.18s ease;
+  }
+  .locale-trigger:hover { border-color: var(--border); color: var(--foreground); }
+  .locale-trigger[aria-expanded='true'] { border-color: var(--border); color: var(--foreground); }
+  .locale-trigger .chevron { transition: transform 0.18s ease; }
+  .locale-trigger[aria-expanded='true'] .chevron { transform: rotate(180deg); }
+
+  .flag {
+    display: block;
+    border-radius: var(--radius-full);
+    object-fit: cover;
+  }
+
+  .locale-menu {
+    position: absolute;
+    top: calc(100% + var(--space-8));
+    right: 0;
+    z-index: 60;
+    min-width: 184px;
+    margin: 0;
+    padding: var(--space-8);
+    list-style: none;
+    background: var(--popover);
+    color: var(--popover-foreground);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+  }
+  .locale-menu[hidden] { display: none; }
+
+  .locale-menu a {
+    display: flex;
+    align-items: center;
+    gap: var(--space-12);
+    padding: var(--space-8) var(--space-12);
+    border-radius: var(--radius-sm);
+    color: var(--popover-foreground);
+    font-size: var(--text-body-sm);
+  }
+  .locale-menu a:hover { background: var(--accent); text-decoration: none; }
+  .locale-menu a[aria-selected='true'] { color: var(--primary); font-weight: var(--fw-semibold); }
+</style>
+
+<script>
+  document.querySelectorAll('[data-locale-switcher]').forEach((root) => {
+    const trigger = root.querySelector('.locale-trigger') as HTMLButtonElement | null;
+    const menu = root.querySelector('.locale-menu') as HTMLElement | null;
+    if (!trigger || !menu) return;
+
+    const open = () => {
+      menu.hidden = false;
+      trigger.setAttribute('aria-expanded', 'true');
+    };
+    const close = () => {
+      menu.hidden = true;
+      trigger.setAttribute('aria-expanded', 'false');
+    };
+    const toggle = () => (menu.hidden ? open() : close());
+
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggle();
+    });
+    document.addEventListener('click', (e) => {
+      if (!root.contains(e.target as Node)) close();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') close();
+    });
+  });
+</script>
