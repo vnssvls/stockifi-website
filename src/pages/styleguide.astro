@@ -1,12 +1,19 @@
 ---
-// Living style guide. Renders every component + section variant with the theme
-// applied, a dark/light preview toggle, and real interactive states. Components
-// drop in here as they are built. The site itself is dark-only; the toggle is a
-// preview affordance so we can check both token sets.
+// Style guide index. Foundations (tokens, atoms) live here; multi-variant page
+// sections each get their own page with a variant switcher (see /styleguide/features).
+// Site is dark-only; the toggle is a preview affordance for both token sets.
 import Layout from '../layouts/Layout.astro';
 import Button from '../components/Button.astro';
 import LocaleSwitcher from '../components/LocaleSwitcher.astro';
 import Hero from '../components/Hero.astro';
+import SgThemeToggle from '../components/SgThemeToggle.astro';
+
+const sections = [
+  { label: 'Features', meta: '5 variants', href: '/styleguide/features' },
+  { label: 'FAQ', meta: 'soon', href: null },
+  { label: 'CTA', meta: 'soon', href: null },
+  { label: 'Pricing', meta: 'soon', href: null },
+];
 
 const swatches = [
   'background', 'foreground', 'card', 'popover', 'primary', 'primary-foreground',
@@ -29,15 +36,28 @@ const typeRoles = [
       <header class="sg-head">
         <p class="tagline">Design system</p>
         <h1>Style guide</h1>
-        <p class="text-muted">Components, tokens, and states. Site is dark-only; toggle previews both modes.</p>
+        <p class="text-muted">Foundations and atoms below. Multi-variant page sections open on their own pages.</p>
       </header>
+
+      <!-- Sections directory -->
+      <section class="sg-block" aria-labelledby="sg-sections">
+        <h2 id="sg-sections">Sections</h2>
+        <p class="text-muted sg-note">Page-level sections with multiple layouts. Each opens its own page with a variant switcher.</p>
+        <div class="sg-cards">
+          {sections.map((s) => (
+            s.href
+              ? <a class="sg-card" href={s.href}><span class="sg-card-title">{s.label}</span><span class="sg-card-meta">{s.meta}</span></a>
+              : <span class="sg-card is-soon"><span class="sg-card-title">{s.label}</span><span class="sg-card-meta">{s.meta}</span></span>
+          ))}
+        </div>
+      </section>
     </div>
 
-    <!-- Hero — full width, matches the real page -->
+    <!-- Hero (full width) -->
     <div class="container">
       <div class="sg-block-head" id="sg-hero">
         <h2>Hero</h2>
-        <p class="text-muted sg-note">Split layout (copy + CTAs left, visual right), stacks below 1024px. Full width, matches the home page. Visual is a placeholder until the real asset lands.</p>
+        <p class="text-muted sg-note">Split layout, stacks below 1024px. Full width, matches the home page. Visual is a placeholder until the real asset lands.</p>
       </div>
     </div>
     <Hero
@@ -117,7 +137,7 @@ const typeRoles = [
     </div>
   </div>
 
-  <button type="button" id="sg-theme" class="sg-theme" aria-pressed="false">Preview: Dark</button>
+  <SgThemeToggle />
 </Layout>
 
 <style>
@@ -126,6 +146,22 @@ const typeRoles = [
   .sg-block { padding-block: var(--space-48); border-top: 1px solid var(--border); }
   .sg-block > h2 { margin-bottom: var(--space-8); }
   .sg-note { margin-bottom: var(--space-24); max-width: 60ch; }
+
+  .sg-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: var(--space-16); }
+  .sg-card {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-12);
+    padding: var(--space-16) var(--space-24);
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+  }
+  a.sg-card:hover { border-color: var(--primary); text-decoration: none; }
+  .sg-card-title { font-family: var(--font-heading); font-weight: var(--fw-semibold); color: var(--foreground); }
+  .sg-card-meta { font-size: var(--text-caption); color: var(--muted-foreground); }
+  .sg-card.is-soon { opacity: 0.55; }
 
   .sg-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-16); }
   .sg-row-narrow { flex-direction: column; align-items: stretch; max-width: 320px; margin-top: var(--space-24); }
@@ -151,37 +187,4 @@ const typeRoles = [
   .sg-swatch { display: flex; align-items: center; gap: var(--space-12); }
   .sg-chip { width: 40px; height: 40px; flex: none; border-radius: var(--radius-md); border: 1px solid var(--border); }
   .sg-swatch code { font-size: var(--text-caption); color: var(--muted-foreground); }
-
-  .sg-theme {
-    position: fixed;
-    right: var(--space-24);
-    bottom: var(--space-24);
-    z-index: 70;
-    padding: var(--space-12) var(--space-16);
-    background: var(--primary);
-    color: var(--primary-foreground);
-    border: none;
-    border-radius: var(--radius-full);
-    box-shadow: var(--shadow-lg);
-    font-family: var(--font-body);
-    font-size: var(--text-body-sm);
-    font-weight: var(--fw-semibold);
-    cursor: pointer;
-  }
 </style>
-
-<script>
-  const btn = document.getElementById('sg-theme');
-  btn?.addEventListener('click', () => {
-    const light = document.documentElement.getAttribute('data-theme') === 'light';
-    if (light) {
-      document.documentElement.removeAttribute('data-theme');
-      btn.textContent = 'Preview: Dark';
-      btn.setAttribute('aria-pressed', 'false');
-    } else {
-      document.documentElement.setAttribute('data-theme', 'light');
-      btn.textContent = 'Preview: Light';
-      btn.setAttribute('aria-pressed', 'true');
-    }
-  });
-</script>

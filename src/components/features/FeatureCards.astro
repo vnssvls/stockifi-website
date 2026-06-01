@@ -1,0 +1,67 @@
+---
+// Feature Layout 4 — centered header + a responsive grid of image/heading/text/link cards.
+import MediaPlaceholder from './MediaPlaceholder.astro';
+
+interface Card {
+  image?: { src: string; alt: string };
+  heading: string;
+  body: string;
+  link?: { label: string; href: string };
+}
+interface Props {
+  tagline?: string;
+  heading: string;
+  subhead?: string;
+  cards: Card[];
+  columns?: 3 | 4;
+}
+const { tagline, heading, subhead, cards, columns = 3 } = Astro.props;
+---
+
+<section class="feature-cards section">
+  <div class="container">
+    <div class="fc-head">
+      {tagline && <p class="tagline">{tagline}</p>}
+      <h2>{heading}</h2>
+      {subhead && <p class="fc-sub text-muted">{subhead}</p>}
+    </div>
+
+    <div class:list={['fc-grid', `fc-cols-${columns}`]}>
+      {cards.map((c) => (
+        <article class="fc-card">
+          {c.image ? <img src={c.image.src} alt={c.image.alt} /> : <MediaPlaceholder ratio="3 / 2" />}
+          <h3>{c.heading}</h3>
+          <p class="text-muted">{c.body}</p>
+          {c.link && (
+            <a class="fc-link" href={c.link.href}>
+              {c.link.label}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m9 6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </a>
+          )}
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .fc-head { max-width: 56ch; margin: 0 auto var(--space-64); text-align: center; }
+  .tagline + h2 { margin-top: var(--space-16); }
+  .fc-sub { margin-top: var(--space-16); font-size: var(--text-body-lg); }
+
+  .fc-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-32); }
+  .fc-card { display: flex; flex-direction: column; gap: var(--space-12); }
+  .fc-card img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: var(--radius-lg); }
+  .fc-card h3 { font-size: var(--text-h5); margin-top: var(--space-8); }
+  .fc-link { display: inline-flex; align-items: center; gap: var(--space-4); margin-top: var(--space-4); color: var(--primary); font-weight: var(--fw-semibold); font-size: var(--text-body-sm); }
+  .fc-link:hover { text-decoration: none; gap: var(--space-8); }
+
+  @media (min-width: 768px) {
+    .fc-grid.fc-cols-3,
+    .fc-grid.fc-cols-4 { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1024px) {
+    .fc-grid.fc-cols-3 { grid-template-columns: repeat(3, 1fr); }
+    .fc-grid.fc-cols-4 { grid-template-columns: repeat(4, 1fr); }
+  }
+</style>

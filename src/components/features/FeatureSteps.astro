@@ -1,0 +1,74 @@
+---
+// Feature Layout 3 — USP + CTA on the left, a connected vertical step timeline on the right.
+import Button from '../Button.astro';
+
+interface Step { heading: string; body: string; }
+interface Props {
+  tagline?: string;
+  heading: string;
+  cta?: { label: string; href: string };
+  steps: Step[];
+}
+const { tagline, heading, cta, steps } = Astro.props;
+---
+
+<section class="feature-steps section">
+  <div class="container fst-grid">
+    <div class="fst-intro">
+      {tagline && <p class="tagline">{tagline}</p>}
+      <h2 class="fst-heading">{heading}</h2>
+      {cta && <div class="fst-cta"><Button variant="secondary" href={cta.href}>{cta.label}</Button></div>}
+    </div>
+
+    <ol class="fst-steps">
+      {steps.map((s) => (
+        <li class="fst-step">
+          <span class="fst-marker" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" /><path d="m3 7 9 5 9-5M12 12v10" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" /></svg>
+          </span>
+          <div class="fst-content">
+            <h3>{s.heading}</h3>
+            <p class="text-muted">{s.body}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .fst-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-48); }
+  .fst-heading { margin-top: var(--space-16); }
+  .fst-cta { margin-top: var(--space-32); }
+
+  .fst-steps { list-style: none; margin: 0; padding: 0; }
+  .fst-step { position: relative; display: grid; grid-template-columns: auto 1fr; gap: var(--space-24); padding-bottom: var(--space-32); }
+  .fst-step:last-child { padding-bottom: 0; }
+  .fst-step:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    left: 22px;
+    top: 44px;
+    bottom: 0;
+    width: 1px;
+    background: var(--border);
+    transform: translateX(-50%);
+  }
+  .fst-marker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    flex: none;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    color: var(--primary);
+  }
+  .fst-content h3 { font-size: var(--text-h5); margin-bottom: var(--space-8); }
+
+  @media (min-width: 1024px) {
+    .fst-grid { grid-template-columns: 1fr 1fr; gap: var(--space-96); align-items: start; }
+  }
+</style>

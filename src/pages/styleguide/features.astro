@@ -1,0 +1,137 @@
+---
+// Styleguide → Features. All 5 layouts, switched via an accessible tab bar.
+// Representative Stockifi content (draft) so each can be judged in context.
+import Layout from '../../layouts/Layout.astro';
+import SgThemeToggle from '../../components/SgThemeToggle.astro';
+import FeatureList from '../../components/features/FeatureList.astro';
+import FeatureSplit from '../../components/features/FeatureSplit.astro';
+import FeatureSteps from '../../components/features/FeatureSteps.astro';
+import FeatureCards from '../../components/features/FeatureCards.astro';
+import FeatureTabs from '../../components/features/FeatureTabs.astro';
+
+const variants = [
+  { label: '1 · List + image' },
+  { label: '2 · Image + checklist' },
+  { label: '3 · Steps timeline' },
+  { label: '4 · Cards' },
+  { label: '5 · Tabbed showcase' },
+];
+
+const listItems = [
+  { heading: 'Live recipe costing', body: 'Recipe costs update automatically as supplier prices move, so your margins stay current.' },
+  { heading: 'Supplier price tracking', body: 'Every invoice is read line by line, and price rises surface before they reach your plates.' },
+  { heading: 'Theoretical vs actual', body: 'Compare what should have been used against what sold, and see exactly where it slips.' },
+  { heading: 'Built for Europe', body: 'Connects to the accounting and POS systems European operators already run.' },
+];
+
+const splitItems = ['Recipe costing', 'Supplier price tracking', 'POS & consumption', 'Inventory & variance'];
+
+const steps = [
+  { heading: 'Import your recipes', body: 'Set up your recipes and ingredient costs once. This becomes the baseline for everything.' },
+  { heading: 'Connect your accounting', body: 'Stockifi reads supplier invoices line by line and keeps ingredient prices current.' },
+  { heading: 'Connect your POS', body: 'Sales flow in automatically, so expected consumption is calculated from what actually sold.' },
+  { heading: 'Count and compare', body: 'Run stock counts in the app and see theoretical against actual, with the gaps explained.' },
+];
+
+const cards = [
+  { heading: 'Recipe Costing', body: 'Live costs that move with supplier prices.', link: { label: 'Learn more', href: '/product/recipe-costing' } },
+  { heading: 'Supplier Price Tracking', body: 'Catch price rises line by line.', link: { label: 'Learn more', href: '/product/supplier-price-tracking' } },
+  { heading: 'POS & Consumption', body: 'Theoretical against actual usage.', link: { label: 'Learn more', href: '/product/pos-integration' } },
+  { heading: 'Inventory & Variance', body: 'Stock counts and variance in one place.', link: { label: 'Learn more', href: '/product/inventory-variance' } },
+];
+
+const showcaseTabs = [
+  { label: 'Recipes', heading: 'Recipe costing', body: 'Set up recipes once and watch costs update as ingredient prices change.' },
+  { label: 'Invoices', heading: 'Supplier price tracking', body: 'Invoices are read line by line, so price rises show up before they cost you.' },
+  { label: 'POS', heading: 'Consumption', body: 'Sales flow in and expected usage is calculated from what actually sold.' },
+  { label: 'Inventory', heading: 'Variance reporting', body: 'Count stock in the app and see theoretical against actual, clearly.' },
+];
+---
+
+<Layout title="Features — Style guide">
+  <div class="sg">
+    <div class="container sgf-head">
+      <a class="sg-back" href="/styleguide">← Style guide</a>
+      <h1>Features</h1>
+      <p class="text-muted">Five layouts to choose from per section or page. Full width, with representative draft content.</p>
+      <div class="sgf-tabs" role="tablist" aria-label="Feature layouts" data-sg-tabs>
+        {variants.map((v, i) => (
+          <button class="sgf-tab" type="button" role="tab" data-index={i} aria-selected={i === 0 ? 'true' : 'false'}>{v.label}</button>
+        ))}
+      </div>
+    </div>
+
+    <div class="sgf-panel" role="tabpanel" data-index="0">
+      <FeatureList tagline="Why Stockifi" items={listItems} />
+    </div>
+    <div class="sgf-panel" role="tabpanel" data-index="1" hidden>
+      <FeatureSplit heading="Everything food cost touches, in one place" body="Stockifi connects what you buy, what you sell, and what you should have used, so the whole picture sits in one view." items={splitItems} imageSide="left" />
+    </div>
+    <div class="sgf-panel" role="tabpanel" data-index="2" hidden>
+      <FeatureSteps tagline="How it works" heading="From recipes to real food cost in four steps" cta={{ label: 'Book a demo', href: '/contact' }} steps={steps} />
+    </div>
+    <div class="sgf-panel" role="tabpanel" data-index="3" hidden>
+      <FeatureCards tagline="Product" heading="One platform for food cost control" subhead="Four capabilities that work together." cards={cards} columns={4} />
+    </div>
+    <div class="sgf-panel" role="tabpanel" data-index="4" hidden>
+      <FeatureTabs tagline="Explore" heading="See Stockifi in action" subhead="Switch between the parts of the platform." tabs={showcaseTabs} />
+    </div>
+  </div>
+
+  <SgThemeToggle />
+</Layout>
+
+<style>
+  .sgf-head { padding-top: var(--section-y); }
+  .sg-back { display: inline-block; margin-bottom: var(--space-16); color: var(--muted-foreground); font-size: var(--text-body-sm); }
+  .sg-back:hover { color: var(--foreground); text-decoration: none; }
+  .sgf-head h1 { margin-bottom: var(--space-8); }
+
+  .sgf-tabs { display: flex; flex-wrap: wrap; gap: var(--space-8); margin-top: var(--space-32); }
+  .sgf-tab {
+    padding: var(--space-8) var(--space-16);
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-full);
+    color: var(--muted-foreground);
+    font-family: var(--font-body);
+    font-size: var(--text-body-sm);
+    font-weight: var(--fw-medium);
+    cursor: pointer;
+  }
+  .sgf-tab:hover { color: var(--foreground); border-color: var(--muted-foreground); }
+  .sgf-tab[aria-selected='true'] { background: var(--primary); color: var(--primary-foreground); border-color: var(--primary); }
+
+  .sgf-panel[hidden] { display: none; }
+</style>
+
+<script>
+  document.querySelectorAll('[data-sg-tabs]').forEach((tablist) => {
+    const tabs = Array.from(tablist.querySelectorAll<HTMLButtonElement>('.sgf-tab'));
+    const panels = Array.from(document.querySelectorAll<HTMLElement>('.sgf-panel'));
+
+    tabs.forEach((tab, i) => {
+      tab.setAttribute('tabindex', i === 0 ? '0' : '-1');
+      tab.addEventListener('click', () => {
+        tabs.forEach((t, j) => {
+          const on = j === i;
+          t.setAttribute('aria-selected', String(on));
+          t.setAttribute('tabindex', on ? '0' : '-1');
+          if (panels[j]) panels[j].hidden = !on;
+        });
+        tab.focus();
+      });
+      tab.addEventListener('keydown', (e) => {
+        const keys = ['ArrowRight', 'ArrowLeft', 'Home', 'End'];
+        if (!keys.includes(e.key)) return;
+        e.preventDefault();
+        let next = i;
+        if (e.key === 'ArrowRight') next = (i + 1) % tabs.length;
+        else if (e.key === 'ArrowLeft') next = (i - 1 + tabs.length) % tabs.length;
+        else if (e.key === 'Home') next = 0;
+        else next = tabs.length - 1;
+        tabs[next].click();
+      });
+    });
+  });
+</script>

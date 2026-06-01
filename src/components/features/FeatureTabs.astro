@@ -1,0 +1,123 @@
+---
+// Feature Layout 5 — centered header + an image/text panel that swaps via a tab row.
+// Accessible tabs (role=tablist/tab/tabpanel); ids + aria wired client-side so multiple
+// instances never collide.
+import MediaPlaceholder from './MediaPlaceholder.astro';
+
+interface Tab {
+  label: string;
+  heading: string;
+  body: string;
+  image?: { src: string; alt: string };
+}
+interface Props {
+  tagline?: string;
+  heading: string;
+  subhead?: string;
+  tabs: Tab[];
+}
+const { tagline, heading, subhead, tabs } = Astro.props;
+---
+
+<section class="feature-tabs section" data-feature-tabs>
+  <div class="container">
+    <div class="ft-head">
+      {tagline && <p class="tagline">{tagline}</p>}
+      <h2>{heading}</h2>
+      {subhead && <p class="ft-sub text-muted">{subhead}</p>}
+    </div>
+
+    <div class="ft-card">
+      <div class="ft-panels">
+        {tabs.map((t, i) => (
+          <div class="ft-panel" role="tabpanel" data-index={i} hidden={i !== 0}>
+            <div class="ft-media">
+              {t.image ? <img src={t.image.src} alt={t.image.alt} /> : <MediaPlaceholder ratio="4 / 3" />}
+            </div>
+            <div class="ft-copy">
+              <h3>{t.heading}</h3>
+              <p class="text-muted">{t.body}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div class="ft-tabs" role="tablist" aria-label="Features">
+        {tabs.map((t, i) => (
+          <button class="ft-tab" type="button" role="tab" data-index={i} aria-selected={i === 0 ? 'true' : 'false'}>{t.label}</button>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .ft-head { max-width: 56ch; margin: 0 auto var(--space-48); text-align: center; }
+  .tagline + h2 { margin-top: var(--space-16); }
+  .ft-sub { margin-top: var(--space-16); font-size: var(--text-body-lg); }
+
+  .ft-card { border: 1px solid var(--border); border-radius: var(--radius-xl); overflow: hidden; }
+  .ft-panel { display: grid; grid-template-columns: 1fr; gap: var(--space-32); padding: var(--space-32); align-items: center; }
+  .ft-panel[hidden] { display: none; }
+  .ft-media img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius-lg); }
+  .ft-copy h3 { font-size: var(--text-h3); margin-bottom: var(--space-16); }
+
+  .ft-tabs { display: flex; border-top: 1px solid var(--border); }
+  .ft-tab {
+    flex: 1;
+    padding: var(--space-16);
+    background: transparent;
+    border: none;
+    border-right: 1px solid var(--border);
+    color: var(--muted-foreground);
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    font-weight: var(--fw-medium);
+    cursor: pointer;
+  }
+  .ft-tab:last-child { border-right: none; }
+  .ft-tab:hover { color: var(--foreground); }
+  .ft-tab[aria-selected='true'] { background: var(--accent); color: var(--foreground); }
+
+  @media (min-width: 1024px) {
+    .ft-panel { grid-template-columns: 1fr 1fr; gap: var(--space-64); padding: var(--space-48); }
+  }
+</style>
+
+<script>
+  let n = 0;
+  document.querySelectorAll('[data-feature-tabs]').forEach((root) => {
+    const base = `ftabs-${n++}`;
+    const tabs = Array.from(root.querySelectorAll<HTMLButtonElement>('.ft-tab'));
+    const panels = Array.from(root.querySelectorAll<HTMLElement>('.ft-panel'));
+
+    tabs.forEach((tab, i) => {
+      tab.id = `${base}-tab-${i}`;
+      panels[i].id = `${base}-panel-${i}`;
+      tab.setAttribute('aria-controls', panels[i].id);
+      panels[i].setAttribute('aria-labelledby', tab.id);
+      tab.setAttribute('tabindex', i === 0 ? '0' : '-1');
+
+      tab.addEventListener('click', () => {
+        tabs.forEach((t, j) => {
+          const on = j === i;
+          t.setAttribute('aria-selected', String(on));
+          t.setAttribute('tabindex', on ? '0' : '-1');
+          panels[j].hidden = !on;
+        });
+        tab.focus();
+      });
+
+      tab.addEventListener('keydown', (e) => {
+        const keys = ['ArrowRight', 'ArrowLeft', 'Home', 'End'];
+        if (!keys.includes(e.key)) return;
+        e.preventDefault();
+        let next = i;
+        if (e.key === 'ArrowRight') next = (i + 1) % tabs.length;
+        else if (e.key === 'ArrowLeft') next = (i - 1 + tabs.length) % tabs.length;
+        else if (e.key === 'Home') next = 0;
+        else next = tabs.length - 1;
+        tabs[next].click();
+      });
+    });
+  });
+</script>

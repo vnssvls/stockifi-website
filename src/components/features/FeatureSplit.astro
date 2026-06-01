@@ -1,0 +1,53 @@
+---
+// Feature Layout 2 — image one side, heading + paragraph + icon checklist the other.
+import MediaPlaceholder from './MediaPlaceholder.astro';
+
+interface Props {
+  tagline?: string;
+  heading: string;
+  body?: string;
+  items?: string[];
+  image?: { src: string; alt: string };
+  imageSide?: 'left' | 'right';
+}
+const { tagline, heading, body, items = [], image, imageSide = 'left' } = Astro.props;
+---
+
+<section class="feature-split section">
+  <div class:list={['container', 'fs-grid', imageSide === 'right' && 'fs-image-right']}>
+    <div class="fs-media">
+      {image ? <img src={image.src} alt={image.alt} /> : <MediaPlaceholder ratio="1 / 1" />}
+    </div>
+    <div class="fs-copy">
+      {tagline && <p class="tagline">{tagline}</p>}
+      <h2>{heading}</h2>
+      {body && <p class="fs-body text-muted">{body}</p>}
+      {items.length > 0 && (
+        <ul class="fs-list">
+          {items.map((label) => (
+            <li>
+              <svg class="fs-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              <span>{label}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  </div>
+</section>
+
+<style>
+  .fs-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-48); align-items: center; }
+  .fs-media img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: var(--radius-lg); }
+  .fs-copy h2 { margin-bottom: var(--space-16); }
+  .tagline + h2 { margin-top: var(--space-16); }
+  .fs-body { font-size: var(--text-body-lg); margin-bottom: var(--space-24); }
+  .fs-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-16); }
+  .fs-list li { display: flex; align-items: center; gap: var(--space-12); font-size: var(--text-body); }
+  .fs-icon { color: var(--primary); flex: none; }
+
+  @media (min-width: 1024px) {
+    .fs-grid { grid-template-columns: 1fr 1fr; gap: var(--space-96); }
+    .fs-image-right .fs-media { order: 2; }
+  }
+</style>
