@@ -1,0 +1,25 @@
+{
+  "plugins": ["stylelint-declaration-strict-value"],
+  "rules": {
+    "scale-unlimited/declaration-strict-value": [
+      [
+        "/color$/",
+        "background",
+        "background-color",
+        "fill",
+        "stroke",
+        "font-family",
+        "font-size",
+        "border-radius",
+        "box-shadow"
+      ],
+      {
+        "ignoreValues": ["transparent", "currentColor", "inherit", "unset", "initial", "none", "0"],
+        "ignoreFunctions": ["var", "clamp", "calc", "rgba", "rgb", "linear-gradient"],
+        "disableFix": false,
+        "message": "Use a design token, e.g. var(--token), not a hardcoded value (stockifi design system)"
+      }
+    ]
+  },
+  "ignoreFiles": ["**/tokens.css", "**/*.min.css", "dist/**", "node_modules/**"]
+}
