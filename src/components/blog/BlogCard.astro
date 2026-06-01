@@ -1,0 +1,174 @@
+---
+// Blog post card. One primitive, two orientations:
+//   vertical   — image on top, category eyebrow, title, excerpt, date · read time
+//                (used in the BlogGrid).
+//   horizontal — square image left, category pill + read time, title, excerpt,
+//                "Read more →" (used in the BlogFeature list).
+// The whole card is a single link. data-category lets BlogGrid filter client-side.
+interface Props {
+  title: string;
+  excerpt?: string;
+  category?: string;
+  date?: Date;
+  readTime?: string;
+  image?: string;
+  imageAlt?: string;
+  href?: string;
+  orientation?: 'vertical' | 'horizontal';
+}
+const {
+  title,
+  excerpt = '',
+  category,
+  date,
+  readTime,
+  image,
+  imageAlt = '',
+  href = '#',
+  orientation = 'vertical',
+} = Astro.props;
+
+const dateLabel = date
+  ? date.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })
+  : '';
+---
+
+<article class:list={['bc', `bc--${orientation}`]} data-category={category}>
+  <a class="bc-link" href={href}>
+    <div class="bc-media">
+      {image
+        ? <img src={image} alt={imageAlt} loading="lazy" />
+        : <span class="bc-media-ph" aria-hidden="true"></span>}
+    </div>
+
+    <div class="bc-body">
+      {orientation === 'horizontal' ? (
+        <div class="bc-meta-top">
+          {category && <span class="bc-pill">{category}</span>}
+          {readTime && <span class="bc-readtime">{readTime}</span>}
+        </div>
+      ) : (
+        category && <span class="bc-category">{category}</span>
+      )}
+
+      <h3 class="bc-title">{title}</h3>
+      {excerpt && <p class="bc-excerpt text-muted">{excerpt}</p>}
+
+      {orientation === 'horizontal' ? (
+        <span class="bc-readmore">
+          Read more
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+        </span>
+      ) : (
+        (dateLabel || readTime) && (
+          <p class="bc-meta text-muted">
+            {dateLabel && <span>{dateLabel}</span>}
+            {dateLabel && readTime && <span class="bc-dot" aria-hidden="true">•</span>}
+            {readTime && <span>{readTime}</span>}
+          </p>
+        )
+      )}
+    </div>
+  </a>
+</article>
+
+<style>
+  .bc-link {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-16);
+    color: var(--foreground);
+    height: 100%;
+  }
+  .bc-link:hover { text-decoration: none; }
+
+  .bc-media {
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    background: var(--muted);
+    aspect-ratio: 3 / 2;
+  }
+  .bc-media img,
+  .bc-media-ph {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  .bc-media-ph { display: block; background: var(--muted); }
+  .bc-link:hover .bc-media img { transform: scale(1.03); }
+
+  .bc-body { display: flex; flex-direction: column; gap: var(--space-8); }
+
+  .bc-category {
+    font-size: var(--text-caption);
+    font-weight: var(--fw-semibold);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--primary);
+  }
+
+  .bc-title {
+    font-size: var(--text-h6);
+    line-height: var(--lh-h6);
+    color: var(--foreground);
+    transition: color 0.18s ease;
+  }
+  .bc-link:hover .bc-title { color: var(--primary); }
+
+  .bc-excerpt {
+    font-size: var(--text-body-sm);
+    line-height: var(--lh-body-sm);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .bc-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-8);
+    margin-top: var(--space-4);
+    font-size: var(--text-body-sm);
+  }
+
+  /* ── Horizontal variant (feature list) ─────────────────────────────── */
+  .bc--horizontal .bc-link { flex-direction: row; gap: var(--space-24); align-items: stretch; }
+  .bc--horizontal .bc-media {
+    flex: 0 0 38%;
+    aspect-ratio: 1 / 1;
+    align-self: stretch;
+  }
+  .bc--horizontal .bc-body { flex: 1; justify-content: center; }
+
+  .bc-meta-top { display: flex; align-items: center; gap: var(--space-12); }
+  .bc-pill {
+    padding: var(--space-4) var(--space-12);
+    background: var(--secondary);
+    color: var(--secondary-foreground);
+    border-radius: var(--radius-sm);
+    font-size: var(--text-caption);
+    font-weight: var(--fw-medium);
+  }
+  .bc-readtime { font-size: var(--text-caption); color: var(--muted-foreground); }
+
+  .bc-readmore {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-4);
+    margin-top: var(--space-4);
+    font-size: var(--text-body-sm);
+    font-weight: var(--fw-semibold);
+    color: var(--foreground);
+    transition: gap 0.18s ease, color 0.18s ease;
+  }
+  .bc-link:hover .bc-readmore { color: var(--primary); gap: var(--space-8); }
+
+  @media (max-width: 767px) {
+    /* Horizontal cards stack to image-on-top on small screens */
+    .bc--horizontal .bc-link { flex-direction: column; gap: var(--space-16); }
+    .bc--horizontal .bc-media { flex: none; aspect-ratio: 3 / 2; }
+  }
+</style>

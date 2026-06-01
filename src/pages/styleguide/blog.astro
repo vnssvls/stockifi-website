@@ -1,0 +1,93 @@
+---
+// Styleguide → Blog. The three sections of the blog library page (Figma 11:2289),
+// wired to the real 22-post collection in content/blog/en. Header + CTA copy is
+// DRAFT (Stockifi voice) standing in for the Relume placeholder strings.
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import SgThemeToggle from '../../components/SgThemeToggle.astro';
+import BlogGrid from '../../components/blog/BlogGrid.astro';
+import BlogFeature from '../../components/blog/BlogFeature.astro';
+import CtaBand from '../../components/CtaBand.astro';
+
+const posts = (await getCollection('blog')).filter((p) => !p.data.draft);
+
+// Newest first; posts without a publishDate sort to the end.
+const sorted = [...posts].sort(
+  (a, b) => (b.data.publishDate?.getTime() ?? 0) - (a.data.publishDate?.getTime() ?? 0),
+);
+
+const toCard = (p: (typeof sorted)[number]) => ({
+  title: p.data.title,
+  excerpt: p.data.excerpt,
+  category: p.data.category,
+  date: p.data.publishDate,
+  readTime: p.data.readTime,
+  image: p.data.heroImage,
+  imageAlt: p.data.heroImageAlt,
+  href: `/blog/${p.id}`,
+});
+
+const gridPosts = sorted.map(toCard);
+const featurePosts = sorted.slice(0, 3).map(toCard); // latest 3 (per V)
+
+// Filter chips = real categories, busiest first.
+const counts = new Map<string, number>();
+for (const p of posts) counts.set(p.data.category, (counts.get(p.data.category) ?? 0) + 1);
+const categories = [...counts.keys()].sort((a, b) => (counts.get(b) ?? 0) - (counts.get(a) ?? 0));
+---
+
+<Layout title="Blog — Style guide">
+  <div class="sg">
+    <div class="container sgf-head">
+      <a class="sg-back" href="/styleguide">← Style guide</a>
+      <h1>Blog library</h1>
+      <p class="text-muted">The three sections of the blog library page, wired to the real {posts.length} posts in <code>content/blog/en</code>. Header and CTA copy is DRAFT. Hero images are the harvested Webflow assets. Post links point at <code>/blog/[slug]</code> (article template comes next, so they 404 for now).</p>
+    </div>
+
+    <div class="container"><p class="sg-label text-muted">Section 1 — Header + filterable grid</p></div>
+    <BlogGrid
+      eyebrow="Blog"
+      heading="Food cost, in plain language"
+      subhead="Practical reads on recipe costing, supplier prices, and the numbers behind a healthier margin."
+      categories={categories}
+      posts={gridPosts}
+    />
+
+    <div class="container"><p class="sg-label text-muted">Section 2 — Feature row (latest 3)</p></div>
+    <BlogFeature
+      eyebrow="Latest"
+      heading="Fresh from the blog"
+      subhead="The newest reads on running a tighter kitchen."
+      cta={{ label: 'View all', href: '/blog' }}
+      posts={featurePosts}
+    />
+
+    <div class="container"><p class="sg-label text-muted">Section 3 — CTA band (shared component)</p></div>
+    <CtaBand
+      heading="See where your margin is leaking"
+      subhead="Book a short call and we'll show you what Stockifi surfaces in your first 30 days."
+      primary={{ label: 'Book a demo', href: '/contact' }}
+      secondary={{ label: 'See how it works', href: '/#how-it-works' }}
+    />
+  </div>
+
+  <SgThemeToggle />
+</Layout>
+
+<style>
+  .sgf-head { padding-top: var(--section-y); }
+  .sg-back { display: inline-block; margin-bottom: var(--space-16); color: var(--muted-foreground); font-size: var(--text-body-sm); }
+  .sg-back:hover { color: var(--foreground); text-decoration: none; }
+  .sgf-head h1 { margin-bottom: var(--space-8); }
+  .sgf-head code { font-size: var(--text-body-sm); color: var(--foreground); }
+
+  .sg-label {
+    margin-top: var(--space-64);
+    padding-bottom: var(--space-8);
+    border-bottom: 1px solid var(--border);
+    font-size: var(--text-caption);
+    font-weight: var(--fw-semibold);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+</style>

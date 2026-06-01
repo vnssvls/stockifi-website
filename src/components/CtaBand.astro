@@ -1,0 +1,50 @@
+---
+// Reusable CTA band: heading + subhead on the left, up to two buttons on the
+// right. Generic on purpose — reused at the foot of most page templates, not
+// blog-specific. Stacks on mobile.
+import Button from './Button.astro';
+
+interface Action { label: string; href: string }
+interface Props {
+  heading: string;
+  subhead?: string;
+  primary?: Action;
+  secondary?: Action;
+}
+const { heading, subhead, primary, secondary } = Astro.props;
+---
+
+<section class="cta-band section">
+  <div class="container cta-grid">
+    <div class="cta-copy">
+      <h2>{heading}</h2>
+      {subhead && <p class="cta-subhead text-muted">{subhead}</p>}
+    </div>
+
+    {(primary || secondary) && (
+      <div class="cta-actions">
+        {primary && <Button variant="primary" href={primary.href}>{primary.label}</Button>}
+        {secondary && <Button variant="secondary" href={secondary.href}>{secondary.label}</Button>}
+      </div>
+    )}
+  </div>
+</section>
+
+<style>
+  .cta-grid {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-32);
+  }
+  .cta-copy { max-width: 40rem; }
+  .cta-subhead { margin-top: var(--space-16); font-size: var(--text-body-lg); }
+
+  .cta-actions { display: flex; flex-wrap: wrap; gap: var(--space-16); flex-shrink: 0; }
+
+  @media (max-width: 767px) {
+    .cta-actions { width: 100%; }
+    .cta-actions :global(.btn) { flex: 1; }
+  }
+</style>

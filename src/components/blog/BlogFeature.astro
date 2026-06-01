@@ -1,0 +1,65 @@
+---
+// Blog library — Section 2. Two columns: an intro block + "View all" button on
+// the left, a vertical list of horizontal BlogCards on the right. Stacks on mobile.
+import BlogCard from './BlogCard.astro';
+import Button from '../Button.astro';
+
+interface Post {
+  title: string;
+  excerpt?: string;
+  category?: string;
+  date?: Date;
+  readTime?: string;
+  image?: string;
+  imageAlt?: string;
+  href?: string;
+}
+interface Props {
+  eyebrow?: string;
+  heading: string;
+  subhead?: string;
+  cta?: { label: string; href: string };
+  posts: Post[];
+}
+const { eyebrow, heading, subhead, cta, posts } = Astro.props;
+---
+
+<section class="blog-feature section">
+  <div class="container bf-grid">
+    <div class="bf-intro">
+      {eyebrow && <p class="tagline">{eyebrow}</p>}
+      <h2 class="bf-heading">{heading}</h2>
+      {subhead && <p class="bf-subhead text-muted">{subhead}</p>}
+      {cta && (
+        <div class="bf-cta">
+          <Button variant="secondary" href={cta.href}>{cta.label}</Button>
+        </div>
+      )}
+    </div>
+
+    <div class="bf-list">
+      {posts.map((p) => <BlogCard {...p} orientation="horizontal" />)}
+    </div>
+  </div>
+</section>
+
+<style>
+  .bf-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-48);
+    align-items: start;
+  }
+  .bf-heading { margin-top: var(--space-12); }
+  .bf-subhead { margin-top: var(--space-16); font-size: var(--text-body-lg); }
+  .bf-cta { margin-top: var(--space-32); }
+
+  .bf-list { display: flex; flex-direction: column; gap: var(--space-32); }
+
+  @media (min-width: 1024px) {
+    .bf-grid {
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: var(--space-64);
+    }
+  }
+</style>
