@@ -82,8 +82,8 @@ for (let i = 0; i < items.length; i += cols) {
     /* Cancel the container's right padding + (on wide screens) its centering margin */
     margin-right: calc(-1 * (var(--gutter) + max(0px, (100vw - var(--container-max)) / 2)));
     overflow: hidden;
-    mask-image: linear-gradient(to right, black 65%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to right, black 65%, transparent 100%);
+    mask-image: linear-gradient(to right, black 50%, transparent 92%);
+    -webkit-mask-image: linear-gradient(to right, black 50%, transparent 92%);
   }
 
   .ig-row {
@@ -136,17 +136,23 @@ for (let i = 0; i < items.length; i += cols) {
   .ig-icon:hover img,
   .ig-icon:focus-visible img { filter: grayscale(0); opacity: 1; }
 
-  @media (min-width: 1024px) {
+  /* Two-column hero only kicks in once the viewport is wide enough to seat the
+     heading beside the icons. Below this, the copy stacks full-width and never
+     wraps awkwardly. The container is capped at --container-max, so above 1280
+     the copy column width is fixed and the heading always fits on two lines. */
+  @media (min-width: 1280px) {
     .ig-grid {
-      grid-template-columns: 0.8fr 1.2fr;
+      grid-template-columns: 1.05fr 0.95fr;
       gap: var(--space-64);
     }
-    .ig-heading { font-size: var(--text-h1); }
+    /* Each line stays unbroken → heading is always exactly two lines */
+    .ig-line,
+    .ig-subject { white-space: nowrap; }
     .ig-icons {
       --ig-tile: 88px;
       --ig-gap: 22px;
-      mask-image: linear-gradient(to right, black 70%, transparent 100%);
-      -webkit-mask-image: linear-gradient(to right, black 70%, transparent 100%);
+      mask-image: linear-gradient(to right, black 45%, transparent 95%);
+      -webkit-mask-image: linear-gradient(to right, black 45%, transparent 95%);
     }
   }
 </style>

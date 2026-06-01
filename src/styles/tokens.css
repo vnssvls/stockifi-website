@@ -93,7 +93,7 @@
   /* ── Layout · Desktop defaults (step down below) ──────────────────── */
   --container-max: 1280px;
   --prose-max: 720px;
-  --gutter: 48px;
+  --gutter: 36px;
   --section-y: 112px;
   --section-y-sm: 80px;
 
