@@ -1,0 +1,79 @@
+---
+// CTA variant 2 (Figma CTA/28, node 10:2188): centered heading + subhead + an
+// inline email-capture form + terms line. The form hands off to the lead-capture
+// flow (default /intro); swap `action` per use. Stacks on mobile.
+import Button from './Button.astro';
+
+interface Props {
+  heading: string;
+  subhead?: string;
+  placeholder?: string;
+  buttonLabel?: string;
+  action?: string;
+  termsHref?: string;
+}
+const {
+  heading,
+  subhead,
+  placeholder = 'Enter your email',
+  buttonLabel = 'Get started',
+  action = '/intro',
+  termsHref = '/terms',
+} = Astro.props;
+---
+
+<section class="cta-email section">
+  <div class="container ce-inner">
+    <h2 class="ce-heading">{heading}</h2>
+    {subhead && <p class="ce-subhead text-muted">{subhead}</p>}
+
+    <form class="ce-form" action={action} method="get">
+      <input
+        class="ce-input"
+        type="email"
+        name="email"
+        required
+        placeholder={placeholder}
+        aria-label="Email address"
+      />
+      <Button variant="primary" type="submit">{buttonLabel}</Button>
+    </form>
+
+    <p class="ce-terms text-muted">
+      By clicking {buttonLabel} you're confirming that you agree with our <a href={termsHref}>Terms and Conditions</a>.
+    </p>
+  </div>
+</section>
+
+<style>
+  .ce-inner { text-align: center; }
+  .ce-heading { max-width: 20ch; margin-inline: auto; }
+  .ce-subhead { margin-top: var(--space-16); margin-inline: auto; max-width: 48ch; font-size: var(--text-body-lg); }
+
+  .ce-form {
+    display: flex;
+    gap: var(--space-12);
+    max-width: 30rem;
+    margin: var(--space-32) auto 0;
+  }
+  .ce-input {
+    flex: 1;
+    min-width: 0;
+    padding: var(--space-12) var(--space-16);
+    background: var(--card);
+    color: var(--foreground);
+    border: 1px solid var(--input);
+    border-radius: var(--radius-md);
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+  }
+  .ce-input::placeholder { color: var(--muted-foreground); }
+
+  .ce-terms { margin-top: var(--space-16); font-size: var(--text-caption); }
+  .ce-terms a { color: var(--muted-foreground); text-decoration: underline; }
+  .ce-terms a:hover { color: var(--foreground); }
+
+  @media (max-width: 639px) {
+    .ce-form { flex-direction: column; }
+  }
+</style>

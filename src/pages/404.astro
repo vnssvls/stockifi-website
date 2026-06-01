@@ -1,0 +1,37 @@
+---
+// 404 page (Astro serves this for unmatched routes). Built from Figma 18:2974 and
+// adapted to the dark theme. Wrapped in the normal Layout so the nav + footer give
+// the visitor a way back.
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+import Unplugged404 from '../components/illustrations/Unplugged404.astro';
+---
+
+<Layout title="Page not found — Stockifi">
+  <section class="nf section">
+    <div class="container">
+      <div class="nf-copy">
+        <h1>Page Not Found</h1>
+        <p class="nf-sub text-muted">Uh oh, looks like you've stumbled upon a page that doesn't exist. Let's get you back on track!</p>
+        <div class="nf-cta">
+          <Button variant="primary" href="/">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            Back to home
+          </Button>
+        </div>
+      </div>
+
+      <div class="nf-art">
+        <Unplugged404 />
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .nf { text-align: center; }
+  .nf-copy { max-width: 42rem; margin-inline: auto; }
+  .nf-sub { margin-top: var(--space-16); font-size: var(--text-body-lg); }
+  .nf-cta { margin-top: var(--space-32); display: flex; justify-content: center; }
+  .nf-art { margin-top: var(--space-64); }
+</style>

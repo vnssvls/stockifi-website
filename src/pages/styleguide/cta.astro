@@ -1,0 +1,52 @@
+---
+// Styleguide → CTA. The two CTA blocks: variant 1 (split heading + buttons,
+// CtaBand) and variant 2 (centered email capture, CtaEmail / Figma CTA28).
+// Demo copy is DRAFT Stockifi voice.
+import Layout from '../../layouts/Layout.astro';
+import SgThemeToggle from '../../components/SgThemeToggle.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import CtaEmail from '../../components/CtaEmail.astro';
+---
+
+<Layout title="CTA — Style guide">
+  <div class="sg">
+    <div class="container sgf-head">
+      <a class="sg-back" href="/styleguide">← Style guide</a>
+      <h1>CTA</h1>
+      <p class="text-muted">Two CTA blocks. Copy is DRAFT.</p>
+    </div>
+
+    <div class="container"><p class="sg-label text-muted">Variant 1 — Split heading + buttons</p></div>
+    <CtaBand
+      heading="See where your margin is leaking"
+      subhead="Book a short call and we'll show you what Stockifi surfaces in your first 30 days."
+      primary={{ label: 'Book a demo', href: '/contact' }}
+      secondary={{ label: 'See how it works', href: '/#how-it-works' }}
+    />
+
+    <div class="container"><p class="sg-label text-muted">Variant 2 — Centered email capture</p></div>
+    <CtaEmail
+      heading="Find your hidden food cost losses"
+      subhead="Drop your email and we'll show you what Stockifi surfaces in your first 30 days."
+    />
+  </div>
+
+  <SgThemeToggle />
+</Layout>
+
+<style>
+  .sgf-head { padding-top: var(--section-y); }
+  .sg-back { display: inline-block; margin-bottom: var(--space-16); color: var(--muted-foreground); font-size: var(--text-body-sm); }
+  .sg-back:hover { color: var(--foreground); text-decoration: none; }
+  .sgf-head h1 { margin-bottom: var(--space-8); }
+
+  .sg-label {
+    margin-top: var(--space-64);
+    padding-bottom: var(--space-8);
+    border-bottom: 1px solid var(--border);
+    font-size: var(--text-caption);
+    font-weight: var(--fw-semibold);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+</style>
