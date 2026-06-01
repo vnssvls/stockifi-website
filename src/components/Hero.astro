@@ -1,0 +1,91 @@
+---
+// Hero (home) — split layout from wireframe node 45:3649: copy + CTAs left, visual
+// right; stacks on mobile. Variant-driven via props so copy/visual are swappable.
+// Real hero visual (product/dashboard or moody photo) is pending — placeholder for now.
+import Button from './Button.astro';
+
+interface Props {
+  tagline?: string;
+  heading: string;
+  subhead?: string;
+  primary?: { label: string; href: string };
+  secondary?: { label: string; href: string };
+  image?: { src: string; alt: string };
+}
+const { tagline, heading, subhead, primary, secondary, image } = Astro.props;
+---
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      {tagline && <p class="tagline">{tagline}</p>}
+      <h1 class="hero-title">{heading}</h1>
+      {subhead && <p class="hero-subhead">{subhead}</p>}
+      {(primary || secondary) && (
+        <div class="hero-actions">
+          {primary && <Button variant="primary" href={primary.href}>{primary.label}</Button>}
+          {secondary && <Button variant="secondary" href={secondary.href}>{secondary.label}</Button>}
+        </div>
+      )}
+    </div>
+
+    <div class="hero-media">
+      {image ? (
+        <img src={image.src} alt={image.alt} />
+      ) : (
+        <div class="hero-placeholder" role="img" aria-label="Hero visual placeholder">
+          <svg width="56" height="56" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5" />
+            <circle cx="8.5" cy="8.5" r="1.5" fill="currentColor" />
+            <path d="m21 15-5-5L5 21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
+      )}
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero { padding-block: var(--section-y); }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-48);
+    align-items: center;
+  }
+
+  .hero-title {
+    font-size: var(--text-display);
+    line-height: var(--lh-display);
+  }
+  .tagline + .hero-title { margin-top: var(--space-16); }
+  .hero-subhead {
+    margin-top: var(--space-24);
+    max-width: 48ch;
+    font-size: var(--text-body-lg);
+    color: var(--muted-foreground);
+  }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: var(--space-16); margin-top: var(--space-32); }
+
+  .hero-media img,
+  .hero-placeholder {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border-radius: var(--radius-xl);
+    object-fit: cover;
+  }
+  .hero-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--muted);
+    border: 1px solid var(--border);
+    color: var(--muted-foreground);
+  }
+
+  @media (min-width: 1024px) {
+    .hero-grid { grid-template-columns: 1fr 1fr; gap: var(--space-64); }
+    .hero-media img,
+    .hero-placeholder { aspect-ratio: 1 / 1; }
+  }
+</style>

@@ -6,6 +6,7 @@
 import Layout from '../layouts/Layout.astro';
 import Button from '../components/Button.astro';
 import LocaleSwitcher from '../components/LocaleSwitcher.astro';
+import Hero from '../components/Hero.astro';
 
 const swatches = [
   'background', 'foreground', 'card', 'popover', 'primary', 'primary-foreground',
@@ -29,6 +30,21 @@ const typeRoles = [
       <h1>Style guide</h1>
       <p class="text-muted">Components, tokens, and states. Site is dark-only; toggle previews both modes.</p>
     </header>
+
+    <!-- Hero -->
+    <section class="sg-block" aria-labelledby="sg-hero">
+      <h2 id="sg-hero">Hero</h2>
+      <p class="text-muted sg-note">Split layout (copy + CTAs left, visual right), stacks below 1024px. Live on the home page. Visual is a placeholder until the real asset lands.</p>
+      <div class="sg-preview">
+        <Hero
+          tagline="For European hospitality operators"
+          heading="See exactly where your food cost is leaking."
+          subhead="Stockifi connects your invoices, POS, and recipes so you track actual food cost instead of guessing at it."
+          primary={{ label: 'Book a demo', href: '#' }}
+          secondary={{ label: 'See how it works', href: '#' }}
+        />
+      </div>
+    </section>
 
     <!-- Buttons -->
     <section class="sg-block" aria-labelledby="sg-buttons">
@@ -105,6 +121,7 @@ const typeRoles = [
   .sg-block { padding-block: var(--space-48); border-top: 1px solid var(--border); }
   .sg-block > h2 { margin-bottom: var(--space-8); }
   .sg-note { margin-bottom: var(--space-24); max-width: 60ch; }
+  .sg-preview { border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
 
   .sg-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-16); }
   .sg-row-narrow { flex-direction: column; align-items: stretch; max-width: 320px; margin-top: var(--space-24); }

@@ -1,14 +1,18 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
 ---
 
-<Layout title="Stockifi — Restaurant food cost management">
-  <section class="container section">
-    <p class="tagline">Webflow → Astro migration</p>
-    <h1>Shell is live.</h1>
-    <p class="text-muted">
-      Nav (locked IA, mega menus, locale switcher) and footer are wired. Hero and the
-      rest of the pages build next. See <a href="/styleguide">/styleguide</a>.
-    </p>
-  </section>
+<Layout
+  title="Restaurant Food Cost Software for European Operators | Stockifi"
+  description="See exactly where your food cost is leaking. Stockifi connects invoices, POS, and recipes so European operators track actual food cost, not guesswork."
+>
+  <!-- DRAFT hero copy (blueprint angle: margin-leak outcome + EU fit). For V/Simon review. -->
+  <Hero
+    tagline="For European hospitality operators"
+    heading="See exactly where your food cost is leaking."
+    subhead="Stockifi connects your invoices, POS, and recipes so you track actual food cost instead of guessing at it."
+    primary={{ label: 'Book a demo', href: '/contact' }}
+    secondary={{ label: 'See how it works', href: '#how-it-works' }}
+  />
 </Layout>
