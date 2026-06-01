@@ -1,0 +1,23 @@
+[
+  { "name": "Shopbox",    "logo": "/media/integrations-submarks/shopbox.png" },
+  { "name": "Gmail",      "logo": "/media/integrations-submarks/gmail.png" },
+  { "name": "PowerOffice","logo": "/media/integrations-submarks/poweroffice.png" },
+  { "name": "Tripletex",  "logo": "/media/integrations-submarks/tripletex.png" },
+  { "name": "Lightspeed", "logo": "/media/integrations-submarks/lightspeed.png" },
+  { "name": "Wolt",       "logo": "/media/integrations-submarks/wolt.png" },
+  { "name": "Superb",     "logo": "/media/integrations-submarks/superb.png" },
+  { "name": "Trivec",     "logo": "/media/integrations-submarks/trivec.png" },
+  { "name": "E-conomic",  "logo": "/media/integrations-submarks/e-conomic.png" },
+  { "name": "Xero",       "logo": "/media/integrations-submarks/xero.png" },
+  { "name": "Fiken",      "logo": "/media/integrations-submarks/fiken.png" },
+  { "name": "Ancon",      "logo": "/media/integrations-submarks/ancon.png" },
+  { "name": "Datev",      "logo": "/media/integrations-submarks/datev.png" },
+  { "name": "Visma",      "logo": "/media/integrations-submarks/visma.png" },
+  { "name": "Favrit",     "logo": "/media/integrations-submarks/favrit.png" },
+  { "name": "Munu",       "logo": "/media/integrations-submarks/munu.png" },
+  { "name": "Gastronovi", "logo": "/media/integrations-submarks/gastronovi.png" },
+  { "name": "Plorea",     "logo": "/media/integrations-submarks/plorea.png" },
+  { "name": "Fortnox",    "logo": "/media/integrations-submarks/fortnox.png" },
+  { "name": "Unimicro",   "logo": "/media/integrations-submarks/unimicro.png" },
+  { "name": "Asko",       "logo": "/media/integrations-submarks/asko.png" }
+]

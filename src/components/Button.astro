@@ -1,9 +1,9 @@
 ---
-// Button / CTA. variant: primary (filled) | secondary (outline).
+// Button / CTA. variant: primary (filled) | secondary (outline) | ghost (borderless text link).
 // Renders <a> when href is set, else <button>. Primary hover flips to
 // foreground/background per the design-system dark-mode treatment.
 interface Props {
-  variant?: 'primary' | 'secondary';
+  variant?: 'primary' | 'secondary' | 'ghost';
   href?: string;
   type?: 'button' | 'submit';
   block?: boolean;
@@ -64,4 +64,13 @@ const tagProps = href ? { href } : { type };
   .btn-secondary:hover {
     border-color: var(--primary);
   }
+
+  /* Ghost: no border, no fill — a text link block (e.g. "View all integrations →"). */
+  .btn-ghost {
+    background: transparent;
+    color: var(--foreground);
+    border-color: transparent;
+    padding-inline: 0;
+  }
+  .btn-ghost:hover { color: var(--primary); gap: var(--space-12); }
 </style>

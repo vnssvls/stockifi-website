@@ -93,7 +93,7 @@
   /* ── Layout · Desktop defaults (step down below) ──────────────────── */
   --container-max: 1280px;
   --prose-max: 720px;
-  --gutter: 64px;
+  --gutter: 48px;
   --section-y: 112px;
   --section-y-sm: 80px;
 
@@ -141,7 +141,7 @@
 /* ── Responsive layout · Tablet (<=1023) then Mobile (<=767) ────────── */
 @media (max-width: 1023px) {
   :root {
-    --gutter: 40px;
+    --gutter: 32px;
     --section-y: 80px;
     --section-y-sm: 56px;
   }
@@ -149,7 +149,7 @@
 
 @media (max-width: 767px) {
   :root {
-    --gutter: 24px;
+    --gutter: 20px;
     --section-y: 56px;
     --section-y-sm: 40px;
   }

@@ -1,0 +1,35 @@
+---
+// Styleguide → Integrations. Grayscale-on-rest / colour-on-hover logo grid with a
+// header whose second line follows the hovered integration. Logos are icon-only
+// submarks sourced from Figma (public/media/integrations-submarks/).
+import Layout from '../../layouts/Layout.astro';
+import SgThemeToggle from '../../components/SgThemeToggle.astro';
+import IntegrationGrid from '../../components/integrations/IntegrationGrid.astro';
+import items from '../../data/integrations-home.json';
+---
+
+<Layout title="Integrations — Style guide">
+  <div class="sg">
+    <div class="container sgf-head">
+      <a class="sg-back" href="/styleguide">← Style guide</a>
+      <h1>Integrations</h1>
+      <p class="text-muted">Logos are grayscale at rest and colour on hover/focus; the header's second line swaps to the hovered integration (defaults to "your existing tools"). Icon-only submarks, sourced from Figma.</p>
+    </div>
+
+    <IntegrationGrid
+      heading="Use Stockifi with"
+      defaultSubject="your existing tools"
+      cta={{ label: 'View all integrations', href: '/integrations' }}
+      items={items}
+    />
+  </div>
+
+  <SgThemeToggle />
+</Layout>
+
+<style>
+  .sgf-head { padding-top: var(--section-y); }
+  .sg-back { display: inline-block; margin-bottom: var(--space-16); color: var(--muted-foreground); font-size: var(--text-body-sm); }
+  .sg-back:hover { color: var(--foreground); text-decoration: none; }
+  .sgf-head h1 { margin-bottom: var(--space-8); }
+</style>

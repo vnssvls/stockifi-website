@@ -1,0 +1,158 @@
+---
+// Integrations section. Left: two-line header (line 2 swaps to the hovered
+// integration's name, defaulting to defaultSubject) + ghost CTA. Right: staggered
+// rows of logo tiles — grayscale at rest, full colour on hover/focus.
+import Button from '../Button.astro';
+
+interface Item { name: string; logo: string }
+interface Props {
+  heading: string;
+  defaultSubject: string;
+  cta?: { label: string; href: string };
+  items: Item[];
+  cols?: number;
+}
+const { heading, defaultSubject, cta, items, cols = 7 } = Astro.props;
+const linkHref = cta?.href ?? '/integrations';
+
+// Chunk flat list into rows for the staggered layout
+const rows: Item[][] = [];
+for (let i = 0; i < items.length; i += cols) {
+  rows.push(items.slice(i, i + cols));
+}
+---
+
+<section class="integrations section" data-integrations>
+  <div class="container ig-grid">
+    <div class="ig-copy">
+      <h2 class="ig-heading">
+        <span class="ig-line">{heading}</span>
+        <span class="ig-subject" data-default={defaultSubject}>{defaultSubject}</span>
+      </h2>
+      {cta && (
+        <div class="ig-cta">
+          <Button variant="ghost" href={cta.href}>
+            {cta.label}
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+          </Button>
+        </div>
+      )}
+    </div>
+
+    <div class="ig-icons">
+      {rows.map((row, ri) => (
+        <div class:list={['ig-row', ri % 2 === 1 && 'ig-row--offset']}>
+          {row.map((it) => (
+            <a class="ig-icon" href={linkHref} data-name={it.name} aria-label={`Stockifi integrates with ${it.name}`}>
+              <img src={it.logo} alt={it.name} width="40" height="40" loading="lazy" />
+            </a>
+          ))}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .ig-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-48);
+    align-items: center;
+  }
+
+  .ig-heading { font-size: var(--text-h2); }
+  .ig-line { display: block; color: var(--foreground); }
+  .ig-subject { display: block; color: var(--primary); }
+  .ig-cta { margin-top: var(--space-32); }
+
+  /* The section clips its own overflow so the right-edge bleed never spawns a
+     horizontal scrollbar (100vw can include the scrollbar gutter). */
+  .integrations { overflow-x: clip; }
+
+  /* Staggered rows — bleed past the container's right gutter to the viewport edge,
+     then fade out with a gradient mask.
+     --ig-tile and --ig-gap are defined here so .ig-row--offset can reference them. */
+  .ig-icons {
+    --ig-tile: 80px;
+    --ig-gap: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--ig-gap);
+    /* Cancel the container's right padding + (on wide screens) its centering margin */
+    margin-right: calc(-1 * (var(--gutter) + max(0px, (100vw - var(--container-max)) / 2)));
+    overflow: hidden;
+    mask-image: linear-gradient(to right, black 65%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, black 65%, transparent 100%);
+  }
+
+  .ig-row {
+    display: flex;
+    gap: var(--ig-gap);
+    flex-shrink: 0;
+  }
+
+  /* Brick offset: even rows shift right by half a tile + half a gap */
+  .ig-row--offset {
+    padding-left: calc(var(--ig-tile) / 2 + var(--ig-gap) / 2);
+  }
+
+  /* The logo PNGs already include the glass tile (rounded corners, border, fill),
+     so this wrapper adds no frame of its own — it only sizes the tile and clips the
+     PNG's baked-in square corners so the page background shows through them. */
+  .ig-icon {
+    flex: 0 0 var(--ig-tile);
+    width: var(--ig-tile);
+    height: var(--ig-tile);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .ig-icon img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(1);
+    opacity: 0.7;
+    transition: filter 0.2s ease, opacity 0.2s ease;
+  }
+  .ig-icon:hover img,
+  .ig-icon:focus-visible img { filter: grayscale(0); opacity: 1; }
+
+  @media (min-width: 1024px) {
+    .ig-grid {
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: var(--space-64);
+    }
+    .ig-heading { font-size: var(--text-h1); }
+    .ig-icons {
+      --ig-tile: 88px;
+      --ig-gap: 22px;
+      mask-image: linear-gradient(to right, black 70%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to right, black 70%, transparent 100%);
+    }
+  }
+</style>
+
+<script>
+  document.querySelectorAll('[data-integrations]').forEach((root) => {
+    const subject = root.querySelector<HTMLElement>('.ig-subject');
+    const wrap = root.querySelector('.ig-icons');
+    if (!subject || !wrap) return;
+    const def = subject.dataset.default ?? subject.textContent ?? '';
+
+    root.querySelectorAll<HTMLElement>('.ig-icon').forEach((icon) => {
+      const name = icon.dataset.name ?? def;
+      const set = () => { subject.textContent = name; };
+      icon.addEventListener('mouseenter', set);
+      icon.addEventListener('focus', set);
+    });
+
+    const reset = () => { subject.textContent = def; };
+    wrap.addEventListener('mouseleave', reset);
+    wrap.addEventListener('focusout', (e) => {
+      if (!wrap.contains((e as FocusEvent).relatedTarget as Node | null)) reset();
+    });
+  });
+</script>
