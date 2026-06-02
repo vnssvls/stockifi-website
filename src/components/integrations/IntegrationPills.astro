@@ -52,6 +52,22 @@ const rows = Array.from({ length: ROW_COUNT }, (_, r) => visible.filter((_, i) =
 </section>
 
 <style>
+  /* Soft duo gradient glow behind the pills (also gives the glass blur something to
+     sample so it reads as real glass). Sits behind the content via isolation + z-index. */
+  .integration-pills { position: relative; isolation: isolate; }
+  .integration-pills::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image: url('/media/gradient-duo.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
   .ip-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-48); }
 
   /* Four rows that bleed off the LEFT viewport edge ("coming from the edge"). The box
