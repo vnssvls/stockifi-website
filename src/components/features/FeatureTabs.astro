@@ -75,32 +75,30 @@ const { tagline, heading, subhead, tabs } = Astro.props;
   .tagline + h2 { margin-top: var(--space-16); }
   .ft-sub { margin-top: var(--space-16); font-size: var(--text-body-lg); }
 
-  /* Pill switcher: rounded track + a sliding indicator pill. Centered, scrolls if the
-     labels overflow on small screens. */
+  /* Mobile: no track — the pills simply wrap and stay clickable; the active pill fills
+     directly (the sliding indicator is desktop-only). */
   .ft-tabs {
     position: relative;
     display: flex;
-    width: fit-content;
-    max-width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-8);
     margin: 0 auto var(--space-48);
-    padding: var(--space-8);
-    border-radius: var(--radius-full);
-    background-color: color-mix(in srgb, var(--foreground) 6%, transparent);
-    overflow-x: auto;
-    scrollbar-width: none;
   }
-  .ft-tabs::-webkit-scrollbar { display: none; }
 
-  /* The sliding pill. JS sets its width/height/transform to the active tab's box;
-     the spring easing (slight overshoot) gives the flowing slide. */
+  /* The sliding pill (desktop only). JS sets its width/height/transform to the active
+     tab's box; the spring easing (slight overshoot) gives the flowing slide. */
   .ft-indicator {
+    display: none;
     position: absolute;
     left: 0;
     top: 0;
     width: 0;
     height: 0;
     border-radius: var(--radius-full);
-    background-color: var(--primary);
+    /* Secondary-button look: subtle tint inside + a white border (not primary). */
+    background-color: color-mix(in srgb, var(--foreground) 8%, transparent);
+    border: 1px solid var(--foreground);
     z-index: 0;
     pointer-events: none;
     transition:
@@ -113,7 +111,7 @@ const { tagline, heading, subhead, tabs } = Astro.props;
     z-index: 1;
     flex: none;
     padding: var(--space-12) var(--space-24);
-    border: none;
+    border: 1px solid transparent;
     background: transparent;
     border-radius: var(--radius-full);
     color: var(--muted-foreground);
@@ -122,10 +120,15 @@ const { tagline, heading, subhead, tabs } = Astro.props;
     font-weight: var(--fw-semibold);
     white-space: nowrap;
     cursor: pointer;
-    transition: color 0.25s ease;
+    transition: color 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
   }
   .ft-tab:hover { color: var(--foreground); }
-  .ft-tab[aria-selected='true'] { color: var(--primary-foreground); }
+  /* Mobile active pill: subtle tint + white border (desktop hands this to the indicator). */
+  .ft-tab[aria-selected='true'] {
+    color: var(--foreground);
+    background-color: color-mix(in srgb, var(--foreground) 8%, transparent);
+    border-color: var(--foreground);
+  }
 
   /* Panes stacked in one cell so they cross-fade without a layout jump. */
   .ft-panels { display: grid; }
@@ -147,6 +150,29 @@ const { tagline, heading, subhead, tabs } = Astro.props;
   .ft-body { line-height: var(--lh-body); }
   .ft-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-24); margin-top: var(--space-8); }
   .ft-media img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: var(--radius-lg); }
+
+  /* Tablet+: floating pill track (nav-style) — translucent page-bg fill (not grey),
+     border, shadow, blur. Single row; the sliding indicator provides the active pill. */
+  @media (min-width: 768px) {
+    .ft-tabs {
+      flex-wrap: nowrap;
+      width: fit-content;
+      max-width: 100%;
+      gap: 0;
+      padding: var(--space-8);
+      background-color: color-mix(in srgb, var(--background) 80%, transparent);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-md);
+      backdrop-filter: blur(12px) saturate(140%);
+      -webkit-backdrop-filter: blur(12px) saturate(140%);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .ft-tabs::-webkit-scrollbar { display: none; }
+    .ft-indicator { display: block; }
+    /* Indicator (not the tab) carries the active fill + border on desktop. */
+    .ft-tab[aria-selected='true'] { background-color: transparent; border-color: transparent; }
+  }
 
   @media (min-width: 1024px) {
     .ft-wide { padding-inline: 60px; }
@@ -189,8 +215,12 @@ const { tagline, heading, subhead, tabs } = Astro.props;
       });
       panels.forEach((p, j) => p.classList.toggle('is-active', j === i));
       place(i, true);
-      // On narrow screens the pill bar scrolls — keep the active pill in view.
-      tabs[i].scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' });
+      // Only auto-scroll when the track actually overflows horizontally (desktop, many
+      // tabs); on mobile the pills wrap, so nothing should scroll the page.
+      const list = tabs[i].parentElement;
+      if (list && list.scrollWidth > list.clientWidth + 1) {
+        tabs[i].scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' });
+      }
     };
 
     tabs.forEach((tab, i) => {
