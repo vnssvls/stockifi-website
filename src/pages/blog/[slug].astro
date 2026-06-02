@@ -1,0 +1,108 @@
+---
+// Blog article template (/blog/[slug]). Renders a post from content/blog/en.
+// Header (category + title + meta + hero) → prose body → back link + CTA.
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import CtaBand from '../../components/CtaBand.astro';
+
+export async function getStaticPaths() {
+  const posts = (await getCollection('blog')).filter((p) => !p.data.draft);
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const d = post.data;
+
+const dateLabel = d.publishDate
+  ? d.publishDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
+  : '';
+const meta = [dateLabel, d.readTime].filter(Boolean).join('  ·  ');
+---
+
+<Layout
+  title={`${d.metaTitle ?? d.title} | Stockifi`}
+  description={d.metaDescription ?? d.excerpt}
+  image={d.heroImage}
+>
+  <article class="article section">
+    <div class="container">
+      <a class="article-back" href="/blog">← All articles</a>
+
+      <header class="article-head">
+        <span class="article-cat">{d.category}</span>
+        <h1 class="article-title">{d.title}</h1>
+        {meta && <p class="article-meta text-muted">{meta}</p>}
+      </header>
+
+      {d.heroImage && (
+        <img class="article-hero" src={d.heroImage} alt={d.heroImageAlt} width="1280" height="720" loading="eager" />
+      )}
+
+      <div class="article-body prose">
+        <Content />
+      </div>
+    </div>
+  </article>
+
+  <CtaBand
+    heading="See where your margin is leaking"
+    subhead="Book a short call and we'll show you what Stockifi surfaces in your first 30 days."
+    primary={{ label: 'Book a demo', href: '/book-a-demo' }}
+    secondary={{ label: 'View pricing', href: '/pricing' }}
+  />
+</Layout>
+
+<style>
+  .article-back { display: inline-block; margin-bottom: var(--space-32); color: var(--muted-foreground); font-size: var(--text-body-sm); }
+  .article-back:hover { color: var(--foreground); text-decoration: none; }
+
+  /* Header + body share the readable prose column. */
+  .article-head,
+  .article-hero,
+  .article-body { max-width: var(--prose-max); margin-inline: auto; }
+
+  .article-cat {
+    display: inline-block;
+    padding: var(--space-4) var(--space-12);
+    border-radius: var(--radius-full);
+    background: color-mix(in srgb, var(--primary) 14%, transparent);
+    color: var(--primary-light);
+    font-size: var(--text-caption);
+    font-weight: var(--fw-semibold);
+  }
+  .article-title { margin-top: var(--space-16); }
+  .article-meta { margin-top: var(--space-16); font-size: var(--text-body-sm); }
+
+  .article-hero {
+    width: 100%;
+    height: auto;
+    margin-top: var(--space-32);
+    border-radius: var(--radius-lg);
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+
+  .article-body { margin-top: var(--space-48); }
+
+  /* The rendered markdown is injected, so its elements need :global() to be styled. */
+  .article-body :global(p),
+  .article-body :global(ul),
+  .article-body :global(ol) { margin-bottom: var(--space-24); line-height: var(--lh-body); }
+  .article-body :global(h2) { margin-top: var(--space-48); margin-bottom: var(--space-16); font-size: var(--text-h3); }
+  .article-body :global(h3) { margin-top: var(--space-32); margin-bottom: var(--space-12); font-size: var(--text-h5); }
+  .article-body :global(ul),
+  .article-body :global(ol) { padding-left: var(--space-24); }
+  .article-body :global(li) { margin-bottom: var(--space-8); }
+  .article-body :global(a) { color: var(--primary); text-decoration: underline; }
+  .article-body :global(a:hover) { color: var(--primary-light); }
+  .article-body :global(strong) { color: var(--foreground); font-weight: var(--fw-semibold); }
+  .article-body :global(img) { width: 100%; height: auto; margin-block: var(--space-32); border-radius: var(--radius-md); }
+  .article-body :global(blockquote) {
+    margin-block: var(--space-32);
+    padding-left: var(--space-24);
+    border-left: 3px solid var(--primary);
+    color: var(--muted-foreground);
+    font-size: var(--text-body-lg);
+  }
+</style>

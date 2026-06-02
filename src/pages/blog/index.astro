@@ -1,0 +1,64 @@
+---
+// Blog index (/blog) — Figma 11:2289. Assembles the three blog sections (built in
+// src/components/blog/) against the real content/blog/en collection: filterable
+// grid → latest-3 feature row → CTA band. DRAFT header/CTA copy.
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import BlogGrid from '../../components/blog/BlogGrid.astro';
+import BlogFeature from '../../components/blog/BlogFeature.astro';
+import CtaBand from '../../components/CtaBand.astro';
+
+const posts = (await getCollection('blog')).filter((p) => !p.data.draft);
+
+// Newest first; undated posts sort to the end.
+const sorted = [...posts].sort(
+  (a, b) => (b.data.publishDate?.getTime() ?? 0) - (a.data.publishDate?.getTime() ?? 0),
+);
+
+const toCard = (p: (typeof sorted)[number]) => ({
+  title: p.data.title,
+  excerpt: p.data.excerpt,
+  category: p.data.category,
+  date: p.data.publishDate,
+  readTime: p.data.readTime,
+  image: p.data.heroImage,
+  imageAlt: p.data.heroImageAlt,
+  href: `/blog/${p.id}`,
+});
+
+const gridPosts = sorted.map(toCard);
+const featurePosts = sorted.slice(0, 3).map(toCard);
+
+// Category filter chips = real categories, busiest first.
+const counts = new Map<string, number>();
+for (const p of posts) counts.set(p.data.category, (counts.get(p.data.category) ?? 0) + 1);
+const categories = [...counts.keys()].sort((a, b) => (counts.get(b) ?? 0) - (counts.get(a) ?? 0));
+---
+
+<Layout
+  title="Blog — Food Cost & Restaurant Margins | Stockifi"
+  description="Practical reads on recipe costing, supplier prices, invoice processing, and the numbers behind a healthier restaurant margin."
+>
+  <BlogGrid
+    eyebrow="Blog"
+    heading="Food cost, in plain language"
+    subhead="Practical reads on recipe costing, supplier prices, and the numbers behind a healthier margin."
+    categories={categories}
+    posts={gridPosts}
+  />
+
+  <BlogFeature
+    eyebrow="Latest"
+    heading="Fresh from the blog"
+    subhead="The newest reads on running a tighter kitchen."
+    cta={{ label: 'View all', href: '/blog' }}
+    posts={featurePosts}
+  />
+
+  <CtaBand
+    heading="See where your margin is leaking"
+    subhead="Book a short call and we'll show you what Stockifi surfaces in your first 30 days."
+    primary={{ label: 'Book a demo', href: '/book-a-demo' }}
+    secondary={{ label: 'See how it works', href: '/#how-it-works' }}
+  />
+</Layout>
