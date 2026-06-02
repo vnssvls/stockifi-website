@@ -1,0 +1,158 @@
+---
+// Testimonial slider (Figma 81:774). Per slide: quote + attribution (name / position,
+// company + optional logo) + a "Read story" CTA, beside a square media.
+// Desktop: content left, media right; controls (dots left, arrows right) sit BELOW.
+// Mobile: controls move to the TOP, then content, then media. No star rating.
+import MediaPlaceholder from './features/MediaPlaceholder.astro';
+
+interface Item {
+  quote: string;
+  name: string;
+  position?: string;
+  company?: string;
+  logo?: { src: string; alt: string };
+  image?: { src: string; alt: string };
+  storyHref?: string;
+}
+interface Props {
+  items: Item[];
+  ctaLabel?: string;
+}
+const { items, ctaLabel = 'Read story' } = Astro.props;
+---
+
+<section class="testimonial-slider section" data-tslider>
+  <div class="container ts-grid">
+    <div class="ts-viewport">
+      {items.map((t, i) => (
+        <article class="ts-slide" data-index={i} hidden={i !== 0}>
+          <div class="ts-content">
+            <blockquote class="ts-quote">{t.quote}</blockquote>
+            <div class="ts-attr-row">
+              <div class="ts-attr">
+                <p class="ts-name">{t.name}</p>
+                {(t.position || t.company) && (
+                  <p class="ts-role text-muted">{[t.position, t.company].filter(Boolean).join(', ')}</p>
+                )}
+              </div>
+              {t.logo && <span class="ts-logo"><img src={t.logo.src} alt={t.logo.alt} /></span>}
+            </div>
+            {t.storyHref && (
+              <a class="ts-cta" href={t.storyHref}>
+                {ctaLabel}
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              </a>
+            )}
+          </div>
+          <div class="ts-media">
+            {t.image ? <img src={t.image.src} alt={t.image.alt} /> : <MediaPlaceholder ratio="1 / 1" />}
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <div class="ts-controls">
+      <div class="ts-dots">
+        {items.map((_, i) => (
+          <button class="ts-dot" type="button" data-dot={i} aria-label={`Go to testimonial ${i + 1}`} aria-selected={i === 0 ? 'true' : 'false'}></button>
+        ))}
+      </div>
+      <div class="ts-arrows">
+        <button class="ts-arrow" type="button" data-dir="-1" aria-label="Previous testimonial">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5m6 6-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+        </button>
+        <button class="ts-arrow" type="button" data-dir="1" aria-label="Next testimonial">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6 6 6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .ts-grid { display: flex; flex-direction: column; gap: var(--space-32); }
+  .ts-viewport { order: 2; }
+  .ts-controls { order: 1; display: flex; align-items: center; justify-content: space-between; gap: var(--space-16); }
+
+  .ts-slide { display: grid; grid-template-columns: 1fr; gap: var(--space-32); align-items: center; }
+  .ts-slide[hidden] { display: none; }
+
+  .ts-quote {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: var(--text-h4);
+    line-height: var(--lh-h4);
+    color: var(--foreground);
+  }
+  .ts-attr-row { display: flex; align-items: center; gap: var(--space-16); margin-top: var(--space-24); }
+  .ts-name { font-weight: var(--fw-semibold); color: var(--foreground); }
+  .ts-role { font-size: var(--text-body-sm); }
+  .ts-logo { padding-left: var(--space-16); border-left: 1px solid var(--border); }
+  .ts-logo img { height: 24px; width: auto; }
+  .ts-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-8);
+    margin-top: var(--space-24);
+    color: var(--primary);
+    font-weight: var(--fw-semibold);
+    font-size: var(--text-body-sm);
+  }
+  .ts-cta:hover { gap: var(--space-12); text-decoration: none; }
+
+  .ts-media img { width: 100%; border-radius: var(--radius-lg); }
+
+  .ts-dots { display: flex; align-items: center; gap: var(--space-8); }
+  .ts-dot {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border: none;
+    border-radius: var(--radius-full);
+    background: var(--border);
+    cursor: pointer;
+    transition: background-color 0.18s ease;
+  }
+  .ts-dot[aria-selected='true'] { background: var(--primary); }
+
+  .ts-arrows { display: flex; gap: var(--space-12); }
+  .ts-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-full);
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--foreground);
+    cursor: pointer;
+    transition: border-color 0.18s ease, background-color 0.18s ease;
+  }
+  .ts-arrow:hover { border-color: var(--muted-foreground); background: var(--accent); }
+
+  @media (min-width: 1024px) {
+    .ts-viewport { order: 1; }
+    .ts-controls { order: 2; }
+    .ts-slide { grid-template-columns: 1fr 1fr; gap: var(--space-96); }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-tslider]').forEach((root) => {
+    const slides = Array.from(root.querySelectorAll<HTMLElement>('.ts-slide'));
+    const dots = Array.from(root.querySelectorAll<HTMLButtonElement>('.ts-dot'));
+    const arrows = Array.from(root.querySelectorAll<HTMLButtonElement>('.ts-arrow'));
+    if (slides.length === 0) return;
+    let cur = 0;
+
+    const show = (n: number) => {
+      cur = (n + slides.length) % slides.length;
+      slides.forEach((s, i) => { s.hidden = i !== cur; });
+      dots.forEach((d, i) => d.setAttribute('aria-selected', String(i === cur)));
+    };
+
+    dots.forEach((d, i) => d.addEventListener('click', () => show(i)));
+    arrows.forEach((a) => a.addEventListener('click', () => show(cur + Number(a.dataset.dir))));
+  });
+</script>

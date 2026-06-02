@@ -8,6 +8,8 @@ import FeatureSplit from '../../components/features/FeatureSplit.astro';
 import FeatureSteps from '../../components/features/FeatureSteps.astro';
 import FeatureCards from '../../components/features/FeatureCards.astro';
 import FeatureTabs from '../../components/features/FeatureTabs.astro';
+import FeatureColumns from '../../components/features/FeatureColumns.astro';
+import FeatureShowcase from '../../components/features/FeatureShowcase.astro';
 
 const variants = [
   { label: '1 · List + image' },
@@ -15,6 +17,8 @@ const variants = [
   { label: '3 · Steps timeline' },
   { label: '4 · Cards' },
   { label: '5 · Tabbed showcase' },
+  { label: '6 · Columns' },
+  { label: '7 · Showcase' },
 ];
 
 const listItems = [
@@ -46,6 +50,17 @@ const showcaseTabs = [
   { label: 'POS', heading: 'Consumption', body: 'Sales flow in and expected usage is calculated from what actually sold.' },
   { label: 'Inventory', heading: 'Variance reporting', body: 'Count stock in the app and see theoretical against actual, clearly.' },
 ];
+
+const columnsData = [
+  { eyebrow: 'Price transparency', heading: 'Catch price rises early', body: 'Invoices are read line by line, so increases surface before they erode margin.', link: { label: 'Learn more', href: '/product/supplier-price-tracking' } },
+  { eyebrow: 'Consumption control', heading: 'Theoretical vs actual', body: 'See what should have been used against what sold, and find the waste.', link: { label: 'Learn more', href: '/product/pos-integration' } },
+  { eyebrow: 'Full visibility', heading: 'One view across sites', body: 'Consolidated cost and variance, one location or twenty.', link: { label: 'Learn more', href: '/solutions/restaurant-groups' } },
+];
+
+const showcaseSubs = [
+  { heading: 'Actual vs theoretical', body: 'Compare what should have been used against what sold, per item.' },
+  { heading: 'Price-rise alerts', body: 'Catch supplier increases the moment they hit an invoice.' },
+];
 ---
 
 <Layout title="Features — Style guide">
@@ -53,7 +68,7 @@ const showcaseTabs = [
     <div class="container sgf-head">
       <a class="sg-back" href="/styleguide">← Style guide</a>
       <h1>Features</h1>
-      <p class="text-muted">Five layouts to choose from per section or page. Full width, with representative draft content.</p>
+      <p class="text-muted">Seven layouts to choose from per section or page. Full width, with representative draft content.</p>
       <div class="sgf-tabs" role="tablist" aria-label="Feature layouts" data-sg-tabs>
         {variants.map((v, i) => (
           <button class="sgf-tab" type="button" role="tab" data-index={i} aria-selected={i === 0 ? 'true' : 'false'}>{v.label}</button>
@@ -75,6 +90,12 @@ const showcaseTabs = [
     </div>
     <div class="sgf-panel" role="tabpanel" data-index="4" hidden>
       <FeatureTabs tagline="Explore" heading="See Stockifi in action" subhead="Switch between the parts of the platform." tabs={showcaseTabs} />
+    </div>
+    <div class="sgf-panel" role="tabpanel" data-index="5" hidden>
+      <FeatureColumns tagline="Why Stockifi" heading="Where the platform pays for itself" columns={columnsData} />
+    </div>
+    <div class="sgf-panel" role="tabpanel" data-index="6" hidden>
+      <FeatureShowcase tagline="How it helps" heading="From guesswork to numbers you trust" body="Stockifi turns the invoices and sales you already produce into a clear picture of food cost." items={showcaseSubs} primary={{ label: 'Book a demo', href: '/book-a-demo' }} secondary={{ label: 'See how it works', href: '/#how-it-works' }} imageSide="right" />
     </div>
   </div>
 

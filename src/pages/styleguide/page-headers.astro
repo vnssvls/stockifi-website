@@ -1,0 +1,101 @@
+---
+// Styleguide → Page headers. The page-header set, switched via a tab bar.
+// 1 · Centered (PageHeader) — used on Integrations, Pricing.
+// 2 · Hero / split (PageHeaderHero) — used on solution/product item pages.
+import Layout from '../../layouts/Layout.astro';
+import SgThemeToggle from '../../components/SgThemeToggle.astro';
+import PageHeader from '../../components/page-headers/PageHeader.astro';
+import PageHeaderHero from '../../components/page-headers/PageHeaderHero.astro';
+
+const variants = [
+  { label: '1 · Centered' },
+  { label: '2 · Hero / split' },
+];
+---
+
+<Layout title="Page headers — Style guide">
+  <div class="sg">
+    <div class="container sgf-head">
+      <a class="sg-back" href="/styleguide">← Style guide</a>
+      <h1>Page headers</h1>
+      <p class="text-muted">Inner-page header variants. Draft content.</p>
+      <div class="sgf-tabs" role="tablist" aria-label="Page header variants" data-sg-tabs>
+        {variants.map((v, i) => (
+          <button class="sgf-tab" type="button" role="tab" data-index={i} aria-selected={i === 0 ? 'true' : 'false'}>{v.label}</button>
+        ))}
+      </div>
+    </div>
+
+    <div class="sgf-panel" role="tabpanel" data-index="0">
+      <PageHeader
+        eyebrow="Pricing"
+        heading="Pricing that fits your operation"
+        subhead="From a single restaurant to a multi-location group. Every plan comes with our risk-free onboarding guarantee."
+      />
+    </div>
+    <div class="sgf-panel" role="tabpanel" data-index="1" hidden>
+      <PageHeaderHero
+        eyebrow="Independent restaurants"
+        heading="Run a tighter kitchen without the spreadsheets"
+        subhead="Stockifi connects your invoices, POS, and recipes so you see where margin leaks, then close the gap, without adding hours of admin."
+        cta={{ label: 'Book a demo', href: '/book-a-demo' }}
+      />
+    </div>
+  </div>
+
+  <SgThemeToggle />
+</Layout>
+
+<style>
+  .sgf-head { padding-top: var(--section-y); }
+  .sg-back { display: inline-block; margin-bottom: var(--space-16); color: var(--muted-foreground); font-size: var(--text-body-sm); }
+  .sg-back:hover { color: var(--foreground); text-decoration: none; }
+  .sgf-head h1 { margin-bottom: var(--space-8); }
+
+  .sgf-tabs { display: flex; flex-wrap: wrap; gap: var(--space-8); margin-top: var(--space-32); }
+  .sgf-tab {
+    padding: var(--space-8) var(--space-16);
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-full);
+    color: var(--muted-foreground);
+    font-family: var(--font-body);
+    font-size: var(--text-body-sm);
+    font-weight: var(--fw-medium);
+    cursor: pointer;
+  }
+  .sgf-tab:hover { color: var(--foreground); border-color: var(--muted-foreground); }
+  .sgf-tab[aria-selected='true'] { background: var(--primary); color: var(--primary-foreground); border-color: var(--primary); }
+
+  .sgf-panel[hidden] { display: none; }
+</style>
+
+<script>
+  document.querySelectorAll('[data-sg-tabs]').forEach((tablist) => {
+    const tabs = Array.from(tablist.querySelectorAll<HTMLButtonElement>('.sgf-tab'));
+    const panels = Array.from(document.querySelectorAll<HTMLElement>('.sgf-panel'));
+    tabs.forEach((tab, i) => {
+      tab.setAttribute('tabindex', i === 0 ? '0' : '-1');
+      tab.addEventListener('click', () => {
+        tabs.forEach((t, j) => {
+          const on = j === i;
+          t.setAttribute('aria-selected', String(on));
+          t.setAttribute('tabindex', on ? '0' : '-1');
+          if (panels[j]) panels[j].hidden = !on;
+        });
+        tab.focus();
+      });
+      tab.addEventListener('keydown', (e) => {
+        const keys = ['ArrowRight', 'ArrowLeft', 'Home', 'End'];
+        if (!keys.includes(e.key)) return;
+        e.preventDefault();
+        let next = i;
+        if (e.key === 'ArrowRight') next = (i + 1) % tabs.length;
+        else if (e.key === 'ArrowLeft') next = (i - 1 + tabs.length) % tabs.length;
+        else if (e.key === 'Home') next = 0;
+        else next = tabs.length - 1;
+        tabs[next].click();
+      });
+    });
+  });
+</script>

@@ -1,0 +1,82 @@
+---
+// Feature Layout 7 (Figma 80:1122): split showcase. Copy side = tagline + heading +
+// body + a 2-up grid of sub-features (icon + subheading + body) + two CTAs (primary +
+// ghost-with-arrow). Media side = a large image. Reusable on any page.
+import Button from '../Button.astro';
+import MediaPlaceholder from './MediaPlaceholder.astro';
+
+interface Sub { heading: string; body: string }
+interface Props {
+  tagline?: string;
+  heading: string;
+  body?: string;
+  items?: Sub[];
+  primary?: { label: string; href: string };
+  secondary?: { label: string; href: string };
+  image?: { src: string; alt: string };
+  imageSide?: 'left' | 'right';
+}
+const { tagline, heading, body, items = [], primary, secondary, image, imageSide = 'right' } = Astro.props;
+---
+
+<section class:list={['feature-showcase section', `fs7--${imageSide}`]}>
+  <div class="container fs7-grid">
+    <div class="fs7-copy">
+      {tagline && <p class="tagline">{tagline}</p>}
+      <h2 class="fs7-heading">{heading}</h2>
+      {body && <p class="fs7-body text-muted">{body}</p>}
+
+      {items.length > 0 && (
+        <div class="fs7-subs">
+          {items.map((s) => (
+            <div class="fs7-sub">
+              <span class="fs7-sub-icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" /><path d="m3.3 7 8.7 5 8.7-5" /><path d="M12 22V12" /></svg>
+              </span>
+              <h3 class="fs7-sub-h">{s.heading}</h3>
+              <p class="fs7-sub-b text-muted">{s.body}</p>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {(primary || secondary) && (
+        <div class="fs7-cta">
+          {primary && <Button variant="primary" href={primary.href}>{primary.label}</Button>}
+          {secondary && (
+            <Button variant="ghost" href={secondary.href}>
+              {secondary.label}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m9 6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </Button>
+          )}
+        </div>
+      )}
+    </div>
+
+    <div class="fs7-media">
+      {image ? <img src={image.src} alt={image.alt} /> : <MediaPlaceholder ratio="1 / 1" />}
+    </div>
+  </div>
+</section>
+
+<style>
+  .fs7-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-48); align-items: center; }
+  .fs7-heading { font-size: var(--text-h2); }
+  .tagline + .fs7-heading { margin-top: var(--space-16); }
+  .fs7-body { margin-top: var(--space-16); font-size: var(--text-body-lg); }
+
+  .fs7-subs { display: grid; grid-template-columns: 1fr; gap: var(--space-32); margin-top: var(--space-32); }
+  .fs7-sub-icon { display: inline-flex; color: var(--primary); }
+  .fs7-sub-h { margin-top: var(--space-12); font-size: var(--text-h6); }
+  .fs7-sub-b { margin-top: var(--space-8); font-size: var(--text-body-sm); line-height: var(--lh-body); }
+
+  .fs7-cta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-16); margin-top: var(--space-32); }
+  .fs7-media img { width: 100%; border-radius: var(--radius-lg); }
+
+  @media (min-width: 640px) { .fs7-subs { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1024px) {
+    .fs7-grid { grid-template-columns: 1fr 1fr; gap: var(--space-96); }
+    .fs7--left .fs7-copy { order: 2; }
+    .fs7--left .fs7-media { order: 1; }
+  }
+</style>

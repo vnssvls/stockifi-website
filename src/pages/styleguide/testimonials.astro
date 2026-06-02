@@ -1,0 +1,45 @@
+---
+// Styleguide → Testimonials. The testimonial slider (Figma 81:774). DRAFT quotes —
+// replace with real sourced customer stories before publish.
+import Layout from '../../layouts/Layout.astro';
+import SgThemeToggle from '../../components/SgThemeToggle.astro';
+import TestimonialSlider from '../../components/TestimonialSlider.astro';
+
+const testimonials = [
+  {
+    quote: '"Stockifi showed us a 4% gap between what we bought and what we actually sold in the first month. We closed most of it by the next stock count."',
+    name: 'Operations Lead',
+    position: 'Operations',
+    company: 'Multi-site group',
+    storyHref: '/customer-stories',
+  },
+  {
+    quote: '"Recipe costs update themselves now. We catch a supplier price rise the day it lands on an invoice, not weeks later at month-end."',
+    name: 'Head Chef',
+    position: 'Kitchen',
+    company: 'Independent restaurant',
+    storyHref: '/customer-stories',
+  },
+];
+---
+
+<Layout title="Testimonials — Style guide">
+  <div class="sg">
+    <div class="container sgf-head">
+      <a class="sg-back" href="/styleguide">← Style guide</a>
+      <h1>Testimonials</h1>
+      <p class="text-muted">Slider 1: content-first, media beside (desktop) / below (mobile); controls move to the top on mobile. Quotes are DRAFT placeholders.</p>
+    </div>
+
+    <TestimonialSlider items={testimonials} ctaLabel="Read story" />
+  </div>
+
+  <SgThemeToggle />
+</Layout>
+
+<style>
+  .sgf-head { padding-top: var(--section-y); padding-bottom: var(--space-16); }
+  .sg-back { display: inline-block; margin-bottom: var(--space-16); color: var(--muted-foreground); font-size: var(--text-body-sm); }
+  .sg-back:hover { color: var(--foreground); text-decoration: none; }
+  .sgf-head h1 { margin-bottom: var(--space-8); }
+</style>

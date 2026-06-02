@@ -1,0 +1,86 @@
+---
+// Styleguide → Grids. Grid layouts, switched via a tab bar.
+// Grid 1 · Benefit grid (BenefitGrid) — icon + heading + body, used on item pages.
+import Layout from '../../layouts/Layout.astro';
+import SgThemeToggle from '../../components/SgThemeToggle.astro';
+import BenefitGrid from '../../components/BenefitGrid.astro';
+
+const variants = [
+  { label: 'Grid 1 · Benefits' },
+];
+
+const benefits = [
+  { heading: 'Live recipe costs', body: 'Every recipe re-costs itself as supplier prices move, so margins stay current.' },
+  { heading: 'Invoices, read for you', body: 'Stockifi reads supplier invoices line by line. No retyping, no missed price changes.' },
+  { heading: 'Variance you can act on', body: 'See theoretical against actual consumption and find where the margin is going.' },
+  { heading: 'Set up with you', body: 'We build your recipe baseline together so the numbers are right from day one.' },
+];
+---
+
+<Layout title="Grids — Style guide">
+  <div class="sg">
+    <div class="container sgf-head">
+      <a class="sg-back" href="/styleguide">← Style guide</a>
+      <h1>Grids</h1>
+      <p class="text-muted">Grid layouts for benefits and features. Draft content.</p>
+      <div class="sgf-tabs" role="tablist" aria-label="Grid layouts" data-sg-tabs>
+        {variants.map((v, i) => (
+          <button class="sgf-tab" type="button" role="tab" data-index={i} aria-selected={i === 0 ? 'true' : 'false'}>{v.label}</button>
+        ))}
+      </div>
+    </div>
+
+    <div class="sgf-panel" role="tabpanel" data-index="0">
+      <section class="section">
+        <div class="container">
+          <BenefitGrid items={benefits} columns={4} />
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <SgThemeToggle />
+</Layout>
+
+<style>
+  .sgf-head { padding-top: var(--section-y); }
+  .sg-back { display: inline-block; margin-bottom: var(--space-16); color: var(--muted-foreground); font-size: var(--text-body-sm); }
+  .sg-back:hover { color: var(--foreground); text-decoration: none; }
+  .sgf-head h1 { margin-bottom: var(--space-8); }
+
+  .sgf-tabs { display: flex; flex-wrap: wrap; gap: var(--space-8); margin-top: var(--space-32); }
+  .sgf-tab {
+    padding: var(--space-8) var(--space-16);
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-full);
+    color: var(--muted-foreground);
+    font-family: var(--font-body);
+    font-size: var(--text-body-sm);
+    font-weight: var(--fw-medium);
+    cursor: pointer;
+  }
+  .sgf-tab:hover { color: var(--foreground); border-color: var(--muted-foreground); }
+  .sgf-tab[aria-selected='true'] { background: var(--primary); color: var(--primary-foreground); border-color: var(--primary); }
+
+  .sgf-panel[hidden] { display: none; }
+</style>
+
+<script>
+  document.querySelectorAll('[data-sg-tabs]').forEach((tablist) => {
+    const tabs = Array.from(tablist.querySelectorAll<HTMLButtonElement>('.sgf-tab'));
+    const panels = Array.from(document.querySelectorAll<HTMLElement>('.sgf-panel'));
+    tabs.forEach((tab, i) => {
+      tab.setAttribute('tabindex', i === 0 ? '0' : '-1');
+      tab.addEventListener('click', () => {
+        tabs.forEach((t, j) => {
+          const on = j === i;
+          t.setAttribute('aria-selected', String(on));
+          t.setAttribute('tabindex', on ? '0' : '-1');
+          if (panels[j]) panels[j].hidden = !on;
+        });
+        tab.focus();
+      });
+    });
+  });
+</script>

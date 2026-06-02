@@ -1,0 +1,50 @@
+---
+// Page header — Hero variant (Figma 80:1184). Split layout: tagline + heading + body
+// + a single CTA on one side, a large media on the other. For inner-page heroes
+// (solutions/product item pages). The centered variant lives in PageHeader.astro.
+import Button from '../Button.astro';
+import MediaPlaceholder from '../features/MediaPlaceholder.astro';
+
+interface Props {
+  eyebrow?: string;
+  heading: string;
+  subhead?: string;
+  cta?: { label: string; href: string };
+  image?: { src: string; alt: string };
+  imageSide?: 'left' | 'right';
+}
+const { eyebrow, heading, subhead, cta, image, imageSide = 'right' } = Astro.props;
+---
+
+<section class:list={['page-header-hero section', `phh--${imageSide}`]}>
+  <div class="container phh-grid">
+    <div class="phh-copy">
+      {eyebrow && <p class="tagline">{eyebrow}</p>}
+      <h1 class="phh-heading">{heading}</h1>
+      {subhead && <p class="phh-sub text-muted">{subhead}</p>}
+      {cta && (
+        <div class="phh-cta">
+          <Button variant="primary" href={cta.href}>{cta.label}</Button>
+        </div>
+      )}
+    </div>
+    <div class="phh-media">
+      {image ? <img src={image.src} alt={image.alt} /> : <MediaPlaceholder ratio="1 / 1" />}
+    </div>
+  </div>
+</section>
+
+<style>
+  .phh-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-48); align-items: center; }
+  .phh-heading { font-size: var(--text-h1); }
+  .tagline + .phh-heading { margin-top: var(--space-12); }
+  .phh-sub { margin-top: var(--space-16); max-width: 48ch; font-size: var(--text-body-lg); }
+  .phh-cta { margin-top: var(--space-32); }
+  .phh-media img { width: 100%; border-radius: var(--radius-lg); }
+
+  @media (min-width: 1024px) {
+    .phh-grid { grid-template-columns: 1fr 1fr; gap: var(--space-96); }
+    .phh--left .phh-copy { order: 2; }
+    .phh--left .phh-media { order: 1; }
+  }
+</style>
