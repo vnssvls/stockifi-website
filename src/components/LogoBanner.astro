@@ -1,0 +1,66 @@
+---
+// Home section 1.2 — social-proof logo banner: an auto-scrolling marquee of logos,
+// rendered as uniform white silhouettes so the mixed brand marks read on the dark
+// shell. Pauses on hover; static (wrapped) under prefers-reduced-motion.
+// Fed integration logos for now — swap to client logos when we have those assets.
+interface Logo { name: string; logo: string }
+interface Props {
+  label?: string;
+  logos: Logo[];
+}
+const { label, logos } = Astro.props;
+const loop = [...logos, ...logos]; // duplicated for a seamless -50% loop
+---
+
+<section class="logo-banner section-sm">
+  <div class="container">
+    {label && <p class="lb-label text-muted">{label}</p>}
+    <div class="lb-viewport">
+      <div class="lb-track">
+        {loop.map((l) => (
+          <img class="lb-logo" src={l.logo} alt={l.name} width="120" height="36" loading="lazy" />
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .lb-label {
+    text-align: center;
+    margin-bottom: var(--space-32);
+    font-size: var(--text-body-sm);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .lb-viewport {
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  }
+  .lb-track {
+    display: flex;
+    align-items: center;
+    gap: var(--space-64);
+    width: max-content;
+    animation: lb-scroll 45s linear infinite;
+  }
+  .lb-viewport:hover .lb-track { animation-play-state: paused; }
+  .lb-logo {
+    flex: none;
+    height: 30px;
+    width: auto;
+    filter: brightness(0) invert(1);
+    opacity: 0.5;
+    transition: opacity 0.2s ease;
+  }
+  .lb-logo:hover { opacity: 0.9; }
+
+  @keyframes lb-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .lb-track { animation: none; flex-wrap: wrap; justify-content: center; width: auto; }
+  }
+</style>

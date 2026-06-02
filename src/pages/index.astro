@@ -1,18 +1,122 @@
 ---
+// Home page (DC-471, blueprint blueprints/home.md). Assembled from existing
+// components with DRAFT copy for V/Simon review. Section arc per V's structure:
+// hero → logo banner → how-it-works (Feature v1) → product pillars (Feature v2) →
+// [customer stories slot] → segments (Feature v3) → integrations →
+// [risk-reversal slot] → FAQ → CTA (v1). Footer from layout.
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
+import LogoBanner from '../components/LogoBanner.astro';
+import FeatureList from '../components/features/FeatureList.astro';
+import FeatureSplit from '../components/features/FeatureSplit.astro';
+import FeatureSteps from '../components/features/FeatureSteps.astro';
+import SectionPlaceholder from '../components/SectionPlaceholder.astro';
+import IntegrationGrid from '../components/integrations/IntegrationGrid.astro';
+import CtaBand from '../components/CtaBand.astro';
+import FaqSplit from '../components/faq/FaqSplit.astro';
+import integrations from '../data/integrations-home.json';
+
+// How it works — Feature variant 1 (interactive list + swapping media)
+const howItWorks = [
+  { heading: 'Set up your recipes', body: 'Import recipes and ingredient costs. This becomes the baseline every calculation runs from.' },
+  { heading: 'Connect your accounting', body: 'Stockifi reads supplier invoices line by line and keeps recipe costs current as prices move.' },
+  { heading: 'Connect your POS', body: 'Sales import automatically, so theoretical usage can be measured against what actually sold.' },
+  { heading: 'Count stock, see variance', body: 'Stock counts in the app reveal actual versus theoretical consumption, waste, and price drift.' },
+];
+
+// Product pillars — Feature variant 2 (heading + checklist + media)
+const pillarItems = [
+  'Recipe costing that moves with your supplier prices',
+  'Supplier price tracking, read line by line from your invoices',
+  'Theoretical against actual consumption, straight from your POS',
+  'Inventory counts with variance, waste, and price drift in one place',
+];
+
+// Segments — Feature variant 3 (connected vertical timeline)
+const segments = [
+  { heading: 'Independent restaurants', body: 'Tighter food cost without living in spreadsheets.' },
+  { heading: 'Restaurant groups', body: 'Consolidated cost visibility across every location.' },
+  { heading: 'Hotels with F&B', body: 'Cost control across full food and beverage operations.' },
+  { heading: 'Bars', body: 'Track pour cost and spot variance behind the bar.' },
+];
+
+const faqs = [
+  { question: 'How does Stockifi connect to my systems?', answer: 'It reads your accounting software for supplier invoices and your POS for sales. We support 30+ accounting and 40+ POS integrations; the full list is on the integrations page.' },
+  { question: 'How long does it take to set up?', answer: 'Most operations are running quickly once recipes and integrations are connected. We set the recipe baseline with you so the numbers are right from day one.' },
+  { question: 'What does it cost?', answer: 'Pricing depends on the size and complexity of your setup, typically between €150 and €400 per month. We look at it together on a short call.' },
+  { question: 'Is my restaurant a good fit?', answer: 'Stockifi suits established restaurants and groups that have recipes and an accounting or POS system. Very early-stage operations usually are not the right fit yet.' },
+  { question: 'Can my team use it in our language?', answer: 'Your data stays in your language and the app modules are in English. We run a short training so the team is comfortable from the start.' },
+];
 ---
 
 <Layout
   title="Restaurant Food Cost Software for European Operators | Stockifi"
   description="See exactly where your food cost is leaking. Stockifi connects invoices, POS, and recipes so European operators track actual food cost, not guesswork."
 >
-  <!-- DRAFT hero copy (blueprint angle: margin-leak outcome + EU fit). For V/Simon review. -->
+  <!-- 1. Hero — DRAFT copy (blueprint angle: margin-leak outcome + EU fit) -->
   <Hero
     tagline="For European hospitality operators"
     heading="See exactly where your food cost is leaking."
     subhead="Stockifi connects your invoices, POS, and recipes so you track actual food cost instead of guessing at it."
-    primary={{ label: 'Book a demo', href: '/contact' }}
+    primary={{ label: 'Book a demo', href: '/book-a-demo' }}
     secondary={{ label: 'See how it works', href: '#how-it-works' }}
   />
+
+  <!-- 1.2 Social-proof logo banner (integration logos for now; swap to client logos later) -->
+  <LogoBanner label="Connects with the tools you already run" logos={integrations} />
+
+  <!-- 2. How it works — Feature variant 1 -->
+  <div id="how-it-works" class="hp-anchor">
+    <FeatureList tagline="How it works" items={howItWorks} />
+  </div>
+
+  <!-- 3. Product pillars — Feature variant 2 -->
+  <FeatureSplit
+    tagline="Product"
+    heading="Everything you need to control food cost"
+    body="Stockifi connects what you buy, what you sell, and what you should have used, so the gaps show up as numbers."
+    items={pillarItems}
+    imageSide="right"
+  />
+
+  <!-- 4. Customer stories — SLOT (own design pending) -->
+  <SectionPlaceholder label="Customer stories" note="Section slot — quotes + results, built next from the customer-stories content." />
+
+  <!-- 5. Segments — Feature variant 3 -->
+  <FeatureSteps
+    tagline="Who it's for"
+    heading="Built for how your operation runs"
+    steps={segments}
+  />
+
+  <!-- 6. Integrations -->
+  <IntegrationGrid
+    heading="Use Stockifi with"
+    defaultSubject="your existing tools"
+    cta={{ label: 'View all integrations', href: '/integrations' }}
+    items={integrations}
+  />
+
+  <!-- 7. Risk-reversal band — SLOT (own design pending) -->
+  <SectionPlaceholder label="Risk-reversal band" note="Section slot — slim €3,000 / 30-day risk-free guarantee, kept low near the close." />
+
+  <!-- 8. FAQ — variant 1 (split: intro + contact left, accordion right) -->
+  <FaqSplit
+    heading="Questions operators ask"
+    body="The things operators check before a demo. Still unsure? Reach out and we'll help."
+    contact={{ label: 'Contact us', href: '/contact' }}
+    items={faqs}
+  />
+
+  <!-- 9. Final CTA — variant 1 (Book a demo). Swap to CtaEmail (v2) for a photo-backed finish. -->
+  <CtaBand
+    heading="See where your margin is leaking"
+    subhead="Book a short call and we'll map it with you using your own numbers."
+    primary={{ label: 'Book a demo', href: '/book-a-demo' }}
+  />
 </Layout>
+
+<style>
+  /* Offset anchored scroll so the floating nav doesn't cover the section top */
+  .hp-anchor { scroll-margin-top: var(--space-96); }
+</style>

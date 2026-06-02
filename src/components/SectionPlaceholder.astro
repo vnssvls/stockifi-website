@@ -1,0 +1,35 @@
+---
+// Review-only placeholder marking a section that gets its own build later (its
+// wireframe/component is still pending). Keeps the page rhythm visible without
+// faking content. Remove when the real section lands.
+interface Props {
+  label: string;
+  note?: string;
+}
+const { label, note } = Astro.props;
+---
+
+<section class="section-slot section">
+  <div class="container">
+    <div class="ss-inner">
+      <p class="ss-label">{label}</p>
+      {note && <p class="ss-note text-muted">{note}</p>}
+    </div>
+  </div>
+</section>
+
+<style>
+  .ss-inner {
+    padding: var(--space-64) var(--space-32);
+    border: 1px dashed var(--border);
+    border-radius: var(--radius-lg);
+    text-align: center;
+  }
+  .ss-label {
+    font-family: var(--font-heading);
+    font-weight: var(--fw-semibold);
+    font-size: var(--text-h5);
+    color: var(--muted-foreground);
+  }
+  .ss-note { margin-top: var(--space-8); font-size: var(--text-body-sm); }
+</style>
