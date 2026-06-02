@@ -48,8 +48,9 @@ const { tagline, heading, subhead, primary, secondary, image, wide = false } = A
 </section>
 
 <style>
-  /* Tight top so the hero sits just under the nav (beehiv-style), more room below. */
-  .hero { padding-top: var(--space-48); padding-bottom: var(--section-y); }
+  /* Tight top so the hero sits just under the nav (beehiv-style); modest bottom so the
+     logo banner clears the fold. */
+  .hero { padding-top: var(--space-48); padding-bottom: var(--space-64); }
   .hero-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -91,6 +92,6 @@ const { tagline, heading, subhead, primary, secondary, image, wide = false } = A
        (keeps the .container-wide token intact for other uses). */
     .container-wide.hero-grid { padding-inline: calc(var(--gutter-wide) + 60px); }
     .hero-media img,
-    .hero-placeholder { aspect-ratio: 1 / 1; }
+    .hero-placeholder { aspect-ratio: 16 / 10; }
   }
 </style>
