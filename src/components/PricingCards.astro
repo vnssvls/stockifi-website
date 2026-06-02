@@ -1,0 +1,144 @@
+---
+// Pricing plan cards. Framer-style nudge: the featured (recommended) plan gets a
+// tinted surface + glow + a filled primary button, while the others stay dark with
+// a quieter secondary button — so the layout itself points at the recommended tier.
+// No prices, no billing toggle (we don't use them). Prop-driven + reusable.
+import Button from './Button.astro';
+
+interface Plan {
+  name: string;
+  description: string;
+  inherits?: string;          // renders "Everything in <inherits>, plus:" as the first item
+  features: string[];
+  featured?: boolean;
+  badge?: string;
+  cta: { label: string; href: string };
+}
+interface Props {
+  plans: Plan[];
+}
+const { plans } = Astro.props;
+---
+
+<section class="pricing-cards section">
+  <div class="container pc-grid">
+    {plans.map((p) => (
+      <article class:list={['pc-card', p.featured && 'pc-card--featured']}>
+        {p.badge && <span class="pc-badge">{p.badge}</span>}
+
+        <div class="pc-head">
+          <h3 class="pc-name">{p.name}</h3>
+          <p class="pc-desc text-muted">{p.description}</p>
+        </div>
+
+        <ul class="pc-features">
+          {p.inherits && (
+            <li class="pc-feature pc-feature--lead">
+              <svg class="pc-check" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 4.5 4.5L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              <span>Everything in <strong>{p.inherits}</strong>, plus:</span>
+            </li>
+          )}
+          {p.features.map((f) => (
+            <li class="pc-feature">
+              <svg class="pc-check" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 4.5 4.5L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              <span>{f}</span>
+            </li>
+          ))}
+        </ul>
+
+        <div class="pc-cta">
+          <Button
+            variant={p.featured ? 'primary' : 'secondary'}
+            href={p.cta.href}
+            block
+            class={p.featured ? undefined : 'pc-btn-invert'}
+          >{p.cta.label}</Button>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
+
+<style>
+  .pc-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-24);
+    padding-top: var(--space-16); /* room for the floating badge */
+  }
+
+  .pc-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-32);
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+  }
+  /* Recommended tier: tinted surface + accent border + glow */
+  .pc-card--featured {
+    background: color-mix(in srgb, var(--primary) 12%, var(--card));
+    border-color: color-mix(in srgb, var(--primary) 50%, transparent);
+    /* stylelint-disable-next-line scale-unlimited/declaration-strict-value */
+    box-shadow: 0 16px 56px -20px color-mix(in srgb, var(--primary) 50%, transparent);
+  }
+
+  .pc-badge {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: var(--space-8) var(--space-16);
+    background: var(--primary);
+    border-radius: var(--radius-full);
+    color: var(--primary-foreground);
+    font-size: var(--text-caption);
+    font-weight: var(--fw-semibold);
+    white-space: nowrap;
+  }
+
+  .pc-head { padding-bottom: var(--space-24); border-bottom: 1px solid var(--border); }
+  .pc-name { font-family: var(--font-body); font-weight: var(--fw-semibold); font-size: var(--text-h5); color: var(--primary-foreground); }
+  .pc-desc { margin-top: var(--space-8); font-size: var(--text-body-sm); max-width: 30ch; }
+
+  .pc-features {
+    margin: var(--space-24) 0 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-12);
+  }
+  .pc-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-12);
+    font-size: var(--text-body-sm);
+    color: var(--foreground);
+  }
+  .pc-feature--lead { color: var(--muted-foreground); }
+  .pc-feature strong { color: var(--foreground); font-weight: var(--fw-semibold); }
+  .pc-check { flex: none; width: 18px; height: 18px; margin-top: 2px; color: var(--primary); }
+
+  /* Push the button to the bottom so all cards align */
+  .pc-cta { margin-top: auto; padding-top: var(--space-32); }
+
+  /* Non-featured cards: an inverted-primary button — white fill by default (primary's
+     hover look), flipping to primary fill on hover (primary's default look). So all
+     three CTAs read as filled, with only the middle staying primary-by-default. */
+  .pricing-cards :global(.pc-btn-invert) {
+    background: var(--foreground);
+    color: var(--background);
+    border-color: var(--foreground);
+  }
+  .pricing-cards :global(.pc-btn-invert:hover) {
+    background: var(--primary);
+    color: var(--primary-foreground);
+    border-color: var(--primary);
+  }
+
+  @media (min-width: 1024px) {
+    .pc-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+</style>

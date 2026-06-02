@@ -1,0 +1,143 @@
+---
+// Pricing page (Figma 10:1444 / page 3:874). Sections: page header → pricing cards →
+// static logo banner → feature columns (Feature v6) → FAQ (v1 split) → CTA (v1 band).
+// New components this page: PricingCards, FeatureColumns (v6), LogoBanner static variant.
+// DRAFT copy; plan content from CLAUDE.md.
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import PricingCards from '../components/PricingCards.astro';
+import LogoBanner from '../components/LogoBanner.astro';
+import FeatureColumns from '../components/features/FeatureColumns.astro';
+import FaqSplit from '../components/faq/FaqSplit.astro';
+import CtaBand from '../components/CtaBand.astro';
+import integrations from '../data/integrations-home.json';
+
+const plans = [
+  {
+    name: 'Automated',
+    description: 'For restaurants that want to eliminate manual inventory tasks.',
+    features: [
+      'Mobile & web stock count',
+      'Offline mode & real-time sync',
+      'Recipe setup & ingredient cost tracking',
+      'Automated invoice processing',
+      '30+ accounting integrations',
+      'Advanced support',
+    ],
+    cta: { label: 'Get Automated', href: '/book-a-demo' },
+  },
+  {
+    name: 'Full Control',
+    description: 'For businesses that want complete visibility over costs and profits.',
+    inherits: 'Automated',
+    features: [
+      'Recipe cost calculations',
+      'Variance & wastage reports',
+      'Profit increase reports',
+      '40+ POS integrations',
+      'Dedicated customer care',
+    ],
+    featured: true,
+    badge: 'Most Popular',
+    cta: { label: 'Get Full Control', href: '/book-a-demo' },
+  },
+  {
+    name: 'Custom',
+    description: 'For multi-location businesses that need tailored solutions.',
+    inherits: 'Full Control',
+    features: [
+      'Multichannel sales integrations',
+      'Organization setup',
+      'Custom integrations',
+      'Enterprise-level data & reporting',
+      'Quarterly business review with Stockifi experts',
+    ],
+    cta: { label: 'Get a Quote', href: '/contact' },
+  },
+];
+
+const featureCols = [
+  { eyebrow: 'Price transparency', heading: 'Catch supplier price rises early', body: 'Stockifi reads every invoice line by line, so cost increases surface before they erode your margin.', link: { label: 'Learn more', href: '/product/supplier-price-tracking' } },
+  { eyebrow: 'Consumption control', heading: 'See theoretical against actual', body: 'Compare what should have been used against what actually sold, and find over-portioning and waste.', link: { label: 'Learn more', href: '/product/pos-integration' } },
+  { eyebrow: 'Full visibility', heading: 'One view across locations', body: 'Consolidated cost and variance reporting, whether you run one site or twenty.', link: { label: 'Learn more', href: '/solutions/restaurant-groups' } },
+];
+
+const faqs = [
+  { question: 'How is pricing determined?', answer: 'Pricing depends on the size and complexity of your setup, typically between €150 and €400 per month. We look at it together on a short call, and check whether Stockifi is a good fit.' },
+  { question: 'Is the guarantee performance-based pricing?', answer: 'No. If Stockifi doesn’t uncover at least €3,000 in hidden losses in your first 30 days, you pay nothing. It is a risk-free onboarding guarantee, not performance pricing.' },
+  { question: 'Which plan is right for my restaurant?', answer: 'Most operators start on Automated or Full Control. Multi-location groups that need consolidated reporting and custom integrations usually need Custom. We will recommend a fit on the call.' },
+  { question: 'What systems does Stockifi integrate with?', answer: 'We support 30+ accounting and 40+ POS integrations. The full list is on the integrations page, and custom integrations are available on the Custom plan.' },
+  { question: 'Can my team use it in our language?', answer: 'Your data stays in your language and the app modules are in English. We run a short training so the team is comfortable from the start.' },
+];
+---
+
+<Layout
+  title="Pricing — Restaurant Food Cost Software | Stockifi"
+  description="Plans for every operation, from single restaurants to multi-location groups. Pricing typically ranges €150–€400/month with a risk-free onboarding guarantee."
+>
+  <!-- Pricing hero: header + cards share one decorative gradient backdrop that
+       bleeds behind both sections (not clipped to either). -->
+  <div class="pricing-hero">
+    <!-- 1. Page header -->
+    <PageHeader
+      eyebrow="Pricing"
+      heading="Pricing that fits your operation"
+      subhead="From a single restaurant to a multi-location group. Every plan comes with our risk-free onboarding guarantee."
+    />
+
+    <!-- 1b. Pricing cards -->
+    <PricingCards plans={plans} />
+  </div>
+
+  <!-- 2. Logo banner — static variant -->
+  <LogoBanner variant="static" label="Trusted by 500+ restaurants across Europe" logos={integrations} />
+
+  <!-- 3. Feature section — Feature variant 6 (columns) -->
+  <FeatureColumns
+    tagline="Why Stockifi"
+    heading="Where the plans pay for themselves"
+    columns={featureCols}
+  />
+
+  <!-- 4. FAQ — variant 1 (split) -->
+  <FaqSplit
+    heading="Pricing questions"
+    body="What operators ask before they choose a plan. Still unsure? Reach out and we'll help."
+    contact={{ label: 'Contact us', href: '/contact' }}
+    items={faqs}
+  />
+
+  <!-- 5. CTA — variant 1 (band), two actions per the wireframe -->
+  <CtaBand
+    heading="Ready to see it on your own numbers?"
+    subhead="Book a demo and we'll map your margin leaks in the first 30 days."
+    primary={{ label: 'Get started', href: '/book-a-demo' }}
+    secondary={{ label: 'Chat to sales', href: '/contact' }}
+  />
+</Layout>
+
+<style>
+  /* Brand gradient glow (from the ads-LP) bleeds behind BOTH the page header and the
+     pricing cards as one continuous backdrop — not clipped to either section. */
+  .pricing-hero { position: relative; isolation: isolate; }
+  .pricing-hero::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: -6%;
+    transform: translateX(-50%);
+    width: min(1200px, 150%);
+    aspect-ratio: 600 / 500;
+    background-image: url('/media/gradient-centered.png');
+    background-size: contain;
+    background-position: center top;
+    background-repeat: no-repeat;
+    opacity: 0.4;
+    z-index: -1;
+    pointer-events: none;
+  }
+  /* Header + cards read as one block: collapse the stacked section paddings between
+     them (they each carry full section padding otherwise → an awkward double gap). */
+  .pricing-hero :global(.page-header) { padding-bottom: var(--space-32); }
+  .pricing-hero :global(.pricing-cards) { padding-top: 0; }
+</style>

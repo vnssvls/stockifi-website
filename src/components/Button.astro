@@ -35,16 +35,20 @@ const tagProps = href ? { href } : { type };
     gap: var(--space-8);
     padding: var(--space-12) var(--space-24);
     border: 1px solid transparent;
-    border-radius: var(--radius-full);
+    /* Finite radius that still clamps to a pill on a ~40px-tall button, so the
+       hover morph to --radius-md animates through the visible range (a true pill
+       at 9999px would just snap at the very end). */
+    border-radius: var(--radius-xl);
     font-family: var(--font-body);
     font-size: var(--text-body-sm);
     font-weight: var(--fw-semibold);
     line-height: 1;
     cursor: pointer;
     white-space: nowrap;
-    transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+    transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease, border-radius 0.3s ease;
   }
-  .btn:hover { text-decoration: none; }
+  /* Hover tightens the pill into a soft rounded-rect */
+  .btn:hover { text-decoration: none; border-radius: var(--radius-md); }
   .btn-block { width: 100%; }
 
   .btn-primary {

@@ -1,0 +1,74 @@
+---
+// Feature Layout 6 — section heading + a row of text columns, each with an eyebrow,
+// heading, body, and a "Learn more" link. No media (text-forward). From the pricing
+// wireframe "Highlight key features…" block; reusable on any page.
+interface Column {
+  eyebrow?: string;
+  heading: string;
+  body: string;
+  link?: { label: string; href: string };
+}
+interface Props {
+  tagline?: string;
+  heading: string;
+  body?: string;
+  columns: Column[];
+}
+const { tagline, heading, body, columns } = Astro.props;
+---
+
+<section class="feature-columns section">
+  <div class="container">
+    <div class="fcol-head">
+      {tagline && <p class="tagline">{tagline}</p>}
+      <h2>{heading}</h2>
+      {body && <p class="fcol-sub text-muted">{body}</p>}
+    </div>
+
+    <div class="fcol-grid">
+      {columns.map((c) => (
+        <article class="fcol-item">
+          {c.eyebrow && <p class="fcol-eyebrow">{c.eyebrow}</p>}
+          <h3 class="fcol-title">{c.heading}</h3>
+          <p class="fcol-body text-muted">{c.body}</p>
+          {c.link && (
+            <a class="fcol-link" href={c.link.href}>
+              {c.link.label}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m9 6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </a>
+          )}
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .fcol-head { max-width: 36ch; margin-bottom: var(--space-64); }
+  .tagline + h2 { margin-top: var(--space-16); }
+  .fcol-sub { margin-top: var(--space-16); font-size: var(--text-body-lg); }
+
+  .fcol-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-48) var(--space-32); }
+  .fcol-item { display: flex; flex-direction: column; gap: var(--space-8); }
+  .fcol-eyebrow {
+    font-size: var(--text-body-sm);
+    font-weight: var(--fw-semibold);
+    color: var(--muted-foreground);
+  }
+  .fcol-title { font-size: var(--text-h5); }
+  .fcol-body { font-size: var(--text-body-sm); line-height: var(--lh-body); }
+  .fcol-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-4);
+    margin-top: var(--space-4);
+    color: var(--primary);
+    font-weight: var(--fw-semibold);
+    font-size: var(--text-body-sm);
+  }
+  .fcol-link:hover { text-decoration: none; gap: var(--space-8); }
+
+  @media (min-width: 768px) {
+    .fcol-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+</style>

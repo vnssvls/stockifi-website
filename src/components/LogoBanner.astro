@@ -1,23 +1,26 @@
 ---
-// Home section 1.2 — social-proof logo banner: an auto-scrolling marquee of logos,
-// rendered as uniform white silhouettes so the mixed brand marks read on the dark
-// shell. Pauses on hover; static (wrapped) under prefers-reduced-motion.
+// Logo banner — social-proof logo row, rendered as uniform white silhouettes so the
+// mixed brand marks read on the dark shell.
+//   variant="scroll" (default) — auto-scrolling marquee, pauses on hover.
+//   variant="static"          — one centered, wrapping row, no motion.
 // Fed integration logos for now — swap to client logos when we have those assets.
 interface Logo { name: string; logo: string }
 interface Props {
   label?: string;
   logos: Logo[];
+  variant?: 'scroll' | 'static';
 }
-const { label, logos } = Astro.props;
-const loop = [...logos, ...logos]; // duplicated for a seamless -50% loop
+const { label, logos, variant = 'scroll' } = Astro.props;
+// Marquee needs the list duplicated for a seamless -50% loop; static shows it once.
+const items = variant === 'scroll' ? [...logos, ...logos] : logos;
 ---
 
-<section class="logo-banner section-sm">
+<section class:list={['logo-banner section-sm', `lb--${variant}`]}>
   <div class="container">
     {label && <p class="lb-label text-muted">{label}</p>}
     <div class="lb-viewport">
       <div class="lb-track">
-        {loop.map((l) => (
+        {items.map((l) => (
           <img class="lb-logo" src={l.logo} alt={l.name} width="120" height="36" loading="lazy" />
         ))}
       </div>
@@ -33,19 +36,6 @@ const loop = [...logos, ...logos]; // duplicated for a seamless -50% loop
     letter-spacing: 0.04em;
     text-transform: uppercase;
   }
-  .lb-viewport {
-    overflow: hidden;
-    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-  }
-  .lb-track {
-    display: flex;
-    align-items: center;
-    gap: var(--space-64);
-    width: max-content;
-    animation: lb-scroll 45s linear infinite;
-  }
-  .lb-viewport:hover .lb-track { animation-play-state: paused; }
   .lb-logo {
     flex: none;
     height: 30px;
@@ -56,11 +46,35 @@ const loop = [...logos, ...logos]; // duplicated for a seamless -50% loop
   }
   .lb-logo:hover { opacity: 0.9; }
 
+  /* ── Scroll variant ── */
+  .lb--scroll .lb-viewport {
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  }
+  .lb--scroll .lb-track {
+    display: flex;
+    align-items: center;
+    gap: var(--space-64);
+    width: max-content;
+    animation: lb-scroll 45s linear infinite;
+  }
+  .lb--scroll .lb-viewport:hover .lb-track { animation-play-state: paused; }
+
+  /* ── Static variant ── */
+  .lb--static .lb-track {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-32) var(--space-64);
+  }
+
   @keyframes lb-scroll {
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
   }
   @media (prefers-reduced-motion: reduce) {
-    .lb-track { animation: none; flex-wrap: wrap; justify-content: center; width: auto; }
+    .lb--scroll .lb-track { animation: none; flex-wrap: wrap; justify-content: center; width: auto; }
   }
 </style>
