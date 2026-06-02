@@ -24,32 +24,17 @@ webflowId: "69573e4de2943bf15273f719"
 
 When Kim Søyland and Jama Awaleh founded byOslo, they built it around a vision of restoring historic Oslo buildings and turning them into venues that combine daily restaurant operations with event and conference spaces. Today, they manage nine locations across central Oslo, each with its own concept and revenue model. That dual-stream business of regular service plus venue rental creates operational complexity that requires sharp financial visibility.
 
-‍
-
 Before Stockifi, tracking costs meant manual processes and delayed insights. By the time reports arrived, opportunities to adjust had already passed. Kim and Jama needed a system that could keep pace with their operation's speed and scale.
-
-‍
 
 Stockifi delivered that through full automation. It connects directly to byOslo's accounting and POS systems, processing all purchases and sales automatically. No manual data entry. No reconciliation gaps. Just real-time cost tracking that reflects what's actually happening across all venues.
 
-‍
-
 "For us, it's fully automated, registering all purchases and sales directly from our accounting system and our POS," Kim and Jama explain. That automation freed up time previously spent on administrative work and gave them immediate visibility into cost patterns and profit drivers.
-
-‍
 
 The results showed up quickly. "Thanks to Stockifi, our profit margins have increased by 2%," they report. In the restaurant industry where margins are notoriously thin, a 2% improvement is significant. That gain came from having the right information at the right time to make better operational decisions.
 
-‍
-
 "It's more than just an inventory tool, it provides insights that help us focus on profit-driving areas," Kim and Jama add. The system is not limited to only tracking their inventory. It reveals where lost profitability lives across the business to help them direct their attention and resources where they matter most.
-
-‍
 
 For the team at byOslo, automation was not about replacing work but about doing better work. The time they saved on manual tracking now goes into making smarter decisions for their current nine venues. A number that we at Stockifi bet will be higher in the not-so-distant future.
 
-‍
-
 Next time you're in Oslo, visit their new place Libertine Vannkunsten in Bjørvika and enjoy modern dishes with inspiration from French and Nordic cuisine. Or if you're planning something bigger, Oslo Event Hub is their dedicated venue for conferences and gatherings. Explore their full collection at *byoslo.com*.
 
-‍

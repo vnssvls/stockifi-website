@@ -21,19 +21,11 @@ Michelin restaurants may seem synonymous with luxury and exclusivity, but you do
 
 Here’s your guide to 15 affordable Michelin restaurants that prove exceptional dining doesn’t have to come with a hefty price tag.
 
-‍
-
 ### **A Quick History of Michelin Stars**
-
-‍
 
 The Michelin Guide started in 1900 as a travel guide by the Michelin tire company, aiming to encourage road trips. It evolved into a prestigious rating system, awarding one to three stars to restaurants that meet rigorous standards of quality, creativity, and consistency. Today, a Michelin star remains one of the highest honors in the culinary world.
 
-‍
-
 ### **Affordable Michelin Restaurants in Europe and the UK**
-
-‍
 
 1. **Hostellerie la Montagne (France)** - ~€25 tasting menus featuring local ingredients.
 2. **Tim Raue (Berlin, Germany)** - Asian-inspired dishes for ~€50.
@@ -48,11 +40,7 @@ The Michelin Guide started in 1900 as a travel guide by the Michelin tire compan
 
 ![__wf_reserved_inherit](/media/blog/686b5b3cc66c4f12c64edb8b_2.png)
 
-‍
-
 ### **Affordable Michelin Restaurants Globally**
-
-‍
 
 11. **Hawker Chan (Singapore)** - Price: ~€5. The world’s first Michelin-starred street food, known for its legendary soy sauce chicken rice.
 12. **Liao Fan Hong Kong Soya Sauce Chicken Rice & Noodle (Hong Kong)** - Price: ~€7. Affordable comfort food with Michelin recognition.
@@ -60,15 +48,9 @@ The Michelin Guide started in 1900 as a travel guide by the Michelin tire compan
 14. **Hill Street Tai Hwa Pork Noodles (Singapore)** - Price: ~€6. Traditional noodles with a Michelin twist.
 15. **Din Tai Fung (Taiwan)** - Price: ~€15. Famous for their impeccable xiaolongbao (soup dumplings).
 
-‍
-
 ![__wf_reserved_inherit](/media/blog/686b5b511036f1084e4f3e1d_3.png)
 
-‍
-
 ### **Insider Tips for Budget-Friendly Michelin Dining**
-
-‍
 
 1. **Look for lunch deals**: Many Michelin-starred restaurants offer more affordable set menus during lunch hours.
 2. **Book early**: These spots fill up quickly, so plan ahead.
@@ -78,4 +60,3 @@ The Michelin Guide started in 1900 as a travel guide by the Michelin tire compan
 
 Dining at a Michelin-starred restaurant doesn’t have to be a once-in-a-lifetime splurge. With these affordable options, you can enjoy world-class cuisine without breaking the bank. Which one will you try first?
 
-‍

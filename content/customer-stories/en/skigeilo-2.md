@@ -24,17 +24,11 @@ webflowId: "6a01d443466048287065a0ac"
 
 At a mountain resort like SkiGeilo, goods are coming in around the clock. Across eight dining venues running through a full ski season, invoices arrive constantly from multiple suppliers, and trust is built into the process. Most of the time, you trust that what's been charged is what was agreed. You have too much else to manage to scrutinize every line.
 
-‍
-
 That's exactly the environment where an error like this goes unnoticed. A supplier had charged SkiGeilo a dramatically inflated price on a single item. The invoice had already gone through. The charge had already landed. And without Stockifi monitoring price patterns across their purchasing data, it would have stayed that way.
-
-‍
 
 The system flagged it as an unusual spike, and Tommy Verpe's team got notified. They pulled the invoice, investigated the discrepancy, and took it back to the supplier. The full 46,000 NOK was recovered.
 
 "A 46,000 NOK error on one invoice is exactly the kind of thing that's easy to miss when you're busy running day-to-day operations," Tommy says.
-
-‍
 
 "Stockifi caught it automatically, notified us, and we were able to recover the full amount from the supplier. That single alert alone paid for the system many times over. And this was just one item, on one invoice, from one supplier. We're incredibly happy to have Stockifi in our corner, reviewing every invoice line so nothing slips through."
 

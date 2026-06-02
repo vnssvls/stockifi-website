@@ -21,8 +21,6 @@ A restaurant group running five sites in 2018 looked very different in its back 
 
 That setup is being dismantled. Across Europe, restaurant groups are rebuilding their **restaurant tech stack** around a smaller number of systems that share data automatically. The trend is consolidation: fewer tools, deeper integration, less reconciliation. The motivation is straightforward. The old model creates margin leakage in places nobody is watching, and the cost of fragmentation has become harder to justify as integration options have matured.
 
-‍
-
 ## The 2020s Back Office Most Groups Still Have
 
 The typical multi-site operator still runs five or six systems that do not connect: a POS for sales, accounting software for invoices and reporting, a stock count process that lives in a spreadsheet or a separate app, a recipe-costing setup that is often manual and out of date, a supplier ordering layer split between portals and email, and a reporting layer usually built in Excel by whoever has the patience.
@@ -31,8 +29,6 @@ Each tool works on its own terms. The problem is the seams between them. Sales d
 
 This is the **hospitality tech stack** most groups inherited from a decade of point-solution adoption. It worked when restaurants ran a single site and the owner held the gaps together by memory. It does not work across five or fifteen locations.
 
-‍
-
 ## What Good Integration Looks Like
 
 The pattern emerging across operators who have rebuilt their stack is consistent. They keep two anchors and connect everything else around them. The POS stays. The accounting system stays. Inventory, recipe costing, supplier price data, and reporting move into a layer that reads from both anchors and writes back where needed.
@@ -40,8 +36,6 @@ The pattern emerging across operators who have rebuilt their stack is consistent
 The shift is about closing the gaps between the anchors so that data flows in one direction rather than being keyed in three times. The anchors themselves stay where they are. Operators have already invested years of process around the POS and the accounting system, and the rebuild leaves both in place while wiring the connective layer underneath.
 
 A connected stack means an invoice processed in the accounting system also updates the recipe cost. A sale rung through the POS also draws down theoretical inventory. A stock count produces a variance number that can be traced to a specific ingredient, a specific supplier, and a specific dish. **Restaurant software consolidation** is the operational expression of that idea: fewer systems, more connections, less manual reconciliation.
-
-‍
 
 ## Why POS and Accounting Stay
 
@@ -53,8 +47,6 @@ Accounting software is the same case from the other side. Invoices, payments, pa
 
 What changes is what sits between them. The connective layer is where consolidation actually happens.
 
-‍
-
 ## Why Inventory Is the Connective Tissue
 
 Inventory is the layer that touches every other part of the stack. It depends on recipes, which depend on supplier prices, which arrive through accounting. It produces variance, which only makes sense when matched against sales, which come from the POS. Build inventory properly and it pulls the rest of the **restaurant inventory software stack** into a single view almost by default.
@@ -64,8 +56,6 @@ Three things make this work. The first is automated invoice processing, so suppl
 When those three pieces connect, the operator gets a view that the old stack could never produce. They can see what was bought, what was sold, what should have been consumed, and what was actually counted. The gap between those numbers is where margin leaks, and for the first time it becomes traceable.
 
 This is why so many groups now treat inventory as the integration hub rather than as a side process. Once inventory connects properly to POS and accounting, the rest of the reporting layer largely takes care of itself. You can read more about how this plays out across multiple sites in our guide on [food cost management for restaurant groups](https://stockifi.io/blog/multi-location-food-cost-management-restaurant-groups).
-
-‍
 
 ## What Gets Dropped
 
@@ -79,20 +69,13 @@ Supplier portal switching is the third. Operators used to log into three or four
 
 Dual data entry is the fourth, and the most quietly expensive. Across the old stack, a single piece of information often had to be entered in two or three places: in the POS, in the inventory sheet, in the recipe tool. Each entry was an opportunity for error. A consolidated stack removes those opportunities by design.
 
-‍
-
 ## What This Means for Groups Still on the Old Stack
 
 The trend matters less as a benchmark and more as a signal of where the operational gap is widening. Groups that have rebuilt their stack are getting cleaner variance numbers, faster reactions to supplier price changes, and less time spent reconciling data. Groups that have not are still doing the same manual work their teams were doing five years ago, and absorbing the same margin drift in the same places.
 
 The rebuild is rarely a single project. Most operators get there incrementally. They start by connecting accounting to inventory, then add POS integration, then move recipe costing into the same layer. A useful first step for groups thinking about this is to look at how their current [food cost tracking system](https://stockifi.io/blog/food-cost-tracking-system-restaurant) hands data between tools, and to identify the seams where information is being keyed in twice or copied between sheets.
 
-‍
-
 The seams are where the leakage lives. Closing them is what the modern stack is built to do.
-
-‍
 
 Where in your stack are you still switching between tools that should be talking to each other?
 
-‍

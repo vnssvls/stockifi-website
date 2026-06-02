@@ -28,8 +28,6 @@ For Inga Andruskaite, Managing Director of Torika Gruppen, month-end used to mea
 
 That shift from delayed to immediate reporting came from making inventory counting faster and more accurate. What used to be a tedious process that required double-checking and manual compilation became straightforward. The team completes counts quickly, and the system generates reports ready for accounting without additional work.
 
-‍
-
 But the bigger impact showed up in the margins. "The margin ratio has increased significantly and stabilized," Inga notes. That stabilization came from visibility into ingredient overuse and supplier price changes. When suppliers adjust ingredient costs, Stockifi makes it immediately clear. Torika can track those changes and make adjustments before margins erode.
 
 "It is now super easy to track price changes and adjust menu prices accordingly," Inga says. That proactive approach replaced the old reactive cycle of discovering margin problems only after they'd already affected profitability.
@@ -40,4 +38,3 @@ For Torika Gruppen, Stockifi not only solved specific operational problems but a
 
 Next time you're in Oslo, stop by Stock in Barcode for their take on Norwegian cuisine using ingredients from their own farm. The Basque cheesecake alone is worth the trip. Torika Gruppen also operates Centropa, Kafe Oslo, and Kaffoteket across the city. Learn more about their venues at *torika.no*.
 
-‍

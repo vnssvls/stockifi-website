@@ -23,8 +23,6 @@ Most operators know when their food cost feels high. Fewer know what the number 
 
 Here's what the benchmarks actually look like, what moves them, and what to check when the percentage starts drifting.
 
-‍
-
 ## What Food Cost Percentage Measures
 
 Food cost percentage is the proportion of revenue spent on ingredients:
@@ -35,42 +33,26 @@ A restaurant bringing in €80,000/month and spending €26,400 on ingredients i
 
 It matters because food cost responds faster to active management than most other cost categories. Rent is fixed and labor restructuring takes months, but a food cost problem can improve within weeks once you know where to look. That makes it the most actionable lever most operators have.
 
-‍
-
 ## Benchmarks by Restaurant Type
 
 There's no single correct food cost percentage. The right target depends on concept, price point, menu complexity, and the ratio of ingredient cost to labor in each dish.
 
-‍
-
 **Full-service restaurants: 28–32%**    
 Higher ingredient quality and more complex dishes push costs up. Above 32% consistently is a signal to investigate — whether pricing hasn't kept pace with ingredient costs, or whether portion control or waste has drifted.
-
-‍
 
 **Fast casual and QSR: 25–31%**    
 Simpler menus, standardized portions, and high volume per kitchen hour keep food costs tighter. Margins here depend on throughput more than any other variable.
 
-‍
-
 **Fine dining: 28–35%**    
 A higher range is sustainable here because average spend per cover is significantly higher. A tasting menu at €180/person can absorb a higher ingredient cost per dish than a €25 main. The percentage looks different when the revenue base is strong.
-
-‍
 
 **Bars: 18–24%**    
 Beverage costs are structurally lower than food costs. A cocktail with €3 in spirits sold at €14 runs a 21% cost. Bars also running a kitchen need to track food and beverage separately. Blending the two hides where margin is actually going.
 
-‍
-
 **Hotel F&B: 28–33%**    
 Similar range to full-service restaurants, with added complexity from multiple outlets, banqueting, and buffet formats. Buffets typically run higher because waste is structural and portion control is loose by design.
 
-‍
-
 These are reference ranges, not targets to chase in isolation. The most relevant comparison is your own history: what have you been running, and has it moved?
-
-‍
 
 ## What Shifts the Target for Your Operation
 
@@ -82,8 +64,6 @@ Three factors determine where your target should sit within any category range.
 
 **How current your recipe costs are.** This is the factor most operations underestimate. A **food cost percentage** calculated against stale recipe data is not telling you the truth. If ingredient prices moved in the last 90 days and recipe cards haven't been updated, every calculation downstream is built on the wrong number.
 
-‍
-
 ## What Drift Actually Costs
 
 Food cost doesn't jump overnight. It drifts in small increments, each one explainable on its own. Without consistent tracking, those increments compound before anyone notices.
@@ -91,8 +71,6 @@ Food cost doesn't jump overnight. It drifts in small increments, each one explai
 A mid-size restaurant running 32% that drifts to 34% over six months has lost 2 percentage points of margin. On €80,000 in monthly revenue, that's €1,600/month absorbed into ingredient costs that shouldn't be there. Over six months: €9,600 in margin that didn't need to disappear.
 
 A single bad week is recoverable. The damage accumulates in the weeks that follow, before anyone catches the drift.
-
-‍
 
 ## Where the Percentage Gets Lost
 
@@ -104,13 +82,9 @@ A single bad week is recoverable. The damage accumulates in the weeks that follo
 
 **Category mixing.** Tracking bar and kitchen costs together hides what's happening in each. A kitchen running high can look acceptable when blended with a healthy bar margin. Split them and the picture changes.
 
-‍
-
 ## How to Know Whether Your Number Is Accurate
 
 Before benchmarking against industry ranges, it's worth asking whether your food cost percentage is telling you the truth.
-
-‍
 
 Three checks:
 
@@ -120,11 +94,7 @@ Three checks:
 
 **How often are you calculating it?** Monthly food cost reporting catches problems four weeks after they start. Weekly calculation, or a system that tracks it continuously, gives you a number that's still actionable when it shifts.
 
-‍
-
 The operators running tighter margins don't just track the percentage. They know whether it's accurate and which part of the operation to look at when it shifts.
-
-‍
 
 ## Getting to a Number You Can Trust
 
@@ -136,4 +106,3 @@ Platforms like Stockifi close that loop automatically. Invoice data feeds direct
 
 The benchmark matters less than knowing the number is real. What's your current food cost percentage, and when did you last check whether the recipe costs behind it are still accurate?
 
-‍

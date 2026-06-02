@@ -25,13 +25,9 @@ The problem isn't laziness. It's just math. Reconciling invoices properly takes 
 
 And unlike other profit leaks, this one's invisible. You're not seeing product walk out the door or watching waste pile up in bins. You're just quietly paying more than you should, invoice after invoice, month after month.
 
-‍
-
 ## The Three Types of Invoice Errors
 
 Supplier invoice errors fall into three categories. None require intent. They just happen because pricing changes, communication breaks down, or systems don't sync.
-
-‍
 
 ### Mismatched Prices
 
@@ -39,15 +35,11 @@ Pricing disconnects are the most common error type. Suppliers apply outdated pri
 
 Your contract says tomatoes are €2.20/kg. The invoice shows €3.50/kg. Nobody notices until someone finally audits three months of invoices (if that ever happens).
 
-‍
-
 ### Quantity Errors
 
 You ordered 5 cases. The invoice charges you for 50 individual units. The math might even look right until you realize cases contain 12 units, not 10.
 
 Partial deliveries create another gap. You receive 45kg of beef. The invoice shows 50kg. Your team was busy during delivery, signed the slip without counting, and now you're paying for product that never arrived.
-
-‍
 
 ### Incorrect Charges
 
@@ -55,13 +47,9 @@ The same delivery gets invoiced twice with different invoice numbers and dates c
 
 Credit notes get issued for returned product, but the original charge never gets removed from your account. "Admin fees" or "fuel surcharges" appear without prior agreement or explanation.
 
-‍
-
 ## Why Manual Invoice Processing Fails
 
 Manual reconciliation sounds straightforward until you actually try to do it consistently across 15-20 weekly invoices.
-
-‍
 
 ### Time Pressure Meets Scattered Data
 
@@ -71,8 +59,6 @@ But your data lives in different places. Purchase orders might be in your POS or
 
 In reality, busy operators glance at invoice totals, compare them to what feels right, and approve payment. The assumption is that it's probably correct.
 
-‍
-
 ### Human Error Compounds Invisibly
 
 Kitchen staff sign delivery notes during service rush without proper counts. They're trying to get back to the line, not audit a produce delivery. Prices get memorized incorrectly—"I think tomatoes are around €2.50/kg"—and nobody double-checks against actual contract pricing.
@@ -80,8 +66,6 @@ Kitchen staff sign delivery notes during service rush without proper counts. The
 Invoice processors in the office don't know what was actually ordered or received. They see line items, quantities, and prices, but have no context for whether those numbers match reality. Missing documentation, illegible handwriting, or misfiled delivery notes create gaps that never get filled.
 
 Each small error is invisible on its own. Together, they add up to thousands in losses annually.
-
-‍
 
 ## The Real Cost
 
@@ -95,8 +79,6 @@ The real damage is compounding. The same pricing error repeats across 12 invoice
 
 This is why restaurants are shifting to systems like Stockifi that eliminate manual invoice entry entirely. When supplier invoice data syncs automatically with your recipe database, pricing anomalies and quantity errors surface immediately not months later.
 
-‍
-
 ## What Happens When You Scale
 
 Single location with 10 suppliers is manageable if you're disciplined. Three locations with 15 suppliers each creates 45 reconciliation relationships, and each with different pricing, terms, and delivery schedules.
@@ -105,13 +87,9 @@ Decentralized operations multiply the problem. Different staff receive deliverie
 
 Errors multiply unnoticed because nobody has visibility across the entire operation.
 
-‍
-
 ## Red Flags That Signal Systematic Problems
 
 Certain patterns indicate your invoice processing has systematic gaps, not just occasional errors.
-
-‍
 
 **On your invoices:**
 
@@ -120,8 +98,6 @@ Certain patterns indicate your invoice processing has systematic gaps, not just 
 * Round numbers on line items (suggests estimation rather than actual counts)
 * Item descriptions that are vague or inconsistent
 
-‍
-
 **In your supplier relationships:**
 
 * Credits issued regularly (signals repeated errors being corrected retroactively)
@@ -129,11 +105,7 @@ Certain patterns indicate your invoice processing has systematic gaps, not just 
 * Pricing "adjustments" appearing on invoices without prior notice
 * Suppliers getting defensive when you question charges
 
-‍
-
 These aren't isolated incidents. They're symptoms of a reconciliation process that isn't working.
-
-‍
 
 ## The Path to Automated Accuracy
 
@@ -148,7 +120,5 @@ No manual data entry. No copying prices from PDFs into spreadsheets. No risk of 
 Because invoice data flows automatically into your recipes, your COGS and margins update in real time. The latest supplier prices are already reflected in your cost structure the moment the invoice arrives.
 
 The system flags pricing anomalies and quantity discrepancies immediately. If tomato prices jump 15% without explanation, you see it before payment. If an invoice shows quantities that seem inconsistent with your typical usage patterns, it's flagged for review.
-
-‍
 
 You catch errors before paying, not after. The question isn't whether you can afford inventory management software. It's whether you can afford to keep losing thousands annually to errors that automated systems catch before you pay.

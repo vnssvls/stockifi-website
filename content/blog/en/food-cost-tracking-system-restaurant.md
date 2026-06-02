@@ -21,8 +21,6 @@ Most restaurants track food cost the same way: a monthly P&L arrives, the food c
 
 A **food cost tracking** system is different from a food cost report. A report tells you what happened. A tracking system gives you the information while there is still time to do something about it.
 
-‍
-
 ## What a Food Cost Tracking System Needs to Do
 
 The purpose of tracking is not to produce a number; it is to catch movement early enough to act on it. Three things need to happen consistently for that to work.
@@ -32,8 +30,6 @@ The first is keeping recipe costs current. When a supplier raises prices and the
 The second is counting stock frequently enough to generate variance data worth examining. A count done once a month shows where things ended up. A count done weekly or by category shows where things are moving, which is a meaningfully different piece of information for an operation trying to catch problems before they compound.
 
 The third is reviewing variance rather than simply recording it. The gap between theoretical and actual food cost is only useful if someone looks at it and traces it back to a cause. A variance figure that gets filed without investigation confirms that something happened without explaining what or where.
-
-‍
 
 ## Signs Your Current Approach Is Not Working
 
@@ -45,17 +41,11 @@ Another is recipe costs that have not been updated since the last round of suppl
 
 A third is variance that gets recorded without being traced. When stock count results are logged regularly but the review process does not connect the numbers to a cause, such as a portioning issue on a specific item or a price increase not yet reflected in recipe costs, the counting is generating data that is not being used. The system exists on paper without functioning as one.
 
-‍
-
 ![__wf_reserved_inherit](/media/blog/6a016a830e64648f10d11672_What_s_a_Good_Food_Cost_Percentage_for_Restaurants_.png)
-
-‍
 
 ## The Manual System: What It Involves
 
 For operations not yet using dedicated software, a consistent manual **food cost tracking** system needs three components working together.
-
-‍
 
 **A recipe cost log.** A central document holding the current ingredient cost for every key item on the menu, updated each time a new invoice arrives with a price change. The habit that keeps this working is tying recipe cost updates directly to invoice processing, doing both at the same time so the update never becomes a deferred task that waits for a quieter week.
 
@@ -63,11 +53,7 @@ For operations not yet using dedicated software, a consistent manual **food cost
 
 **A variance review.** A short weekly meeting, 30 minutes is usually enough, where the kitchen or operations manager reviews the most recent variance figures, identifies anything above the threshold, and determines the likely cause before the next count. Without this step, the data collects but does not drive decisions.
 
-‍
-
 The manual version is achievable in most operations with disciplined staffing. It becomes difficult to sustain during high-volume periods or when key people turn over, which is where most manual systems eventually break down.
-
-‍
 
 ## The Automated System: What Changes
 
@@ -79,8 +65,6 @@ The operational advantage goes beyond time saved. A manual system is only as rel
 
 Stockifi connects all three components in a single workflow. Invoice data feeds into recipe costs automatically, stock counts sync directly from the app, and variance reports generate after each count, so **food cost tracking** runs as a built-in function of the operation rather than an additional task layer on top of it.
 
-‍
-
 ## Where to Start
 
 **Begin with your top 20 ingredients by spend.** Full recipe cost tracking across an entire menu is the goal, but the 20 highest-spend ingredients drive the majority of food cost movement. Getting those current and maintained first delivers most of the value with a manageable starting scope.
@@ -91,12 +75,7 @@ Stockifi connects all three components in a single workflow. Invoice data feeds 
 
 **Review the system quarterly.** A tracking process that works for a 40-item menu may need adjustment as the menu grows or the operation changes. A quarterly check, covering whether recipe costs are current, whether the count cadence is still right, and whether variance is being traced rather than just recorded, keeps the system functional as the business evolves.
 
-‍
-
 The restaurants with reliable **food cost tracking** are not necessarily doing more than those that struggle with it. They have a process that runs consistently, generates data they can act on, and connects numbers to decisions before the period closes.
-
-‍
 
 What does your current food cost tracking process look like, and how quickly does a cost change show up in the numbers you use to make decisions?
 
-‍

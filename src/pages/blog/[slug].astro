@@ -132,8 +132,11 @@ const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
   .bi-body :global(p),
   .bi-body :global(ul),
   .bi-body :global(ol) { margin-bottom: var(--space-24); line-height: var(--lh-body); }
-  .bi-body :global(h2) { margin-top: var(--space-48); margin-bottom: var(--space-16); font-size: var(--text-h3); scroll-margin-top: calc(var(--nav-h) + var(--space-16)); }
-  .bi-body :global(h3) { margin-top: var(--space-32); margin-bottom: var(--space-12); font-size: var(--text-h5); scroll-margin-top: calc(var(--nav-h) + var(--space-16)); }
+  /* Section headers in body font (Inter); pretty wrap so they don't break mid-way. */
+  .bi-body :global(h2),
+  .bi-body :global(h3) { font-family: var(--font-body); text-wrap: pretty; scroll-margin-top: calc(var(--nav-h) + var(--space-16)); }
+  .bi-body :global(h2) { margin-top: var(--space-48); margin-bottom: var(--space-16); font-size: var(--text-h3); }
+  .bi-body :global(h3) { margin-top: var(--space-32); margin-bottom: var(--space-12); font-size: var(--text-h5); }
   .bi-body :global(ul),
   .bi-body :global(ol) { padding-left: var(--space-24); }
   .bi-body :global(li) { margin-bottom: var(--space-8); }
@@ -151,7 +154,9 @@ const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
   @media (min-width: 1024px) {
     .bi-hwide { padding-inline: 80px; }
     .bi-hgrid { grid-template-columns: 1fr 1fr; gap: var(--space-64); }
-    .bi-layout { grid-template-columns: 240px minmax(0, var(--prose-max)); gap: var(--space-96); justify-content: center; }
+    /* TOC at the container's left edge, prose fills the rest (capped by .prose). Not
+       centered — centering overflowed + clipped the TOC and over-padded the left. */
+    .bi-layout { grid-template-columns: 240px minmax(0, 1fr); gap: var(--space-64); }
     .bi-toc {
       display: block;
       position: sticky;

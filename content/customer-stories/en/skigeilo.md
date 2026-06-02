@@ -24,24 +24,14 @@ webflowId: "69573e4dff87cc5654b722e4"
 
 Running a kitchen on a mountain is not the same as running one in the city. At SkiGeilo, Executive Head Chef Mickael Cunillera oversees eight dining concepts spread across the ski resort. Each has its own menu and service style, ranging from fine dining to quick service for skiers between runs. They all operate differently, but require the same level of control over food costs and inventory.
 
-‍
-
 Managing multiple kitchens means knowing where costs stand, what needs ordering, and which ingredients are being overused—across every venue, not just one. When Mickael talks about Stockifi boosting productivity, he means having that information immediately available instead of spending time hunting it down. Profit leaks become visible without manually piecing together data from multiple sources.
-
-‍
 
 "The app's intuitive interface and powerful features give us complete control over food costs and inventory, ensuring efficient and accurate operations every day," Mickael says. That control matters most during ski season when all eight venues operate simultaneously and there's no margin for confusion about what costs are and whether they’re profitable.
 
 Ski resorts also face constant staff turnover as seasonal workers rotate through. Getting new team members up to speed quickly on inventory and cost tracking systems matters when peak season leaves no room for extended training periods. Stockifi's interface makes that onboarding simple and straightforward to let staff contribute to efficient operations without needing weeks to learn the system.
 
-‍
-
 The time Stockifi saves goes back into their operations. Instead of reconciling data from multiple sources or tracking down discrepancies, Mickael and his team focus on what they're actually there to do, which is to run eight kitchens that serve thousands of guests throughout the season without losing sight of the numbers that keep the operation profitable.
 
-‍
-
 "Stockifi has not only saved us time and resources but also significantly boosted our overall productivity," Mickael says. For a resort managing eight kitchens on a mountain, that productivity translates directly into smoother operations throughout the season.
-
-‍
 
 If you're visiting Geilo, take a break at Vaffeltoppen for what locals call the best waffles on the mountain, served with spectacular views of Hallingskarvet. Or after a day on the slopes, head to Havsdalskroa for pizza and après-ski atmosphere on weekends. Find out more at *skigeilo.no*.

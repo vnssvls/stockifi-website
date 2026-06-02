@@ -21,8 +21,6 @@ You know your food cost percentage. The monthly report lands, the number is roug
 
 Understanding theoretical vs actual food cost turns a margin you watch into a margin you can move. One number tells you what the recipes and sales mix say your cost should be. The other tells you what your stock count and invoices say it actually was. When operators talk about [variance](https://stockifi.io/blog/inventory-variance-tracking-restaurant-costs), they mean the space between those two numbers, and that space is rarely empty.
 
-‍
-
 ## What Theoretical Food Cost Actually Is
 
 Theoretical food cost is the calculation of what the ingredients in your sold dishes should have cost, based on recipes and sales data. The math is straightforward. For every dish sold in a period, the system looks at the recipe, multiplies each ingredient by the portion called for, and applies the current cost of that ingredient. Sum those amounts across every dish sold and you get the theoretical cost of goods for the period.
@@ -31,13 +29,9 @@ A dish with €4.20 of ingredients sold 180 times in a week contributes €756 t
 
 This number is only as accurate as the inputs behind it. Recipes need to reflect what is actually being plated, and ingredient costs need to reflect what suppliers are charging this week. [Recipe costing](https://stockifi.io/blog/food-cost-tracking-system-restaurant) that lags behind invoice prices produces a theoretical figure that is technically clean but quietly wrong, and that error propagates through every margin decision that follows.
 
-‍
-
 ## What Actual Food Cost Actually Is
 
 Actual food cost is the measured number, derived from physical stock counts and supplier invoices over a period. The formula is opening inventory plus purchases minus closing inventory, divided by sales revenue for the same window.
-
-‍
 
 The three inputs:
 
@@ -45,21 +39,15 @@ The three inputs:
 * **Purchases.** Supplier invoices processed during the period.
 * **Closing inventory.** The value of stock on hand at the end.
 
-‍
-
 The difference between (opening plus purchases) and closing is what physically left your stockroom. Whether it ended up in a sold dish, a staff meal, a bin, or an unaccounted shortfall, it counted toward actual cost.
 
 That last point matters. Actual food cost includes every form of consumption, sold or not, and that is precisely what makes it useful when set against the theoretical figure.
-
-‍
 
 ## Where the Gap Hides
 
 When theoretical and actual food cost diverge, the difference is called food cost variance. A 1 to 2 percent gap is normal in a well-run operation, while anything beyond 3 percent is where margin damage starts compounding.
 
 Four common sources account for most of what shows up in a count.
-
-‍
 
 ### Overpour and overportioning
 
@@ -77,8 +65,6 @@ New kitchen staff are trained on a portion size, that portion creeps up graduall
 
 Sometimes a dish gets rung up under a generic key. Other times a modifier is missing, or a comp goes through without linking to a recipe. In each case, theoretical cost cannot calculate what should have been consumed. The ingredients still leave the stockroom and the actual cost still rises, while the recipe-based calculation has nothing to match against.
 
-‍
-
 ## What Each Line Typically Costs
 
 For a mid-size restaurant doing €80,000 in monthly food and beverage revenue, the math on each variance source is worth knowing concretely:
@@ -88,11 +74,7 @@ For a mid-size restaurant doing €80,000 in monthly food and beverage revenue, 
 * **Untracked waste.** Running at one percent of revenue is €800 a month going out with the bins.
 * **Undefined sales.** Two percent of revenue can hide €1,000 to €1,500 a month of ingredient consumption the theoretical calculation never sees.
 
-‍
-
 Stacked together, these four sources account for €4,000 to €6,000 a month of variance in an operation that looks reasonable on its monthly report. That is €50,000 to €70,000 a year in margin sitting inside a food cost percentage the operator believed was under control.
-
-‍
 
 ## The Detection Lag in a Monthly Count
 
@@ -101,8 +83,6 @@ Most restaurants take a stock count once a month. That cadence means variance is
 By the time a count reveals a 4 percent gap, the operator is looking at a problem that has been running since the last count. Whatever caused it has had thirty days to repeat. Pinpointing the cause from a single monthly snapshot is hard, because the count tells you the total gap without telling you when it started or which category drove it.
 
 Tightening the count cadence helps a little. Some operations count proteins and spirits separately on a tighter cycle for exactly this reason, but the labour cost of more frequent full counts puts that out of reach for most. The practical answer is to move detection upstream of the count itself, by tracking what should have been consumed against what is being purchased in real time, so the gap is visible while it is forming.
-
-‍
 
 ## What Continuous Variance Tracking Changes
 
@@ -114,12 +94,9 @@ The shift is from explanation to prevention. A 1.5 percent variance on proteins 
 
 Stockifi connects invoice processing, recipe costs, and POS sales into one model. The theoretical vs actual food cost comparison runs continuously, and variance becomes something the operator watches as it forms. The actual food cost calculation runs against a theoretical baseline that updates with every invoice and every sale.
 
-‍
-
 ## A Question Worth Asking
 
 The food cost percentage on your monthly report is one number. The two numbers inside it, theoretical and actual, are where the operating story actually sits.
 
 If you opened the books for last month and pulled them apart, could you tell which percent of the variance came from where? Each of the four sources (overpour, waste, portion drift, undefined sales) leaves its own pattern. Or would the gap sit on the line as one figure the team agreed to watch next month?
 
-‍

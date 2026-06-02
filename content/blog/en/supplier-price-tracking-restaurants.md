@@ -21,8 +21,6 @@ When a supplier raises prices mid-quarter, the invoice reflects it immediately. 
 
 The result is a growing gap between what the recipe system says the ingredients cost and what the restaurant is actually paying. Margin reports look acceptable for weeks while the discrepancy compounds, and the only moment it surfaces is in a stock count that reveals numbers that don't match. By that point the damage is already done.
 
-‍
-
 ## Why Price Changes Are Hard to Catch
 
 Supplier pricing moves constantly and rarely comes with clear notice. A protein goes up after a weather event disrupts supply. A distributor absorbs a logistics cost increase and passes it through in the next invoice with no line-item explanation.
@@ -31,15 +29,11 @@ Your team receives the invoice, checks the total against expectation, and approv
 
 The result is a persistent gap between what you think your ingredients cost and what you're actually paying. That gap is where margin disappears.
 
-‍
-
 ## What Untracked Price Changes Actually Cost
 
 Take a key protein that goes up €1.20/kg. At 90kg/week across the menu, that's €108/week in unrecorded cost increase, or €5,616/year on a single ingredient.
 
 Across a menu with 40 dishes and 15 suppliers, the exposure compounds. Most restaurants have 3–5 ingredients with this level of movement in any given quarter. An operation without a consistent **supplier price tracking** process absorbs €10,000–€30,000/year in margin drift from ingredient cost increases alone. That money doesn't show up as a line item on the P&L. It shows up as unexplained variance in a stock count, weeks after the damage is done.
-
-‍
 
 ## Three Ways Price Changes Slip Through
 
@@ -48,8 +42,6 @@ Across a menu with 40 dishes and 15 suppliers, the exposure compounds. Most rest
 **The recipe card reflects last quarter's pricing.** Even when a price change is noticed on an invoice, updating the recipe cost requires a separate manual step. Someone has to locate the recipe and confirm whether the change cascades to any dishes that use it as a component. In a manual system, this step is easy to defer indefinitely.
 
 **The change gets noted but not acted on.** A manager spots that tomatoes are running higher than expected and makes a note to revisit it. The next invoice comes in at the same price. It becomes the new normal, and the recipe cost stays where it was.
-
-‍
 
 ## What a Manual Tracking Process Looks Like
 
@@ -61,33 +53,19 @@ When a flag appears, two things need to happen. The invoice is reviewed and, if 
 
 For a mid-size restaurant receiving 15 to 20 invoices per week, this is 3 to 5 hours of work. It's manageable in a disciplined operation with stable staffing, but difficult to sustain across busy periods and staff turnover.
 
-‍
-
 ![__wf_reserved_inherit](/media/blog/6a0172b5f0f4c6a04c993d07_How_to_Track_Supplier_Price_Changes_in_Your_Restaurant-2.png)
-
-‍
 
 ## Which Ingredients Are Worth Tracking Closest
 
 Not all ingredients need the same attention. Price volatility concentrates in predictable categories.
 
-‍
-
 **High-spend, high-volatility:** proteins (beef, chicken, fish), dairy, fresh produce. These move most frequently and carry the largest cost impact when they do.
-
-‍
 
 **High-volume, low unit cost:** oils, flour, eggs. Individual price changes are small, but volume means even a 10% increase on cooking oil affects COGS across many dishes simultaneously.
 
-‍
-
 **Seasonal items:** anything priced at market rate rather than fixed contract. Expect these to move and build your review cadence around them.
 
-‍
-
 Start with your top 10 ingredients by total monthly spend. A small number of ingredients drive most of the cost impact when prices shift, so tracking those consistently first is the most efficient starting point.
-
-‍
 
 ## What Automated Invoice Processing Changes
 
@@ -99,13 +77,9 @@ Stockifi connects invoice processing to recipe costs directly, so when a supplie
 
 The accuracy improvement is significant on its own. The more important shift is what it frees up: instead of auditing invoices to catch price drift, attention goes toward acting on what the data shows.
 
-‍
-
 ## Where to Start If You're Not There Yet
 
 If automated invoice processing isn't in place yet, these steps close most of the gap manually.
-
-‍
 
 **Set a weekly review cadence for your top 10 ingredients.** Even 30 minutes comparing last week's prices against the current invoice catches most significant movement before it compounds.
 
@@ -115,10 +89,7 @@ If automated invoice processing isn't in place yet, these steps close most of th
 
 **Track long enough to see patterns.** Which suppliers change prices most frequently? Which ingredients are most volatile by season? That pattern shows you where contracted pricing conversations are worth having and where to build a buffer into menu pricing before the next increase arrives.
 
-‍
-
 The restaurants holding tighter margins aren't doing something fundamentally different. They know what each ingredient should cost and have a process that catches movement quickly enough to act on it.
 
 When did your recipe costs last reflect what you're actually paying your suppliers?
 
-‍

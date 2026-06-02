@@ -25,13 +25,9 @@ If you're running 5% variance instead of the 3% benchmark, that "small" differen
 
 Here's what that costs and where it's coming from.
 
-‍
-
 ## The Real Cost of "Just a Few Percent"
 
 **Food cost variance** adds up faster than most operators realize. Here's what 2% excess variance actually means:
-
-‍
 
 **Small independent restaurant** (€30,000 monthly COGS):    
 2% excess variance = €600/month = **€7,200/year** in lost gross profit
@@ -46,13 +42,9 @@ That's not revenue. That's profit. Compounded over three years, a mid-size opera
 
 And 5% doesn't *feel* catastrophic. It's slightly above acceptable range. Easy to rationalize as "we're busy" or "things slip through." But that rationalization costs real money, month after month.
 
-‍
-
 ## Where Variance Actually Comes From
 
 **Inventory variance tracking** reveals several problems happening at once. Figuring out which drives your numbers is the difference between fixing it and accepting it as "the cost of doing business."
-
-‍
 
 ### 1. Waste (40-50% of typical variance)
 
@@ -62,8 +54,6 @@ A single protein item going bad skews weekly variance by hundreds of euros. Mult
 
 What's worse: it often goes unrecorded. Someone trims salmon poorly, tosses the excess, moves on. No one logs it. Your system thinks you used that salmon in a dish. Variance creeps up.
 
-‍
-
 ### 2. Inconsistent Portions (25-35% of typical variance)
 
 This happens so gradually staff don't realize they're doing it. A bartender free-pours "just a bit more" gin. A line cook plates "generous" portions because they want guests happy. Over weeks and months, those small decisions compound.
@@ -71,8 +61,6 @@ This happens so gradually staff don't realize they're doing it. A bartender free
 Dangerous because it's invisible in the moment. Guests aren't complaining - they're getting *more* than they paid for. But you're absorbing the cost difference, and it doesn't show up as a line item anywhere.
 
 The only way to catch it: observe service during peak hours and compare what's being served against recipe specs.
-
-‍
 
 ### 3. Recipe Deviation (15-20% of typical variance)
 
@@ -82,21 +70,15 @@ Sometimes this happens because a supplier changed and the team adapted. Sometime
 
 This requires recipe discipline and regular cross-checking between what's documented and what's being prepared. Ingredient variance tracking catches these deviations before they become expensive patterns.
 
-‍
-
 ### 4. Unexplained Loss (10-15% of typical variance)
 
 Hardest to pinpoint because it could be theft, tracking errors, supplier short-deliveries, or all three. Most operators assume theft when variance spikes, but often the issue is systemic: poor receiving protocols, missing inventory records, or not catching when a delivery is short.
 
 The key is to tighten your processes. Theft is real, but jumping straight to staff accusations without first ruling out operational gaps damages morale and misses the actual problem.
 
-‍
-
 ## What to Do When Variance Spikes
 
 Knowing variance exists is one thing. Investigating and fixing it is another. Here's a prioritized approach that doesn't require shutting down operations or spending days buried in spreadsheets.
-
-‍
 
 ### • First 48 Hours
 
@@ -110,8 +92,6 @@ This is where real-time cost tracking systems come in. Modern inventory manageme
 
 Once you have that visibility, prioritize this way:
 
-‍
-
 ### • First Two Weeks
 
 Observe portioning during peak service, but don't announce it. You want to see what actually happens when pressure is on, not what happens when staff know they're being watched.
@@ -119,8 +99,6 @@ Observe portioning during peak service, but don't announce it. You want to see w
 Review recipe cards against what's being prepared. Are portions consistent with specs? Are ingredients being substituted without documentation?
 
 Talk to your team. Sometimes they'll surface issues you didn't know existed like problems with supplier quality, equipment malfunctions affecting yield, or process gaps creating waste.
-
-‍
 
 ### • Ongoing
 
@@ -130,8 +108,6 @@ Tighten receiving protocols. This catches supplier short-deliveries, which are m
 
 Train staff on *why* consistency matters, not just how to execute it. When your team understands that portioning affects profitability—and therefore job security and raises—they're more likely to maintain standards.
 
-‍
-
 ## Why This Won't Fix Itself
 
 You know variance exists, but not how much it's costing you in actual money. And because it's not a line item on the P&L, it's easy to deprioritize when you're dealing with staffing issues, guest complaints, or a hundred other urgent problems.
@@ -139,8 +115,6 @@ You know variance exists, but not how much it's costing you in actual money. And
 But ignoring it compounds the issue. A small portioning problem becomes normalized. A waste problem spreads across multiple stations. What could have been corrected in a week now requires a full operational overhaul.
 
 Fixing this doesn't require much, but it does require visibility and discipline. You need to know your numbers in real-time, and you need a process for acting on them when they spike.
-
-‍
 
 ## The Path Back to 3%
 
@@ -150,8 +124,5 @@ That difference between acceptable and problematic variance is roughly €60,000
 
 The question now is: What's your current variance percentage, and when's the last time you actually looked into it?
 
-‍
-
 **Ready to track variance automatically?** [See how Stockifi helps restaurants monitor inventory variance](/customer-stories) in real-time and flag discrepancies before they compound.
 
-‍

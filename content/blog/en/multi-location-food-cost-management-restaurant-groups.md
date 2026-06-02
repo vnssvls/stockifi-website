@@ -21,8 +21,6 @@ The processes that work at one location start to break down at three. By the tim
 
 Managing food cost across multiple locations is not a bigger version of managing it at one restaurant. The problem is different, the data is harder to see, and the cost of not seeing it compounds with each site added to the operation.
 
-‍
-
 ## Why Multi-Location Food Cost Is a Different Problem
 
 At a single location, a manager or chef can catch a cost issue early because they are close to the operation. They notice when the chicken order looks heavier than usual, or when a stock count does not match what they expected to sell.
@@ -30,8 +28,6 @@ At a single location, a manager or chef can catch a cost issue early because the
 At a group level, that proximity disappears. An F&B director or operations manager cannot be on the floor of every location watching for the signals that something is off. By the time an issue surfaces in a monthly P&L review, it has often been running for weeks across multiple sites simultaneously.
 
 **Multi-location food cost** management has three specific visibility gaps that grow with scale. Each one is manageable at a single site and compounds significantly at five or ten.
-
-‍
 
 ## Three Cost Visibility Gaps That Grow With Scale
 
@@ -41,8 +37,6 @@ At a group level, that proximity disappears. An F&B director or operations manag
 
 **Stock count data stays siloed.** When each location counts stock independently and reports into a local spreadsheet or system, there is no straightforward way to compare variance across the group. One location running 4% variance looks like an outlier worth addressing. Five locations each running 2-3% variance, with nobody comparing them side by side, each appears manageable from a local vantage point even as the pattern across the group points to a structural issue that no single site has the visibility to identify.
 
-‍
-
 ## What That Costs Across a Group
 
 The margin impact of these gaps scales with the number of locations. A 2% variance that goes undetected at a single restaurant is a manageable problem. The same rate running across eight locations simultaneously is a structural one that looks small from any one site.
@@ -51,11 +45,7 @@ Take a group of eight restaurants, each generating €80,000 per month in revenu
 
 The harder part is that this kind of loss rarely shows up clearly. It appears as a slightly worse-than-expected food cost percentage at each location, each one explainable on its own, none of them triggering an investigation that looks across the full group.
 
-‍
-
 ![__wf_reserved_inherit](/media/blog/6a016798595ef4a22930bf38_How_Restaurant_Groups_Manage_Food_Costs_Across_Multiple_Locations-2.png)
-
-‍
 
 ## How Groups Usually Try to Solve This
 
@@ -65,13 +55,9 @@ Some groups standardize processes instead: uniform stock count sheets, shared re
 
 What both approaches share is that they are reactive. The data arrives after the period has closed, when the ability to act on what it shows has already passed.
 
-‍
-
 ## What Consolidated Visibility Actually Looks Like
 
 Effective **multi-location food cost** management starts with a single view across all sites, updated as each location counts stock and processes invoices rather than assembled at month end from individually submitted reports.
-
-‍
 
 That view needs three things to be useful.
 
@@ -81,8 +67,6 @@ That view needs three things to be useful.
 
 **A consistent count cadence across all sites.** Group-level visibility is only as reliable as the input data. Locations counting at different frequencies or recording counts inconsistently produce data that is genuinely difficult to compare across the group in any meaningful way.
 
-‍
-
 ## Getting There: What the System Needs
 
 **Standardize recipe costing before comparing performance across sites.** Before drawing conclusions from cross-location food cost data, make sure the theoretical cost basis is the same at each site. This means a shared recipe library, consistent supplier pricing, and a process for propagating price changes across all recipes when an invoice comes in.
@@ -91,12 +75,9 @@ That view needs three things to be useful.
 
 **Build group-level reporting before optimizing individual sites.** It is tempting to focus on the location with the worst numbers, but without a group view first, those efforts may be addressing a symptom rather than the source.
 
-‍
-
 Stockifi connects invoice data, stock counts, and recipe costs across all locations in a single system, so the group view stays current without requiring each site to manually maintain and submit their own numbers. When a supplier price changes, it flows into recipe costs across every location using that ingredient. When a site completes a stock count, variance calculates immediately and feeds into the group report.
 
 The restaurant groups with consistent cost control across sites are not doing more work than groups that struggle with visibility. They have a system that keeps the data current and comparable, and they are looking at all locations at once rather than one at a time.
 
 When did you last compare food cost variance across all your locations in a single view?
 
-‍

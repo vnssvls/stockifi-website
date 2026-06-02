@@ -21,8 +21,6 @@ When most operators hear "automated invoice processing," they picture a scanner 
 
 The real value of automated invoice processing in a restaurant sits in what happens to the line-level data once it is extracted. Every kilogram, every unit price, every supplier code on every invoice becomes a live input into recipe cost. The same day a supplier raises the price of olive oil by twelve percent, every recipe that uses olive oil reflects the new cost. That is the difference between an OCR tool and a system that actually moves margin.
 
-‍
-
 ## What an Invoice Actually Carries
 
 A supplier invoice is not a single piece of information. It is a layered document, and each layer carries different value to the operation.
@@ -35,8 +33,6 @@ Then there is the metadata that sits across both layers, including delivery date
 
 The value of any invoice processing system depends entirely on which of these layers it captures.
 
-‍
-
 ## What Happens When You Only Extract the Total
 
 The simplest form of invoice automation reads the header and the total, drops both into accounting, and stops there. This is the level most generic [restaurant accounting automation](https://stockifi.io/blog/supplier-invoice-errors-cost) tools operate at, and it is genuinely useful for the bookkeeper. The invoice gets coded to the right expense account, the payment gets scheduled, and the month-end reconciliation runs cleanly.
@@ -44,8 +40,6 @@ The simplest form of invoice automation reads the header and the total, drops bo
 What it does not do is touch food cost. The system knows that €2,400 was spent at one supplier last week, but it does not know whether the price of beef went up, whether the cooking oil order doubled in volume, or whether a single line on that invoice carried a price increase that quietly added thousands of euros of exposure across the menu.
 
 Margin damage from supplier price drift does not show up in totals. It hides in line items. A header-only system is fine for paying bills and useless for protecting margin, and that is the gap most operators do not realise exists until they go looking for it.
-
-‍
 
 ## What Happens When You Extract Every Line Item
 
@@ -57,8 +51,6 @@ The second thing it unlocks is current cost data per ingredient. Every ingredien
 
 The third thing it unlocks is consumption visibility. The quantity on every invoice line is captured, so the system knows exactly how much of each ingredient was purchased in any given period. That number can be reconciled against what was sold, what was counted, and what should have been used according to the recipes. Without line-level data, none of those comparisons are possible.
 
-‍
-
 ## How Line-Level Extraction Connects to Recipe Cost
 
 This is where supplier invoice OCR stops being an accounting feature and starts being a margin tool.
@@ -69,8 +61,6 @@ In a system where line-level invoice data flows into recipes directly, the chain
 
 The cascade matters most for restaurants with prebatches and components. A single ingredient might appear in a sauce, which appears in three menu items, which feed into a group-level menu analysis. A manual recipe-cost update would require tracing that chain by hand for every price change on every ingredient. Automated invoice processing does the trace once, in software, the moment the new price arrives.
 
-‍
-
 ## What Gets Lost When This Is Manual
 
 The cost of a manual recipe-cost process is rarely measured directly, but it is visible in three places.
@@ -80,8 +70,6 @@ The first is price-change blindness. In a manual process, recipe costs reflect w
 The second is recipe drift. Every recipe that depends on an outdated ingredient cost is itself outdated. The cascade compounds. A 5% price increase on one ingredient might shift the cost of a dozen recipes by a percent or two each, and those small shifts add up to a meaningful gap between theoretical and actual COGS that nobody can fully trace.
 
 The third is variance compounding. When [inventory variance](https://stockifi.io/blog/inventory-variance-tracking-restaurant-costs) is calculated from a stock count, the comparison is between what was actually used and what should have been used according to the recipes. If the recipe costs are wrong, the variance figure is wrong, and the operator ends up either chasing problems that do not exist or missing problems that do.
-
-‍
 
 ## What "From Invoice to Insight" Actually Looks Like in Operation
 
@@ -95,4 +83,3 @@ That is what automated invoice processing for restaurants is meant to do. The da
 
 When is the last time your recipe costs reflected what arrived on this week's invoices?
 
-‍

@@ -23,8 +23,6 @@ The difference between what you *should* spend (theoretical food cost) and what 
 
 Here are seven causes inflating your food costs, and how to spot each before variance becomes unmanageable.
 
-‍
-
 ## Why Food Cost Variance Undermines Profitability
 
 Food cost variance measures the gap between theoretical and actual food costs. Theoretical cost calculates what you should spend based on recipes, portions, and POS sales data. Actual cost is what invoices and stock counts reveal you really spent.
@@ -32,8 +30,6 @@ Food cost variance measures the gap between theoretical and actual food costs. T
 When actual exceeds theoretical, the difference represents lost profit. A 2% variance might seem minor until compounded across months. That gap indicates operational failures: ingredients disappearing without generating revenue, portions exceeding specs, or costs tracked incorrectly. Each percentage point erodes margin that competitive pricing can't recover.
 
 The causes below explain where money disappears and how to reclaim it.
-
-‍
 
 ## 1: Theft and Pilferage
 
@@ -52,13 +48,9 @@ Studies estimate employee theft accounts for 4-7% of restaurant revenue losses a
 * Liquor variance spikes on weekends when oversight is minimal
 * Camera footage reveals unconsumed product leaving through back doors
 
-‍
-
 ### What to Do
 
 Implement receiving logs that verify deliveries against purchase orders. Restrict access to storage areas with keycard systems. Conduct random spot checks on high-value inventory. Most importantly, track variance by shift. Patterns usually reveal who's responsible.
-
-‍
 
 ## 2: Over-Portioning
 
@@ -77,13 +69,9 @@ Even 10% over-portioning across high-volume items destroys margin. If your burge
 * Variance increases when untrained staff work busy shifts
 * Ingredient consumption exceeds what POS sales should require
 
-‍
-
 ### What to Do
 
 Standardize with portioning tools: scales for proteins, jiggers for spirits, ladles for sauces. Train staff on specs during onboarding and reinforce during shift meetings. Photograph plated dishes to establish visual standards. Track variance by menu item to identify which dishes need tighter control.
-
-‍
 
 ## 3: Spoilage and Waste
 
@@ -102,13 +90,9 @@ Food waste costs restaurants 4-10% of purchases. If a restaurant is spending €
 * Trash bins contain significant unused product
 * First-in-first-out (FIFO) practices are inconsistent or ignored
 
-‍
-
 ### What to Do
 
 Audit storage protocols: verify fridge temperatures daily, rotate stock using FIFO, and label prep with use-by dates. Adjust ordering to match actual consumption patterns by analyzing POS data to forecast demand rather than guessing. Reduce prep batch sizes during slow periods. Track waste separately from variance to quantify disposal costs.
-
-‍
 
 ## 4: Recipe Inconsistency and Outdated Costs
 
@@ -127,13 +111,9 @@ Recipe deviations inflate portions (see Cause 2) and introduces unplanned ingred
 * Theoretical food cost calculations don't align with invoice totals
 * Menu items that were profitable become margin losers without obvious cause
 
-‍
-
 ### What to Do
 
 Digitize recipes with precise measurements and update them when formulations change. [Sync recipe costs to supplier invoices automatically](https://www.stockifi.io/#process), so when ingredient prices go up, the system recalculates margins immediately. Train kitchen staff to follow specs without deviation unless changes are documented and approved. Then you can review recipe profitability monthly, or whenever necessary.
-
-‍
 
 ## 5: Receiving Errors
 
@@ -152,13 +132,9 @@ Short deliveries and billing errors add 1-3% to food costs. For a restaurant spe
 * Specific suppliers show consistent discrepancies
 * Staff report receiving "feels wrong" but can't verify without proper logs
 
-‍
-
 ### What to Do
 
 Require detailed receiving logs: verify quantities, check quality, note substitutions. Use scales for weight-based products (proteins, produce). Cross-reference invoices against what physically arrived before signing. Flag suppliers with recurring errors and escalate to account managers. For high-volume operations, implement barcode scanning at receiving.
-
-‍
 
 ## 6: Invoice and Data Entry Errors
 
@@ -177,13 +153,9 @@ Data entry errors inflate reported food costs or hide actual spending. A single 
 * Reconciling invoices against bank statements reveals discrepancies
 * Manual spreadsheets contain formula errors or broken cell references
 
-‍
-
 ### What to Do
 
 Automate invoice processing with scanning software that extracts line-item data and flags anomalies. Implement validation checks: if a cost exceeds typical ranges, the system requires manual review before posting. Reconcile weekly instead of monthly to catch errors before they compound.
-
-‍
 
 ## 7: Delayed Detection and Manual Tracking
 
@@ -202,13 +174,9 @@ Detection lag means losses accumulate before corrective action begins. If varian
 * Staff report operational issues (e.g., "we're running out faster than usual") but data confirms this weeks later
 * Corrective actions are reactive rather than preventive
 
-‍
-
 ### What to Do
 
 Move to real-time cost tracking systems that sync POS sales, invoice data, and stock counts continuously. Digital platforms flag variance as it occurs and alert thresholds notify managers when food costs exceed targets. Explore weekly mini-counts on high-value items instead of comprehensive monthly or quarterly counts to track variance and pinpoint when problems emerge, not just that they exist.
-
-‍
 
 ## What to Do Next
 
@@ -218,8 +186,5 @@ Implement one fix, measure for two weeks, and calculate the variance reduction. 
 
 The challenge is that manual tracking by spreadsheets, and delayed manual invoice entry makes it nearly impossible to spot these seven causes before they compound. **Stockifi automates the detection layer**: real-time variance alerts flag problems as they emerge, invoice scanning eliminates data entry errors and detects price changes, and profit analysis shows exactly which items and recipes need the most attention.
 
-‍
-
 Want to see how other hospitality businesses reduced food cost variance? [Read customer stories](/customer-stories) from restaurants, bars, and hotels that closed their theoretical vs actual gap—or explore how automated invoice processing and recipe cost management work together to prevent the causes outlined above.
 
-‍

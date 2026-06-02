@@ -28,8 +28,6 @@ Kolpin is a family-owned hospitality company spanning three generations, with pr
 
 Implementing new systems in hospitality can be challenging, especially across multiple properties. We handle the heavy lifting during onboarding, which includes importing item lists and recipes as well as setting up integrations with POS and accounting systems. A quick in-app training is available so new users don't spend weeks figuring things out on their own. For Kolpin, that meant less disruption and faster results.
 
-‍
-
 What stood out beyond the product itself was the support. "They are always available if we need any help, and the support we've received is always professional, responsive, and proactive," Vicky explains. In hospitality where timing matters and issues can't wait, access to a support team that responds quickly and anticipates needs makes a real difference.
 
 The partnership worked because of alignment in approach. Our team at Stockifi is responsive, detail-oriented, and genuinely invested in our partners' success, the same way Kolpin approaches hospitality. "Stockifi continues to impress us with both their product and their people," Vicky adds. "We're super happy to have them in our corner."
