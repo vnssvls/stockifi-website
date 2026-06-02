@@ -1,0 +1,72 @@
+---
+// Grid layout 2 (Figma 82:961, Relume layout-288): a row of cards where each card's
+// background is an IMAGE (not a solid fill) sitting behind icon + heading + body.
+// Same family as BenefitGrid (Grid 1) but image-backed. Headerless and section-less
+// by design — drop it INSIDE a section; the parent provides section, container, and
+// any heading. 4-up on desktop, stacks down. Pass a per-item `image` (or a shared
+// component-level `image` fallback) plus an optional per-item `icon` (inline SVG).
+interface Item { heading: string; body: string; icon?: string; image?: string }
+interface Props {
+  items: Item[];
+  columns?: 3 | 4;
+  image?: string;
+}
+const { items, columns = 4, image } = Astro.props;
+---
+
+<div class:list={['image-card-grid', `icg-cols-${columns}`]}>
+  {items.map((it) => {
+    const bg = it.image ?? image;
+    return (
+      <article class="icg-item" style={bg ? `--icg-bg: url('${bg}')` : undefined}>
+        <span class="icg-icon" aria-hidden="true">
+          {it.icon ? <Fragment set:html={it.icon} /> : (
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" /><path d="m3.3 7 8.7 5 8.7-5" /><path d="M12 22V12" /></svg>
+          )}
+        </span>
+        <div class="icg-text">
+          <h3 class="icg-title">{it.heading}</h3>
+          <p class="icg-body text-muted">{it.body}</p>
+        </div>
+      </article>
+    );
+  })}
+</div>
+
+<style>
+  .image-card-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-32); }
+
+  .icg-item {
+    --icg-bg: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--space-64);
+    min-height: 18rem;
+    padding: var(--space-32);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    /* Image background with a dark scrim so the image reads but the copy stays
+       legible. background-image (not a color prop) sidesteps the strict-value guard. */
+    background-image:
+      linear-gradient(
+        color-mix(in srgb, var(--card) 70%, transparent),
+        color-mix(in srgb, var(--card) 84%, transparent)
+      ),
+      var(--icg-bg);
+    background-size: cover;
+    background-position: center;
+  }
+
+  .icg-icon { display: inline-flex; color: var(--primary); }
+  .icg-text { display: flex; flex-direction: column; gap: var(--space-12); }
+  .icg-title { font-size: var(--text-h5); }
+  .icg-body { font-size: var(--text-body-sm); line-height: var(--lh-body); }
+
+  @media (min-width: 640px) { .image-card-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1024px) {
+    .image-card-grid.icg-cols-3 { grid-template-columns: repeat(3, 1fr); }
+    .image-card-grid.icg-cols-4 { grid-template-columns: repeat(4, 1fr); }
+  }
+</style>

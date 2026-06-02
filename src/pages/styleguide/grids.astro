@@ -1,12 +1,15 @@
 ---
 // Styleguide → Grids. Grid layouts, switched via a tab bar.
-// Grid 1 · Benefit grid (BenefitGrid) — icon + heading + body, used on item pages.
+// Grid 1 · Benefit grid (BenefitGrid) — icon + heading + body, solid background.
+// Grid 2 · Image cards (ImageCardGrid) — same family, each card backed by an image.
 import Layout from '../../layouts/Layout.astro';
 import SgThemeToggle from '../../components/SgThemeToggle.astro';
 import BenefitGrid from '../../components/BenefitGrid.astro';
+import ImageCardGrid from '../../components/ImageCardGrid.astro';
 
 const variants = [
   { label: 'Grid 1 · Benefits' },
+  { label: 'Grid 2 · Image cards' },
 ];
 
 const benefits = [
@@ -15,6 +18,10 @@ const benefits = [
   { heading: 'Variance you can act on', body: 'See theoretical against actual consumption and find where the margin is going.' },
   { heading: 'Set up with you', body: 'We build your recipe baseline together so the numbers are right from day one.' },
 ];
+
+// Grid 2 reuses the same copy, with a background image per card (CTA backgrounds
+// stand in here until real imagery lands).
+const imageCards = benefits.map((b, i) => ({ ...b, image: `/media/cta-bg-${i + 1}.jpg` }));
 ---
 
 <Layout title="Grids — Style guide">
@@ -34,6 +41,14 @@ const benefits = [
       <section class="section">
         <div class="container">
           <BenefitGrid items={benefits} columns={4} />
+        </div>
+      </section>
+    </div>
+
+    <div class="sgf-panel" role="tabpanel" data-index="1" hidden>
+      <section class="section">
+        <div class="container">
+          <ImageCardGrid items={imageCards} columns={4} />
         </div>
       </section>
     </div>
