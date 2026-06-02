@@ -11,12 +11,14 @@ interface Props {
   primary?: { label: string; href: string };
   secondary?: { label: string; href: string };
   image?: { src: string; alt: string };
+  /** Use the near-full-width container (reduced 20px gutter) instead of the capped one. */
+  wide?: boolean;
 }
-const { tagline, heading, subhead, primary, secondary, image } = Astro.props;
+const { tagline, heading, subhead, primary, secondary, image, wide = false } = Astro.props;
 ---
 
 <section class="hero">
-  <div class="container hero-grid">
+  <div class:list={[wide ? 'container-wide' : 'container', 'hero-grid']}>
     <div class="hero-copy">
       {tagline && <p class="tagline">{tagline}</p>}
       <h1 class="hero-title">{heading}</h1>
