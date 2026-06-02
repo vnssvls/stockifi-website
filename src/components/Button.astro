@@ -1,7 +1,10 @@
 ---
 // Button / CTA. variant: primary (filled) | secondary (outline) | ghost (borderless text link).
-// Renders <a> when href is set, else <button>. Primary hover flips to
-// foreground/background per the design-system dark-mode treatment.
+// Renders <a> when href is set, else <button>.
+// Primary buttons get a HOVER ripple: the white fill expands from the cursor's entry
+// point to cover the button (vs an instant flip). Triggered on hover, not click —
+// the click navigates/submits, so a click ripple would be redundant. Secondary/ghost
+// keep their simple hovers.
 interface Props {
   variant?: 'primary' | 'secondary' | 'ghost';
   href?: string;
@@ -21,9 +24,11 @@ const {
 
 const Tag = href ? 'a' : 'button';
 const tagProps = href ? { href } : { type };
+const isPrimary = variant === 'primary';
 ---
 
 <Tag class:list={['btn', `btn-${variant}`, block && 'btn-block', className]} {...tagProps} {...rest}>
+  {isPrimary && <span class="btn-ripple" aria-hidden="true"></span>}
   <slot />
 </Tag>
 
@@ -36,8 +41,7 @@ const tagProps = href ? { href } : { type };
     padding: var(--space-12) var(--space-24);
     border: 1px solid transparent;
     /* Finite radius that still clamps to a pill on a ~40px-tall button, so the
-       hover morph to --radius-md animates through the visible range (a true pill
-       at 9999px would just snap at the very end). */
+       hover morph to --radius-md animates through the visible range. */
     border-radius: var(--radius-xl);
     font-family: var(--font-body);
     font-size: var(--text-body-sm);
@@ -45,29 +49,40 @@ const tagProps = href ? { href } : { type };
     line-height: 1;
     cursor: pointer;
     white-space: nowrap;
-    transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease, border-radius 0.3s ease;
+    transition: background-color 0.18s ease, color 0.2s ease, border-color 0.18s ease, border-radius 0.3s ease;
   }
   /* Hover tightens the pill into a soft rounded-rect */
   .btn:hover { text-decoration: none; border-radius: var(--radius-md); }
   .btn-block { width: 100%; }
 
   .btn-primary {
+    position: relative;
+    overflow: hidden;
     background: var(--primary);
     color: var(--primary-foreground);
   }
-  .btn-primary:hover {
-    background: var(--foreground);
-    color: var(--background);
+  /* The ripple: a white circle that expands from the cursor's entry point (JS sets its
+     position + scale). Sits above the purple fill but below the label; the label flips
+     to dark while the ripple covers it. */
+  .btn-ripple {
+    position: absolute;
+    z-index: -1;
+    width: 0;
+    height: 0;
+    border-radius: var(--radius-full);
+    background-color: var(--foreground);
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
   }
+  .btn-primary.is-rippling { color: var(--background); }
 
   .btn-secondary {
     background: transparent;
     color: var(--foreground);
     border-color: var(--border);
   }
-  .btn-secondary:hover {
-    border-color: var(--foreground);
-  }
+  .btn-secondary:hover { border-color: var(--foreground); }
 
   /* Ghost: no border, no fill — a text link block (e.g. "View all integrations →"). */
   .btn-ghost {
@@ -77,4 +92,36 @@ const tagProps = href ? { href } : { type };
     padding-inline: 0;
   }
   .btn-ghost:hover { color: var(--primary); gap: var(--space-12); }
+
+  /* Reduced motion: no ripple — fall back to an instant white fill on hover. */
+  @media (prefers-reduced-motion: reduce) {
+    .btn-ripple { display: none; }
+    .btn-primary:hover { background: var(--foreground); color: var(--background); }
+  }
 </style>
+
+<script>
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll<HTMLElement>('.btn-primary').forEach((btn) => {
+      const ripple = btn.querySelector<HTMLElement>('.btn-ripple');
+      if (!ripple) return;
+
+      btn.addEventListener('mouseenter', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const diameter = 2 * Math.hypot(rect.width, rect.height); // covers from any entry point
+        ripple.style.width = `${diameter}px`;
+        ripple.style.height = `${diameter}px`;
+        ripple.style.left = `${e.clientX - rect.left}px`;
+        ripple.style.top = `${e.clientY - rect.top}px`;
+        ripple.getBoundingClientRect(); // flush the new origin before scaling
+        btn.classList.add('is-rippling');
+        ripple.style.transform = 'translate(-50%, -50%) scale(1)';
+      });
+
+      btn.addEventListener('mouseleave', () => {
+        btn.classList.remove('is-rippling');
+        ripple.style.transform = 'translate(-50%, -50%) scale(0)';
+      });
+    });
+  }
+</script>
