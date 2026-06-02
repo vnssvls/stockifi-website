@@ -1,0 +1,79 @@
+---
+// Integrations variant 2 — logo-pill cloud (Figma 92:1152, Supy reference).
+// Left: a centered, staggered cloud of pills (brand icon + uppercase name); right:
+// heading + body. Pills are built in CODE (not Figma image exports) so they stay
+// light, crisp, and recolourable — only the brand icon is an asset (the existing
+// icon-only submarks in /media/integrations-logos/, mostly SVG).
+// Logos are shuffled at build time for now; a "show all" animation comes later.
+interface Item { name: string; logo: string }
+interface Props {
+  eyebrow?: string;
+  heading: string;
+  subhead?: string;
+  items: Item[];
+  /** Optionally cap how many pills render (default: all, shuffled). */
+  count?: number;
+}
+const { eyebrow, heading, subhead, items, count } = Astro.props;
+
+// Randomize order at build time (placeholder until the cycling animation lands).
+const shuffled = [...items].sort(() => Math.random() - 0.5);
+const pills = count ? shuffled.slice(0, count) : shuffled;
+---
+
+<section class="integration-pills section">
+  <div class="container ip-grid">
+    <div class="ip-copy">
+      {eyebrow && <p class="tagline">{eyebrow}</p>}
+      <h2 class="ip-heading">{heading}</h2>
+      {subhead && <p class="ip-subhead text-muted">{subhead}</p>}
+    </div>
+
+    <div class="ip-cloud">
+      {pills.map((it) => (
+        <span class="ip-pill">
+          <img class="ip-pill-icon" src={it.logo} alt="" width="28" height="28" loading="lazy" decoding="async" />
+          <span class="ip-pill-name">{it.name}</span>
+        </span>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .ip-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-48); }
+
+  /* Centered wrapping cloud — centering each wrapped row gives the staggered look. */
+  .ip-cloud { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-12); }
+
+  .ip-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-8);
+    padding: var(--space-8) var(--space-16) var(--space-8) var(--space-8);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-full);
+    /* Subtle translucent fill so the pill reads on the dark page (the Figma sample's
+       near-black fill would vanish against our background). */
+    background-color: color-mix(in srgb, var(--foreground) 5%, transparent);
+  }
+  .ip-pill-icon { width: 28px; height: 28px; flex: none; object-fit: contain; }
+  .ip-pill-name {
+    font-size: var(--text-body-sm);
+    font-weight: var(--fw-medium);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--foreground);
+    white-space: nowrap;
+  }
+
+  .ip-heading { max-width: 16ch; }
+  .ip-subhead { margin-top: var(--space-16); max-width: 44ch; font-size: var(--text-body-lg); }
+
+  @media (min-width: 1024px) {
+    .ip-grid { grid-template-columns: 1.5fr 1fr; align-items: center; gap: var(--space-96); }
+    /* Cloud on the left, copy on the right (DOM order is copy-first for mobile). */
+    .ip-cloud { order: 1; }
+    .ip-copy { order: 2; }
+  }
+</style>

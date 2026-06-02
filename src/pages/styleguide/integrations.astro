@@ -1,12 +1,17 @@
 ---
-// Styleguide → Integrations. Grayscale-on-rest / colour-on-hover logo grid with a
-// header whose second line follows the hovered integration. Logos are transparent
-// marks (SVG where true-vector, PNG otherwise) in public/media/integrations-logos/,
-// each shown inside a CSS glass tile built by IntegrationGrid.
+// Styleguide → Integrations. Two variants, switched via a tab bar.
+// 1 · Logo grid (IntegrationGrid) — grayscale-on-rest / colour-on-hover brick rows.
+// 2 · Logo pills (IntegrationPills) — staggered pill cloud + side copy (Supy ref).
 import Layout from '../../layouts/Layout.astro';
 import SgThemeToggle from '../../components/SgThemeToggle.astro';
 import IntegrationGrid from '../../components/integrations/IntegrationGrid.astro';
+import IntegrationPills from '../../components/integrations/IntegrationPills.astro';
 import items from '../../data/integrations-home.json';
+
+const variants = [
+  { label: '1 · Logo grid' },
+  { label: '2 · Logo pills' },
+];
 ---
 
 <Layout title="Integrations — Style guide">
@@ -14,15 +19,31 @@ import items from '../../data/integrations-home.json';
     <div class="container sgf-head">
       <a class="sg-back" href="/styleguide">← Style guide</a>
       <h1>Integrations</h1>
-      <p class="text-muted">Logos are grayscale at rest and colour on hover/focus; the header's second line swaps to the hovered integration (defaults to "your existing tools"). Icon-only submarks, sourced from Figma.</p>
+      <p class="text-muted">Two layouts for the integration block. Icon-only submarks from <code>/media/integrations-logos/</code>. Logos in the pill cloud are shuffled at build time (a "show all" animation comes later).</p>
+      <div class="sgf-tabs" role="tablist" aria-label="Integration variants" data-sg-tabs>
+        {variants.map((v, i) => (
+          <button class="sgf-tab" type="button" role="tab" data-index={i} aria-selected={i === 0 ? 'true' : 'false'}>{v.label}</button>
+        ))}
+      </div>
     </div>
 
-    <IntegrationGrid
-      heading="Use Stockifi with"
-      defaultSubject="your existing tools"
-      cta={{ label: 'View all integrations', href: '/integrations' }}
-      items={items}
-    />
+    <div class="sgf-panel" role="tabpanel" data-index="0">
+      <IntegrationGrid
+        heading="Use Stockifi with"
+        defaultSubject="your existing tools"
+        cta={{ label: 'View all integrations', href: '/integrations' }}
+        items={items}
+      />
+    </div>
+
+    <div class="sgf-panel" role="tabpanel" data-index="1" hidden>
+      <IntegrationPills
+        eyebrow="Integrations"
+        heading="Works with the tools you already run"
+        subhead="Stockifi reads your accounting and POS, with 30+ accounting and 40+ POS integrations supported."
+        items={items}
+      />
+    </div>
   </div>
 
   <SgThemeToggle />
@@ -33,4 +54,41 @@ import items from '../../data/integrations-home.json';
   .sg-back { display: inline-block; margin-bottom: var(--space-16); color: var(--muted-foreground); font-size: var(--text-body-sm); }
   .sg-back:hover { color: var(--foreground); text-decoration: none; }
   .sgf-head h1 { margin-bottom: var(--space-8); }
+  .sgf-head code { font-size: var(--text-body-sm); color: var(--foreground); }
+
+  .sgf-tabs { display: flex; flex-wrap: wrap; gap: var(--space-8); margin-top: var(--space-32); }
+  .sgf-tab {
+    padding: var(--space-8) var(--space-16);
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-full);
+    color: var(--muted-foreground);
+    font-family: var(--font-body);
+    font-size: var(--text-body-sm);
+    font-weight: var(--fw-medium);
+    cursor: pointer;
+  }
+  .sgf-tab:hover { color: var(--foreground); border-color: var(--muted-foreground); }
+  .sgf-tab[aria-selected='true'] { background: var(--primary); color: var(--primary-foreground); border-color: var(--primary); }
+
+  .sgf-panel[hidden] { display: none; }
 </style>
+
+<script>
+  document.querySelectorAll('[data-sg-tabs]').forEach((tablist) => {
+    const tabs = Array.from(tablist.querySelectorAll<HTMLButtonElement>('.sgf-tab'));
+    const panels = Array.from(document.querySelectorAll<HTMLElement>('.sgf-panel'));
+    tabs.forEach((tab, i) => {
+      tab.setAttribute('tabindex', i === 0 ? '0' : '-1');
+      tab.addEventListener('click', () => {
+        tabs.forEach((t, j) => {
+          const on = j === i;
+          t.setAttribute('aria-selected', String(on));
+          t.setAttribute('tabindex', on ? '0' : '-1');
+          if (panels[j]) panels[j].hidden = !on;
+        });
+        tab.focus();
+      });
+    });
+  });
+</script>
