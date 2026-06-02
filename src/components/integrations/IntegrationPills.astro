@@ -4,7 +4,9 @@
 // heading + body. Pills are built in CODE (not Figma image exports) so they stay
 // light, crisp, and recolourable — only the brand icon is an asset (the existing
 // icon-only submarks in /media/integrations-logos/, mostly SVG).
-// Logos are shuffled at build time for now; a "show all" animation comes later.
+// Logos shuffled at build time. A controller (script below) flips 2-3 random pills at
+// a time (vertical rotateX, swap-at-edge) to cycle the full list through the visible
+// slots — IntersectionObserver-gated, paused offscreen / on hidden tab, reduced-motion safe.
 interface Item { name: string; logo: string; round?: boolean }
 interface Props {
   eyebrow?: string;
@@ -25,7 +27,7 @@ const visible = shuffled.slice(0, count ?? ROW_COUNT * 5);
 const rows = Array.from({ length: ROW_COUNT }, (_, r) => visible.filter((_, i) => i % ROW_COUNT === r));
 ---
 
-<section class="integration-pills section">
+<section class="integration-pills section" data-ip-pills>
   <div class="container ip-grid">
     <div class="ip-copy">
       {eyebrow && <p class="tagline">{eyebrow}</p>}
@@ -37,7 +39,7 @@ const rows = Array.from({ length: ROW_COUNT }, (_, r) => visible.filter((_, i) =
       {rows.map((row) => (
         <div class="ip-row">
           {row.map((it) => (
-            <span class="ip-pill">
+            <span class="ip-pill" data-pill data-name={it.name}>
               <img class:list={['ip-pill-icon', it.round && 'ip-pill-icon--round']} src={it.logo} alt="" width="28" height="28" loading="lazy" decoding="async" />
               <span class="ip-pill-name">{it.name}</span>
             </span>
@@ -46,6 +48,7 @@ const rows = Array.from({ length: ROW_COUNT }, (_, r) => visible.filter((_, i) =
       ))}
     </div>
   </div>
+  <script type="application/json" data-ip-all set:html={JSON.stringify(items)}></script>
 </section>
 
 <style>
@@ -78,6 +81,12 @@ const rows = Array.from({ length: ROW_COUNT }, (_, r) => visible.filter((_, i) =
     /* Subtle translucent fill so the pill reads on the dark page (the Figma sample's
        near-black fill would vanish against our background). */
     background-color: color-mix(in srgb, var(--foreground) 5%, transparent);
+    /* Flip + width morph (the controller drives transform/width inline). */
+    transform-origin: center;
+    transition: transform 0.26s ease, width 0.26s ease;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ip-pill { transition: none; }
   }
   .ip-pill-icon { width: 28px; height: 28px; flex: none; object-fit: contain; }
   /* Brand badges supplied without transparency (JPEG / flat PNG): clip to a circle
@@ -102,3 +111,83 @@ const rows = Array.from({ length: ROW_COUNT }, (_, r) => visible.filter((_, i) =
     .ip-copy { order: 2; }
   }
 </style>
+
+<script>
+  type Item = { name: string; logo: string; round?: boolean };
+  const DUR = 260; // keep in sync with the .ip-pill transition
+
+  document.querySelectorAll<HTMLElement>('[data-ip-pills]').forEach((section) => {
+    const dataEl = section.querySelector('[data-ip-all]');
+    const pills = Array.from(section.querySelectorAll<HTMLElement>('[data-pill]'));
+    if (!dataEl || pills.length === 0) return;
+
+    let all: Item[] = [];
+    try { all = JSON.parse(dataEl.textContent || '[]'); } catch { return; }
+    if (all.length <= pills.length) return; // no spare logos to cycle in
+
+    // Names currently on screen (reserved on pick to avoid two pills showing the same).
+    const shown = new Set(pills.map((p) => p.dataset.name || ''));
+    const pickNext = (): Item | null => {
+      const pool = all.filter((it) => !shown.has(it.name));
+      return pool.length ? pool[Math.floor(Math.random() * pool.length)] : null;
+    };
+
+    const flip = (pill: HTMLElement) => {
+      const next = pickNext();
+      if (!next) return;
+      // Reserve immediately so a simultaneous flip can't pick the same logo.
+      shown.delete(pill.dataset.name || '');
+      shown.add(next.name);
+      pill.dataset.name = next.name;
+
+      // Rotate to edge-on, then swap content while it's invisible (width reflows unseen).
+      pill.style.transform = 'perspective(600px) rotateX(90deg)';
+      window.setTimeout(() => {
+        const oldW = pill.offsetWidth;
+        const img = pill.querySelector('img');
+        const label = pill.querySelector('.ip-pill-name');
+        if (img) { img.src = next.logo; img.classList.toggle('ip-pill-icon--round', !!next.round); }
+        if (label) label.textContent = next.name;
+
+        pill.style.width = 'auto';
+        const newW = pill.getBoundingClientRect().width;
+        pill.style.width = `${oldW}px`;
+        pill.style.transition = 'none';
+        pill.style.transform = 'perspective(600px) rotateX(-90deg)';
+        void pill.offsetWidth; // reflow so the jump to -90deg isn't animated
+        pill.style.transition = '';
+        pill.style.transform = 'perspective(600px) rotateX(0deg)';
+        pill.style.width = `${newW}px`; // morph width to the new content over the flip
+      }, DUR);
+    };
+
+    const inFlight = new Set<HTMLElement>();
+    const tick = () => {
+      const batch = 2 + Math.floor(Math.random() * 2); // 2 or 3 at a time
+      const candidates = pills.filter((p) => !inFlight.has(p));
+      for (let i = 0; i < batch && candidates.length; i++) {
+        const pill = candidates.splice(Math.floor(Math.random() * candidates.length), 1)[0];
+        inFlight.add(pill);
+        window.setTimeout(() => {
+          flip(pill);
+          window.setTimeout(() => inFlight.delete(pill), DUR * 2 + 200);
+        }, Math.random() * 400); // stagger so they don't move in unison
+      }
+    };
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    let timer: number | null = null;
+    let inView = false;
+    const sync = () => {
+      const run = inView && !document.hidden;
+      if (run && timer === null) timer = window.setInterval(tick, 2800);
+      else if (!run && timer !== null) { clearInterval(timer); timer = null; }
+    };
+    new IntersectionObserver((entries) => {
+      entries.forEach((e) => { inView = e.isIntersecting; });
+      sync();
+    }, { threshold: 0.2 }).observe(section);
+    document.addEventListener('visibilitychange', sync);
+  });
+</script>
