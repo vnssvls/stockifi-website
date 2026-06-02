@@ -108,14 +108,12 @@ for (let i = 0; i < items.length; i += cols) {
     align-items: center;
     justify-content: center;
     border-radius: var(--radius-lg);
-    /* iOS-style glass: flat even translucency + a brighter top edge for the
-       specular highlight, plus a real backdrop blur for any content behind it.
-       (No gradient wash — that read as frost.) */
+    /* iOS-style glass: flat even translucency + a brighter top edge for the specular
+       highlight. (No gradient wash — that reads as frost. No backdrop-filter either —
+       it caused a hover artifact that bled the glass onto neighbouring tiles.) */
     background: color-mix(in srgb, var(--foreground) 6%, transparent);
     border: 1px solid color-mix(in srgb, var(--foreground) 10%, transparent);
     border-top-color: color-mix(in srgb, var(--foreground) 20%, transparent);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
     transition: background-color 0.2s ease, border-color 0.2s ease;
   }
   .ig-icon:hover,

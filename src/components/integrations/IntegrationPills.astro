@@ -99,11 +99,10 @@ const rows = Array.from({ length: ROW_COUNT }, (_, r) => visible.filter((_, i) =
     /* Brighter top edge = the specular sheen that reads as glass. */
     border-top-color: color-mix(in srgb, var(--foreground) 26%, transparent);
     border-radius: var(--radius-full);
-    /* Sleek iOS glass: flat translucency + a real backdrop blur, no gradient wash
-       (the wash is what reads as frost). */
+    /* Sleek iOS glass: flat translucency + a specular top edge, sitting over the
+       gradient glow behind (which shows through the translucent fill). No
+       backdrop-filter — it caused a hover artifact that bled glass onto neighbours. */
     background-color: color-mix(in srgb, var(--foreground) 8%, transparent);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
     /* Flip + width morph (the controller drives transform/width inline). */
     transform-origin: center;
     transition: transform 0.26s ease, width 0.26s ease;
