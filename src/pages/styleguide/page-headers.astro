@@ -1,15 +1,18 @@
 ---
 // Styleguide → Page headers. The page-header set, switched via a tab bar.
 // 1 · Centered (PageHeader) — used on Integrations, Pricing.
-// 2 · Hero / split (PageHeaderHero) — used on solution/product item pages.
+// 2 · Hero / split (PageHeaderHero) — used on solution item pages.
+// 3 · Image (PageHeaderImage) — centered over a background image; product item pages.
 import Layout from '../../layouts/Layout.astro';
 import SgThemeToggle from '../../components/SgThemeToggle.astro';
 import PageHeader from '../../components/page-headers/PageHeader.astro';
 import PageHeaderHero from '../../components/page-headers/PageHeaderHero.astro';
+import PageHeaderImage from '../../components/page-headers/PageHeaderImage.astro';
 
 const variants = [
   { label: '1 · Centered' },
   { label: '2 · Hero / split' },
+  { label: '3 · Image' },
 ];
 ---
 
@@ -39,6 +42,15 @@ const variants = [
         heading="Run a tighter kitchen without the spreadsheets"
         subhead="Stockifi connects your invoices, POS, and recipes so you see where margin leaks, then close the gap, without adding hours of admin."
         cta={{ label: 'Book a demo', href: '/book-a-demo' }}
+      />
+    </div>
+    <div class="sgf-panel" role="tabpanel" data-index="2" hidden>
+      <PageHeaderImage
+        eyebrow="Recipe costing"
+        heading="Recipe costs that move with your prices"
+        subhead="Stockifi keeps the cost of every dish current by reading your supplier invoices, so you always know your real margin."
+        cta={{ label: 'Book a demo', href: '/book-a-demo' }}
+        image="/media/cta-bg-2.jpg"
       />
     </div>
   </div>

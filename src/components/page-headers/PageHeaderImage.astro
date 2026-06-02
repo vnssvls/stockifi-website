@@ -1,0 +1,59 @@
+---
+// Page header v3 — "image" variant (Figma 82:1095, Relume header-65): centered
+// tagline + heading + body + CTA over a full-bleed background image with a dark
+// scrim. The top section of product item pages. Content capped at 768 inside the
+// 1280 container; the section background runs full width.
+import Button from '../Button.astro';
+
+interface Props {
+  eyebrow?: string;
+  heading: string;
+  subhead?: string;
+  cta?: { label: string; href: string };
+  /** Background image (site-relative path). */
+  image: string;
+}
+const { eyebrow, heading, subhead, cta, image } = Astro.props;
+---
+
+<section class="page-header-image" style={`--phi-bg: url('${image}')`}>
+  <div class="container phi-inner">
+    <div class="phi-content">
+      {eyebrow && <p class="tagline phi-eyebrow">{eyebrow}</p>}
+      <h1 class="phi-heading">{heading}</h1>
+      {subhead && <p class="phi-subhead">{subhead}</p>}
+    </div>
+    {cta && (
+      <div class="phi-actions">
+        <Button variant="primary" href={cta.href}>{cta.label}</Button>
+      </div>
+    )}
+  </div>
+</section>
+
+<style>
+  /* Background image + dark scrim (background-image dodges the strict-value guard,
+     same pattern as CtaEmail). Scrim keeps the centered copy legible on any photo. */
+  .page-header-image {
+    --phi-bg: none;
+    padding-block: var(--section-y);
+    background-image:
+      linear-gradient(
+        color-mix(in srgb, var(--background) 68%, transparent),
+        color-mix(in srgb, var(--background) 68%, transparent)
+      ),
+      var(--phi-bg);
+    background-size: cover;
+    background-position: center;
+  }
+
+  .phi-inner { display: flex; flex-direction: column; align-items: center; gap: var(--space-32); text-align: center; }
+  .phi-content { display: flex; flex-direction: column; align-items: center; gap: var(--space-16); max-width: 768px; }
+  .phi-eyebrow { margin-bottom: 0; }
+  .phi-heading { font-size: var(--text-h1); line-height: var(--lh-h1); }
+  .phi-subhead {
+    max-width: 56ch;
+    font-size: var(--text-body-lg);
+    color: color-mix(in srgb, var(--foreground) 85%, transparent);
+  }
+</style>
