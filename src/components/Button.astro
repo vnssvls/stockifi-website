@@ -57,6 +57,9 @@ const isPrimary = variant === 'primary';
 
   .btn-primary {
     position: relative;
+    /* isolate makes the button its own stacking context, so the z-index:-1 ripple
+       sits ABOVE the purple fill (not behind the button) and below the label. */
+    isolation: isolate;
     overflow: hidden;
     background: var(--primary);
     color: var(--primary-foreground);
