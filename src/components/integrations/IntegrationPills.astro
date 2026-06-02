@@ -23,7 +23,7 @@ const shuffled = [...items].sort(() => Math.random() - 0.5);
 // Lay out as 4 rows, round-robin so each row gets a varied mix. The visible count is
 // capped (the planned flip animation will cycle the rest of the list through these slots).
 const ROW_COUNT = 4;
-const visible = shuffled.slice(0, count ?? ROW_COUNT * 5);
+const visible = shuffled.slice(0, count ?? ROW_COUNT * 6);
 const rows = Array.from({ length: ROW_COUNT }, (_, r) => visible.filter((_, i) => i % ROW_COUNT === r));
 ---
 
@@ -85,8 +85,8 @@ const rows = Array.from({ length: ROW_COUNT }, (_, r) => visible.filter((_, i) =
     margin-left: calc(-1 * (var(--ip-bleed) + var(--ip-overshoot)));
     overflow: hidden;
     /* Fade BOTH edges: pills bleed softly out of the left and taper on the right. */
-    mask-image: linear-gradient(to right, transparent 40px, #000 104px, #000 80%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to right, transparent 40px, #000 104px, #000 80%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 40px, #000 104px, #000 86%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 40px, #000 104px, #000 86%, transparent 100%);
   }
   .ip-row { display: flex; gap: var(--space-12); flex-shrink: 0; }
 
@@ -127,7 +127,7 @@ const rows = Array.from({ length: ROW_COUNT }, (_, r) => visible.filter((_, i) =
   .ip-subhead { margin-top: var(--space-16); max-width: 44ch; font-size: var(--text-body-lg); }
 
   @media (min-width: 1024px) {
-    .ip-grid { grid-template-columns: 1.5fr 1fr; align-items: center; gap: var(--space-32); }
+    .ip-grid { grid-template-columns: 1fr 1fr; align-items: center; gap: var(--space-32); }
     /* Cloud on the left, copy on the right (DOM order is copy-first for mobile). */
     .ip-cloud { order: 1; }
     .ip-copy { order: 2; }
