@@ -37,8 +37,10 @@ const { title, image, logo, avatar, quote, name, designation } = Astro.props;
   .cs-header {
     --cs-bg: none;
     margin-top: calc(-1 * var(--nav-h));
-    padding-top: calc(var(--section-y) + var(--nav-h));
-    padding-bottom: var(--section-y);
+    /* nav-h clears the floating nav; the small extra is the only real top padding, so
+       the header stays compact and the body peeks above the fold. */
+    padding-top: calc(var(--nav-h) + var(--space-32));
+    padding-bottom: var(--space-48);
     background-image:
       linear-gradient(
         color-mix(in srgb, var(--background) 74%, transparent),
@@ -49,7 +51,7 @@ const { title, image, logo, avatar, quote, name, designation } = Astro.props;
     background-position: center;
   }
   /* Wider column so the title fits ~2 lines on desktop. */
-  .cs-inner { display: flex; flex-direction: column; align-items: center; gap: var(--space-48); max-width: 56rem; text-align: center; }
+  .cs-inner { display: flex; flex-direction: column; align-items: center; gap: var(--space-32); max-width: 56rem; text-align: center; }
 
   .cs-title { display: flex; flex-direction: column; align-items: center; gap: var(--space-16); }
   .cs-logo { height: 56px; width: auto; object-fit: contain; }
