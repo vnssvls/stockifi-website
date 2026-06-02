@@ -1,0 +1,61 @@
+---
+// Customer story item header (Figma 100:2669): full-bleed background photo + dark
+// scrim, centered logo + title, then avatar + featured quote + name + read time.
+interface Props {
+  title: string;
+  image?: string;
+  logo?: string;
+  avatar?: string;
+  quote?: string;
+  name: string;
+  designation?: string;
+  readTime?: string;
+}
+const { title, image, logo, avatar, quote, name, designation, readTime } = Astro.props;
+const sub = [designation, readTime].filter(Boolean).join(' · ');
+---
+
+<header class="cs-header" style={image ? `--cs-bg: url('${image}')` : undefined}>
+  <div class="container cs-inner">
+    <div class="cs-title">
+      {logo && <img class="cs-logo" src={logo} alt="" width="56" height="56" loading="eager" />}
+      <h1 class="cs-h1">{title}</h1>
+    </div>
+    <div class="cs-author">
+      {avatar && <img class="cs-avatar" src={avatar} alt={name} width="56" height="56" loading="eager" />}
+      {quote && <p class="cs-quote">{quote}</p>}
+      <div class="cs-meta">
+        {name && <p class="cs-name">{name}</p>}
+        {sub && <p class="cs-sub">{sub}</p>}
+      </div>
+    </div>
+  </div>
+</header>
+
+<style>
+  .cs-header {
+    --cs-bg: none;
+    padding-block: var(--section-y);
+    background-image:
+      linear-gradient(
+        color-mix(in srgb, var(--background) 64%, transparent),
+        color-mix(in srgb, var(--background) 78%, transparent)
+      ),
+      var(--cs-bg);
+    background-size: cover;
+    background-position: center;
+  }
+  /* 768 reading column centered inside the container. */
+  .cs-inner { display: flex; flex-direction: column; align-items: center; gap: var(--space-48); max-width: 768px; text-align: center; }
+
+  .cs-title { display: flex; flex-direction: column; align-items: center; gap: var(--space-16); }
+  .cs-logo { height: 56px; width: auto; object-fit: contain; }
+  .cs-h1 { font-size: var(--text-h2); line-height: var(--lh-h2); }
+
+  .cs-author { display: flex; flex-direction: column; align-items: center; gap: var(--space-16); }
+  .cs-avatar { width: 56px; height: 56px; border-radius: var(--radius-full); object-fit: cover; }
+  .cs-quote { max-width: 520px; font-size: var(--text-body); color: color-mix(in srgb, var(--foreground) 90%, transparent); }
+  .cs-meta { display: flex; flex-direction: column; gap: var(--space-4); }
+  .cs-name { font-weight: var(--fw-semibold); }
+  .cs-sub { font-size: var(--text-body-sm); color: var(--muted-foreground); }
+</style>

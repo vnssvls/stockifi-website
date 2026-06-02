@@ -1,0 +1,115 @@
+---
+// Customer story library (Figma 97:1192): centered page header + a 3-up card grid,
+// numbered pagination at 6 per page via Astro's paginate() (page 1 = /customer-stories,
+// page 2 = /customer-stories/2, ...).
+import type { GetStaticPaths, Page, PaginateFunction } from 'astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import PageHeader from '../../components/page-headers/PageHeader.astro';
+import CtaBand from '../../components/CtaBand.astro';
+
+export const getStaticPaths: GetStaticPaths = async ({ paginate }: { paginate: PaginateFunction }) => {
+  const stories = (await getCollection('customerStories'))
+    .filter((s) => !s.data.draft)
+    .sort((a, b) => a.data.companyName.localeCompare(b.data.companyName));
+  return paginate(stories, { pageSize: 6 });
+};
+
+const { page } = Astro.props as { page: Page<CollectionEntry<'customerStories'>> };
+const pageUrl = (n: number) => (n === 1 ? '/customer-stories' : `/customer-stories/${n}`);
+const pages = Array.from({ length: page.lastPage }, (_, i) => i + 1);
+---
+
+<Layout
+  title="Customer Stories — Restaurants Running on Stockifi | Stockifi"
+  description="How restaurants, groups, and hospitality operators use Stockifi to take control of food cost. Real stories from real kitchens."
+>
+  <PageHeader
+    eyebrow="Customer stories"
+    heading="Real kitchens, real numbers"
+    subhead="How operators across Europe use Stockifi to see where their margin goes and take it back."
+  />
+
+  <section class="section csl-section">
+    <div class="container">
+      <div class="csl-grid">
+        {page.data.map((s) => (
+          <a class="csl-card" href={`/customer-stories/${s.id}`}>
+            <div class="csl-media">
+              {s.data.thumbnail ? (
+                <img src={s.data.thumbnail} alt={s.data.companyName} loading="lazy" decoding="async" />
+              ) : (
+                <span class="csl-media-ph" aria-hidden="true"></span>
+              )}
+            </div>
+            <h3 class="csl-title">{s.data.articleTitle}</h3>
+            <p class="csl-excerpt text-muted">{s.data.oneLiner || s.data.featuredQuote}</p>
+            <span class="csl-cta">Read story
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </span>
+          </a>
+        ))}
+      </div>
+
+      {page.lastPage > 1 && (
+        <nav class="csl-pages" aria-label="Pagination">
+          {page.url.prev ? <a class="csl-nav" href={page.url.prev}>← Prev</a> : <span class="csl-nav is-off">← Prev</span>}
+          <span class="csl-nums">
+            {pages.map((n) => (
+              n === page.currentPage
+                ? <span class="csl-num is-active" aria-current="page">{n}</span>
+                : <a class="csl-num" href={pageUrl(n)}>{n}</a>
+            ))}
+          </span>
+          {page.url.next ? <a class="csl-nav" href={page.url.next}>Next →</a> : <span class="csl-nav is-off">Next →</span>}
+        </nav>
+      )}
+    </div>
+  </section>
+
+  <CtaBand
+    heading="Want results like these?"
+    subhead="Book a short call and we'll show you what Stockifi surfaces in your first 30 days."
+    primary={{ label: 'Book a demo', href: '/book-a-demo' }}
+    secondary={{ label: 'View pricing', href: '/pricing' }}
+  />
+</Layout>
+
+<style>
+  .csl-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-48) var(--space-32); }
+
+  .csl-card { display: flex; flex-direction: column; }
+  .csl-card:hover { text-decoration: none; }
+  .csl-media { border-radius: var(--radius-lg); overflow: hidden; margin-bottom: var(--space-16); }
+  .csl-media img,
+  .csl-media-ph { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+  .csl-media-ph { background: var(--muted); }
+  .csl-card:hover .csl-title { color: var(--primary-light); }
+  .csl-title { font-size: var(--text-h5); transition: color 0.18s ease; }
+  .csl-excerpt { margin-top: var(--space-8); font-size: var(--text-body-sm); line-height: var(--lh-body); }
+  .csl-cta { display: inline-flex; align-items: center; gap: var(--space-8); margin-top: var(--space-16); color: var(--primary); font-weight: var(--fw-semibold); font-size: var(--text-body-sm); }
+  .csl-card:hover .csl-cta { gap: var(--space-12); }
+
+  .csl-pages { display: flex; align-items: center; justify-content: center; gap: var(--space-16); margin-top: var(--space-64); }
+  .csl-nums { display: flex; align-items: center; gap: var(--space-8); }
+  .csl-nav { color: var(--muted-foreground); font-size: var(--text-body-sm); font-weight: var(--fw-medium); }
+  .csl-nav:hover { color: var(--foreground); text-decoration: none; }
+  .csl-nav.is-off { opacity: 0.4; pointer-events: none; }
+  .csl-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    padding-inline: var(--space-8);
+    border-radius: var(--radius-md);
+    color: var(--muted-foreground);
+    font-size: var(--text-body-sm);
+    font-weight: var(--fw-medium);
+  }
+  .csl-num:hover { color: var(--foreground); text-decoration: none; }
+  .csl-num.is-active { background: var(--primary); color: var(--primary-foreground); }
+
+  @media (min-width: 640px) { .csl-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1024px) { .csl-grid { grid-template-columns: repeat(3, 1fr); } }
+</style>

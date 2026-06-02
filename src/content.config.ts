@@ -27,4 +27,31 @@ const blog = defineCollection({
   }),
 });
 
-export const collections = { blog };
+// Customer stories — markdown in content/customer-stories/en/, harvested from Webflow.
+const customerStories = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './content/customer-stories/en' }),
+  schema: z.object({
+    companyName: z.string(),
+    slug: z.string().optional(),
+    articleTitle: z.string(),
+    metaTitle: z.string().optional(),
+    metaDescription: z.string().optional(),
+    user: z.string().default(''),
+    designation: z.string().default(''),
+    businessType: z.string().default(''),
+    website: z.string().optional(),
+    oneLiner: z.string().default(''),
+    featuredQuote: z.string().default(''),
+    fullTestimonial: z.string().default(''),
+    userPhoto: z.string().optional(),
+    logoPrimary: z.string().optional(),
+    logoTransparent: z.string().optional(),
+    thumbnail: z.string().optional(),
+    imageGrid: z.array(z.string()).default([]),
+    singleImage: z.string().optional(),
+    draft: z.boolean().default(false),
+    webflowId: z.string().optional(),
+  }),
+});
+
+export const collections = { blog, customerStories };
