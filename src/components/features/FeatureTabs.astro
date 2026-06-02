@@ -1,13 +1,18 @@
 ---
-// Feature Layout 5 — centered header + an image/text panel that swaps via a tab row.
-// Accessible tabs (role=tablist/tab/tabpanel); ids + aria wired client-side so multiple
-// instances never collide.
+// Feature Layout 5 — "Feature 5 new" (Figma 80:1230, Relume layout-507). Centered
+// header, then a tab ROW on top of a bordered card whose split pane (copy left + media
+// right) swaps per tab. Wide: full-width with a 60px desktop gutter. Accessible tabs
+// (role=tablist/tab/tabpanel; ids + aria wired client-side so instances never collide).
+import Button from '../Button.astro';
 import MediaPlaceholder from './MediaPlaceholder.astro';
 
 interface Tab {
   label: string;
+  tagline?: string;
   heading: string;
   body: string;
+  primary?: { label: string; href: string };
+  secondary?: { label: string; href: string };
   image?: { src: string; alt: string };
 }
 interface Props {
@@ -20,7 +25,7 @@ const { tagline, heading, subhead, tabs } = Astro.props;
 ---
 
 <section class="feature-tabs section" data-feature-tabs>
-  <div class="container">
+  <div class="ft-wide">
     <div class="ft-head">
       {tagline && <p class="tagline">{tagline}</p>}
       <h2>{heading}</h2>
@@ -28,22 +33,35 @@ const { tagline, heading, subhead, tabs } = Astro.props;
     </div>
 
     <div class="ft-card">
-      <div class="ft-panels">
-        {tabs.map((t, i) => (
-          <div class="ft-panel" role="tabpanel" data-index={i} hidden={i !== 0}>
-            <div class="ft-media">
-              {t.image ? <img src={t.image.src} alt={t.image.alt} /> : <MediaPlaceholder ratio="4 / 3" />}
-            </div>
-            <div class="ft-copy">
-              <h3>{t.heading}</h3>
-              <p class="text-muted">{t.body}</p>
-            </div>
-          </div>
-        ))}
-      </div>
       <div class="ft-tabs" role="tablist" aria-label="Features">
         {tabs.map((t, i) => (
           <button class="ft-tab" type="button" role="tab" data-index={i} aria-selected={i === 0 ? 'true' : 'false'}>{t.label}</button>
+        ))}
+      </div>
+
+      <div class="ft-panels">
+        {tabs.map((t, i) => (
+          <div class="ft-panel" role="tabpanel" data-index={i} hidden={i !== 0}>
+            <div class="ft-copy">
+              {t.tagline && <p class="tagline">{t.tagline}</p>}
+              <h3 class="ft-h">{t.heading}</h3>
+              <p class="ft-body text-muted">{t.body}</p>
+              {(t.primary || t.secondary) && (
+                <div class="ft-actions">
+                  {t.primary && <Button variant="secondary" href={t.primary.href}>{t.primary.label}</Button>}
+                  {t.secondary && (
+                    <Button variant="ghost" href={t.secondary.href}>
+                      {t.secondary.label}
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                    </Button>
+                  )}
+                </div>
+              )}
+            </div>
+            <div class="ft-media">
+              {t.image ? <img src={t.image.src} alt={t.image.alt} /> : <MediaPlaceholder ratio="1 / 1" />}
+            </div>
+          </div>
         ))}
       </div>
     </div>
@@ -51,21 +69,21 @@ const { tagline, heading, subhead, tabs } = Astro.props;
 </section>
 
 <style>
-  .ft-head { max-width: 56ch; margin: 0 auto var(--space-48); text-align: center; }
+  /* Wide: runs near full width with a 60px gutter on desktop (V), 20px on mobile. */
+  .ft-wide { width: 100%; max-width: none; margin-inline: auto; padding-inline: var(--gutter-wide); }
+
+  .ft-head { max-width: 768px; margin: 0 auto var(--space-48); text-align: center; }
   .tagline + h2 { margin-top: var(--space-16); }
   .ft-sub { margin-top: var(--space-16); font-size: var(--text-body-lg); }
 
-  .ft-card { border: 1px solid var(--border); border-radius: var(--radius-xl); overflow: hidden; }
-  .ft-panel { display: grid; grid-template-columns: 1fr; gap: var(--space-32); padding: var(--space-32); align-items: center; }
-  .ft-panel[hidden] { display: none; }
-  .ft-media img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius-lg); }
-  .ft-copy h3 { font-size: var(--text-h3); margin-bottom: var(--space-16); }
+  .ft-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-xl); overflow: hidden; }
 
-  /* Mobile: tabs stacked vertically so longer labels keep breathing room. */
-  .ft-tabs { display: flex; flex-direction: column; border-top: 1px solid var(--border); }
+  /* Tab row sits ON TOP of the pane. Mobile: stacked rows. */
+  .ft-tabs { display: flex; flex-direction: column; }
   .ft-tab {
+    position: relative;
     flex: 1;
-    padding: var(--space-16);
+    padding: var(--space-16) var(--space-24);
     text-align: left;
     background: transparent;
     border: none;
@@ -73,20 +91,38 @@ const { tagline, heading, subhead, tabs } = Astro.props;
     color: var(--muted-foreground);
     font-family: var(--font-body);
     font-size: var(--text-body);
-    font-weight: var(--fw-medium);
+    font-weight: var(--fw-semibold);
     cursor: pointer;
   }
-  .ft-tab:last-child { border-bottom: none; }
   .ft-tab:hover { color: var(--foreground); }
-  .ft-tab[aria-selected='true'] { background: var(--accent); color: var(--foreground); }
+  /* Selected tab: brighter label + a primary underline indicator (::after avoids a
+     layout shift and the box-shadow token guard). */
+  .ft-tab[aria-selected='true'] { color: var(--foreground); }
+  .ft-tab[aria-selected='true']::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 3px;
+    background-color: var(--primary);
+  }
 
-  /* Tablet+: tabs go back to a horizontal row. */
+  .ft-panel { display: grid; grid-template-columns: 1fr; gap: var(--space-32); padding: var(--space-32); align-items: center; }
+  .ft-panel[hidden] { display: none; }
+  .ft-copy { display: flex; flex-direction: column; gap: var(--space-16); }
+  .ft-h { font-size: var(--text-h3); }
+  .ft-body { line-height: var(--lh-body); }
+  .ft-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-24); margin-top: var(--space-8); }
+  .ft-media img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: var(--radius-lg); }
+
   @media (min-width: 768px) {
     .ft-tabs { flex-direction: row; }
-    .ft-tab { text-align: center; border-bottom: none; border-right: 1px solid var(--border); }
+    .ft-tab { text-align: center; border-right: 1px solid var(--border); }
     .ft-tab:last-child { border-right: none; }
   }
   @media (min-width: 1024px) {
+    .ft-wide { padding-inline: 60px; }
     .ft-panel { grid-template-columns: 1fr 1fr; gap: var(--space-64); padding: var(--space-48); }
   }
 </style>
