@@ -63,15 +63,19 @@ const { eyebrow, heading, subhead, cta, image } = Astro.props;
     background-image: var(--phi-bg);
     background-size: cover;
     background-position: center;
-    filter: blur(6px);
+    filter: blur(3px);
     z-index: 0;
   }
-  /* Dark scrim, kept sharp above the blurred photo (darker than before for contrast). */
+  /* Dark scrim, kept sharp above the blurred photo. Gradient (darker toward the
+     bottom) for contrast behind the centered copy. */
   .phi-card::after {
     content: '';
     position: absolute;
     inset: 0;
-    background-color: color-mix(in srgb, var(--background) 78%, transparent);
+    background-image: linear-gradient(
+      color-mix(in srgb, var(--background) 80%, transparent),
+      color-mix(in srgb, var(--background) 90%, transparent)
+    );
     z-index: 1;
   }
 
