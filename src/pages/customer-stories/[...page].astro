@@ -1,11 +1,12 @@
 ---
-// Customer story library (Figma 97:1192): centered page header + a 3-up card grid,
+// Customer story library (Figma 97:1192): centered page header + a 2-up card grid,
 // numbered pagination at 6 per page via Astro's paginate() (page 1 = /customer-stories,
-// page 2 = /customer-stories/2, ...).
+// page 2 = /customer-stories/2, ...). Wide layout with an 80px gutter.
 import type { GetStaticPaths, Page, PaginateFunction } from 'astro';
 import { getCollection, type CollectionEntry } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import PageHeader from '../../components/page-headers/PageHeader.astro';
+import Button from '../../components/Button.astro';
 import CtaBand from '../../components/CtaBand.astro';
 
 export const getStaticPaths: GetStaticPaths = async ({ paginate }: { paginate: PaginateFunction }) => {
@@ -28,10 +29,15 @@ const pages = Array.from({ length: page.lastPage }, (_, i) => i + 1);
     eyebrow="Customer stories"
     heading="Real kitchens, real numbers"
     subhead="How operators across Europe use Stockifi to see where their margin goes and take it back."
-  />
+  >
+    <Button variant="secondary" href="/#how-it-works">
+      See how it works
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+    </Button>
+  </PageHeader>
 
-  <section class="section csl-section">
-    <div class="container">
+  <section class="section">
+    <div class="csl-wide">
       <div class="csl-grid">
         {page.data.map((s) => (
           <a class="csl-card" href={`/customer-stories/${s.id}`}>
@@ -41,9 +47,12 @@ const pages = Array.from({ length: page.lastPage }, (_, i) => i + 1);
               ) : (
                 <span class="csl-media-ph" aria-hidden="true"></span>
               )}
+              {(s.data.logoTransparent || s.data.logoPrimary) && (
+                <span class="csl-logo"><img src={s.data.logoTransparent ?? s.data.logoPrimary} alt={s.data.companyName} loading="lazy" /></span>
+              )}
             </div>
             <h3 class="csl-title">{s.data.articleTitle}</h3>
-            <p class="csl-excerpt text-muted">{s.data.oneLiner || s.data.featuredQuote}</p>
+            <p class="csl-excerpt text-muted">{s.data.featuredQuote || s.data.oneLiner}</p>
             <span class="csl-cta">Read story
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
             </span>
@@ -76,18 +85,34 @@ const pages = Array.from({ length: page.lastPage }, (_, i) => i + 1);
 </Layout>
 
 <style>
-  .csl-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-48) var(--space-32); }
+  /* Wide layout with an 80px gutter (20px on mobile). */
+  .csl-wide { width: 100%; max-width: none; margin-inline: auto; padding-inline: var(--gutter-wide); }
+
+  .csl-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-64) var(--space-48); }
 
   .csl-card { display: flex; flex-direction: column; }
   .csl-card:hover { text-decoration: none; }
-  .csl-media { border-radius: var(--radius-lg); overflow: hidden; margin-bottom: var(--space-16); }
+
+  .csl-media { position: relative; border-radius: var(--radius-lg); overflow: hidden; margin-bottom: var(--space-16); }
   .csl-media img,
   .csl-media-ph { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
   .csl-media-ph { background: var(--muted); }
-  .csl-card:hover .csl-title { color: var(--primary-light); }
-  .csl-title { font-size: var(--text-h5); transition: color 0.18s ease; }
+  /* Linear overlay from the top-left corner so the brand logo reads over the photo. */
+  .csl-media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(135deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0) 45%);
+    pointer-events: none;
+  }
+  .csl-logo { position: absolute; top: var(--space-16); left: var(--space-16); z-index: 1; }
+  .csl-logo img { height: 30px; width: auto; max-width: 120px; object-fit: contain; }
+
+  /* Title in body font (Inter), no purple hover. */
+  .csl-title { font-family: var(--font-body); font-size: var(--text-h5); }
   .csl-excerpt { margin-top: var(--space-8); font-size: var(--text-body-sm); line-height: var(--lh-body); }
-  .csl-cta { display: inline-flex; align-items: center; gap: var(--space-8); margin-top: var(--space-16); color: var(--primary); font-weight: var(--fw-semibold); font-size: var(--text-body-sm); }
+  /* "Read story" stays white, regular weight (primary is used with intent, not as a default accent). */
+  .csl-cta { display: inline-flex; align-items: center; gap: var(--space-8); margin-top: var(--space-16); color: var(--foreground); font-weight: var(--fw-regular); font-size: var(--text-body-sm); }
   .csl-card:hover .csl-cta { gap: var(--space-12); }
 
   .csl-pages { display: flex; align-items: center; justify-content: center; gap: var(--space-16); margin-top: var(--space-64); }
@@ -108,8 +133,9 @@ const pages = Array.from({ length: page.lastPage }, (_, i) => i + 1);
     font-weight: var(--fw-medium);
   }
   .csl-num:hover { color: var(--foreground); text-decoration: none; }
-  .csl-num.is-active { background: var(--primary); color: var(--primary-foreground); }
+  /* Active page: white fill (not primary). */
+  .csl-num.is-active { background: var(--foreground); color: var(--background); }
 
   @media (min-width: 640px) { .csl-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (min-width: 1024px) { .csl-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (min-width: 1024px) { .csl-wide { padding-inline: 80px; } }
 </style>

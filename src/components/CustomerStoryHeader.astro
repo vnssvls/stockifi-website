@@ -1,6 +1,7 @@
 ---
 // Customer story item header (Figma 100:2669): full-bleed background photo + dark
-// scrim, centered logo + title, then avatar + featured quote + name + read time.
+// scrim, centered logo + title, then avatar + featured quote + name + designation.
+// Pulled up behind the floating nav so the photo runs full height to the very top.
 interface Props {
   title: string;
   image?: string;
@@ -9,10 +10,8 @@ interface Props {
   quote?: string;
   name: string;
   designation?: string;
-  readTime?: string;
 }
-const { title, image, logo, avatar, quote, name, designation, readTime } = Astro.props;
-const sub = [designation, readTime].filter(Boolean).join(' · ');
+const { title, image, logo, avatar, quote, name, designation } = Astro.props;
 ---
 
 <header class="cs-header" style={image ? `--cs-bg: url('${image}')` : undefined}>
@@ -26,27 +25,31 @@ const sub = [designation, readTime].filter(Boolean).join(' · ');
       {quote && <p class="cs-quote">{quote}</p>}
       <div class="cs-meta">
         {name && <p class="cs-name">{name}</p>}
-        {sub && <p class="cs-sub">{sub}</p>}
+        {designation && <p class="cs-sub">{designation}</p>}
       </div>
     </div>
   </div>
 </header>
 
 <style>
+  /* Pulled up by the nav height so the photo backdrop reaches the very top (behind the
+     transparent floating nav); the extra top padding keeps the content below the nav. */
   .cs-header {
     --cs-bg: none;
-    padding-block: var(--section-y);
+    margin-top: calc(-1 * var(--nav-h));
+    padding-top: calc(var(--section-y) + var(--nav-h));
+    padding-bottom: var(--section-y);
     background-image:
       linear-gradient(
-        color-mix(in srgb, var(--background) 64%, transparent),
-        color-mix(in srgb, var(--background) 78%, transparent)
+        color-mix(in srgb, var(--background) 74%, transparent),
+        color-mix(in srgb, var(--background) 88%, transparent)
       ),
       var(--cs-bg);
     background-size: cover;
     background-position: center;
   }
-  /* 768 reading column centered inside the container. */
-  .cs-inner { display: flex; flex-direction: column; align-items: center; gap: var(--space-48); max-width: 768px; text-align: center; }
+  /* Wider column so the title fits ~2 lines on desktop. */
+  .cs-inner { display: flex; flex-direction: column; align-items: center; gap: var(--space-48); max-width: 56rem; text-align: center; }
 
   .cs-title { display: flex; flex-direction: column; align-items: center; gap: var(--space-16); }
   .cs-logo { height: 56px; width: auto; object-fit: contain; }

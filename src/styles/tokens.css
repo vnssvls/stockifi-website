@@ -101,6 +101,9 @@
      (`.container-wide`). Constant across breakpoints — it already equals the
      mobile --gutter, so no step-down is needed. */
   --gutter-wide: 20px;
+  /* Approx height of the floating nav (logo/buttons + paddings + border), slightly
+     over so full-bleed headers can be pulled up behind it to the very top. */
+  --nav-h: 100px;
   --section-y: 112px;
   --section-y-sm: 80px;
 
