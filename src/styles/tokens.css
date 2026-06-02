@@ -97,6 +97,10 @@
   --container-max: 1280px;
   --prose-max: 720px;
   --gutter: 36px;
+  /* Near-full-width gutter for components that should bleed close to the edges
+     (`.container-wide`). Constant across breakpoints — it already equals the
+     mobile --gutter, so no step-down is needed. */
+  --gutter-wide: 20px;
   --section-y: 112px;
   --section-y-sm: 80px;
 

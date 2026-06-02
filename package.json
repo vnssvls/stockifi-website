@@ -11,15 +11,16 @@
     "lint:css": "stylelint \"src/**/*.{css,astro}\""
   },
   "dependencies": {
-    "astro": "^5",
+    "@astrojs/sitemap": "^3.7.3",
+    "@fontsource/inter": "^5",
     "@fontsource/montserrat": "^5",
-    "@fontsource/inter": "^5"
+    "astro": "^5"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9",
-    "typescript": "^5",
+    "postcss-html": "^1",
     "stylelint": "^16",
     "stylelint-declaration-strict-value": "^1",
-    "postcss-html": "^1"
+    "typescript": "^5"
   }
 }

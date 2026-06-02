@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Internal component library — not for indexing.
+Disallow: /styleguide/
+
+# Paid-traffic landing pages (kept live, flagged noindex).
+Disallow: /intro
+Disallow: /intro-details
+
+Sitemap: https://www.stockifi.io/sitemap-index.xml

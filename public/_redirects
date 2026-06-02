@@ -1,0 +1,13 @@
+# Cloudflare Pages redirects — Stockifi website (DC-474).
+# Format: <source> <destination> <status>   (https://developers.cloudflare.com/pages/configuration/redirects/)
+#
+# Per docs/audit/09-redirect-map.md the migration PRESERVES every slug 1:1, so
+# there are NO per-URL redirects from the old Webflow site. The only canonical
+# rules are host + trailing-slash, both better handled at the platform level:
+#   - non-www -> www (set as a Cloudflare Bulk Redirect / Rule on the apex domain)
+#   - trailing slash -> no trailing slash (Astro `trailingSlash: 'never'`)
+#
+# Add a line here ONLY when a slug is renamed during the build. Example:
+#   /old-slug  /new-slug  301
+#
+# (No active redirects yet.)

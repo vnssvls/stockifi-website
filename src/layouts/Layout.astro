@@ -20,9 +20,20 @@ interface Props {
   description?: string;
   /** Omit the global Nav + Footer (e.g. standalone pages). */
   bare?: boolean;
+  /** Social-share image (site-relative or absolute). Falls back to the default OG card. */
+  image?: string;
+  /** Keep this page out of search indexes (e.g. /intro ad LPs). Styleguide auto-noindexes. */
+  noindex?: boolean;
 }
 
-const { title = 'Stockifi', description = '', bare = false } = Astro.props;
+const { title = 'Stockifi', description = '', bare = false, image, noindex = false } = Astro.props;
+
+// Canonical absolute URL for this page (host + path, no trailing slash beyond root).
+const canonical = new URL(Astro.url.pathname.replace(/(.)\/$/, '$1'), Astro.site);
+// Resolve the share image to an absolute URL when `site` is set.
+const ogImage = new URL(image ?? '/og-default.jpg', Astro.site);
+// Styleguide is internal — never index it, regardless of the prop.
+const robotsNoindex = noindex || Astro.url.pathname.startsWith('/styleguide');
 ---
 
 <!doctype html>
@@ -33,6 +44,23 @@ const { title = 'Stockifi', description = '', bare = false } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
+    <link rel="canonical" href={canonical} />
+    {robotsNoindex && <meta name="robots" content="noindex, nofollow" />}
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Stockifi" />
+    <meta property="og:title" content={title} />
+    {description && <meta property="og:description" content={description} />}
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    {description && <meta name="twitter:description" content={description} />}
+    <meta name="twitter:image" content={ogImage} />
+
     <slot name="head" />
   </head>
   <body>
