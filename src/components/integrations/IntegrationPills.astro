@@ -16,9 +16,13 @@ interface Props {
 }
 const { eyebrow, heading, subhead, items, count } = Astro.props;
 
-// Randomize order at build time (placeholder until the cycling animation lands).
+// Randomize at build time (placeholder until the cycling flip animation lands).
 const shuffled = [...items].sort(() => Math.random() - 0.5);
-const pills = count ? shuffled.slice(0, count) : shuffled;
+// Lay out as 4 rows, round-robin so each row gets a varied mix. The visible count is
+// capped (the planned flip animation will cycle the rest of the list through these slots).
+const ROW_COUNT = 4;
+const visible = shuffled.slice(0, count ?? ROW_COUNT * 5);
+const rows = Array.from({ length: ROW_COUNT }, (_, r) => visible.filter((_, i) => i % ROW_COUNT === r));
 ---
 
 <section class="integration-pills section">
@@ -30,11 +34,15 @@ const pills = count ? shuffled.slice(0, count) : shuffled;
     </div>
 
     <div class="ip-cloud">
-      {pills.map((it) => (
-        <span class="ip-pill">
-          <img class:list={['ip-pill-icon', it.round && 'ip-pill-icon--round']} src={it.logo} alt="" width="28" height="28" loading="lazy" decoding="async" />
-          <span class="ip-pill-name">{it.name}</span>
-        </span>
+      {rows.map((row) => (
+        <div class="ip-row">
+          {row.map((it) => (
+            <span class="ip-pill">
+              <img class:list={['ip-pill-icon', it.round && 'ip-pill-icon--round']} src={it.logo} alt="" width="28" height="28" loading="lazy" decoding="async" />
+              <span class="ip-pill-name">{it.name}</span>
+            </span>
+          ))}
+        </div>
       ))}
     </div>
   </div>
@@ -43,8 +51,22 @@ const pills = count ? shuffled.slice(0, count) : shuffled;
 <style>
   .ip-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-48); }
 
-  /* Centered wrapping cloud — centering each wrapped row gives the staggered look. */
-  .ip-cloud { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-12); }
+  /* Four rows that bleed off the LEFT viewport edge ("coming from the edge"). The box
+     keeps its right edge at the column boundary and extends left to the screen edge:
+     cancel the container's left gutter + (on wide screens) its centering margin. */
+  .ip-cloud {
+    --ip-bleed: calc(var(--gutter) + max(0px, (100vw - var(--container-max)) / 2));
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-12);
+    width: calc(100% + var(--ip-bleed));
+    margin-left: calc(-1 * var(--ip-bleed));
+    overflow: hidden;
+    /* Soft fade on the right so clipped rows taper off instead of hard-cutting. */
+    mask-image: linear-gradient(to right, black 72%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, black 72%, transparent 100%);
+  }
+  .ip-row { display: flex; gap: var(--space-12); flex-shrink: 0; }
 
   .ip-pill {
     display: inline-flex;
