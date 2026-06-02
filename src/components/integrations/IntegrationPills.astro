@@ -59,15 +59,18 @@ const rows = Array.from({ length: ROW_COUNT }, (_, r) => visible.filter((_, i) =
      cancel the container's left gutter + (on wide screens) its centering margin. */
   .ip-cloud {
     --ip-bleed: calc(var(--gutter) + max(0px, (100vw - var(--container-max)) / 2));
+    /* Overshoot past the left edge so the leftmost pills bleed off-screen — the flush
+       alignment + the width re-flow while pills flip then happen in the faded zone. */
+    --ip-overshoot: 40px;
     display: flex;
     flex-direction: column;
     gap: var(--space-12);
-    width: calc(100% + var(--ip-bleed));
-    margin-left: calc(-1 * var(--ip-bleed));
+    width: calc(100% + var(--ip-bleed) + var(--ip-overshoot));
+    margin-left: calc(-1 * (var(--ip-bleed) + var(--ip-overshoot)));
     overflow: hidden;
-    /* Soft fade on the right so clipped rows taper off instead of hard-cutting. */
-    mask-image: linear-gradient(to right, black 72%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to right, black 72%, transparent 100%);
+    /* Fade BOTH edges: pills bleed softly out of the left and taper on the right. */
+    mask-image: linear-gradient(to right, transparent 40px, #000 104px, #000 80%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 40px, #000 104px, #000 80%, transparent 100%);
   }
   .ip-row { display: flex; gap: var(--space-12); flex-shrink: 0; }
 
@@ -76,11 +79,15 @@ const rows = Array.from({ length: ROW_COUNT }, (_, r) => visible.filter((_, i) =
     align-items: center;
     gap: var(--space-8);
     padding: var(--space-8) var(--space-16) var(--space-8) var(--space-8);
-    border: 1px solid var(--border);
+    border: 1px solid color-mix(in srgb, var(--foreground) 12%, transparent);
+    /* Brighter top edge = the specular sheen that reads as glass. */
+    border-top-color: color-mix(in srgb, var(--foreground) 26%, transparent);
     border-radius: var(--radius-full);
-    /* Subtle translucent fill so the pill reads on the dark page (the Figma sample's
-       near-black fill would vanish against our background). */
-    background-color: color-mix(in srgb, var(--foreground) 5%, transparent);
+    /* Sleek iOS glass: flat translucency + a real backdrop blur, no gradient wash
+       (the wash is what reads as frost). */
+    background-color: color-mix(in srgb, var(--foreground) 8%, transparent);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     /* Flip + width morph (the controller drives transform/width inline). */
     transform-origin: center;
     transition: transform 0.26s ease, width 0.26s ease;
@@ -105,7 +112,7 @@ const rows = Array.from({ length: ROW_COUNT }, (_, r) => visible.filter((_, i) =
   .ip-subhead { margin-top: var(--space-16); max-width: 44ch; font-size: var(--text-body-lg); }
 
   @media (min-width: 1024px) {
-    .ip-grid { grid-template-columns: 1.5fr 1fr; align-items: center; gap: var(--space-96); }
+    .ip-grid { grid-template-columns: 1.5fr 1fr; align-items: center; gap: var(--space-32); }
     /* Cloud on the left, copy on the right (DOM order is copy-first for mobile). */
     .ip-cloud { order: 1; }
     .ip-copy { order: 2; }
