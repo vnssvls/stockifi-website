@@ -5,7 +5,7 @@
 // light, crisp, and recolourable — only the brand icon is an asset (the existing
 // icon-only submarks in /media/integrations-logos/, mostly SVG).
 // Logos are shuffled at build time for now; a "show all" animation comes later.
-interface Item { name: string; logo: string }
+interface Item { name: string; logo: string; round?: boolean }
 interface Props {
   eyebrow?: string;
   heading: string;
@@ -32,7 +32,7 @@ const pills = count ? shuffled.slice(0, count) : shuffled;
     <div class="ip-cloud">
       {pills.map((it) => (
         <span class="ip-pill">
-          <img class="ip-pill-icon" src={it.logo} alt="" width="28" height="28" loading="lazy" decoding="async" />
+          <img class:list={['ip-pill-icon', it.round && 'ip-pill-icon--round']} src={it.logo} alt="" width="28" height="28" loading="lazy" decoding="async" />
           <span class="ip-pill-name">{it.name}</span>
         </span>
       ))}
@@ -58,6 +58,9 @@ const pills = count ? shuffled.slice(0, count) : shuffled;
     background-color: color-mix(in srgb, var(--foreground) 5%, transparent);
   }
   .ip-pill-icon { width: 28px; height: 28px; flex: none; object-fit: contain; }
+  /* Brand badges supplied without transparency (JPEG / flat PNG): clip to a circle
+     so the square background is removed, leaving the circular mark clean. */
+  .ip-pill-icon--round { object-fit: cover; border-radius: var(--radius-full); }
   .ip-pill-name {
     font-size: var(--text-body-sm);
     font-weight: var(--fw-medium);
