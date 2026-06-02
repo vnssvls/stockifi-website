@@ -254,5 +254,10 @@ const { tagline, heading, subhead, tabs } = Astro.props;
       window.clearTimeout(rt);
       rt = window.setTimeout(() => place(current, false), 120);
     });
+    // Re-snap when the track gains a size — covers starting hidden (e.g. an inactive
+    // styleguide variant), where offsetWidth was 0 on the initial place().
+    if ('ResizeObserver' in window && indicator?.parentElement) {
+      new ResizeObserver(() => place(current, false)).observe(indicator.parentElement);
+    }
   });
 </script>
