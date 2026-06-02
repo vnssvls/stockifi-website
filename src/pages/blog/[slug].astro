@@ -56,15 +56,18 @@ const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
     <div class="container bi-layout">
       {toc.length > 0 && (
         <aside class="bi-toc">
-          <p class="bi-toc-label">On this page</p>
+          <p class="bi-toc-label">In this article</p>
           <nav>
-            <ul>
-              {toc.map((h) => (
+            <ol class="bi-toc-list">
+              {toc.map((h, i) => (
                 <li class:list={['bi-toc-item', h.depth === 3 && 'is-sub']}>
-                  <a href={`#${h.slug}`} data-toc={h.slug}>{h.text}</a>
+                  <a href={`#${h.slug}`} data-toc={h.slug}>
+                    <span class="bi-toc-num">{String(i + 1).padStart(2, '0')}</span>
+                    <span class="bi-toc-text">{h.text}</span>
+                  </a>
                 </li>
               ))}
-            </ul>
+            </ol>
           </nav>
         </aside>
       )}
@@ -102,13 +105,27 @@ const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
   .bi-article { background-color: var(--background); overflow-x: clip; }
   .bi-layout { display: grid; grid-template-columns: 1fr; gap: var(--space-48); }
 
+  /* Friendly numbered TOC in a soft card: NN | title, with the active item accented. */
   .bi-toc { display: none; }
-  .bi-toc-label { font-size: var(--text-caption); font-weight: var(--fw-semibold); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted-foreground); margin-bottom: var(--space-12); }
-  .bi-toc ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: var(--space-8); }
-  .bi-toc a { color: var(--muted-foreground); font-size: var(--text-body-sm); line-height: var(--lh-body-sm); border-left: 2px solid transparent; padding-left: var(--space-12); }
-  .bi-toc a:hover { color: var(--foreground); text-decoration: none; }
-  .bi-toc-item.is-sub a { padding-left: var(--space-24); }
-  .bi-toc a.is-active { color: var(--foreground); font-weight: var(--fw-semibold); border-left-color: var(--foreground); }
+  .bi-toc-label { font-size: var(--text-body); font-weight: var(--fw-semibold); color: var(--foreground); margin-bottom: var(--space-16); }
+  .bi-toc-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--space-16); }
+  .bi-toc a { display: grid; grid-template-columns: auto 1fr; gap: var(--space-12); align-items: start; }
+  .bi-toc a:hover { text-decoration: none; }
+  .bi-toc-num { font-variant-numeric: tabular-nums; font-size: var(--text-body-sm); font-weight: var(--fw-medium); color: var(--muted-foreground); }
+  .bi-toc-text {
+    padding-left: var(--space-12);
+    border-left: 1px solid var(--border);
+    color: var(--muted-foreground);
+    font-size: var(--text-body-sm);
+    line-height: var(--lh-body-sm);
+    transition: color 0.18s ease, border-color 0.18s ease;
+  }
+  .bi-toc a:hover .bi-toc-text { color: var(--foreground); }
+  .bi-toc-item.is-sub .bi-toc-num { opacity: 0; }
+  .bi-toc-item.is-sub .bi-toc-text { margin-left: var(--space-12); }
+  /* Active section (intentional primary accent — marks where you are). */
+  .bi-toc a.is-active .bi-toc-num { color: var(--primary); }
+  .bi-toc a.is-active .bi-toc-text { color: var(--foreground); font-weight: var(--fw-semibold); border-left-color: var(--primary); }
 
   .bi-body :global(p),
   .bi-body :global(li) { font-size: var(--text-prose); }
@@ -135,7 +152,16 @@ const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
     .bi-hwide { padding-inline: 80px; }
     .bi-hgrid { grid-template-columns: 1fr 1fr; gap: var(--space-64); }
     .bi-layout { grid-template-columns: 240px minmax(0, var(--prose-max)); gap: var(--space-96); justify-content: center; }
-    .bi-toc { display: block; position: sticky; top: calc(var(--nav-h) + var(--space-24)); align-self: start; }
+    .bi-toc {
+      display: block;
+      position: sticky;
+      top: calc(var(--nav-h) + var(--space-24));
+      align-self: start;
+      padding: var(--space-24);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: var(--card);
+    }
   }
 </style>
 

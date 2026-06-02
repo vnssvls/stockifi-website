@@ -107,12 +107,12 @@ const dateLabel = date
   .bc-body { display: flex; flex-direction: column; gap: var(--space-8); }
 
   .bc-title {
+    font-family: var(--font-body);
     font-size: var(--text-h6);
     line-height: var(--lh-h6);
     color: var(--foreground);
-    transition: color 0.18s ease;
+    text-wrap: pretty;
   }
-  .bc-link:hover .bc-title { color: var(--primary); }
 
   .bc-excerpt {
     font-size: var(--text-body-sm);
@@ -147,9 +147,9 @@ const dateLabel = date
   .bc-pill {
     width: fit-content;
     padding: var(--space-4) var(--space-12);
-    background: var(--secondary);
-    color: var(--secondary-foreground);
-    border-radius: var(--radius-sm);
+    background: var(--muted);
+    color: var(--foreground);
+    border-radius: var(--radius-full);
     font-size: var(--text-caption);
     font-weight: var(--fw-medium);
   }
@@ -167,11 +167,11 @@ const dateLabel = date
     gap: var(--space-4);
     margin-top: var(--space-4);
     font-size: var(--text-body-sm);
-    font-weight: var(--fw-semibold);
+    font-weight: var(--fw-regular);
     color: var(--foreground);
-    transition: gap 0.18s ease, color 0.18s ease;
+    transition: gap 0.18s ease;
   }
-  .bc-link:hover .bc-readmore { color: var(--primary); gap: var(--space-8); }
+  .bc-link:hover .bc-readmore { gap: var(--space-8); }
 
   @media (max-width: 767px) {
     /* Horizontal cards stack to image-on-top on small screens */
