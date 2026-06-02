@@ -48,12 +48,13 @@ const { tagline, heading, subhead, primary, secondary, image, wide = false } = A
 </section>
 
 <style>
-  .hero { padding-block: var(--section-y); }
+  /* Tight top so the hero sits just under the nav (beehiv-style), more room below. */
+  .hero { padding-top: var(--space-48); padding-bottom: var(--section-y); }
   .hero-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--space-48);
-    align-items: center;
+    align-items: start;
   }
 
   .hero-title {
@@ -89,8 +90,6 @@ const { tagline, heading, subhead, primary, secondary, image, wide = false } = A
     /* Wide hero: the 20px wide-gutter is too wide here — add 60px of breathing room
        (keeps the .container-wide token intact for other uses). */
     .container-wide.hero-grid { padding-inline: calc(var(--gutter-wide) + 60px); }
-    /* Copy sits at the top of the row instead of vertically centered. */
-    .hero-copy { align-self: start; }
     .hero-media img,
     .hero-placeholder { aspect-ratio: 1 / 1; }
   }
