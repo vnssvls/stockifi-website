@@ -7,7 +7,7 @@ excerpt: "The third restaurant is where most operators stop being able to run th
 postSummary: ""
 readTime: "5 min read"
 category: "Operations"
-publishDate: ""
+publishDate: "Fri May 15 2026 00:00:00 GMT+0000 (Coordinated Universal Time)"
 featured: false
 heroImage: "/media/blog/6a0be80fd64d3885249785d7_Why_Restaurant_Group_Scaling_Stalls_at_the_Third_Location.png"
 heroImageAlt: "small modern bistro captured during the final stretch of its build-out before opening"

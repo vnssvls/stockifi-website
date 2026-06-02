@@ -7,7 +7,7 @@ excerpt: "Across a typical back office, the data needed to compute margin sits i
 postSummary: ""
 readTime: "7 min read"
 category: "Accounting"
-publishDate: ""
+publishDate: "Tue Jul 07 2026 00:00:00 GMT+0000 (Coordinated Universal Time)"
 featured: false
 heroImage: "/media/blog/6a0be97a5c50c9379ae4ead9_How_to_Integrate_POS__Inventory__and_Accounting_in_a_Restaurant.png"
 heroImageAlt: "small modern brasserie shot from across the road on a mid-morning spring day"

@@ -7,7 +7,7 @@ excerpt: "A bar inventory count shouldn't take a full evening. Here's what slows
 postSummary: ""
 readTime: "7 min read"
 category: "Tech Tips"
-publishDate: ""
+publishDate: "Wed Jul 22 2026 00:00:00 GMT+0000 (Coordinated Universal Time)"
 featured: false
 heroImage: "/media/blog/6a0be45cff0194cfaa9fdf54_How_to_Count_Bar_Inventory_Faster.png"
 heroImageAlt: "bartender stands behind the bar, doing inventory with a smartphone"

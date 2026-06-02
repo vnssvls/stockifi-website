@@ -7,7 +7,7 @@ excerpt: "The era of disconnected POS, accounting, and inventory tools is closin
 postSummary: ""
 readTime: "6 min read"
 category: "Industry Insights"
-publishDate: ""
+publishDate: "Wed Jun 24 2026 00:00:00 GMT+0000 (Coordinated Universal Time)"
 featured: false
 heroImage: "/media/blog/6a0be0f72a273f261987a440_Restaurant_Groups_Are_Rebuilding_Their_Tech_Stack.png"
 heroImageAlt: "two restaurant managers in a small office sharing a moment of insight as they review numbers together"

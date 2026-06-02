@@ -7,7 +7,7 @@ excerpt: "Most operators hear \"automated invoice processing\" and think scanned
 postSummary: ""
 readTime: "6 min read"
 category: "Accounting"
-publishDate: ""
+publishDate: "Wed Jun 10 2026 00:00:00 GMT+0000 (Coordinated Universal Time)"
 featured: false
 heroImage: "/media/blog/6a0be5c7e9885d02f94afb45_From_Invoice_to_Insight.png"
 heroImageAlt: "Sous chef at the back door of a small restaurant during morning delivery"
