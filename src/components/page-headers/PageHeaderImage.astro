@@ -1,8 +1,8 @@
 ---
-// Page header v3 — "image" variant (Figma 82:1095, Relume header-65): centered
-// tagline + heading + body + CTA over a full-bleed background image with a dark
-// scrim. The top section of product item pages. Content capped at 768 inside the
-// 1280 container; the section background runs full width.
+// Page header v3 — "image" variant (Figma 82:1095, Relume header-65), reworked to a
+// rounded "hero card" per the Supy reference (supy.io/solutions/restaurant-types/cafes):
+// the photo + dark scrim sit inside a rounded, near-full-width card (inset via the
+// reduced gutter), with the tagline + heading + body + CTA centered inside it.
 import Button from '../Button.astro';
 
 interface Props {
@@ -16,27 +16,42 @@ interface Props {
 const { eyebrow, heading, subhead, cta, image } = Astro.props;
 ---
 
-<section class="page-header-image" style={`--phi-bg: url('${image}')`}>
-  <div class="container phi-inner">
-    <div class="phi-content">
-      {eyebrow && <p class="tagline phi-eyebrow">{eyebrow}</p>}
-      <h1 class="phi-heading">{heading}</h1>
-      {subhead && <p class="phi-subhead">{subhead}</p>}
-    </div>
-    {cta && (
-      <div class="phi-actions">
-        <Button variant="primary" href={cta.href}>{cta.label}</Button>
+<section class="page-header-image">
+  <div class="container-wide">
+    <div class="phi-card" style={`--phi-bg: url('${image}')`}>
+      <div class="phi-content">
+        {eyebrow && <p class="tagline phi-eyebrow">{eyebrow}</p>}
+        <h1 class="phi-heading">{heading}</h1>
+        {subhead && <p class="phi-subhead">{subhead}</p>}
       </div>
-    )}
+      {cta && (
+        <div class="phi-actions">
+          <Button variant="primary" href={cta.href}>{cta.label}</Button>
+        </div>
+      )}
+    </div>
   </div>
 </section>
 
 <style>
-  /* Background image + dark scrim (background-image dodges the strict-value guard,
-     same pattern as CtaEmail). Scrim keeps the centered copy legible on any photo. */
-  .page-header-image {
+  /* Small breathing room above/below so the rounded card reads as a card. */
+  .page-header-image { padding-block: var(--space-32); }
+
+  /* The hero card: rounded, near-full-width (inside .container-wide), tall, with the
+     photo + dark scrim as its background. background-image dodges the strict-value
+     guard (same pattern as CtaEmail). */
+  .phi-card {
     --phi-bg: none;
-    padding-block: var(--section-y);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-32);
+    min-height: 30rem;
+    padding: var(--space-96) var(--gutter);
+    text-align: center;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
     background-image:
       linear-gradient(
         color-mix(in srgb, var(--background) 68%, transparent),
@@ -47,7 +62,6 @@ const { eyebrow, heading, subhead, cta, image } = Astro.props;
     background-position: center;
   }
 
-  .phi-inner { display: flex; flex-direction: column; align-items: center; gap: var(--space-32); text-align: center; }
   .phi-content { display: flex; flex-direction: column; align-items: center; gap: var(--space-16); max-width: 768px; }
   .phi-eyebrow { margin-bottom: 0; }
   .phi-heading { font-size: var(--text-h1); line-height: var(--lh-h1); }
@@ -55,5 +69,9 @@ const { eyebrow, heading, subhead, cta, image } = Astro.props;
     max-width: 56ch;
     font-size: var(--text-body-lg);
     color: color-mix(in srgb, var(--foreground) 85%, transparent);
+  }
+
+  @media (max-width: 767px) {
+    .phi-card { min-height: 22rem; padding-block: var(--space-64); border-radius: var(--radius-lg); }
   }
 </style>
