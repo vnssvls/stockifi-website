@@ -1,9 +1,9 @@
 ---
-// Blog article template (/blog/[slug]). Renders a post from content/blog/en.
-// Header (category + title + meta + hero) → prose body → back link + CTA.
+// Blog article (/blog/[slug]): split header (text left, image right, 80px gutter) →
+// light-mode body with a sticky, scroll-spy table of contents on the left → CTA v2.
 import { getCollection, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
-import CtaBand from '../../components/CtaBand.astro';
+import CtaEmail from '../../components/CtaEmail.astro';
 
 export async function getStaticPaths() {
   const posts = (await getCollection('blog')).filter((p) => !p.data.draft);
@@ -11,13 +11,12 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-const { Content } = await render(post);
+const { Content, headings } = await render(post);
 const d = post.data;
-
 const dateLabel = d.publishDate
   ? d.publishDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
   : '';
-const meta = [dateLabel, d.readTime].filter(Boolean).join('  ·  ');
+const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
 ---
 
 <Layout
@@ -25,84 +24,137 @@ const meta = [dateLabel, d.readTime].filter(Boolean).join('  ·  ');
   description={d.metaDescription ?? d.excerpt}
   image={d.heroImage}
 >
-  <article class="article section">
-    <div class="container">
-      <a class="article-back" href="/blog">← All articles</a>
+  <!-- Split header -->
+  <header class="bi-header">
+    <div class="bi-hwide">
+      <div class="bi-hgrid">
+        <div class="bi-htext">
+          <a class="bi-back" href="/blog">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            All Posts
+          </a>
+          <div class="bi-tags">
+            <span class="bi-cat">{d.category}</span>
+            {d.readTime && <span class="bi-read text-muted">{d.readTime}</span>}
+          </div>
+          <h1 class="bi-title">{d.title}</h1>
+          {dateLabel && <p class="bi-pub text-muted">Published on {dateLabel}</p>}
+        </div>
+        <div class="bi-hmedia">
+          {d.heroImage ? (
+            <img src={d.heroImage} alt={d.heroImageAlt} loading="eager" />
+          ) : (
+            <span class="bi-hmedia-ph" aria-hidden="true"></span>
+          )}
+        </div>
+      </div>
+    </div>
+  </header>
 
-      <header class="article-head">
-        <span class="article-cat">{d.category}</span>
-        <h1 class="article-title">{d.title}</h1>
-        {meta && <p class="article-meta text-muted">{meta}</p>}
-      </header>
-
-      {d.heroImage && (
-        <img class="article-hero" src={d.heroImage} alt={d.heroImageAlt} width="1280" height="720" loading="eager" />
+  <!-- Light-mode reading section: TOC + prose. -->
+  <article class="bi-article section" data-theme="light">
+    <div class="container bi-layout">
+      {toc.length > 0 && (
+        <aside class="bi-toc">
+          <p class="bi-toc-label">On this page</p>
+          <nav>
+            <ul>
+              {toc.map((h) => (
+                <li class:list={['bi-toc-item', h.depth === 3 && 'is-sub']}>
+                  <a href={`#${h.slug}`} data-toc={h.slug}>{h.text}</a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </aside>
       )}
-
-      <div class="article-body prose">
+      <div class="bi-body prose">
         <Content />
       </div>
     </div>
   </article>
 
-  <CtaBand
+  <CtaEmail
     heading="See where your margin is leaking"
-    subhead="Book a short call and we'll show you what Stockifi surfaces in your first 30 days."
-    primary={{ label: 'Book a demo', href: '/book-a-demo' }}
-    secondary={{ label: 'View pricing', href: '/pricing' }}
+    subhead="Drop your email and we'll show you what Stockifi surfaces in your first 30 days."
+    bgImages={['/media/cta-bg-1.jpg', '/media/cta-bg-2.jpg', '/media/cta-bg-3.jpg', '/media/cta-bg-4.jpg']}
   />
 </Layout>
 
 <style>
-  .article-back { display: inline-block; margin-bottom: var(--space-32); color: var(--muted-foreground); font-size: var(--text-body-sm); }
-  .article-back:hover { color: var(--foreground); text-decoration: none; }
+  /* Split header — modest top padding (was a tall hero). */
+  .bi-header { padding-block: var(--space-48) var(--space-64); }
+  .bi-hwide { width: 100%; max-width: none; margin-inline: auto; padding-inline: var(--gutter-wide); }
+  .bi-hgrid { display: grid; grid-template-columns: 1fr; gap: var(--space-32); align-items: center; }
+  .bi-htext { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-16); }
+  .bi-back { display: inline-flex; align-items: center; gap: var(--space-8); color: var(--muted-foreground); font-size: var(--text-body-sm); }
+  .bi-back:hover { color: var(--foreground); text-decoration: none; }
+  .bi-tags { display: flex; align-items: center; gap: var(--space-12); }
+  .bi-cat { padding: var(--space-4) var(--space-12); border-radius: var(--radius-full); background: var(--muted); color: var(--foreground); font-size: var(--text-caption); font-weight: var(--fw-medium); }
+  .bi-read { font-size: var(--text-body-sm); }
+  .bi-title { font-size: var(--text-h2); line-height: var(--lh-h2); text-wrap: pretty; }
+  .bi-pub { font-size: var(--text-body-sm); }
+  .bi-hmedia img,
+  .bi-hmedia-ph { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: var(--radius-lg); }
+  .bi-hmedia-ph { background: var(--muted); }
 
-  /* Header + body share the readable prose column. */
-  .article-head,
-  .article-hero,
-  .article-body { max-width: var(--prose-max); margin-inline: auto; }
+  /* Light reading section. */
+  .bi-article { background-color: var(--background); overflow-x: clip; }
+  .bi-layout { display: grid; grid-template-columns: 1fr; gap: var(--space-48); }
 
-  .article-cat {
-    display: inline-block;
-    padding: var(--space-4) var(--space-12);
-    border-radius: var(--radius-full);
-    background: color-mix(in srgb, var(--primary) 14%, transparent);
-    color: var(--primary-light);
-    font-size: var(--text-caption);
-    font-weight: var(--fw-semibold);
-  }
-  .article-title { margin-top: var(--space-16); }
-  .article-meta { margin-top: var(--space-16); font-size: var(--text-body-sm); }
+  .bi-toc { display: none; }
+  .bi-toc-label { font-size: var(--text-caption); font-weight: var(--fw-semibold); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted-foreground); margin-bottom: var(--space-12); }
+  .bi-toc ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: var(--space-8); }
+  .bi-toc a { color: var(--muted-foreground); font-size: var(--text-body-sm); line-height: var(--lh-body-sm); border-left: 2px solid transparent; padding-left: var(--space-12); }
+  .bi-toc a:hover { color: var(--foreground); text-decoration: none; }
+  .bi-toc-item.is-sub a { padding-left: var(--space-24); }
+  .bi-toc a.is-active { color: var(--foreground); font-weight: var(--fw-semibold); border-left-color: var(--foreground); }
 
-  .article-hero {
-    width: 100%;
-    height: auto;
-    margin-top: var(--space-32);
-    border-radius: var(--radius-lg);
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-  }
-
-  .article-body { margin-top: var(--space-48); }
-
-  /* The rendered markdown is injected, so its elements need :global() to be styled. */
-  .article-body :global(p),
-  .article-body :global(ul),
-  .article-body :global(ol) { margin-bottom: var(--space-24); line-height: var(--lh-body); }
-  .article-body :global(h2) { margin-top: var(--space-48); margin-bottom: var(--space-16); font-size: var(--text-h3); }
-  .article-body :global(h3) { margin-top: var(--space-32); margin-bottom: var(--space-12); font-size: var(--text-h5); }
-  .article-body :global(ul),
-  .article-body :global(ol) { padding-left: var(--space-24); }
-  .article-body :global(li) { margin-bottom: var(--space-8); }
-  .article-body :global(a) { color: var(--primary); text-decoration: underline; }
-  .article-body :global(a:hover) { color: var(--primary-light); }
-  .article-body :global(strong) { color: var(--foreground); font-weight: var(--fw-semibold); }
-  .article-body :global(img) { width: 100%; height: auto; margin-block: var(--space-32); border-radius: var(--radius-md); }
-  .article-body :global(blockquote) {
+  .bi-body :global(p),
+  .bi-body :global(li) { font-size: var(--text-prose); }
+  .bi-body :global(p),
+  .bi-body :global(ul),
+  .bi-body :global(ol) { margin-bottom: var(--space-24); line-height: var(--lh-body); }
+  .bi-body :global(h2) { margin-top: var(--space-48); margin-bottom: var(--space-16); font-size: var(--text-h3); scroll-margin-top: calc(var(--nav-h) + var(--space-16)); }
+  .bi-body :global(h3) { margin-top: var(--space-32); margin-bottom: var(--space-12); font-size: var(--text-h5); scroll-margin-top: calc(var(--nav-h) + var(--space-16)); }
+  .bi-body :global(ul),
+  .bi-body :global(ol) { padding-left: var(--space-24); }
+  .bi-body :global(li) { margin-bottom: var(--space-8); }
+  .bi-body :global(a) { color: var(--primary); text-decoration: underline; }
+  .bi-body :global(strong) { color: var(--foreground); font-weight: var(--fw-semibold); }
+  .bi-body :global(img) { width: 100%; height: auto; margin-block: var(--space-32); border-radius: var(--radius-md); }
+  .bi-body :global(blockquote) {
     margin-block: var(--space-32);
     padding-left: var(--space-24);
     border-left: 3px solid var(--primary);
     color: var(--muted-foreground);
     font-size: var(--text-body-lg);
   }
+
+  @media (min-width: 1024px) {
+    .bi-hwide { padding-inline: 80px; }
+    .bi-hgrid { grid-template-columns: 1fr 1fr; gap: var(--space-64); }
+    .bi-layout { grid-template-columns: 240px minmax(0, var(--prose-max)); gap: var(--space-96); justify-content: center; }
+    .bi-toc { display: block; position: sticky; top: calc(var(--nav-h) + var(--space-24)); align-self: start; }
+  }
 </style>
+
+<script>
+  // Scroll-spy: highlight the TOC entry for the heading nearest the top.
+  const links = Array.from(document.querySelectorAll<HTMLAnchorElement>('[data-toc]'));
+  const headings = Array.from(document.querySelectorAll<HTMLElement>('.bi-body h2[id], .bi-body h3[id]'));
+  if (links.length && headings.length) {
+    const byId = new Map(links.map((l) => [l.dataset.toc, l]));
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return;
+          links.forEach((l) => l.classList.remove('is-active'));
+          byId.get((e.target as HTMLElement).id)?.classList.add('is-active');
+        });
+      },
+      { rootMargin: '-20% 0px -70% 0px' },
+    );
+    headings.forEach((h) => io.observe(h));
+  }
+</script>

@@ -51,11 +51,13 @@ const { title, image, logo, avatar, quote, name, designation } = Astro.props;
     background-position: center;
   }
   /* Wider column so the title fits ~2 lines on desktop. */
-  .cs-inner { display: flex; flex-direction: column; align-items: center; gap: var(--space-32); max-width: 56rem; text-align: center; }
+  .cs-inner { display: flex; flex-direction: column; align-items: center; gap: var(--space-32); max-width: 60rem; text-align: center; }
 
-  .cs-title { display: flex; flex-direction: column; align-items: center; gap: var(--space-16); }
+  .cs-title { display: flex; flex-direction: column; align-items: center; gap: var(--space-16); width: 100%; }
   .cs-logo { height: 56px; width: auto; object-fit: contain; }
-  .cs-h1 { font-size: var(--text-h2); line-height: var(--lh-h2); }
+  /* text-wrap:pretty overrides the base heading 'balance', which compressed the title
+     into short, narrow lines instead of filling the width. */
+  .cs-h1 { font-size: var(--text-h2); line-height: var(--lh-h2); text-wrap: pretty; }
 
   .cs-author { display: flex; flex-direction: column; align-items: center; gap: var(--space-16); }
   .cs-avatar { width: 56px; height: 56px; border-radius: var(--radius-full); object-fit: cover; }

@@ -54,6 +54,7 @@
   --text-tagline: 1rem;                                        /* 16 */
   --text-body-lg: clamp(1.0625rem, 1.037rem + 0.11vw, 1.125rem); /* 17 → 18 */
   --text-body:    1rem;                                        /* 16 */
+  --text-prose:   1.25rem;                                     /* 20 — long-form reading body */
   --text-body-sm: 0.875rem;                                    /* 14 */
   --text-caption: 0.75rem;                                     /* 12 */
 
@@ -95,7 +96,7 @@
 
   /* ── Layout · Desktop defaults (step down below) ──────────────────── */
   --container-max: 1280px;
-  --prose-max: 720px;
+  --prose-max: 800px;
   --gutter: 36px;
   /* Near-full-width gutter for components that should bleed close to the edges
      (`.container-wide`). Constant across breakpoints — it already equals the
