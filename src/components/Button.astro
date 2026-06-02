@@ -78,7 +78,9 @@ const isPrimary = variant === 'primary';
     transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
     pointer-events: none;
   }
-  .btn-primary.is-rippling { color: var(--background); }
+  /* Border flips to white too, so no purple rim peeks around the ripple (overflow
+     clips the ripple at the padding box, but the purple fill sits under the border). */
+  .btn-primary.is-rippling { color: var(--background); border-color: var(--foreground); }
 
   .btn-secondary {
     background: transparent;
@@ -99,7 +101,7 @@ const isPrimary = variant === 'primary';
   /* Reduced motion: no ripple — fall back to an instant white fill on hover. */
   @media (prefers-reduced-motion: reduce) {
     .btn-ripple { display: none; }
-    .btn-primary:hover { background: var(--foreground); color: var(--background); }
+    .btn-primary:hover { background: var(--foreground); color: var(--background); border-color: var(--foreground); }
   }
 </style>
 
