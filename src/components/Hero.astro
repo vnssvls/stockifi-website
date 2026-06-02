@@ -86,6 +86,11 @@ const { tagline, heading, subhead, primary, secondary, image, wide = false } = A
 
   @media (min-width: 1024px) {
     .hero-grid { grid-template-columns: 1fr 1fr; gap: var(--space-64); }
+    /* Wide hero: the 20px wide-gutter is too wide here — add 60px of breathing room
+       (keeps the .container-wide token intact for other uses). */
+    .container-wide.hero-grid { padding-inline: calc(var(--gutter-wide) + 60px); }
+    /* Copy sits at the top of the row instead of vertically centered. */
+    .hero-copy { align-self: start; }
     .hero-media img,
     .hero-placeholder { aspect-ratio: 1 / 1; }
   }
