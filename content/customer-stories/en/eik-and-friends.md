@@ -2,6 +2,7 @@
 companyName: "Eik&Friends"
 slug: "eik-and-friends"
 articleTitle: "How Eik&Friends keeps control of 54 venues with Stockifi"
+cardSummary: "How does Eik&Friends run 54 restaurants, bars, nightclubs, and event spaces with Stockifi?"
 user: "Tom Victor Gausdal"
 designation: "Executive Head Chef"
 businessType: "Restaurant"

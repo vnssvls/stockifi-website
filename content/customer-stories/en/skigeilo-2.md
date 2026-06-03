@@ -2,6 +2,7 @@
 companyName: "SkiGeilo"
 slug: "skigeilo-2"
 articleTitle: "How Stockifi saved SkiGeilo 46,000 NOK on a single invoice"
+cardSummary: "How did SkiGeilo catch a 46,000 NOK overcharge on a single supplier invoice?"
 user: "Tommy Verpe"
 designation: "F&B Manager"
 businessType: "Hotel"

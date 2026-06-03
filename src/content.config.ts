@@ -40,6 +40,7 @@ const customerStories = defineCollection({
     designation: z.string().default(''),
     businessType: z.string().default(''),
     website: z.string().optional(),
+    cardSummary: z.string().default(''), // home/library card teaser (from the live site)
     oneLiner: z.string().default(''),
     featuredQuote: z.string().default(''),
     fullTestimonial: z.string().default(''),

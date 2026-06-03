@@ -2,6 +2,7 @@
 companyName: "Koie Ramen"
 slug: "koie-ramen"
 articleTitle: "How Koie Ramen keeps food costs on track across five locations"
+cardSummary: "Getting ahead of food costs across five kitchens takes more than gut feel. See how Koie Ramen does it."
 user: "Tim Homer"
 designation: "Owner"
 businessType: "Restaurant"

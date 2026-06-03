@@ -24,7 +24,7 @@ const cards = slugs
   .slice(0, 4)
   .map((s) => ({
     company: s.data.companyName,
-    blurb: s.data.oneLiner || s.data.featuredQuote || '',
+    blurb: s.data.cardSummary || s.data.oneLiner || s.data.featuredQuote || '',
     image: s.data.thumbnail || s.data.singleImage || '',
     href: `/customer-stories/${s.id}`,
   }));

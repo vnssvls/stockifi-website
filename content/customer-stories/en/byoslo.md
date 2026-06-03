@@ -2,6 +2,7 @@
 companyName: "byOSLO"
 slug: "byoslo"
 articleTitle: "What's \"just\" a 2% margin increase worth? byOSLO found out"
+cardSummary: "What's \"just a 2%\" profit margin increase worth? byOSLO found out"
 user: "Kim Søyland & Jama Awaleh"
 designation: "Co-Founders & Managing Partners"
 businessType: "Restaurant"
