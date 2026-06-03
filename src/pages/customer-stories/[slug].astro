@@ -94,7 +94,8 @@ const shares = [
 
 <style>
   /* Light reading section. data-theme flips the tokens; paint the light background. */
-  .cs-article { background-color: var(--background); overflow-x: clip; }
+  /* See blog [slug]: declare color so bare text re-resolves to the light foreground. */
+  .cs-article { background-color: var(--background); color: var(--foreground); overflow-x: clip; }
 
   .cs-bar,
   .cs-body,

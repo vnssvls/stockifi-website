@@ -102,7 +102,10 @@ const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
   .bi-hmedia-ph { background: var(--muted); }
 
   /* Light reading section. */
-  .bi-article { background-color: var(--background); overflow-x: clip; }
+  /* data-theme flips the tokens; declare color too so bare text (e.g. a tight list item's
+     text node, which has no element rule) re-resolves to the light foreground instead of
+     inheriting the dark-mode body color and rendering near-invisible. */
+  .bi-article { background-color: var(--background); color: var(--foreground); overflow-x: clip; }
   .bi-layout { display: grid; grid-template-columns: 1fr; gap: var(--space-48); width: 100%; padding-inline: var(--gutter-wide); }
 
   /* Friendly numbered TOC in a soft card: NN | title, with the active item accented. */
