@@ -10,9 +10,16 @@ import Button from '../../components/Button.astro';
 import CtaBand from '../../components/CtaBand.astro';
 
 export const getStaticPaths: GetStaticPaths = async ({ paginate }: { paginate: PaginateFunction }) => {
+  // Curated display order (by slug). Any story not listed falls to the end. Defined inside
+  // getStaticPaths because Astro evaluates it in isolation from module-level consts.
+  const ORDER = ['skigeilo-2', 'koie-ramen', 'byoslo', 'kolpin', 'schnitzelei', 'eik-and-friends', 'heim-gastropub', 'skigeilo', 'torika-gruppen'];
+  const rank = (id: string) => {
+    const i = ORDER.indexOf(id);
+    return i === -1 ? ORDER.length : i;
+  };
   const stories = (await getCollection('customerStories'))
     .filter((s) => !s.data.draft)
-    .sort((a, b) => a.data.companyName.localeCompare(b.data.companyName));
+    .sort((a, b) => rank(a.id) - rank(b.id) || a.data.companyName.localeCompare(b.data.companyName));
   return paginate(stories, { pageSize: 6 });
 };
 
