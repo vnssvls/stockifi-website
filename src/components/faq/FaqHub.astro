@@ -56,18 +56,20 @@ const { categories } = Astro.props;
 </section>
 
 <style>
-  .fh-wide { width: 100%; max-width: none; margin-inline: auto; padding-inline: var(--gutter-wide); }
+  /* Standard container gutter (not the wide 80px). Pull up so the strip sits closer to
+     the page header. */
+  .faq-hub { padding-top: 0; margin-top: calc(-1 * var(--space-64)); }
+  .fh-wide { width: 100%; max-width: var(--container-max); margin-inline: auto; padding-inline: var(--gutter); }
 
-  /* ── Category strip ─────────────────────────────────────────────── */
+  /* ── Category strip — bare, centred tabs (no bar / no full-width container) ──────── */
   .fh-strip {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: var(--space-4);
-    padding: var(--space-8);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-full);
-    background-color: color-mix(in srgb, var(--foreground) 4%, transparent);
+    gap: var(--space-8);
+    width: fit-content;
+    max-width: 100%;
+    margin-inline: auto;
   }
   .fh-tab {
     padding: var(--space-8) var(--space-16);
@@ -107,8 +109,9 @@ const { categories } = Astro.props;
   .fh-cat-chev { flex: none; color: var(--muted-foreground); transition: transform 0.3s ease; }
   .fh-cat.is-open .fh-cat-chev { transform: rotate(180deg); }
 
-  /* Collapsible panel (grid-rows 0fr→1fr — smooth, content-height aware). */
-  .fh-cat-panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s ease; }
+  /* Collapsible panel (grid-rows 0fr→1fr). min-height:0 is required because the panel is a
+     grid item (in the 2-col category grid) and would otherwise keep its content height. */
+  .fh-cat-panel { display: grid; grid-template-rows: 0fr; min-height: 0; transition: grid-template-rows 0.35s ease; }
   .fh-cat.is-open .fh-cat-panel { grid-template-rows: 1fr; }
   .fh-cat-panel-inner { overflow: hidden; min-height: 0; }
 
@@ -138,7 +141,7 @@ const { categories } = Astro.props;
   .fh-faq-a { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.25s ease; }
   .fh-faq.is-open .fh-faq-a { grid-template-rows: 1fr; }
   .fh-faq-a-inner { overflow: hidden; min-height: 0; }
-  .fh-faq-a p { padding-bottom: var(--space-16); color: var(--muted-foreground); line-height: var(--lh-body); max-width: 64ch; }
+  .fh-faq-a p { padding-bottom: var(--space-16); color: var(--muted-foreground); line-height: var(--lh-body); }
 
   .fh-empty { padding: var(--space-32) 0; color: var(--muted-foreground); }
 
@@ -148,9 +151,8 @@ const { categories } = Astro.props;
   }
 
   @media (min-width: 1024px) {
-    .fh-wide { padding-inline: 80px; }
-    /* Category name in a narrow left column, FAQ list in a wider right column. */
-    .fh-cat { display: grid; grid-template-columns: 300px 1fr; gap: var(--space-64); align-items: start; }
+    /* Category name in a left column with breathing room, FAQ list in a wider right col. */
+    .fh-cat { display: grid; grid-template-columns: 340px 1fr; gap: var(--space-48); align-items: start; }
     .fh-cat-panel-inner { padding-bottom: var(--space-32); }
   }
 </style>
@@ -173,25 +175,26 @@ const { categories } = Astro.props;
       cat.classList.toggle('is-open', open);
       cat.querySelector('[data-cat-toggle]')?.setAttribute('aria-expanded', String(open));
     };
-    // Open one category (or none for "all"); the strip mirrors it.
-    const openOnly = (id: string) => {
-      cats.forEach((c) => setCatOpen(c, id !== 'all' && c.dataset.cat === id));
+    // Filter the list: "all" shows every category collapsed; a category id shows ONLY
+    // that category (others hidden), expanded.
+    const setFilter = (id: string) => {
+      cats.forEach((c) => {
+        const sel = c.dataset.cat === id;
+        c.hidden = id !== 'all' && !sel;
+        setCatOpen(c, id !== 'all' && sel);
+      });
       setTab(id);
     };
 
-    // Strip tabs.
+    // Strip tabs filter the list.
     tabs.forEach((tab) => {
-      tab.addEventListener('click', () => {
-        const id = tab.dataset.cat || 'all';
-        openOnly(id);
-        if (id !== 'all') hub.querySelector(`#faq-${id}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      });
+      tab.addEventListener('click', () => setFilter(tab.dataset.cat || 'all'));
     });
 
-    // Category heads — toggle (open this one / collapse back to "view all").
+    // Category heads toggle their own block open/closed (independent of the filter).
     cats.forEach((cat) => {
       cat.querySelector<HTMLButtonElement>('[data-cat-toggle]')?.addEventListener('click', () => {
-        openOnly(cat.classList.contains('is-open') ? 'all' : (cat.dataset.cat || 'all'));
+        setCatOpen(cat, !cat.classList.contains('is-open'));
       });
     });
 
@@ -210,7 +213,7 @@ const { categories } = Astro.props;
         c.querySelectorAll<HTMLElement>('.fh-faq').forEach((f) => { f.hidden = false; });
       });
       if (empty) empty.hidden = true;
-      openOnly('all');
+      setFilter('all');
     };
     search?.addEventListener('input', () => {
       const q = search.value.trim().toLowerCase();
