@@ -7,7 +7,7 @@
 // Logos shuffled at build time. A controller (script below) flips 2-3 random pills at
 // a time (vertical rotateX, swap-at-edge) to cycle the full list through the visible
 // slots — IntersectionObserver-gated, paused offscreen / on hidden tab, reduced-motion safe.
-interface Item { name: string; logo: string; round?: boolean }
+interface Item { name: string; logo: string; round?: boolean; pad?: boolean }
 interface Props {
   eyebrow?: string;
   heading: string;
@@ -15,8 +15,10 @@ interface Props {
   items: Item[];
   /** Optionally cap how many pills render (default: all, shuffled). */
   count?: number;
+  /** Reversed layout: copy on the left, cloud on the right (bleeds off the right edge). */
+  reverse?: boolean;
 }
-const { eyebrow, heading, subhead, items, count } = Astro.props;
+const { eyebrow, heading, subhead, items, count, reverse = false } = Astro.props;
 
 // Randomize at build time (placeholder until the cycling flip animation lands).
 const shuffled = [...items].sort(() => Math.random() - 0.5);
@@ -27,7 +29,7 @@ const visible = shuffled.slice(0, count ?? ROW_COUNT * 6);
 const rows = Array.from({ length: ROW_COUNT }, (_, r) => visible.filter((_, i) => i % ROW_COUNT === r));
 ---
 
-<section class="integration-pills section" data-ip-pills>
+<section class:list={['integration-pills section', reverse && 'ip-reverse']} data-ip-pills>
   <div class="container ip-grid">
     <div class="ip-copy">
       {eyebrow && <p class="tagline">{eyebrow}</p>}
@@ -54,7 +56,9 @@ const rows = Array.from({ length: ROW_COUNT }, (_, r) => visible.filter((_, i) =
 <style>
   /* Soft duo gradient glow behind the pills (also gives the glass blur something to
      sample so it reads as real glass). Sits behind the content via isolation + z-index. */
-  .integration-pills { position: relative; isolation: isolate; }
+  /* overflow-x: clip keeps the cloud's edge bleed (esp. the reversed right bleed) from
+     spawning a horizontal scrollbar. */
+  .integration-pills { position: relative; isolation: isolate; overflow-x: clip; }
   .integration-pills::before {
     content: '';
     position: absolute;
@@ -131,7 +135,20 @@ const rows = Array.from({ length: ROW_COUNT }, (_, r) => visible.filter((_, i) =
     /* Cloud on the left, copy on the right (DOM order is copy-first for mobile). */
     .ip-cloud { order: 1; }
     .ip-copy { order: 2; }
+    /* Reversed: copy left, cloud right. */
+    .ip-reverse .ip-cloud { order: 2; }
+    .ip-reverse .ip-copy { order: 1; }
   }
+
+  /* Reversed: mirror the bleed to the RIGHT edge (default bleeds left). Pills align to the
+     right so they pack off the right edge and taper toward the centre. */
+  .ip-reverse .ip-cloud {
+    margin-left: 0;
+    margin-right: calc(-1 * (var(--ip-bleed) + var(--ip-overshoot)));
+    mask-image: linear-gradient(to left, transparent 40px, #000 104px, #000 86%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to left, transparent 40px, #000 104px, #000 86%, transparent 100%);
+  }
+  .ip-reverse .ip-row { justify-content: flex-end; }
 </style>
 
 <script>

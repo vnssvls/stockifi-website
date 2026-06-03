@@ -11,6 +11,7 @@ import items from '../../data/integrations-home.json';
 const variants = [
   { label: '1 · Logo grid' },
   { label: '2 · Logo pills' },
+  { label: '2 · Pills reversed' },
 ];
 ---
 
@@ -38,6 +39,16 @@ const variants = [
 
     <div class="sgf-panel" role="tabpanel" data-index="1" hidden>
       <IntegrationPills
+        eyebrow="Integrations"
+        heading="Works with the tools you already run"
+        subhead="Stockifi reads your accounting and POS, with 30+ accounting and 40+ POS integrations supported."
+        items={items}
+      />
+    </div>
+
+    <div class="sgf-panel" role="tabpanel" data-index="2" hidden>
+      <IntegrationPills
+        reverse
         eyebrow="Integrations"
         heading="Works with the tools you already run"
         subhead="Stockifi reads your accounting and POS, with 30+ accounting and 40+ POS integrations supported."
