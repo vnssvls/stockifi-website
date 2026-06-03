@@ -16,11 +16,11 @@ const items = variant === 'scroll' ? [...logos, ...logos] : logos;
 
 <section class:list={['logo-banner section-sm', `lb--${variant}`]}>
   <div class="container">
-    {label && <p class="lb-label text-muted">{label}</p>}
+    {label && <p class="lb-label">{label}</p>}
     <div class="lb-viewport">
       <div class="lb-track">
         {items.map((l) => (
-          <img class="lb-logo" src={l.logo} alt={l.name} width="120" height="36" loading="lazy" />
+          <img class="lb-logo" src={l.logo} alt={l.name} width="469" height="312" loading="eager" />
         ))}
       </div>
     </div>
@@ -31,7 +31,8 @@ const items = variant === 'scroll' ? [...logos, ...logos] : logos;
   .lb-label {
     text-align: center;
     margin-bottom: var(--space-32);
-    font-size: var(--text-body-sm);
+    font-size: var(--text-h5);
+    color: var(--card-foreground);
     letter-spacing: 0.04em;
     text-transform: uppercase;
   }
@@ -52,7 +53,7 @@ const items = variant === 'scroll' ? [...logos, ...logos] : logos;
     display: flex;
     align-items: center;
     width: max-content;
-    animation: lb-scroll 45s linear infinite;
+    animation: lb-scroll 80s linear infinite;
   }
   /* Trailing margin (not flex gap) so the two copies are identical width and translateX
      -50% wraps seamlessly — a seam gap would make the loop jump. */
