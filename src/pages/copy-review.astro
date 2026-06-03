@@ -1,0 +1,154 @@
+---
+// COPY REVIEW ROUTE — not part of the site. Lives only on the dc-474-website-copy
+// branch so V can review the home draft rendered through the REAL components
+// (run `astro dev`, open /copy-review). Never merged to main; only the approved
+// copy gets ported into the real index.astro at the end. Mirrors index.astro's
+// component usage with the new home arc + draft copy.
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import LogoBanner from '../components/LogoBanner.astro';
+import FeatureList from '../components/features/FeatureList.astro';
+import FeatureSplit from '../components/features/FeatureSplit.astro';
+import FeatureTabs from '../components/features/FeatureTabs.astro';
+import CustomerStoryBento from '../components/CustomerStoryBento.astro';
+import FeatureSteps from '../components/features/FeatureSteps.astro';
+import IntegrationPills from '../components/integrations/IntegrationPills.astro';
+import FaqSplit from '../components/faq/FaqSplit.astro';
+import CtaBand from '../components/CtaBand.astro';
+import integrations from '../data/integrations-home.json';
+import userLogos from '../data/user-logos.json';
+
+// 3. Product categories — FeatureList (real component: heading + body per item).
+// Sub-features folded into the body as real sentences (no-build fallback). If we
+// want them as a proper list inside each open item, FeatureList needs a small
+// sub-items field added (other session).
+const categories = [
+  { heading: 'Invoices & Suppliers', body: 'Stockifi reads your supplier invoices and tracks every price change for you, and your central kitchen feeds its costs into the same picture.' },
+  { heading: 'Inventory Management', body: 'You build recipes, count stock, and log transfers and wastage in the app, and Stockifi turns it into live variance and profit per dish.' },
+  { heading: 'Integrations', body: 'Stockifi connects to the POS and accounting you already run, with more than 69 integrations ready to go.' },
+];
+
+// 4. Benefits / value prop — FeatureSplit
+const benefitItems = [
+  'Catch supplier price rises the day they hit an invoice',
+  'See what you actually used against what you should have, per dish',
+  'Know the live margin of every recipe as your costs move',
+  'Most operators see a 2 to 3% improvement in food cost after onboarding',
+];
+
+// 5. By team — FeatureTabs
+const teamTabs = [
+  { label: 'Management', heading: "The whole operation's margin at a glance", body: 'Owners and GMs get cost visibility across every location, so you know where margin is won or lost without chasing a single report.' },
+  { label: 'Operations', heading: 'Run tighter service without the extra admin', body: 'Spot waste, over-portioning, and price drift early, so the day-to-day stays under control even as you add locations.' },
+  { label: 'Kitchen', heading: 'Recipes that cost themselves', body: 'Chefs see the live cost and margin of every dish, so menu calls reflect what ingredients cost today.' },
+  { label: 'Finance', heading: 'COGS you can actually trust', body: 'Finance gets actual against theoretical cost from real invoice and POS data, so month-end stops being a guessing game.' },
+];
+
+// 7. Onboarding — FeatureSteps
+const onboarding = [
+  { heading: 'Connect your systems', body: 'Link your accounting and POS. Your invoices and sales start flowing into Stockifi on their own.' },
+  { heading: 'We set up your recipes', body: 'We build your recipe baseline with you, so every cost is right from day one.' },
+  { heading: 'Ready in 48 hours', body: 'Most operations are live within two days of connecting their systems.' },
+  { heading: 'Start seeing the gaps', body: 'From your first counts, you see real food cost, variance, and price changes.' },
+];
+
+const faqs = [
+  { question: 'How does Stockifi connect to my systems?', answer: 'It reads your accounting software for supplier invoices and your POS for sales. We support 30+ accounting and 40+ POS integrations; the full list is on the integrations page.' },
+  { question: 'How long does it take to set up?', answer: 'Most operations are running quickly once recipes and integrations are connected. We set the recipe baseline with you so the numbers are right from day one.' },
+  { question: 'What does it cost?', answer: 'Pricing depends on the size and complexity of your setup, typically between €150 and €400 per month. We look at it together on a short call.' },
+  { question: 'Is my restaurant a good fit?', answer: 'Stockifi suits established restaurants and groups that have recipes and an accounting or POS system. Very early-stage operations usually are not the right fit yet.' },
+  { question: 'Can my team use it in our language?', answer: 'Your data stays in your language and the app modules are in English. We run a short training so the team is comfortable from the start.' },
+];
+---
+
+<Layout
+  title="European Restaurant Food Cost Software | Stockifi"
+  description="See exactly where your food cost is leaking. Stockifi connects your invoices, POS, and recipes so you track actual food cost instead of guessing."
+>
+  <!-- 1. Hero -->
+  <Hero
+    wide
+    tagline="For European hospitality operators"
+    heading="See exactly where your food cost is leaking."
+    subhead="Stockifi is the restaurant food cost software that ties your invoices, POS, and recipes together, so you stop guessing where your margin goes and start seeing it."
+    primary={{ label: 'Book a demo', href: '/book-a-demo' }}
+    secondary={{ label: 'See how it works', href: '#how-it-works' }}
+  />
+
+  <!-- 2. Social proof -->
+  <LogoBanner label="Trusted by 500+ restaurants across Europe" logos={userLogos} />
+
+  <!-- 3. Product categories (FeatureList) -->
+  <div id="how-it-works" class="hp-anchor">
+    <FeatureList tagline="What's inside" items={categories} />
+  </div>
+
+  <!-- 4. Benefits / value prop (FeatureSplit) -->
+  <FeatureSplit
+    tagline="Why it's worth it"
+    heading="Restaurant food cost control that pays for itself"
+    body="Most of your margin leaks in the gaps between systems. Stockifi pulls them into one view, so even a 1% improvement in food cost turns into money you keep."
+    items={benefitItems}
+    imageSide="right"
+  />
+
+  <!-- 5. By team (FeatureTabs) -->
+  <FeatureTabs
+    tagline="For your team"
+    heading="One set of numbers for every role"
+    subhead="From the GM to the kitchen, everyone works from the same numbers."
+    tabs={teamTabs}
+  />
+
+  <!-- 6. Customer stories -->
+  <CustomerStoryBento
+    eyebrow="Customer stories"
+    heading="How operators run a tighter kitchen"
+    subhead="See how restaurants and groups use Stockifi to win back margin they couldn't see before."
+    cta={{ label: 'Read all stories', href: '/customer-stories' }}
+    slugs={['byoslo', 'eik-and-friends', 'koie-ramen', 'skigeilo-2']}
+  />
+
+  <!-- 7. Onboarding (FeatureSteps) -->
+  <FeatureSteps
+    tagline="Getting started"
+    heading="Up and running within days"
+    steps={onboarding}
+  />
+
+  <!-- 8. Integrations -->
+  <IntegrationPills
+    wide
+    eyebrow="Integrations"
+    heading="Works with the tools you already run"
+    subhead="Stockifi reads your accounting software and POS, with 30+ accounting and 40+ POS integrations supported."
+    items={integrations}
+  />
+
+  <!-- 9. Risk-reversal band (no dedicated component yet; shown in CtaBand as a stand-in) -->
+  <CtaBand
+    heading="Find €3,000 in 30 days, or you pay nothing."
+    subhead="Connect your systems, give us 30 days, and if Stockifi doesn't uncover at least €3,000 in hidden losses, you pay nothing."
+    primary={{ label: 'See how the guarantee works', href: '/pricing' }}
+  />
+
+  <!-- 10. FAQ -->
+  <FaqSplit
+    eyebrow="FAQs"
+    heading="Questions operators ask"
+    body="The things operators check before a demo. Still unsure? Reach out and we'll help."
+    contact={{ label: 'Contact us', href: '/contact' }}
+    items={faqs}
+  />
+
+  <!-- 11. Final CTA -->
+  <CtaBand
+    heading="See where your margin is leaking"
+    subhead="Book a short call and we'll walk through it using your own numbers."
+    primary={{ label: 'Book a demo', href: '/book-a-demo' }}
+  />
+</Layout>
+
+<style>
+  .hp-anchor { scroll-margin-top: var(--space-96); }
+</style>
