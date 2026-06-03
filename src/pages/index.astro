@@ -97,13 +97,16 @@ const faqs = [
     steps={segments}
   />
 
-  <!-- 6. Integrations -->
-  <IntegrationGrid
-    heading="Use Stockifi with"
-    defaultSubject="your existing tools"
-    cta={{ label: 'View all integrations', href: '/integrations' }}
-    items={integrations}
-  />
+  <!-- 6. Integrations (with a soft gradient glow behind the logos, right side) -->
+  <div class="home-int">
+    <span class="home-int-glow" aria-hidden="true"></span>
+    <IntegrationGrid
+      heading="Use Stockifi with"
+      defaultSubject="your existing tools"
+      cta={{ label: 'View all integrations', href: '/integrations' }}
+      items={integrations}
+    />
+  </div>
 
   <!-- 7. Risk-reversal band — SLOT (own design pending) -->
   <SectionPlaceholder label="Risk-reversal band" note="Section slot — slim €3,000 / 30-day risk-free guarantee, kept low near the close." />
@@ -127,4 +130,26 @@ const faqs = [
 <style>
   /* Offset anchored scroll so the floating nav doesn't cover the section top */
   .hp-anchor { scroll-margin-top: var(--space-96); }
+
+  /* Soft "xs" gradient glow behind the integrations logos (right side of the page).
+     Lives on this wrapper (not inside the IntegrationGrid section, which clips its own
+     overflow), at z-index:-1 so it sits behind the transparent section and bleeds freely.
+     Anchored at the right edge (right:0, no negative offset) so it bleeds softly without
+     a horizontal scrollbar — no clipping needed. */
+  .home-int { position: relative; }
+  .home-int-glow {
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    width: min(820px, 78vw);
+    height: 760px;
+    background-image: url('/media/gradient-centered-xs.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.5;
+    pointer-events: none;
+  }
 </style>
