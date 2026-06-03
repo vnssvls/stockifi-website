@@ -61,6 +61,15 @@
   .acc-intro{color:var(--muted-foreground);font-size:12.5px;margin-left:auto;text-align:right;}
   .acc-body{padding:11px 16px 14px;display:flex;flex-wrap:wrap;gap:8px;}
   .pill{font-size:12px;padding:5px 12px;border-radius:999px;background:var(--secondary);color:var(--secondary-foreground);border:1px solid var(--border);}
+  .fl{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start;}
+  .fl-list{display:flex;flex-direction:column;gap:4px;margin-top:10px;}
+  .fl-it{border-left:2px solid transparent;padding:12px 0 12px 18px;opacity:.5;}
+  .fl-it.on{opacity:1;border-left-color:var(--primary);}
+  .fl-h{font-family:var(--font-heading);font-weight:600;font-size:20px;color:var(--foreground);}
+  .fl-b{color:var(--muted-foreground);font-size:14px;margin:6px 0 0;}
+  .fl-subs{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px;}
+  .fl-media .media{min-height:230px;}
+  @media(max-width:620px){ .fl{grid-template-columns:1fr;} }
   .split{display:grid;grid-template-columns:1.05fr .95fr;gap:24px;align-items:center;}
   .media{background:var(--card);border:1px dashed var(--border);border-radius:12px;min-height:180px;display:flex;align-items:center;justify-content:center;color:var(--muted-foreground);font-size:12px;}
   .checklist{list-style:none;padding:0;margin:14px 0 0;}
@@ -130,18 +139,16 @@ const HOME = {
       note:"Logos are placeholder for now; swap integration logos for client logos when ready."
     },
     {
-      num:3, name:"Product categories (was How it works)", comp:"Accordion (build change)", type:"accordion",
+      num:3, name:"Product categories (in How it works / FeatureList)", comp:"FeatureList.astro", type:"featurelist",
       c:{
-        eyebrow:"What's inside",
-        h2:"Everything Stockifi keeps an eye on",
-        intro:"It reads your invoices and sales for you, then checks them against your recipes, so the gaps show up as numbers you can act on.",
-        cats:[
-          { title:"Invoices & Suppliers", intro:"Your supplier costs, watched for you, invoice by invoice.", subs:["Invoice automation","Supplier price tracking","Central kitchen"] },
-          { title:"Inventory Management", intro:"Recipes, stock counts, and the gap between them, in one place.", subs:["Recipe building","Stock counting","Inventory transfers","Wastage tracking","Profitability"] },
-          { title:"Integrations", intro:"Plugs into the POS and accounting you already use.", subs:["POS systems","Accounting","69+ integrations"] }
+        tagline:"What's inside",
+        items:[
+          { heading:"Invoices & Suppliers", body:"Your supplier costs, read and watched for you, invoice by invoice.", subs:["Invoice automation","Supplier price tracking","Central kitchen"] },
+          { heading:"Inventory Management", body:"Recipes, stock counts, and the gap between them, all in one place.", subs:["Recipe building","Stock counting","Inventory transfers","Wastage tracking","Profitability"] },
+          { heading:"Integrations", body:"Plugs into the POS and accounting you already run.", subs:["POS systems","Accounting","69+ integrations"] }
         ]
       },
-      note:"The intro line carries the old 4-step logic in one sentence, so we keep the 'how it works' sense without a separate section. Needs the Accordion component (3 panels) rather than the current FeatureList."
+      note:"Now matches the real FeatureList: tagline + interactive list (one item open at a time) + swapping media. It has NO H2 and NO intro-paragraph slot, and each item is heading + body only. The sub-features shown inside the open item need a small FeatureList addition (a sub-items field) — flag for the other session; no-build fallback is to fold them into the body text. Also note: replacing the old 4-step list here means the home no longer walks the recipes-to-inventory sequence; the onboarding section + these bodies carry the gist."
     },
     {
       num:4, name:"Benefits / value prop", comp:"FeatureSplit.astro", type:"split",
@@ -253,7 +260,7 @@ function preview(s){
   switch(s.type){
     case "hero": return `<div class="hero-card"><p class="eyebrow">${esc(c.eyebrow)}</p><div class="ph1">${esc(c.h1)}</div><p class="sub">${esc(c.subhead)}</p><span class="btn btn-primary">${esc(c.primary)}</span><span class="btn btn-secondary">${esc(c.secondary)}</span></div>`;
     case "logos": return `<p class="sub" style="margin-bottom:6px">${esc(c.label)}</p><div class="logos">${Array(7).fill('<div class="logo-chip"></div>').join('')}</div>`;
-    case "accordion": return `<p class="eyebrow">${esc(c.eyebrow)}</p><div class="ph2">${esc(c.h2)}</div><p class="sub">${esc(c.intro)}</p>` + c.cats.map(g=>`<div class="acc-item"><div class="acc-top"><span class="acc-title">${esc(g.title)}</span><span class="acc-intro">${esc(g.intro)}</span></div><div class="acc-body">${g.subs.map(x=>`<span class="pill">${esc(x)}</span>`).join('')}</div></div>`).join('');
+    case "featurelist": return `<div class="fl"><div class="fl-left"><p class="eyebrow">${esc(c.tagline)}</p><div class="fl-list">${c.items.map((it,i)=>`<div class="fl-it ${i===0?'on':''}"><div class="fl-h">${esc(it.heading)}</div>${i===0?`<p class="fl-b">${esc(it.body)}</p><div class="fl-subs">${it.subs.map(x=>`<span class="pill">${esc(x)}</span>`).join('')}</div>`:''}</div>`).join('')}</div></div><div class="fl-media"><div class="media">media · ${esc(c.items[0].heading)}</div></div></div>`;
     case "split": return `<div class="split"><div><p class="eyebrow">${esc(c.tagline)}</p><div class="ph2">${esc(c.h2)}</div><p class="sub">${esc(c.body)}</p><ul class="checklist">${c.items.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div><div class="media">media</div></div>`;
     case "tabs": return `<p class="eyebrow">${esc(c.tagline)}</p><div class="ph2">${esc(c.h2)}</div><p class="sub">${esc(c.subhead)}</p><div class="tabstrip">${c.tabs.map((t,i)=>`<span class="t ${i===0?'on':''}">${esc(t.label)}</span>`).join('')}</div><div class="tabpanel"><b>${esc(c.tabs[0].heading)}</b><p>${esc(c.tabs[0].body)}</p></div>`;
     case "stories": return `<p class="eyebrow">${esc(c.eyebrow)}</p><div class="ph2">${esc(c.h2)}</div><p class="sub">${esc(c.subhead)}</p><div class="bento">${c.slugs.map(x=>`<div class="c">${esc(x)}</div>`).join('')}</div><div style="margin-top:14px"><span class="btn btn-secondary" style="margin:0">${esc(c.cta)}</span></div>`;
@@ -272,9 +279,9 @@ function deck(s){
   switch(s.type){
     case "hero": r.push(row("Eyebrow",c.eyebrow,10,40),row("H1",c.h1,25,55),row("Subhead",c.subhead,90,170),row("Primary CTA",c.primary,8,20),row("Secondary CTA",c.secondary,8,22)); break;
     case "logos": r.push(row("Label",c.label,20,50)); break;
-    case "accordion":
-      r.push(row("Eyebrow",c.eyebrow,8,30),row("H2",c.h2,20,50),row("Intro line",c.intro,80,160));
-      c.cats.forEach((g,i)=>{ r.push(row(`Cat ${i+1} title`,g.title,8,30),row(`Cat ${i+1} intro`,g.intro,30,80)); g.subs.forEach((x,j)=>r.push(row(`Cat ${i+1} item ${j+1}`,x,5,30))); });
+    case "featurelist":
+      r.push(row("Tagline",c.tagline,8,30));
+      c.items.forEach((it,i)=>{ r.push(row(`Item ${i+1} heading`,it.heading,8,30),row(`Item ${i+1} body`,it.body,40,120)); it.subs.forEach((x,j)=>r.push(row(`Item ${i+1} sub ${j+1}`,x,5,30))); });
       break;
     case "split":
       r.push(row("Tagline",c.tagline,8,30),row("H2",c.h2,25,55),row("Body",c.body,80,170));
