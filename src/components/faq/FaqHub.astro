@@ -1,10 +1,9 @@
 ---
-// FAQ hub (Figma 132:734): a category filter strip + a "double accordion". Each category
-// is a collapsible block — its name sits in a narrow left column, its FAQ list in a wider
-// right column — and each FAQ inside is its own accordion. The strip and the category
-// heads share one open state: "View all" = every category collapsed; clicking a category
-// opens just that one (its FAQs still collapsed). An optional search (a [data-faq-search]
-// input anywhere on the page, e.g. in the page header) filters FAQs across all categories.
+// FAQ hub (Daylight/Graza-style): a plain category filter list on the left + a content
+// area on the right that shows ONLY the selected category's FAQs. No parent accordion —
+// just the FAQ items are accordions (so nothing "peeks"). The header search filters FAQs
+// across every category. Categories come from the `categories` prop, so a page can pass a
+// subset (e.g. a solutions-only slice) and the same component renders it.
 interface Item { question: string; answer: string; }
 interface Category { id: string; name: string; items: Item[]; }
 interface Props { categories: Category[]; }
@@ -12,41 +11,35 @@ const { categories } = Astro.props;
 ---
 
 <section class="faq-hub section" data-faq-hub>
-  <div class="fh-wide">
-    <!-- Category filter strip -->
-    <div class="fh-strip" role="tablist" aria-label="FAQ categories">
-      <button class="fh-tab is-active" type="button" role="tab" aria-selected="true" data-cat="all">View all</button>
-      {categories.map((c) => (
-        <button class="fh-tab" type="button" role="tab" aria-selected="false" data-cat={c.id}>{c.name}</button>
-      ))}
-    </div>
+  <div class="container fh-grid">
+    <!-- Left: filter list + contact note -->
+    <aside class="fh-aside">
+      <nav class="fh-filters" aria-label="FAQ categories">
+        {categories.map((c, i) => (
+          <button class:list={['fh-filter', i === 0 && 'is-active']} type="button" data-cat={c.id} aria-pressed={i === 0 ? 'true' : 'false'}>{c.name}</button>
+        ))}
+      </nav>
+      <p class="fh-note">Don't see the answer you're looking for? <a href="/contact">Get in touch</a>.</p>
+    </aside>
 
-    <!-- Double accordion -->
-    <div class="fh-list">
-      {categories.map((c) => (
-        <div class="fh-cat" data-cat={c.id} id={`faq-${c.id}`}>
-          <h2 class="fh-cat-head-wrap">
-            <button class="fh-cat-head" type="button" aria-expanded="false" data-cat-toggle>
-              <span class="fh-cat-name">{c.name}</span>
-              <svg class="fh-cat-chev" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
-            </button>
-          </h2>
-          <div class="fh-cat-panel">
-            <div class="fh-cat-panel-inner">
-              <div class="fh-faqs">
-                {c.items.map((it) => (
-                  <div class="fh-faq" data-faq data-text={`${it.question} ${it.answer}`.toLowerCase()}>
-                    <h3 class="fh-faq-h">
-                      <button class="fh-faq-q" type="button" aria-expanded="false" data-faq-toggle>
-                        <span>{it.question}</span>
-                        <svg class="fh-faq-chev" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
-                      </button>
-                    </h3>
-                    <div class="fh-faq-a"><div class="fh-faq-a-inner"><p>{it.answer}</p></div></div>
-                  </div>
-                ))}
+    <!-- Right: title + per-category FAQ panels (only the selected one shows) -->
+    <div class="fh-content">
+      <h2 class="fh-content-title">Frequently asked questions</h2>
+      {categories.map((c, i) => (
+        <div class="fh-panel" data-cat={c.id} hidden={i !== 0}>
+          <p class="fh-panel-cat">{c.name}</p>
+          <div class="fh-faqs">
+            {c.items.map((it) => (
+              <div class="fh-faq" data-faq data-text={`${it.question} ${it.answer}`.toLowerCase()}>
+                <h3 class="fh-faq-h">
+                  <button class="fh-faq-q" type="button" aria-expanded="false" data-faq-toggle>
+                    <span>{it.question}</span>
+                    <svg class="fh-faq-chev" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                  </button>
+                </h3>
+                <div class="fh-faq-a"><div class="fh-faq-a-inner"><p>{it.answer}</p></div></div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       ))}
@@ -56,66 +49,40 @@ const { categories } = Astro.props;
 </section>
 
 <style>
-  /* Standard container gutter (not the wide 80px). Pull up so the strip sits closer to
-     the page header. */
+  /* Pull up so the layout sits closer to the page header. */
   .faq-hub { padding-top: 0; margin-top: calc(-1 * var(--space-64)); }
-  .fh-wide { width: 100%; max-width: var(--container-max); margin-inline: auto; padding-inline: var(--gutter); }
 
-  /* ── Category strip — bare, centred tabs (no bar / no full-width container) ──────── */
-  .fh-strip {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: var(--space-8);
-    width: fit-content;
-    max-width: 100%;
-    margin-inline: auto;
-  }
-  .fh-tab {
-    padding: var(--space-8) var(--space-16);
+  .fh-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-48); }
+
+  /* ── Left filter list ───────────────────────────────────────────── */
+  .fh-filters { display: flex; flex-wrap: wrap; gap: var(--space-8); }
+  .fh-filter {
+    padding: var(--space-12) var(--space-16);
     border: none;
-    border-radius: var(--radius-full);
+    border-radius: var(--radius-md);
     background: transparent;
     color: var(--muted-foreground);
     font-family: var(--font-body);
-    font-size: var(--text-body-sm);
-    font-weight: var(--fw-medium);
+    font-size: var(--text-body);
+    text-align: left;
     cursor: pointer;
     transition: color 0.18s ease, background-color 0.18s ease;
   }
-  .fh-tab:hover { color: var(--foreground); }
-  .fh-tab.is-active { background-color: color-mix(in srgb, var(--foreground) 8%, transparent); color: var(--foreground); }
+  .fh-filter:hover { color: var(--foreground); }
+  .fh-filter.is-active { background-color: color-mix(in srgb, var(--foreground) 7%, transparent); color: var(--foreground); font-weight: var(--fw-medium); }
 
-  /* ── Double accordion ───────────────────────────────────────────── */
-  .fh-list { margin-top: var(--space-64); }
-  .fh-cat { border-top: 1px solid var(--border); scroll-margin-top: calc(var(--nav-h) + var(--space-16)); }
-  .fh-list .fh-cat:last-of-type { border-bottom: 1px solid var(--border); }
-  .fh-cat[hidden] { display: none; }
+  .fh-note { margin-top: var(--space-24); color: var(--muted-foreground); font-size: var(--text-body-sm); line-height: var(--lh-body); }
+  .fh-note a { color: var(--foreground); text-decoration: underline; }
+  .fh-note a:hover { color: var(--primary-light); }
 
-  .fh-cat-head-wrap { margin: 0; }
-  .fh-cat-head {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-16);
-    padding: var(--space-32) 0;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    text-align: left;
-  }
-  .fh-cat-name { font-family: var(--font-heading); font-size: var(--text-h4); font-weight: var(--fw-semibold); color: var(--foreground); }
-  .fh-cat-chev { flex: none; color: var(--muted-foreground); transition: transform 0.3s ease; }
-  .fh-cat.is-open .fh-cat-chev { transform: rotate(180deg); }
+  /* ── Right content ──────────────────────────────────────────────── */
+  .fh-content-title { font-size: var(--text-h3); margin-bottom: var(--space-32); }
+  .fh-panel[hidden] { display: none; }
+  /* Category label above each FAQ group (also groups results during search). */
+  .fh-panel-cat { margin-bottom: var(--space-16); font-size: var(--text-body-sm); font-weight: var(--fw-semibold); letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted-foreground); }
+  .fh-panel + .fh-panel .fh-panel-cat { margin-top: var(--space-32); }
 
-  /* Collapsible panel (grid-rows 0fr→1fr). min-height:0 is required because the panel is a
-     grid item (in the 2-col category grid) and would otherwise keep its content height. */
-  .fh-cat-panel { display: grid; grid-template-rows: 0fr; min-height: 0; transition: grid-template-rows 0.35s ease; }
-  .fh-cat.is-open .fh-cat-panel { grid-template-rows: 1fr; }
-  .fh-cat-panel-inner { overflow: hidden; min-height: 0; }
-
-  /* Inner FAQ accordions. */
+  /* FAQ accordions. */
   .fh-faq { border-top: 1px solid var(--border); }
   .fh-faqs > .fh-faq:first-child { border-top: none; }
   .fh-faq[hidden] { display: none; }
@@ -146,59 +113,45 @@ const { categories } = Astro.props;
   .fh-empty { padding: var(--space-32) 0; color: var(--muted-foreground); }
 
   @media (prefers-reduced-motion: reduce) {
-    .fh-cat-panel,
     .fh-faq-a { transition: none; }
   }
 
   @media (min-width: 1024px) {
-    /* Category name in a left column with breathing room, FAQ list in a wider right col. */
-    .fh-cat { display: grid; grid-template-columns: 340px 1fr; gap: var(--space-48); align-items: start; }
-    .fh-cat-panel-inner { padding-bottom: var(--space-32); }
+    .fh-grid { grid-template-columns: 280px 1fr; gap: var(--space-96); align-items: start; }
+    /* Filters stack vertically in the sidebar; sidebar sticks while the FAQs scroll. */
+    .fh-filters { flex-direction: column; flex-wrap: nowrap; gap: var(--space-4); }
+    .fh-filter { width: 100%; }
+    .fh-aside { position: sticky; top: calc(var(--nav-h) + var(--space-24)); }
   }
 </style>
 
 <script>
   document.querySelectorAll<HTMLElement>('[data-faq-hub]').forEach((hub) => {
-    const tabs = Array.from(hub.querySelectorAll<HTMLButtonElement>('.fh-tab'));
-    const cats = Array.from(hub.querySelectorAll<HTMLElement>('.fh-cat'));
+    const filters = Array.from(hub.querySelectorAll<HTMLButtonElement>('.fh-filter'));
+    const panels = Array.from(hub.querySelectorAll<HTMLElement>('.fh-panel'));
     const empty = hub.querySelector<HTMLElement>('[data-faq-empty]');
     const search = document.querySelector<HTMLInputElement>('[data-faq-search]');
+    let currentCat = filters[0]?.dataset.cat ?? '';
 
-    const setTab = (id: string) => {
-      tabs.forEach((t) => {
-        const on = t.dataset.cat === id;
-        t.classList.toggle('is-active', on);
-        t.setAttribute('aria-selected', String(on));
+    // Show one category's panel; reset any search filtering on the FAQ items.
+    const showCategory = (id: string) => {
+      panels.forEach((p) => {
+        p.hidden = p.dataset.cat !== id;
+        p.querySelectorAll<HTMLElement>('.fh-faq').forEach((f) => { f.hidden = false; });
       });
-    };
-    const setCatOpen = (cat: HTMLElement, open: boolean) => {
-      cat.classList.toggle('is-open', open);
-      cat.querySelector('[data-cat-toggle]')?.setAttribute('aria-expanded', String(open));
-    };
-    // Filter the list: "all" shows every category collapsed; a category id shows ONLY
-    // that category (others hidden), expanded.
-    const setFilter = (id: string) => {
-      cats.forEach((c) => {
-        const sel = c.dataset.cat === id;
-        c.hidden = id !== 'all' && !sel;
-        setCatOpen(c, id !== 'all' && sel);
+      filters.forEach((f) => {
+        const on = f.dataset.cat === id;
+        f.classList.toggle('is-active', on);
+        f.setAttribute('aria-pressed', String(on));
       });
-      setTab(id);
+      if (empty) empty.hidden = true;
     };
 
-    // Strip tabs filter the list.
-    tabs.forEach((tab) => {
-      tab.addEventListener('click', () => setFilter(tab.dataset.cat || 'all'));
+    filters.forEach((f) => {
+      f.addEventListener('click', () => { currentCat = f.dataset.cat ?? ''; showCategory(currentCat); });
     });
 
-    // Category heads toggle their own block open/closed (independent of the filter).
-    cats.forEach((cat) => {
-      cat.querySelector<HTMLButtonElement>('[data-cat-toggle]')?.addEventListener('click', () => {
-        setCatOpen(cat, !cat.classList.contains('is-open'));
-      });
-    });
-
-    // Inner FAQ accordions — independent.
+    // FAQ accordions — independent.
     hub.querySelectorAll<HTMLElement>('.fh-faq').forEach((faq) => {
       faq.querySelector<HTMLButtonElement>('[data-faq-toggle]')?.addEventListener('click', () => {
         const open = faq.classList.toggle('is-open');
@@ -206,31 +159,23 @@ const { categories } = Astro.props;
       });
     });
 
-    // Search — filter FAQs across categories; open categories that have matches.
-    const resetSearch = () => {
-      cats.forEach((c) => {
-        c.hidden = false;
-        c.querySelectorAll<HTMLElement>('.fh-faq').forEach((f) => { f.hidden = false; });
-      });
-      if (empty) empty.hidden = true;
-      setFilter('all');
-    };
+    // Header search — filters FAQs across every category and shows the matches grouped by
+    // category (each panel keeps its category label). Clearing returns to the selected one.
     search?.addEventListener('input', () => {
       const q = search.value.trim().toLowerCase();
-      if (!q) { resetSearch(); return; }
+      if (!q) { showCategory(currentCat); return; }
       let any = false;
-      cats.forEach((cat) => {
+      panels.forEach((p) => {
         let hit = false;
-        cat.querySelectorAll<HTMLElement>('.fh-faq').forEach((faq) => {
+        p.querySelectorAll<HTMLElement>('.fh-faq').forEach((faq) => {
           const match = (faq.dataset.text || '').includes(q);
           faq.hidden = !match;
           if (match) hit = true;
         });
-        cat.hidden = !hit;
-        setCatOpen(cat, hit);
+        p.hidden = !hit;
         if (hit) any = true;
       });
-      setTab('all');
+      filters.forEach((f) => { f.classList.remove('is-active'); f.setAttribute('aria-pressed', 'false'); });
       if (empty) empty.hidden = any;
     });
   });
