@@ -10,6 +10,7 @@ import LogoBanner from '../components/LogoBanner.astro';
 import FeatureList from '../components/features/FeatureList.astro';
 import FeatureSplit from '../components/features/FeatureSplit.astro';
 import FeatureSteps from '../components/features/FeatureSteps.astro';
+import FeatureTabs from '../components/features/FeatureTabs.astro';
 import SectionPlaceholder from '../components/SectionPlaceholder.astro';
 import CustomerStoryBento from '../components/CustomerStoryBento.astro';
 import IntegrationPills from '../components/integrations/IntegrationPills.astro';
@@ -32,6 +33,14 @@ const pillarItems = [
   'Supplier price tracking, read line by line from your invoices',
   'Theoretical against actual consumption, straight from your POS',
   'Inventory counts with variance, waste, and price drift in one place',
+];
+
+// Platform showcase — Feature variant 5 (tabbed)
+const platformTabs = [
+  { label: 'Recipe costing', heading: 'Recipe costs that move with your prices', body: 'Stockifi reads supplier invoices line by line and keeps the cost of every dish current, so you always know your real margin.' },
+  { label: 'Supplier prices', heading: 'Catch price rises before they reach the plate', body: 'Every invoice is read automatically, so a supplier increase shows up the day it lands, not weeks later at month-end.' },
+  { label: 'POS & sales', heading: 'What sold against what you used', body: 'Sales import from your POS, so theoretical consumption is measured against your counts and over-portioning surfaces by dish.' },
+  { label: 'Inventory & variance', heading: 'Stock counts that explain the gap', body: 'Periodic counts in the app reveal actual versus theoretical usage, COGS development, and where the margin is leaking.' },
 ];
 
 // Segments — Feature variant 3 (connected vertical timeline)
@@ -82,6 +91,14 @@ const faqs = [
     imageSide="right"
   />
 
+  <!-- 3b. Platform showcase — Feature variant 5 (tabbed) -->
+  <FeatureTabs
+    tagline="The platform"
+    heading="One system for the whole back office"
+    subhead="Recipe costs, supplier prices, sales, and stock counts in one place, so the numbers line up."
+    tabs={platformTabs}
+  />
+
   <!-- 4. Customer stories — bento (choose featured via slugs) -->
   <CustomerStoryBento
     eyebrow="Customer stories"
@@ -104,7 +121,7 @@ const faqs = [
     wide
     eyebrow="Integrations"
     heading="Works with the tools you already run"
-    subhead="Stockifi reads your accounting software and POS — 30+ accounting and 40+ POS integrations supported."
+    subhead="Stockifi reads your accounting software and POS, with 30+ accounting and 40+ POS integrations supported."
     items={integrations}
   />
 
@@ -113,6 +130,7 @@ const faqs = [
 
   <!-- 8. FAQ — variant 1 (split: intro + contact left, accordion right) -->
   <FaqSplit
+    eyebrow="FAQs"
     heading="Questions operators ask"
     body="The things operators check before a demo. Still unsure? Reach out and we'll help."
     contact={{ label: 'Contact us', href: '/contact' }}

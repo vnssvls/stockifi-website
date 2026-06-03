@@ -63,7 +63,7 @@ const { tagline, items } = Astro.props;
      smooth, content-height-aware collapse with no JS measuring). */
   .fl-item-b { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.3s ease; }
   .fl-item[aria-selected='true'] .fl-item-b { grid-template-rows: 1fr; }
-  .fl-item-b-inner { overflow: hidden; min-height: 0; padding-top: var(--space-8); color: var(--muted-foreground); line-height: var(--lh-body); }
+  .fl-item-b-inner { overflow: hidden; min-height: 0; padding-top: var(--space-8); font-size: var(--text-body); color: var(--muted-foreground); line-height: var(--lh-body); }
   @media (prefers-reduced-motion: reduce) {
     .fl-item-b { transition: none; }
   }

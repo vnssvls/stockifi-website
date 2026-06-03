@@ -5,17 +5,19 @@ import Button from '../Button.astro';
 
 interface Item { question: string; answer: string; }
 interface Props {
+  eyebrow?: string;
   heading: string;
   body?: string;
   contact?: { label: string; href: string };
   items: Item[];
 }
-const { heading, body, contact, items } = Astro.props;
+const { eyebrow, heading, body, contact, items } = Astro.props;
 ---
 
 <section class="faq-split section">
   <div class="container fq-grid">
     <div class="fq-intro">
+      {eyebrow && <p class="tagline">{eyebrow}</p>}
       <h2>{heading}</h2>
       {body && <p class="fq-body text-muted">{body}</p>}
       {contact && <div class="fq-cta"><Button variant="secondary" href={contact.href}>{contact.label}</Button></div>}

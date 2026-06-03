@@ -64,7 +64,9 @@ const rows = Array.from({ length: ROW_COUNT }, (_, r) => visible.filter((_, i) =
   .integration-pills::before {
     content: '';
     position: absolute;
-    inset: 0;
+    /* Bleed past the top/bottom edges into the neighbouring sections (overflow-x:clip on
+       the section keeps the horizontal edge from scrolling; vertical stays visible). */
+    inset: -360px 0;
     z-index: -1;
     background-image: url('/media/gradient-duo.png');
     background-size: cover;
@@ -135,7 +137,7 @@ const rows = Array.from({ length: ROW_COUNT }, (_, r) => visible.filter((_, i) =
     white-space: nowrap;
   }
 
-  .ip-heading { max-width: 16ch; }
+  .ip-heading { max-width: 24ch; }
   .ip-subhead { margin-top: var(--space-16); max-width: 44ch; font-size: var(--text-body-lg); }
 
   @media (min-width: 1024px) {
