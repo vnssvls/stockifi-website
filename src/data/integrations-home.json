@@ -21,13 +21,13 @@
   { "name": "Unimicro",   "logo": "/media/integrations-logos/unimicro.svg" },
   { "name": "Asko",       "logo": "/media/integrations-logos/asko.svg" },
   { "name": "SpareBank 1","logo": "/media/integrations-logos/sparebank.svg" },
-  { "name": "Square",     "logo": "/media/integrations-logos/square.svg" },
-  { "name": "Google Drive","logo": "/media/integrations-logos/google-drive.png" },
-  { "name": "Google Sheets","logo": "/media/integrations-logos/google-sheets.png" },
-  { "name": "Bazaro",       "logo": "/media/integrations-logos/bazaro.jpg",       "round": true },
-  { "name": "Vandelanotte", "logo": "/media/integrations-logos/vandelanotte.jpg", "round": true },
-  { "name": "Xledger",      "logo": "/media/integrations-logos/xledger.png",      "round": true },
-  { "name": "Visbook",      "logo": "/media/integrations-logos/visbook.png",      "round": true },
-  { "name": "Corpay",       "logo": "/media/integrations-logos/corpay.jpg",       "round": true },
-  { "name": "24SevenOffice","logo": "/media/integrations-logos/24sevenoffice.jpg","round": true }
+  { "name": "Square",     "logo": "/media/integrations-logos/square.svg", "pad": true },
+  { "name": "Google Drive","logo": "/media/integrations-logos/google-drive.png", "pad": true },
+  { "name": "Google Sheets","logo": "/media/integrations-logos/google-sheets.png", "pad": true },
+  { "name": "Bazaro",       "logo": "/media/integrations-logos/bazaro.jpg",       "round": true, "pad": true },
+  { "name": "Vandelanotte", "logo": "/media/integrations-logos/vandelanotte.jpg", "round": true, "pad": true },
+  { "name": "Xledger",      "logo": "/media/integrations-logos/xledger.png",      "round": true, "pad": true },
+  { "name": "Visbook",      "logo": "/media/integrations-logos/visbook.png",      "round": true, "pad": true },
+  { "name": "Corpay",       "logo": "/media/integrations-logos/corpay.jpg",       "round": true, "pad": true },
+  { "name": "24SevenOffice","logo": "/media/integrations-logos/24sevenoffice.jpg","round": true, "pad": true }
 ]

@@ -4,7 +4,7 @@
 // rows of logo tiles — grayscale at rest, full colour on hover/focus.
 import Button from '../Button.astro';
 
-interface Item { name: string; logo: string; round?: boolean }
+interface Item { name: string; logo: string; round?: boolean; pad?: boolean }
 interface Props {
   heading: string;
   defaultSubject: string;
@@ -44,7 +44,7 @@ for (let i = 0; i < items.length && rows.length < 3; i += cols) {
         <div class:list={['ig-row', ri % 2 === 1 && 'ig-row--offset']}>
           {row.map((it) => (
             <a class="ig-icon" href={linkHref} data-name={it.name} aria-label={`Stockifi integrates with ${it.name}`}>
-              <img class:list={[it.round && 'is-round']} src={it.logo} alt={it.name} width="40" height="40" loading="lazy" />
+              <img class:list={[it.round && 'is-round', it.pad && 'is-pad']} src={it.logo} alt={it.name} width="40" height="40" loading="lazy" />
             </a>
           ))}
         </div>
@@ -133,6 +133,9 @@ for (let i = 0; i < items.length && rows.length < 3; i += cols) {
   }
   .ig-icon:hover img,
   .ig-icon:focus-visible img { filter: grayscale(0); opacity: 1; }
+  /* Marks supplied full-bleed (less internal whitespace than the earlier set) — shrink so
+     their inner padding matches the rest. */
+  .ig-icon img.is-pad { width: 54%; height: 54%; }
   /* Brand badges supplied without transparency: clip to a circle to drop the
      square background (same handling as the pill variant). */
   .ig-icon img.is-round { object-fit: cover; border-radius: var(--radius-full); }
