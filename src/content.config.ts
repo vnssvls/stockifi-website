@@ -55,4 +55,59 @@ const customerStories = defineCollection({
   }),
 });
 
-export const collections = { blog, customerStories };
+// Product item pages — markdown frontmatter in content/products/en/.
+const products = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './content/products/en' }),
+  schema: z.object({
+    metaTitle: z.string(),
+    metaDescription: z.string(),
+    eyebrow: z.string(),
+    heading: z.string(),
+    subhead: z.string(),
+    heroImage: z.string().default('/media/cta-bg-2.jpg'),
+    order: z.number().default(99),
+    stepsTagline: z.string().default('How it works'),
+    stepsHeading: z.string().optional(),
+    steps: z.array(z.object({ heading: z.string(), body: z.string() })).default([]),
+    showIntegrations: z.boolean().default(true),
+    integrationsHeading: z.string().default('Works with the tools you run'),
+    integrationsSubject: z.string().default('your existing systems'),
+    benefits: z.array(z.object({ heading: z.string(), body: z.string() })).default([]),
+    faqHeading: z.string().default('Questions, answered'),
+    faqs: z.array(z.object({ question: z.string(), answer: z.string() })).default([]),
+    ctaHeading: z.string().default('See it on your numbers'),
+    ctaSubhead: z.string().default("Book a short call and we'll show you what Stockifi surfaces in your first 30 days."),
+    draft: z.boolean().default(false),
+  }),
+});
+
+// Solutions item pages — markdown frontmatter in content/solutions/en/.
+const solutions = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './content/solutions/en' }),
+  schema: z.object({
+    metaTitle: z.string(),
+    metaDescription: z.string(),
+    eyebrow: z.string(),
+    heading: z.string(),
+    subhead: z.string(),
+    order: z.number().default(99),
+    group: z.string().default(''),
+    problemTagline: z.string().default('The problem'),
+    problemHeading: z.string().optional(),
+    problemBody: z.string().default(''),
+    problem: z.array(z.string()).default([]),
+    benefits: z.array(z.object({ heading: z.string(), body: z.string() })).default([]),
+    showcaseTagline: z.string().default('How it helps'),
+    showcaseHeading: z.string().optional(),
+    showcaseBody: z.string().default(''),
+    showcaseSubs: z.array(z.object({ heading: z.string(), body: z.string() })).default([]),
+    faqHeading: z.string().default('Questions, answered'),
+    faqs: z.array(z.object({ question: z.string(), answer: z.string() })).default([]),
+    testimonials: z.array(z.object({ quote: z.string(), name: z.string(), position: z.string().default(''), company: z.string().default(''), storyHref: z.string().default('/customer-stories') })).default([]),
+    ctaHeading: z.string().default('See where your margin is leaking'),
+    ctaSubhead: z.string().default("Drop your email and we'll show you what Stockifi surfaces in your first 30 days."),
+    draft: z.boolean().default(false),
+  }),
+});
+
+export const collections = { blog, customerStories, products, solutions };

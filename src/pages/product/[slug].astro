@@ -1,0 +1,84 @@
+---
+// Product item page template (Figma 82:*). One page per entry in the `products`
+// content collection. Arrangement per V:
+// Page Header (image variant) → Feature v3 (Steps) → Integrations block →
+// Grid row v2 (ImageCardGrid) → FAQ v1 (FaqSplit) → CTA v1 (CtaBand).
+// Optional sections render only when their data is present in frontmatter.
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import PageHeaderImage from '../../components/page-headers/PageHeaderImage.astro';
+import FeatureSteps from '../../components/features/FeatureSteps.astro';
+import IntegrationGrid from '../../components/integrations/IntegrationGrid.astro';
+import ImageCardGrid from '../../components/ImageCardGrid.astro';
+import FaqSplit from '../../components/faq/FaqSplit.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import integrations from '../../data/integrations-home.json';
+
+export async function getStaticPaths() {
+  return (await getCollection('products'))
+    .filter((p) => !p.data.draft)
+    .map((p) => ({ params: { slug: p.id }, props: { p } }));
+}
+
+const { p } = Astro.props;
+const d = p.data;
+const benefitCards = d.benefits.map((b, i) => ({ ...b, image: `/media/cta-bg-${(i % 4) + 1}.jpg` }));
+---
+
+<Layout title={d.metaTitle} description={d.metaDescription}>
+  <!-- 1. Page header — image variant -->
+  <PageHeaderImage
+    eyebrow={d.eyebrow}
+    heading={d.heading}
+    subhead={d.subhead}
+    cta={{ label: 'Book a demo', href: '/book-a-demo' }}
+    image={d.heroImage}
+  />
+
+  <!-- 2. Feature v3 (Steps) -->
+  {d.steps.length > 0 && (
+    <FeatureSteps
+      tagline={d.stepsTagline}
+      heading={d.stepsHeading ?? d.heading}
+      cta={{ label: 'See how it works', href: '/#how-it-works' }}
+      steps={d.steps}
+    />
+  )}
+
+  <!-- 3. Integrations block -->
+  {d.showIntegrations && (
+    <IntegrationGrid
+      heading={d.integrationsHeading}
+      defaultSubject={d.integrationsSubject}
+      cta={{ label: 'View all integrations', href: '/integrations' }}
+      items={integrations}
+    />
+  )}
+
+  <!-- 4. Grid row v2 (image-backed cards) -->
+  {d.benefits.length > 0 && (
+    <section class="section">
+      <div class="container">
+        <ImageCardGrid items={benefitCards} columns={4} />
+      </div>
+    </section>
+  )}
+
+  <!-- 5. FAQ v1 (split) -->
+  {d.faqs.length > 0 && (
+    <FaqSplit
+      heading={d.faqHeading}
+      body="What operators ask before a demo. Still unsure? Reach out and we'll help."
+      contact={{ label: 'Contact us', href: '/contact' }}
+      items={d.faqs}
+    />
+  )}
+
+  <!-- 6. CTA v1 (band) -->
+  <CtaBand
+    heading={d.ctaHeading}
+    subhead={d.ctaSubhead}
+    primary={{ label: 'Book a demo', href: '/book-a-demo' }}
+    secondary={{ label: 'View pricing', href: '/pricing' }}
+  />
+</Layout>
