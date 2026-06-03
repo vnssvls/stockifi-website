@@ -1,12 +1,9 @@
 ---
-// Logo banner — social-proof logo row, rendered as uniform white silhouettes so the
-// mixed brand marks read on the dark shell.
+// Logo banner — social-proof client logo row. Logos are pre-styled white-on-transparent
+// PNGs on a uniform canvas, so they render as-is (no filter / no blend).
 //   variant="scroll" (default) — auto-scrolling marquee, pauses on hover.
 //   variant="static"          — one centered, wrapping row, no motion.
-// Fed integration logos for now — swap to client logos when we have those assets.
-// `screen` flag: the logo is a white mark on a solid (black) background — use
-// mix-blend-mode: screen to drop the background instead of the brightness/invert filter.
-interface Logo { name: string; logo: string; screen?: boolean }
+interface Logo { name: string; logo: string }
 interface Props {
   label?: string;
   logos: Logo[];
@@ -23,7 +20,7 @@ const items = variant === 'scroll' ? [...logos, ...logos] : logos;
     <div class="lb-viewport">
       <div class="lb-track">
         {items.map((l) => (
-          <img class:list={['lb-logo', l.screen && 'lb-logo--screen']} src={l.logo} alt={l.name} width="120" height="36" loading="lazy" />
+          <img class="lb-logo" src={l.logo} alt={l.name} width="120" height="36" loading="lazy" />
         ))}
       </div>
     </div>
@@ -40,21 +37,14 @@ const items = variant === 'scroll' ? [...logos, ...logos] : logos;
   }
   .lb-logo {
     flex: none;
-    height: 36px;
+    height: 48px;
     width: auto;
-    filter: brightness(0) invert(1);
-    opacity: 0.7;
+    opacity: 0.85;
   }
-  /* White-on-black marks: screen drops the black background (the silhouette filter would
-     turn the whole opaque rectangle white). */
-  .lb-logo--screen { filter: none; mix-blend-mode: screen; }
 
   /* ── Scroll variant ── */
   .lb--scroll .lb-viewport {
     overflow: hidden;
-    /* Solid backdrop so the screen-blended marks have the page colour to blend against —
-       the mask below isolates this box, which otherwise left their black bg showing. */
-    background: var(--background);
     mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
     -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
   }
