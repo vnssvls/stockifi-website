@@ -70,9 +70,10 @@ const cards = slugs
 </section>
 
 <style>
-  /* Not isolated and not clipped, so the glow's z-index:-1 sits in the page stacking
-     context and bleeds behind the sections above and below this one. */
-  .csb { position: relative; }
+  /* isolation:isolate keeps the z-index:-1 glow visible (in this section's stacking
+     context, above its transparent bg). The glow still overflows the box softly into the
+     neighbouring sections; without isolation the negative-z layer hides behind the page bg. */
+  .csb { position: relative; isolation: isolate; }
   .csb-glow {
     position: absolute;
     left: 50%;

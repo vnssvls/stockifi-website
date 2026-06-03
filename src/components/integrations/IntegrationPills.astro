@@ -220,7 +220,7 @@ const rows = Array.from({ length: ROW_COUNT }, (_, r) => visible.filter((_, i) =
     let inView = false;
     const sync = () => {
       const run = inView && !document.hidden;
-      if (run && timer === null) timer = window.setInterval(tick, 2800);
+      if (run && timer === null) timer = window.setInterval(tick, 2400);
       else if (!run && timer !== null) { clearInterval(timer); timer = null; }
     };
     new IntersectionObserver((entries) => {

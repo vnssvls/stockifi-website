@@ -136,7 +136,10 @@ const faqs = [
      overflow), at z-index:-1 so it sits behind the transparent section and bleeds freely.
      Anchored at the right edge (right:0, no negative offset) so it bleeds softly without
      a horizontal scrollbar — no clipping needed. */
-  .home-int { position: relative; }
+  /* isolation:isolate keeps the z-index:-1 glow in this wrapper's stacking context (above
+     its own transparent bg, behind the transparent integrations section). Without it the
+     negative-z glow escapes to the root and hides behind the page background. */
+  .home-int { position: relative; isolation: isolate; }
   .home-int-glow {
     position: absolute;
     z-index: -1;

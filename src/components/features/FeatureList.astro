@@ -20,7 +20,7 @@ const { tagline, items } = Astro.props;
         {items.map((it, i) => (
           <button class="fl-item" type="button" role="tab" data-index={i} aria-selected={i === 0 ? 'true' : 'false'}>
             <span class="fl-item-h">{it.heading}</span>
-            <span class="fl-item-b">{it.body}</span>
+            <span class="fl-item-b"><span class="fl-item-b-inner">{it.body}</span></span>
           </button>
         ))}
       </div>
@@ -29,7 +29,7 @@ const { tagline, items } = Astro.props;
     <div class="fl-media">
       {items.map((it, i) => (
         <div class="fl-panel" role="tabpanel" data-index={i} hidden={i !== 0}>
-          {it.image ? <img src={it.image.src} alt={it.image.alt} /> : <MediaPlaceholder ratio="3 / 4" label={it.heading} />}
+          {it.image ? <img src={it.image.src} alt={it.image.alt} /> : <MediaPlaceholder ratio="16 / 10" label={it.heading} />}
         </div>
       ))}
     </div>
@@ -58,11 +58,18 @@ const { tagline, items } = Astro.props;
      state always reads as the left accent border. */
   .fl-item:focus-visible { outline: none; opacity: 1; background: var(--accent); }
   .fl-item[aria-selected='true'] { opacity: 1; border-left-color: var(--primary); }
-  .fl-item-h { display: block; margin-bottom: var(--space-8); font-family: var(--font-heading); font-size: var(--text-h5); font-weight: var(--fw-semibold); color: var(--foreground); }
-  .fl-item-b { display: block; color: var(--muted-foreground); line-height: var(--lh-body); }
+  .fl-item-h { display: block; font-family: var(--font-heading); font-size: var(--text-h5); font-weight: var(--fw-semibold); color: var(--foreground); }
+  /* Subtitle reveals like an accordion only for the active item (grid-rows 0fr→1fr is a
+     smooth, content-height-aware collapse with no JS measuring). */
+  .fl-item-b { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.3s ease; }
+  .fl-item[aria-selected='true'] .fl-item-b { grid-template-rows: 1fr; }
+  .fl-item-b-inner { overflow: hidden; min-height: 0; padding-top: var(--space-8); color: var(--muted-foreground); line-height: var(--lh-body); }
+  @media (prefers-reduced-motion: reduce) {
+    .fl-item-b { transition: none; }
+  }
 
   .fl-panel[hidden] { display: none; }
-  .fl-panel img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: var(--radius-lg); }
+  .fl-panel img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: var(--radius-lg); }
 
   @media (min-width: 1024px) {
     .fl-grid { grid-template-columns: 1fr 1fr; gap: var(--space-96); }
