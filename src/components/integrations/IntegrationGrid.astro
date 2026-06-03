@@ -12,12 +12,12 @@ interface Props {
   items: Item[];
   cols?: number;
 }
-const { heading, defaultSubject, cta, items, cols = 7 } = Astro.props;
+const { heading, defaultSubject, cta, items, cols = 11 } = Astro.props;
 const linkHref = cta?.href ?? '/integrations';
 
-// Chunk flat list into rows for the staggered layout
+// Chunk flat list into rows for the staggered layout — capped at 3 rows.
 const rows: Item[][] = [];
-for (let i = 0; i < items.length; i += cols) {
+for (let i = 0; i < items.length && rows.length < 3; i += cols) {
   rows.push(items.slice(i, i + cols));
 }
 ---
@@ -57,7 +57,7 @@ for (let i = 0; i < items.length; i += cols) {
   .ig-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--space-48);
+    gap: var(--space-32);
     align-items: center;
   }
 
@@ -74,8 +74,8 @@ for (let i = 0; i < items.length; i += cols) {
      then fade out with a gradient mask.
      --ig-tile and --ig-gap are defined here so .ig-row--offset can reference them. */
   .ig-icons {
-    --ig-tile: 80px;
-    --ig-gap: 20px;
+    --ig-tile: 64px;
+    --ig-gap: 16px;
     display: flex;
     flex-direction: column;
     gap: var(--ig-gap);
@@ -144,14 +144,14 @@ for (let i = 0; i < items.length; i += cols) {
   @media (min-width: 1280px) {
     .ig-grid {
       grid-template-columns: 1.05fr 0.95fr;
-      gap: var(--space-64);
+      gap: var(--space-48);
     }
     /* Each line stays unbroken → heading is always exactly two lines */
     .ig-line,
     .ig-subject { white-space: nowrap; }
     .ig-icons {
-      --ig-tile: 88px;
-      --ig-gap: 22px;
+      --ig-tile: 72px;
+      --ig-gap: 18px;
       mask-image: linear-gradient(to right, black 45%, transparent 95%);
       -webkit-mask-image: linear-gradient(to right, black 45%, transparent 95%);
     }
