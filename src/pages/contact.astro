@@ -179,10 +179,17 @@ const faqs = [
 
   .ct-row { display: grid; grid-template-columns: 1fr; gap: var(--space-32); }
 
-  /* Lifted tint + shadow so cards separate from the page (bg equals --card) and read
-     clearly above the gradient backdrop. */
+  /* Plain --card with a soft drop shadow so the card reads as floating: border matches
+     --card (no edge line), and the shadow + gradient backdrop do the visual lift. */
   .ct-demo,
-  .ct-card { border: 1px solid var(--border); border-radius: var(--radius-lg); background-color: color-mix(in srgb, var(--foreground) 7%, var(--card)); box-shadow: var(--shadow-lg); overflow: hidden; }
+  .ct-card {
+    --ct-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--card);
+    border-radius: var(--radius-lg);
+    background-color: var(--card);
+    box-shadow: var(--ct-shadow);
+    overflow: hidden;
+  }
 
   /* Book a Demo — image beside copy. */
   .ct-demo { display: grid; grid-template-columns: 1fr; }
