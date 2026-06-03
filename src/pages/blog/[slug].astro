@@ -53,7 +53,7 @@ const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
 
   <!-- Light-mode reading section: TOC + prose. -->
   <article class="bi-article section" data-theme="light">
-    <div class="container bi-layout">
+    <div class="bi-layout">
       {toc.length > 0 && (
         <aside class="bi-toc">
           <p class="bi-toc-label">In this article</p>
@@ -103,7 +103,7 @@ const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
 
   /* Light reading section. */
   .bi-article { background-color: var(--background); overflow-x: clip; }
-  .bi-layout { display: grid; grid-template-columns: 1fr; gap: var(--space-48); }
+  .bi-layout { display: grid; grid-template-columns: 1fr; gap: var(--space-48); width: 100%; padding-inline: var(--gutter-wide); }
 
   /* Friendly numbered TOC in a soft card: NN | title, with the active item accented. */
   .bi-toc { display: none; }
@@ -154,9 +154,11 @@ const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
   @media (min-width: 1024px) {
     .bi-hwide { padding-inline: 80px; }
     .bi-hgrid { grid-template-columns: 1fr 1fr; gap: var(--space-64); }
-    /* TOC at the container's left edge, prose fills the rest (capped by .prose). Not
-       centered — centering overflowed + clipped the TOC and over-padded the left. */
-    .bi-layout { grid-template-columns: 240px minmax(0, 1fr); gap: var(--space-64); }
+    /* Wide, left-aligned (80px gutter) — not the centered 1280 container. The cap was
+       centering the layout, so wide screens got a big empty left "gutter" (the orange in
+       DevTools = centering margin, not padding). Now the TOC pins near the left edge and
+       the prose sits beside it (capped at --prose-max); slack falls to the right. */
+    .bi-layout { padding-inline: 80px; grid-template-columns: 240px minmax(0, var(--prose-max)); gap: var(--space-64); }
     .bi-toc {
       display: block;
       position: sticky;
