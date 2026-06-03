@@ -4,6 +4,7 @@
 import Layout from '../../layouts/Layout.astro';
 import SgThemeToggle from '../../components/SgThemeToggle.astro';
 import TestimonialSlider from '../../components/TestimonialSlider.astro';
+import CustomerStoryBento from '../../components/CustomerStoryBento.astro';
 
 const testimonials = [
   {
@@ -32,6 +33,19 @@ const testimonials = [
     </div>
 
     <TestimonialSlider items={testimonials} ctaLabel="Read story" />
+
+    <div class="container sgf-head sgf-divide">
+      <h2>Customer story bento</h2>
+      <p class="text-muted">Bento for the home customer-story slot: big left, two top-right, wide bottom-right (stacks on mobile). Card title is the company name, CTA is a "Read story" link only, and the header carries a "Read all stories" button. Featured stories are chosen via an ordered <code>slugs</code> prop — 4 slots.</p>
+    </div>
+
+    <CustomerStoryBento
+      eyebrow="Customer stories"
+      heading="How operators run a tighter kitchen"
+      subhead="Restaurants and groups using Stockifi to recover margin they couldn't see before."
+      cta={{ label: 'Read all stories', href: '/customer-stories' }}
+      slugs={['byoslo', 'eik-and-friends', 'koie-ramen', 'skigeilo-2']}
+    />
   </div>
 
   <SgThemeToggle />
@@ -42,4 +56,6 @@ const testimonials = [
   .sg-back { display: inline-block; margin-bottom: var(--space-16); color: var(--muted-foreground); font-size: var(--text-body-sm); }
   .sg-back:hover { color: var(--foreground); text-decoration: none; }
   .sgf-head h1 { margin-bottom: var(--space-8); }
+  .sgf-divide { margin-top: var(--section-y); padding-top: var(--section-y); border-top: 1px solid var(--border); }
+  .sgf-divide h2 { margin-bottom: var(--space-8); }
 </style>
