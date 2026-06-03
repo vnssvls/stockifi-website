@@ -162,7 +162,9 @@ const faqs = [
   .ct-glow {
     position: absolute;
     left: 50%;
-    top: 0;
+    /* Centre sits below the seam so most of the glow backs the cards, while the top still
+       feathers up into the header. */
+    top: 220px;
     transform: translate(-50%, -50%);
     z-index: -1;
     /* Wider than the cards (which now run to the 80px gutter) so it reads in the gutters,
