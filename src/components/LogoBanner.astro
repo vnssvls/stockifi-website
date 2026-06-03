@@ -37,7 +37,7 @@ const items = variant === 'scroll' ? [...logos, ...logos] : logos;
   }
   .lb-logo {
     flex: none;
-    height: 48px;
+    height: 100px;
     width: auto;
     opacity: 0.85;
   }
@@ -56,7 +56,7 @@ const items = variant === 'scroll' ? [...logos, ...logos] : logos;
   }
   /* Trailing margin (not flex gap) so the two copies are identical width and translateX
      -50% wraps seamlessly — a seam gap would make the loop jump. */
-  .lb--scroll .lb-logo { margin-right: var(--space-64); }
+  .lb--scroll .lb-logo { margin-right: var(--space-32); }
   .lb--scroll .lb-viewport:hover .lb-track { animation-play-state: paused; }
 
   /* ── Static variant ── */
@@ -65,7 +65,7 @@ const items = variant === 'scroll' ? [...logos, ...logos] : logos;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: var(--space-32) var(--space-64);
+    gap: var(--space-32);
   }
 
   @keyframes lb-scroll {

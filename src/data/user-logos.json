@@ -16,5 +16,13 @@
   { "name": "Hanami",            "logo": "/media/user-logos/hanami.png" },
   { "name": "Oslo Streetfood",   "logo": "/media/user-logos/oslo-streetfood.png" },
   { "name": "Ren Group",         "logo": "/media/user-logos/ren-group.png" },
-  { "name": "Sirkus Renaa",      "logo": "/media/user-logos/sirkusrenaa.png" }
+  { "name": "Sirkus Renaa",      "logo": "/media/user-logos/sirkusrenaa.png" },
+  { "name": "The Thief",         "logo": "/media/user-logos/the-thief.png" },
+  { "name": "Delicatessen",      "logo": "/media/user-logos/delicatessen.png" },
+  { "name": "Der Peppern Gror",  "logo": "/media/user-logos/der-peppern-gror.png" },
+  { "name": "Matdirkke",         "logo": "/media/user-logos/matdirkke.png" },
+  { "name": "Trekanten",         "logo": "/media/user-logos/trekanten.png" },
+  { "name": "We Come In Peace",  "logo": "/media/user-logos/we-come-in-peace.png" },
+  { "name": "CIC",               "logo": "/media/user-logos/cic.png" },
+  { "name": "Lett",              "logo": "/media/user-logos/lett.png" }
 ]
