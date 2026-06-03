@@ -55,20 +55,17 @@ const faqs = [
   title="Contact Stockifi | Book a Demo & Support"
   description="Talk to the Stockifi team about fit, pricing, and integrations, book a demo, or reach customer support and the founders directly."
 >
-  <PageHeader
-    eyebrow="Contact"
-    heading="Get in touch"
-    subhead="Questions about fit, pricing, or how Stockifi connects to your systems? Reach the people who build and run it."
-  >
-    <Button variant="secondary" href="/#how-it-works">
-      See how it works
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
-    </Button>
-  </PageHeader>
+  <div class="ct-hero">
+    <PageHeader
+      eyebrow="Contact"
+      heading="Get in touch"
+      subhead="Questions about fit, pricing, or how Stockifi connects to your systems? Reach the people who build and run it."
+    />
 
-  <section class="section ct-section" id="contact">
-    <div class="container">
-      <div class="ct-row">
+    <section class="section ct-section" id="contact">
+      <span class="ct-glow" aria-hidden="true"></span>
+      <div class="ct-wide">
+        <div class="ct-row">
         <!-- Book a Demo — image + copy -->
         <article class="ct-demo">
           <div class="ct-demo-media">
@@ -138,7 +135,8 @@ const faqs = [
         </div>
       </div>
     </div>
-  </section>
+    </section>
+  </div>
 
   <FaqGrid
     heading="FAQs"
@@ -154,13 +152,37 @@ const faqs = [
 </Layout>
 
 <style>
-  .ct-section { scroll-margin-top: var(--nav-h); }
+  .ct-hero { position: relative; isolation: isolate; }
+  /* Tighten the gap so the cards sit above the fold (header still carries section-y below
+     its copy; this pulls the cards up under it). */
+  .ct-section { position: relative; padding-top: 0; margin-top: calc(-1 * var(--space-64)); scroll-margin-top: var(--nav-h); }
+  /* gradient-duo as a shared backdrop centred on the header↔cards seam — bleeds up into
+     the header and down into the cards, painted behind both (z-index:-1 within the
+     isolated hero, so it never clips at a section edge). */
+  .ct-glow {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    width: min(1100px, 92vw);
+    height: 720px;
+    background-image: url('/media/gradient-duo.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  .ct-wide { width: 100%; max-width: none; margin-inline: auto; padding-inline: var(--gutter-wide); }
 
   .ct-row { display: grid; grid-template-columns: 1fr; gap: var(--space-32); }
 
-  /* Shared card chrome. */
+  /* Lifted tint + shadow so cards separate from the page (bg equals --card) and read
+     clearly above the gradient backdrop. */
   .ct-demo,
-  .ct-card { border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--card); overflow: hidden; }
+  .ct-card { border: 1px solid var(--border); border-radius: var(--radius-lg); background-color: color-mix(in srgb, var(--foreground) 7%, var(--card)); box-shadow: var(--shadow-lg); overflow: hidden; }
 
   /* Book a Demo — image beside copy. */
   .ct-demo { display: grid; grid-template-columns: 1fr; }
@@ -189,10 +211,11 @@ const faqs = [
 
   .ct-contact { display: inline-flex; align-items: center; gap: var(--space-12); color: var(--foreground); font-size: var(--text-body); }
   .ct-contact svg { color: var(--muted-foreground); flex: none; transition: color 0.18s ease; }
-  .ct-contact:hover { color: var(--primary); text-decoration: none; }
-  .ct-contact:hover svg { color: var(--primary); }
+  .ct-contact:hover { color: var(--primary-light); text-decoration: none; }
+  .ct-contact:hover svg { color: var(--primary-light); }
 
   @media (min-width: 1024px) {
+    .ct-wide { padding-inline: 80px; }
     .ct-row { grid-template-columns: 2fr 1fr; align-items: stretch; }
     .ct-demo { grid-template-columns: 1fr 1fr; }
   }
