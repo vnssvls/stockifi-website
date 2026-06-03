@@ -11,6 +11,7 @@ import FeatureList from '../components/features/FeatureList.astro';
 import FeatureSplit from '../components/features/FeatureSplit.astro';
 import FeatureSteps from '../components/features/FeatureSteps.astro';
 import SectionPlaceholder from '../components/SectionPlaceholder.astro';
+import CustomerStoryBento from '../components/CustomerStoryBento.astro';
 import IntegrationGrid from '../components/integrations/IntegrationGrid.astro';
 import CtaBand from '../components/CtaBand.astro';
 import FaqSplit from '../components/faq/FaqSplit.astro';
@@ -80,8 +81,14 @@ const faqs = [
     imageSide="right"
   />
 
-  <!-- 4. Customer stories — SLOT (own design pending) -->
-  <SectionPlaceholder label="Customer stories" note="Section slot — quotes + results, built next from the customer-stories content." />
+  <!-- 4. Customer stories — bento (choose featured via slugs) -->
+  <CustomerStoryBento
+    eyebrow="Customer stories"
+    heading="How operators run a tighter kitchen"
+    subhead="Restaurants and groups using Stockifi to recover margin they couldn't see before."
+    cta={{ label: 'Read all stories', href: '/customer-stories' }}
+    slugs={['byoslo', 'eik-and-friends', 'koie-ramen', 'skigeilo-2']}
+  />
 
   <!-- 5. Segments — Feature variant 3 -->
   <FeatureSteps
