@@ -34,8 +34,14 @@ const { eyebrow, heading, subhead, cta, image } = Astro.props;
 </section>
 
 <style>
-  /* Small breathing room above/below so the rounded card reads as a card. */
-  .page-header-image { padding-block: var(--space-32); }
+  /* Pull the card up behind the floating nav (same trick as CustomerStoryHeader), but
+     stop ~20-30px short of the top so the rounded corners don't jam the edge. The nav is
+     sticky/transparent and floats over the card's scrim'd top. */
+  .page-header-image {
+    margin-top: calc(-1 * var(--nav-h));
+    padding-top: calc(var(--nav-h) - var(--space-64));
+    padding-bottom: var(--space-32);
+  }
 
   /* The hero card: rounded, near-full-width (inside .container-wide), tall, with the
      photo + dark scrim as its background. background-image dodges the strict-value

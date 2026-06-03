@@ -112,6 +112,28 @@ const pages = Array.from({ length: page.lastPage }, (_, i) => i + 1);
   .csl-logo { position: absolute; top: var(--space-16); left: var(--space-16); z-index: 1; }
   .csl-logo img { width: auto; height: auto; max-width: 140px; max-height: 56px; object-fit: contain; }
 
+  /* Photo treatment: faded + desaturated with a fine film grain at rest; on hover the
+     photo comes to life (full colour, grain clears, gentle zoom). */
+  .csl-media img { filter: grayscale(0.4) brightness(0.94); transition: filter 0.5s ease, transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1); }
+  .csl-card:hover .csl-media img { filter: none; transform: scale(1.05); }
+  .csl-media::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+    background-size: 160px 160px;
+    opacity: 0.35;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+  }
+  .csl-card:hover .csl-media::before { opacity: 0; }
+  @media (prefers-reduced-motion: reduce) {
+    .csl-media img,
+    .csl-card:hover .csl-media img { transform: none; }
+  }
+
   /* Title in body font (Inter), no purple hover. text-wrap:pretty overrides the base
      heading balance, which was breaking long titles mid-way. */
   .csl-title { font-family: var(--font-body); font-size: var(--text-h5); text-wrap: pretty; }
