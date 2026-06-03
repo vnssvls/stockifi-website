@@ -16,6 +16,7 @@ import IntegrationGrid from '../components/integrations/IntegrationGrid.astro';
 import CtaBand from '../components/CtaBand.astro';
 import FaqSplit from '../components/faq/FaqSplit.astro';
 import integrations from '../data/integrations-home.json';
+import userLogos from '../data/user-logos.json';
 
 // How it works — Feature variant 1 (interactive list + swapping media)
 const howItWorks = [
@@ -65,7 +66,7 @@ const faqs = [
   />
 
   <!-- 1.2 Social-proof logo banner (integration logos for now; swap to client logos later) -->
-  <LogoBanner label="Connects with the tools you already run" logos={integrations} />
+  <LogoBanner label="Trusted by 500+ restaurants across Europe" logos={userLogos} />
 
   <!-- 2. How it works — Feature variant 1 -->
   <div id="how-it-works" class="hp-anchor">

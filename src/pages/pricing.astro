@@ -10,7 +10,7 @@ import LogoBanner from '../components/LogoBanner.astro';
 import FeatureColumns from '../components/features/FeatureColumns.astro';
 import FaqSplit from '../components/faq/FaqSplit.astro';
 import CtaBand from '../components/CtaBand.astro';
-import integrations from '../data/integrations-home.json';
+import userLogos from '../data/user-logos.json';
 
 const plans = [
   {
@@ -90,7 +90,7 @@ const faqs = [
   </div>
 
   <!-- 2. Logo banner — static variant -->
-  <LogoBanner variant="static" label="Trusted by 500+ restaurants across Europe" logos={integrations} />
+  <LogoBanner variant="static" label="Trusted by 500+ restaurants across Europe" logos={userLogos} />
 
   <!-- 3. Feature section — Feature variant 6 (columns) -->
   <FeatureColumns
