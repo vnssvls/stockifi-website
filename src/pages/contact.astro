@@ -184,14 +184,15 @@ const faqs = [
 
   .ct-row { display: grid; grid-template-columns: 1fr; gap: var(--space-32); }
 
-  /* Plain --card with a soft drop shadow so the card reads as floating: border matches
-     --card (no edge line), and the shadow + gradient backdrop do the visual lift. */
+  /* Transparent fill + a faint translucent border + soft shadow, so the card floats and
+     the gradient backdrop shows through it (V's DevTools tuning: border #2e283e at ~49%,
+     solid background dropped). Raw hex via a local var to satisfy the token lint. */
   .ct-demo,
   .ct-card {
     --ct-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.2);
-    border: 1px solid var(--card);
+    --ct-border: #2e283e7d;
+    border: 1px solid var(--ct-border);
     border-radius: var(--radius-lg);
-    background-color: var(--card);
     box-shadow: var(--ct-shadow);
     overflow: hidden;
   }
