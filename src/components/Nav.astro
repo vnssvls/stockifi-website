@@ -7,25 +7,40 @@ import Logo from './Logo.astro';
 import Button from './Button.astro';
 import LocaleSwitcher from './LocaleSwitcher.astro';
 
-// Draft mega-menu microcopy — for V review.
-const productItems = [
-  { label: 'Recipe Costing', href: '/product/recipe-costing', desc: 'Live recipe costs that move with your supplier prices.' },
-  { label: 'Supplier Price Tracking', href: '/product/supplier-price-tracking', desc: 'Catch price rises line by line, read from your invoices.' },
-  { label: 'POS & Consumption', href: '/product/pos-integration', desc: 'Theoretical against actual usage, straight from sales.' },
-  { label: 'Inventory & Variance', href: '/product/inventory-variance', desc: 'Stock counts and variance analysis in one place.' },
-  { label: 'Integrations', href: '/integrations', desc: 'Connects to 30+ accounting and 40+ POS systems.' },
+// Mega menus = grouped columns (Supy-style, Figma 151:600). Grouping is a nav/UX choice,
+// NOT the page/URL structure — sub-page hrefs are PROVISIONAL (most pages TBD; finalize in
+// the page-build phase). See memory: project_website_product_taxonomy.
+const productGroups = [
+  { title: 'Invoices & Suppliers', items: [
+    { label: 'Invoice automation', href: '/product/invoice-automation' },
+    { label: 'Supplier price tracking', href: '/product/supplier-price-tracking' },
+    { label: 'Central kitchen', href: '/product/central-kitchen' },
+  ] },
+  { title: 'Inventory Management', items: [
+    { label: 'Recipe building', href: '/product/recipe-building' },
+    { label: 'Stock counting', href: '/product/stock-counting' },
+    { label: 'Inventory transfers', href: '/product/inventory-transfers' },
+    { label: 'Wastage tracking', href: '/product/wastage-tracking' },
+    { label: 'Profitability', href: '/product/profitability' },
+  ] },
+  { title: 'Integrations', items: [
+    { label: 'POS systems', href: '/integrations' },
+    { label: 'Accounting', href: '/integrations' },
+  ] },
 ];
-const solutionsSegment = [
-  { label: 'Independent restaurants', href: '/solutions/independent-restaurants' },
-  { label: 'Restaurant groups', href: '/solutions/restaurant-groups' },
-  { label: 'Hotels with F&B', href: '/solutions/hotels' },
-  { label: 'Bars', href: '/solutions/bars' },
-];
-const solutionsRole = [
-  { label: 'Owners & GMs', href: '/solutions/owners' },
-  { label: 'Finance', href: '/solutions/finance' },
-  { label: 'Head Chefs', href: '/solutions/chefs' },
-  { label: 'Operations', href: '/solutions/operations' },
+const solutionsGroups = [
+  { title: 'By segment', items: [
+    { label: 'Independent restaurants', href: '/solutions/independent-restaurants' },
+    { label: 'Restaurant groups', href: '/solutions/restaurant-groups' },
+    { label: 'Hotels', href: '/solutions/hotels' },
+    { label: 'Bars', href: '/solutions/bars' },
+  ] },
+  { title: 'By team', items: [
+    { label: 'Management', href: '/solutions/management' },
+    { label: 'Operations', href: '/solutions/operations' },
+    { label: 'Kitchen', href: '/solutions/kitchen' },
+    { label: 'Finance', href: '/solutions/finance' },
+  ] },
 ];
 const resourcesItems = [
   { label: 'Blog', href: '/blog' },
@@ -49,17 +64,15 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
             Product
             <svg class="caret" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg>
           </button>
-          <div class="nav-panel mega" id="panel-product">
-            <ul class="mega-grid">
-              {productItems.map((i) => (
-                <li>
-                  <a class="mega-link" href={i.href}>
-                    <span class="mega-title">{i.label}</span>
-                    <span class="mega-desc">{i.desc}</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
+          <div class="nav-panel mega mega-3col" id="panel-product">
+            {productGroups.map((g) => (
+              <div class="mega-group">
+                <p class="mega-group-title">{g.title}</p>
+                <ul>
+                  {g.items.map((i) => (<li><a href={i.href}>{i.label}</a></li>))}
+                </ul>
+              </div>
+            ))}
           </div>
         </li>
 
@@ -69,18 +82,14 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
             <svg class="caret" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg>
           </button>
           <div class="nav-panel mega mega-2col" id="panel-solutions">
-            <div class="mega-group">
-              <p class="mega-group-title">By segment</p>
-              <ul>
-                {solutionsSegment.map((i) => (<li><a href={i.href}>{i.label}</a></li>))}
-              </ul>
-            </div>
-            <div class="mega-group">
-              <p class="mega-group-title">By role</p>
-              <ul>
-                {solutionsRole.map((i) => (<li><a href={i.href}>{i.label}</a></li>))}
-              </ul>
-            </div>
+            {solutionsGroups.map((g) => (
+              <div class="mega-group">
+                <p class="mega-group-title">{g.title}</p>
+                <ul>
+                  {g.items.map((i) => (<li><a href={i.href}>{i.label}</a></li>))}
+                </ul>
+              </div>
+            ))}
           </div>
         </li>
 
@@ -133,7 +142,12 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
             <svg class="caret" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
           </button>
           <div class="m-acc-panel" id="m-product" hidden>
-            {productItems.map((i) => (<a class="m-link" href={i.href}>{i.label}</a>))}
+            {productGroups.map((g) => (
+              <Fragment>
+                <p class="m-sub-title">{g.title}</p>
+                {g.items.map((i) => (<a class="m-link" href={i.href}>{i.label}</a>))}
+              </Fragment>
+            ))}
           </div>
         </div>
 
@@ -143,10 +157,12 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
             <svg class="caret" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
           </button>
           <div class="m-acc-panel" id="m-solutions" hidden>
-            <p class="m-sub-title">By segment</p>
-            {solutionsSegment.map((i) => (<a class="m-link" href={i.href}>{i.label}</a>))}
-            <p class="m-sub-title">By role</p>
-            {solutionsRole.map((i) => (<a class="m-link" href={i.href}>{i.label}</a>))}
+            {solutionsGroups.map((g) => (
+              <Fragment>
+                <p class="m-sub-title">{g.title}</p>
+                {g.items.map((i) => (<a class="m-link" href={i.href}>{i.label}</a>))}
+              </Fragment>
+            ))}
           </div>
         </div>
 
@@ -331,6 +347,12 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--space-32);
     min-width: 460px;
+  }
+  .mega-3col {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-32);
+    min-width: 640px;
   }
   .mega-group ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: var(--space-4); }
   .mega-group-title {
