@@ -1,0 +1,199 @@
+---
+// Contact page (Figma 3:876): centered header → contact block (Book a Demo card + image,
+// Customer Support, Other Inquiries) → FAQ variant 2 (FaqGrid).
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/page-headers/PageHeader.astro';
+import Button from '../components/Button.astro';
+import FaqGrid from '../components/faq/FaqGrid.astro';
+
+// FAQ content — first-pass draft from the product brain; V to review/refine.
+const faqs = [
+  {
+    question: 'How does Stockifi work?',
+    answer:
+      'Stockifi reads your supplier invoices through your accounting software and pulls your sales from your POS, then compares both against your recipes. That shows the real cost and margin of every dish, and where food cost is slipping away. Setup runs in four steps: import recipes, connect accounting, connect POS, then count stock and review the reports.',
+  },
+  {
+    question: 'Does Stockifi replace my POS or accounting software?',
+    answer:
+      'No. Stockifi sits on top of the systems you already use. It connects to your POS and accounting software to read the data, and leaves your existing setup in place.',
+  },
+  {
+    question: 'Which systems does Stockifi integrate with?',
+    answer:
+      'Stockifi works with 30+ accounting systems and 40+ POS systems, with new ones added regularly. Tell us what you run and we can confirm the integration on a quick call. Custom integrations are available on the Custom plan.',
+  },
+  {
+    question: 'How much does Stockifi cost?',
+    answer:
+      'Pricing depends on the size and complexity of your operation, so we usually look at it together on a short call. As a guide, it typically ranges between €150 and €400 per month.',
+  },
+  {
+    question: 'What is the risk-free guarantee?',
+    answer:
+      "If Stockifi doesn't uncover at least €3,000 in hidden losses within your first 30 days, you pay nothing. It's a risk-free onboarding guarantee, so trying Stockifi carries no risk for your business.",
+  },
+  {
+    question: 'What do I need to get started?',
+    answer:
+      'An accounting system and ideally a POS that Stockifi can connect to, plus the recipes for your menu. Stockifi works best for restaurants with established processes, where food cost is already a priority.',
+  },
+  {
+    question: 'Is Stockifi a good fit for my restaurant?',
+    answer:
+      'Stockifi fits independent restaurants, hotel restaurants with full food and drink service, and multi-location groups that want consolidated visibility. It is less suited to very early-stage businesses still building their processes.',
+  },
+  {
+    question: 'Does Stockifi track inventory in real time?',
+    answer:
+      'No. Stockifi uses periodic stock counts with variance analysis, done in the mobile or web app. You count on your own schedule, then see actual usage against what your recipes predicted.',
+  },
+];
+---
+
+<Layout
+  title="Contact Stockifi | Book a Demo & Support"
+  description="Talk to the Stockifi team about fit, pricing, and integrations, book a demo, or reach customer support and the founders directly."
+>
+  <PageHeader
+    eyebrow="Contact"
+    heading="Get in touch"
+    subhead="Questions about fit, pricing, or how Stockifi connects to your systems? Reach the people who build and run it."
+  >
+    <Button variant="secondary" href="/#how-it-works">
+      See how it works
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+    </Button>
+  </PageHeader>
+
+  <section class="section ct-section" id="contact">
+    <div class="container">
+      <div class="ct-row">
+        <!-- Book a Demo — image + copy -->
+        <article class="ct-demo">
+          <div class="ct-demo-media">
+            <img src="/media/cta-bg-1.jpg" alt="A restaurant kitchen during service" loading="lazy" decoding="async" />
+          </div>
+          <div class="ct-demo-body">
+            <h2 class="ct-demo-h">Book a Demo</h2>
+            <p class="ct-demo-text text-muted">Ready to see Stockifi in action? We'd love to show you around.</p>
+            <div class="ct-demo-action">
+              <Button variant="primary" href="/book-a-demo">
+                Book a demo
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              </Button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Right column: support + inquiries -->
+        <div class="ct-col">
+          <article class="ct-card">
+            <span class="ct-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" /><circle cx="12" cy="12" r="3.4" /><path d="m4.9 4.9 4.2 4.2m5.8 5.8 4.2 4.2m0-14.2-4.2 4.2m-5.8 5.8-4.2 4.2" /></svg>
+            </span>
+            <div class="ct-card-head">
+              <h3 class="ct-card-h">Customer Support</h3>
+              <p class="ct-card-text text-muted">Real, responsive, and expert support whenever you need it.</p>
+            </div>
+            <div class="ct-links">
+              <a class="ct-contact" href="mailto:support@stockifi.io">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 7 9 6 9-6" /></svg>
+                support@stockifi.io
+              </a>
+              <a class="ct-contact" href="tel:+4721051403">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.22 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+                +47 21 05 14 03
+              </a>
+            </div>
+          </article>
+
+          <article class="ct-card">
+            <span class="ct-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>
+            </span>
+            <div class="ct-card-head">
+              <h3 class="ct-card-h">Other Inquiries</h3>
+              <p class="ct-card-text text-muted">Got something in mind? Send us a message.</p>
+            </div>
+            <div class="ct-people">
+              <div class="ct-person">
+                <p class="ct-person-name">Sime Buzeca</p>
+                <p class="ct-person-role text-muted">CEO &amp; Co-founder</p>
+                <a class="ct-contact" href="mailto:sime@stockifi.io">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 7 9 6 9-6" /></svg>
+                  sime@stockifi.io
+                </a>
+              </div>
+              <div class="ct-person">
+                <p class="ct-person-name">Simon Burman</p>
+                <p class="ct-person-role text-muted">COO &amp; Co-founder</p>
+                <a class="ct-contact" href="mailto:simon@stockifi.io">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 7 9 6 9-6" /></svg>
+                  simon@stockifi.io
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <FaqGrid
+    heading="FAQs"
+    subhead="Answers to the questions restaurants ask most before getting started."
+    items={faqs}
+    cta={{
+      heading: 'Still have questions?',
+      body: "Send us a message and we'll get back to you.",
+      label: 'Contact us',
+      href: '#contact',
+    }}
+  />
+</Layout>
+
+<style>
+  .ct-section { scroll-margin-top: var(--nav-h); }
+
+  .ct-row { display: grid; grid-template-columns: 1fr; gap: var(--space-32); }
+
+  /* Shared card chrome. */
+  .ct-demo,
+  .ct-card { border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--card); overflow: hidden; }
+
+  /* Book a Demo — image beside copy. */
+  .ct-demo { display: grid; grid-template-columns: 1fr; }
+  .ct-demo-media { background: var(--muted); }
+  .ct-demo-media img { display: block; width: 100%; height: 100%; min-height: 14rem; object-fit: cover; }
+  .ct-demo-body { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: var(--space-16); padding: var(--space-32); }
+  .ct-demo-h { font-size: var(--text-h3); }
+  .ct-demo-text { font-size: var(--text-body-lg); max-width: 36ch; }
+  .ct-demo-action { margin-top: var(--space-8); }
+
+  /* Right column. */
+  .ct-col { display: grid; grid-template-columns: 1fr; gap: var(--space-32); align-content: start; }
+  .ct-card { display: flex; flex-direction: column; gap: var(--space-16); padding: var(--space-32); }
+  .ct-icon { color: var(--foreground); }
+  .ct-card-head { display: flex; flex-direction: column; gap: var(--space-8); }
+  .ct-card-h { font-size: var(--text-h5); }
+  .ct-card-text { font-size: var(--text-body); }
+
+  .ct-links,
+  .ct-people { display: flex; flex-direction: column; gap: var(--space-16); margin-top: var(--space-8); }
+
+  .ct-person { display: flex; flex-direction: column; gap: var(--space-4); }
+  .ct-person-name { font-weight: var(--fw-semibold); color: var(--foreground); }
+  .ct-person-role { font-size: var(--text-body-sm); }
+  .ct-person .ct-contact { margin-top: var(--space-8); }
+
+  .ct-contact { display: inline-flex; align-items: center; gap: var(--space-12); color: var(--foreground); font-size: var(--text-body); }
+  .ct-contact svg { color: var(--muted-foreground); flex: none; transition: color 0.18s ease; }
+  .ct-contact:hover { color: var(--primary); text-decoration: none; }
+  .ct-contact:hover svg { color: var(--primary); }
+
+  @media (min-width: 1024px) {
+    .ct-row { grid-template-columns: 2fr 1fr; align-items: stretch; }
+    .ct-demo { grid-template-columns: 1fr 1fr; }
+  }
+</style>
