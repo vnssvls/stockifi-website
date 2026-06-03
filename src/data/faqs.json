@@ -1,0 +1,62 @@
+[
+  {
+    "id": "how-it-works",
+    "name": "How it works",
+    "items": [
+      { "question": "How does Stockifi work?", "answer": "Stockifi reads your supplier invoices through your accounting software and pulls your sales from your POS, then compares both against your recipes. Setup runs in four steps: import recipes, connect accounting, connect POS, then count stock and review the reports." },
+      { "question": "Does Stockifi track inventory in real time?", "answer": "No. Stockifi uses periodic stock counts with variance analysis, done in the mobile or web app. You count on your own schedule, then see actual usage against what your recipes predicted." },
+      { "question": "What is the difference between theoretical and actual food cost?", "answer": "Theoretical food cost is what your recipes and sales say you should have used. Actual food cost is what your stock counts and invoices show you really used. The gap between them is variance, and that is where margin leaks." },
+      { "question": "How does Stockifi surface where money is leaking?", "answer": "By comparing theoretical and actual consumption, Stockifi shows over-portioning, waste, supplier price rises, and undefined sales, down to the specific dish or ingredient." }
+    ]
+  },
+  {
+    "id": "integrations",
+    "name": "Integrations",
+    "items": [
+      { "question": "Which systems does Stockifi integrate with?", "answer": "Stockifi works with 30+ accounting systems and 40+ POS systems, with new ones added regularly. Tell us what you run and we can confirm it on a quick call." },
+      { "question": "Does Stockifi replace my POS or accounting software?", "answer": "No. Stockifi sits on top of the systems you already use. It connects to read the data and leaves your existing setup in place." },
+      { "question": "What if my system isn't on the list?", "answer": "Custom integrations are available on the Custom plan. Share what you run and we will confirm whether it is supported." },
+      { "question": "How does the accounting integration work?", "answer": "Stockifi reads your supplier invoices line by line, so ingredient prices and purchased quantities update automatically and recipe costs stay current as prices move." }
+    ]
+  },
+  {
+    "id": "pricing",
+    "name": "Pricing",
+    "items": [
+      { "question": "How much does Stockifi cost?", "answer": "Pricing depends on the size and complexity of your operation, so we usually look at it together on a short call. As a guide, it typically ranges between €150 and €400 per month." },
+      { "question": "What is the risk-free guarantee?", "answer": "If Stockifi doesn't uncover at least €3,000 in hidden losses within your first 30 days, you pay nothing. It is a risk-free onboarding guarantee." },
+      { "question": "What plans are available?", "answer": "Automated, Full Control, and Custom. Full Control adds recipe cost calculations, variance and wastage reports, and POS integrations; Custom adds multi-location setup and enterprise reporting." },
+      { "question": "Is pricing based on performance?", "answer": "No. Your monthly price is fixed. The guarantee just removes the risk of trying Stockifi." }
+    ]
+  },
+  {
+    "id": "product",
+    "name": "Product",
+    "items": [
+      { "question": "What reports does Stockifi provide?", "answer": "Variance and wastage reports, COGS development, over-portioning, supplier price deviations, and profit increase reports, with full visibility over actual versus theoretical consumption." },
+      { "question": "Can I count stock on my phone?", "answer": "Yes. Stock counts run in the Stockifi mobile and web app, with offline mode and real-time sync." },
+      { "question": "Does Stockifi handle recipe costing?", "answer": "Yes. Recipe costs update continuously from live invoice data, so you always know the real cost and margin of every dish." },
+      { "question": "Does Stockifi support multiple locations?", "answer": "Yes. Multi-location groups get consolidated visibility and org setup, so you can see which sites are on track down to the ingredient." }
+    ]
+  },
+  {
+    "id": "onboarding",
+    "name": "Onboarding",
+    "items": [
+      { "question": "What do I need to get started?", "answer": "An accounting system and ideally a POS that Stockifi can connect to, plus the recipes for your menu." },
+      { "question": "Do you help set up recipes?", "answer": "Yes. Recipe setup and ingredient cost tracking are part of onboarding, so the baseline is right from the start." },
+      { "question": "How long does onboarding take?", "answer": "Most operators are up and running quickly once the integrations are connected and recipes are imported. We guide the setup with you." },
+      { "question": "What support do I get?", "answer": "Advanced support on every plan, with dedicated customer care on Full Control and a quarterly business review on Custom." }
+    ]
+  },
+  {
+    "id": "solutions",
+    "name": "Solutions",
+    "items": [
+      { "question": "Is Stockifi a good fit for my restaurant?", "answer": "Stockifi fits independent restaurants, hotel restaurants with full food and drink service, and multi-location groups that want consolidated visibility. It is less suited to very early-stage businesses still building their processes." },
+      { "question": "Does Stockifi work for restaurant groups?", "answer": "Yes. Groups use Stockifi to keep recipe costs aligned across sites and to see consolidated variance and margin in one place." },
+      { "question": "Does Stockifi work for hotels?", "answer": "Hotels with full food and drink operations are a strong fit. Breakfast-only F&B usually doesn't have the volume to benefit." },
+      { "question": "Is Stockifi suitable for small or early-stage venues?", "answer": "Stockifi works best for restaurants with established processes where food cost is already a priority. Very early-stage venues may not be the right fit yet." }
+    ]
+  }
+]
