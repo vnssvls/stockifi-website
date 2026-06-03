@@ -2,6 +2,7 @@
 companyName: "Schnitzelei Group"
 slug: "schnitzelei"
 articleTitle: "From unclear numbers to full visibility across Schnitzelei locations"
+cardSummary: "Could your recipes be off right now without you knowing? See how Schnitzelei Group found the answer, and what they did about it."
 user: "Stefan Schneck"
 designation: "Owner"
 businessType: "Restaurant"

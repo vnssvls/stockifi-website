@@ -2,6 +2,7 @@
 companyName: "Torika Gruppen"
 slug: "torika-gruppen"
 articleTitle: "Stabilized margins and efficient routine for Torika Gruppen"
+cardSummary: "See how Torika improved their margins and turned stock counting into an efficient routine"
 user: "Inga Andruskaite"
 designation: "Managing Director"
 businessType: "Restaurant"

@@ -2,6 +2,7 @@
 companyName: "Kolpin"
 slug: "kolpin"
 articleTitle: "Why Kolpin chose Stockifi as their F&B partner"
+cardSummary: "Find out why Kolpin chose Stockifi as their F&B Partner"
 user: "Vicky Maahr Hansen"
 designation: "F&B Procurement Manager"
 businessType: "Hotel"

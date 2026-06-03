@@ -2,6 +2,7 @@
 companyName: "Heim Gastropub"
 slug: "heim-gastropub"
 articleTitle: "How Heim Gastropub manages costs across 6 locations in just 20 minutes per week"
+cardSummary: "Would you believe it takes only 20 minutes for Heim to manage costs across 6 locations?"
 user: "Anja Skjævestad"
 designation: "Chief F&B Officer"
 businessType: "Restaurant"

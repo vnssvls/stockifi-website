@@ -2,6 +2,7 @@
 companyName: "SkiGeilo"
 slug: "skigeilo"
 articleTitle: "SkiGeilo's approach to controlling costs across 8 kitchens on a mountain"
+cardSummary: "Curious about SkiGeilo's approach to controlling costs across 8 kitchens on a mountain?"
 user: "Mickael Cunillera"
 designation: "Executive Head Chef"
 businessType: "Hotel"
