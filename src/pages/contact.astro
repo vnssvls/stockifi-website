@@ -152,7 +152,7 @@ const faqs = [
 </Layout>
 
 <style>
-  .ct-hero { position: relative; isolation: isolate; }
+  .ct-hero { position: relative; isolation: isolate; overflow-x: clip; }
   /* Tighten the gap so the cards sit above the fold (header still carries section-y below
      its copy; this pulls the cards up under it). */
   .ct-section { position: relative; padding-top: 0; margin-top: calc(-1 * var(--space-64)); scroll-margin-top: var(--nav-h); }
@@ -165,13 +165,16 @@ const faqs = [
     top: 0;
     transform: translate(-50%, -50%);
     z-index: -1;
-    width: min(1100px, 92vw);
-    height: 720px;
+    /* Wider than the cards (which now run to the 80px gutter) so it reads in the gutters,
+       and taller so it bleeds well up into the header. Clipped to the hero (overflow-x)
+       so 110vw can't cause a horizontal scrollbar. */
+    width: 110vw;
+    height: 1000px;
     background-image: url('/media/gradient-duo.png');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    opacity: 0.5;
+    opacity: 0.4;
     pointer-events: none;
   }
 
