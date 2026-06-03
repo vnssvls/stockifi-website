@@ -78,21 +78,21 @@ const { plans } = Astro.props;
   }
   /* Recommended tier: tinted surface + accent border + glow */
   .pc-card--featured {
-    background: color-mix(in srgb, var(--primary) 12%, var(--card));
-    border-color: color-mix(in srgb, var(--primary) 50%, transparent);
+    background: color-mix(in srgb, var(--secondary) 15%, transparent);
+    border-color: color-mix(in srgb, var(--primary-light) 30%, transparent);
     /* stylelint-disable-next-line scale-unlimited/declaration-strict-value */
-    box-shadow: 0 16px 56px -20px color-mix(in srgb, var(--primary) 50%, transparent);
+    box-shadow: 0 16px 56px -20px color-mix(in srgb, var(--primary) 30%, transparent);
   }
 
   .pc-badge {
     position: absolute;
     top: 0;
-    left: 50%;
+    left: 75%;
     transform: translate(-50%, -50%);
     padding: var(--space-8) var(--space-16);
-    background: var(--primary);
+    background: var(--popover-foreground);
     border-radius: var(--radius-full);
-    color: var(--primary-foreground);
+    color: var(--secondary);
     font-size: var(--text-caption);
     font-weight: var(--fw-semibold);
     white-space: nowrap;
