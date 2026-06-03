@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Stockifi · Copy Reviewer · Home</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --background:#1a1a24; --foreground:#f8f8fc; --card:#1f1f2b; --muted:#15151d;
+    --muted-foreground:#a1a1b5; --primary:#9565db; --primary-light:#c39df9; --primary-dark:#6d46aa;
+    --secondary:#29223f; --secondary-foreground:#d4ccff; --border:#2a2a35;
+    --success:#6ef8a1; --warning:#fed052;
+    --font-heading:'Montserrat',system-ui,sans-serif; --font-body:'Inter',system-ui,sans-serif;
+    --radius:16px;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:#0f0f15;color:var(--foreground);font-family:var(--font-body);line-height:1.6;}
+  .bar{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:18px;padding:14px 28px;background:#121218;border-bottom:1px solid var(--border);}
+  .bar h1{font-family:var(--font-heading);font-size:16px;margin:0;font-weight:700;}
+  .bar .tag{font-size:12px;color:var(--muted-foreground);}
+  .tabs{margin-left:auto;display:flex;gap:8px;}
+  .tabs button{font:inherit;font-size:13px;padding:6px 14px;border-radius:999px;border:1px solid var(--border);background:transparent;color:var(--muted-foreground);cursor:pointer;}
+  .tabs button.active{background:var(--primary);border-color:var(--primary);color:#fff;}
+  .tabs button:disabled{opacity:.4;cursor:not-allowed;}
+  .note-strip{padding:10px 28px;background:#1a1a24;border-bottom:1px solid var(--border);font-size:12.5px;color:var(--muted-foreground);}
+  .note-strip b{color:var(--primary-light);}
+  .wrap{max-width:1480px;margin:0 auto;padding:26px;}
+  .meta-card{border:1px solid var(--border);border-radius:var(--radius);background:var(--background);padding:18px 22px;margin-bottom:26px;}
+  .meta-card h3{font-family:var(--font-heading);font-size:13px;text-transform:uppercase;letter-spacing:.6px;color:var(--muted-foreground);margin:0 0 12px;}
+  .sec{display:grid;grid-template-columns:1.35fr 1fr;gap:0;margin-bottom:26px;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;background:var(--background);}
+  .sec-head{grid-column:1 / -1;display:flex;align-items:center;gap:12px;padding:12px 20px;background:var(--muted);border-bottom:1px solid var(--border);}
+  .sec-num{font-family:var(--font-heading);font-weight:700;font-size:12.5px;color:var(--primary-light);background:var(--secondary);border-radius:999px;padding:3px 10px;}
+  .sec-name{font-family:var(--font-heading);font-weight:600;font-size:15px;}
+  .sec-comp{font-size:12px;color:var(--muted-foreground);margin-left:auto;}
+  .preview{padding:30px;border-right:1px solid var(--border);}
+  .deck{padding:20px;background:var(--muted);}
+  .deck h4{font-family:var(--font-heading);font-size:11.5px;text-transform:uppercase;letter-spacing:.6px;color:var(--muted-foreground);margin:0 0 14px;}
+  .field{margin-bottom:13px;}
+  .field .flabel{display:flex;justify-content:space-between;align-items:baseline;font-size:11px;color:var(--muted-foreground);margin-bottom:3px;gap:8px;}
+  .field .count{font-variant-numeric:tabular-nums;white-space:nowrap;}
+  .count.ok{color:var(--success);} .count.warn{color:var(--warning);}
+  .field .fval{font-size:13px;color:var(--foreground);background:var(--card);border:1px solid var(--border);border-radius:8px;padding:7px 10px;white-space:pre-wrap;}
+  .callout{margin-top:6px;font-size:11.5px;color:var(--primary-light);background:rgba(149,101,219,.10);border:1px solid rgba(149,101,219,.3);border-radius:8px;padding:8px 10px;line-height:1.45;}
+  /* preview primitives */
+  .eyebrow{color:var(--primary-light);font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.7px;margin:0 0 8px;}
+  .ph1{font-family:var(--font-heading);font-weight:700;font-size:38px;line-height:1.08;margin:0 0 14px;}
+  .ph2{font-family:var(--font-heading);font-weight:700;font-size:27px;line-height:1.15;margin:0 0 12px;}
+  .sub{color:var(--muted-foreground);font-size:16px;margin:0 0 18px;max-width:54ch;}
+  .btn{display:inline-block;font-size:13.5px;font-weight:600;padding:10px 18px;border-radius:999px;}
+  .btn-primary{background:var(--primary);color:#fff;}
+  .btn-secondary{border:1px solid var(--border);color:var(--foreground);margin-left:10px;}
+  .hero-card{background:radial-gradient(120% 120% at 80% 0%,#2a1f47 0%,#1a1a24 60%);border:1px solid var(--border);border-radius:var(--radius);padding:46px 38px;}
+  .logos{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:8px;}
+  .logo-chip{height:28px;width:84px;border-radius:8px;background:#23232f;border:1px solid var(--border);}
+  .acc-item{border:1px solid var(--border);border-radius:12px;margin-bottom:10px;overflow:hidden;}
+  .acc-top{display:flex;align-items:center;gap:12px;padding:13px 16px;background:var(--card);}
+  .acc-title{font-family:var(--font-heading);font-weight:600;font-size:15.5px;}
+  .acc-intro{color:var(--muted-foreground);font-size:12.5px;margin-left:auto;text-align:right;}
+  .acc-body{padding:11px 16px 14px;display:flex;flex-wrap:wrap;gap:8px;}
+  .pill{font-size:12px;padding:5px 12px;border-radius:999px;background:var(--secondary);color:var(--secondary-foreground);border:1px solid var(--border);}
+  .split{display:grid;grid-template-columns:1.05fr .95fr;gap:24px;align-items:center;}
+  .media{background:var(--card);border:1px dashed var(--border);border-radius:12px;min-height:180px;display:flex;align-items:center;justify-content:center;color:var(--muted-foreground);font-size:12px;}
+  .checklist{list-style:none;padding:0;margin:14px 0 0;}
+  .checklist li{padding:7px 0 7px 26px;position:relative;font-size:14px;}
+  .checklist li::before{content:'✓';position:absolute;left:0;color:var(--primary-light);font-weight:700;}
+  .tabstrip{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 16px;}
+  .tabstrip .t{font-size:12.5px;padding:7px 14px;border-radius:999px;border:1px solid var(--border);color:var(--muted-foreground);}
+  .tabstrip .t.on{background:var(--secondary);color:var(--secondary-foreground);border-color:var(--primary);}
+  .tabpanel b{font-family:var(--font-heading);font-size:18px;}
+  .tabpanel p{color:var(--muted-foreground);font-size:14px;margin:6px 0 0;}
+  .timeline{list-style:none;padding:0;margin:14px 0 0;border-left:1px solid var(--border);}
+  .timeline li{position:relative;padding:0 0 18px 22px;}
+  .timeline li::before{content:'';position:absolute;left:-5px;top:5px;width:9px;height:9px;border-radius:50%;background:var(--primary);}
+  .timeline b{font-family:var(--font-heading);font-size:15px;}
+  .timeline p{color:var(--muted-foreground);font-size:13px;margin:3px 0 0;}
+  .bento{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px;}
+  .bento .c{background:var(--card);border:1px solid var(--border);border-radius:12px;min-height:120px;padding:12px;font-size:11.5px;color:var(--muted-foreground);}
+  .riskband{background:linear-gradient(135deg,#221a36,#1a1a24);border:1px solid var(--primary-dark);border-radius:var(--radius);padding:26px 30px;}
+  .cta-band{background:var(--secondary);border-radius:var(--radius);padding:30px;}
+  .faqrow{border-bottom:1px solid var(--border);padding:11px 0;}
+  .faqrow b{font-size:14px;} .faqrow p{margin:5px 0 0;color:var(--muted-foreground);font-size:12.5px;}
+  @media(max-width:920px){ .sec{grid-template-columns:1fr;} .preview{border-right:none;border-bottom:1px solid var(--border);} }
+</style>
+</head>
+<body>
+  <div class="bar">
+    <h1>Stockifi · Copy Reviewer</h1>
+    <span class="tag">Home · draft v1</span>
+    <div class="tabs">
+      <button class="active">Home</button>
+      <button disabled>Product (soon)</button>
+      <button disabled>Solutions (soon)</button>
+    </div>
+  </div>
+  <div class="note-strip">
+    Left = preview of where the copy sits. Right = the copy fields with live character counts (<b>green</b> = within target, <b>amber</b> = outside, adjust or ignore as you like). Draft sandbox in <b>docs/copy/</b>, not built or deployed. Voice = conversational and on-brand; SEO primary keyword <b>&ldquo;restaurant food cost software.&rdquo;</b>
+  </div>
+  <div class="wrap" id="app"></div>
+
+<script>
+const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+const row = (label,val,min,max) => {
+  const n = String(val).length;
+  const cls = (n>=min && n<=max) ? 'ok' : 'warn';
+  return `<div class="field"><div class="flabel"><span>${esc(label)}</span><span class="count ${cls}">${n} · target ${min}-${max}</span></div><div class="fval">${esc(val)}</div></div>`;
+};
+
+const HOME = {
+  meta: [
+    ["Meta title", "European Restaurant Food Cost Software | Stockifi", 50, 60],
+    ["Meta description", "See exactly where your food cost is leaking. Stockifi connects your invoices, POS, and recipes so you track actual food cost instead of guessing.", 140, 160]
+  ],
+  sections: [
+    {
+      num:1, name:"Hero", comp:"Hero.astro", type:"hero",
+      c:{
+        eyebrow:"For European hospitality operators",
+        h1:"See exactly where your food cost is leaking.",
+        subhead:"Stockifi is the restaurant food cost software that ties your invoices, POS, and recipes together, so you stop guessing where your margin goes and start seeing it.",
+        primary:"Book a demo", secondary:"See how it works"
+      },
+      note:"Punchy outcome H1 over a keyword-stuffed one. The exact primary keyword sits in the subhead (first 100 words) + meta + the Benefits H2, which is enough for SEO. 'Leaking' names the customer's pain (the locked home angle), not doubt about Stockifi."
+    },
+    {
+      num:2, name:"Social-proof logo banner", comp:"LogoBanner.astro", type:"logos",
+      c:{ label:"Trusted by 500+ restaurants across Europe" },
+      note:"Logos are placeholder for now; swap integration logos for client logos when ready."
+    },
+    {
+      num:3, name:"Product categories (was How it works)", comp:"Accordion (build change)", type:"accordion",
+      c:{
+        eyebrow:"What's inside",
+        h2:"Everything Stockifi keeps an eye on",
+        intro:"It reads your invoices and sales for you, then checks them against your recipes, so the gaps show up as numbers you can act on.",
+        cats:[
+          { title:"Invoices & Suppliers", intro:"Your supplier costs, watched for you, invoice by invoice.", subs:["Invoice automation","Supplier price tracking","Central kitchen"] },
+          { title:"Inventory Management", intro:"Recipes, stock counts, and the gap between them, in one place.", subs:["Recipe building","Stock counting","Inventory transfers","Wastage tracking","Profitability"] },
+          { title:"Integrations", intro:"Plugs into the POS and accounting you already use.", subs:["POS systems","Accounting","69+ integrations"] }
+        ]
+      },
+      note:"The intro line carries the old 4-step logic in one sentence, so we keep the 'how it works' sense without a separate section. Needs the Accordion component (3 panels) rather than the current FeatureList."
+    },
+    {
+      num:4, name:"Benefits / value prop", comp:"FeatureSplit.astro", type:"split",
+      c:{
+        tagline:"Why it's worth it",
+        h2:"Restaurant food cost control that pays for itself",
+        body:"Most of your margin leaks in the gaps between systems. Stockifi pulls them into one view, so even a 1% improvement in food cost turns into money you keep.",
+        items:[
+          "Catch supplier price rises the day they hit an invoice",
+          "See what you actually used against what you should have, per dish",
+          "Know the live margin of every recipe as your costs move",
+          "Most operators see a 2 to 3% improvement in food cost after onboarding"
+        ]
+      },
+      note:"This H2 is the SEO keyword anchor: contains 'restaurant food cost'. The 2-3% figure is the verified proof point from the brand brief."
+    },
+    {
+      num:5, name:"By team", comp:"FeatureTabs.astro", type:"tabs",
+      c:{
+        tagline:"For your team",
+        h2:"One set of numbers for every role",
+        subhead:"From the GM to the kitchen, everyone works from the same numbers.",
+        tabs:[
+          { label:"Management", heading:"The whole operation's margin at a glance", body:"Owners and GMs get cost visibility across every location, so you know where margin is won or lost without chasing a single report." },
+          { label:"Operations", heading:"Run tighter service without the extra admin", body:"Spot waste, over-portioning, and price drift early, so the day-to-day stays under control even as you add locations." },
+          { label:"Kitchen", heading:"Recipes that cost themselves", body:"Chefs see the live cost and margin of every dish, so menu calls reflect what ingredients cost today." },
+          { label:"Finance", heading:"COGS you can actually trust", body:"Finance gets actual against theoretical cost from real invoice and POS data, so month-end stops being a guessing game." }
+        ]
+      },
+      note:"Tabs map 1:1 to the four 'By team' solution pages, so the message lines up across the site."
+    },
+    {
+      num:6, name:"Customer stories", comp:"CustomerStoryBento.astro", type:"stories",
+      c:{
+        eyebrow:"Customer stories",
+        h2:"How operators run a tighter kitchen",
+        subhead:"Restaurants and groups using Stockifi to win back margin they couldn't see before.",
+        cta:"Read all stories",
+        slugs:["byoslo","eik-and-friends","koie-ramen","skigeilo-2"]
+      },
+      note:"Story slugs are the existing featured set; swap any time."
+    },
+    {
+      num:7, name:"Onboarding process", comp:"FeatureSteps.astro", type:"steps",
+      c:{
+        tagline:"Getting started",
+        h2:"Up and running within days",
+        steps:[
+          { heading:"Connect your systems", body:"Link your accounting and POS. Your invoices and sales start flowing into Stockifi on their own." },
+          { heading:"We set up your recipes", body:"We build your recipe baseline with you, so every cost is right from day one." },
+          { heading:"Ready in 48 hours", body:"Most operations are live within two days of connecting their systems." },
+          { heading:"Start seeing the gaps", body:"From your first counts, you see real food cost, variance, and price changes." }
+        ]
+      },
+      note:"'48 hours' is the verified onboarding claim from the current site."
+    },
+    {
+      num:8, name:"Integrations", comp:"IntegrationPills.astro", type:"pills",
+      c:{
+        eyebrow:"Integrations",
+        h2:"Works with the tools you already run",
+        subhead:"Stockifi reads your accounting software and POS, with 30+ accounting and 40+ POS integrations supported."
+      },
+      note:"Kept here (not 4th) so value lands before the fit reassurance. 30+/40+ figures are verified."
+    },
+    {
+      num:9, name:"Risk-reversal band", comp:"SectionPlaceholder (design pending)", type:"riskband",
+      c:{
+        eyebrow:"Risk-free onboarding",
+        h2:"Want to see it pay off first?",
+        body:"We're confident enough in what Stockifi turns up to put it in writing. If your first 30 days don't uncover at least €3,000 in hidden losses, your onboarding is free.",
+        cta:"How the guarantee works",
+        alts:["Curious what we'd uncover in 30 days?","Want proof it pays off?"]
+      },
+      note:"Header reworked to positive framing per your note (was 'Not sure it'll pay off?'). Two positive alternates listed above. Confidence framing, not money-back. Currency localizes per market (SEK/NOK)."
+    },
+    {
+      num:10, name:"FAQ", comp:"FaqSplit.astro", type:"faq",
+      c:{
+        eyebrow:"FAQs",
+        h2:"Questions operators ask",
+        intro:"The things operators check before a demo. Still unsure? Reach out and we'll help.",
+        contact:"Contact us",
+        items:[
+          { q:"How does Stockifi connect to my systems?", a:"It reads your accounting software for supplier invoices and your POS for sales. We support 30+ accounting and 40+ POS integrations; the full list is on the integrations page." },
+          { q:"How long does it take to set up?", a:"Most operations are running quickly once recipes and integrations are connected. We set the recipe baseline with you so the numbers are right from day one." },
+          { q:"What does it cost?", a:"Pricing depends on the size and complexity of your setup, typically between €150 and €400 per month. We look at it together on a short call." },
+          { q:"Is my restaurant a good fit?", a:"Stockifi suits established restaurants and groups that have recipes and an accounting or POS system. Very early-stage operations usually are not the right fit yet." },
+          { q:"Can my team use it in our language?", a:"Your data stays in your language and the app modules are in English. We run a short training so the team is comfortable from the start." }
+        ]
+      },
+      note:"PLACEHOLDER: these are the current draft FAQs. You asked to use the live Webflow homepage FAQ set instead; I can fetch those and swap them in on your go."
+    },
+    {
+      num:11, name:"Final CTA", comp:"CtaBand.astro", type:"cta",
+      c:{
+        h2:"See where your margin is leaking",
+        subhead:"Book a short call and we'll walk through it using your own numbers.",
+        primary:"Book a demo"
+      },
+      note:null
+    }
+  ]
+};
+
+// ---------- preview renderers ----------
+function preview(s){
+  const c = s.c;
+  switch(s.type){
+    case "hero": return `<div class="hero-card"><p class="eyebrow">${esc(c.eyebrow)}</p><div class="ph1">${esc(c.h1)}</div><p class="sub">${esc(c.subhead)}</p><span class="btn btn-primary">${esc(c.primary)}</span><span class="btn btn-secondary">${esc(c.secondary)}</span></div>`;
+    case "logos": return `<p class="sub" style="margin-bottom:6px">${esc(c.label)}</p><div class="logos">${Array(7).fill('<div class="logo-chip"></div>').join('')}</div>`;
+    case "accordion": return `<p class="eyebrow">${esc(c.eyebrow)}</p><div class="ph2">${esc(c.h2)}</div><p class="sub">${esc(c.intro)}</p>` + c.cats.map(g=>`<div class="acc-item"><div class="acc-top"><span class="acc-title">${esc(g.title)}</span><span class="acc-intro">${esc(g.intro)}</span></div><div class="acc-body">${g.subs.map(x=>`<span class="pill">${esc(x)}</span>`).join('')}</div></div>`).join('');
+    case "split": return `<div class="split"><div><p class="eyebrow">${esc(c.tagline)}</p><div class="ph2">${esc(c.h2)}</div><p class="sub">${esc(c.body)}</p><ul class="checklist">${c.items.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div><div class="media">media</div></div>`;
+    case "tabs": return `<p class="eyebrow">${esc(c.tagline)}</p><div class="ph2">${esc(c.h2)}</div><p class="sub">${esc(c.subhead)}</p><div class="tabstrip">${c.tabs.map((t,i)=>`<span class="t ${i===0?'on':''}">${esc(t.label)}</span>`).join('')}</div><div class="tabpanel"><b>${esc(c.tabs[0].heading)}</b><p>${esc(c.tabs[0].body)}</p></div>`;
+    case "stories": return `<p class="eyebrow">${esc(c.eyebrow)}</p><div class="ph2">${esc(c.h2)}</div><p class="sub">${esc(c.subhead)}</p><div class="bento">${c.slugs.map(x=>`<div class="c">${esc(x)}</div>`).join('')}</div><div style="margin-top:14px"><span class="btn btn-secondary" style="margin:0">${esc(c.cta)}</span></div>`;
+    case "steps": return `<p class="eyebrow">${esc(c.tagline)}</p><div class="ph2">${esc(c.h2)}</div><ul class="timeline">${c.steps.map(st=>`<li><b>${esc(st.heading)}</b><p>${esc(st.body)}</p></li>`).join('')}</ul>`;
+    case "pills": return `<p class="eyebrow">${esc(c.eyebrow)}</p><div class="ph2">${esc(c.h2)}</div><p class="sub">${esc(c.subhead)}</p><div class="logos">${Array(9).fill('<div class="logo-chip"></div>').join('')}</div>`;
+    case "riskband": return `<div class="riskband"><p class="eyebrow">${esc(c.eyebrow)}</p><div class="ph2">${esc(c.h2)}</div><p class="sub">${esc(c.body)}</p><span class="btn btn-primary">${esc(c.cta)}</span></div>`;
+    case "faq": return `<p class="eyebrow">${esc(c.eyebrow)}</p><div class="ph2">${esc(c.h2)}</div><p class="sub">${esc(c.intro)}</p>${c.items.map(it=>`<div class="faqrow"><b>${esc(it.q)}</b><p>${esc(it.a)}</p></div>`).join('')}`;
+    case "cta": return `<div class="cta-band"><div class="ph2" style="margin:0 0 8px">${esc(c.h2)}</div><p class="sub" style="margin:0 0 16px">${esc(c.subhead)}</p><span class="btn btn-primary">${esc(c.primary)}</span></div>`;
+    default: return "";
+  }
+}
+
+// ---------- deck (field list + counts) ----------
+function deck(s){
+  const c = s.c; const r = [];
+  switch(s.type){
+    case "hero": r.push(row("Eyebrow",c.eyebrow,10,40),row("H1",c.h1,25,55),row("Subhead",c.subhead,90,170),row("Primary CTA",c.primary,8,20),row("Secondary CTA",c.secondary,8,22)); break;
+    case "logos": r.push(row("Label",c.label,20,50)); break;
+    case "accordion":
+      r.push(row("Eyebrow",c.eyebrow,8,30),row("H2",c.h2,20,50),row("Intro line",c.intro,80,160));
+      c.cats.forEach((g,i)=>{ r.push(row(`Cat ${i+1} title`,g.title,8,30),row(`Cat ${i+1} intro`,g.intro,30,80)); g.subs.forEach((x,j)=>r.push(row(`Cat ${i+1} item ${j+1}`,x,5,30))); });
+      break;
+    case "split":
+      r.push(row("Tagline",c.tagline,8,30),row("H2",c.h2,25,55),row("Body",c.body,80,170));
+      c.items.forEach((x,i)=>r.push(row(`Benefit ${i+1}`,x,30,90))); break;
+    case "tabs":
+      r.push(row("Tagline",c.tagline,8,25),row("H2",c.h2,20,45),row("Subhead",c.subhead,40,90));
+      c.tabs.forEach((t,i)=>{ r.push(row(`Tab ${i+1} label`,t.label,5,18),row(`Tab ${i+1} heading`,t.heading,20,55),row(`Tab ${i+1} body`,t.body,80,180)); }); break;
+    case "stories": r.push(row("Eyebrow",c.eyebrow,8,30),row("H2",c.h2,20,50),row("Subhead",c.subhead,50,110),row("CTA",c.cta,8,22)); break;
+    case "steps":
+      r.push(row("Tagline",c.tagline,8,25),row("H2",c.h2,20,45));
+      c.steps.forEach((st,i)=>{ r.push(row(`Step ${i+1} heading`,st.heading,12,45),row(`Step ${i+1} body`,st.body,50,140)); }); break;
+    case "pills": r.push(row("Eyebrow",c.eyebrow,8,25),row("H2",c.h2,20,50),row("Subhead",c.subhead,60,140)); break;
+    case "riskband": r.push(row("Eyebrow",c.eyebrow,12,30),row("H2 (question)",c.h2,15,45),row("Body",c.body,90,180),row("CTA",c.cta,12,30)); break;
+    case "faq":
+      r.push(row("Eyebrow",c.eyebrow,3,12),row("H2",c.h2,15,45),row("Intro",c.intro,40,120),row("Contact CTA",c.contact,6,20));
+      c.items.forEach((it,i)=>{ r.push(row(`Q${i+1}`,it.q,15,70),row(`A${i+1}`,it.a,60,260)); }); break;
+    case "cta": r.push(row("H2",c.h2,20,55),row("Subhead",c.subhead,40,120),row("Primary CTA",c.primary,8,20)); break;
+  }
+  return r.join('');
+}
+
+// ---------- mount ----------
+const app = document.getElementById('app');
+let html = `<div class="meta-card"><h3>SEO meta (head)</h3>${HOME.meta.map(m=>row(m[0],m[1],m[2],m[3])).join('')}</div>`;
+HOME.sections.forEach(s=>{
+  html += `<div class="sec"><div class="sec-head"><span class="sec-num">${s.num}</span><span class="sec-name">${esc(s.name)}</span><span class="sec-comp">${esc(s.comp)}</span></div>`;
+  html += `<div class="preview">${preview(s)}</div>`;
+  html += `<div class="deck"><h4>Copy fields</h4>${deck(s)}${s.note?`<div class="callout">${esc(s.note)}</div>`:''}</div>`;
+  html += `</div>`;
+});
+app.innerHTML = html;
+</script>
+</body>
+</html>
