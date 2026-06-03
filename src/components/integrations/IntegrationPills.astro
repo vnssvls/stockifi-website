@@ -17,8 +17,10 @@ interface Props {
   count?: number;
   /** Reversed layout: copy on the left, cloud on the right (bleeds off the right edge). */
   reverse?: boolean;
+  /** Wide layout: full-width — cloud bleeds off the left edge, copy + 80px gutter right. */
+  wide?: boolean;
 }
-const { eyebrow, heading, subhead, items, count, reverse = false } = Astro.props;
+const { eyebrow, heading, subhead, items, count, reverse = false, wide = false } = Astro.props;
 
 // Randomize at build time (placeholder until the cycling flip animation lands).
 const shuffled = [...items].sort(() => Math.random() - 0.5);
@@ -30,7 +32,7 @@ const rows = Array.from({ length: ROW_COUNT }, (_, r) => visible.filter((_, i) =
 ---
 
 <section class:list={['integration-pills section', reverse && 'ip-reverse']} data-ip-pills>
-  <div class="container ip-grid">
+  <div class:list={['ip-grid', wide ? 'ip-wide' : 'container']}>
     <div class="ip-copy">
       {eyebrow && <p class="tagline">{eyebrow}</p>}
       <h2 class="ip-heading">{heading}</h2>
@@ -73,6 +75,12 @@ const rows = Array.from({ length: ROW_COUNT }, (_, r) => visible.filter((_, i) =
   }
 
   .ip-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-48); }
+
+  /* Wide variant (home): full width — cloud bleeds off the left edge, copy + 80px gutter
+     on the right (desktop). Cloud --ip-bleed is overridden to match this wrapper's left
+     padding so the pills still reach the viewport edge. */
+  .ip-wide { width: 100%; max-width: none; margin-inline: auto; padding-inline: var(--gutter-wide); }
+  .ip-wide .ip-cloud { --ip-bleed: var(--gutter-wide); }
 
   /* Four rows that bleed off the LEFT viewport edge ("coming from the edge"). The box
      keeps its right edge at the column boundary and extends left to the screen edge:
@@ -138,6 +146,9 @@ const rows = Array.from({ length: ROW_COUNT }, (_, r) => visible.filter((_, i) =
     /* Reversed: copy left, cloud right. */
     .ip-reverse .ip-cloud { order: 2; }
     .ip-reverse .ip-copy { order: 1; }
+    /* Wide: no left gutter (cloud reaches the edge), 80px gutter on the right. */
+    .ip-wide { padding-left: 0; padding-right: 80px; }
+    .ip-wide .ip-cloud { --ip-bleed: 0px; }
   }
 
   /* Reversed: mirror the bleed to the RIGHT edge (default bleeds left). Pills align to the

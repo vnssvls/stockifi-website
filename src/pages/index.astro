@@ -12,7 +12,7 @@ import FeatureSplit from '../components/features/FeatureSplit.astro';
 import FeatureSteps from '../components/features/FeatureSteps.astro';
 import SectionPlaceholder from '../components/SectionPlaceholder.astro';
 import CustomerStoryBento from '../components/CustomerStoryBento.astro';
-import IntegrationGrid from '../components/integrations/IntegrationGrid.astro';
+import IntegrationPills from '../components/integrations/IntegrationPills.astro';
 import CtaBand from '../components/CtaBand.astro';
 import FaqSplit from '../components/faq/FaqSplit.astro';
 import integrations from '../data/integrations-home.json';
@@ -98,16 +98,15 @@ const faqs = [
     steps={segments}
   />
 
-  <!-- 6. Integrations (with a soft gradient glow behind the logos, right side) -->
-  <div class="home-int">
-    <span class="home-int-glow" aria-hidden="true"></span>
-    <IntegrationGrid
-      heading="Use Stockifi with"
-      defaultSubject="your existing tools"
-      cta={{ label: 'View all integrations', href: '/integrations' }}
-      items={integrations}
-    />
-  </div>
+  <!-- 6. Integrations — pill cloud (variant 2), wide: pills bleed off the left edge, copy
+       with an 80px gutter on the right. The pills variant carries its own gradient glow. -->
+  <IntegrationPills
+    wide
+    eyebrow="Integrations"
+    heading="Works with the tools you already run"
+    subhead="Stockifi reads your accounting software and POS — 30+ accounting and 40+ POS integrations supported."
+    items={integrations}
+  />
 
   <!-- 7. Risk-reversal band — SLOT (own design pending) -->
   <SectionPlaceholder label="Risk-reversal band" note="Section slot — slim €3,000 / 30-day risk-free guarantee, kept low near the close." />
@@ -131,29 +130,4 @@ const faqs = [
 <style>
   /* Offset anchored scroll so the floating nav doesn't cover the section top */
   .hp-anchor { scroll-margin-top: var(--space-96); }
-
-  /* Soft "xs" gradient glow behind the integrations logos (right side of the page).
-     Lives on this wrapper (not inside the IntegrationGrid section, which clips its own
-     overflow), at z-index:-1 so it sits behind the transparent section and bleeds freely.
-     Anchored at the right edge (right:0, no negative offset) so it bleeds softly without
-     a horizontal scrollbar — no clipping needed. */
-  /* isolation:isolate keeps the z-index:-1 glow in this wrapper's stacking context (above
-     its own transparent bg, behind the transparent integrations section). Without it the
-     negative-z glow escapes to the root and hides behind the page background. */
-  .home-int { position: relative; isolation: isolate; }
-  .home-int-glow {
-    position: absolute;
-    z-index: -1;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-    width: min(820px, 78vw);
-    height: 760px;
-    background-image: url('/media/gradient-centered-xs.png');
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
-    opacity: 0.5;
-    pointer-events: none;
-  }
 </style>
