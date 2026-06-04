@@ -18,14 +18,14 @@ import CtaBand from '../components/CtaBand.astro';
 import integrations from '../data/integrations-home.json';
 import userLogos from '../data/user-logos.json';
 
-// 3. Product categories — FeatureList (real component: heading + body per item).
-// Sub-features folded into the body as real sentences (no-build fallback). If we
-// want them as a proper list inside each open item, FeatureList needs a small
-// sub-items field added (other session).
+// 3. Product categories — FeatureList. New taxonomy (V + Simon, 2026-06-04):
+// Procurement / Inventory Management / Business Intelligence. Integrations is now
+// its OWN top-level nav item, no longer in the Product mega menu. Sub-features
+// folded into each body as real sentences (FeatureList items are heading + body only).
 const categories = [
-  { heading: 'Invoices & Suppliers', body: 'Stockifi reads your supplier invoices and tracks every price change for you, and your central kitchen feeds its costs into the same picture.' },
-  { heading: 'Inventory Management', body: 'You count stock and log transfers and wastage in the app, and Stockifi shows your live variance and profit per dish against the recipes we set up with you.' },
-  { heading: 'Integrations', body: 'Stockifi connects to the POS and accounting you already run, with more than 69 integrations ready to go.' },
+  { heading: 'Procurement', body: 'Stockifi reads your supplier invoices automatically, tracks every price change, and flags anomalies like overcharges, with your central kitchen costed in the same place.' },
+  { heading: 'Inventory Management', body: 'You count stock and log any transfers and wastage in the app, and Stockifi compares it to the recipes we set up with you to show what you really used.' },
+  { heading: 'Business Intelligence', body: 'Stockifi turns all of it into performance dashboards, variance analysis, and profitability insights, with an API to push the data wherever you need it.' },
 ];
 
 // 4. Benefits / value prop — FeatureSplit
@@ -70,7 +70,7 @@ const faqs = [
     wide
     tagline="Restaurant food cost software"
     heading="Know your real food cost."
-    subhead="Stockifi connects your invoices, POS, and recipes, then shows you exactly where the margin goes. We set it all up for you, so day one starts with answers."
+    subhead="Your invoices, sales, and recipes already hold the answer to your food cost. Stockifi pulls them together and does the math, so you see your margin and act on it."
     primary={{ label: 'Book a demo', href: '/book-a-demo' }}
     secondary={{ label: 'See how it works', href: '#how-it-works' }}
   />
