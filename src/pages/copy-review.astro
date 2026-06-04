@@ -22,10 +22,14 @@ import userLogos from '../data/user-logos.json';
 // Procurement / Inventory Management / Business Intelligence. Integrations is now
 // its OWN top-level nav item, no longer in the Product mega menu. Sub-features
 // folded into each body as real sentences (FeatureList items are heading + body only).
+// CTA build-dep: each category gets a button to its landing page. FeatureList items
+// are <button> tabs, so a per-item CTA link must sit OUTSIDE the tab (component change,
+// other session). Labels/hrefs captured in each item's `cta`; lead-in is the last
+// body sentence; the button itself is not rendered yet. Category hrefs are PROVISIONAL.
 const categories = [
-  { heading: 'Procurement', body: 'Stockifi reads your supplier invoices automatically, tracks every price change, and flags anomalies like overcharges, with your central kitchen costed in the same place.' },
-  { heading: 'Inventory Management', body: 'You count stock and log any transfers and wastage in the app, and Stockifi compares it to the recipes we set up with you to show what you really used.' },
-  { heading: 'Business Intelligence', body: 'Stockifi turns all of it into performance dashboards, variance analysis, and profitability insights, with an API to push the data wherever you need it.' },
+  { heading: 'Procurement', body: 'Stockifi reads your supplier invoices automatically, tracks every price change, and flags anomalies like overcharges, with your central kitchen costed in the same place. See how it keeps your supplier costs in check.', cta: { label: 'Explore Procurement', href: '/product/procurement' } },
+  { heading: 'Inventory Management', body: 'You count stock and log any transfers and wastage in the app, and Stockifi compares it to the recipes we set up with you to show what you really used. See how your counts become numbers you can act on.', cta: { label: 'Explore Inventory Management', href: '/product/inventory-management' } },
+  { heading: 'Business Intelligence', body: 'Stockifi turns all of it into performance dashboards, variance analysis, and profitability insights, with an API to push the data wherever you need it. See what your numbers can tell you.', cta: { label: 'Explore Business Intelligence', href: '/product/business-intelligence' } },
 ];
 
 // 4. Benefits / value prop — FeatureSplit
@@ -38,17 +42,17 @@ const benefitItems = [
 
 // 5. By team — FeatureTabs
 const teamTabs = [
-  { label: 'Management', heading: "The whole operation's margin at a glance", body: 'Owners and GMs get cost visibility across every location, so you know where margin is won or lost without chasing a single report.' },
-  { label: 'Operations', heading: 'Run tighter service without the extra admin', body: 'Spot waste, over-portioning, and price drift early, so the day-to-day stays under control even as you add locations.' },
-  { label: 'Kitchen', heading: 'Recipes that cost themselves', body: 'Chefs see the live cost and margin of every dish, so menu calls reflect what ingredients cost today.' },
-  { label: 'Finance', heading: 'COGS you can actually trust', body: 'Finance gets actual against theoretical cost from real invoice and POS data, so month-end stops being a guessing game.' },
+  { label: 'Management', heading: "The whole operation's margin at a glance", body: "Owners and GMs get cost visibility across every location, so you know where margin is won or lost without chasing a single report. See it from an owner's seat.", primary: { label: 'Stockifi for Management', href: '/solutions/management' } },
+  { label: 'Operations', heading: 'Run tighter service without the extra admin', body: 'Spot waste, over-portioning, and price drift early, so the day-to-day stays under control even as you add locations. See it on the floor.', primary: { label: 'Stockifi for Operations', href: '/solutions/operations' } },
+  { label: 'Kitchen', heading: 'Recipes that cost themselves', body: 'Chefs see the live cost and margin of every dish, so menu calls reflect what ingredients cost today. See it in the kitchen.', primary: { label: 'Stockifi for Kitchen', href: '/solutions/kitchen' } },
+  { label: 'Finance', heading: 'COGS you can actually trust', body: 'Finance gets actual against theoretical cost from real invoice and POS data, so month-end stops being a guessing game. See it on the books.', primary: { label: 'Stockifi for Finance', href: '/solutions/finance' } },
 ];
 
 // 7. Onboarding — FeatureSteps
 const onboarding = [
   { heading: 'Connect your systems', body: 'We connect your accounting and POS, and your invoices and sales start flowing into Stockifi automatically.' },
   { heading: 'We set up your recipes', body: 'We build your recipe baseline with you, so every cost is right from day one.' },
-  { heading: 'Ready in 48 hours', body: 'Most operations are live within two days of connecting their systems.' },
+  { heading: 'Your account is ready', body: 'Most operations are live within two days of connecting their systems.' },
   { heading: 'Start seeing the gaps', body: 'From your first counts, you see real food cost, variance, and price changes.' },
 ];
 
@@ -103,33 +107,36 @@ const faqs = [
   <!-- 6. Customer stories -->
   <CustomerStoryBento
     eyebrow="Customer stories"
-    heading="How operators run a tighter kitchen"
-    subhead="See how restaurants and groups use Stockifi to win back margin they couldn't see before."
+    heading="Hear it from operators like you"
+    subhead="See how hospitality businesses use Stockifi to win back margin they couldn't see before."
     cta={{ label: 'Read all stories', href: '/customer-stories' }}
     slugs={['byoslo', 'eik-and-friends', 'koie-ramen', 'skigeilo-2']}
   />
 
   <!-- 7. Onboarding (FeatureSteps) -->
   <FeatureSteps
-    tagline="Getting started"
-    heading="Up and running within days"
+    tagline="Personalized onboarding"
+    heading="Get up and running in 48 hours"
+    cta={{ label: 'Book a demo', href: '/book-a-demo' }}
     steps={onboarding}
   />
 
-  <!-- 8. Integrations -->
+  <!-- 8. Integrations. CTA build-dep: IntegrationPills has no cta prop — add one to
+       render a "View all integrations" button → /integrations. -->
   <IntegrationPills
     wide
     eyebrow="Integrations"
     heading="Works with the tools you already run"
-    subhead="Stockifi reads your accounting software and POS, with 30+ accounting and 40+ POS integrations supported."
+    subhead="Stockifi reads your accounting software and POS automatically, with 70+ integrations ready to connect."
     items={integrations}
   />
 
-  <!-- 9. Risk-reversal band (no dedicated component yet; shown in CtaBand as a stand-in) -->
+  <!-- 9. Risk-reversal / pricing lead-in (CtaBand stand-in). Per V: guarantee moved
+       into the body, heading now leads to pricing. -->
   <CtaBand
-    heading="Find €3,000 in 30 days, or you pay nothing."
-    subhead="Connect your systems, give us 30 days, and if Stockifi doesn't uncover at least €3,000 in hidden losses, you pay nothing."
-    primary={{ label: 'See how the guarantee works', href: '/pricing' }}
+    heading="See what Stockifi would cost for your setup."
+    subhead="Pricing depends on your size and setup, and onboarding is risk-free: if we don't find at least €3,000 in hidden losses in your first 30 days, you pay nothing."
+    primary={{ label: 'See pricing', href: '/pricing' }}
   />
 
   <!-- 10. FAQ -->
