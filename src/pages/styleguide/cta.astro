@@ -1,11 +1,13 @@
 ---
-// Styleguide → CTA. The two CTA blocks: variant 1 (split heading + buttons,
-// CtaBand) and variant 2 (centered email capture, CtaEmail / Figma CTA28).
+// Styleguide → CTA. The CTA blocks: variant 1 (split heading + buttons, CtaBand),
+// variant 2 (centered email capture, CtaEmail / Figma CTA28), and variant 2.1
+// (same centered image-backed block, button only — CtaButton / Figma 159:635).
 // Demo copy is DRAFT Stockifi voice.
 import Layout from '../../layouts/Layout.astro';
 import SgThemeToggle from '../../components/SgThemeToggle.astro';
 import CtaBand from '../../components/CtaBand.astro';
 import CtaEmail from '../../components/CtaEmail.astro';
+import CtaButton from '../../components/CtaButton.astro';
 ---
 
 <Layout title="CTA — Style guide">
@@ -28,6 +30,14 @@ import CtaEmail from '../../components/CtaEmail.astro';
     <CtaEmail
       heading="Find your hidden food cost losses"
       subhead="Drop your email and we'll show you what Stockifi surfaces in your first 30 days."
+      bgImages={['/media/cta-bg-1.jpg', '/media/cta-bg-2.jpg', '/media/cta-bg-3.jpg', '/media/cta-bg-4.jpg']}
+    />
+
+    <div class="container"><p class="sg-label text-muted">Variant 2.1 — Centered, button only (image background)</p></div>
+    <CtaButton
+      heading="See where your margin is leaking"
+      subhead="Book a short call and we'll show you what Stockifi surfaces in your first 30 days."
+      primary={{ label: 'Book a demo', href: '/contact' }}
       bgImages={['/media/cta-bg-1.jpg', '/media/cta-bg-2.jpg', '/media/cta-bg-3.jpg', '/media/cta-bg-4.jpg']}
     />
   </div>

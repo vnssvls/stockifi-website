@@ -1,0 +1,74 @@
+---
+// CTA variant 2.1 (Figma node 159:635): same full-bleed image-backed, centered block
+// as CtaEmail (heading + subhead on a dark-scrimmed photo) but with the email-capture
+// form replaced by a single primary button. No terms line. With no bgImage it falls
+// back to a plain section on the page background. Stacks fine on mobile.
+import Button from './Button.astro';
+
+interface Action { label: string; href: string }
+interface Props {
+  heading: string;
+  subhead?: string;
+  primary: Action;
+  bgImage?: string;
+  /** Pass 2+ to cycle a random one per page load. */
+  bgImages?: string[];
+}
+const { heading, subhead, primary, bgImage, bgImages } = Astro.props;
+
+const imgs = bgImages?.length ? bgImages : bgImage ? [bgImage] : [];
+const hasBg = imgs.length > 0;
+// A single image is set server-side; for 2+ the client script picks one at random,
+// kept out of SSR so only the chosen image downloads (no wasted second load).
+const single = imgs.length === 1 ? imgs[0] : '';
+---
+
+<section
+  class:list={['cta-button section', hasBg && 'cta-button--bg']}
+  style={single ? `--cb-bg: url('${single}')` : undefined}
+  data-cta-bgs={imgs.length > 1 ? JSON.stringify(imgs) : undefined}
+>
+  <div class="container cb-inner">
+    <h2 class="cb-heading">{heading}</h2>
+    {subhead && <p class="cb-subhead text-muted">{subhead}</p>}
+    <div class="cb-actions">
+      <Button variant="primary" href={primary.href}>{primary.label}</Button>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Full-bleed image background. `background-image` (not the linted `background`
+     shorthand) layers a dark scrim over the photo so the white heading stays legible. */
+  .cta-button--bg {
+    --cb-bg: none; /* scrim-only until the client script sets the chosen image */
+    background-image:
+      linear-gradient(
+        color-mix(in srgb, var(--background) 82%, transparent),
+        color-mix(in srgb, var(--background) 82%, transparent)
+      ),
+      var(--cb-bg);
+    background-size: cover;
+    background-position: center;
+  }
+
+  .cb-inner { text-align: center; }
+  .cb-heading { max-width: 20ch; margin-inline: auto; }
+  .cb-subhead { margin-top: var(--space-16); margin-inline: auto; max-width: 48ch; font-size: var(--text-body-lg); }
+
+  .cb-actions { display: flex; justify-content: center; margin-top: var(--space-32); }
+
+  /* On an image background, brighten the secondary text for contrast. */
+  .cta-button--bg .cb-subhead { color: color-mix(in srgb, var(--foreground) 82%, transparent); }
+</style>
+
+<script>
+  // Pick a random background from the list on each load (re-rolls the SSR choice).
+  document.querySelectorAll<HTMLElement>('[data-cta-bgs]').forEach((el) => {
+    let imgs: string[] = [];
+    try { imgs = JSON.parse(el.dataset.ctaBgs ?? '[]'); } catch { /* ignore */ }
+    if (imgs.length < 2) return;
+    const pick = imgs[Math.floor(Math.random() * imgs.length)];
+    el.style.setProperty('--cb-bg', `url('${pick}')`);
+  });
+</script>

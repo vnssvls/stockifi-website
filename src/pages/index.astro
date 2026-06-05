@@ -14,7 +14,7 @@ import FeatureTabs from '../components/features/FeatureTabs.astro';
 import SectionPlaceholder from '../components/SectionPlaceholder.astro';
 import CustomerStoryBento from '../components/CustomerStoryBento.astro';
 import IntegrationPills from '../components/integrations/IntegrationPills.astro';
-import CtaBand from '../components/CtaBand.astro';
+import CtaButton from '../components/CtaButton.astro';
 import FaqSplit from '../components/faq/FaqSplit.astro';
 import integrations from '../data/integrations-home.json';
 import userLogos from '../data/user-logos.json';
@@ -137,11 +137,12 @@ const faqs = [
     items={faqs}
   />
 
-  <!-- 9. Final CTA — variant 1 (Book a demo). Swap to CtaEmail (v2) for a photo-backed finish. -->
-  <CtaBand
+  <!-- 9. Final CTA — variant 2.1 (button-only, photo-backed; CtaEmail layout minus the form). -->
+  <CtaButton
     heading="See where your margin is leaking"
     subhead="Book a short call and we'll map it with you using your own numbers."
     primary={{ label: 'Book a demo', href: '/book-a-demo' }}
+    bgImages={['/media/cta-bg-1.jpg', '/media/cta-bg-2.jpg', '/media/cta-bg-3.jpg', '/media/cta-bg-4.jpg']}
   />
 </Layout>
 
