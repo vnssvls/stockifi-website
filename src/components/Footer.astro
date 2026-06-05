@@ -1,11 +1,13 @@
 ---
-// Site footer (Figma 67:365 full / 67:565 links-only). Themed dark, wired to the IA.
-// showCta=true (default): CTA heading + text + a single secondary button on the left,
-//   link columns on the right.
-// showCta=false (variant 2): no CTA block — just the link columns, full width.
-// A large half-clipped "Stockifi" wordmark (real SVG) sits decoratively at the bottom.
-// "Follow us" column holds the social icons. DRAFT copy + placeholder social URLs.
+// Site footer. Two variants:
+// showCta=true  (variant 1, Figma 67:365): CTA heading + text + a secondary button on the
+//   left, link columns on the right, social icons in a "Follow us" column.
+// showCta=false (variant 2, Figma 160:753 "Footer 15"): logo + contact + social icons in a
+//   left brand column, link columns on the right; a legal row, a divider, then the large
+//   half-clipped "Stockifi" wordmark "peeking" at the bottom. No CTA block (more room for
+//   the columns). This is the deployed footer.
 import Button from './Button.astro';
+import Logo from './Logo.astro';
 import wordmark from '../assets/wordmark.svg?raw';
 
 interface Props {
@@ -17,10 +19,10 @@ const columns = [
   {
     title: 'Product',
     links: [
-      { label: 'Recipe Costing', href: '/product/recipe-costing' },
-      { label: 'Supplier Price Tracking', href: '/product/supplier-price-tracking' },
-      { label: 'POS & Consumption', href: '/product/pos-integration' },
-      { label: 'Inventory & Variance', href: '/product/inventory-variance' },
+      { label: 'Invoice automation', href: '/product/invoice-automation' },
+      { label: 'Supplier price tracking', href: '/product/supplier-price-tracking' },
+      { label: 'Recipe building', href: '/product/recipe-building' },
+      { label: 'Stock counting', href: '/product/stock-counting' },
       { label: 'Integrations', href: '/integrations' },
     ],
   },
@@ -38,6 +40,7 @@ const columns = [
     links: [
       { label: 'Blog', href: '/blog' },
       { label: 'Customer Stories', href: '/customer-stories' },
+      { label: 'FAQ', href: '/faq' },
       { label: 'Savings Calculator', href: '/savings-calculator' },
     ],
   },
@@ -62,13 +65,31 @@ const year = new Date().getFullYear();
 
 <footer class:list={['site-footer', !showCta && 'site-footer--links-only']}>
   <div class="footer-top">
-    {showCta && (
+    {showCta ? (
       <div class="footer-cta">
         <h2 class="footer-heading">Take control of your food cost.</h2>
         <p class="footer-text text-muted">See where margin leaks across recipes, suppliers, and sales. Book a demo and we will map it with you.</p>
         <div class="footer-buttons">
           <Button variant="secondary" href="/contact">Book a demo</Button>
         </div>
+      </div>
+    ) : (
+      <div class="footer-brand">
+        <Logo height={32} />
+        <div class="footer-contact">
+          <p class="footer-contact-title">Contact:</p>
+          <a href="tel:+4721051403">+47 21 05 14 03</a>
+          <a href="mailto:support@stockifi.io">support@stockifi.io</a>
+        </div>
+        <ul class="footer-social">
+          {socials.map((s) => (
+            <li>
+              <a href={s.href} aria-label={s.name}>
+                <svg width="22" height="22" viewBox={s.viewBox} fill="currentColor" aria-hidden="true"><path d={s.path} /></svg>
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
     )}
 
@@ -82,18 +103,20 @@ const year = new Date().getFullYear();
         </div>
       ))}
 
-      <div class="footer-col">
-        <p class="footer-col-title">Follow us</p>
-        <ul class="footer-social">
-          {socials.map((s) => (
-            <li>
-              <a href={s.href} aria-label={s.name}>
-                <svg width="20" height="20" viewBox={s.viewBox} fill="currentColor" aria-hidden="true"><path d={s.path} /></svg>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
+      {showCta && (
+        <div class="footer-col">
+          <p class="footer-col-title">Follow us</p>
+          <ul class="footer-social">
+            {socials.map((s) => (
+              <li>
+                <a href={s.href} aria-label={s.name}>
+                  <svg width="20" height="20" viewBox={s.viewBox} fill="currentColor" aria-hidden="true"><path d={s.path} /></svg>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </nav>
   </div>
 
@@ -105,8 +128,11 @@ const year = new Date().getFullYear();
     </ul>
   </div>
 
-  <!-- Decorative oversized wordmark (real SVG), full-bleed and half-clipped by the
-       footer's bottom edge. Inlined so the fill can read the --border token. -->
+  <!-- Variant 2: a divider sits between the legal row and the peeking wordmark. -->
+  {!showCta && <div class="footer-rule" aria-hidden="true"></div>}
+
+  <!-- Decorative oversized wordmark (real SVG), full-bleed and half-clipped ("peeking")
+       by the footer's bottom edge. Inlined so the fill can read the --border token. -->
   <div class="footer-wordmark" aria-hidden="true" set:html={wordmark}></div>
 </footer>
 
@@ -129,9 +155,17 @@ const year = new Date().getFullYear();
     padding-inline: 20px;
   }
 
+  /* Variant 1 — CTA block */
   .footer-heading { font-size: var(--text-h4); max-width: 16ch; }
   .footer-text { margin-top: var(--space-16); max-width: 44ch; font-size: var(--text-body-sm); }
   .footer-buttons { display: flex; flex-wrap: wrap; gap: var(--space-12); margin-top: var(--space-24); }
+
+  /* Variant 2 — brand column (logo + contact + socials) */
+  .footer-brand { display: flex; flex-direction: column; gap: var(--space-32); align-items: flex-start; }
+  .footer-contact { display: flex; flex-direction: column; gap: var(--space-4); font-size: var(--text-body-sm); }
+  .footer-contact-title { font-weight: var(--fw-semibold); color: var(--foreground); }
+  .footer-contact a { color: var(--muted-foreground); text-decoration: underline; }
+  .footer-contact a:hover { color: var(--foreground); }
 
   .footer-cols {
     display: grid;
@@ -149,8 +183,8 @@ const year = new Date().getFullYear();
   .footer-col a { color: var(--muted-foreground); font-size: var(--text-body-sm); }
   .footer-col a:hover { color: var(--foreground); text-decoration: none; }
 
-  /* Social icons inside the "Follow us" column */
-  .footer-social { flex-direction: row !important; gap: var(--space-16) !important; }
+  /* Social icon rows (left brand column in v2, "Follow us" column in v1) */
+  .footer-social { display: flex; flex-direction: row; gap: var(--space-16); margin: 0; padding: 0; list-style: none; }
   .footer-social a { display: inline-flex; color: var(--muted-foreground); }
   .footer-social a:hover { color: var(--foreground); }
 
@@ -167,8 +201,12 @@ const year = new Date().getFullYear();
     font-size: var(--text-body-sm);
   }
   .footer-legal { display: flex; gap: var(--space-24); margin: 0; padding: 0; list-style: none; }
-  .footer-legal a { color: var(--muted-foreground); font-size: var(--text-body-sm); }
-  .footer-legal a:hover { color: var(--foreground); text-decoration: none; }
+  .footer-legal a { color: var(--muted-foreground); font-size: var(--text-body-sm); text-decoration: underline; }
+  .footer-legal a:hover { color: var(--foreground); }
+
+  /* Variant 2: no top border on the legal row (the divider sits BELOW it instead). */
+  .site-footer--links-only .footer-bottom { border-top: none; padding-top: 0; margin-top: var(--space-64); }
+  .footer-rule { height: 1px; margin-top: var(--space-32); margin-inline: 20px; background: var(--border); }
 
   /* Oversized brand wordmark (real SVG) anchored to the bottom and pushed down so only
      its top portion shows; the footer's overflow:hidden clips the rest. Sits behind
@@ -180,15 +218,16 @@ const year = new Date().getFullYear();
     bottom: 0;
     z-index: -1;
     transform: translateY(28%);
-    color: var(--border); /* subtle, matches the input/border tone (#2A2A35) */
+    color: var(--border); /* subtle, matches the input/border tone */
     pointer-events: none;
     user-select: none;
   }
   .footer-wordmark :global(svg) { display: block; width: 100%; height: auto; }
 
   @media (min-width: 1024px) {
+    /* Variant 1 (CTA): copy left, links right */
     .footer-top { grid-template-columns: 1fr 1.6fr; gap: var(--space-96); align-items: start; }
-    /* Variant 2 (no CTA): links span the full width */
-    .site-footer--links-only .footer-top { grid-template-columns: 1fr; }
+    /* Variant 2 (Footer 15): brand column left, link columns right */
+    .site-footer--links-only .footer-top { grid-template-columns: minmax(0, 360px) 1fr; gap: var(--space-64); }
   }
 </style>

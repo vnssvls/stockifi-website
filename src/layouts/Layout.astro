@@ -70,7 +70,7 @@ const robotsNoindex = noindex || Astro.url.pathname.startsWith('/styleguide');
       <>
         <Nav />
         <main><slot /></main>
-        <Footer />
+        <Footer showCta={false} />
       </>
     )}
   </body>
