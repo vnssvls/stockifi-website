@@ -33,7 +33,7 @@ const productGroups = [
   ] },
 ];
 const solutionsGroups = [
-  { title: 'By segment', items: [
+  { title: 'By Type', items: [
     { label: 'Independent restaurants', href: '/solutions/independent-restaurants', icon: 'reserve', desc: 'Tighter food cost without the spreadsheets.' },
     { label: 'Restaurant groups', href: '/solutions/restaurant-groups', icon: 'buildings-2', desc: 'Consolidated cost visibility across sites.' },
     { label: 'Hotels with F&B', href: '/solutions/hotels', icon: 'building-4', desc: 'Control across full food and beverage.' },
@@ -425,7 +425,7 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
     transition: background-color 0.18s ease, color 0.18s ease;
   }
   .mega-ico :global(svg) { display: block; width: 20px; height: 20px; }
-  .mega-item:hover .mega-ico { background: color-mix(in srgb, var(--primary) 22%, transparent); color: var(--primary-light); }
+  /* Icon + tile stay as-is on hover (white icon); only the row background tints. */
   .mega-item-body { display: flex; flex-direction: column; gap: var(--space-4); min-width: 0; }
   .mega-item-title { color: var(--popover-foreground); font-weight: var(--fw-semibold); font-size: var(--text-body-sm); line-height: 1.3; }
   .mega-item-desc { color: var(--muted-foreground); font-size: var(--text-caption); line-height: var(--lh-body-sm); }
