@@ -1,54 +1,67 @@
 ---
-// Home page (DC-471, blueprint docs/blueprints/home.md). Assembled from existing
-// components with DRAFT copy for V/Simon review. Section arc per V's structure:
-// hero → logo banner → how-it-works (Feature v1) → product pillars (Feature v2) →
-// [customer stories slot] → segments (Feature v3) → integrations →
-// [risk-reversal slot] → FAQ → CTA (v1). Footer from layout.
+// Home page (DC-471). FINAL copy ported from docs/copy/home-final.md (DC-474).
+// Section arc: hero → logo banner → what's inside (FeatureList) → benefits (FeatureSplit)
+// → by teams (FeatureTabs) → customer stories (bento) → onboarding (FeatureSteps) →
+// integrations (pills) → risk/pricing band (CtaBand) → FAQ (FaqSplit) → final CTA
+// (CtaButton v2.1). Footer from layout (footer variant changing later, kept as-is).
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import LogoBanner from '../components/LogoBanner.astro';
 import FeatureList from '../components/features/FeatureList.astro';
 import FeatureSplit from '../components/features/FeatureSplit.astro';
-import FeatureSteps from '../components/features/FeatureSteps.astro';
 import FeatureTabs from '../components/features/FeatureTabs.astro';
-import SectionPlaceholder from '../components/SectionPlaceholder.astro';
 import CustomerStoryBento from '../components/CustomerStoryBento.astro';
+import FeatureSteps from '../components/features/FeatureSteps.astro';
 import IntegrationPills from '../components/integrations/IntegrationPills.astro';
+import CtaBand from '../components/CtaBand.astro';
 import CtaButton from '../components/CtaButton.astro';
 import FaqSplit from '../components/faq/FaqSplit.astro';
 import integrations from '../data/integrations-home.json';
 import userLogos from '../data/user-logos.json';
 
-// How it works — Feature variant 1 (interactive list + swapping media)
-const howItWorks = [
-  { heading: 'Set up your recipes', body: 'Import recipes and ingredient costs. This becomes the baseline every calculation runs from.' },
-  { heading: 'Connect your accounting', body: 'Stockifi reads supplier invoices line by line and keeps recipe costs current as prices move.' },
-  { heading: 'Connect your POS', body: 'Sales import automatically, so theoretical usage can be measured against what actually sold.' },
-  { heading: 'Count stock, see variance', body: 'Stock counts in the app reveal actual versus theoretical consumption, waste, and price drift.' },
+// 3. What's inside — FeatureList (interactive list + swapping media). Each product
+// category reveals its body + an "Explore" CTA. Slugs are PROVISIONAL (category landing
+// pages not built yet) — same status as /book-a-demo.
+const whatsInside = [
+  {
+    heading: 'Procurement',
+    body: "Stockifi reads your supplier invoices automatically, tracks every price change, and flags anomalies like overcharges, with your central kitchen costed in the same place. See how it keeps your supplier costs in check.",
+    cta: { label: 'Explore Procurement', href: '/product/procurement' },
+  },
+  {
+    heading: 'Inventory Management',
+    body: "You count stock and log any transfers and wastage in the app, and Stockifi compares it to the recipes we set up with you to show what you really used. See how your counts become numbers you can act on.",
+    cta: { label: 'Explore Inventory Management', href: '/product/inventory-management' },
+  },
+  {
+    heading: 'Business Intelligence',
+    body: "Stockifi turns all of it into performance dashboards, variance analysis, and profitability insights, with an API to push the data wherever you need it. See what your numbers can tell you.",
+    cta: { label: 'Explore Business Intelligence', href: '/product/business-intelligence' },
+  },
 ];
 
-// Product pillars — Feature variant 2 (heading + checklist + media)
-const pillarItems = [
-  'Recipe costing that moves with your supplier prices',
-  'Supplier price tracking, read line by line from your invoices',
-  'Theoretical against actual consumption, straight from your POS',
-  'Inventory counts with variance, waste, and price drift in one place',
+// 4. Benefits — FeatureSplit (heading + checklist + media)
+const benefits = [
+  'Catch supplier price rises the day they hit an invoice',
+  'See what you actually used against what you should have, per dish',
+  'Know the live margin of every recipe as your costs move',
+  'Most operators see a 2 to 3% improvement in food cost after onboarding',
 ];
 
-// Platform showcase — Feature variant 5 (tabbed)
-const platformTabs = [
-  { label: 'Recipe costing', heading: 'Recipe costs that move with your prices', body: 'Stockifi reads supplier invoices line by line and keeps the cost of every dish current, so you always know your real margin.' },
-  { label: 'Supplier prices', heading: 'Catch price rises before they reach the plate', body: 'Every invoice is read automatically, so a supplier increase shows up the day it lands, not weeks later at month-end.' },
-  { label: 'POS & sales', heading: 'What sold against what you used', body: 'Sales import from your POS, so theoretical consumption is measured against your counts and over-portioning surfaces by dish.' },
-  { label: 'Inventory & variance', heading: 'Stock counts that explain the gap', body: 'Periodic counts in the app reveal actual versus theoretical usage, COGS development, and where the margin is leaking.' },
+// 5. By Teams — FeatureTabs (tabbed). Each tab links to its solution page.
+const byTeams = [
+  { label: 'Management', heading: "The whole operation's margin at a glance", body: "Owners and GMs get cost visibility across every location, so you know where margin is won or lost without chasing a single report. See it from an owner's seat.", primary: { label: 'Stockifi for Management', href: '/solutions/management' } },
+  { label: 'Operations', heading: 'Run tighter service without the extra admin', body: 'Spot waste, over-portioning, and price drift early, so the day-to-day stays under control even as you add locations. See it on the floor.', primary: { label: 'Stockifi for Operations', href: '/solutions/operations' } },
+  { label: 'Kitchen', heading: 'Recipes that cost themselves', body: 'Chefs see the live cost and margin of every dish, so menu calls reflect what ingredients cost today. See it in the kitchen.', primary: { label: 'Stockifi for Kitchen', href: '/solutions/kitchen' } },
+  { label: 'Finance', heading: 'COGS you can actually trust', body: 'Finance gets actual against theoretical cost from real invoice and POS data, so month-end stops being a guessing game. See it on the books.', primary: { label: 'Stockifi for Finance', href: '/solutions/finance' } },
 ];
 
-// Segments — Feature variant 3 (connected vertical timeline)
-const segments = [
-  { heading: 'Independent restaurants', body: 'Tighter food cost without living in spreadsheets.' },
-  { heading: 'Restaurant groups', body: 'Consolidated cost visibility across every location.' },
-  { heading: 'Hotels with F&B', body: 'Cost control across full food and beverage operations.' },
-  { heading: 'Bars', body: 'Track pour cost and spot variance behind the bar.' },
+// 7. Onboarding — FeatureSteps (connected vertical timeline)
+const onboarding = [
+  { heading: 'Connect your systems', body: 'We connect your accounting and POS, and your invoices and sales start flowing into Stockifi automatically.' },
+  { heading: 'We set up your recipes', body: 'We build your recipe baseline with you, so every cost is right from day one.' },
+  { heading: 'Your account is ready', body: 'Most operations are live within two days of connecting their systems.' },
+  { heading: 'Start seeing the gaps', body: 'From your first counts, you see real food cost, variance, and price changes.' },
 ];
 
 const faqs = [
@@ -61,74 +74,79 @@ const faqs = [
 ---
 
 <Layout
-  title="Restaurant Food Cost Software for European Operators | Stockifi"
-  description="See exactly where your food cost is leaking. Stockifi connects invoices, POS, and recipes so European operators track actual food cost, not guesswork."
+  title="European Restaurant Food Cost Software | Stockifi"
+  description="Know your real food cost. Stockifi connects your invoices, POS, and recipes to show where your margin goes, with the setup done for you."
 >
-  <!-- 1. Hero — DRAFT copy (blueprint angle: margin-leak outcome + EU fit) -->
+  <!-- 1. Hero -->
   <Hero
     wide
-    tagline="For European hospitality operators"
-    heading="See exactly where your food cost is leaking."
-    subhead="Stockifi connects your invoices, POS, and recipes so you track actual food cost instead of guessing at it."
+    tagline="Restaurant food cost software"
+    heading="Know your real food cost."
+    subhead="Your invoices, sales, and recipes already hold the answer to your food cost. Stockifi pulls them together and does the math, so you see your margin and act on it."
     primary={{ label: 'Book a demo', href: '/book-a-demo' }}
     secondary={{ label: 'See how it works', href: '#how-it-works' }}
   />
 
-  <!-- 1.2 Social-proof logo banner (integration logos for now; swap to client logos later) -->
+  <!-- 2. Social proof -->
   <LogoBanner label="Trusted by 500+ restaurants across Europe" logos={userLogos} />
 
-  <!-- 2. How it works — Feature variant 1 -->
+  <!-- 3. What's inside — FeatureList (product categories) -->
   <div id="how-it-works" class="hp-anchor">
-    <FeatureList tagline="How it works" items={howItWorks} />
+    <FeatureList tagline="What's inside" items={whatsInside} />
   </div>
 
-  <!-- 3. Product pillars — Feature variant 2 -->
+  <!-- 4. Benefits — FeatureSplit -->
   <FeatureSplit
-    tagline="Product"
-    heading="Everything you need to control food cost"
-    body="Stockifi connects what you buy, what you sell, and what you should have used, so the gaps show up as numbers."
-    items={pillarItems}
+    tagline="Why it's worth it"
+    heading="Restaurant food cost control that pays for itself"
+    body="Most of your margin leaks in the gaps between systems. Stockifi pulls them into one view, so even a 1% improvement in food cost turns into money you keep."
+    items={benefits}
     imageSide="right"
   />
 
-  <!-- 3b. Platform showcase — Feature variant 5 (tabbed) -->
+  <!-- 5. By Teams — FeatureTabs -->
   <FeatureTabs
-    tagline="The platform"
-    heading="One system for the whole back office"
-    subhead="Recipe costs, supplier prices, sales, and stock counts in one place, so the numbers line up."
-    tabs={platformTabs}
+    tagline="For your team"
+    heading="One set of numbers for every role"
+    subhead="From the GM to the kitchen, everyone works from the same numbers."
+    tabs={byTeams}
   />
 
-  <!-- 4. Customer stories — bento (choose featured via slugs) -->
+  <!-- 6. Customer stories — bento -->
   <CustomerStoryBento
     eyebrow="Customer stories"
-    heading="How operators run a tighter kitchen"
-    subhead="Restaurants and groups using Stockifi to recover margin they couldn't see before."
+    heading="Hear it from operators like you"
+    subhead="See how hospitality businesses use Stockifi to win back margin they couldn't see before."
     cta={{ label: 'Read all stories', href: '/customer-stories' }}
     slugs={['byoslo', 'eik-and-friends', 'koie-ramen', 'skigeilo-2']}
   />
 
-  <!-- 5. Segments — Feature variant 3 -->
+  <!-- 7. Onboarding — FeatureSteps -->
   <FeatureSteps
-    tagline="Who it's for"
-    heading="Built for how your operation runs"
-    steps={segments}
+    tagline="Personalized onboarding"
+    heading="Get up and running in 48 hours"
+    cta={{ label: 'Book a demo', href: '/book-a-demo' }}
+    steps={onboarding}
   />
 
-  <!-- 6. Integrations — pill cloud (variant 2), wide: pills bleed off the left edge, copy
-       with an 80px gutter on the right. The pills variant carries its own gradient glow. -->
+  <!-- 8. Integrations — pill cloud (variant 2), wide -->
   <IntegrationPills
     wide
     eyebrow="Integrations"
     heading="Works with the tools you already run"
-    subhead="Stockifi reads your accounting software and POS, with 30+ accounting and 40+ POS integrations supported."
+    subhead="Stockifi reads your accounting software and POS automatically, with 70+ integrations ready to connect."
+    cta={{ label: 'View all integrations', href: '/integrations' }}
     items={integrations}
   />
 
-  <!-- 7. Risk-reversal band — SLOT (own design pending) -->
-  <SectionPlaceholder label="Risk-reversal band" note="Section slot — slim €3,000 / 30-day risk-free guarantee, kept low near the close." />
+  <!-- 9. Risk / pricing band — CtaBand (stand-in until a dedicated band exists) -->
+  <CtaBand
+    heading="See what Stockifi would cost for your setup."
+    subhead="Pricing depends on your size and setup, and onboarding is risk-free: if we don't find at least €3,000 in hidden losses in your first 30 days, you pay nothing."
+    primary={{ label: 'See pricing', href: '/pricing' }}
+  />
 
-  <!-- 8. FAQ — variant 1 (split: intro + contact left, accordion right) -->
+  <!-- 10. FAQ — variant 1 (split) -->
   <FaqSplit
     eyebrow="FAQs"
     heading="Questions operators ask"
@@ -137,10 +155,10 @@ const faqs = [
     items={faqs}
   />
 
-  <!-- 9. Final CTA — variant 2.1 (button-only, photo-backed; CtaEmail layout minus the form). -->
+  <!-- 11. Final CTA — variant 2.1 (button-only, photo-backed) -->
   <CtaButton
-    heading="See where your margin is leaking"
-    subhead="Book a short call and we'll map it with you using your own numbers."
+    heading="Ready to know your real food cost?"
+    subhead="Book a short call and we'll walk through your own numbers with you."
     primary={{ label: 'Book a demo', href: '/book-a-demo' }}
     bgImages={['/media/cta-bg-1.jpg', '/media/cta-bg-2.jpg', '/media/cta-bg-3.jpg', '/media/cta-bg-4.jpg']}
   />
