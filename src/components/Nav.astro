@@ -298,10 +298,14 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
     left: 0;
     z-index: 60;
     padding: var(--space-12);
-    background: var(--popover);
+    /* Translucent floating glass — matches the nav pill (same 80% fill + blur/saturate)
+       so the panel reads as part of the same surface, not a solid block. */
+    background: color-mix(in srgb, var(--popover) 80%, transparent);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-lg);
+    backdrop-filter: blur(12px) saturate(140%);
+    -webkit-backdrop-filter: blur(12px) saturate(140%);
     opacity: 0;
     visibility: hidden;
     transform: translateY(-6px);
