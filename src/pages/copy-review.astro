@@ -158,4 +158,15 @@ const faqs = [
 
 <style>
   .hp-anchor { scroll-margin-top: var(--space-96); }
+
+  /* Hero background experiment — page-scoped to /copy-review only (does NOT touch the
+     shared Hero component or any other page). Aurora glow per V's gradient stack.
+     Hardcoded rgba is fine here since this file is review-only and never ships; if it
+     graduates to the real Hero, swap to tokens for stylelint. */
+  :global(.hero) {
+    background:
+      radial-gradient(58% 66% at 62% 50%, rgba(158, 180, 250, 0.54), transparent 62%),
+      radial-gradient(54% 62% at 40% 50%, rgba(186, 140, 238, 0.42), transparent 64%),
+      radial-gradient(48% 56% at 30% 72%, rgba(248, 176, 214, 0.28), transparent 62%);
+  }
 </style>
