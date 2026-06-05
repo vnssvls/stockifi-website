@@ -298,14 +298,15 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
     left: 0;
     z-index: 60;
     padding: var(--space-12);
-    /* Translucent floating glass — matches the nav pill (same 80% fill + blur/saturate)
-       so the panel reads as part of the same surface, not a solid block. */
-    background: color-mix(in srgb, var(--popover) 80%, transparent);
+    /* Frosted floating glass. The panel is large, so the pill's 80% fill let the page
+       content behind read straight through — bumped to a 92% fill + a stronger 20px blur
+       so it still glasses (content dissolves into a soft frost) without going see-through. */
+    background: color-mix(in srgb, var(--popover) 92%, transparent);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-lg);
-    backdrop-filter: blur(12px) saturate(140%);
-    -webkit-backdrop-filter: blur(12px) saturate(140%);
+    backdrop-filter: blur(20px) saturate(150%);
+    -webkit-backdrop-filter: blur(20px) saturate(150%);
     opacity: 0;
     visibility: hidden;
     transform: translateY(-6px);
