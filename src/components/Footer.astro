@@ -140,10 +140,10 @@ const year = new Date().getFullYear();
   .site-footer {
     position: relative;
     overflow: hidden;
-    isolation: isolate; /* own stacking context so the wordmark sits above bg, below content */
     background: var(--muted);
     border-top: 1px solid var(--border);
-    padding-block: var(--space-64) var(--space-128);
+    /* No bottom padding: the wordmark is the last element and sits flush at the bottom. */
+    padding-block: var(--space-64) 0;
   }
 
   /* The footer ignores the global container/gutter — it runs full width with a small
@@ -208,16 +208,15 @@ const year = new Date().getFullYear();
   .site-footer--links-only .footer-bottom { border-top: none; padding-top: 0; margin-top: var(--space-64); }
   .footer-rule { height: 1px; margin-top: var(--space-32); margin-inline: 20px; background: var(--border); }
 
-  /* Oversized brand wordmark (real SVG) anchored to the bottom and pushed down so only
-     its top portion shows; the footer's overflow:hidden clips the rest. Sits behind
-     content via z-index:-1 within the footer's own stacking context, faded back. */
+  /* Oversized brand wordmark (real SVG), full-bleed, in NORMAL FLOW below the divider so
+     the two never overlap. The wrapper's aspect-ratio is shorter than the mark's natural
+     712/146, so overflow:hidden clips the bottom of the letters and only the top "peeks"
+     at the footer's bottom edge — deterministic at any viewport width. */
   .footer-wordmark {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
-    transform: translateY(28%);
+    width: 100%;
+    margin-top: var(--space-48);
+    aspect-ratio: 712 / 104;
+    overflow: hidden;
     color: var(--border); /* subtle, matches the input/border tone */
     pointer-events: none;
     user-select: none;
