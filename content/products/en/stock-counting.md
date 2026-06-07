@@ -1,7 +1,42 @@
 ---
 metaTitle: "Restaurant Stock Counting App | Stockifi"
-metaDescription: "Run periodic stock counts on mobile or web, then see variance against theoretical usage, all in one place."
+metaDescription: "Run periodic stock counts on mobile or web, online or offline, then see variance against theoretical usage, all in one place."
 eyebrow: "Stock counting"
 heading: "Stock counts that actually add up"
 subhead: "Count on mobile or web, online or offline, and see variance against what your recipes and sales predicted."
+heroImage: "/media/cta-bg-2.jpg"
+order: 21
+stepsTagline: "How it works"
+stepsHeading: "A faster count, start to finish"
+steps:
+  - heading: "Set up your count"
+    body: "Your count sheets follow how your shelves and stores are organised, so counting moves room by room instead of jumping around."
+  - heading: "Count on any device, even offline"
+    body: "Walk the floor with your phone or tablet. Counts keep working with no signal and sync the moment you reconnect."
+  - heading: "Close the count"
+    body: "Submit the count and Stockifi locks in your real stock on hand for the period."
+  - heading: "See the variance"
+    body: "Stockifi compares the count against what your recipes and sales expected, and shows exactly where the gap is."
+showIntegrations: false
+benefits:
+  - heading: "Counts that take less time"
+    body: "Counting on a phone, in the order your shelves run, gets the count done faster than a clipboard and a spreadsheet."
+  - heading: "Works without signal"
+    body: "A walk-in with no reception is no problem. Counts run offline and sync once you are back online."
+  - heading: "Variance you can trust"
+    body: "Because counts feed straight into variance, the number reflects your real stock, not a transcription error."
+  - heading: "One count, one source"
+    body: "Every count lives in Stockifi, so there is no spreadsheet version to reconcile later."
+faqHeading: "Questions about stock counting"
+faqs:
+  - question: "Can I count stock on my own schedule?"
+    answer: "Yes. Stockifi uses periodic stock counts with variance analysis in the app. You count when it suits you, then see actual usage against what your recipes predicted."
+  - question: "Is my phone all I need to count?"
+    answer: "Yes. Download the app and you are ready to count. No extra hardware is required."
+  - question: "Does counting work offline?"
+    answer: "Yes. Counts keep working with no signal and sync automatically the moment you are back online."
+  - question: "How long does a stock count take?"
+    answer: "Usually less than a clipboard round. The sheet follows your shelves and the math is done for you, so counts move quickly."
+ctaHeading: "See your real stock on hand"
+ctaSubhead: "Book a short call and we'll show you what Stockifi surfaces in your first 30 days."
 ---
