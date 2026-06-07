@@ -38,9 +38,9 @@ faqs:
   - question: "How long does setup take?"
     answer: "Most independents are running quickly once recipes and integrations are connected. We set the recipe baseline with you."
   - question: "What does it cost?"
-    answer: "Pricing depends on your setup, typically between €150 and €400 per month. We look at it together on a short call."
+    answer: "Pricing depends on your setup, so we look at it together on a short call to make sure Stockifi is the right fit."
   - question: "Does it work with my systems?"
-    answer: "We support 30+ accounting and 40+ POS integrations. Check the full list on the integrations page."
+    answer: "Stockifi connects with 70+ accounting and POS systems. Check the full list on the integrations page, and we can confirm yours on a quick call."
 testimonials:
   - quote: '"Stockifi showed us a 4% gap between what we bought and what we actually sold in the first month. We closed most of it by the next stock count."'
     name: "Owner"
