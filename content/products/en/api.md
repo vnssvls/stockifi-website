@@ -1,0 +1,42 @@
+---
+metaTitle: "Stockifi API for Restaurant Data | Stockifi"
+metaDescription: "Pull your Stockifi data, food cost, variance, recipes, and sales, into your own BI tools and data warehouse through a clean API, real-time or scheduled."
+eyebrow: "API"
+heading: "Your Stockifi data, in your own stack"
+subhead: "A clean API lets you pull your food cost, variance, recipes, and sales out of Stockifi and into the tools your team already runs, on your own schedule."
+heroImage: "/media/cta-bg-2.jpg"
+order: 31
+stepsTagline: "How it works"
+stepsHeading: "From Stockifi to your stack"
+steps:
+  - heading: "Connect to the API"
+    body: "Your team reaches Stockifi's data through structured endpoints, with no scraping and no manual exports."
+  - heading: "Pull the data you need"
+    body: "Food cost, variance, recipes, invoices, and sales are all available, cleanly structured."
+  - heading: "Send it where it belongs"
+    body: "Feed the data into your BI tools, your data warehouse, or your own dashboards."
+  - heading: "Keep it current"
+    body: "Sync in real time or on a schedule, so your downstream reports stay up to date."
+showIntegrations: false
+benefits:
+  - heading: "Your data, your tools"
+    body: "Use Stockifi's numbers inside the BI and reporting tools your team already knows."
+  - heading: "One source, many places"
+    body: "The same food-cost data feeds Stockifi and your wider stack, so the numbers always agree."
+  - heading: "No manual exports"
+    body: "Pull data through the API instead of copying spreadsheets between systems."
+  - heading: "Real-time or scheduled"
+    body: "Choose live access or a regular sync, depending on what your reporting needs."
+faqHeading: "Questions about the API"
+faqs:
+  - question: "What can I do with the Stockifi API?"
+    answer: "Pull your Stockifi data, food cost, variance, recipes, invoices, and sales, into your own BI tools, data warehouse, or dashboards."
+  - question: "Is the API real-time?"
+    answer: "You can access data in real time or on a schedule, depending on what your downstream reporting needs."
+  - question: "Who is the API for?"
+    answer: "Groups and operators with their own data or BI team who want Stockifi's numbers inside their existing stack."
+  - question: "Which plan includes the API?"
+    answer: "API access sits with our higher-tier and Custom plans. We'll confirm the fit for your setup on a call."
+ctaHeading: "Put your Stockifi data to work"
+ctaSubhead: "Book a short call and we'll show you what Stockifi surfaces in your first 30 days."
+---

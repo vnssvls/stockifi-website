@@ -89,16 +89,12 @@ const FAQS = [
   { id:"groups-fit", q:"Does Stockifi work for restaurant groups?", a:"Yes. Groups use Stockifi to keep recipe costs aligned across sites and to see consolidated variance and margin in one place.", cat:"Fit for your business", groups:["restaurant-groups"], general:false, order:2 },
   { id:"hotels-fit", q:"Does Stockifi work for hotels?", a:"Yes, for hotels with full food and drink operations. Breakfast-only F&B usually does not have the volume to benefit.", cat:"Fit for your business", groups:["hotels"], general:false, order:3 },
   { id:"bars-fit", q:"Does Stockifi work for bars?", a:"Yes. Bars use Stockifi to track pour cost and spot variance behind the bar.", cat:"Fit for your business", groups:["bars"], general:false, order:4 },
-  { id:"language", q:"Can my team use Stockifi in our language?", a:"Yes. Your data stays in your language and the app is in English. We run a short training so your team is comfortable from the start.", cat:"Data, security & support", groups:["home"], general:false, order:1 },
-  { id:"support", q:"What support do I get?", a:"Advanced support on every plan, dedicated customer care on Full Control, and a quarterly business review on Custom.", cat:"Data, security & support", groups:["pricing","home"], general:false, order:2 },
-  { id:"export", q:"Can I export my data from Stockifi?", a:"Yes. Your data is yours and you can export it.", cat:"Data, security & support", groups:[], general:false, order:3, verify:true },
-  { id:"sec-secure", q:"Is my data secure?", a:"", cat:"Data, security & support", groups:[], general:false, order:4, todo:true },
-  { id:"sec-gdpr", q:"Is Stockifi GDPR compliant?", a:"", cat:"Data, security & support", groups:[], general:false, order:5, todo:true },
-  { id:"sec-hosting", q:"Where is my data hosted?", a:"", cat:"Data, security & support", groups:[], general:false, order:6, todo:true },
-  { id:"sec-cancel", q:"What happens to my data if I cancel?", a:"", cat:"Data, security & support", groups:[], general:false, order:7, todo:true }
+  { id:"language", q:"Can my team use Stockifi in our language?", a:"Yes. Your data stays in your language and the app is in English. We run a short training so your team is comfortable from the start.", cat:"Data & support", groups:["home"], general:false, order:1 },
+  { id:"support", q:"What support do I get?", a:"Advanced support on every plan, dedicated customer care on Full Control, and a quarterly business review on Custom.", cat:"Data & support", groups:["pricing","home"], general:false, order:2 },
+  { id:"export", q:"Can I export my data from Stockifi?", a:"Yes. Your data is yours and you can export it.", cat:"Data & support", groups:[], general:false, order:3, verify:true }
 ];
 
-const CATEGORIES = ["Getting started","How it works","Features & reports","Integrations","Pricing & guarantee","Fit for your business","Data, security & support"];
+const CATEGORIES = ["Getting started","How it works","Features & reports","Integrations","Pricing & guarantee","Fit for your business","Data & support"];
 const PAGES = [
   {slug:"home", label:"Home"},
   {slug:"pricing", label:"Pricing"},
