@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Stockifi · Product Category Pages (draft)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#15151d; --panel:#1a1a24; --card:#1f1f2b; --fg:#f8f8fc; --muted:#a1a1b5;
+    --primary:#9565db; --primary-light:#c39df9; --secondary:#29223f; --secondary-fg:#d4ccff;
+    --border:#2a2a35; --warning:#fed052;
+    --fh:'Montserrat',system-ui,sans-serif; --fb:'Inter',system-ui,sans-serif; --radius:16px;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:#0f0f15;color:var(--fg);font-family:var(--fb);line-height:1.6;}
+  .bar{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:14px;padding:14px 28px;background:#121218;border-bottom:1px solid var(--border);}
+  .bar h1{font-family:var(--fh);font-size:15px;margin:0;font-weight:700;}
+  .note{padding:10px 28px;background:var(--panel);border-bottom:1px solid var(--border);font-size:12.5px;color:var(--muted);}
+  .note b{color:var(--primary-light);}
+  .wrap{max-width:1040px;margin:0 auto;padding:30px;}
+  .page{border:1px solid var(--border);border-radius:var(--radius);background:var(--panel);padding:40px 36px;margin-bottom:30px;}
+  .meta{font-size:11px;color:var(--muted);margin-bottom:18px;border-bottom:1px dashed var(--border);padding-bottom:12px;}
+  .meta div{margin:2px 0;}
+  .eyebrow{color:var(--primary-light);font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.7px;margin:0 0 8px;}
+  .ph1{font-family:var(--fh);font-weight:700;font-size:34px;line-height:1.1;margin:0 0 14px;}
+  .sub{color:var(--muted);font-size:17px;margin:0 0 26px;max-width:60ch;}
+  .url{font-family:var(--fb);font-size:12px;color:var(--muted);}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .fcard{display:block;text-decoration:none;color:inherit;border:1px solid var(--border);border-radius:12px;background:var(--card);padding:18px;transition:border-color .15s ease, transform .15s ease;}
+  .fcard:hover{border-color:var(--primary);transform:translateY(-2px);}
+  .fcard .ft{font-family:var(--fh);font-weight:600;font-size:16px;display:flex;align-items:center;justify-content:space-between;gap:8px;}
+  .fcard .ft .arrow{color:var(--primary-light);}
+  .fcard .fb{color:var(--muted);font-size:13.5px;margin:7px 0 0;}
+  .tag{display:inline-block;margin-top:9px;font-size:10.5px;padding:2px 8px;border-radius:999px;color:var(--warning);border:1px solid rgba(254,208,82,.4);}
+  .cta{margin-top:26px;background:var(--secondary);border-radius:var(--radius);padding:24px 28px;}
+  .cta h3{font-family:var(--fh);font-size:19px;margin:0 0 6px;}
+  .cta p{color:var(--secondary-fg);font-size:14px;margin:0 0 14px;}
+  .btn{display:inline-block;background:var(--primary);color:#fff;font-size:13.5px;font-weight:600;padding:10px 18px;border-radius:999px;text-decoration:none;}
+  @media(max-width:680px){ .grid{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+  <div class="bar"><h1>Stockifi · Product Category Pages (draft copy)</h1></div>
+  <div class="note">
+    Landing page for each product group: hero on the group's value, then cards into the feature pages in that group. <b>Template TBD</b>, so this is copy + a layout mock. Feature cards link to the <b>live feature pages on :4330</b>. URL form: <b>/product/&lt;category&gt;</b>.
+  </div>
+  <div class="wrap" id="app"></div>
+<script>
+const BASE = "http://localhost:4330/product/";
+const CATS = [
+  {
+    url:"/product/procurement",
+    metaTitle:"Supplier Cost Control for Restaurants | Stockifi",
+    metaDescription:"Read every supplier invoice, track price changes, flag overcharges, and cost your central kitchen, so your true cost of goods is always in view.",
+    eyebrow:"Procurement",
+    heading:"Know what you're paying, the moment you pay it",
+    subhead:"Stockifi reads your supplier invoices, tracks every price change, flags overcharges, and folds your central kitchen into the same picture, so your true cost of goods is always in view.",
+    features:[
+      {t:"Invoice automation", b:"Supplier invoices read line by line and synced from your accounting, with no manual entry.", slug:"invoice-automation"},
+      {t:"Supplier price tracking", b:"Every price change tracked, with overcharges and trends flagged before they reach your margin.", slug:"supplier-price-tracking"},
+      {t:"Central kitchen", b:"Your production hub costed end to end, supplying your outlets as an internal supplier.", slug:"central-kitchen"},
+      {t:"Anomaly detection", b:"Unusual prices and billing errors surfaced automatically across your invoices.", slug:"anomaly-detection", flag:"pending: live or coming soon?"}
+    ],
+    ctaHeading:"See what your suppliers are really costing you",
+    ctaSubhead:"Book a short call and we'll show you what Stockifi surfaces in your first 30 days."
+  },
+  {
+    url:"/product/inventory-management",
+    metaTitle:"Restaurant Inventory Management Software | Stockifi",
+    metaDescription:"Recipes, stock counts, transfers, and wastage in one place. Stockifi turns periodic counts into the variance and food cost you can act on.",
+    eyebrow:"Inventory management",
+    heading:"Inventory that ties your counts to real food cost",
+    subhead:"Stockifi turns your recipes, stock counts, transfers, and wastage into one clear view of what you actually used against what your recipes expected.",
+    features:[
+      {t:"Recipe building", b:"Recipes set up and costed live, so every dish carries its real margin.", slug:"recipe-building", flag:"dedupe vs recipe-costing"},
+      {t:"Stock counting", b:"Fast periodic counts on mobile or web, online or offline, feeding straight into variance.", slug:"stock-counting"},
+      {t:"Inventory transfers", b:"Stock moved between sites recorded within the count, so every location stays honest.", slug:"inventory-transfers"},
+      {t:"Wastage tracking", b:"Spoilage and trim logged and valued, so waste stops hiding in the gap.", slug:"wastage-tracking"}
+    ],
+    ctaHeading:"See your real food cost, count by count",
+    ctaSubhead:"Book a short call and we'll show you what Stockifi surfaces in your first 30 days."
+  },
+  {
+    url:"/product/business-intelligence",
+    metaTitle:"Restaurant Analytics & Reporting Software | Stockifi",
+    metaDescription:"Dashboards, variance analysis, and profit reporting built on your real invoice and POS data, so every cost and margin decision runs on facts.",
+    eyebrow:"Business intelligence",
+    heading:"Every cost decision, backed by your own numbers",
+    subhead:"Stockifi turns your invoices, sales, and counts into dashboards, variance, and profit reporting, so you can see what is working and act on it.",
+    features:[
+      {t:"Performance dashboards", b:"Cost, margin, and variance at a glance, by dish, location, and period.", slug:"performance-dashboards", flag:"confirm depth"},
+      {t:"Variance analysis", b:"Theoretical against actual consumption, showing exactly where margin leaks.", slug:"variance-analysis"},
+      {t:"Profitability insights", b:"Profit and margin by dish, location, and period, so you see what earns and what loses.", slug:"profitability"},
+      {t:"API", b:"Your Stockifi data available over an API, to flow into your own tools.", slug:"api", flag:"pending: live or roadmap?"}
+    ],
+    ctaHeading:"Put your numbers to work",
+    ctaSubhead:"Book a short call and we'll show you what Stockifi surfaces in your first 30 days."
+  }
+];
+const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const app = document.getElementById("app");
+app.innerHTML = CATS.map(c => `
+  <div class="page">
+    <div class="meta">
+      <div><b>URL</b> <span class="url">${esc(c.url)}</span></div>
+      <div><b>Meta title</b> ${esc(c.metaTitle)} <span class="url">(${c.metaTitle.length})</span></div>
+      <div><b>Meta description</b> ${esc(c.metaDescription)} <span class="url">(${c.metaDescription.length})</span></div>
+    </div>
+    <p class="eyebrow">${esc(c.eyebrow)}</p>
+    <div class="ph1">${esc(c.heading)}</div>
+    <p class="sub">${esc(c.subhead)}</p>
+    <div class="grid">
+      ${c.features.map(f => `
+        <a class="fcard" href="${BASE}${f.slug}" target="_blank" rel="noopener">
+          <div class="ft">${esc(f.t)} <span class="arrow">&rarr;</span></div>
+          <p class="fb">${esc(f.b)}</p>
+          ${f.flag ? `<span class="tag">${esc(f.flag)}</span>` : ``}
+        </a>`).join("")}
+    </div>
+    <div class="cta">
+      <h3>${esc(c.ctaHeading)}</h3>
+      <p>${esc(c.ctaSubhead)}</p>
+      <a class="btn" href="#">Book a demo</a>
+    </div>
+  </div>
+`).join("");
+</script>
+</body>
+</html>
