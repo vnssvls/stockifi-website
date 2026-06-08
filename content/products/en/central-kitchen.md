@@ -19,14 +19,14 @@ howItWorks:
   imageAlt: ""
 showIntegrations: false
 benefits:
-  - heading: "Same cost everywhere"
-    body: "Every outlet that orders an item carries the identical, accurate cost."
+  - heading: "Consistent cost"
+    body: "Every outlet that orders an item carries the same cost."
   - heading: "All orders visible"
-    body: "See what each outlet pulls from the kitchen and what it costs."
-  - heading: "Two outlets or twenty"
-    body: "Central-kitchen costs flow to each one, whatever the group's size."
-  - heading: "Group margins line up"
-    body: "Because outlet costs are true, the group's numbers reconcile on their own."
+    body: "See what each outlet pulls and what it costs."
+  - heading: "Built for groups"
+    body: "Costs flow to every outlet, whatever the group's size."
+  - heading: "Margins reconcile"
+    body: "Outlet costs are true, so the group's numbers add up."
 faqHeading: "Questions about central kitchen"
 faqs:
   - question: "What is a central kitchen in Stockifi?"
