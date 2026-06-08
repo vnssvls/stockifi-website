@@ -61,10 +61,10 @@ const { items, columns = 4, image } = Astro.props;
 
   .icg-icon { display: inline-flex; color: var(--primary); }
   .icg-text { display: flex; flex-direction: column; gap: var(--space-12); }
-  /* Reserve space for up to a 2-line title and a 3-line body so the four cards stay
-     aligned across the row even when copy length varies (titles <=3 words, body <=3 lines). */
-  .icg-title { font-size: var(--text-h5); min-height: 2lh; }
-  .icg-body { font-size: var(--text-body-sm); line-height: var(--lh-body); min-height: 3lh; }
+  /* Cards align by copy discipline, not CSS padding: titles stay on one line,
+     bodies stay to two. Keep the copy within that and the row lines up. */
+  .icg-title { font-size: var(--text-h5); }
+  .icg-body { font-size: var(--text-body-sm); line-height: var(--lh-body); }
 
   @media (min-width: 640px) { .image-card-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (min-width: 1024px) {

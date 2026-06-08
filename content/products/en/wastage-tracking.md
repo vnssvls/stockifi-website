@@ -20,13 +20,13 @@ howItWorks:
   imageAlt: ""
 benefits:
   - heading: "Cutaway included"
-    body: "The trim and offcuts most counts skip are costed as waste too."
+    body: "The trim and offcuts most counts skip are costed too."
   - heading: "Tagged by reason"
-    body: "Every loss carries an ingredient and a reason, so patterns show."
+    body: "Every loss carries an ingredient and a reason."
   - heading: "Explains the gap"
-    body: "Captured waste accounts for variance you could not explain before."
+    body: "Captured waste explains variance you missed before."
   - heading: "The costly few"
-    body: "See which items and reasons cost the most, and start there."
+    body: "See which items and reasons cost the most."
 faqHeading: "Questions about wastage tracking"
 faqs:
   - question: "What types of waste can I capture?"
