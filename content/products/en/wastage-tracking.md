@@ -10,12 +10,12 @@ showIntegrations: false
 howItWorks:
   tagline: "How it works"
   heading: "Every loss, captured and costed"
-  body: "Wastage tracking is how you see the true cost of everything a kitchen loses, from the obvious spills to the prep trim and cutaway that quietly add up. Most of it slips into the variance gap unmeasured, so putting a real cost on each loss is what turns waste into something you can act on."
+  body: "Plenty of what a kitchen loses never shows up in the numbers. A case spoils in the walk-in, trim comes off a fish before it ever plates, and that cost disappears into variance. Wastage tracking gives every one of those losses a real number, by ingredient."
   points:
-    - heading: "Captured in seconds"
-      body: "Staff mark a loss on the app the moment it happens, with no paper sheet to chase."
-    - heading: "Priced at real cost"
-      body: "Each loss carries the ingredient's current cost and feeds your variance."
+    - heading: "Marked on the spot"
+      body: "Staff mark a loss in the app the moment it happens."
+    - heading: "Priced at cost"
+      body: "Each loss takes the ingredient's current price and feeds your food cost."
   imageSide: "right"
   imageAlt: ""
 benefits:
