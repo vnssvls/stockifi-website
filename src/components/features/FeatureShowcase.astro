@@ -15,8 +15,10 @@ interface Props {
   secondary?: { label: string; href: string };
   image?: { src: string; alt: string };
   imageSide?: 'left' | 'right';
+  /** Aspect ratio for the media slot / placeholder, e.g. '16 / 10' for landscape. */
+  mediaRatio?: string;
 }
-const { tagline, heading, body, items = [], primary, secondary, image, imageSide = 'right' } = Astro.props;
+const { tagline, heading, body, items = [], primary, secondary, image, imageSide = 'right', mediaRatio = '1 / 1' } = Astro.props;
 ---
 
 <section class:list={['feature-showcase section', `fs7--${imageSide}`]}>
@@ -54,7 +56,7 @@ const { tagline, heading, body, items = [], primary, secondary, image, imageSide
     </div>
 
     <div class="fs7-media">
-      {image ? <img src={image.src} alt={image.alt} /> : <MediaPlaceholder ratio="1 / 1" />}
+      {image ? <img src={image.src} alt={image.alt} /> : <MediaPlaceholder ratio={mediaRatio} />}
     </div>
   </div>
 </section>

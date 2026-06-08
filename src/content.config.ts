@@ -69,6 +69,17 @@ const products = defineCollection({
     stepsTagline: z.string().default('How it works'),
     stepsHeading: z.string().optional(),
     steps: z.array(z.object({ heading: z.string(), body: z.string() })).default([]),
+    // How-it-works as a split showcase (Feature v7): copy + a body paragraph + up to
+    // 2 process points + a landscape media slot. When present, it replaces the step timeline.
+    howItWorks: z.object({
+      tagline: z.string().default('How it works'),
+      heading: z.string(),
+      body: z.string(),
+      points: z.array(z.object({ heading: z.string(), body: z.string() })).max(2).default([]),
+      image: z.string().optional(),
+      imageAlt: z.string().default(''),
+      imageSide: z.enum(['left', 'right']).default('right'),
+    }).optional(),
     showIntegrations: z.boolean().default(true),
     integrationsHeading: z.string().default('Works with the tools you run'),
     integrationsSubject: z.string().default('your existing systems'),

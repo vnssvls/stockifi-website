@@ -8,6 +8,7 @@ import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import PageHeaderImage from '../../components/page-headers/PageHeaderImage.astro';
 import FeatureSteps from '../../components/features/FeatureSteps.astro';
+import FeatureShowcase from '../../components/features/FeatureShowcase.astro';
 import IntegrationGrid from '../../components/integrations/IntegrationGrid.astro';
 import ImageCardGrid from '../../components/ImageCardGrid.astro';
 import FaqSplit from '../../components/faq/FaqSplit.astro';
@@ -40,15 +41,25 @@ const accountingIntegrations = integrations.filter((i) => ACCOUNTING.has(i.name)
     image={d.heroImage}
   />
 
-  <!-- 2. Feature v3 (Steps) -->
-  {d.steps.length > 0 && (
+  <!-- 2. How it works — split showcase (v7, copy + media) when present, else step timeline -->
+  {d.howItWorks ? (
+    <FeatureShowcase
+      tagline={d.howItWorks.tagline}
+      heading={d.howItWorks.heading}
+      body={d.howItWorks.body}
+      items={d.howItWorks.points}
+      image={d.howItWorks.image ? { src: d.howItWorks.image, alt: d.howItWorks.imageAlt } : undefined}
+      imageSide={d.howItWorks.imageSide}
+      mediaRatio="16 / 10"
+    />
+  ) : d.steps.length > 0 ? (
     <FeatureSteps
       tagline={d.stepsTagline}
       heading={d.stepsHeading ?? d.heading}
       cta={{ label: 'See how it works', href: '/#how-it-works' }}
       steps={d.steps}
     />
-  )}
+  ) : null}
 
   <!-- 3. Integrations block -->
   {d.showIntegrations && (
