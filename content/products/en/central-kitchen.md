@@ -3,7 +3,7 @@ metaTitle: "Central Kitchen Software for Restaurants | Stockifi"
 metaDescription: "Run a central production kitchen that supplies your outlets, with real production costs and internal orders tracked across every location."
 eyebrow: "Central kitchen"
 heading: "Supply every outlet from one kitchen"
-subhead: "Each outlet orders what it needs and pays the real production cost, so margins stay true across the group."
+subhead: "Each outlet orders what it needs and pays the real production cost. Stockifi keeps that cost accurate, so margins stay true across the whole group."
 heroImage: "/media/cta-bg-2.jpg"
 order: 12
 howItWorks:

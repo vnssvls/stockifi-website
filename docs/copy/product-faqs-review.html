@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Stockifi · Product Page FAQ Reviewer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#15151d; --panel:#1a1a24; --card:#1f1f2b; --fg:#f8f8fc; --muted:#a1a1b5;
+    --primary:#9565db; --primary-light:#c39df9; --secondary:#29223f; --secondary-fg:#d4ccff;
+    --border:#2a2a35; --warning:#fed052; --success:#6ef8a1;
+    --fh:'Montserrat',system-ui,sans-serif; --fb:'Inter',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:#0f0f15;color:var(--fg);font-family:var(--fb);line-height:1.6;}
+  .bar{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:14px 24px;background:#121218;border-bottom:1px solid var(--border);}
+  .bar h1{font-family:var(--fh);font-size:15px;margin:0;font-weight:700;}
+  .bar .jump{display:flex;gap:6px;margin-left:auto;flex-wrap:wrap;}
+  .bar .jump a{font-size:12.5px;padding:6px 12px;border-radius:999px;border:1px solid var(--border);background:transparent;color:var(--muted);text-decoration:none;}
+  .bar .jump a:hover{border-color:var(--primary);color:var(--primary-light);}
+  .note{padding:9px 24px;background:var(--panel);border-bottom:1px solid var(--border);font-size:12.5px;color:var(--muted);}
+  .note b{color:var(--primary-light);}
+  .wrap{max-width:920px;margin:0 auto;padding:24px 24px 80px;}
+  .divider{font-family:var(--fh);font-weight:700;font-size:13px;color:var(--primary-light);text-transform:uppercase;letter-spacing:.6px;margin:34px 0 4px;padding-bottom:7px;border-bottom:1px solid var(--border);scroll-margin-top:70px;}
+  .divider .n{font-weight:500;color:var(--muted);text-transform:none;letter-spacing:0;font-size:11.5px;margin-left:8px;}
+  .cat-h{font-family:var(--fh);font-weight:700;font-size:17px;margin:24px 0 2px;display:flex;align-items:baseline;gap:10px;}
+  .cat-h .slug{font-size:11px;color:var(--muted);font-weight:500;}
+  .cat-h .n{font-size:11.5px;color:var(--muted);font-weight:500;margin-left:auto;}
+  .q{border:1px solid var(--border);border-radius:12px;padding:14px 16px;margin:10px 0;background:var(--panel);}
+  .q .ques{font-family:var(--fh);font-weight:600;font-size:15px;}
+  .q .ans{margin:7px 0 0;font-size:14px;color:#d7d7e0;}
+  .foot{margin-top:40px;font-size:12px;color:var(--muted);text-align:center;}
+</style>
+</head>
+<body>
+  <div class="bar">
+    <h1>Stockifi · Product Page FAQ Reviewer</h1>
+    <nav class="jump">
+      <a href="#procurement">Procurement</a>
+      <a href="#inventory">Inventory mgmt</a>
+      <a href="#bi">Business intelligence</a>
+    </nav>
+  </div>
+  <div class="note">All <b>49 FAQs</b> across the <b>12 product pages</b>, grouped by your three menu categories. Read each group, then tell me page by page what to change (<b>VERBATIM</b> / <b>FIX</b> / <b>?</b>). Live pages: <b>localhost:4330/product/&lt;slug&gt;</b>.</div>
+  <div class="wrap">
+
+    <div class="divider" id="procurement">Procurement — Invoices &amp; Suppliers <span class="n">4 pages · 16 FAQs</span></div>
+
+    <div class="cat-h">Invoice automation <span class="slug">/product/invoice-automation</span><span class="n">4</span></div>
+    <div class="q"><div class="ques">Do I need to check the invoices Stockifi reads?</div><p class="ans">Stockifi reads each line for you and flags anything that looks off, like an overcharge or a double-bill, so you review the exceptions rather than every invoice.</p></div>
+    <div class="q"><div class="ques">What happens if an invoice never reaches my accounting?</div><p class="ans">Stockifi reads what lands in your accounting, so an invoice that never gets there will not be captured. Routing supplier invoices through your accounting keeps the picture complete.</p></div>
+    <div class="q"><div class="ques">Which accounting systems does this work with?</div><p class="ans">Stockifi connects with the accounting systems you already use. Tell us what you run and we will confirm it on a quick call.</p></div>
+    <div class="q"><div class="ques">Does it work alongside my current setup?</div><p class="ans">Yes. Stockifi reads the data and leaves your accounting software exactly as it is.</p></div>
+
+    <div class="cat-h">Supplier price tracking <span class="slug">/product/supplier-price-tracking</span><span class="n">4</span></div>
+    <div class="q"><div class="ques">How does Stockifi tell a normal price rise from an overcharge?</div><p class="ans">It checks each charge against the ingredient's own price history. A rise that fits the trend passes without fuss. One that jumps above it is flagged for you to query.</p></div>
+    <div class="q"><div class="ques">How far back does the price history go?</div><p class="ans">The history builds from the first invoice Stockifi reads and grows with every invoice after, so the record gets richer the longer you run it.</p></div>
+    <div class="q"><div class="ques">Does this work across several locations?</div><p class="ans">Yes. For a group, every site's invoices feed one price history, so a rise from a shared supplier is caught once and re-costs every location.</p></div>
+    <div class="q"><div class="ques">Which accounting systems does this work with?</div><p class="ans">Stockifi connects with the accounting systems you already use. Tell us what you run and we will confirm it on a quick call.</p></div>
+
+    <div class="cat-h">Anomaly detection <span class="slug">/product/anomaly-detection</span><span class="n">4</span></div>
+    <div class="q"><div class="ques">Will Stockifi flag a normal price rise as an error?</div><p class="ans">No. A rise that fits an ingredient's usual trend is treated as a price change. Stockifi flags the charges that jump above what its own history would expect.</p></div>
+    <div class="q"><div class="ques">What happens after an anomaly is flagged?</div><p class="ans">The invoice is surfaced for you to review, with the charge and what it was checked against, so you can query the supplier while it is still recent.</p></div>
+    <div class="q"><div class="ques">How is this different from supplier price tracking?</div><p class="ans">Price tracking follows how prices move over time. Anomaly detection flags the individual invoices that look wrong, so you can query them.</p></div>
+    <div class="q"><div class="ques">Does Stockifi need price history before it can catch errors?</div><p class="ans">It starts checking against each ingredient's prices as invoices come in, and its flags get sharper as that history builds.</p></div>
+
+    <div class="cat-h">Central kitchen <span class="slug">/product/central-kitchen</span><span class="n">4</span></div>
+    <div class="q"><div class="ques">What is a central kitchen in Stockifi?</div><p class="ans">It is your own production hub that supplies your outlets. Stockifi treats it as an internal supplier, so outlets order from it and its real costs flow into their food cost.</p></div>
+    <div class="q"><div class="ques">How does Stockifi cost what the central kitchen makes?</div><p class="ans">The central kitchen buys its ingredients from outside suppliers, Stockifi reads those invoices, and the cost of ingredients plus prep becomes the price each outlet pays.</p></div>
+    <div class="q"><div class="ques">Does this handle ordering from external suppliers?</div><p class="ans">No. Stockifi covers internal supply from your own central kitchen to your outlets. It does not place orders with outside suppliers.</p></div>
+    <div class="q"><div class="ques">Can a central-kitchen item be built from sub-recipes?</div><p class="ans">Yes. A central-kitchen item can be built from sub-recipes and prebatches, so a prep that goes into another prep still carries its real cost.</p></div>
+
+    <div class="divider" id="inventory">Inventory management <span class="n">4 pages · 17 FAQs</span></div>
+
+    <div class="cat-h">Recipe building <span class="slug">/product/recipe-building</span><span class="n">4</span></div>
+    <div class="q"><div class="ques">Do you set up our recipes for us?</div><p class="ans">Yes. You share your recipes and we build them in, with ingredient costs tracked from the start. The manual setup is handled for you.</p></div>
+    <div class="q"><div class="ques">How are ingredient costs attached to a recipe?</div><p class="ans">Each ingredient in a recipe links to its real purchase price from your invoices, so a recipe's cost is the sum of what those ingredients currently cost you.</p></div>
+    <div class="q"><div class="ques">Do recipes account for prep loss and yield?</div><p class="ans">Yes. You set how much of an ingredient a recipe actually uses, so the trim on something like a whole fish or a primal cut is costed into every portion. That prep loss, or cutaway, lands in your dish cost rather than hiding in variance.</p></div>
+    <div class="q"><div class="ques">Can I use one recipe library across all my locations?</div><p class="ans">Yes. Your recipes live in one library shared across locations, so a dish is built and costed the same way everywhere, and an update reaches every site.</p></div>
+
+    <div class="cat-h">Stock counting <span class="slug">/product/stock-counting</span><span class="n">4</span></div>
+    <div class="q"><div class="ques">Can I count stock on my own schedule?</div><p class="ans">Yes. Stockifi uses periodic stock counts with variance analysis in the app. You count when it suits you, then see actual usage against what your recipes predicted.</p></div>
+    <div class="q"><div class="ques">How often should I count stock?</div><p class="ans">Most operators count at period close, monthly for many. Stockifi fits whatever periodic cycle you run and shows variance for that period.</p></div>
+    <div class="q"><div class="ques">Do I need a barcode scanner or special hardware?</div><p class="ans">No. Counting runs on the phone or tablet your team already carries, with nothing extra to buy.</p></div>
+    <div class="q"><div class="ques">Can my team split a count between them?</div><p class="ans">Yes. The count can be split across your team and their devices, area by area, and Stockifi brings it together into one count for the period.</p></div>
+
+    <div class="cat-h">Inventory transfers <span class="slug">/product/inventory-transfers</span><span class="n">4</span></div>
+    <div class="q"><div class="ques">Are transfers tracked in real time?</div><p class="ans">Transfers are accounted for within the count period rather than tracked live, in line with how Stockifi handles inventory: periodic counts with variance analysis.</p></div>
+    <div class="q"><div class="ques">What value is a transfer made at?</div><p class="ans">At the real cost of the stock that moved, so the sending site's cost goes down and the receiving site's goes up by the same amount.</p></div>
+    <div class="q"><div class="ques">What happens if a transfer is missed?</div><p class="ans">The stock shows as used at the site it left and as surplus at the one it reached, so both sites' variance is off until you make the move in Stockifi.</p></div>
+    <div class="q"><div class="ques">Do transfers need a POS or accounting connection?</div><p class="ans">No. Transfers happen in the app against your count, so they work wherever you run stock counts, with no extra integration.</p></div>
+
+    <div class="cat-h">Wastage tracking <span class="slug">/product/wastage-tracking</span><span class="n">5</span></div>
+    <div class="q"><div class="ques">What types of waste can I capture?</div><p class="ans">Spoilage, cooking mistakes, and over-production. Each entry is tagged by ingredient and reason, so the cost lands in the right place.</p></div>
+    <div class="q"><div class="ques">What about prep trim and cutaway, like the off-cuts from a whole fish?</div><p class="ans">That is handled by recipe yield rather than waste capture. You set how much of an ingredient a recipe actually uses, and Stockifi costs the trim into every portion for you. Wastage capture is for losses outside the recipe, like spoilage or a dropped tray.</p></div>
+    <div class="q"><div class="ques">How is wastage tracking different from variance analysis?</div><p class="ans">Variance is the whole gap between expected and actual usage. Wastage is one cause of it. Capturing waste moves that loss out of the unexplained gap and into a number you can act on.</p></div>
+    <div class="q"><div class="ques">Does capturing waste slow the kitchen down?</div><p class="ans">No. An entry takes seconds on the app, so the line keeps moving and the loss still gets captured.</p></div>
+    <div class="q"><div class="ques">Do I have to capture every item for it to be worth it?</div><p class="ans">No. Even capturing your highest-cost items, like proteins, surfaces where most of the money goes, and you can widen it from there.</p></div>
+
+    <div class="divider" id="bi">Business intelligence <span class="n">4 pages · 16 FAQs</span></div>
+
+    <div class="cat-h">Performance dashboards <span class="slug">/product/performance-dashboards</span><span class="n">4</span></div>
+    <div class="q"><div class="ques">What is COGS development?</div><p class="ans">COGS development is how your cost of goods sold moves over time. Stockifi tracks it alongside food cost and margin, so you see the trend rather than a single month.</p></div>
+    <div class="q"><div class="ques">How current are the numbers? Is this real time?</div><p class="ans">Your invoices and sales feed in continuously, so cost and margin reflect your latest data. Stock figures follow your periodic counts rather than live tracking, in line with how Stockifi handles inventory.</p></div>
+    <div class="q"><div class="ques">Can a head office see every location in one place?</div><p class="ans">Yes. Groups get a consolidated view across locations, and you can drill into any single site or dish.</p></div>
+    <div class="q"><div class="ques">What if I haven't connected all my data yet?</div><p class="ans">You still get value from what is connected. The picture sharpens as your POS and accounting come online, and Stockifi works with whatever you have running.</p></div>
+
+    <div class="cat-h">Variance analysis <span class="slug">/product/variance-analysis</span><span class="n">4</span></div>
+    <div class="q"><div class="ques">Why is there always some variance?</div><p class="ans">Some gap is normal. Portioning, trim, and small losses happen in any kitchen. Stockifi shows you the size of the gap and what is driving it, so you act on the part that is costing you rather than chase a perfect number.</p></div>
+    <div class="q"><div class="ques">What do I need in place for variance to work?</div><p class="ans">Four things Stockifi already brings together: your recipes, your POS sales, your stock counts, and your supplier invoices. With those connected, the gap is worked out for every item.</p></div>
+    <div class="q"><div class="ques">How accurate is the variance?</div><p class="ans">It is as accurate as your recipes, counts, and invoices, all of which Stockifi keeps current, so the number reflects real usage rather than a transcription error.</p></div>
+    <div class="q"><div class="ques">How often do I see variance?</div><p class="ans">It is worked out for each count period, so you see the gap every time you close a count rather than waiting for the year-end picture.</p></div>
+
+    <div class="cat-h">Profitability Insights <span class="slug">/product/profitability</span><span class="n">4</span></div>
+    <div class="q"><div class="ques">Does this include labour and overheads?</div><p class="ans">It focuses on food cost: the ingredient margin and contribution of each dish. Labour, rent, and overheads sit outside it, so profitability shows where your menu and food cost stand, rather than a full profit and loss.</p></div>
+    <div class="q"><div class="ques">What is contribution margin?</div><p class="ans">Contribution margin is what a dish brings in after its own ingredient cost. Stockifi shows it per dish, so you can see which items carry the kitchen and which only look profitable.</p></div>
+    <div class="q"><div class="ques">Does profitability need a POS connection?</div><p class="ans">Yes. Profit needs your sales, so a POS connection lets Stockifi set what sold, and at what price, against each dish's live cost.</p></div>
+    <div class="q"><div class="ques">How often is profit updated?</div><p class="ans">Profit moves as your costs and sales update, so a dish that slips into the red when an ingredient price climbs shows up in the current period.</p></div>
+
+    <div class="cat-h">API <span class="slug">/product/api</span><span class="n">4</span></div>
+    <div class="q"><div class="ques">Do I need a developer to use the API?</div><p class="ans">Yes. It is built for a team that works with structured data, your own developers or BI analysts. If you would rather not build anything, Stockifi's own dashboards cover the reporting most operators need.</p></div>
+    <div class="q"><div class="ques">Can I push data into Stockifi through the API, or only pull it out?</div><p class="ans">The API is for pulling your Stockifi data out into your own tools. Bringing data in, like sales and invoices, is handled by Stockifi's POS and accounting integrations.</p></div>
+    <div class="q"><div class="ques">How current is the data the API returns?</div><p class="ans">As current as Stockifi itself. The numbers reflect your latest invoices, sales, and counts, whether you pull in real time or on a schedule.</p></div>
+    <div class="q"><div class="ques">Which plan includes the API?</div><p class="ans">API access sits with our higher-tier and Custom plans. We'll confirm the fit for your setup on a call.</p></div>
+
+    <div class="foot">12 product pages · 49 FAQs · generated for the Jun 9 morning review</div>
+  </div>
+</body>
+</html>

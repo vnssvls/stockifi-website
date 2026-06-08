@@ -1,9 +1,9 @@
 ---
 metaTitle: "Invoice Anomaly Detection for Restaurants | Stockifi"
-metaDescription: "Stockifi checks every supplier invoice and flags overcharges, double-bills, and unusual price jumps, so billing errors never quietly cost you."
+metaDescription: "Stockifi checks every supplier invoice and flags overcharges, double-bills, and unusual price jumps, so billing errors never slip through."
 eyebrow: "Anomaly detection"
 heading: "Stop overpaying your suppliers"
-subhead: "Stockifi checks every invoice line for you and flags the charges worth a second look, so billing errors get caught while you can still claw them back."
+subhead: "An overcharge looks just like every other line on the invoice. Stockifi checks each one for you and flags what's worth a second look, so billing errors get caught while you can still claw them back."
 heroImage: "/media/cta-bg-2.jpg"
 order: 13
 howItWorks:
