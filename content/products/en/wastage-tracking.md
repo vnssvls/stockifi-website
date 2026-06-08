@@ -10,7 +10,7 @@ showIntegrations: false
 howItWorks:
   tagline: "How it works"
   heading: "Every loss, captured and costed"
-  body: "Plenty of what a kitchen loses never shows up in the numbers. A case spoils in the walk-in, trim comes off a fish before it ever plates, and that cost disappears into variance. Wastage tracking gives every one of those losses a real number, by ingredient."
+  body: "Plenty of what a kitchen loses never shows up in the numbers. A case spoils in the walk-in, trim comes off a cut of beef before it reaches the plate, and that cost disappears into variance. Wastage tracking gives every one of those losses a real number, by ingredient."
   points:
     - heading: "Marked on the spot"
       body: "Staff mark a loss in the app the moment it happens."
