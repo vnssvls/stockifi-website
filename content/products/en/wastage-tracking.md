@@ -10,7 +10,7 @@ showIntegrations: false
 howItWorks:
   tagline: "How it works"
   heading: "Every loss, captured and costed"
-  body: "Staff mark spoilage, prep trim, and mistakes on the app as they happen. The trim counts as much as the bin: a whole fish or a primal cut rarely lands fully in the dish, and Stockifi accounts for that cutaway as the real cost it is. Every loss is priced at the ingredient's current cost and folded into your food cost, so you can see exactly what waste is costing you."
+  body: "Wastage tracking is how you see the true cost of everything a kitchen loses, from the obvious spills to the prep trim and cutaway that quietly add up. Most of it slips into the variance gap unmeasured, so putting a real cost on each loss is what turns waste into something you can act on."
   points:
     - heading: "Captured in seconds"
       body: "Staff mark a loss on the app the moment it happens, with no paper sheet to chase."
