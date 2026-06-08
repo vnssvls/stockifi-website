@@ -7,12 +7,16 @@
 // Logos shuffled at build time. A controller (script below) flips 2-3 random pills at
 // a time (vertical rotateX, swap-at-edge) to cycle the full list through the visible
 // slots — IntersectionObserver-gated, paused offscreen / on hidden tab, reduced-motion safe.
+import Button from '../Button.astro';
+
 interface Item { name: string; logo: string; round?: boolean; pad?: boolean }
 interface Props {
   eyebrow?: string;
   heading: string;
   subhead?: string;
   items: Item[];
+  /** Optional CTA below the copy (e.g. "View all integrations"). */
+  cta?: { label: string; href: string };
   /** Optionally cap how many pills render (default: all, shuffled). */
   count?: number;
   /** Reversed layout: copy on the left, cloud on the right (bleeds off the right edge). */
@@ -20,7 +24,7 @@ interface Props {
   /** Wide layout: full-width — cloud bleeds off the left edge, copy + 80px gutter right. */
   wide?: boolean;
 }
-const { eyebrow, heading, subhead, items, count, reverse = false, wide = false } = Astro.props;
+const { eyebrow, heading, subhead, items, cta, count, reverse = false, wide = false } = Astro.props;
 
 // Randomize at build time (placeholder until the cycling flip animation lands).
 const shuffled = [...items].sort(() => Math.random() - 0.5);
@@ -37,6 +41,14 @@ const rows = Array.from({ length: ROW_COUNT }, (_, r) => visible.filter((_, i) =
       {eyebrow && <p class="tagline">{eyebrow}</p>}
       <h2 class="ip-heading">{heading}</h2>
       {subhead && <p class="ip-subhead text-muted">{subhead}</p>}
+      {cta && (
+        <div class="ip-cta">
+          <Button variant="secondary" href={cta.href}>
+            {cta.label}
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+          </Button>
+        </div>
+      )}
     </div>
 
     <div class="ip-cloud">
@@ -139,6 +151,7 @@ const rows = Array.from({ length: ROW_COUNT }, (_, r) => visible.filter((_, i) =
 
   .ip-heading { max-width: 24ch; }
   .ip-subhead { margin-top: var(--space-16); max-width: 44ch; font-size: var(--text-body-lg); }
+  .ip-cta { margin-top: var(--space-32); }
 
   @media (min-width: 1024px) {
     .ip-grid { grid-template-columns: 1fr 1fr; align-items: center; gap: var(--space-32); }

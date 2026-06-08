@@ -6,40 +6,44 @@
 import Logo from './Logo.astro';
 import Button from './Button.astro';
 import LocaleSwitcher from './LocaleSwitcher.astro';
+import navIcons from '../data/nav-icons.json';
 
-// Mega menus = grouped columns (Supy-style, Figma 151:600). Grouping is a nav/UX choice,
-// NOT the page/URL structure — sub-page hrefs are PROVISIONAL (most pages TBD; finalize in
-// the page-build phase). See memory: project_website_product_taxonomy.
+// Mega menus = grouped columns. Grouping is a nav/UX choice, NOT the page/URL structure.
+// Each item carries an icon (key into nav-icons.json, Iconsax linear, currentColor) + a
+// short description. Icons + descriptions are a first pass — easy to swap. See memory:
+// project_website_product_taxonomy.
 const productGroups = [
-  { title: 'Invoices & Suppliers', items: [
-    { label: 'Invoice automation', href: '/product/invoice-automation' },
-    { label: 'Supplier price tracking', href: '/product/supplier-price-tracking' },
-    { label: 'Central kitchen', href: '/product/central-kitchen' },
+  { title: 'Procurement', items: [
+    { label: 'Invoice automation', href: '/product/invoice-automation', icon: 'receipt-2', desc: 'Supplier invoices read line by line, automatically.' },
+    { label: 'Supplier price tracking', href: '/product/supplier-price-tracking', icon: 'percentage-circle', desc: 'Every price change caught the day it lands.' },
+    { label: 'Central kitchen', href: '/product/central-kitchen', icon: 'building', desc: 'Cost production and supply your own outlets.' },
+    { label: 'Anomaly detection', href: '/product/anomaly-detection', icon: 'fluent-wand', desc: 'Flags overcharges and odd line items for review.' },
   ] },
   { title: 'Inventory Management', items: [
-    { label: 'Recipe building', href: '/product/recipe-building' },
-    { label: 'Stock counting', href: '/product/stock-counting' },
-    { label: 'Inventory transfers', href: '/product/inventory-transfers' },
-    { label: 'Wastage tracking', href: '/product/wastage-tracking' },
-    { label: 'Profitability', href: '/product/profitability' },
+    { label: 'Recipe building', href: '/product/recipe-building', icon: 'book', desc: 'Cost every recipe from live ingredient prices.' },
+    { label: 'Stock counting', href: '/product/stock-counting', icon: 'box', desc: 'Count stock on mobile or web, online or off.' },
+    { label: 'Inventory transfers', href: '/product/inventory-transfers', icon: 'convert-3d-cube', desc: 'Track stock moved between your locations.' },
+    { label: 'Wastage tracking', href: '/product/wastage-tracking', icon: 'trash', desc: 'Log waste and see what it costs you.' },
   ] },
-  { title: 'Integrations', items: [
-    { label: 'POS systems', href: '/integrations' },
-    { label: 'Accounting', href: '/integrations' },
+  { title: 'Business Intelligence', items: [
+    { label: 'Performance Dashboards', href: '/product/performance-dashboards', icon: 'element-4', desc: 'Food cost and margin across every location.' },
+    { label: 'Variance analysis', href: '/product/variance-analysis', icon: 'presention-chart', desc: 'Theoretical usage against what actually sold.' },
+    { label: 'Profitability insights', href: '/product/profitability', icon: 'trend-up', desc: 'See the live margin of every menu item.' },
+    { label: 'API', href: '/product/api', icon: 'code', desc: 'Push your data wherever you need it.' },
   ] },
 ];
 const solutionsGroups = [
-  { title: 'By segment', items: [
-    { label: 'Independent restaurants', href: '/solutions/independent-restaurants' },
-    { label: 'Restaurant groups', href: '/solutions/restaurant-groups' },
-    { label: 'Hotels', href: '/solutions/hotels' },
-    { label: 'Bars', href: '/solutions/bars' },
+  { title: 'By Type', items: [
+    { label: 'Independent restaurants', href: '/solutions/independent-restaurants', icon: 'fluent-store', desc: 'Tighter food cost without the spreadsheets.' },
+    { label: 'Restaurant groups', href: '/solutions/restaurant-groups', icon: 'buildings-2', desc: 'Consolidated cost visibility across sites.' },
+    { label: 'Hotels with F&B', href: '/solutions/hotels', icon: 'reserve', desc: 'Control across full food and beverage.' },
+    { label: 'Bars', href: '/solutions/bars', icon: 'cocktail', desc: 'Pour cost and variance behind the bar.' },
   ] },
   { title: 'By team', items: [
-    { label: 'Management', href: '/solutions/management' },
-    { label: 'Operations', href: '/solutions/operations' },
-    { label: 'Kitchen', href: '/solutions/kitchen' },
-    { label: 'Finance', href: '/solutions/finance' },
+    { label: 'Management', href: '/solutions/management', icon: 'briefcase', desc: 'Margin visibility across the whole operation.' },
+    { label: 'Operations', href: '/solutions/operations', icon: 'setting-2', desc: 'Spot waste and price drift early.' },
+    { label: 'Kitchen', href: '/solutions/kitchen', icon: 'chef-hat', desc: 'Live dish costs for sharper menu calls.' },
+    { label: 'Finance', href: '/solutions/finance', icon: 'fluent-finance', desc: 'COGS you can trust at month-end.' },
   ] },
 ];
 const resourcesItems = [
@@ -69,7 +73,17 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
               <div class="mega-group">
                 <p class="mega-group-title">{g.title}</p>
                 <ul>
-                  {g.items.map((i) => (<li><a href={i.href}>{i.label}</a></li>))}
+                  {g.items.map((i) => (
+                    <li>
+                      <a class="mega-item" href={i.href}>
+                        <span class="mega-ico" aria-hidden="true" set:html={navIcons[i.icon]}></span>
+                        <span class="mega-item-body">
+                          <span class="mega-item-title">{i.label}</span>
+                          <span class="mega-item-desc">{i.desc}</span>
+                        </span>
+                      </a>
+                    </li>
+                  ))}
                 </ul>
               </div>
             ))}
@@ -86,7 +100,17 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
               <div class="mega-group">
                 <p class="mega-group-title">{g.title}</p>
                 <ul>
-                  {g.items.map((i) => (<li><a href={i.href}>{i.label}</a></li>))}
+                  {g.items.map((i) => (
+                    <li>
+                      <a class="mega-item" href={i.href}>
+                        <span class="mega-ico" aria-hidden="true" set:html={navIcons[i.icon]}></span>
+                        <span class="mega-item-body">
+                          <span class="mega-item-title">{i.label}</span>
+                          <span class="mega-item-desc">{i.desc}</span>
+                        </span>
+                      </a>
+                    </li>
+                  ))}
                 </ul>
               </div>
             ))}
@@ -145,7 +169,12 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
             {productGroups.map((g) => (
               <Fragment>
                 <p class="m-sub-title">{g.title}</p>
-                {g.items.map((i) => (<a class="m-link" href={i.href}>{i.label}</a>))}
+                {g.items.map((i) => (
+                  <a class="m-link" href={i.href}>
+                    <span class="m-link-ico" aria-hidden="true" set:html={navIcons[i.icon]}></span>
+                    {i.label}
+                  </a>
+                ))}
               </Fragment>
             ))}
           </div>
@@ -160,7 +189,12 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
             {solutionsGroups.map((g) => (
               <Fragment>
                 <p class="m-sub-title">{g.title}</p>
-                {g.items.map((i) => (<a class="m-link" href={i.href}>{i.label}</a>))}
+                {g.items.map((i) => (
+                  <a class="m-link" href={i.href}>
+                    <span class="m-link-ico" aria-hidden="true" set:html={navIcons[i.icon]}></span>
+                    {i.label}
+                  </a>
+                ))}
               </Fragment>
             ))}
           </div>
@@ -207,6 +241,7 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
   /* The pill itself — capped width, fully rounded, translucent with a backdrop
      blur so page content frosts behind it as you scroll. */
   .nav-bar {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -214,9 +249,21 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
     max-width: var(--container-max);
     margin-inline: auto;
     padding: var(--space-12) var(--space-24);
+  }
+  /* The pill's glass lives on a pseudo-element, NOT the .nav-bar box itself. If .nav-bar
+     carried backdrop-filter it would be a "backdrop root", and the dropdown panels nested
+     inside it would have nothing for their own backdrop-filter to sample (they rendered
+     flat while the pill blurred). With the blur on ::before, .nav-bar is a plain ancestor,
+     so the panels blur the page correctly. z-index:-1 sits it behind the pill content;
+     the sticky header's stacking context keeps it above the page. */
+  .nav-bar::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: var(--radius-full);
     background: color-mix(in srgb, var(--background) 80%, transparent);
     border: 1px solid var(--border);
-    border-radius: var(--radius-full);
     box-shadow: var(--shadow-md);
     backdrop-filter: blur(12px) saturate(140%);
     -webkit-backdrop-filter: blur(12px) saturate(140%);
@@ -264,10 +311,16 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
     left: 0;
     z-index: 60;
     padding: var(--space-12);
-    background: var(--popover);
+    /* Frosted floating glass, same character as the pill (now that the panel's
+       backdrop-filter actually samples the page — see .nav-bar::before). 86% fill + a
+       strong blur frosts the content behind into an unreadable soft wash without going
+       fully solid. */
+    background: color-mix(in srgb, var(--popover) 86%, transparent);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-lg);
+    backdrop-filter: blur(20px) saturate(150%);
+    -webkit-backdrop-filter: blur(20px) saturate(150%);
     opacity: 0;
     visibility: hidden;
     transform: translateY(-6px);
@@ -322,41 +375,27 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
     font-weight: var(--fw-semibold);
   }
 
-  .mega { min-width: 540px; }
-  .mega-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-4) var(--space-16);
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  .mega-link {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-4);
-    padding: var(--space-12);
-    border-radius: var(--radius-md);
-  }
-  .mega-link:hover { background: var(--accent); text-decoration: none; }
-  .mega-title { color: var(--popover-foreground); font-weight: var(--fw-semibold); font-size: var(--text-body-sm); }
-  .mega-desc { color: var(--muted-foreground); font-size: var(--text-caption); line-height: var(--lh-body-sm); }
-
+  /* Dark, icon-tile mega menu (drawn from the Duna/Cohere/ToDesktop dark references —
+     deliberately not Supy's light bare-label grid). Each item = a rounded icon tile that
+     lifts to purple on hover, a title, and a one-line description. */
+  .mega { padding: var(--space-16); }
   .mega-2col {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-32);
-    min-width: 460px;
+    grid-template-columns: repeat(2, minmax(248px, 1fr));
+    gap: var(--space-16) var(--space-24);
+    min-width: 560px;
   }
   .mega-3col {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: var(--space-32);
-    min-width: 640px;
+    grid-template-columns: repeat(3, minmax(248px, 1fr));
+    gap: var(--space-16) var(--space-24);
+    min-width: 820px;
   }
   .mega-group ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: var(--space-4); }
   .mega-group-title {
-    margin-bottom: var(--space-8);
+    margin: 0 0 var(--space-12);
+    padding: 0 var(--space-12) var(--space-8);
+    border-bottom: 1px solid var(--border);
     font-family: var(--font-heading);
     font-size: var(--text-caption);
     font-weight: var(--fw-semibold);
@@ -364,14 +403,32 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
     text-transform: uppercase;
     color: var(--muted-foreground);
   }
-  .mega-group a {
-    display: block;
+
+  .mega-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-12);
     padding: var(--space-8) var(--space-12);
-    border-radius: var(--radius-sm);
-    color: var(--popover-foreground);
-    font-size: var(--text-body-sm);
+    border-radius: var(--radius-md);
   }
-  .mega-group a:hover { background: var(--accent); text-decoration: none; }
+  .mega-item:hover { background: var(--accent); text-decoration: none; }
+  .mega-ico {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-sm);
+    background: color-mix(in srgb, var(--foreground) 6%, transparent);
+    color: var(--foreground);
+    transition: background-color 0.18s ease, color 0.18s ease;
+  }
+  .mega-ico :global(svg) { display: block; width: 20px; height: 20px; }
+  /* Icon + tile stay as-is on hover (white icon); only the row background tints. */
+  .mega-item-body { display: flex; flex-direction: column; gap: var(--space-4); min-width: 0; }
+  .mega-item-title { color: var(--popover-foreground); font-weight: var(--fw-semibold); font-size: var(--text-body-sm); line-height: 1.3; }
+  .mega-item-desc { color: var(--muted-foreground); font-size: var(--text-caption); line-height: var(--lh-body-sm); }
 
   /* ── Hamburger ─────────────────────────────────────────────────────── */
   .nav-burger {
@@ -439,6 +496,9 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
     font-size: var(--text-body-lg);
   }
   .m-link:hover { color: var(--foreground); text-decoration: none; }
+  .m-link-ico { display: inline-flex; flex: none; color: var(--muted-foreground); }
+  .m-link-ico :global(svg) { display: block; width: 20px; height: 20px; }
+  .m-link:hover .m-link-ico { color: var(--foreground); }
   .m-sub-title {
     margin-top: var(--space-12);
     font-family: var(--font-heading);

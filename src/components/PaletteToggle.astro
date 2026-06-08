@@ -1,0 +1,82 @@
+---
+// TEMP A/B tool: floating bottom-right button to compare the current palette against the
+// "deep" proposal (tokens.css :root[data-palette="deep"]). Staging/localhost only — hidden
+// by default and only revealed off-production, so it never ships to live. Persists the
+// choice in localStorage and honours ?palette=deep. DELETE this + the deep block in
+// tokens.css once a palette is chosen.
+---
+
+<div class="palette-toggle" data-palette-toggle hidden>
+  <button type="button" class="pt-btn" aria-pressed="false">
+    <span class="pt-dot" aria-hidden="true"></span>
+    <span class="pt-label">Palette: Current (A)</span>
+  </button>
+</div>
+
+<style>
+  .palette-toggle {
+    position: fixed;
+    right: var(--space-16);
+    bottom: var(--space-16);
+    z-index: 80;
+  }
+  .palette-toggle[hidden] { display: none; }
+  .pt-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-8);
+    padding: var(--space-8) var(--space-16);
+    background: color-mix(in srgb, var(--popover) 88%, transparent);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-full);
+    box-shadow: var(--shadow-lg);
+    backdrop-filter: blur(12px) saturate(140%);
+    -webkit-backdrop-filter: blur(12px) saturate(140%);
+    color: var(--foreground);
+    font-family: var(--font-body);
+    font-size: var(--text-caption);
+    font-weight: var(--fw-semibold);
+    cursor: pointer;
+  }
+  .pt-dot {
+    width: 10px;
+    height: 10px;
+    flex: none;
+    border-radius: var(--radius-full);
+    background: var(--muted-foreground);
+  }
+  .pt-btn[aria-pressed='true'] .pt-dot { background: var(--primary); }
+</style>
+
+<script>
+  (() => {
+    const el = document.querySelector<HTMLElement>('[data-palette-toggle]');
+    if (!el) return;
+    // Never reveal or apply on production.
+    if (['www.stockifi.io', 'stockifi.io'].includes(location.hostname)) return;
+
+    const root = document.documentElement;
+    const btn = el.querySelector<HTMLButtonElement>('.pt-btn');
+    const label = el.querySelector<HTMLElement>('.pt-label');
+    const KEY = 'sf-palette';
+    const urlP = new URLSearchParams(location.search).get('palette');
+    let cur = urlP ?? localStorage.getItem(KEY) ?? '';
+
+    const apply = (v: string) => {
+      if (v === 'deep') root.setAttribute('data-palette', 'deep');
+      else root.removeAttribute('data-palette');
+      btn?.setAttribute('aria-pressed', String(v === 'deep'));
+      if (label) label.textContent = v === 'deep' ? 'Palette: Deep (B)' : 'Palette: Current (A)';
+    };
+
+    apply(cur);
+    try { localStorage.setItem(KEY, cur); } catch { /* ignore */ }
+    el.hidden = false;
+
+    btn?.addEventListener('click', () => {
+      cur = cur === 'deep' ? '' : 'deep';
+      apply(cur);
+      try { localStorage.setItem(KEY, cur); } catch { /* ignore */ }
+    });
+  })();
+</script>

@@ -2,9 +2,10 @@
 // Feature Layout 1 — interactive vertical list beside a swapping image.
 // Each item is a tab: the active one keeps the left accent border at full opacity,
 // inactive items dim, and the media on the right swaps to the active item's image.
+// The active item's body reveals (accordion) and can carry an optional CTA link.
 import MediaPlaceholder from './MediaPlaceholder.astro';
 
-interface Item { heading: string; body: string; image?: { src: string; alt: string }; }
+interface Item { heading: string; body: string; cta?: { label: string; href: string }; image?: { src: string; alt: string }; }
 interface Props {
   tagline?: string;
   items: Item[];
@@ -18,10 +19,20 @@ const { tagline, items } = Astro.props;
       {tagline && <p class="tagline">{tagline}</p>}
       <div class="fl-items" role="tablist" aria-orientation="vertical">
         {items.map((it, i) => (
-          <button class="fl-item" type="button" role="tab" data-index={i} aria-selected={i === 0 ? 'true' : 'false'}>
-            <span class="fl-item-h">{it.heading}</span>
-            <span class="fl-item-b"><span class="fl-item-b-inner">{it.body}</span></span>
-          </button>
+          <div class:list={['fl-item', i === 0 && 'is-active']} data-index={i}>
+            <button class="fl-item-trigger" type="button" role="tab" data-index={i} aria-selected={i === 0 ? 'true' : 'false'}>
+              <span class="fl-item-h">{it.heading}</span>
+            </button>
+            <div class="fl-item-b"><div class="fl-item-b-inner">
+              <p class="fl-item-body">{it.body}</p>
+              {it.cta && (
+                <a class="fl-item-cta" href={it.cta.href}>
+                  {it.cta.label}
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                </a>
+              )}
+            </div></div>
+          </div>
         ))}
       </div>
     </div>
@@ -41,29 +52,48 @@ const { tagline, items } = Astro.props;
   .fl-items { display: flex; flex-direction: column; gap: var(--space-8); }
   .tagline + .fl-items { margin-top: var(--space-24); }
 
+  /* The container carries the left accent border + the active/dim state (the trigger is
+     just the clickable heading, so a CTA link can live in the reveal — an <a> can't nest
+     in a <button>). */
   .fl-item {
+    border-left: 2px solid transparent;
+    padding-left: var(--space-24);
+    opacity: 0.5;
+    transition: opacity 0.2s ease, border-color 0.2s ease;
+  }
+  .fl-item:not(.is-active):hover { opacity: 0.8; }
+  /* Keyboard focus brings the item to full opacity (the active state reads as the border). */
+  .fl-item:focus-within { opacity: 1; }
+  .fl-item.is-active { opacity: 1; border-left-color: var(--primary); }
+
+  .fl-item-trigger {
     display: block;
     width: 100%;
     text-align: left;
     cursor: pointer;
     background: transparent;
     border: none;
-    border-left: 2px solid transparent;
-    padding: var(--space-16) 0 var(--space-16) var(--space-24);
-    opacity: 0.5;
-    transition: opacity 0.2s ease, border-color 0.2s ease;
+    padding: var(--space-16) 0;
   }
-  .fl-item:hover { opacity: 0.8; }
-  /* Keyboard focus shows as a subtle fill (not a full outline box), so the active
-     state always reads as the left accent border. */
-  .fl-item:focus-visible { outline: none; opacity: 1; background: var(--accent); }
-  .fl-item[aria-selected='true'] { opacity: 1; border-left-color: var(--primary); }
+  .fl-item-trigger:focus-visible { outline: none; }
   .fl-item-h { display: block; font-family: var(--font-heading); font-size: var(--text-h5); font-weight: var(--fw-semibold); color: var(--foreground); }
-  /* Subtitle reveals like an accordion only for the active item (grid-rows 0fr→1fr is a
+  /* Body reveals like an accordion only for the active item (grid-rows 0fr→1fr is a
      smooth, content-height-aware collapse with no JS measuring). */
   .fl-item-b { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.3s ease; }
-  .fl-item[aria-selected='true'] .fl-item-b { grid-template-rows: 1fr; }
-  .fl-item-b-inner { overflow: hidden; min-height: 0; padding-top: var(--space-8); font-size: var(--text-body); color: var(--muted-foreground); line-height: var(--lh-body); }
+  .fl-item.is-active .fl-item-b { grid-template-rows: 1fr; }
+  .fl-item-b-inner { overflow: hidden; min-height: 0; padding-top: var(--space-8); }
+  .fl-item-body { font-size: var(--text-body); color: var(--muted-foreground); line-height: var(--lh-body); }
+  .fl-item-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-8);
+    margin-top: var(--space-16);
+    font-size: var(--text-body-sm);
+    font-weight: var(--fw-semibold);
+    color: var(--foreground);
+    transition: gap 0.18s ease, color 0.18s ease;
+  }
+  .fl-item-cta:hover { gap: var(--space-12); color: var(--primary-light); text-decoration: none; }
   @media (prefers-reduced-motion: reduce) {
     .fl-item-b { transition: none; }
   }
@@ -81,7 +111,8 @@ const { tagline, items } = Astro.props;
   let n = 0;
   document.querySelectorAll('[data-feature-list]').forEach((root) => {
     const base = `flist-${n++}`;
-    const tabs = Array.from(root.querySelectorAll<HTMLButtonElement>('.fl-item'));
+    const tabs = Array.from(root.querySelectorAll<HTMLButtonElement>('.fl-item-trigger'));
+    const items = Array.from(root.querySelectorAll<HTMLElement>('.fl-item'));
     const panels = Array.from(root.querySelectorAll<HTMLElement>('.fl-panel'));
 
     tabs.forEach((tab, i) => {
@@ -96,6 +127,7 @@ const { tagline, items } = Astro.props;
           const on = j === i;
           t.setAttribute('aria-selected', String(on));
           t.setAttribute('tabindex', on ? '0' : '-1');
+          items[j]?.classList.toggle('is-active', on);
           panels[j].hidden = !on;
         });
         tab.focus();

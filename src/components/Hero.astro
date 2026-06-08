@@ -49,8 +49,17 @@ const { tagline, heading, subhead, primary, secondary, image, wide = false } = A
 
 <style>
   /* Tight top so the hero sits just under the nav (beehiv-style); modest bottom so the
-     logo banner clears the fold. */
-  .hero { padding-top: var(--space-48); padding-bottom: var(--space-64); }
+     logo banner clears the fold. Soft aurora wash applied to the full-bleed SECTION (not
+     the capped inner container) so it spans the viewport width and fades out at the edges
+     — background-image isn't lint-guarded, so the rgba stops are fine here. */
+  .hero {
+    padding-top: var(--space-48);
+    padding-bottom: var(--space-64);
+    background-image:
+      radial-gradient(58% 66% at 62% 50%, rgba(158, 180, 250, 0.08), transparent 62%),
+      radial-gradient(54% 62% at 40% 50%, rgba(186, 140, 238, 0.08), transparent 64%),
+      radial-gradient(58% 56% at 30% 62%, rgba(248, 176, 214, 0.07), transparent 62%);
+  }
   .hero-grid {
     display: grid;
     grid-template-columns: 1fr;

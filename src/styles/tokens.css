@@ -122,6 +122,20 @@
   --shadow-xl: 0 8px 16px rgba(0, 0, 0, 0.28), 0 16px 40px -4px rgba(0, 0, 0, 0.45);
 }
 
+/* ── Color · "Deep" palette (V's proposal, A/B comparison only) ───────────
+   Toggled via the staging-only PaletteToggle (sets data-palette="deep" on <html>).
+   Card/popover follow background and input follows border so the surface
+   relationships stay coherent. Inert in production (nothing sets the attribute).
+   DELETE this block + PaletteToggle.astro once a palette is chosen. */
+:root[data-palette="deep"] {
+  --background: #0c0a17;
+  --card: #0c0a17;
+  --popover: #0c0a17;
+  --muted: #07060d;
+  --border: #191726;
+  --input: #191726;
+}
+
 /* ── Color · Light override ─────────────────────────────────────────── */
 [data-theme="light"] {
   --background: #fdfdff;
