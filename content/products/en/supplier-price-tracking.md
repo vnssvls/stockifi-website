@@ -2,8 +2,8 @@
 metaTitle: "Supplier Price Tracking for Restaurants | Stockifi"
 metaDescription: "Stockifi tracks every supplier price change from your invoices, flags overcharges and trends, and re-costs the recipes they affect, automatically."
 eyebrow: "Supplier price tracking"
-heading: "Catch every supplier price rise before it eats your margin"
-subhead: "Stockifi reads each invoice as it lands, tracks how your supplier prices move over time, and re-costs the recipes they affect, so a price hike never slips by unnoticed."
+heading: "Know when a supplier price moves"
+subhead: "Stockifi tracks how each supplier's prices move and which dishes they touch, so you can act on a rise while there is still time."
 heroImage: "/media/cta-bg-2.jpg"
 order: 2
 stepsTagline: "How it works"
@@ -17,7 +17,7 @@ steps:
     body: "When a price jumps or an invoice bills above the agreed rate, Stockifi flags it, so you can query the supplier while it still matters."
   - heading: "Re-cost what it touches"
     body: "Every recipe that uses the ingredient updates the same day, so your margins reflect what you are actually paying."
-integrationsHeading: "Reads prices from"
+integrationsHeading: "Works with"
 integrationsSubject: "your accounting software"
 benefits:
   - heading: "Price rises caught early"
@@ -31,7 +31,7 @@ benefits:
 faqHeading: "Questions about supplier price tracking"
 faqs:
   - question: "How does Stockifi tell a normal price rise from an overcharge?"
-    answer: "It checks each charge against the ingredient's own price history and the rate you expect to pay. A rise that fits the trend is logged. One that jumps above it is flagged for you to query."
+    answer: "It checks each charge against the ingredient's own price history. A rise that fits the trend passes without fuss. One that jumps above it is flagged for you to query."
   - question: "How far back does the price history go?"
     answer: "The history builds from the first invoice Stockifi reads and grows with every invoice after, so the record gets richer the longer you run it."
   - question: "Does this work across several locations?"

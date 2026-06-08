@@ -9,15 +9,15 @@ order: 10
 stepsTagline: "How it works"
 stepsHeading: "From invoice to live cost in four steps"
 steps:
-  - heading: "Connect your accounting"
-    body: "Link your accounting software once. From then on, Stockifi sees every supplier invoice you receive."
+  - heading: "We connect to your accounting"
+    body: "We link Stockifi to your accounting software during onboarding. From then on it sees every supplier invoice you receive."
   - heading: "Invoices sync on their own"
     body: "You do not upload, scan, or forward anything. Invoices flow into Stockifi automatically as they land in your accounting."
   - heading: "Read line by line"
     body: "Stockifi reads each invoice line by line, capturing the price and quantity of every ingredient."
   - heading: "Costs update everywhere"
     body: "Those prices flow into your recipes and food cost, so your numbers reflect what you actually paid."
-integrationsHeading: "Reads invoices from"
+integrationsHeading: "Works with"
 integrationsSubject: "your accounting software"
 benefits:
   - heading: "Zero manual entry"
@@ -38,6 +38,6 @@ faqs:
     answer: "Stockifi connects with the accounting systems you already use. Tell us what you run and we will confirm it on a quick call."
   - question: "Does it work alongside my current setup?"
     answer: "Yes. Stockifi reads the data and leaves your accounting software exactly as it is."
-ctaHeading: "See your invoices read for you"
+ctaHeading: "Ready to hand off invoice entry?"
 ctaSubhead: "Book a short call and we'll show you what Stockifi surfaces in your first 30 days."
 ---

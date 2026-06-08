@@ -10,10 +10,12 @@ interface Props {
   heading: string;
   subhead?: string;
   cta?: { label: string; href: string };
+  /** Button style for the hero CTA (product pages use secondary). */
+  ctaVariant?: 'primary' | 'secondary' | 'ghost';
   /** Background image (site-relative path). */
   image: string;
 }
-const { eyebrow, heading, subhead, cta, image } = Astro.props;
+const { eyebrow, heading, subhead, cta, ctaVariant = 'primary', image } = Astro.props;
 ---
 
 <section class="page-header-image">
@@ -26,7 +28,7 @@ const { eyebrow, heading, subhead, cta, image } = Astro.props;
       </div>
       {cta && (
         <div class="phi-actions">
-          <Button variant="primary" href={cta.href}>{cta.label}</Button>
+          <Button variant={ctaVariant} href={cta.href}>{cta.label}</Button>
         </div>
       )}
     </div>

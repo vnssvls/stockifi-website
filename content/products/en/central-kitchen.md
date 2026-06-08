@@ -2,7 +2,7 @@
 metaTitle: "Central Kitchen Software for Restaurants | Stockifi"
 metaDescription: "Run a central production kitchen that supplies your outlets, with real production costs and internal orders tracked across every location."
 eyebrow: "Central kitchen"
-heading: "Run your central kitchen with clarity"
+heading: "Let your central kitchen carry its true cost"
 subhead: "Supply your own outlets from one production hub, with costs and internal orders tracked across every location."
 heroImage: "/media/cta-bg-2.jpg"
 order: 12
@@ -37,6 +37,6 @@ faqs:
     answer: "No. Stockifi covers internal supply from your own central kitchen to your outlets. It does not place orders with outside suppliers."
   - question: "Can a central-kitchen item be built from sub-recipes?"
     answer: "Yes. A central-kitchen item can be built from sub-recipes and prebatches, so a prep that goes into another prep still carries its real cost."
-ctaHeading: "See your true central-kitchen costs"
+ctaHeading: "See what central production really costs"
 ctaSubhead: "Book a short call and we'll show you what Stockifi surfaces in your first 30 days."
 ---

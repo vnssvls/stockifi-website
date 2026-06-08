@@ -7,7 +7,7 @@ subhead: "Set up your recipes and sub-recipes once, and Stockifi keeps every cos
 heroImage: "/media/cta-bg-2.jpg"
 order: 20
 stepsTagline: "How it works"
-stepsHeading: "From recipe to live cost"
+stepsHeading: "Where your dish costs come from"
 steps:
   - heading: "Build your recipe library"
     body: "We set up your recipes and sub-recipes with you, with ingredients, yields, and portions, during onboarding."
@@ -17,7 +17,7 @@ steps:
     body: "Ingredient prices update from your invoices, so a recipe's cost moves the day a supplier price does."
   - heading: "See margin per dish"
     body: "Every recipe shows its current cost and margin, so you know which dishes carry the kitchen."
-integrationsHeading: "Reads prices from"
+integrationsHeading: "Works with"
 integrationsSubject: "your accounting software"
 benefits:
   - heading: "One source for every recipe"

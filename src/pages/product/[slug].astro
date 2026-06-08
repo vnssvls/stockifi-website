@@ -23,6 +23,10 @@ export async function getStaticPaths() {
 const { p } = Astro.props;
 const d = p.data;
 const benefitCards = d.benefits.map((b, i) => ({ ...b, image: `/media/cta-bg-${(i % 4) + 1}.jpg` }));
+// Product integrations blocks are accounting-fed, so show only accounting tools
+// (classification per integrations-database.csv).
+const ACCOUNTING = new Set(['PowerOffice', 'Tripletex', 'E-conomic', 'Xero', 'Fiken', 'Datev', 'Visma', 'Fortnox', 'Unimicro', 'Xledger', '24SevenOffice', 'SpareBank 1', 'Vandelanotte', 'Corpay']);
+const accountingIntegrations = integrations.filter((i) => ACCOUNTING.has(i.name));
 ---
 
 <Layout title={d.metaTitle} description={d.metaDescription}>
@@ -32,6 +36,7 @@ const benefitCards = d.benefits.map((b, i) => ({ ...b, image: `/media/cta-bg-${(
     heading={d.heading}
     subhead={d.subhead}
     cta={{ label: 'Book a demo', href: '/book-a-demo' }}
+    ctaVariant="secondary"
     image={d.heroImage}
   />
 
@@ -51,7 +56,7 @@ const benefitCards = d.benefits.map((b, i) => ({ ...b, image: `/media/cta-bg-${(
       heading={d.integrationsHeading}
       defaultSubject={d.integrationsSubject}
       cta={{ label: 'View all integrations', href: '/integrations' }}
-      items={integrations}
+      items={accountingIntegrations}
     />
   )}
 

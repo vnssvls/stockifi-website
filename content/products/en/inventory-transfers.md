@@ -2,15 +2,15 @@
 metaTitle: "Inventory Transfers Between Locations | Stockifi"
 metaDescription: "Record stock moved between your locations within the periodic count, so every site's variance and cost stays accurate."
 eyebrow: "Inventory transfers"
-heading: "Track stock moved between locations"
-subhead: "Record transfers between sites as part of the count, so each location's numbers stay honest."
+heading: "Move stock between sites with ease"
+subhead: "When stock moves between your locations, Stockifi keeps both sites' counts and costs accurate, so a transfer never looks like loss at one site and surplus at the other."
 heroImage: "/media/cta-bg-2.jpg"
 order: 23
 stepsTagline: "How it works"
 stepsHeading: "Transfers that keep every site balanced"
 steps:
-  - heading: "Log the transfer"
-    body: "When stock moves from one site to another, record it in Stockifi against the period's count."
+  - heading: "Move it in Stockifi"
+    body: "When stock needs to go to another site, make the move in Stockifi. The transfer happens in the app, alongside your usual comms, so it is documented as it happens."
   - heading: "Both sites stay balanced"
     body: "The stock leaves the sending location's count and joins the receiving one's, so neither shows a phantom gain or loss."
   - heading: "Variance stays accurate"
@@ -20,13 +20,13 @@ steps:
 showIntegrations: false
 benefits:
   - heading: "No phantom variance"
-    body: "Stock that moved between sites stops showing up as loss at one and surplus at the other."
-  - heading: "Honest per-site numbers"
-    body: "Each location's food cost and variance reflect what it actually used, transfers included."
-  - heading: "A clear paper trail"
-    body: "Every transfer is recorded against the count, so you can see what moved, when, and where."
+    body: "Stock that moved stops showing as loss at one site and surplus at the other."
+  - heading: "Honest site numbers"
+    body: "Each location's cost and variance reflect what it actually used."
+  - heading: "Clear paper trail"
+    body: "Every transfer is captured, so you can see what moved, when, and where."
   - heading: "Built for groups"
-    body: "For multi-location operators, transfers keep the group reconciled without side spreadsheets."
+    body: "For multi-site operators, the group stays reconciled without side spreadsheets."
 faqHeading: "Questions about inventory transfers"
 faqs:
   - question: "Are transfers tracked in real time?"
@@ -37,6 +37,6 @@ faqs:
     answer: "The stock shows as used at the site it left and as surplus at the site it arrived, so both sites' variance is off until the transfer is recorded."
   - question: "Do transfers need a POS or accounting connection?"
     answer: "No. Transfers are recorded in the app against your count, so they work wherever you run stock counts, with no extra integration."
-ctaHeading: "Keep every site's numbers honest"
+ctaHeading: "Ready to simplify your transfer process?"
 ctaSubhead: "Book a short call and we'll show you what Stockifi surfaces in your first 30 days."
 ---
