@@ -20,12 +20,12 @@
 <sub>eyebrow: Independent restaurants  ·  group: segment</sub>
 
 **Hero**
-- heading: “Run a tighter kitchen without the spreadsheets”
+- heading: “Run tighter operations without the spreadsheets”
 - subhead: “Stockifi connects your invoices, POS, and recipes and tracks your real food cost as prices and sales change. You see where margin is leaking and close the gap, without the extra admin.”
 - _mark:_ 
 
 **Problem** — “Every leak is small enough to miss”
-> In a single kitchen the losses are small day to day, and by the time the month closes the money is already gone.
+> In a single kitchen the losses are small day to day.
   - Supplier prices creep up unnoticed between deliveries
   - Portions drift from the recipe over a busy service
   - Waste and spoilage never make it into a number
@@ -33,16 +33,16 @@
 - _mark:_ 
 
 **Benefits**
-  - **Live recipe costs** — Every recipe re-costs itself as supplier prices move, so your margins are always current.
-  - **Invoices, read for you** — Stockifi reads supplier invoices line by line. No retyping, no missed price changes.
-  - **Variance you can act on** — Catch where food cost drifts from plan and fix it before the month closes.
+  - **Live recipe costs** — Every recipe re-costs itself as supplier prices move.
+  - **Automated invoices** — Trained on thousands of F&B invoices. Flags pricing mismatches and over-charges.
+  - **Variance you can act on** — Catch where food cost drifts from plan and act on it.
   - **Set up with you** — We build your recipe baseline together so the numbers are right from day one.
 - _mark:_ 
 
 **Showcase** — “Where your real food cost comes from”
-> Stockifi reads the invoices and sales you already produce and works out what your food actually costs, then shows how that tracks against what you sold.
-  - **Actual against theoretical** — Stockifi compares what your recipes say you should use with what your sales say you sold.
-  - **Price rises caught early** — A supplier increase shows up the moment it lands on an invoice, not weeks later at month-end.
+> Your real food cost comes from three moving parts: what you bought, what each recipe uses, and what you sold. Stockifi keeps all three current and works the number out for you.
+  - **Built for hospitality** — Recipes, sub-recipes, prep, and pour are costed the way a kitchen actually runs.
+  - **Intelligent data extraction** — Continuously learns and improves with every invoice scanned.
 - _mark:_ 
 
 **FAQ**
@@ -73,16 +73,16 @@
 - _mark:_ 
 
 **Benefits**
-  - **Recipe costs aligned everywhere** — A recipe costs the same way across every site, and when a supplier price moves it updates them all at once.
+  - **Recipe costs aligned everywhere** — A recipe costs the same across every site, and updates everywhere when a supplier price moves.
   - **Consolidated variance** — See cost and variance for the whole group and per site, in one place.
   - **Spot the outlier site** — Find the location that is drifting before it drags the group's margin down.
-  - **Faster month-end** — Numbers reconcile across locations on their own, so closing the month stops eating days.
+  - **Faster month-end** — Numbers reconcile across locations on their own.
 - _mark:_ 
 
 **Showcase** — “Run the group on one set of numbers”
 > Stockifi turns every site's invoices, sales, and counts into one consolidated picture, with the detail to drill into any location.
-  - **Group and site views** — Switch between the whole group and a single location without rebuilding a report.
-  - **Central kitchen ready** — If a production hub supplies your outlets, its costs flow into each site's numbers.
+  - **Built for hospitality** — Recipes, sub-recipes, and central-kitchen costs work the way a group actually runs.
+  - **Intelligent data extraction** — Every site's invoices are read and costed automatically, so prices stay aligned across the group.
 - _mark:_ 
 
 **FAQ**
@@ -121,8 +121,8 @@
 
 **Showcase** — “How every outlet rolls into one F&B number”
 > Stockifi pulls the invoices and sales each outlet already produces into a single, clear picture of your food and beverage cost.
-  - **Restaurant and bar together** — Food and beverage cost tracked side by side, including pour cost behind the bar.
-  - **Actual against theoretical** — See what each outlet should have used against what it really did.
+  - **Multi-site consistency** — A dish or drink is costed once and applies across every outlet that serves it.
+  - **Central kitchen ready** — If a production kitchen supplies your outlets, its costs flow into each one's numbers.
 - _mark:_ 
 
 **FAQ**
@@ -161,8 +161,8 @@
 
 **Showcase** — “How pour cost is worked out”
 > Stockifi turns your bar invoices, sales, and counts into a clear view of pour cost and beverage margin.
-  - **Beverage recipes costed** — Cocktails and serves carry their real cost as ingredient prices move.
-  - **Actual against theoretical pours** — Compare what should have poured against what sold, and find the gap.
+  - **Built for hospitality** — Cocktails, serves, and pour cost are modelled the way a bar actually runs.
+  - **Faster stock counting** — Count the whole bar on your phone, in shelf order and offline.
 - _mark:_ 
 
 **FAQ**
@@ -204,8 +204,8 @@
 
 **Showcase** — “The whole operation's margin, in one place”
 > Stockifi turns the invoices, sales, and counts your team already produces into the profit picture you need to run the business.
-  - **Group and site view** — See the operation as a whole, then drill into any location.
-  - **Profit by dish** — Know which dishes carry the margin and which drag it down.
+  - **Multi-site visibility** — See the whole operation at a glance, then drill into any single site.
+  - **One source of truth** — Every number traces back to the same invoices, sales, and counts your team already produces.
 - _mark:_ 
 
 **FAQ**
@@ -243,8 +243,8 @@
 
 **Showcase** — “How cost problems surface early”
 > Stockifi turns the day-to-day data your sites produce into early, actionable signals on cost.
-  - **Variance you can act on** — Theoretical against actual, down to the dish and ingredient.
-  - **Shared recipes and reporting** — One recipe and reporting standard flows to every location.
+  - **One reporting language** — Every site works from the same recipes and reports, so the numbers mean the same thing everywhere.
+  - **Built for hospitality** — Built around how kitchens run across multiple sites.
 - _mark:_ 
 
 **FAQ**
@@ -282,8 +282,8 @@
 
 **Showcase** — “The kitchen's numbers, kept current”
 > Stockifi keeps the cost of every recipe live and turns your counts into clear variance, so the kitchen runs on real numbers.
-  - **Live recipe costs** — Sub-recipes and prebatches roll up and stay current.
-  - **Variance to the dish** — See which dishes drift and where the gap is.
+  - **Live recipe costing** — Sub-recipes and prebatches roll up, so every dish carries its current cost.
+  - **Built for hospitality** — Costed the way a kitchen actually runs, prep and sub-recipes included.
 - _mark:_ 
 
 **FAQ**
@@ -313,7 +313,7 @@
 - _mark:_ 
 
 **Benefits**
-  - **COGS from real data** — Cost of goods is built from your actual invoices and sales, not a manual estimate.
+  - **Accurate, automated COGS** — Cost of goods is built straight from your real invoices and sales.
   - **Month-end without the guesswork** — The numbers are current and reconciled, so closing the month stops being a spreadsheet exercise.
   - **Detail behind every figure** — Drill from COGS into the dish, ingredient, or supplier driving it.
   - **Actual against theoretical** — See the gap between what should have been used and what was, so cost control has a target.
@@ -321,8 +321,8 @@
 
 **Showcase** — “A cost of goods you can audit”
 > Stockifi turns the invoices and sales finance already receives into a COGS figure with the detail to back it up.
-  - **Automated COGS** — Built from live invoice and POS data, updated as it lands.
-  - **Variance analysis** — Theoretical against actual, so the gap is explained rather than assumed.
+  - **COGS from real data** — Every figure traces back to a real supplier invoice and a real sale.
+  - **Simple reporting** — Clean reports finance can read and hand on without rebuilding them.
 - _mark:_ 
 
 **FAQ**
