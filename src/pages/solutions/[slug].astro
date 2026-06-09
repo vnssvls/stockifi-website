@@ -33,8 +33,8 @@ const d = p.data;
     cta={{ label: 'Book a demo', href: '/book-a-demo' }}
   />
 
-  <!-- 2. Feature v2 (Split) — the problem -->
-  {d.problem.length > 0 && (
+  <!-- 2. Feature v2 (Split) — question→answer intro (checklist optional) -->
+  {d.problemHeading && (
     <FeatureSplit
       tagline={d.problemTagline}
       heading={d.problemHeading ?? 'The problem'}
