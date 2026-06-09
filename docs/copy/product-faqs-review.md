@@ -23,7 +23,7 @@
 
 - _mark:_ 
 
-**Q2. What happens if an invoice never reaches my accounting?**
+**Q2. What happens if an invoice never reaches my accounoting?**
 > Stockifi reads what lands in your accounting, so an invoice that never gets there will not be captured. Routing supplier invoices through your accounting keeps the picture complete.
 
 - _mark:_ 

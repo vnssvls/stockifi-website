@@ -73,17 +73,17 @@
 - _mark:_ 
 
 **Benefits**
-  - **Recipe costs aligned everywhere** — A recipe costs the same across every site, and updates everywhere when a supplier price moves.
+  - **Multi-site performance** — Recipe costs update across all sites when supplier prices move.
   - **Consolidated variance** — See cost and variance for the whole group and per site, in one place.
   - **Spot the outlier site** — Find the location that is drifting before it drags the group's margin down.
   - **Faster month-end** — Numbers reconcile across locations on their own.
-- _mark:_ 
+- _mark:_ change benefit 1 title based on new description
 
 **Showcase** — “Run the group on one set of numbers”
 > Stockifi turns every site's invoices, sales, and counts into one consolidated picture, with the detail to drill into any location.
-  - **Built for hospitality** — Recipes, sub-recipes, and central-kitchen costs work the way a group actually runs.
-  - **Intelligent data extraction** — Every site's invoices are read and costed automatically, so prices stay aligned across the group.
-- _mark:_ 
+  - **Built for hospitality** — Information that is relevant to individual roles and functions.
+  - **Intelligent data extraction** — Bring all the operational data you need into one report.
+- _mark:_ apply changes
 
 **FAQ**
   1. **Does Stockifi work across multiple locations?** — Yes. Groups get consolidated visibility across sites plus per-location detail, with recipe costs kept consistent everywhere.
@@ -93,16 +93,16 @@
 - _mark:_ 
 
 **CTA** — “See your whole group in one view” / “Drop your email and we'll show you what Stockifi surfaces in your first 30 days.”
-- _mark:_ 
+- _mark:_ approved
 
 
 ## hotels
 <sub>eyebrow: Hotels with F&B  ·  group: segment</sub>
 
 **Hero**
-- heading: “Food cost control for full hotel F&B”
+- heading: Full cost control and visibility for hotel F&B”
 - subhead: “Stockifi connects the invoices, POS, and recipes across your restaurant, bar, and banqueting. Food and drink cost stays clear for every outlet under your roof.”
-- _mark:_ 
+- _mark:_ change subhead, something like visibility into hotel F&B operations, like Stockifi bringing together all revenue streams from diff hotel departments and aligning F&B teams with one reporting platform 
 
 **Problem** — “F&B cost hides across outlets”
 > A hotel runs several food and drink operations at once, and without one view the leaks in each are easy to miss until the month closes.
@@ -110,20 +110,21 @@
   - Recipe costs drift as supplier prices move
   - Variance per outlet is hard to see, let alone act on
   - F&B margin gets lost inside the wider hotel P&L
-- _mark:_ 
+- _mark:_ change heading. 
+
 
 **Benefits**
   - **Every outlet, one view** — See cost and margin across your restaurant, bar, and events in one place.
   - **Live recipe costs** — Dishes and drinks re-cost themselves as supplier prices move.
   - **Variance by outlet** — Find which outlet is leaking margin, and why.
-  - **Built for full F&B** — Stockifi suits hotels running real food and drink operations across the day, rather than breakfast-only service.
-- _mark:_ 
+  - **Built for full F&B** — Give each department the information they need to act on.
+- _mark:_ apply changes
 
 **Showcase** — “How every outlet rolls into one F&B number”
 > Stockifi pulls the invoices and sales each outlet already produces into a single, clear picture of your food and beverage cost.
-  - **Multi-site consistency** — A dish or drink is costed once and applies across every outlet that serves it.
+  - **Multi-site consistency** — Track the right metrics and make decisions based on facts.
   - **Central kitchen ready** — If a production kitchen supplies your outlets, its costs flow into each one's numbers.
-- _mark:_ 
+- _mark:_ change central kitchen  - it does not apply to Hotel segment. Use "Simple reporting". 
 
 **FAQ**
   1. **Is Stockifi a good fit for hotels?** — Yes, for hotels with full food and drink operations across restaurants, bars, or banqueting. Breakfast-only F&B usually does not have the volume to benefit.
@@ -142,7 +143,7 @@
 **Hero**
 - heading: “Pour cost and variance behind the bar”
 - subhead: “Stockifi tracks beverage cost, pour variance, and supplier prices behind the bar. You see exactly where your margin goes between bottle and glass.”
-- _mark:_ 
+- _mark:_ change heading - adjust subhead
 
 **Problem** — “The bar leaks margin a measure at a time”
 > Over-pouring, waste, and creeping supplier prices each cost a little, and across a busy bar those little losses add up fast.
@@ -150,14 +151,14 @@
   - Supplier prices on spirits and mixers creep up unnoticed
   - Waste and breakage never make it into a number
   - Pour cost stays a guess until the next count
-- _mark:_ 
+- _mark:_ i dont understand the heading here? lol
 
 **Benefits**
   - **Pour cost you can see** — Know the real cost and margin of every drink on the list.
   - **Variance behind the bar** — See where the gap between what was poured and what sold is opening up.
   - **Price rises caught** — Catch a supplier increase on spirits or mixers the day it lands.
-  - **Counts in minutes** — Count the bar on your phone and feed it straight into variance.
-- _mark:_ 
+  - **Counts in minutes** — Count the bar on your phone. Works offline. 
+- _mark:_ adjust the counts in minutes block
 
 **Showcase** — “How pour cost is worked out”
 > Stockifi turns your bar invoices, sales, and counts into a clear view of pour cost and beverage margin.
