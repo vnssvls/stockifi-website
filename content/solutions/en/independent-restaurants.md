@@ -3,12 +3,12 @@ metaTitle: "Food Cost Software for Independent Restaurants | Stockifi"
 metaDescription: "Run a tighter kitchen without the spreadsheets. Stockifi connects your invoices, POS, and recipes so independent restaurants track actual food cost."
 eyebrow: "Independent restaurants"
 heading: "Run a tighter kitchen without the spreadsheets"
-subhead: "Stockifi connects your invoices, POS, and recipes so you see where margin leaks, then close the gap, without adding hours of admin."
+subhead: "Stockifi connects your invoices, POS, and recipes and tracks your real food cost as prices and sales change. You see where margin is leaking and close the gap, without the extra admin."
 order: 1
 group: "segment"
 problemTagline: "The problem"
-problemHeading: "Margin leaks hide in plain sight"
-problemBody: "In a single kitchen the small losses add up quietly, and by the time the month closes the money is already gone."
+problemHeading: "Every leak is small enough to miss"
+problemBody: "In a single kitchen the losses are small day to day, and by the time the month closes the money is already gone."
 problem:
   - "Supplier prices creep up unnoticed between deliveries"
   - "Portions drift from the recipe over a busy service"
@@ -20,17 +20,17 @@ benefits:
   - heading: "Invoices, read for you"
     body: "Stockifi reads supplier invoices line by line. No retyping, no missed price changes."
   - heading: "Variance you can act on"
-    body: "See theoretical against actual consumption and find where the margin is going."
+    body: "Catch where food cost drifts from plan and fix it before the month closes."
   - heading: "Set up with you"
     body: "We build your recipe baseline together so the numbers are right from day one."
 showcaseTagline: "How it helps"
-showcaseHeading: "From guesswork to numbers you trust"
-showcaseBody: "Stockifi turns the invoices and sales you already produce into a clear picture of where your food cost actually goes."
+showcaseHeading: "Where your real food cost comes from"
+showcaseBody: "Stockifi reads the invoices and sales you already produce and works out what your food actually costs, then shows how that tracks against what you sold."
 showcaseSubs:
-  - heading: "Actual vs theoretical"
-    body: "Compare what should have been used against what sold, per item."
-  - heading: "Price-rise alerts"
-    body: "Catch supplier increases the moment they hit an invoice."
+  - heading: "Actual against theoretical"
+    body: "Stockifi compares what your recipes say you should use with what your sales say you sold."
+  - heading: "Price rises caught early"
+    body: "A supplier increase shows up the moment it lands on an invoice, not weeks later at month-end."
 faqHeading: "Questions independents ask"
 faqs:
   - question: "Is Stockifi worth it for a single restaurant?"
@@ -41,17 +41,8 @@ faqs:
     answer: "Pricing depends on your setup, so we look at it together on a short call to make sure Stockifi is the right fit."
   - question: "Does it work with my systems?"
     answer: "Stockifi connects with 70+ accounting and POS systems. Check the full list on the integrations page, and we can confirm yours on a quick call."
-testimonials:
-  - quote: '"Stockifi showed us a 4% gap between what we bought and what we actually sold in the first month. We closed most of it by the next stock count."'
-    name: "Owner"
-    position: "Owner"
-    company: "Independent restaurant"
-    storyHref: "/customer-stories"
-  - quote: '"Recipe costs update themselves now. We catch a supplier price rise the day it lands on an invoice, not weeks later at month-end."'
-    name: "Head Chef"
-    position: "Kitchen"
-    company: "Neighbourhood bistro"
-    storyHref: "/customer-stories"
+# testimonials: invented placeholders removed. Add real customer quotes before launch (slider hides when empty).
+testimonials: []
 ctaHeading: "See where your margin is leaking"
 ctaSubhead: "Drop your email and we'll show you what Stockifi surfaces in your first 30 days."
 ---

@@ -3,7 +3,7 @@ metaTitle: "Recipe Cost Management for Head Chefs | Stockifi"
 metaDescription: "Live recipe costs, fast stock counts, and variance down to the dish, built for the people running the kitchen. Menu decisions on today's prices."
 eyebrow: "Kitchen"
 heading: "Tools your head chef will actually use"
-subhead: "Live recipe costs, fast counts, and variance that points to the exact dish or ingredient, so menu calls reflect what ingredients cost today."
+subhead: "Stockifi keeps recipe costs live, makes counts fast, and points variance at the exact dish or ingredient. Menu calls reflect what ingredients cost today."
 order: 7
 group: "team"
 problemTagline: "The job"

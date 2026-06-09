@@ -1,14 +1,14 @@
 ---
 metaTitle: "Multi-Location Restaurant Food Cost Software | Stockifi"
-metaDescription: "Keep recipe costs aligned across every site and see consolidated variance and margin in one place. Stockifi gives restaurant groups one source of truth."
+metaDescription: "Keep recipe costs aligned across every site and roll variance and margin into one view. Stockifi gives restaurant groups one picture of the whole operation."
 eyebrow: "Restaurant groups"
 heading: "Consolidated food cost across every location"
-subhead: "Stockifi keeps recipe costs consistent across your sites and rolls cost, variance, and margin into one view, so you can see which locations are on track and which need attention."
+subhead: "Stockifi keeps recipe costs consistent across every site and rolls cost, variance, and margin into one view. You see which locations are on track and which need attention."
 order: 2
 group: "segment"
 problemTagline: "The problem"
 problemHeading: "Scale multiplies the small leaks"
-problemBody: "Across several sites the same small losses repeat, and a recipe cost that drifts in one place quietly drifts everywhere it is used."
+problemBody: "Across several sites the same small losses repeat, and a recipe cost that drifts in one place drifts everywhere it is used."
 problem:
   - "A recipe cost set once goes stale across every site that uses it"
   - "Each location's variance is buried in its own spreadsheet"
