@@ -18,15 +18,11 @@ logoTransparent: "/media/customer-stories/el-camino-logo.png"
 thumbnail: "/media/customer-stories/el-camino-hero.jpg"
 imageGrid:
   - "/media/customer-stories/el-camino-salsa.jpg"
-  - "/media/customer-stories/el-camino-tacos.jpg"
   - "/media/customer-stories/el-camino-team.jpg"
+  - "/media/customer-stories/el-camino-tacos.jpg"
 singleImage: "/media/customer-stories/el-camino-counter.jpg"
 draft: false
 ---
-
-> "With running five locations, ingredient costs are easy to fall behind on. Stockifi has made staying on top of them genuinely simple, and the stock counting is faster with the app. I can put one location next to another and see exactly where they differ. It's taken a real weight off and the team is not buried in inventory the way it used to be."
->
-> Yiğit Er, Operations Manager & Co-owner, El Camino
 
 For a concept built on everything being made fresh every day, there is no slack in the inventory. El Camino has run a California-style taqueria across five locations in and around Oslo since 2015. Guests build their own burrito, taco, or bowl from a short list of components, with tortillas pressed on site and salsas made in-house. What each kitchen uses on a given day depends on what guests decide to order.
 
