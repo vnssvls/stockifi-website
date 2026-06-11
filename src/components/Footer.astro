@@ -15,6 +15,8 @@ interface Props {
 }
 const { showCta = true } = Astro.props;
 
+// Curated (not exhaustive): the top pages per area. The full Product/Solutions sets
+// live in the nav mega menus — the footer carries a representative slice + Integrations.
 const columns = [
   {
     title: 'Product',
@@ -23,6 +25,7 @@ const columns = [
       { label: 'Supplier price tracking', href: '/product/supplier-price-tracking' },
       { label: 'Recipe building', href: '/product/recipe-building' },
       { label: 'Stock counting', href: '/product/stock-counting' },
+      { label: 'Variance analysis', href: '/product/variance-analysis' },
       { label: 'Integrations', href: '/integrations' },
     ],
   },
@@ -41,6 +44,7 @@ const columns = [
       { label: 'Blog', href: '/blog' },
       { label: 'Customer Stories', href: '/customer-stories' },
       { label: 'FAQ', href: '/faq' },
+      { label: 'Press & Media', href: '/press' },
       { label: 'Savings Calculator', href: '/savings-calculator' },
     ],
   },
@@ -48,8 +52,8 @@ const columns = [
     title: 'Company',
     links: [
       { label: 'Pricing', href: '/pricing' },
-      { label: 'Press & Media', href: '/press' },
       { label: 'Contact', href: '/contact' },
+      { label: 'Login', href: 'https://web.stockifi.io/#/login' },
     ],
   },
 ];

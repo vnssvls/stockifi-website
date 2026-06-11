@@ -25,7 +25,7 @@ const { eyebrow, heading, subhead, cta, posts } = Astro.props;
 ---
 
 <section class="blog-feature section">
-  <div class="container bf-grid">
+  <div class="bf-wide bf-grid">
     <div class="bf-intro">
       {eyebrow && <p class="tagline">{eyebrow}</p>}
       <h2 class="bf-heading">{heading}</h2>
@@ -44,6 +44,10 @@ const { eyebrow, heading, subhead, cta, posts } = Astro.props;
 </section>
 
 <style>
+  /* Match the blog index grid's wide layout (20px gutter on mobile, 80px at lg) so this
+     section lines up edge-to-edge with the card grid above it, not the capped container. */
+  .bf-wide { width: 100%; max-width: none; margin-inline: auto; padding-inline: var(--gutter-wide); }
+
   .bf-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -57,6 +61,7 @@ const { eyebrow, heading, subhead, cta, posts } = Astro.props;
   .bf-list { display: flex; flex-direction: column; gap: var(--space-32); }
 
   @media (min-width: 1024px) {
+    .bf-wide { padding-inline: 80px; }
     .bf-grid {
       grid-template-columns: 0.85fr 1.15fr;
       gap: var(--space-64);

@@ -9,7 +9,8 @@ import PricingCards from '../components/PricingCards.astro';
 import LogoBanner from '../components/LogoBanner.astro';
 import FeatureColumns from '../components/features/FeatureColumns.astro';
 import FaqSplit from '../components/faq/FaqSplit.astro';
-import CtaBand from '../components/CtaBand.astro';
+import CtaButton from '../components/CtaButton.astro';
+import SectionPlaceholder from '../components/SectionPlaceholder.astro';
 import userLogos from '../data/user-logos.json';
 
 const plans = [
@@ -81,7 +82,7 @@ const faqs = [
     <!-- 1. Page header -->
     <PageHeader
       eyebrow="Pricing"
-      heading="Pricing that fits your operation"
+      heading="Pricing that fits your needs"
       subhead="From a single restaurant to a multi-location group. Every plan comes with our risk-free onboarding guarantee."
     />
 
@@ -89,8 +90,14 @@ const faqs = [
     <PricingCards plans={plans} />
   </div>
 
-  <!-- 2. Logo banner — static variant -->
-  <LogoBanner variant="static" label="Trusted by 500+ restaurants across Europe" logos={userLogos} />
+  <!-- 2. Logo banner — scrolling marquee (matches the home page) -->
+  <LogoBanner label="Trusted by 500+ restaurants across Europe" logos={userLogos} />
+
+  <!-- 2b. Savings calculator — reserved slot, real section lands later -->
+  <SectionPlaceholder
+    label="Savings calculator"
+    note="Interactive estimate of what Stockifi could save your operation. Coming soon."
+  />
 
   <!-- 3. Feature section — Feature variant 6 (columns) -->
   <FeatureColumns
@@ -101,18 +108,19 @@ const faqs = [
 
   <!-- 4. FAQ — variant 1 (split) -->
   <FaqSplit
-    heading="Pricing questions"
+    heading="Questions about pricing?"
     body="What operators ask before they choose a plan. Still unsure? Reach out and we'll help."
     contact={{ label: 'Contact us', href: '/contact' }}
     items={faqs}
   />
 
-  <!-- 5. CTA — variant 1 (band), two actions per the wireframe -->
-  <CtaBand
+  <!-- 5. CTA — variant 2.1 (image-backed button) -->
+  <CtaButton
     heading="Ready to see it on your own numbers?"
     subhead="Book a demo and we'll map your margin leaks in the first 30 days."
     primary={{ label: 'Get started', href: '/book-a-demo' }}
     secondary={{ label: 'Chat to sales', href: '/contact' }}
+    bgImages={['/media/cta-bg-1.jpg', '/media/cta-bg-2.jpg', '/media/cta-bg-3.jpg', '/media/cta-bg-4.jpg']}
   />
 </Layout>
 

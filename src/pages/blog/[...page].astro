@@ -95,8 +95,8 @@ const latest = (await getCollection('blog'))
 
   {page.currentPage === 1 && (
     <BlogFeature
-      eyebrow="Latest"
-      heading="Fresh from the blog"
+      eyebrow="Featured"
+      heading="Must-Reads"
       subhead="The newest reads on running a tighter kitchen."
       cta={{ label: 'View all', href: '/blog' }}
       posts={latest}

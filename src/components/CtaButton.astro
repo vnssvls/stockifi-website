@@ -10,11 +10,12 @@ interface Props {
   heading: string;
   subhead?: string;
   primary: Action;
+  secondary?: Action;
   bgImage?: string;
   /** Pass 2+ to cycle a random one per page load. */
   bgImages?: string[];
 }
-const { heading, subhead, primary, bgImage, bgImages } = Astro.props;
+const { heading, subhead, primary, secondary, bgImage, bgImages } = Astro.props;
 
 const imgs = bgImages?.length ? bgImages : bgImage ? [bgImage] : [];
 const hasBg = imgs.length > 0;
@@ -33,6 +34,7 @@ const single = imgs.length === 1 ? imgs[0] : '';
     {subhead && <p class="cb-subhead text-muted">{subhead}</p>}
     <div class="cb-actions">
       <Button variant="primary" href={primary.href}>{primary.label}</Button>
+      {secondary && <Button variant="secondary" href={secondary.href}>{secondary.label}</Button>}
     </div>
   </div>
 </section>
@@ -54,12 +56,15 @@ const single = imgs.length === 1 ? imgs[0] : '';
 
   .cb-inner { text-align: center; }
   .cb-heading { max-width: 20ch; margin-inline: auto; }
-  .cb-subhead { margin-top: var(--space-16); margin-inline: auto; max-width: 48ch; font-size: var(--text-body-lg); }
+  .cb-subhead { margin-top: var(--space-16); margin-inline: auto; max-width: 60ch; font-size: var(--text-body-lg); text-wrap: balance; }
 
-  .cb-actions { display: flex; justify-content: center; margin-top: var(--space-32); }
+  .cb-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-16); margin-top: var(--space-32); }
 
   /* On an image background, brighten the secondary text for contrast. */
   .cta-button--bg .cb-subhead { color: color-mix(in srgb, var(--foreground) 82%, transparent); }
+  /* The outline button's default border is too faint over a photo — brighten it. */
+  .cta-button--bg .cb-actions :global(.btn-secondary) { border-color: color-mix(in srgb, var(--foreground) 55%, transparent); }
+  .cta-button--bg .cb-actions :global(.btn-secondary:hover) { border-color: var(--foreground); }
 </style>
 
 <script>
