@@ -48,9 +48,6 @@ const customerStories = defineCollection({
     logoPrimary: z.string().optional(),
     logoTransparent: z.string().optional(),
     thumbnail: z.string().optional(),
-    // Header background focal point (CSS background-position). Default 'center';
-    // override per story when a tall photo's subject sits off-center (e.g. 'center top').
-    imagePosition: z.string().optional(),
     imageGrid: z.array(z.string()).default([]),
     singleImage: z.string().optional(),
     draft: z.boolean().default(false),

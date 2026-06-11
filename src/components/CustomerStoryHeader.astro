@@ -5,18 +5,16 @@
 interface Props {
   title: string;
   image?: string;
-  /** CSS background-position for the header photo (default 'center'). */
-  imagePosition?: string;
   logo?: string;
   avatar?: string;
   quote?: string;
   name: string;
   designation?: string;
 }
-const { title, image, imagePosition, logo, avatar, quote, name, designation } = Astro.props;
+const { title, image, logo, avatar, quote, name, designation } = Astro.props;
 ---
 
-<header class="cs-header" style={image ? `--cs-bg: url('${image}'); --cs-pos: ${imagePosition ?? 'center'}` : undefined}>
+<header class="cs-header" style={image ? `--cs-bg: url('${image}')` : undefined}>
   <div class="container cs-inner">
     <div class="cs-title">
       {logo && <img class="cs-logo" src={logo} alt="" width="56" height="56" loading="eager" />}
@@ -50,7 +48,7 @@ const { title, image, imagePosition, logo, avatar, quote, name, designation } = 
       ),
       var(--cs-bg);
     background-size: cover;
-    background-position: var(--cs-pos, center);
+    background-position: center;
   }
   /* Wider column so the title fits ~2 lines on desktop. */
   .cs-inner { display: flex; flex-direction: column; align-items: center; gap: var(--space-32); max-width: 60rem; text-align: center; }

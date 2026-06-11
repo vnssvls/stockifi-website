@@ -16,7 +16,6 @@ userPhoto: "/media/customer-stories/el-camino-logo.png"
 logoPrimary: "/media/customer-stories/el-camino-logo.png"
 logoTransparent: "/media/customer-stories/el-camino-logo.png"
 thumbnail: "/media/customer-stories/el-camino-hero.jpg"
-imagePosition: "center 25%"
 imageGrid:
   - "/media/customer-stories/el-camino-salsa.jpg"
   - "/media/customer-stories/el-camino-team.jpg"
