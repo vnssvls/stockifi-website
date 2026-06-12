@@ -13,36 +13,59 @@ const LOCALES = [
 
 interface Props {
   current?: string;
+  mobile?: boolean;
 }
-const { current = 'en' } = Astro.props;
+const { current = 'en', mobile = false } = Astro.props;
 const active = LOCALES.find((l) => l.code === current) ?? LOCALES[0];
 ---
 
-<div class="locale" data-locale-switcher>
-  <button
-    type="button"
-    class="locale-trigger"
-    aria-haspopup="listbox"
-    aria-expanded="false"
-    aria-label={`Language: ${active.label}. Change language`}
-  >
-    <img class="flag" src={`/flags/${active.flag}.svg`} alt="" width="24" height="24" aria-hidden="true" />
-    <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-    </svg>
-  </button>
-
-  <ul class="locale-menu" role="listbox" aria-label="Select language" hidden>
-    {LOCALES.map((l) => (
-      <li role="none">
-        <a role="option" aria-selected={l.code === active.code} href={l.href}>
+{mobile ? (
+  <details class="locale-acc">
+    <summary class="locale-acc-trigger">
+      <span class="locale-acc-label">
+        <img class="flag" src={`/flags/${active.flag}.svg`} alt="" width="22" height="22" aria-hidden="true" />
+        <span>{active.label}</span>
+      </span>
+      <svg class="caret" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </summary>
+    <div class="locale-acc-panel">
+      {LOCALES.map((l) => (
+        <a class:list={['locale-acc-item', l.code === active.code && 'is-active']} href={l.href}>
           <img class="flag" src={`/flags/${l.flag}.svg`} alt="" width="22" height="22" aria-hidden="true" />
           <span>{l.label}</span>
         </a>
-      </li>
-    ))}
-  </ul>
-</div>
+      ))}
+    </div>
+  </details>
+) : (
+  <div class="locale" data-locale-switcher>
+    <button
+      type="button"
+      class="locale-trigger"
+      aria-haspopup="listbox"
+      aria-expanded="false"
+      aria-label={`Language: ${active.label}. Change language`}
+    >
+      <img class="flag" src={`/flags/${active.flag}.svg`} alt="" width="24" height="24" aria-hidden="true" />
+      <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+
+    <ul class="locale-menu" role="listbox" aria-label="Select language" hidden>
+      {LOCALES.map((l) => (
+        <li role="none">
+          <a role="option" aria-selected={l.code === active.code} href={l.href}>
+            <img class="flag" src={`/flags/${l.flag}.svg`} alt="" width="22" height="22" aria-hidden="true" />
+            <span>{l.label}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+)}
 
 <style>
   .locale { position: relative; flex: none; }
@@ -98,6 +121,39 @@ const active = LOCALES.find((l) => l.code === current) ?? LOCALES[0];
   }
   .locale-menu a:hover { background: var(--accent); text-decoration: none; }
   .locale-menu a[aria-selected='true'] { color: var(--primary); font-weight: var(--fw-semibold); }
+
+  .locale-acc { border-bottom: 1px solid var(--border); }
+  .locale-acc-trigger {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: var(--space-16);
+    background: transparent;
+    border: none;
+    color: var(--foreground);
+    font-family: var(--font-body);
+    font-size: var(--text-body-sm);
+    font-weight: var(--fw-medium);
+    cursor: pointer;
+    list-style: none;
+  }
+  .locale-acc-trigger::-webkit-details-marker { display: none; }
+  .locale-acc-label { display: flex; align-items: center; gap: var(--space-12); }
+  .caret { transition: transform 0.18s ease; }
+  .locale-acc[open] .caret { transform: rotate(180deg); }
+  .locale-acc-panel { display: flex; flex-direction: column; gap: var(--space-4); padding-bottom: var(--space-16); }
+  .locale-acc-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-12);
+    padding: var(--space-8) var(--space-12);
+    border-radius: var(--radius-sm);
+    color: var(--foreground);
+    font-size: var(--text-body-sm);
+  }
+  .locale-acc-item:hover { background: var(--accent); text-decoration: none; }
+  .locale-acc-item.is-active { color: var(--primary); font-weight: var(--fw-semibold); }
 </style>
 
 <script>

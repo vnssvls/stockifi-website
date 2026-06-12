@@ -5,7 +5,7 @@
 // The active item's body reveals (accordion) and can carry an optional CTA link.
 import MediaPlaceholder from './MediaPlaceholder.astro';
 
-interface Item { heading: string; body: string; cta?: { label: string; href: string }; image?: { src: string; alt: string }; }
+interface Item { heading: string; body: string; icon?: string; cta?: { label: string; href: string }; image?: { src: string; alt: string }; }
 interface Props {
   tagline?: string;
   items: Item[];
@@ -17,11 +17,21 @@ const { tagline, items } = Astro.props;
   <div class="container fl-grid">
     <div class="fl-copy">
       {tagline && <p class="tagline">{tagline}</p>}
-      <div class="fl-items" role="tablist" aria-orientation="vertical">
+      <div class:list={['fl-items', tagline && 'fl-items--spaced']} role="tablist" aria-orientation="vertical">
         {items.map((it, i) => (
-          <div class:list={['fl-item', i === 0 && 'is-active']} data-index={i}>
+          <div class:list={['fl-item', i === 0 && 'is-active']} data-index={i} data-has-icon={!!it.icon}>
             <button class="fl-item-trigger" type="button" role="tab" data-index={i} aria-selected={i === 0 ? 'true' : 'false'}>
-              <span class="fl-item-h">{it.heading}</span>
+              <span class="fl-item-left">
+                {it.icon && (
+                  <span class="fl-item-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" set:html={it.icon} />
+                  </span>
+                )}
+                <span class="fl-item-h">{it.heading}</span>
+              </span>
+              <svg class="fl-item-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
             </button>
             <div class="fl-item-b"><div class="fl-item-b-inner">
               <p class="fl-item-body">{it.body}</p>
@@ -49,39 +59,90 @@ const { tagline, items } = Astro.props;
 
 <style>
   .fl-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-48); align-items: start; }
-  .fl-items { display: flex; flex-direction: column; gap: var(--space-8); }
-  .tagline + .fl-items { margin-top: var(--space-24); }
+  .fl-items { display: flex; flex-direction: column; }
+  .fl-items--spaced { margin-top: var(--space-16); }
 
-  /* The container carries the left accent border + the active/dim state (the trigger is
-     just the clickable heading, so a CTA link can live in the reveal — an <a> can't nest
-     in a <button>). */
-  .fl-item {
-    border-left: 2px solid transparent;
-    padding-left: var(--space-24);
-    opacity: 0.5;
-    transition: opacity 0.2s ease, border-color 0.2s ease;
+  /* Separator-row accordion: divider only between items, not above the first or
+     below the last. */
+  .fl-item { padding: var(--space-24) 0; }
+  .fl-item + .fl-item {
+    border-top: 1px solid color-mix(in srgb, var(--foreground) 10%, transparent);
   }
-  .fl-item:not(.is-active):hover { opacity: 0.8; }
-  /* Keyboard focus brings the item to full opacity (the active state reads as the border). */
-  .fl-item:focus-within { opacity: 1; }
-  .fl-item.is-active { opacity: 1; border-left-color: var(--primary); }
 
+  /* Trigger is full-width flex row: left group (icon + heading), chevron right. */
   .fl-item-trigger {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-16);
     width: 100%;
     text-align: left;
     cursor: pointer;
     background: transparent;
     border: none;
-    padding: var(--space-16) 0;
+    padding: 0;
   }
   .fl-item-trigger:focus-visible { outline: none; }
-  .fl-item-h { display: block; font-family: var(--font-heading); font-size: var(--text-h5); font-weight: var(--fw-semibold); color: var(--foreground); }
-  /* Body reveals like an accordion only for the active item (grid-rows 0fr→1fr is a
-     smooth, content-height-aware collapse with no JS measuring). */
+
+  .fl-item-left {
+    display: flex;
+    align-items: center;
+    gap: var(--space-16);
+  }
+
+  /* Icon container — small rounded square, Causal-style. */
+  .fl-item-icon {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    border: 1px solid color-mix(in srgb, var(--foreground) 10%, transparent);
+    background: color-mix(in srgb, var(--foreground) 6%, transparent);
+    color: color-mix(in srgb, var(--foreground) 35%, transparent);
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  }
+  .fl-item:not(.is-active):hover .fl-item-icon {
+    color: color-mix(in srgb, var(--foreground) 65%, transparent);
+    border-color: color-mix(in srgb, var(--foreground) 18%, transparent);
+  }
+  .fl-item.is-active .fl-item-icon {
+    color: var(--foreground);
+    border-color: color-mix(in srgb, var(--foreground) 22%, transparent);
+    background: color-mix(in srgb, var(--foreground) 10%, transparent);
+  }
+
+  .fl-item-h {
+    display: block;
+    font-family: var(--font-body);
+    font-size: var(--text-body-lg);
+    font-weight: var(--fw-regular);
+    color: var(--muted-foreground);
+    transition: color 0.2s ease, font-weight 0.2s ease;
+  }
+  .fl-item:not(.is-active):hover .fl-item-h { color: var(--foreground); }
+  .fl-item.is-active .fl-item-h { color: var(--foreground); font-weight: var(--fw-semibold); }
+
+  /* Chevron rotates 180° when open — gives a clear expand/collapse signal. */
+  .fl-item-chevron {
+    flex-shrink: 0;
+    color: color-mix(in srgb, var(--foreground) 25%, transparent);
+    transition: transform 0.3s ease, color 0.2s ease;
+  }
+  .fl-item:not(.is-active):hover .fl-item-chevron { color: color-mix(in srgb, var(--foreground) 50%, transparent); }
+  .fl-item.is-active .fl-item-chevron { transform: rotate(180deg); color: var(--primary); }
+
+  /* When icons are present, indent the body to align under the heading (past the icon). */
+  .fl-item[data-has-icon="true"] .fl-item-b-inner {
+    padding-left: calc(36px + var(--space-16));
+  }
+
+  /* Body reveals like an accordion (grid-rows 0fr→1fr is content-height-aware). */
   .fl-item-b { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.3s ease; }
   .fl-item.is-active .fl-item-b { grid-template-rows: 1fr; }
-  .fl-item-b-inner { overflow: hidden; min-height: 0; padding-top: var(--space-8); }
+  .fl-item-b-inner { overflow: hidden; min-height: 0; padding-top: var(--space-12); }
   .fl-item-body { font-size: var(--text-body); color: var(--muted-foreground); line-height: var(--lh-body); }
   .fl-item-cta {
     display: inline-flex;
@@ -95,7 +156,7 @@ const { tagline, items } = Astro.props;
   }
   .fl-item-cta:hover { gap: var(--space-12); color: var(--primary-light); text-decoration: none; }
   @media (prefers-reduced-motion: reduce) {
-    .fl-item-b { transition: none; }
+    .fl-item-b, .fl-item-chevron { transition: none; }
   }
 
   .fl-panel[hidden] { display: none; }
@@ -104,6 +165,7 @@ const { tagline, items } = Astro.props;
   @media (min-width: 1024px) {
     .fl-grid { grid-template-columns: 1fr 1fr; gap: var(--space-96); }
     .fl-media { position: sticky; top: var(--space-96); }
+    .fl-items--spaced { margin-top: var(--space-32); }
   }
 </style>
 

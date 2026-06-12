@@ -110,9 +110,12 @@ const rows = Array.from({ length: ROW_COUNT }, (_, r) => visible.filter((_, i) =
     width: calc(100% + var(--ip-bleed) + var(--ip-overshoot));
     margin-left: calc(-1 * (var(--ip-bleed) + var(--ip-overshoot)));
     overflow: hidden;
-    /* Fade BOTH edges: pills bleed softly out of the left and taper on the right. */
-    mask-image: linear-gradient(to right, transparent 40px, #000 104px, #000 86%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to right, transparent 40px, #000 104px, #000 86%, transparent 100%);
+    /* Fade BOTH edges: pills bleed softly out of the left and taper on the right.
+       Stops use clamp() so the fade zone is proportional at narrow viewports. */
+    --ip-fade-start: clamp(16px, 3vw, 40px);
+    --ip-fade-end:   clamp(40px, 7vw, 104px);
+    mask-image: linear-gradient(to right, transparent var(--ip-fade-start), #000 var(--ip-fade-end), #000 86%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent var(--ip-fade-start), #000 var(--ip-fade-end), #000 86%, transparent 100%);
   }
   .ip-row { display: flex; gap: var(--space-12); flex-shrink: 0; }
 
@@ -129,6 +132,11 @@ const rows = Array.from({ length: ROW_COUNT }, (_, r) => visible.filter((_, i) =
        gradient glow behind (which shows through the translucent fill). No
        backdrop-filter — it caused a hover artifact that bled glass onto neighbours. */
     background-color: color-mix(in srgb, var(--foreground) 8%, transparent);
+    /* Clip text/icon to the pill box — prevents content from bleeding outside the
+       rounded border during the width-morph animation (oldW → newW). */
+    overflow: hidden;
+    /* Never let flex compression inside .ip-row squash the pill below its content. */
+    flex-shrink: 0;
     /* Flip + width morph (the controller drives transform/width inline). */
     transform-origin: center;
     transition: transform 0.26s ease, width 0.26s ease;
@@ -171,8 +179,8 @@ const rows = Array.from({ length: ROW_COUNT }, (_, r) => visible.filter((_, i) =
   .ip-reverse .ip-cloud {
     margin-left: 0;
     margin-right: calc(-1 * (var(--ip-bleed) + var(--ip-overshoot)));
-    mask-image: linear-gradient(to left, transparent 40px, #000 104px, #000 86%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to left, transparent 40px, #000 104px, #000 86%, transparent 100%);
+    mask-image: linear-gradient(to left, transparent var(--ip-fade-start), #000 var(--ip-fade-end), #000 86%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to left, transparent var(--ip-fade-start), #000 var(--ip-fade-end), #000 86%, transparent 100%);
   }
   .ip-reverse .ip-row { justify-content: flex-end; }
 </style>
@@ -214,15 +222,30 @@ const rows = Array.from({ length: ROW_COUNT }, (_, r) => visible.filter((_, i) =
         if (img) { img.src = next.logo; img.classList.toggle('ip-pill-icon--round', !!next.round); }
         if (label) label.textContent = next.name;
 
+        // Measure new width now — img dimensions are fixed at 28×28 so the
+        // measurement is correct regardless of whether the image has loaded yet.
         pill.style.width = 'auto';
         const newW = pill.getBoundingClientRect().width;
         pill.style.width = `${oldW}px`;
-        pill.style.transition = 'none';
-        pill.style.transform = 'perspective(600px) rotateX(-90deg)';
-        void pill.offsetWidth; // reflow so the jump to -90deg isn't animated
-        pill.style.transition = '';
-        pill.style.transform = 'perspective(600px) rotateX(0deg)';
-        pill.style.width = `${newW}px`; // morph width to the new content over the flip
+
+        const doUnflip = () => {
+          pill.style.transition = 'none';
+          pill.style.transform = 'perspective(600px) rotateX(-90deg)';
+          void pill.offsetWidth; // reflow so the jump to -90deg isn't animated
+          pill.style.transition = '';
+          pill.style.transform = 'perspective(600px) rotateX(0deg)';
+          pill.style.width = `${newW}px`; // morph width to the new content over the flip
+        };
+
+        // Wait for the new image to be decoded before revealing the pill — prevents
+        // a broken/placeholder icon showing on slow or cold-cache connections (mobile).
+        // img.complete covers the cached case; 600ms ceiling ensures we never hang.
+        if (img && !img.complete) {
+          const ceiling = new Promise<void>((res) => window.setTimeout(res, 600));
+          Promise.race([img.decode().catch(() => {}), ceiling]).then(doUnflip);
+        } else {
+          doUnflip();
+        }
       }, DUR);
     };
 
@@ -241,6 +264,12 @@ const rows = Array.from({ length: ROW_COUNT }, (_, r) => visible.filter((_, i) =
     };
 
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    // Clear JS-set inline widths on resize so pills re-measure at the new viewport.
+    const ro = new ResizeObserver(() => {
+      pills.forEach((p) => { p.style.width = ''; });
+    });
+    ro.observe(section);
 
     let timer: number | null = null;
     let inView = false;

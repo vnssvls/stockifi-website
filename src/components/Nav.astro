@@ -161,7 +161,13 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
     </button>
   </div>
 
-  <div class="mobile-menu" id="mobile-menu" hidden>
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <div class="m-close-bar">
+      <button type="button" class="m-close" aria-label="Close menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+      </button>
+    </div>
+    <div class="mobile-scroll">
     <div class="container mobile-inner">
       <nav aria-label="Mobile">
         <div class="m-acc">
@@ -223,14 +229,15 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
         <a class="m-acc-link" href="/contact">Contact</a>
       </nav>
 
-      <div class="mobile-locale"><LocaleSwitcher current="en" /></div>
-
-      <div class="mobile-actions">
-        <Button variant="secondary" href={LOGIN_URL} block>Login</Button>
-        <Button variant="primary" href="/book-a-demo" block>Get Started</Button>
-      </div>
+      <div class="mobile-locale"><LocaleSwitcher current="en" mobile={true} /></div>
     </div>
+    </div>
+  <div class="mobile-actions">
+    <Button variant="secondary" href={LOGIN_URL} block>Login</Button>
+    <Button variant="primary" href="/book-a-demo" block>Get Started</Button>
   </div>
+  </div>
+  <div class="mobile-backdrop" id="mobile-backdrop" aria-hidden="true"></div>
 </header>
 
 <style>
@@ -448,21 +455,65 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
   }
   .burger-icon { display: block; }
   .nav-burger .icon-close { display: none; }
-  .nav-burger[aria-expanded='true'] .icon-open { display: none; }
-  .nav-burger[aria-expanded='true'] .icon-close { display: block; }
 
-  /* ── Mobile menu ───────────────────────────────────────────────────── */
+  /* ── Mobile drawer (right-side panel, slides in from right, over the pill) */
   .mobile-menu {
     position: fixed;
-    inset: 0;
-    z-index: 40;
-    background: var(--background);
-    overflow-y: auto;
-    /* Clear the floating pill (sits ~82px down) before the first menu row */
-    padding-block: var(--space-96) var(--space-32);
+    top: 0;
+    right: 0;
+    width: min(85vw, 380px);
+    height: 100dvh;
+    z-index: 60;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: color-mix(in srgb, var(--background) 85%, transparent);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-left: 1px solid var(--border);
+    box-shadow: -8px 0 40px color-mix(in srgb, #000 60%, transparent);
+    transform: translateX(100%);
+    visibility: hidden;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.3s;
   }
-  .mobile-menu[hidden] { display: none; }
+  .mobile-menu.is-open {
+    transform: translateX(0);
+    visibility: visible;
+  }
+  /* Dimmed backdrop on the left strip — tap it to close */
+  .mobile-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: min(85vw, 380px);
+    bottom: 0;
+    z-index: 48;
+    background: color-mix(in srgb, #000 55%, transparent);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  .mobile-backdrop.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
   :global(body.nav-open) { overflow: hidden; }
+
+  .m-close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: color-mix(in srgb, var(--foreground) 6%, transparent);
+    border: 1px solid color-mix(in srgb, var(--foreground) 12%, transparent);
+    border-radius: var(--radius-full);
+    color: var(--muted-foreground);
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background-color 0.18s ease, color 0.18s ease;
+  }
+  .m-close:hover { background: color-mix(in srgb, var(--foreground) 10%, transparent); color: var(--foreground); }
 
   .m-acc { border-bottom: 1px solid var(--border); }
   .m-acc-trigger {
@@ -471,6 +522,7 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
     align-items: center;
     justify-content: space-between;
     padding-block: var(--space-16);
+    padding-inline: 0;
     background: transparent;
     border: none;
     color: var(--foreground);
@@ -497,13 +549,13 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
     align-items: center;
     gap: var(--space-8);
     padding-block: var(--space-8);
-    color: var(--muted-foreground);
-    font-size: var(--text-body-lg);
+    padding-left: var(--space-16);
+    color: var(--foreground);
+    font-size: var(--text-body-sm);
   }
-  .m-link:hover { color: var(--foreground); text-decoration: none; }
-  .m-link-ico { display: inline-flex; flex: none; color: var(--muted-foreground); }
+  .m-link:hover { text-decoration: none; }
+  .m-link-ico { display: inline-flex; flex: none; color: var(--foreground); }
   .m-link-ico :global(svg) { display: block; width: 20px; height: 20px; }
-  .m-link:hover .m-link-ico { color: var(--foreground); }
   .m-sub-title {
     margin-top: var(--space-12);
     font-family: var(--font-heading);
@@ -513,14 +565,33 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
     text-transform: uppercase;
     color: var(--muted-foreground);
   }
-  .mobile-locale { margin-top: var(--space-24); }
-  .mobile-actions { display: flex; flex-direction: column; gap: var(--space-12); margin-top: var(--space-24); }
+  .mobile-scroll { flex: 1; overflow-y: auto; overflow-x: hidden; }
+  /* Close bar sits above the scroll area — always visible at top of drawer */
+  .m-close-bar {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: flex-end;
+    padding: var(--space-24) var(--space-24) var(--space-16);
+    border-bottom: 1px solid var(--border);
+  }
+  .mobile-locale { padding-top: var(--space-8); }
+  /* Actions bar pinned at the bottom — never scrolls away */
+  .mobile-actions {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+    padding: var(--space-16) var(--gutter) calc(var(--space-24) + env(safe-area-inset-bottom, 0px));
+    border-top: 1px solid var(--border);
+  }
+  .mobile-actions :global(.btn) { padding-block: var(--space-8); }
 
   @media (min-width: 1024px) {
     .nav-desktop { display: flex; flex: 1; justify-content: flex-end; margin-right: var(--space-16); }
     .nav-actions { display: flex; align-items: center; gap: var(--space-12); }
     .nav-burger,
-    .mobile-menu { display: none; }
+    .mobile-menu,
+    .mobile-backdrop { display: none; }
   }
 </style>
 
@@ -554,22 +625,28 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
   });
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') desktopItems.forEach(closeItem);
+    if (e.key === 'Escape') { desktopItems.forEach(closeItem); setMenu(false); }
   });
 
   // ── Mobile drawer ───────────────────────────────────────────────────
   const burger = document.querySelector('.nav-burger');
   const mobileMenu = document.getElementById('mobile-menu');
 
+  const backdrop = document.getElementById('mobile-backdrop');
+
   const setMenu = (open: boolean) => {
     if (!burger || !mobileMenu) return;
-    mobileMenu.hidden = !open;
+    mobileMenu.classList.toggle('is-open', open);
+    mobileMenu.setAttribute('aria-hidden', String(!open));
+    backdrop?.classList.toggle('is-open', open);
     burger.setAttribute('aria-expanded', String(open));
     burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
     document.body.classList.toggle('nav-open', open);
   };
 
-  burger?.addEventListener('click', () => setMenu(mobileMenu?.hidden ?? true));
+  burger?.addEventListener('click', () => setMenu(!mobileMenu?.classList.contains('is-open')));
+  backdrop?.addEventListener('click', () => setMenu(false));
+  document.querySelector<HTMLButtonElement>('.m-close')?.addEventListener('click', () => setMenu(false));
 
   document.querySelectorAll<HTMLButtonElement>('.m-acc-trigger').forEach((t) => {
     t.addEventListener('click', () => {
