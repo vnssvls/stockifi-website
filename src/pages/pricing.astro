@@ -12,7 +12,7 @@ import FaqSplit from '../components/faq/FaqSplit.astro';
 import CtaButton from '../components/CtaButton.astro';
 import SectionPlaceholder from '../components/SectionPlaceholder.astro';
 import userLogos from '../data/user-logos.json';
-import faqsLibrary from '../data/faqs-library.json';
+import faqsPricing from '../data/faqs-pricing.json';
 
 const plans = [
   {
@@ -64,14 +64,7 @@ const featureCols = [
   { eyebrow: 'Full visibility', heading: 'One view across locations', body: 'Consolidated cost and variance reporting, whether you run one site or twenty.', link: { label: 'Learn more', href: '/solutions/restaurant-groups' } },
 ];
 
-const faqs = faqsLibrary
-  .filter((f) => f.general || f.groups.includes(‘pricing’))
-  .sort((a, b) => {
-    const aP = a.groups.includes(‘pricing’) ? 0 : 1;
-    const bP = b.groups.includes(‘pricing’) ? 0 : 1;
-    return aP - bP || a.order - b.order;
-  })
-  .map((f) => ({ question: f.q, answer: f.a }));
+const faqs = faqsPricing;
 ---
 
 <Layout
