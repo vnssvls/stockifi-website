@@ -12,6 +12,7 @@ import FaqSplit from '../components/faq/FaqSplit.astro';
 import CtaButton from '../components/CtaButton.astro';
 import SectionPlaceholder from '../components/SectionPlaceholder.astro';
 import userLogos from '../data/user-logos.json';
+import faqsLibrary from '../data/faqs-library.json';
 
 const plans = [
   {
@@ -63,13 +64,14 @@ const featureCols = [
   { eyebrow: 'Full visibility', heading: 'One view across locations', body: 'Consolidated cost and variance reporting, whether you run one site or twenty.', link: { label: 'Learn more', href: '/solutions/restaurant-groups' } },
 ];
 
-const faqs = [
-  { question: 'How is pricing determined?', answer: 'Pricing depends on the size and complexity of your setup, typically between €150 and €400 per month. We look at it together on a short call, and check whether Stockifi is a good fit.' },
-  { question: 'Is the guarantee performance-based pricing?', answer: 'No. If Stockifi doesn’t uncover at least €3,000 in hidden losses in your first 30 days, you pay nothing. It is a risk-free onboarding guarantee, not performance pricing.' },
-  { question: 'Which plan is right for my restaurant?', answer: 'Most operators start on Automated or Full Control. Multi-location groups that need consolidated reporting and custom integrations usually need Custom. We will recommend a fit on the call.' },
-  { question: 'What systems does Stockifi integrate with?', answer: 'We support 30+ accounting and 40+ POS integrations. The full list is on the integrations page, and custom integrations are available on the Custom plan.' },
-  { question: 'Can my team use it in our language?', answer: 'Your data stays in your language and the app modules are in English. We run a short training so the team is comfortable from the start.' },
-];
+const faqs = faqsLibrary
+  .filter((f) => f.general || f.groups.includes(‘pricing’))
+  .sort((a, b) => {
+    const aP = a.groups.includes(‘pricing’) ? 0 : 1;
+    const bP = b.groups.includes(‘pricing’) ? 0 : 1;
+    return aP - bP || a.order - b.order;
+  })
+  .map((f) => ({ question: f.q, answer: f.a }));
 ---
 
 <Layout
