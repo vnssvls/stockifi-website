@@ -16,6 +16,7 @@ import IntegrationPills from '../components/integrations/IntegrationPills.astro'
 import CtaBand from '../components/CtaBand.astro';
 import CtaButton from '../components/CtaButton.astro';
 import FaqSplit from '../components/faq/FaqSplit.astro';
+import faqsHome from '../data/faqs-home.json';
 import integrations from '../data/integrations-home.json';
 import userLogos from '../data/user-logos.json';
 
@@ -64,13 +65,7 @@ const onboarding = [
   { heading: 'Start seeing the gaps', body: 'From your first counts, you see real food cost, variance, and price changes.' },
 ];
 
-const faqs = [
-  { question: 'How does Stockifi connect to my systems?', answer: 'It reads your accounting software for supplier invoices and your POS for sales. We support 30+ accounting and 40+ POS integrations; the full list is on the integrations page.' },
-  { question: 'How long does it take to set up?', answer: 'Most operations are running quickly once recipes and integrations are connected. We set the recipe baseline with you so the numbers are right from day one.' },
-  { question: 'What does it cost?', answer: 'Pricing depends on the size and complexity of your setup, typically between €150 and €400 per month. We look at it together on a short call.' },
-  { question: 'Is my restaurant a good fit?', answer: 'Stockifi suits established restaurants and groups that have recipes and an accounting or POS system. Very early-stage operations usually are not the right fit yet.' },
-  { question: 'Can my team use it in our language?', answer: 'Your data stays in your language and the app modules are in English. We run a short training so the team is comfortable from the start.' },
-];
+const faqs = faqsHome;
 ---
 
 <Layout
