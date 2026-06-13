@@ -1,0 +1,286 @@
+---
+// TestimonialSliderCollage.astro (Figma 167:423)
+// Variant of TestimonialSlider with a 3-image collage instead of single square.
+// Images: tall center, bottom-left square, top-right landscape — all overlapping.
+// Desktop: content left / collage right. Mobile: controls top, content, collage below.
+interface Item {
+  quote: string;
+  name: string;
+  position?: string;
+  company?: string;
+  logo?: { src: string; alt: string };
+  images?: { src: string; alt: string; objectPosition?: string }[];
+  storyHref?: string;
+}
+interface Props {
+  items: Item[];
+  ctaLabel?: string;
+}
+const { items, ctaLabel = 'Read story' } = Astro.props;
+---
+
+<section class="tc section" data-tcollage>
+  <div class="container tc-inner">
+
+    <div class="tc-viewport">
+      {items.map((t, i) => (
+        <article class="tc-slide" data-index={i} hidden={i !== 0}>
+
+          <div class="tc-content">
+            <div class="tc-stars" aria-label="5 out of 5 stars">
+              {Array.from({ length: 5 }).map(() => (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                </svg>
+              ))}
+            </div>
+
+            <blockquote class="tc-quote">{t.quote}</blockquote>
+
+            <div class="tc-attr-row">
+              <div class="tc-attr">
+                <p class="tc-name">{t.name}</p>
+                {(t.position || t.company) && (
+                  <p class="tc-role">{[t.position, t.company].filter(Boolean).join(', ')}</p>
+                )}
+              </div>
+            </div>
+            {t.logo && (
+              <div class="tc-logo-wrap">
+                <img src={t.logo.src} alt={t.logo.alt} />
+              </div>
+            )}
+
+            {t.storyHref && (
+              <a class="tc-cta" href={t.storyHref}>
+                {ctaLabel}
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </a>
+            )}
+          </div>
+
+          <div class="tc-collage">
+            {t.images?.[0] && (
+              <div class="tc-wrap tc-wrap--main">
+                <img src={t.images[0].src} alt={t.images[0].alt} style={t.images[0].objectPosition ? `object-position: ${t.images[0].objectPosition}` : undefined} />
+              </div>
+            )}
+            {t.images?.[1] && (
+              <div class="tc-wrap tc-wrap--bl">
+                <img src={t.images[1].src} alt={t.images[1].alt} style={t.images[1].objectPosition ? `object-position: ${t.images[1].objectPosition}` : undefined} />
+              </div>
+            )}
+            {t.images?.[2] && (
+              <div class="tc-wrap tc-wrap--tr">
+                <img src={t.images[2].src} alt={t.images[2].alt} style={t.images[2].objectPosition ? `object-position: ${t.images[2].objectPosition}` : undefined} />
+              </div>
+            )}
+          </div>
+
+        </article>
+      ))}
+    </div>
+
+    <div class="tc-controls">
+      <div class="tc-dots">
+        {items.map((_, i) => (
+          <button
+            class="tc-dot"
+            type="button"
+            data-dot={i}
+            aria-label={`Go to testimonial ${i + 1}`}
+            aria-selected={i === 0 ? 'true' : 'false'}
+          />
+        ))}
+      </div>
+      <div class="tc-arrows">
+        <button class="tc-arrow" type="button" data-dir="-1" aria-label="Previous testimonial">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M19 12H5m6 6-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <button class="tc-arrow" type="button" data-dir="1" aria-label="Next testimonial">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M5 12h14m-6 6 6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  /* Gradient backdrop — same glow used on homepage CustomerStoryBento */
+  .tc { position: relative; isolation: isolate; }
+  .tc::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    width: min(1400px, 96vw);
+    height: 1200px;
+    background-image: url('/media/gradient-duo.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.35;
+    pointer-events: none;
+  }
+
+  /* Mobile-first */
+  .tc-inner  { display: flex; flex-direction: column; gap: var(--space-32); }
+  .tc-viewport { order: 2; }
+  .tc-controls { order: 1; display: flex; align-items: center; justify-content: space-between; gap: var(--space-16); }
+
+  .tc-slide { display: flex; flex-direction: column; gap: var(--space-32); }
+  .tc-slide[hidden] { display: none; }
+
+  /* Stars */
+  .tc-stars { display: flex; gap: 2px; color: #f59e0b; margin-bottom: var(--space-16); }
+
+  /* Quote */
+  .tc-quote {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: var(--text-h4);
+    font-weight: 400;
+    line-height: var(--lh-h4);
+    color: var(--foreground);
+  }
+
+  /* Attribution */
+  .tc-attr-row  { margin-top: var(--space-24); }
+  .tc-name      { font-weight: var(--fw-semibold); color: var(--foreground); font-size: var(--text-body-sm); }
+  .tc-role      { font-size: var(--text-body-sm); color: var(--muted-foreground); }
+  .tc-logo-wrap { margin-top: var(--space-12); }
+  .tc-logo-wrap img { height: 60px; width: auto; max-width: 160px; object-fit: contain; }
+
+  /* CTA */
+  .tc-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-8);
+    margin-top: var(--space-24);
+    color: var(--foreground);
+    font-weight: 400;
+    font-size: var(--text-body-sm);
+    text-decoration: none;
+  }
+  .tc-cta:hover { gap: var(--space-12); }
+
+  /* Collage container */
+  .tc-collage {
+    position: relative;
+    width: 100%;
+    height: 320px;
+    flex-shrink: 0;
+  }
+
+  /* Wrapper divs own the position + size; img fills them */
+  .tc-wrap {
+    position: absolute;
+    overflow: hidden;
+    border-radius: var(--radius-sm);
+  }
+  .tc-wrap img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Tall center image — square */
+  .tc-wrap--main {
+    top: 0;
+    left: 10.53%;
+    right: 10.53%;
+    aspect-ratio: 1 / 1;
+    z-index: 1;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+  }
+
+  /* Bottom-left square */
+  .tc-wrap--bl {
+    bottom: 40px;
+    left: 0;
+    right: 64.47%;
+    aspect-ratio: 1 / 1;
+    z-index: 2;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.55);
+  }
+
+  /* Top-right landscape */
+  .tc-wrap--tr {
+    top: 40px;
+    left: 59.87%;
+    right: 0;
+    aspect-ratio: 244 / 166;
+    z-index: 2;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.55);
+  }
+
+  /* Controls */
+  .tc-dots { display: flex; align-items: center; gap: var(--space-8); }
+  .tc-dot {
+    width: 8px; height: 8px; padding: 0;
+    border: none; border-radius: var(--radius-full);
+    background: var(--border); cursor: pointer;
+    transition: background-color 0.18s ease;
+  }
+  .tc-dot[aria-selected='true'] { background: var(--primary); }
+
+  .tc-arrows { display: flex; gap: var(--space-12); }
+  .tc-arrow {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 44px; height: 44px;
+    border-radius: var(--radius-full);
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--foreground);
+    cursor: pointer;
+    transition: border-color 0.18s ease, background-color 0.18s ease;
+  }
+  .tc-arrow:hover { border-color: var(--muted-foreground); background: var(--accent); }
+
+  /* Desktop */
+  @media (min-width: 1024px) {
+    .tc-viewport  { order: 1; }
+    .tc-controls  { order: 2; }
+
+    .tc-slide {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-96);
+      align-items: start;
+    }
+
+    .tc-collage { height: auto; aspect-ratio: 1 / 1; }
+
+    .tc-wrap--bl { bottom: var(--space-64); }
+    .tc-wrap--tr { top: var(--space-64); }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-tcollage]').forEach((root) => {
+    const slides = Array.from(root.querySelectorAll<HTMLElement>('.tc-slide'));
+    const dots   = Array.from(root.querySelectorAll<HTMLButtonElement>('.tc-dot'));
+    const arrows = Array.from(root.querySelectorAll<HTMLButtonElement>('.tc-arrow'));
+    if (slides.length === 0) return;
+    let cur = 0;
+
+    const show = (n: number) => {
+      cur = (n + slides.length) % slides.length;
+      slides.forEach((s, i) => { s.hidden = i !== cur; });
+      dots.forEach((d, i) => d.setAttribute('aria-selected', String(i === cur)));
+    };
+
+    dots.forEach((d, i) => d.addEventListener('click', () => show(i)));
+    arrows.forEach((a) => a.addEventListener('click', () => show(cur + Number(a.dataset.dir))));
+  });
+</script>

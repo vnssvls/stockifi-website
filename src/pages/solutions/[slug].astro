@@ -11,7 +11,7 @@ import FeatureSplit from '../../components/features/FeatureSplit.astro';
 import BenefitGrid from '../../components/BenefitGrid.astro';
 import FeatureShowcase from '../../components/features/FeatureShowcase.astro';
 import FaqSplit from '../../components/faq/FaqSplit.astro';
-import TestimonialSlider from '../../components/TestimonialSlider.astro';
+import TestimonialSliderCollage from '../../components/TestimonialSliderCollage.astro';
 import CtaEmail from '../../components/CtaEmail.astro';
 
 export async function getStaticPaths() {
@@ -78,7 +78,7 @@ const d = p.data;
 
   <!-- 5. Customer stories — testimonial slider -->
   {d.testimonials.length > 0 && (
-    <TestimonialSlider items={d.testimonials} ctaLabel="Read story" />
+    <TestimonialSliderCollage items={d.testimonials} ctaLabel="Read story" />
   )}
 
   <!-- 6. CTA v2 (image-background email capture) -->
