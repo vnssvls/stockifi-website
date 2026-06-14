@@ -6,6 +6,7 @@ heading: "Bring food cost and inventory management into one place"
 subhead: "See and understand your numbers like never before. Stockifi turns your invoices, sales, and inventory into one clear view of your margins."
 heroImage: "/media/cta-bg-2.jpg"
 order: 30
+category: business-intelligence
 showIntegrations: false
 howItWorks:
   tagline: "How it works"

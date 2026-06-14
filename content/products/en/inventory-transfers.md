@@ -6,6 +6,7 @@ heading: "Keep both sites accurate when stock moves"
 subhead: "When stock moves between your locations, you make the move in Stockifi against the period's count. Each site's count and cost stay right, so the group's numbers reconcile."
 heroImage: "/media/cta-bg-2.jpg"
 order: 23
+category: inventory-management
 howItWorks:
   tagline: "How it works"
   heading: "The transfer moves stock from one count to the other"

@@ -6,6 +6,7 @@ heading: "Counts that match the shelf"
 subhead: "Count on mobile or web, online or offline. See the variance against what your recipes and sales predicted the moment you close."
 heroImage: "/media/cta-bg-2.jpg"
 order: 21
+category: inventory-management
 howItWorks:
   tagline: "How it works"
   heading: "A count won't lock until it checks out"

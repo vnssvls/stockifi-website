@@ -6,6 +6,7 @@ heading: "Know exactly which dishes make you money"
 subhead: "See the real margin on every plate. Stockifi shows what each dish earns, by location and period."
 heroImage: "/media/cta-bg-2.jpg"
 order: 33
+category: business-intelligence
 showIntegrations: false
 howItWorks:
   tagline: "How it works"

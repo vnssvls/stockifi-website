@@ -6,6 +6,7 @@ heading: "Supply every outlet from one kitchen"
 subhead: "Each outlet orders what it needs and pays the real production cost. Stockifi keeps that cost accurate, so margins stay true across the whole group."
 heroImage: "/media/cta-bg-2.jpg"
 order: 12
+category: procurement
 howItWorks:
   tagline: "How it works"
   heading: "Stockifi treats your kitchen as an internal supplier"

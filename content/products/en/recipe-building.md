@@ -6,6 +6,7 @@ heading: "Build recipes with live costs attached"
 subhead: "Once your recipes are in, you never cost a dish by hand again. Stockifi pulls each ingredient's price from your invoices, so every dish shows its real cost and margin."
 heroImage: "/media/cta-bg-2.jpg"
 order: 20
+category: inventory-management
 howItWorks:
   tagline: "How it works"
   heading: "A dish costs exactly what its ingredients cost you"

@@ -6,6 +6,9 @@ import sitemap from '@astrojs/sitemap';
 // in their own build steps. `site` powers canonical URLs + the sitemap.
 export default defineConfig({
   site: 'https://www.stockifi.io',
+  redirects: {
+    '/product': '/#how-it-works',
+  },
   // Non-trailing-slash canonical, one policy site-wide (see docs/audit/09-redirect-map.md).
   trailingSlash: 'never',
   integrations: [

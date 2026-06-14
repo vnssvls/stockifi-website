@@ -6,6 +6,7 @@ heading: "Pull your Stockifi data into your own tools"
 subhead: "Your team can work with Stockifi's numbers inside the BI tools it already runs. A clean API gives them direct access to your performance data."
 heroImage: "/media/cta-bg-2.jpg"
 order: 31
+category: business-intelligence
 showIntegrations: false
 howItWorks:
   tagline: "How it works"

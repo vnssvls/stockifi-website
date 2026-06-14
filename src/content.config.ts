@@ -66,6 +66,7 @@ const products = defineCollection({
     subhead: z.string(),
     heroImage: z.string().default('/media/cta-bg-2.jpg'),
     order: z.number().default(99),
+    category: z.enum(['procurement', 'inventory-management', 'business-intelligence']).default('procurement'),
     stepsTagline: z.string().default('How it works'),
     stepsHeading: z.string().optional(),
     steps: z.array(z.object({ heading: z.string(), body: z.string() })).default([]),

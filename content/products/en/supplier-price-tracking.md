@@ -6,6 +6,7 @@ heading: "Know when a supplier price moves"
 subhead: "A supplier's prices drift in small steps you would never catch by eye. Stockifi tracks every move and the dishes it touches, so you can act on a rise while there's still time."
 heroImage: "/media/cta-bg-2.jpg"
 order: 2
+category: procurement
 howItWorks:
   tagline: "How it works"
   heading: "Stockifi watches every price you pay"

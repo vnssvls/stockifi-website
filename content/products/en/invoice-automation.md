@@ -6,6 +6,7 @@ heading: "Food cost without the data entry"
 subhead: "Your food cost can stay current without anyone typing in an invoice. Stockifi reads them straight from your accounting, so prices and quantities flow in on their own."
 heroImage: "/media/cta-bg-2.jpg"
 order: 10
+category: procurement
 howItWorks:
   tagline: "How it works"
   heading: "It comes straight from your accounting"

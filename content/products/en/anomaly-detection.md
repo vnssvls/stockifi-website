@@ -6,6 +6,7 @@ heading: "Stop overpaying your suppliers"
 subhead: "An overcharge looks just like every other line on the invoice. Stockifi checks each one for you and flags what's worth a second look, so billing errors get caught while you can still claw them back."
 heroImage: "/media/cta-bg-2.jpg"
 order: 13
+category: procurement
 howItWorks:
   tagline: "How it works"
   heading: "The odd charge stands out"

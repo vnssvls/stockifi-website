@@ -1,9 +1,7 @@
 ---
-// Product item page template (Figma 82:*). One page per entry in the `products`
-// content collection. Arrangement per V:
-// Page Header (image variant) → Feature v3 (Steps) → Integrations block →
-// Grid row v2 (ImageCardGrid) → FAQ v1 (FaqSplit) → CTA v1 (CtaBand).
-// Optional sections render only when their data is present in frontmatter.
+// Business Intelligence category — individual product pages.
+// Routes: /product-business-intelligence/performance-dashboards, /variance-analysis,
+//         /profitability, /api
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import PageHeaderImage from '../../components/page-headers/PageHeaderImage.astro';
@@ -17,21 +15,18 @@ import integrations from '../../data/integrations-home.json';
 
 export async function getStaticPaths() {
   return (await getCollection('products'))
-    .filter((p) => !p.data.draft)
+    .filter((p) => !p.data.draft && p.data.category === 'business-intelligence')
     .map((p) => ({ params: { slug: p.id }, props: { p } }));
 }
 
 const { p } = Astro.props;
 const d = p.data;
 const benefitCards = d.benefits.map((b, i) => ({ ...b, image: `/media/cta-bg-${(i % 4) + 1}.jpg` }));
-// Product integrations blocks are accounting-fed, so show only accounting tools
-// (classification per integrations-database.csv).
 const ACCOUNTING = new Set(['PowerOffice', 'Tripletex', 'E-conomic', 'Xero', 'Fiken', 'Datev', 'Visma', 'Fortnox', 'Unimicro', 'Xledger', '24SevenOffice', 'SpareBank 1', 'Vandelanotte', 'Corpay']);
 const accountingIntegrations = integrations.filter((i) => ACCOUNTING.has(i.name));
 ---
 
 <Layout title={d.metaTitle} description={d.metaDescription}>
-  <!-- 1. Page header — image variant -->
   <PageHeaderImage
     eyebrow={d.eyebrow}
     heading={d.heading}
@@ -41,7 +36,6 @@ const accountingIntegrations = integrations.filter((i) => ACCOUNTING.has(i.name)
     image={d.heroImage}
   />
 
-  <!-- 2. How it works — split showcase (v7, copy + media) when present, else step timeline -->
   {d.howItWorks ? (
     <FeatureShowcase
       tagline={d.howItWorks.tagline}
@@ -61,7 +55,6 @@ const accountingIntegrations = integrations.filter((i) => ACCOUNTING.has(i.name)
     />
   ) : null}
 
-  <!-- 3. Integrations block -->
   {d.showIntegrations && (
     <IntegrationGrid
       heading={d.integrationsHeading}
@@ -71,7 +64,6 @@ const accountingIntegrations = integrations.filter((i) => ACCOUNTING.has(i.name)
     />
   )}
 
-  <!-- 4. Grid row v2 (image-backed cards) -->
   {d.benefits.length > 0 && (
     <section class="section">
       <div class="container">
@@ -80,7 +72,6 @@ const accountingIntegrations = integrations.filter((i) => ACCOUNTING.has(i.name)
     </section>
   )}
 
-  <!-- 5. FAQ v1 (split) -->
   {d.faqs.length > 0 && (
     <FaqSplit
       heading={d.faqHeading}
@@ -90,7 +81,6 @@ const accountingIntegrations = integrations.filter((i) => ACCOUNTING.has(i.name)
     />
   )}
 
-  <!-- 6. CTA v1 (band) -->
   <CtaBand
     heading={d.ctaHeading}
     subhead={d.ctaSubhead}
