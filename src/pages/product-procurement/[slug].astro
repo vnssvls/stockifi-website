@@ -11,6 +11,7 @@ import IntegrationGrid from '../../components/integrations/IntegrationGrid.astro
 import ImageCardGrid from '../../components/ImageCardGrid.astro';
 import FaqSplit from '../../components/faq/FaqSplit.astro';
 import CtaBand from '../../components/CtaBand.astro';
+import ProcurementAnimation from '../../components/animations/ProcurementAnimation.astro';
 import integrations from '../../data/integrations-home.json';
 
 export async function getStaticPaths() {
@@ -45,7 +46,9 @@ const accountingIntegrations = integrations.filter((i) => ACCOUNTING.has(i.name)
       image={d.howItWorks.image ? { src: d.howItWorks.image, alt: d.howItWorks.imageAlt } : undefined}
       imageSide={d.howItWorks.imageSide}
       mediaRatio="16 / 10"
-    />
+    >
+      {p.id === 'supplier-price-tracking' && <ProcurementAnimation slot="media" />}
+    </FeatureShowcase>
   ) : d.steps.length > 0 ? (
     <FeatureSteps
       tagline={d.stepsTagline}

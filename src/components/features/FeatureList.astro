@@ -4,8 +4,9 @@
 // inactive items dim, and the media on the right swaps to the active item's image.
 // The active item's body reveals (accordion) and can carry an optional CTA link.
 import MediaPlaceholder from './MediaPlaceholder.astro';
+import ProcurementAnimation from '../animations/ProcurementAnimation.astro';
 
-interface Item { heading: string; body: string; icon?: string; cta?: { label: string; href: string }; image?: { src: string; alt: string }; }
+interface Item { heading: string; body: string; icon?: string; cta?: { label: string; href: string }; image?: { src: string; alt: string }; animation?: string; }
 interface Props {
   tagline?: string;
   items: Item[];
@@ -50,7 +51,7 @@ const { tagline, items } = Astro.props;
     <div class="fl-media">
       {items.map((it, i) => (
         <div class="fl-panel" role="tabpanel" data-index={i} hidden={i !== 0}>
-          {it.image ? <img src={it.image.src} alt={it.image.alt} /> : <MediaPlaceholder ratio="16 / 10" label={it.heading} />}
+          {it.animation === 'procurement' ? <ProcurementAnimation /> : it.image ? <img src={it.image.src} alt={it.image.alt} /> : <MediaPlaceholder ratio="16 / 10" label={it.heading} />}
         </div>
       ))}
     </div>

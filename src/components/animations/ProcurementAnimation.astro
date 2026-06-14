@@ -1,0 +1,180 @@
+---
+// Procurement animation — scrolling supplier price-change ticker.
+// 3 rows visible, middle row is the spotlight. Advances every 2.2s with a count-up badge.
+// Styles are global because the JS builds rows dynamically (no Astro scope hash on dynamic els).
+---
+
+<div class="inv-wrap">
+  <div class="inv-inner">
+    <p class="inv-head">Latest price changes</p>
+    <div class="inv-clip">
+      <div class="inv-track"></div>
+    </div>
+  </div>
+</div>
+
+<style is:global>
+  .inv-wrap {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .inv-inner {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .inv-head {
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.35);
+    margin: 0 0 14px;
+  }
+  .inv-clip {
+    overflow: hidden;
+  }
+  .inv-track {
+    display: flex;
+    flex-direction: column;
+    will-change: transform;
+  }
+  .inv-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(255, 255, 255, 0.035);
+    padding: 13px 0;
+    flex-shrink: 0;
+  }
+  .inv-row-right {
+    display: flex;
+    align-items: center;
+  }
+  .inv-row-name,
+  .inv-row-price {
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.45);
+    transition: color 0.3s ease;
+  }
+  .inv-row.spotlight .inv-row-name,
+  .inv-row.spotlight .inv-row-price {
+    color: rgba(255, 255, 255, 0.88);
+  }
+  .inv-badge {
+    max-width: 0;
+    padding: 0;
+    margin-left: 0;
+    opacity: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 300;
+    transition: max-width 0.32s ease, padding 0.32s ease, margin-left 0.32s ease, opacity 0.2s ease;
+  }
+  .inv-badge.visible {
+    max-width: 70px;
+    padding: 2px 7px;
+    margin-left: 8px;
+    opacity: 1;
+  }
+  .inv-badge.up   { color: #f59e0b; background: rgba(245, 158, 11, 0.10); }
+  .inv-badge.down { color: #34d399; background: rgba(52, 211, 153, 0.09); }
+</style>
+
+<script>
+  const ITEMS = [
+    { name: 'Cherry tomatoes',      price: '€4.80',  change: +4  },
+    { name: 'Chicken breast',       price: '€24.50', change: +8  },
+    { name: 'Olive oil 5 L',        price: '€18.20', change: -3  },
+    { name: 'Grana Padano 1 kg',    price: '€9.40',  change: +12 },
+    { name: 'Beef tenderloin 1 kg', price: '€32.00', change: +6  },
+    { name: 'Halibut fillet 1 kg',  price: '€21.50', change: -2  },
+    { name: 'Potato 10 kg',         price: '€9.20',  change: +5  },
+    { name: 'Parmesan 1 kg',        price: '€22.00', change: -1  },
+  ];
+
+  const VISIBLE  = 3;
+  const SPOTLIGHT = 1;
+  const INTERVAL_MS = 2200;
+
+  function initTicker(track) {
+    let head = 0;
+
+    function makeRow(item, isSpot) {
+      const row = document.createElement('div');
+      row.className = 'inv-row' + (isSpot ? ' spotlight' : '');
+      row.innerHTML =
+        `<span class="inv-row-name">${item.name}</span>` +
+        `<span class="inv-row-right">` +
+          `<span class="inv-row-price">${item.price}</span>` +
+          `<span class="inv-badge ${item.change > 0 ? 'up' : 'down'}"></span>` +
+        `</span>`;
+      return row;
+    }
+
+    function countUp(el, target) {
+      const sign = target > 0 ? '+' : '-';
+      const abs  = Math.abs(target);
+      const dur  = 550;
+      const t0   = performance.now();
+      (function step(now) {
+        const p = Math.min((now - t0) / dur, 1);
+        el.textContent = sign + Math.round(p * abs) + '%';
+        if (p < 1) requestAnimationFrame(step);
+      })(performance.now());
+    }
+
+    // Build initial rows
+    for (let i = 0; i < VISIBLE; i++) {
+      track.appendChild(makeRow(ITEMS[(head + i) % ITEMS.length], i === SPOTLIGHT));
+    }
+
+    // Trigger badge on initial spotlight
+    const initBadge = track.children[SPOTLIGHT].querySelector('.inv-badge');
+    setTimeout(() => {
+      initBadge.classList.add('visible');
+      countUp(initBadge, ITEMS[(head + SPOTLIGHT) % ITEMS.length].change);
+    }, 400);
+
+    function tick() {
+      const rows = track.children;
+      const rowH = rows[0].offsetHeight;
+
+      // Collapse current spotlight badge
+      rows[SPOTLIGHT].classList.remove('spotlight');
+      rows[SPOTLIGHT].querySelector('.inv-badge').classList.remove('visible');
+
+      // Slide track up one row
+      track.style.transition = `transform ${Math.round(INTERVAL_MS * 0.25)}ms cubic-bezier(0.4,0,0.2,1)`;
+      track.style.transform  = `translateY(-${rowH}px)`;
+
+      setTimeout(() => {
+        track.style.transition = 'none';
+        track.style.transform  = '';
+
+        // Remove top row, append new bottom row
+        track.removeChild(rows[0]);
+        head = (head + 1) % ITEMS.length;
+        track.appendChild(makeRow(ITEMS[(head + VISIBLE - 1) % ITEMS.length], false));
+
+        // Spotlight new middle row and count up its badge
+        track.children[SPOTLIGHT].classList.add('spotlight');
+        const badge = track.children[SPOTLIGHT].querySelector('.inv-badge');
+        setTimeout(() => {
+          badge.classList.add('visible');
+          countUp(badge, ITEMS[(head + SPOTLIGHT) % ITEMS.length].change);
+        }, 80);
+      }, Math.round(INTERVAL_MS * 0.3));
+    }
+
+    setInterval(tick, INTERVAL_MS);
+  }
+
+  document.querySelectorAll('.inv-track').forEach(initTicker);
+</script>

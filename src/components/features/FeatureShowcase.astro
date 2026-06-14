@@ -56,7 +56,7 @@ const { tagline, heading, body, items = [], primary, secondary, image, imageSide
     </div>
 
     <div class="fs7-media">
-      {image ? <img src={image.src} alt={image.alt} /> : <MediaPlaceholder ratio={mediaRatio} />}
+      {Astro.slots.has('media') ? <slot name="media" /> : image ? <img src={image.src} alt={image.alt} /> : <MediaPlaceholder ratio={mediaRatio} />}
     </div>
   </div>
 </section>
