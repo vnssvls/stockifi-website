@@ -1,0 +1,179 @@
+---
+// Product category card grid — icon + heading + body, bordered, linkable.
+// 5 items → 3-col Parker layout (bottom 2 stretch to ~50% via flex-grow); 4 → 4-col.
+// Card: icon top-left, title+desc+arrow at bottom (space-between).
+// Hover: white ripple expands from cursor entry point (same pattern as primary button),
+// gradient-duo tint on top, text/icon flip to dark via .is-rippling class.
+interface Item { heading: string; body: string; icon?: string; href?: string }
+interface Props { items: Item[]; columns?: 3 | 4; }
+const { items, columns } = Astro.props;
+const cols = columns ?? (items.length >= 5 ? 3 : 4);
+---
+
+<div class:list={['product-card-grid', `pcg-cols-${cols}`]}>
+  {items.map((it) => (
+    <article class:list={['pcg-item', it.href && 'pcg-item--linked']}>
+      {it.href && <a class="pcg-cover-link" href={it.href} aria-label={it.heading}></a>}
+      {it.href && <span class="pcg-ripple" aria-hidden="true"></span>}
+      <div class="pcg-inner">
+        <span class="pcg-icon" aria-hidden="true">
+          {it.icon ? <Fragment set:html={it.icon} /> : (
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          )}
+        </span>
+        <div class="pcg-bottom">
+          <div class="pcg-text">
+            <h3 class="pcg-title">{it.heading}</h3>
+            <p class="pcg-body">{it.body}</p>
+          </div>
+          {it.href && (
+            <span class="pcg-arrow" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </span>
+          )}
+        </div>
+      </div>
+    </article>
+  ))}
+</div>
+
+<style>
+  /* ── Grid ──────────────────────────────────────────────────────────────────── */
+  .product-card-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-24);
+  }
+
+  /* ── Card shell ────────────────────────────────────────────────────────────── */
+  .pcg-item {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 100%;
+    min-height: 18rem;
+    border: 1px solid var(--muted);
+    border-radius: var(--radius-lg);
+    background: color-mix(in srgb, black 20%, var(--card));
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.15);
+    transition: border-color 0.22s ease, box-shadow 0.22s ease;
+  }
+
+  /* Gradient-duo tint — sits above the ripple (::after paints after .pcg-ripple in DOM),
+     below pcg-inner. Triggered by .is-rippling, not :hover. */
+  .pcg-item--linked::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image: url('/media/gradient-duo.png');
+    background-size: 200%;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+  }
+
+  /* Active ripple state — triggered by JS via .is-rippling */
+  .pcg-item.is-rippling              { border-color: white; box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18), 0 1px 4px rgba(0, 0, 0, 0.1); }
+  .pcg-item.is-rippling::after       { opacity: 1; }
+
+  /* Text flips to dark once ripple covers card */
+  .pcg-item.is-rippling .pcg-title   { color: var(--card); }
+  .pcg-item.is-rippling .pcg-body    { color: var(--card); }
+  .pcg-item.is-rippling .pcg-icon    { color: var(--primary); }
+  .pcg-item.is-rippling .pcg-arrow   { opacity: 1; color: var(--card); transform: translateX(3px); }
+
+  /* Reduced-motion fallback: instant CSS flip instead of ripple */
+  @media (prefers-reduced-motion: reduce) {
+    .pcg-ripple { display: none; }
+    .pcg-item--linked:hover { border-color: white; background: #FCFBFB; }
+    .pcg-item--linked:hover::after       { opacity: 1; }
+    .pcg-item--linked:hover .pcg-title   { color: var(--card); }
+    .pcg-item--linked:hover .pcg-body    { color: var(--card); }
+    .pcg-item--linked:hover .pcg-icon    { color: var(--primary); }
+    .pcg-item--linked:hover .pcg-arrow   { opacity: 1; color: var(--card); transform: translateX(3px); }
+  }
+
+  /* ── Parker 3+2 flex-grow layout ────────────────────────────────────────────── */
+  @media (min-width: 640px)  { .pcg-item { flex: 0 0 calc(50% - 12px); } }
+
+  @media (min-width: 1024px) {
+    .product-card-grid.pcg-cols-3 .pcg-item { flex: 1 1 calc(33.333% - 16px); }
+    .product-card-grid.pcg-cols-4 .pcg-item { flex: 0 0 calc(25% - 18px); }
+  }
+
+  /* ── Ripple — white circle, expands from cursor entry point via JS.
+     Size fixed in CSS (never mutated by JS) so it can never affect card layout.
+     overflow: hidden on .pcg-item clips it; transform: scale handles the expand. */
+  .pcg-ripple {
+    position: absolute;
+    z-index: 0;
+    width: 1200px;
+    height: 1200px;
+    border-radius: 50%;
+    background: #FCFBFB;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+  }
+
+  /* ── Cover link ─────────────────────────────────────────────────────────────── */
+  .pcg-item--linked { cursor: pointer; }
+  .pcg-cover-link   { position: absolute; inset: 0; border-radius: inherit; z-index: 2; }
+
+  /* ── Content wrapper — above ripple + gradient (z-index: 1) ─────────────────── */
+  .pcg-inner {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--space-64);
+    padding: var(--space-32);
+  }
+
+  /* ── Icon ───────────────────────────────────────────────────────────────────── */
+  .pcg-icon { display: inline-flex; color: white; transition: color 0.2s ease; }
+  .pcg-icon :global(svg) { width: 28px; height: 28px; }
+
+  /* ── Bottom group ───────────────────────────────────────────────────────────── */
+  .pcg-bottom { display: flex; flex-direction: column; gap: var(--space-16); }
+  .pcg-text   { display: flex; flex-direction: column; gap: var(--space-8); }
+  .pcg-title  { font-size: var(--text-h5); transition: color 0.2s ease; }
+  .pcg-body   { font-size: var(--text-body-sm); line-height: var(--lh-body); opacity: 0.65; transition: color 0.2s ease; }
+
+  /* ── Arrow ───────────────────────────────────────────────────────────────────── */
+  .pcg-arrow {
+    display: inline-flex;
+    opacity: 0;
+    color: white;
+    transition: opacity 0.15s ease, transform 0.15s ease, color 0.15s ease;
+  }
+</style>
+
+<script>
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll<HTMLElement>('.pcg-item--linked').forEach((card) => {
+      const ripple = card.querySelector<HTMLElement>('.pcg-ripple');
+      if (!ripple) return;
+
+      card.addEventListener('mouseenter', (e) => {
+        const rect = card.getBoundingClientRect();
+        ripple.style.left = `${(e as MouseEvent).clientX - rect.left}px`;
+        ripple.style.top  = `${(e as MouseEvent).clientY - rect.top}px`;
+        ripple.getBoundingClientRect(); // force layout flush before scaling
+        card.classList.add('is-rippling');
+        ripple.style.transform = 'translate(-50%, -50%) scale(1)';
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.classList.remove('is-rippling');
+        ripple.style.transform = 'translate(-50%, -50%) scale(0)';
+      });
+    });
+  }
+</script>

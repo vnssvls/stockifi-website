@@ -1,8 +1,46 @@
 ---
-// Inventory Management category LP — placeholder pending wireframe.
+// Inventory Management category LP (/product-inventory-management).
+// Section map: PageHeader → product card grid (4 items, 4-col) → CtaEmail → Footer v2
+// When Data Quality page ships, add 5th item and columns will auto-switch to 3-col.
 import Layout from '../../layouts/Layout.astro';
+import PageHeader from '../../components/page-headers/PageHeader.astro';
+import ProductCardGrid from '../../components/ProductCardGrid.astro';
+import CtaEmail from '../../components/CtaEmail.astro';
+import navIcons from '../../data/nav-icons.json';
+
+const icons = navIcons as Record<string, string>;
+
+const items = [
+  { heading: 'Recipe building', body: 'Cost every recipe from live ingredient prices.', href: '/product-inventory-management/recipe-building', icon: icons['book'] },
+  { heading: 'Stock counting', body: 'Count stock on mobile or web, online or off.', href: '/product-inventory-management/stock-counting', icon: icons['box'] },
+  { heading: 'Inventory transfers', body: 'Track stock moved between your locations.', href: '/product-inventory-management/inventory-transfers', icon: icons['convert-3d-cube'] },
+  { heading: 'Wastage tracking', body: 'Log waste and see what it costs you.', href: '/product-inventory-management/wastage-tracking', icon: icons['trash'] },
+  { heading: 'Data quality', body: 'Clean, validated data behind every report.', href: '/product-inventory-management/data-quality', icon: icons['data-quality'] },
+];
 ---
 
-<Layout title="Inventory Management | Stockifi" description="Count stock, track variance, log wastage, and manage transfers across all your locations.">
-  <!-- LP content coming — pending wireframe -->
+<Layout
+  title="Inventory Management | Stockifi"
+  description="Count stock, track variance, log wastage, and manage transfers across all your locations."
+>
+  <!-- 1. Page header — centered -->
+  <PageHeader
+    eyebrow="Inventory Management"
+    heading="[Placeholder heading]"
+    subhead="[Placeholder subhead]"
+  />
+
+  <!-- 2. Product card grid -->
+  <section class="section">
+    <div class="container">
+      <ProductCardGrid items={items} />
+    </div>
+  </section>
+
+  <!-- 3. CTA — variant 2 centered email capture -->
+  <CtaEmail
+    heading="[Placeholder CTA heading]"
+    subhead="[Placeholder CTA subhead]"
+    bgImages={['/media/cta-bg-1.jpg', '/media/cta-bg-2.jpg', '/media/cta-bg-3.jpg', '/media/cta-bg-4.jpg']}
+  />
 </Layout>

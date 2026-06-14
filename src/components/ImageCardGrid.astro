@@ -10,8 +10,9 @@ interface Props {
   items: Item[];
   columns?: 2 | 3 | 4;
   image?: string;
+  showArrow?: boolean;
 }
-const { items, columns = 4, image } = Astro.props;
+const { items, columns = 4, image, showArrow = false } = Astro.props;
 ---
 
 <div class:list={['image-card-grid', `icg-cols-${columns}`]}>
@@ -29,6 +30,11 @@ const { items, columns = 4, image } = Astro.props;
           <h3 class="icg-title">{it.heading}</h3>
           <p class="icg-body text-muted">{it.body}</p>
         </div>
+        {(showArrow && it.href) && (
+          <span class="icg-arrow" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </span>
+        )}
       </article>
     );
   })}
@@ -61,6 +67,7 @@ const { items, columns = 4, image } = Astro.props;
   }
 
   .icg-icon { display: inline-flex; color: var(--primary); }
+  .icg-icon :global(svg) { width: 28px; height: 28px; }
   .icg-text { display: flex; flex-direction: column; gap: var(--space-12); }
   /* Cards align by copy discipline, not CSS padding: titles stay on one line,
      bodies stay to two. Keep the copy within that and the row lines up. */
@@ -81,4 +88,16 @@ const { items, columns = 4, image } = Astro.props;
     z-index: 1;
   }
   .icg-item--linked:hover { border-color: var(--primary); }
+
+  .icg-arrow {
+    position: absolute;
+    bottom: var(--space-32);
+    right: var(--space-32);
+    opacity: 0.5;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+  }
+  .icg-item--linked:hover .icg-arrow {
+    opacity: 1;
+    transform: translateX(3px);
+  }
 </style>

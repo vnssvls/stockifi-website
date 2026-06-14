@@ -1,8 +1,46 @@
 ---
-// Procurement category LP — placeholder pending wireframe.
+// Procurement category LP (/product-procurement).
+// Section map: PageHeader → product card grid (4 items, 4-col) → CtaEmail → Footer v2
+// When Ordering page ships, add 5th item and columns will auto-switch to 3-col.
 import Layout from '../../layouts/Layout.astro';
+import PageHeader from '../../components/page-headers/PageHeader.astro';
+import ProductCardGrid from '../../components/ProductCardGrid.astro';
+import CtaEmail from '../../components/CtaEmail.astro';
+import navIcons from '../../data/nav-icons.json';
+
+const icons = navIcons as Record<string, string>;
+
+const items = [
+  { heading: 'Invoice automation', body: 'Supplier invoices read line by line, automatically.', href: '/product-procurement/invoice-automation', icon: icons['receipt-2'] },
+  { heading: 'Supplier price tracking', body: 'Every price change caught the day it lands.', href: '/product-procurement/supplier-price-tracking', icon: icons['percentage-circle'] },
+  { heading: 'Central kitchen', body: 'Cost production and supply your own outlets.', href: '/product-procurement/central-kitchen', icon: icons['building'] },
+  { heading: 'Anomaly detection', body: 'Flags overcharges and odd line items for review.', href: '/product-procurement/anomaly-detection', icon: icons['fluent-wand'] },
+  { heading: 'Ordering suggestions', body: 'Know what to reorder before you run short.', href: '/product-procurement/ordering-suggestions', icon: icons['ordering-suggestions'] },
+];
 ---
 
-<Layout title="Procurement | Stockifi" description="Automate invoice processing, track supplier prices, and catch billing errors before they cost you.">
-  <!-- LP content coming — pending wireframe -->
+<Layout
+  title="Procurement | Stockifi"
+  description="Automate invoice processing, track supplier prices, and catch billing errors before they cost you."
+>
+  <!-- 1. Page header — centered -->
+  <PageHeader
+    eyebrow="Procurement"
+    heading="[Placeholder heading]"
+    subhead="[Placeholder subhead]"
+  />
+
+  <!-- 2. Product card grid -->
+  <section class="section">
+    <div class="container">
+      <ProductCardGrid items={items} />
+    </div>
+  </section>
+
+  <!-- 3. CTA — variant 2 centered email capture -->
+  <CtaEmail
+    heading="[Placeholder CTA heading]"
+    subhead="[Placeholder CTA subhead]"
+    bgImages={['/media/cta-bg-1.jpg', '/media/cta-bg-2.jpg', '/media/cta-bg-3.jpg', '/media/cta-bg-4.jpg']}
+  />
 </Layout>
