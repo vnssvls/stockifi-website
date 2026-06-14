@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Stockifi — Asset Concepts v4 (dark)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Montserrat:wght@600&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Site tokens (dark) ── */
+    :root {
+      --site-bg:   #212121;
+      --asset-bg:  #1a1a1a;     /* slightly darker — the asset sits inside the section */
+      --card-bg:   #252525;     /* elevated surface for invoice-style elements */
+      --border:    rgba(255,255,255,0.07);
+      --row-sep:   rgba(255,255,255,0.05);
+      --text-hi:   rgba(255,255,255,0.88);
+      --text-md:   rgba(255,255,255,0.45);
+      --text-lo:   rgba(255,255,255,0.22);
+      --amber:     #F59E0B;
+      --amber-bg:  rgba(245,158,11,0.10);
+      --green:     #34D399;
+      --green-bg:  rgba(52,211,153,0.09);
+      --red:       #F87171;
+      --red-bg:    rgba(248,113,113,0.09);
+      --purple:    #BB86FC;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      background: var(--site-bg);
+      color: var(--text-hi);
+      padding: 48px 32px 100px;
+    }
+
+    h1 { font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+    .meta { font-size: 11px; color: var(--text-lo); margin-bottom: 52px; line-height: 1.7; }
+
+    .group { margin-bottom: 60px; }
+    .group-label { font-size: 9px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--text-lo); margin-bottom: 14px; }
+
+    .row-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .row-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+
+    .slot { display: flex; flex-direction: column; gap: 5px; }
+    .slot-name  { font-size: 9px; color: var(--text-lo); letter-spacing: 0.06em; }
+    .slot-idea  { font-size: 10px; color: rgba(255,255,255,0.12); line-height: 1.5; font-style: italic; margin-top: 2px; }
+
+    .asset {
+      background: var(--asset-bg);
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .asset-16-10 { aspect-ratio: 16 / 10; }
+    .asset-1-1   { aspect-ratio: 1; }
+
+
+    /* ══════════════════════════════════════════
+       PROCUREMENT — scrolling invoice ticker
+       ══════════════════════════════════════════ */
+    .inv-wrap {
+      width: 62%;
+      display: flex;
+      flex-direction: column;
+    }
+    .inv-head {
+      font-size: 8px;
+      font-weight: 400;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--text-lo);
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--row-sep);
+      margin-bottom: 0;
+    }
+    /* The visible window — overflow hidden, exactly 3 rows tall */
+    .inv-window {
+      overflow: hidden;
+      position: relative;
+    }
+    /* The moving track */
+    .inv-track {
+      display: flex;
+      flex-direction: column;
+      will-change: transform;
+    }
+    .inv-track.is-sliding {
+      transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .inv-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(255,255,255,0.035);
+      padding: 9px 0;
+      flex-shrink: 0;
+    }
+    .inv-row-name  { font-size: 10px; font-weight: 300; color: var(--text-md); }
+    .inv-row-right { display: flex; align-items: center; }
+    .inv-row-price { font-size: 10px; font-weight: 300; color: var(--text-md); }
+
+    /* Spotlight row — the one currently highlighted */
+    .inv-row.spotlight .inv-row-name  { color: var(--text-hi); }
+    .inv-row.spotlight .inv-row-price { color: var(--text-hi); }
+
+    /* Badge is collapsed (zero width, no padding) on inactive rows so the
+       price sits flush right. On spotlight it expands, pushing the price left. */
+    .inv-badge {
+      font-size: 9px;
+      font-weight: 500;
+      border-radius: 3px;
+      white-space: nowrap;
+      overflow: hidden;
+      max-width: 0;
+      padding: 0;
+      margin-left: 0;
+      opacity: 0;
+      transition: max-width 0.32s ease, padding 0.32s ease, margin-left 0.32s ease, opacity 0.2s ease;
+    }
+    .inv-badge.visible {
+      max-width: 56px;
+      padding: 1px 5px;
+      margin-left: 5px;
+      opacity: 1;
+    }
+    .inv-badge.up   { color: var(--amber); background: var(--amber-bg); }
+    .inv-badge.down { color: var(--green); background: var(--green-bg); }
+
+
+    /* ══════════════════════════════════════════
+       INVENTORY — two numbers, the gap
+       ══════════════════════════════════════════ */
+    .gap-outer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .gap-eyebrow { font-size: 8px; color: var(--text-lo); letter-spacing: 0.07em; text-transform: uppercase; }
+    .gap-nums {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+    }
+    .gap-num {
+      font-size: 30px;
+      font-weight: 300;
+      line-height: 1;
+      color: var(--text-md);
+    }
+    .gap-num.actual {
+      color: var(--text-hi);
+      animation: fade-in 1.5s ease forwards;
+    }
+    @keyframes fade-in { from { opacity: 0.3; } to { opacity: 1; } }
+    .gap-unit  { font-size: 13px; font-weight: 300; }
+    .gap-arrow { font-size: 11px; color: var(--border); }
+    .gap-sub   { font-size: 8px; color: var(--text-lo); margin-top: 1px; text-align: center; }
+    .gap-delta {
+      font-size: 10px;
+      font-weight: 400;
+      color: var(--red);
+      background: var(--red-bg);
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+
+    /* ══════════════════════════════════════════
+       BUSINESS INTELLIGENCE — one number
+       ══════════════════════════════════════════ */
+    .bi-outer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    .bi-eye  { font-size: 8px; color: var(--text-lo); letter-spacing: 0.07em; text-transform: uppercase; }
+    .bi-num  { font-size: 46px; font-weight: 300; color: var(--text-hi); letter-spacing: -0.02em; line-height: 1; }
+    .bi-trend {
+      display: flex; align-items: center; gap: 4px;
+      font-size: 10px; font-weight: 300;
+      color: var(--green);
+    }
+    .bi-spark { width: 68px; height: 18px; margin-top: 6px; }
+    .bi-spark polyline {
+      stroke-dasharray: 100;
+      stroke-dashoffset: 100;
+      animation: spark 2.5s ease forwards 0.5s;
+    }
+    @keyframes spark { to { stroke-dashoffset: 0; } }
+
+
+    /* ══════════════════════════════════════════
+       MANAGEMENT — location list
+       ══════════════════════════════════════════ */
+    .mgmt-outer {
+      width: 100%;
+      padding: 24% 20%;
+      display: flex;
+      flex-direction: column;
+    }
+    .mgmt-eye { font-size: 8px; color: var(--text-lo); letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 10px; }
+    .mgmt-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--row-sep);
+      font-size: 11px;
+      font-weight: 300;
+    }
+    .mgmt-row:last-child { border: none; }
+    .mdot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+    .mdot-ok   { background: var(--green); }
+    .mdot-flag { background: var(--amber); animation: blink 2s ease-in-out infinite; }
+    @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+    .mgmt-name { flex: 1; color: var(--text-hi); }
+    .mgmt-pct  { font-size: 10px; color: var(--text-md); }
+
+
+    /* ══════════════════════════════════════════
+       OPERATIONS — single item
+       ══════════════════════════════════════════ */
+    .ops-outer {
+      width: 100%;
+      padding: 24% 20%;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+    .ops-eye  { font-size: 8px; color: var(--text-lo); letter-spacing: 0.07em; text-transform: uppercase; }
+    .ops-name { font-size: 20px; font-weight: 300; color: var(--text-hi); line-height: 1.2; }
+    .ops-det  { font-size: 10px; color: var(--text-md); }
+    .ops-pill {
+      font-size: 9px; font-weight: 400;
+      color: var(--red); background: var(--red-bg);
+      padding: 3px 8px; border-radius: 4px;
+      display: inline-block; margin-top: 3px;
+    }
+
+
+    /* ══════════════════════════════════════════
+       KITCHEN — recipe cost
+       ══════════════════════════════════════════ */
+    .kitchen-outer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+    }
+    .kitchen-dish { font-size: 10px; font-weight: 300; color: var(--text-md); letter-spacing: 0.02em; }
+    .kitchen-cost { font-size: 36px; font-weight: 300; color: var(--text-hi); letter-spacing: -0.02em; line-height: 1; animation: pulse-soft 3s ease-in-out infinite alternate; }
+    @keyframes pulse-soft { from{opacity:0.7;} to{opacity:1;} }
+    .kitchen-unit { font-size: 9px; color: var(--text-lo); }
+    .kitchen-tag  { font-size: 9px; font-weight: 300; color: var(--green); margin-top: 7px; }
+
+
+    /* ══════════════════════════════════════════
+       FINANCE — two bars
+       ══════════════════════════════════════════ */
+    .fin-outer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      padding-bottom: 20%;
+      gap: 8px;
+      width: 100%;
+    }
+    .fin-bars { display: flex; align-items: flex-end; gap: 10px; height: 72px; }
+    .fin-bar  { width: 28px; border-radius: 3px 3px 0 0; transform: scaleY(0); transform-origin: bottom; animation: rise 1s cubic-bezier(0.22,1,0.36,1) forwards; }
+    .fin-bar.t { height: 48px; background: rgba(255,255,255,0.09); animation-delay: 0.1s; }
+    .fin-bar.a { height: 66px; background: rgba(248,113,113,0.18); border: 1px solid rgba(248,113,113,0.25); animation-delay: 0.25s; }
+    @keyframes rise { to { transform: scaleY(1); } }
+    .fin-lbls { display: flex; gap: 10px; }
+    .fin-col  { width: 28px; display: flex; flex-direction: column; align-items: center; gap: 2px; }
+    .fin-pct  { font-size: 10px; font-weight: 300; color: var(--text-md); }
+    .fin-pct.over { color: var(--red); }
+    .fin-word { font-size: 7px; color: var(--text-lo); text-align: center; white-space: nowrap; }
+    .fin-delta { font-size: 10px; font-weight: 300; color: var(--red); }
+
+  </style>
+</head>
+<body>
+
+  <h1>Asset Concepts — v4 · dark</h1>
+  <p class="meta">
+    Dark mode. Procurement: rows scroll up, % counts when spotlight hits.<br>
+    Everything else: one number, one signal, lots of space.
+  </p>
+
+
+  <!-- ══ FeatureList 16:10 ══ -->
+  <div class="group">
+    <div class="group-label">FeatureList — 16:10</div>
+    <div class="row-3">
+
+      <!-- PROCUREMENT -->
+      <div class="slot">
+        <div class="slot-name">Procurement</div>
+        <div class="asset asset-16-10" id="procAsset">
+          <div class="inv-wrap">
+            <div class="inv-head">Latest price changes</div>
+            <div class="inv-window" id="invWindow">
+              <div class="inv-track" id="invTrack"></div>
+            </div>
+          </div>
+        </div>
+        <div class="slot-idea">Invoice rows scroll. One enters the spotlight — its price change counts up.</div>
+      </div>
+
+      <!-- INVENTORY -->
+      <div class="slot">
+        <div class="slot-name">Inventory Management</div>
+        <div class="asset asset-16-10">
+          <div class="gap-outer">
+            <div class="gap-eyebrow">Chicken breast · Jun 1–14</div>
+            <div class="gap-nums">
+              <div>
+                <div class="gap-num">4.2<span class="gap-unit"> kg</span></div>
+                <div class="gap-sub">theoretical</div>
+              </div>
+              <div class="gap-arrow">→</div>
+              <div>
+                <div class="gap-num actual">4.8<span class="gap-unit"> kg</span></div>
+                <div class="gap-sub">actual</div>
+              </div>
+            </div>
+            <div class="gap-delta">+0.6 kg over</div>
+          </div>
+        </div>
+        <div class="slot-idea">Two numbers, the gap between them. No chart needed.</div>
+      </div>
+
+      <!-- BI -->
+      <div class="slot">
+        <div class="slot-name">Business Intelligence</div>
+        <div class="asset asset-16-10">
+          <div class="bi-outer">
+            <div class="bi-eye">Food cost</div>
+            <div class="bi-num">26.1%</div>
+            <div class="bi-trend">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none">
+                <path d="M18 15l-6-6-6 6" stroke="#34D399" stroke-width="2.5" stroke-linecap="round"/>
+              </svg>
+              down 2.3pp
+            </div>
+            <svg class="bi-spark" viewBox="0 0 68 18" fill="none">
+              <polyline points="0,15 14,11 28,13 42,7 55,4 68,2"
+                stroke="#34D399" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+        <div class="slot-idea">One number. One line. The whole report in a glance.</div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ══ FeatureTabs 1:1 ══ -->
+  <div class="group">
+    <div class="group-label">FeatureTabs — 1:1</div>
+    <div class="row-4">
+
+      <!-- MANAGEMENT -->
+      <div class="slot">
+        <div class="slot-name">Management</div>
+        <div class="asset asset-1-1">
+          <div class="mgmt-outer">
+            <div class="mgmt-eye">All locations</div>
+            <div class="mgmt-row"><div class="mdot mdot-ok"></div><span class="mgmt-name">Amsterdam</span><span class="mgmt-pct">24.8%</span></div>
+            <div class="mgmt-row"><div class="mdot mdot-flag"></div><span class="mgmt-name">Utrecht</span><span class="mgmt-pct">27.2%</span></div>
+            <div class="mgmt-row"><div class="mdot mdot-ok"></div><span class="mgmt-name">Rotterdam</span><span class="mgmt-pct">25.1%</span></div>
+          </div>
+        </div>
+        <div class="slot-idea">Margin across all locations. One dot says where to look.</div>
+      </div>
+
+      <!-- OPERATIONS -->
+      <div class="slot">
+        <div class="slot-name">Operations</div>
+        <div class="asset asset-1-1">
+          <div class="ops-outer">
+            <div class="ops-eye">Wastage log</div>
+            <div class="ops-name">Duck Breast</div>
+            <div class="ops-det">0.8 kg · €22.40</div>
+            <div class="ops-pill">Over-portioned</div>
+          </div>
+        </div>
+        <div class="slot-idea">One item, one flag. The data is in the count.</div>
+      </div>
+
+      <!-- KITCHEN -->
+      <div class="slot">
+        <div class="slot-name">Kitchen</div>
+        <div class="asset asset-1-1">
+          <div class="kitchen-outer">
+            <div class="kitchen-dish">Chicken Caesar</div>
+            <div class="kitchen-cost">€3.24</div>
+            <div class="kitchen-unit">per portion</div>
+            <div class="kitchen-tag">68% margin · live</div>
+          </div>
+        </div>
+        <div class="slot-idea">Cost updates as ingredient prices move. Always current.</div>
+      </div>
+
+      <!-- FINANCE -->
+      <div class="slot">
+        <div class="slot-name">Finance</div>
+        <div class="asset asset-1-1">
+          <div class="fin-outer">
+            <div class="fin-bars">
+              <div class="fin-bar t"></div>
+              <div class="fin-bar a"></div>
+            </div>
+            <div class="fin-lbls">
+              <div class="fin-col"><div class="fin-pct">24.8%</div><div class="fin-word">theoretical</div></div>
+              <div class="fin-col"><div class="fin-pct over">26.3%</div><div class="fin-word">actual</div></div>
+            </div>
+            <div class="fin-delta">+1.5pp variance</div>
+          </div>
+        </div>
+        <div class="slot-idea">COGS you can trust. The gap tells you where to look.</div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <script>
+    // ── Procurement scroll animation ──────────────────────────
+    const ITEMS = [
+      { name: 'Cherry tomatoes',  price: '€4.80',  change: +4  },
+      { name: 'Chicken breast',   price: '€24.50', change: +8  },
+      { name: 'Olive oil 5 L',   price: '€18.20', change: -3  },
+      { name: 'Grana Padano 1 kg',  price: '€9.40',  change: +12 },
+      { name: 'Beef tenderloin 1 kg', price: '€32.00', change: +6  },
+      { name: 'Halibut fillet 1 kg',  price: '€21.50', change: -2  },
+      { name: 'Potato 10 kg',     price: '€9.20',  change: +5  },
+      { name: 'Parmesan 1 kg',   price: '€22.00', change: -1  },
+    ];
+
+    const VISIBLE      = 3;   // rows visible at once
+    const SPOTLIGHT    = 1;   // which visible index is highlighted (middle)
+    const INTERVAL_MS  = 2200;
+
+    let offset = 0;
+    let ROW_H  = 0;  // measured after first render
+
+    const track  = document.getElementById('invTrack');
+    const window_ = document.getElementById('invWindow');
+
+    function item(i) { return ITEMS[i % ITEMS.length]; }
+
+    function makeRowEl(dataItem, isSpotlight, isBadgeVisible) {
+      const row = document.createElement('div');
+      row.className = 'inv-row' + (isSpotlight ? ' spotlight' : '');
+
+      const sign    = dataItem.change > 0 ? '+' : '';
+      const dir     = dataItem.change > 0 ? 'up' : 'down';
+      const badgeViz = isBadgeVisible ? ' visible' : '';
+
+      row.innerHTML = `
+        <span class="inv-row-name">${dataItem.name}</span>
+        <span class="inv-row-right">
+          <span class="inv-row-price">${dataItem.price}</span>
+          <span class="inv-badge ${dir}${badgeViz}" data-target="${dataItem.change}">
+            ${sign}${Math.abs(dataItem.change)}%
+          </span>
+        </span>`;
+      return row;
+    }
+
+    function initRows() {
+      track.innerHTML = '';
+      // Render VISIBLE + 1 rows (extra one below, ready to slide in)
+      for (let i = 0; i < VISIBLE + 1; i++) {
+        const isSpot = (i === SPOTLIGHT);
+        track.appendChild(makeRowEl(item(offset + i), isSpot, isSpot));
+      }
+
+      // Measure row height once
+      if (!ROW_H) {
+        ROW_H = track.firstChild.getBoundingClientRect().height;
+        window_.style.height = (ROW_H * VISIBLE) + 'px';
+        track.style.transform = 'translateY(0)';
+      }
+    }
+
+    function countUp(badgeEl, target) {
+      const isPos   = target > 0;
+      const absVal  = Math.abs(target);
+      const sign    = isPos ? '+' : '-';
+      const dur     = 550;
+      let start     = null;
+
+      badgeEl.textContent = sign + '0%';
+      badgeEl.classList.add('visible');
+
+      function step(ts) {
+        if (!start) start = ts;
+        const p = Math.min((ts - start) / dur, 1);
+        const v = Math.round(p * absVal);
+        badgeEl.textContent = sign + v + '%';
+        if (p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    function tick() {
+      // 1. Slide up by one row
+      track.classList.add('is-sliding');
+      track.style.transform = `translateY(-${ROW_H}px)`;
+
+      track.addEventListener('transitionend', function onEnd() {
+        track.removeEventListener('transitionend', onEnd);
+        track.classList.remove('is-sliding');
+
+        // 2. Remove top row, advance offset, append new row at bottom
+        track.removeChild(track.firstChild);
+        offset++;
+        const newItem = item(offset + VISIBLE);
+        track.appendChild(makeRowEl(newItem, false, false));
+
+        // 3. Snap back (no transition)
+        track.style.transform = 'translateY(0)';
+
+        // 4. Re-apply spotlight class
+        Array.from(track.children).forEach((row, i) => {
+          row.classList.toggle('spotlight', i === SPOTLIGHT);
+        });
+
+        // 5. Animate the badge on the spotlight row
+        const spotRow  = track.children[SPOTLIGHT];
+        const badge    = spotRow.querySelector('.inv-badge');
+        const target   = parseInt(badge.dataset.target, 10);
+        badge.classList.remove('visible');
+        // Small delay lets the badge expansion (price slide) start visibly
+        setTimeout(() => countUp(badge, target), 80);
+
+      }, { once: true });
+    }
+
+    // Init + start loop
+    initRows();
+    // Show initial spotlight badge immediately
+    const initBadge = track.children[SPOTLIGHT].querySelector('.inv-badge');
+    setTimeout(() => countUp(initBadge, parseInt(initBadge.dataset.target, 10)), 400);
+    setInterval(tick, INTERVAL_MS);
+  </script>
+
+</body>
+</html>
