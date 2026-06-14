@@ -5,10 +5,10 @@
 // by design — drop it INSIDE a section; the parent provides section, container, and
 // any heading. 4-up on desktop, stacks down. Pass a per-item `image` (or a shared
 // component-level `image` fallback) plus an optional per-item `icon` (inline SVG).
-interface Item { heading: string; body: string; icon?: string; image?: string }
+interface Item { heading: string; body: string; icon?: string; image?: string; href?: string }
 interface Props {
   items: Item[];
-  columns?: 3 | 4;
+  columns?: 2 | 3 | 4;
   image?: string;
 }
 const { items, columns = 4, image } = Astro.props;
@@ -18,7 +18,8 @@ const { items, columns = 4, image } = Astro.props;
   {items.map((it) => {
     const bg = it.image ?? image;
     return (
-      <article class="icg-item" style={bg ? `--icg-bg: url('${bg}')` : undefined}>
+      <article class:list={['icg-item', it.href && 'icg-item--linked']} style={bg ? `--icg-bg: url('${bg}')` : undefined}>
+        {it.href && <a class="icg-cover-link" href={it.href} aria-label={it.heading}></a>}
         <span class="icg-icon" aria-hidden="true">
           {it.icon ? <Fragment set:html={it.icon} /> : (
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" /><path d="m3.3 7 8.7 5 8.7-5" /><path d="M12 22V12" /></svg>
@@ -71,4 +72,13 @@ const { items, columns = 4, image } = Astro.props;
     .image-card-grid.icg-cols-3 { grid-template-columns: repeat(3, 1fr); }
     .image-card-grid.icg-cols-4 { grid-template-columns: repeat(4, 1fr); }
   }
+
+  .icg-item--linked { position: relative; }
+  .icg-cover-link {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    z-index: 1;
+  }
+  .icg-item--linked:hover { border-color: var(--primary); }
 </style>

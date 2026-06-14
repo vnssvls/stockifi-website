@@ -1,0 +1,78 @@
+---
+// Solutions hub page (/solutions). One page linking to all individual solution pages
+// grouped by type and by team. No /solutions-[segment] sub-pages — this is the single
+// landing. Layout per V's wireframe (Jun 14 2026):
+// PageHeader (centered) → By Type grid (2-col) → By Team grid (2-col) → CtaEmail → Footer v2
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import PageHeader from '../../components/page-headers/PageHeader.astro';
+import ImageCardGrid from '../../components/ImageCardGrid.astro';
+import CtaEmail from '../../components/CtaEmail.astro';
+
+const all = await getCollection('solutions', (s) => !s.data.draft);
+const sorted = all.sort((a, b) => a.data.order - b.data.order);
+
+const byType = sorted
+  .filter((s) => s.data.group === 'segment')
+  .map((s, i) => ({
+    heading: s.data.heading,
+    body: s.data.subhead,
+    href: `/solutions/${s.id}`,
+    image: `/media/cta-bg-${(i % 4) + 1}.jpg`,
+  }));
+
+const byTeam = sorted
+  .filter((s) => s.data.group === 'team')
+  .map((s, i) => ({
+    heading: s.data.heading,
+    body: s.data.subhead,
+    href: `/solutions/${s.id}`,
+    image: `/media/cta-bg-${(i % 4) + 1}.jpg`,
+  }));
+---
+
+<Layout
+  title="Solutions | Stockifi"
+  description="Stockifi for every operation type and every role. Find the solution built for how your team works."
+>
+  <!-- 1. Page header — centered variant -->
+  <PageHeader
+    eyebrow="Solutions"
+    heading="[Placeholder heading]"
+    subhead="[Placeholder subhead]"
+  />
+
+  <!-- 2. By Type — 4 segment solution cards -->
+  <section class="section">
+    <div class="container">
+      <div class="solutions-group-header">
+        <p class="tagline">By type</p>
+        <h2 class="solutions-group-heading">[Placeholder heading]</h2>
+      </div>
+      <ImageCardGrid items={byType} columns={2} />
+    </div>
+  </section>
+
+  <!-- 3. By Team — 4 team solution cards -->
+  <section class="section">
+    <div class="container">
+      <div class="solutions-group-header">
+        <p class="tagline">By team</p>
+        <h2 class="solutions-group-heading">[Placeholder heading]</h2>
+      </div>
+      <ImageCardGrid items={byTeam} columns={2} />
+    </div>
+  </section>
+
+  <!-- 4. CTA — variant 2 centered email capture -->
+  <CtaEmail
+    heading="[Placeholder CTA heading]"
+    subhead="[Placeholder CTA subhead]"
+    bgImages={['/media/cta-bg-1.jpg', '/media/cta-bg-2.jpg', '/media/cta-bg-3.jpg', '/media/cta-bg-4.jpg']}
+  />
+</Layout>
+
+<style>
+  .solutions-group-header { margin-bottom: var(--space-48); }
+  .solutions-group-heading { font-size: var(--text-h2); margin-top: var(--space-12); }
+</style>
