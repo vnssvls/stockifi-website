@@ -61,6 +61,12 @@ const { tagline, items } = Astro.props;
 </section>
 
 <style>
+  .feature-list {
+    background-image:
+      radial-gradient(70% 70% at 50% 50%, rgba(158, 180, 250, 0.05), transparent 65%),
+      radial-gradient(55% 60% at 62% 32%, rgba(186, 140, 238, 0.04), transparent 65%),
+      radial-gradient(55% 55% at 38% 68%, rgba(248, 176, 214, 0.03), transparent 65%);
+  }
   .fl-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-48); align-items: start; }
   .fl-items { display: flex; flex-direction: column; }
   .fl-items--spaced { margin-top: var(--space-16); }
@@ -169,17 +175,6 @@ const { tagline, items } = Astro.props;
   @media (min-width: 1024px) {
     .fl-grid { grid-template-columns: 1fr 1fr; gap: var(--space-96); max-width: none; padding-inline: 100px; }
     .fl-media { position: sticky; top: var(--space-96); }
-    .fl-media::before {
-      content: '';
-      position: absolute;
-      inset: -100px;
-      background-image:
-        radial-gradient(70% 70% at 50% 50%, rgba(158, 180, 250, 0.05), transparent 65%),
-        radial-gradient(55% 60% at 62% 32%, rgba(186, 140, 238, 0.04), transparent 65%),
-        radial-gradient(55% 55% at 38% 68%, rgba(248, 176, 214, 0.03), transparent 65%);
-      pointer-events: none;
-      z-index: 0;
-    }
     .fl-panel { position: relative; z-index: 1; }
     .fl-items--spaced { margin-top: var(--space-32); }
   }

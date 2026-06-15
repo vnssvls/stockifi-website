@@ -40,6 +40,12 @@ const { tagline, heading, body, items = [], image, imageSide = 'left' } = Astro.
 </section>
 
 <style>
+  .feature-split {
+    background-image:
+      radial-gradient(50% 65% at 12% 48%, rgba(158, 180, 250, 0.05), transparent 62%),
+      radial-gradient(45% 55% at 4% 28%, rgba(186, 140, 238, 0.04), transparent 64%),
+      radial-gradient(48% 52% at 16% 72%, rgba(248, 176, 214, 0.04), transparent 62%);
+  }
   .fs-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-48); align-items: center; }
   /* Mobile: copy first, image below, full-width bleed */
   .fs-media { position: relative; order: 2; margin-inline: calc(-1 * var(--gutter)); }
@@ -81,13 +87,6 @@ const { tagline, heading, body, items = [], image, imageSide = 'left' } = Astro.
     .fs-media img { border-radius: var(--radius-lg); }
     .fs-media::before { display: none; }
     .fs-image-right .fs-media { order: 2; }
-
-    .feature-split {
-      background-image:
-        radial-gradient(50% 65% at 12% 48%, rgba(158, 180, 250, 0.05), transparent 62%),
-        radial-gradient(45% 55% at 4% 28%, rgba(186, 140, 238, 0.04), transparent 64%),
-        radial-gradient(48% 52% at 16% 72%, rgba(248, 176, 214, 0.04), transparent 62%);
-    }
 
     .fs-image-right .fs-media img {
       -webkit-mask-image: linear-gradient(to right, transparent 0%, black 50%);
