@@ -1,0 +1,212 @@
+---
+// FoodCostAnimation — COGS overview + 3-month trend sparkline + category breakdown.
+// No card. Hero overlay slot for slide 1 (manager).
+// SVG dots replaced by HTML spans (avoid oval distortion from preserveAspectRatio="none").
+// Restarts fully on each parent .hero-overlay is-active via MutationObserver.
+---
+
+<div class="fc-wrap">
+  <p class="fc-label">COGS</p>
+  <div class="fc-main">
+    <span class="fc-number">30.4%</span>
+    <span class="fc-badge">↓ 0.0%</span>
+  </div>
+  <p class="fc-period">3-month trend</p>
+
+  <!--
+    Sparkline: SVG line only (preserveAspectRatio="none" stretches circles to ovals).
+    Dots are HTML spans positioned absolutely at their % coordinates.
+    Viewbox 100×30, dots at: A(2,6) B(50,15) C(98,24)
+    → left: 2/50/98%, top: 20/50/80% (= y/30*100)
+  -->
+  <div class="fc-spark-wrap">
+    <svg class="fc-spark" viewBox="0 0 100 30" preserveAspectRatio="none" aria-hidden="true">
+      <path class="fc-line" d="M 2,6 C 30,6 70,24 98,24" />
+    </svg>
+    <span class="fc-dot fc-dot-a"></span>
+    <span class="fc-dot fc-dot-b"></span>
+    <span class="fc-dot fc-dot-c"></span>
+  </div>
+
+  <!-- display:table — name col auto-sizes, values right-aligned, compact gap -->
+  <div class="fc-rows">
+    <div class="fc-row">
+      <span class="fc-cat">Food</span>
+      <span class="fc-val">31.4%</span>
+    </div>
+    <div class="fc-row">
+      <span class="fc-cat">Drinks</span>
+      <span class="fc-val">16.8%</span>
+    </div>
+    <div class="fc-row">
+      <span class="fc-cat">Wine</span>
+      <span class="fc-val">23.8%</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .fc-wrap { width: 100%; }
+
+  .fc-label {
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0 0 8px;
+  }
+  .fc-main { display: flex; align-items: baseline; gap: 8px; }
+  .fc-number {
+    font-size: 28px;
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    color: rgba(255, 255, 255, 0.95);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .fc-badge {
+    font-size: 10px;
+    font-weight: 300;
+    color: #34D399;
+    background: rgba(52, 211, 153, 0.10);
+    border-radius: 3px;
+    padding: 2px 6px;
+    font-variant-numeric: tabular-nums;
+  }
+  .fc-period {
+    font-size: 9px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.35);
+    margin: 4px 0 8px;
+  }
+
+  /* Sparkline wrapper — relative so dots can be absolutely positioned */
+  .fc-spark-wrap {
+    position: relative;
+    width: 100%;
+    height: 30px;
+    margin-bottom: 10px;
+  }
+  .fc-spark {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .fc-line {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.22);
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-dasharray: 115;
+    stroke-dashoffset: 115;
+  }
+
+  /* HTML dots — always round, positioned at viewBox % coords */
+  .fc-dot {
+    position: absolute;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    pointer-events: none;
+  }
+  .fc-dot-a { left: 2%;  top: 20%; width: 4px; height: 4px; background: #34D399; }
+  .fc-dot-b { left: 50%; top: 50%; width: 4px; height: 4px; background: #34D399; }
+  .fc-dot-c { left: 98%; top: 80%; width: 5px; height: 5px; background: #34D399; }
+
+  /* Animated states — class toggled by JS so they restart on each activation */
+  .fc-line.is-drawing { animation: fc-draw 1.4s 0.3s ease-out forwards; }
+  .fc-dot-a.is-showing { animation: fc-show 0.3s 0.45s ease-out forwards; }
+  .fc-dot-b.is-showing { animation: fc-show 0.3s 0.95s ease-out forwards; }
+  .fc-dot-c.is-showing {
+    animation: fc-show 0.3s 1.6s ease-out forwards, fc-pulse 2.4s 1.9s ease-in-out infinite;
+  }
+  @keyframes fc-draw  { to { stroke-dashoffset: 0; } }
+  @keyframes fc-show  { to { opacity: 1; } }
+  @keyframes fc-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+  /* Category breakdown */
+  .fc-rows { display: table; border-collapse: collapse; }
+  .fc-row  { display: table-row; }
+  .fc-cat, .fc-val { display: table-cell; padding: 5px 0; }
+  .fc-cat {
+    padding-right: 14px;
+    white-space: nowrap;
+    font-size: 11px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.7);
+  }
+  .fc-val {
+    text-align: right;
+    white-space: nowrap;
+    font-size: 11px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.55);
+  }
+  .fc-row + .fc-row .fc-cat,
+  .fc-row + .fc-row .fc-val { border-top: 1px solid rgba(255, 255, 255, 0.06); }
+</style>
+
+<script>
+  const wrap    = document.querySelector('.fc-wrap');
+  const numEl   = wrap?.querySelector('.fc-number');
+  const badgeEl = wrap?.querySelector('.fc-badge');
+  const fcLine  = wrap?.querySelector('.fc-line');
+  const dotA    = wrap?.querySelector('.fc-dot-a');
+  const dotB    = wrap?.querySelector('.fc-dot-b');
+  const dotC    = wrap?.querySelector('.fc-dot-c');
+  const overlay = wrap?.closest('.hero-overlay');
+
+  function tickDown(el, from, to, ms) {
+    const t0 = performance.now();
+    (function step(now) {
+      const p    = Math.min((now - t0) / ms, 1);
+      const ease = 1 - Math.pow(1 - p, 2.5);
+      if (el) el.textContent = (from + (to - from) * ease).toFixed(1) + '%';
+      if (p < 1) requestAnimationFrame(step);
+      else if (el) el.textContent = to.toFixed(1) + '%';
+    })(performance.now());
+  }
+
+  function tickBadge(el, to, ms) {
+    const t0 = performance.now();
+    (function step(now) {
+      const p = Math.min((now - t0) / ms, 1);
+      if (el) el.textContent = '↓ ' + (to * p).toFixed(1) + '%';
+      if (p < 1) requestAnimationFrame(step);
+      else if (el) el.textContent = '↓ ' + to.toFixed(1) + '%';
+    })(performance.now());
+  }
+
+  function restart() {
+    if (numEl)   numEl.textContent   = '30.4%';
+    if (badgeEl) badgeEl.textContent = '↓ 0.0%';
+
+    const pairs = [
+      [fcLine, 'is-drawing'],
+      [dotA,   'is-showing'],
+      [dotB,   'is-showing'],
+      [dotC,   'is-showing'],
+    ];
+    pairs.forEach(([el, cls]) => {
+      if (!el) return;
+      el.classList.remove(cls);
+      void el.getBoundingClientRect();
+      el.classList.add(cls);
+    });
+
+    setTimeout(() => tickDown(numEl, 30.4, 26.8, 1300), 900);
+    setTimeout(() => tickBadge(badgeEl, 3.6, 420), 2300);
+  }
+
+  if (overlay) {
+    new MutationObserver(() => {
+      if (overlay.classList.contains('is-active')) restart();
+    }).observe(overlay, { attributes: true, attributeFilter: ['class'] });
+  }
+
+  requestAnimationFrame(() => {
+    if (overlay?.classList.contains('is-active')) restart();
+    else setTimeout(() => { if (overlay?.classList.contains('is-active')) restart(); }, 120);
+  });
+</script>

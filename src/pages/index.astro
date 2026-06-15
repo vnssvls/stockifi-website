@@ -6,6 +6,9 @@
 // (CtaButton v2.1). Footer from layout (footer variant changing later, kept as-is).
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
+import FoodCostAnimation from '../components/animations/FoodCostAnimation.astro';
+import ProcurementAnimation from '../components/animations/ProcurementAnimation.astro';
+import ManagementAnimation from '../components/animations/ManagementAnimation.astro';
 import LogoBanner from '../components/LogoBanner.astro';
 import FeatureList from '../components/features/FeatureList.astro';
 import FeatureSplit from '../components/features/FeatureSplit.astro';
@@ -83,7 +86,27 @@ const faqs = faqsHome;
     subhead="Your invoices, sales, and recipes already hold the answer to your food cost. Stockifi pulls them together and does the math, so you see your margin and act on it."
     primary={{ label: 'Book a demo', href: '/book-a-demo' }}
     secondary={{ label: 'See how it works', href: '#how-it-works' }}
-  />
+    images={[
+      { src: '/media/photos/hero-manager.png', alt: '' },
+      { src: '/media/photos/hero-chef.png',    alt: '' },
+      { src: '/media/photos/hero-owner.png',   alt: '' },
+    ]}
+  >
+    <!-- Overlay 0: slide 1 (manager) — food cost card, to build -->
+    <div slot="overlays" style="display:contents">
+      <div class="hero-overlay">
+        <FoodCostAnimation />
+      </div>
+      <!-- Overlay 1: slide 2 (chef) — supplier price ticker -->
+      <div class="hero-overlay">
+        <ProcurementAnimation />
+      </div>
+      <!-- Overlay 2: slide 3 (owner) — location health list -->
+      <div class="hero-overlay">
+        <ManagementAnimation />
+      </div>
+    </div>
+  </Hero>
 
   <!-- 2. Social proof -->
   <LogoBanner label="Trusted by 500+ restaurants across Europe" logos={userLogos} />

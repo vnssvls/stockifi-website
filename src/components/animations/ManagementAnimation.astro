@@ -1,0 +1,176 @@
+---
+// Management animation — group average + location COGS health list.
+// Group average with dotted leader and count-up ticker (MutationObserver restart).
+// 5 Norwegian cities, sorted best → worst. Amber row blinks. Green rows sync-pulse.
+---
+
+<div class="mgmt-card">
+  <!-- Group average — no dot, dotted leader, white bold value -->
+  <div class="mgmt-avg">
+    <span class="mgmt-avg-label">Group average</span>
+    <span class="mgmt-avg-fill"></span>
+    <span class="mgmt-avg-val">27.6%</span>
+  </div>
+
+  <p class="mgmt-section-label">All locations</p>
+
+  <!-- Location grid: 5px dot | max-content name | right-aligned value -->
+  <div class="mgmt-rows">
+    <div class="mgmt-row">
+      <span class="mgmt-dot ok"></span>
+      <span class="mgmt-name">Stavanger</span>
+      <span class="mgmt-pct ok-text">24.9%</span>
+    </div>
+    <div class="mgmt-row">
+      <span class="mgmt-dot ok"></span>
+      <span class="mgmt-name">Oslo</span>
+      <span class="mgmt-pct ok-text">26.1%</span>
+    </div>
+    <div class="mgmt-row">
+      <span class="mgmt-dot ok"></span>
+      <span class="mgmt-name">Bergen</span>
+      <span class="mgmt-pct ok-text">26.8%</span>
+    </div>
+    <div class="mgmt-row">
+      <span class="mgmt-dot ok"></span>
+      <span class="mgmt-name">Bjørvika</span>
+      <span class="mgmt-pct ok-text">28.3%</span>
+    </div>
+    <div class="mgmt-row is-warn">
+      <span class="mgmt-dot warn"></span>
+      <span class="mgmt-name">Trondheim</span>
+      <span class="mgmt-pct warn-text">32.1%</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .mgmt-card { width: 100%; max-width: 175px; padding: 0; }
+
+  /* Group average */
+  .mgmt-avg {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .mgmt-avg-label {
+    font-size: 12px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.7);
+    white-space: nowrap;
+  }
+  .mgmt-avg-fill {
+    flex: 1;
+    height: 0;
+    border-bottom: 1px dotted rgba(255, 255, 255, 0.15);
+    margin: 0 4px;
+  }
+  .mgmt-avg-val {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.95);
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Section label */
+  .mgmt-section-label {
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0 0 8px;
+  }
+
+  /* Location grid */
+  .mgmt-rows {
+    display: grid;
+    grid-template-columns: 5px max-content auto;
+    column-gap: 8px;
+    row-gap: 3px;
+  }
+  .mgmt-row { display: contents; }
+
+  .mgmt-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    align-self: center;
+    transition: background 0.25s ease;
+  }
+  .mgmt-dot.ok   { background: #34D399; }
+  .mgmt-dot.warn { background: #F59E0B; animation: blink 2s ease-in-out infinite; }
+  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
+
+  .mgmt-name {
+    font-size: 12px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.8);
+    white-space: nowrap;
+    padding: 4px 0;
+    transition: color 0.25s ease;
+  }
+  .mgmt-pct {
+    font-size: 12px;
+    font-weight: 300;
+    text-align: right;
+    white-space: nowrap;
+    padding: 4px 0;
+    transition: color 0.25s ease;
+    font-variant-numeric: tabular-nums;
+  }
+  .mgmt-pct.ok-text   { color: #34D399; }
+  .mgmt-pct.warn-text { color: #F59E0B; }
+
+  /* Sync pulse */
+  .mgmt-row.syncing .mgmt-dot.ok    { background: #ffffff; }
+  .mgmt-row.syncing .mgmt-name      { color: rgba(255, 255, 255, 0.98); }
+  .mgmt-row.syncing .mgmt-pct.ok-text { color: rgba(255, 255, 255, 0.88); }
+</style>
+
+<script>
+  const card    = document.querySelector('.mgmt-card');
+  const avgVal  = card?.querySelector('.mgmt-avg-val');
+  const overlay = card?.closest('.hero-overlay');
+
+  // Continuous sync pulse on green rows
+  const okRows = Array.from(card?.querySelectorAll('.mgmt-row:not(.is-warn)') ?? []);
+  let pulseIdx = 0;
+  setInterval(() => {
+    const row = okRows[pulseIdx % okRows.length];
+    row?.classList.add('syncing');
+    setTimeout(() => row?.classList.remove('syncing'), 500);
+    pulseIdx++;
+  }, 1600);
+
+  // Group average ticker — restarts on each slide activation
+  function tickAvg() {
+    if (!avgVal) return;
+    avgVal.textContent = '0.0%';
+    const to = 27.6;
+    const ms = 1100;
+    const t0 = performance.now();
+    (function step(now) {
+      const p    = Math.min((now - t0) / ms, 1);
+      const ease = 1 - Math.pow(1 - p, 2.5);
+      avgVal.textContent = (to * ease).toFixed(1) + '%';
+      if (p < 1) requestAnimationFrame(step);
+      else avgVal.textContent = to.toFixed(1) + '%';
+    })(performance.now());
+  }
+
+  if (overlay) {
+    new MutationObserver(() => {
+      if (overlay.classList.contains('is-active')) tickAvg();
+    }).observe(overlay, { attributes: true, attributeFilter: ['class'] });
+  }
+
+  requestAnimationFrame(() => {
+    if (overlay?.classList.contains('is-active')) tickAvg();
+    else setTimeout(() => { if (overlay?.classList.contains('is-active')) tickAvg(); }, 120);
+  });
+</script>

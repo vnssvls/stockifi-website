@@ -31,7 +31,7 @@
     font-weight: 300;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.35);
+    color: rgba(255, 255, 255, 0.9);
     margin: 0 0 14px;
   }
   .inv-clip {
@@ -53,6 +53,7 @@
   .inv-row-right {
     display: flex;
     align-items: center;
+    flex-shrink: 0;
   }
   .inv-row-name,
   .inv-row-price {
@@ -60,6 +61,14 @@
     font-weight: 300;
     color: rgba(255, 255, 255, 0.45);
     transition: color 0.3s ease;
+  }
+  .inv-row-name {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-right: 8px;
   }
   .inv-row.spotlight .inv-row-name,
   .inv-row.spotlight .inv-row-price {
@@ -83,20 +92,20 @@
     margin-left: 8px;
     opacity: 1;
   }
-  .inv-badge.up   { color: #f59e0b; background: rgba(245, 158, 11, 0.10); }
-  .inv-badge.down { color: #34d399; background: rgba(52, 211, 153, 0.09); }
+  .inv-badge.up   { color: #f59e0b; background: rgba(245, 158, 11, 0.22); }
+  .inv-badge.down { color: #34d399; background: rgba(52, 211, 153, 0.20); }
 </style>
 
 <script>
   const ITEMS = [
     { name: 'Cherry tomatoes',      price: '€4.80',  change: +4  },
     { name: 'Chicken breast',       price: '€24.50', change: +8  },
-    { name: 'Olive oil 5 L',        price: '€18.20', change: -3  },
+    { name: 'Olive oil 5 L',        price: '€18.20', change: +5  },
     { name: 'Grana Padano 1 kg',    price: '€9.40',  change: +12 },
     { name: 'Beef tenderloin 1 kg', price: '€32.00', change: +6  },
-    { name: 'Halibut fillet 1 kg',  price: '€21.50', change: -2  },
+    { name: 'Halibut fillet 1 kg',  price: '€21.50', change: +9  },
     { name: 'Potato 10 kg',         price: '€9.20',  change: +5  },
-    { name: 'Parmesan 1 kg',        price: '€22.00', change: -1  },
+    { name: 'Parmesan 1 kg',        price: '€22.00', change: +7  },
   ];
 
   const VISIBLE  = 3;
@@ -119,7 +128,7 @@
     }
 
     function countUp(el, target) {
-      const sign = target > 0 ? '+' : '-';
+      const sign = target > 0 ? '↑' : '↓';
       const abs  = Math.abs(target);
       const dur  = 550;
       const t0   = performance.now();

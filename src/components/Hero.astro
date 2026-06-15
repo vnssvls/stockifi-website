@@ -1,7 +1,7 @@
 ---
-// Hero (home) — split layout from wireframe node 45:3649: copy + CTAs left, visual
-// right; stacks on mobile. Variant-driven via props so copy/visual are swappable.
-// Real hero visual (product/dashboard or moody photo) is pending — placeholder for now.
+// Hero (home) — split layout: copy + CTAs left, image slides right.
+// Supports multiple images (auto-cycling crossfade) or a single image.
+// On desktop, left edge of the image fades into the page background.
 import Button from './Button.astro';
 
 interface Props {
@@ -11,10 +11,11 @@ interface Props {
   primary?: { label: string; href: string };
   secondary?: { label: string; href: string };
   image?: { src: string; alt: string };
-  /** Use the near-full-width container (reduced 20px gutter) instead of the capped one. */
+  images?: { src: string; alt: string }[];
   wide?: boolean;
 }
-const { tagline, heading, subhead, primary, secondary, image, wide = false } = Astro.props;
+const { tagline, heading, subhead, primary, secondary, image, images: imagesProp, wide = false } = Astro.props;
+const slides = imagesProp ?? (image ? [image] : []);
 ---
 
 <section class="hero">
@@ -32,8 +33,17 @@ const { tagline, heading, subhead, primary, secondary, image, wide = false } = A
     </div>
 
     <div class="hero-media">
-      {image ? (
-        <img src={image.src} alt={image.alt} />
+      {slides.length > 0 ? (
+        <div class="hero-slides" data-hero-slides>
+          {slides.map((img, i) => (
+            <img
+              src={img.src}
+              alt={img.alt}
+              class:list={['hero-slide', { 'is-active': i === 0 }]}
+              loading={i === 0 ? 'eager' : 'lazy'}
+            />
+          ))}
+        </div>
       ) : (
         <div class="hero-placeholder" role="img" aria-label="Hero visual placeholder">
           <svg width="56" height="56" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -43,15 +53,14 @@ const { tagline, heading, subhead, primary, secondary, image, wide = false } = A
           </svg>
         </div>
       )}
+      <slot name="overlays" />
+      <!-- Extra dark layer for slides that need stronger contrast (e.g. light kitchen bg) -->
+      <div class="hero-veil-extra" aria-hidden="true"></div>
     </div>
   </div>
 </section>
 
 <style>
-  /* Tight top so the hero sits just under the nav (beehiv-style); modest bottom so the
-     logo banner clears the fold. Soft aurora wash applied to the full-bleed SECTION (not
-     the capped inner container) so it spans the viewport width and fades out at the edges
-     — background-image isn't lint-guarded, so the rgba stops are fine here. */
   .hero {
     padding-top: var(--space-48);
     padding-bottom: var(--space-64);
@@ -64,7 +73,7 @@ const { tagline, heading, subhead, primary, secondary, image, wide = false } = A
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--space-48);
-    align-items: start;
+    align-items: center;
   }
 
   .hero-title {
@@ -80,14 +89,69 @@ const { tagline, heading, subhead, primary, secondary, image, wide = false } = A
   }
   .hero-actions { display: flex; flex-wrap: wrap; gap: var(--space-16); margin-top: var(--space-32); }
 
-  .hero-media img,
+  /* Media wrapper — clips images, hosts the gradient overlay */
+  .hero-media {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0;
+    /* Mobile: bleed to screen edge */
+    margin-inline: calc(-1 * var(--gutter-wide));
+  }
+
+  /* Dark veil — all screen sizes. Boosts contrast for transparent overlay text. */
+  .hero-media::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      rgba(5, 5, 14, 0.90) 0%,
+      rgba(5, 5, 14, 0.72) 28%,
+      rgba(5, 5, 14, 0.35) 52%,
+      transparent 70%
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Slides container: aspect-ratio drives the height, images stack absolutely inside */
+  .hero-slides {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+  }
+  .hero-slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1.6s ease;
+  }
+  .hero-slide.is-active { opacity: 1; }
+
+  /* Per-slide extra veil — fades in only on slides with a lighter bg (data-slide="1" = chef) */
+  .hero-veil-extra {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      rgba(5, 5, 14, 0.42) 0%,
+      rgba(5, 5, 14, 0.28) 35%,
+      rgba(5, 5, 14, 0.08) 58%,
+      transparent 72%
+    );
+    opacity: 0;
+    pointer-events: none;
+    z-index: 2;
+    transition: opacity 1.4s ease;
+  }
+  .hero-media[data-slide="1"] .hero-veil-extra { opacity: 1; }
+
   .hero-placeholder {
     width: 100%;
-    aspect-ratio: 4 / 3;
-    border-radius: var(--radius-xl);
-    object-fit: cover;
-  }
-  .hero-placeholder {
+    aspect-ratio: 16 / 9;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -95,12 +159,65 @@ const { tagline, heading, subhead, primary, secondary, image, wide = false } = A
     color: var(--muted-foreground);
   }
 
+  /* Overlay: transparent element sitting in the faded-left zone of the image.
+     :global() needed because overlays are slotted in from index.astro. */
+  :global(.hero-overlay) {
+    position: absolute;
+    left: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 46%;
+    z-index: 3;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    pointer-events: none;
+  }
+  :global(.hero-overlay.is-active) { opacity: 1; }
+
+  /* Desktop: 2-column split + left-edge image fade via mask */
   @media (min-width: 1024px) {
-    .hero-grid { grid-template-columns: 1fr 1fr; gap: var(--space-64); }
-    /* Wide hero: the 20px wide-gutter is too wide here — add 60px of breathing room
-       (keeps the .container-wide token intact for other uses). */
-    .container-wide.hero-grid { padding-inline: calc(var(--gutter-wide) + 60px); }
-    .hero-media img,
-    .hero-placeholder { aspect-ratio: 16 / 10; }
+    .hero-media {
+      border-radius: var(--radius-xl);
+      margin-inline: 0;
+    }
+    .hero-grid {
+      grid-template-columns: 1fr 1.3fr;
+      gap: var(--space-64);
+    }
+    .container-wide.hero-grid {
+      padding-inline: var(--gutter-wide);
+    }
+    /* Mask fades the actual image pixels — left 30% goes transparent to fully opaque */
+    .hero-slides {
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 30%);
+      mask-image: linear-gradient(to right, transparent 0%, black 30%);
+    }
+    :global(.hero-overlay) {
+      width: 32%;
+    }
   }
 </style>
+
+<script>
+  const containers = document.querySelectorAll<HTMLElement>('[data-hero-slides]');
+  containers.forEach(container => {
+    const slides   = container.querySelectorAll<HTMLElement>('.hero-slide');
+    const media    = container.closest<HTMLElement>('.hero-media');
+    const overlays = media?.querySelectorAll<HTMLElement>('.hero-overlay');
+    if (slides.length < 2) return;
+    let current = 0;
+
+    // Show first overlay immediately
+    overlays?.[0]?.classList.add('is-active');
+    media?.setAttribute('data-slide', '0');
+
+    setInterval(() => {
+      slides[current].classList.remove('is-active');
+      overlays?.[current]?.classList.remove('is-active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('is-active');
+      overlays?.[current]?.classList.add('is-active');
+      media?.setAttribute('data-slide', String(current));
+    }, 5000);
+  });
+</script>
