@@ -20,12 +20,20 @@
         <defs>
           <clipPath id="bi-clip"><rect id="bi-cliprect" x="0" y="0" width="0" height="0"></rect></clipPath>
           <linearGradient id="bi-grad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="rgba(255,255,255,1)" stop-opacity="0.1"></stop>
-            <stop offset="1" stop-color="rgba(255,255,255,1)" stop-opacity="0"></stop>
+            <stop offset="0" stop-color="#34d399" stop-opacity="0.28"></stop>
+            <stop offset="1" stop-color="#34d399" stop-opacity="0"></stop>
           </linearGradient>
+          <linearGradient id="bi-hmask-grad" x1="0" y1="0" x2="760" y2="0" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="white" stop-opacity="0.04"></stop>
+            <stop offset="0.45" stop-color="white" stop-opacity="0.35"></stop>
+            <stop offset="1" stop-color="white" stop-opacity="1"></stop>
+          </linearGradient>
+          <mask id="bi-hmask">
+            <rect x="0" y="0" width="760" height="210" fill="url(#bi-hmask-grad)"></rect>
+          </mask>
         </defs>
         <line id="bi-gridline" class="bi-grid"></line>
-        <g clip-path="url(#bi-clip)">
+        <g clip-path="url(#bi-clip)" mask="url(#bi-hmask)">
           <path id="bi-area" fill="url(#bi-grad)"></path>
           <path id="bi-line" class="bi-line"></path>
         </g>
@@ -117,15 +125,17 @@
   }
   .bi-line {
     fill: none;
-    stroke: rgba(255, 255, 255, 0.88);
+    stroke: #34d399;
     stroke-width: 2;
     stroke-linecap: round;
     stroke-linejoin: round;
+    filter: drop-shadow(0 0 6px rgba(52, 211, 153, 0.45));
   }
   .bi-dot {
     fill: #212121;
-    stroke: rgba(255, 255, 255, 0.88);
+    stroke: #34d399;
     stroke-width: 2;
+    filter: drop-shadow(0 0 4px rgba(52, 211, 153, 0.6));
   }
   .bi-grid {
     stroke: rgba(255, 255, 255, 0.07);
@@ -178,9 +188,9 @@
     revealDur: 2.5,
     hold: 1.2,
     months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-    margin: [64.6, 65.3, 66.4, 67.5, 68.5, 69.4],
+    margin: [67.2, 68.3, 69.8, 71.0, 72.4, 73.6],
     showLocations: true,
-    locations: [['Oslo', 71.2], ['Bergen', 69.4], ['Trondheim', 68.0], ['Stavanger', 66.7], ['Drammen', 64.9]],
+    locations: [['Oslo', 76.2], ['Bergen', 74.8], ['Trondheim', 73.6], ['Stavanger', 72.4], ['Drammen', 70.9]],
   };
 
   var biClamp = function(x) { return Math.max(0, Math.min(1, x)); };
@@ -259,7 +269,7 @@
     var deltaRange = target - startVal;
 
     function paint(clock) {
-      var reveal = biEaseOut(biClamp(clock / revealMs));
+      var reveal = biClamp(clock / revealMs);
       kpiEl.textContent = (startVal + deltaRange * reveal).toFixed(1) + '%';
       deltaEl.textContent = '▲ ' + (deltaRange * reveal).toFixed(1) + ' pts vs Jan';
       var pt = lineEl.getPointAtLength(L * reveal);
