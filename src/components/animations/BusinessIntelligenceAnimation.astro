@@ -1,0 +1,281 @@
+---
+// Business Intelligence animation — profitability area chart widget.
+// 6-month gross profit margin trend: counts from Jan value (64.6%) to current (69.4%).
+// Loops seamlessly with no fade in/out.
+// Styles are global because DOM is built by JS.
+---
+
+<div class="bi-stage">
+  <div class="bi-widget" id="bi-anim">
+    <div class="bi-hd">
+      <span class="bi-eyebrow">Profitability</span>
+    </div>
+    <div class="bi-hero">
+      <span class="bi-kpi" id="bi-kpi">0.0%</span>
+      <span class="bi-delta up" id="bi-delta"></span>
+    </div>
+    <div class="bi-sub">Gross profit margin</div>
+    <div class="bi-chartwrap">
+      <svg id="bi-chart" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <clipPath id="bi-clip"><rect id="bi-cliprect" x="0" y="0" width="0" height="0"></rect></clipPath>
+          <linearGradient id="bi-grad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="rgba(255,255,255,1)" stop-opacity="0.1"></stop>
+            <stop offset="1" stop-color="rgba(255,255,255,1)" stop-opacity="0"></stop>
+          </linearGradient>
+        </defs>
+        <line id="bi-gridline" class="bi-grid"></line>
+        <g clip-path="url(#bi-clip)">
+          <path id="bi-area" fill="url(#bi-grad)"></path>
+          <path id="bi-line" class="bi-line"></path>
+        </g>
+        <circle id="bi-dot" class="bi-dot" r="4" style="opacity:0"></circle>
+      </svg>
+      <div class="bi-xaxis" id="bi-xaxis"></div>
+    </div>
+    <div class="bi-locs" id="bi-locs"></div>
+  </div>
+</div>
+
+<style is:global>
+  .bi-stage {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-block: 24px;
+  }
+  .bi-widget {
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+  }
+  .bi-hd {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .bi-eyebrow {
+    font-size: 15px;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.9);
+  }
+  .bi-period {
+    font-size: 12px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.42);
+    letter-spacing: 0.02em;
+  }
+  .bi-hero {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 10px;
+  }
+  .bi-kpi {
+    font-size: 24px;
+    font-weight: 300;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+    color: #fff;
+    line-height: 1;
+  }
+  .bi-delta {
+    display: inline-flex;
+    align-items: center;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 0;
+    padding: 3px 0;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 300;
+    font-variant-numeric: tabular-nums;
+  }
+  .bi-delta.up   { background: rgba(52, 211, 153, 0.14); color: #34d399; }
+  .bi-delta.down { background: rgba(245, 158, 11, 0.14);  color: #f59e0b; }
+  .bi-sub {
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 6px;
+  }
+  .bi-chartwrap { margin-top: 8px; }
+  .bi-chartwrap svg { display: block; width: 100%; height: auto; }
+  .bi-xaxis {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    font-size: 11px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.34);
+    font-variant-numeric: tabular-nums;
+  }
+  .bi-line {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.88);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .bi-dot {
+    fill: #212121;
+    stroke: rgba(255, 255, 255, 0.88);
+    stroke-width: 2;
+  }
+  .bi-grid {
+    stroke: rgba(255, 255, 255, 0.07);
+    stroke-width: 1;
+  }
+  .bi-locs {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 18px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+  .bi-lead {
+    font-size: 11.5px;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+    white-space: nowrap;
+  }
+  .bi-chip {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 5px;
+    font-size: 12px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.55);
+  }
+  .bi-chip b {
+    color: rgba(255, 255, 255, 0.88);
+    font-weight: 400;
+    font-variant-numeric: tabular-nums;
+  }
+  .bi-chip-sep {
+    display: inline-block;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    align-self: center;
+  }
+</style>
+
+<script>
+  var BI_CONFIG = {
+    deltaText: '▲ 4.8 pts vs Jan',
+    deltaUp: true,
+    revealDur: 2.5,
+    hold: 1.2,
+    months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+    margin: [64.6, 65.3, 66.4, 67.5, 68.5, 69.4],
+    showLocations: true,
+    locations: [['Oslo', 71.2], ['Bergen', 69.4], ['Trondheim', 68.0], ['Stavanger', 66.7], ['Drammen', 64.9]],
+  };
+
+  var biClamp = function(x) { return Math.max(0, Math.min(1, x)); };
+  var biEaseOut = function(x) { return 1 - Math.pow(1 - x, 3); };
+
+  function biSmoothPath(pts) {
+    var d = 'M' + pts[0].x.toFixed(1) + ' ' + pts[0].y.toFixed(1);
+    for (var i = 0; i < pts.length - 1; i++) {
+      var p0 = pts[i - 1] || pts[i], p1 = pts[i], p2 = pts[i + 1], p3 = pts[i + 2] || p2;
+      var c1x = p1.x + (p2.x - p0.x) / 7, c1y = p1.y + (p2.y - p0.y) / 7;
+      var c2x = p2.x - (p3.x - p1.x) / 7, c2y = p2.y - (p3.y - p1.y) / 7;
+      d += ' C' + c1x.toFixed(1) + ' ' + c1y.toFixed(1) + ' ' + c2x.toFixed(1) + ' ' + c2y.toFixed(1) + ' ' + p2.x.toFixed(1) + ' ' + p2.y.toFixed(1);
+    }
+    return d;
+  }
+
+  (function() {
+    var C = BI_CONFIG;
+    var W = 760, H = 210, padX = 8, padT = 16, padB = 8;
+
+    // x-axis labels
+    document.getElementById('bi-xaxis').innerHTML = C.months.map(function(m) { return '<span>' + m + '</span>'; }).join('');
+
+    // locations strip
+    var locsEl = document.getElementById('bi-locs');
+    if (C.showLocations) {
+      var html = '';
+      C.locations.forEach(function(l, i) {
+        if (i > 0) html += '<span class="bi-chip-sep"></span>';
+        html += '<span class="bi-chip">' + l[0] + ' <b>' + l[1].toFixed(1) + '%</b></span>';
+      });
+      locsEl.innerHTML = html;
+    } else {
+      locsEl.style.display = 'none';
+    }
+
+    // delta badge — always visible, counts in sync with KPI
+    var deltaEl = document.getElementById('bi-delta');
+    deltaEl.className = 'bi-delta ' + (C.deltaUp ? 'up' : 'down');
+    deltaEl.style.maxWidth = '150px';
+    deltaEl.style.opacity = '1';
+    deltaEl.style.padding = '3px 9px';
+
+    // geometry
+    var vals = C.margin;
+    var startVal = vals[0], target = vals[vals.length - 1];
+    var min = Math.min.apply(null, vals), max = Math.max.apply(null, vals), range = (max - min) || 1;
+    var yMin = min - range * 0.6, yRange = range * 2.2;
+    var pts = vals.map(function(v, i) {
+      return {
+        x: padX + (i / (vals.length - 1)) * (W - 2 * padX),
+        y: padT + (1 - (v - yMin) / yRange) * (H - padT - padB),
+      };
+    });
+    var lineD = biSmoothPath(pts);
+    var areaD = lineD + ' L' + pts[pts.length - 1].x.toFixed(1) + ' ' + (H - padB) + ' L' + pts[0].x.toFixed(1) + ' ' + (H - padB) + ' Z';
+
+    var chart = document.getElementById('bi-chart');
+    chart.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    document.getElementById('bi-line').setAttribute('d', lineD);
+    document.getElementById('bi-area').setAttribute('d', areaD);
+    document.getElementById('bi-cliprect').setAttribute('height', H);
+    var gl = document.getElementById('bi-gridline');
+    gl.setAttribute('x1', 0); gl.setAttribute('x2', W);
+    gl.setAttribute('y1', H - padB); gl.setAttribute('y2', H - padB);
+
+    var lineEl = document.getElementById('bi-line');
+    var clipEl = document.getElementById('bi-cliprect');
+    var dotEl  = document.getElementById('bi-dot');
+    var kpiEl  = document.getElementById('bi-kpi');
+    var L = lineEl.getTotalLength();
+
+    var revealMs = C.revealDur * 1000, holdMs = C.hold * 1000;
+    var cycle = revealMs + holdMs;
+    var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var deltaRange = target - startVal;
+
+    function paint(clock) {
+      var reveal = biEaseOut(biClamp(clock / revealMs));
+      kpiEl.textContent = (startVal + deltaRange * reveal).toFixed(1) + '%';
+      deltaEl.textContent = '▲ ' + (deltaRange * reveal).toFixed(1) + ' pts vs Jan';
+      var pt = lineEl.getPointAtLength(L * reveal);
+      clipEl.setAttribute('width', pt.x.toFixed(1));
+      dotEl.setAttribute('cx', pt.x.toFixed(1));
+      dotEl.setAttribute('cy', pt.y.toFixed(1));
+      dotEl.style.opacity = reveal > 0.03 ? 1 : 0;
+    }
+
+    if (reduced) { paint(revealMs + holdMs / 2); return; }
+    var start = null;
+    function loop(ts) {
+      if (start === null) start = ts;
+      paint((ts - start) % cycle);
+      requestAnimationFrame(loop);
+    }
+    requestAnimationFrame(loop);
+  })();
+</script>

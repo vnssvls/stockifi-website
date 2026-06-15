@@ -1,6 +1,7 @@
 ---
 // Procurement animation — scrolling supplier price-change ticker.
 // 3 rows visible, middle row is the spotlight. Advances every 2.2s with a count-up badge.
+// Footer shows dynamic recipe count for the current spotlight ingredient.
 // Styles are global because the JS builds rows dynamically (no Astro scope hash on dynamic els).
 ---
 
@@ -9,6 +10,15 @@
     <p class="inv-head">Latest price changes</p>
     <div class="inv-clip">
       <div class="inv-track"></div>
+    </div>
+    <div class="inv-footer">
+      <svg class="inv-sync" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/>
+        <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/>
+        <path d="M3 21v-5h5"/><path d="M21 3v5h-5"/>
+      </svg>
+      <span class="inv-footer-count"></span>
+      <span class="inv-footer-label"> recipes updated</span>
     </div>
   </div>
 </div>
@@ -96,26 +106,67 @@
   }
   .inv-badge.up   { color: #f59e0b; background: rgba(245, 158, 11, 0.22); }
   .inv-badge.down { color: #34d399; background: rgba(52, 211, 153, 0.20); }
+
+  .inv-footer {
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.4);
+  }
+  .inv-footer-count {
+    font-variant-numeric: tabular-nums;
+    color: rgba(255, 255, 255, 0.75);
+  }
+  .inv-sync {
+    flex-shrink: 0;
+    width: 13px;
+    height: 13px;
+    color: #34d399;
+    animation: inv-spin 2s linear infinite;
+  }
+  @keyframes inv-spin {
+    to { transform: rotate(360deg); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .inv-sync { animation: none; }
+  }
 </style>
 
 <script>
   const ITEMS = [
-    { name: 'Cherry tomatoes',      price: '€4.80',  change: +4  },
-    { name: 'Chicken breast',       price: '€24.50', change: +8  },
-    { name: 'Olive oil 5 L',        price: '€18.20', change: +5  },
-    { name: 'Grana Padano 1 kg',    price: '€9.40',  change: +12 },
-    { name: 'Beef tenderloin 1 kg', price: '€32.00', change: +6  },
-    { name: 'Halibut fillet 1 kg',  price: '€21.50', change: +9  },
-    { name: 'Potato 10 kg',         price: '€9.20',  change: +5  },
-    { name: 'Parmesan 1 kg',        price: '€22.00', change: +7  },
+    { name: 'Cherry tomatoes',      price: '€4.80',  change: +4,  recipes: 6  },
+    { name: 'Chicken breast',       price: '€24.50', change: +8,  recipes: 4  },
+    { name: 'Olive oil 5 L',        price: '€18.20', change: +5,  recipes: 14 },
+    { name: 'Grana Padano 1 kg',    price: '€9.40',  change: +12, recipes: 3  },
+    { name: 'Beef tenderloin 1 kg', price: '€32.00', change: +6,  recipes: 2  },
+    { name: 'Halibut fillet 1 kg',  price: '€21.50', change: +9,  recipes: 3  },
+    { name: 'Potato 10 kg',         price: '€9.20',  change: +5,  recipes: 8  },
+    { name: 'Parmesan 1 kg',        price: '€22.00', change: +7,  recipes: 5  },
   ];
 
-  const VISIBLE  = 3;
+  const VISIBLE   = 3;
   const SPOTLIGHT = 1;
   const INTERVAL_MS = 2200;
 
   function initTicker(track) {
     let head = 0;
+    const inner        = track.closest('.inv-inner');
+    const footerEl     = inner.querySelector('.inv-footer');
+    const footerCountEl = inner.querySelector('.inv-footer-count');
+
+    function updateFooter(item) {
+      const target = item.recipes;
+      const dur = 380;
+      const t0 = performance.now();
+      (function step(now) {
+        const p = Math.min((now - t0) / dur, 1);
+        footerCountEl.textContent = Math.round(p * target);
+        if (p < 1) requestAnimationFrame(step);
+      })(performance.now());
+    }
 
     function makeRow(item, isSpot) {
       const row = document.createElement('div');
@@ -146,21 +197,22 @@
       track.appendChild(makeRow(ITEMS[(head + i) % ITEMS.length], i === SPOTLIGHT));
     }
 
-    // Trigger badge on initial spotlight
+    // Set initial footer + trigger badge
+    const initItem  = ITEMS[(head + SPOTLIGHT) % ITEMS.length];
     const initBadge = track.children[SPOTLIGHT].querySelector('.inv-badge');
+    footerCountEl.textContent = '0';
     setTimeout(() => {
       initBadge.classList.add('visible');
-      countUp(initBadge, ITEMS[(head + SPOTLIGHT) % ITEMS.length].change);
+      countUp(initBadge, initItem.change);
+      updateFooter(initItem);
     }, 400);
 
     function tick() {
       const rows = track.children;
       const rowH = rows[0].offsetHeight;
 
-      // Remove spotlight highlight but keep the badge visible as it scrolls out
       rows[SPOTLIGHT].classList.remove('spotlight');
 
-      // Slide track up one row
       track.style.transition = `transform ${Math.round(INTERVAL_MS * 0.25)}ms cubic-bezier(0.4,0,0.2,1)`;
       track.style.transform  = `translateY(-${rowH}px)`;
 
@@ -168,17 +220,18 @@
         track.style.transition = 'none';
         track.style.transform  = '';
 
-        // Remove top row, append new bottom row
         track.removeChild(rows[0]);
         head = (head + 1) % ITEMS.length;
         track.appendChild(makeRow(ITEMS[(head + VISIBLE - 1) % ITEMS.length], false));
 
-        // Spotlight new middle row and count up its badge
         track.children[SPOTLIGHT].classList.add('spotlight');
-        const badge = track.children[SPOTLIGHT].querySelector('.inv-badge');
+        const newItem = ITEMS[(head + SPOTLIGHT) % ITEMS.length];
+        const badge   = track.children[SPOTLIGHT].querySelector('.inv-badge');
+
         setTimeout(() => {
           badge.classList.add('visible');
-          countUp(badge, ITEMS[(head + SPOTLIGHT) % ITEMS.length].change);
+          countUp(badge, newItem.change);
+          updateFooter(newItem);
         }, 80);
       }, Math.round(INTERVAL_MS * 0.3));
     }

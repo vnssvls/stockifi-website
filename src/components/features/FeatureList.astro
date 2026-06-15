@@ -6,6 +6,7 @@
 import MediaPlaceholder from './MediaPlaceholder.astro';
 import ProcurementAnimation from '../animations/ProcurementAnimation.astro';
 import InventoryAnimation from '../animations/InventoryAnimation.astro';
+import BusinessIntelligenceAnimation from '../animations/BusinessIntelligenceAnimation.astro';
 
 interface Item { heading: string; body: string; icon?: string; cta?: { label: string; href: string }; image?: { src: string; alt: string }; animation?: string; }
 interface Props {
@@ -52,7 +53,7 @@ const { tagline, items } = Astro.props;
     <div class="fl-media">
       {items.map((it, i) => (
         <div class="fl-panel" role="tabpanel" data-index={i} hidden={i !== 0}>
-          {it.animation === 'procurement' ? <ProcurementAnimation /> : it.animation === 'inventory' ? <InventoryAnimation /> : it.image ? <img src={it.image.src} alt={it.image.alt} /> : <MediaPlaceholder ratio="16 / 10" label={it.heading} />}
+          {it.animation === 'procurement' ? <ProcurementAnimation /> : it.animation === 'inventory' ? <InventoryAnimation /> : it.animation === 'business-intelligence' ? <BusinessIntelligenceAnimation /> : it.image ? <img src={it.image.src} alt={it.image.alt} /> : <MediaPlaceholder ratio="16 / 10" label={it.heading} />}
         </div>
       ))}
     </div>
