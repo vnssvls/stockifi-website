@@ -47,7 +47,7 @@ const { tagline, heading, body, items = [], image, imageSide = 'left' } = Astro.
   .fs-icon { color: var(--primary); flex: none; }
 
   @media (min-width: 1024px) {
-    .fs-grid { grid-template-columns: 1fr 1fr; gap: var(--space-96); padding-inline: 100px; }
+    .fs-grid { grid-template-columns: 1fr 1fr; gap: var(--space-96); max-width: none; padding-inline: 100px; }
     .fs-image-right .fs-media { order: 2; }
   }
 </style>

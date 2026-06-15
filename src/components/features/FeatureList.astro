@@ -164,7 +164,7 @@ const { tagline, items } = Astro.props;
   .fl-panel img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: var(--radius-lg); }
 
   @media (min-width: 1024px) {
-    .fl-grid { grid-template-columns: 1fr 1fr; gap: var(--space-96); padding-inline: 100px; }
+    .fl-grid { grid-template-columns: 1fr 1fr; gap: var(--space-96); max-width: none; padding-inline: 100px; }
     .fl-media { position: sticky; top: var(--space-96); }
     .fl-items--spaced { margin-top: var(--space-32); }
   }
