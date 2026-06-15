@@ -1,0 +1,334 @@
+---
+// Inventory Management animation — live stock count widget.
+// Tallies 5 categories with checkboxes, progress bar, and on-hand total.
+// Loops seamlessly with no fade in/out — widget stays visible throughout.
+// Styles are global because rows are built dynamically by JS.
+---
+
+<div class="ic-stage">
+  <div class="ic-widget" id="ic-widget">
+    <div class="ic-hd">
+      <span class="ic-ttl">Stock Count</span>
+      <span class="ic-status" id="ic-status">
+        <span class="ic-dot"></span>
+        <span class="ic-stxt">Counting…</span>
+      </span>
+    </div>
+    <div class="ic-rows" id="ic-rows"></div>
+    <div class="ic-ft">
+      <div class="ic-ft-lbls">
+        <span class="ic-ft-l">Count progress</span>
+        <span class="ic-pct" id="ic-pct">0%</span>
+      </div>
+      <div class="ic-bar"><i id="ic-bar-fill"></i></div>
+      <div class="ic-total">
+        <div class="ic-total-l">
+          <span class="ic-total-lab">On-hand value</span>
+          <span class="ic-gv" id="ic-gv">€0</span>
+        </div>
+        <div class="ic-total-r">
+          <span class="ic-theo-tot" id="ic-theo-tot"></span>
+          <span class="ic-vbadge" id="ic-vbadge"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style is:global>
+  .ic-stage {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-block: 24px;
+  }
+  .ic-widget {
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Header */
+  .ic-hd {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 6px;
+  }
+  .ic-ttl {
+    font-size: 15px;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.9);
+  }
+  .ic-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.5);
+    transition: color 0.4s;
+  }
+  .ic-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #BB86FC;
+    flex-shrink: 0;
+  }
+  .ic-status.complete { color: #34d399; }
+  .ic-status.complete .ic-dot { background: #34d399; }
+  @media (prefers-reduced-motion: no-preference) {
+    .ic-status:not(.complete) .ic-dot { animation: ic-blink 1.1s steps(2, jump-none) infinite; }
+  }
+  @keyframes ic-blink { 50% { opacity: 0.25; } }
+
+  /* Rows */
+  .ic-rows { display: flex; flex-direction: column; }
+  .ic-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 17px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.035);
+    opacity: 0.4;
+  }
+  .ic-ico {
+    flex: 0 0 auto;
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    color: rgba(255, 255, 255, 0.65);
+  }
+  .ic-ico svg { width: 18px; height: 18px; display: block; }
+  .ic-name {
+    flex: 1;
+    min-width: 0;
+    font-size: 17px;
+    font-weight: 300;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .ic-vals {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+  .ic-counted {
+    font-size: 17px;
+    font-weight: 300;
+    font-variant-numeric: tabular-nums;
+    color: rgba(255, 255, 255, 0.94);
+  }
+  .ic-theo {
+    font-size: 11px;
+    font-variant-numeric: tabular-nums;
+    color: rgba(255, 255, 255, 0.35);
+    margin-top: 2px;
+  }
+  .ic-cbox {
+    flex: 0 0 auto;
+    width: 24px;
+    height: 24px;
+    border-radius: 7px;
+    border: none;
+    display: grid;
+    place-items: center;
+  }
+  .ic-cbox svg { width: 13px; height: 13px; opacity: 0; transform: scale(0.4); }
+
+  /* Footer */
+  .ic-ft { margin-top: 18px; }
+  .ic-ft-lbls {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 9px;
+  }
+  .ic-ft-l { font-size: 13px; font-weight: 300; color: rgba(255, 255, 255, 0.45); }
+  .ic-pct { font-size: 13px; font-weight: 300; font-variant-numeric: tabular-nums; color: rgba(255, 255, 255, 0.65); }
+  .ic-bar {
+    height: 4px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    position: relative;
+  }
+  .ic-bar > i {
+    display: block;
+    position: relative;
+    height: 100%;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.9);
+    width: 0%;
+  }
+  .ic-bar > i::after {
+    content: '';
+    position: absolute;
+    right: -4px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #34d399;
+  }
+  .ic-total {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-top: 18px;
+  }
+  .ic-total-l { display: flex; flex-direction: column; gap: 4px; }
+  .ic-total-lab {
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.38);
+  }
+  .ic-gv {
+    font-size: 24px;
+    font-weight: 300;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+    color: rgba(255, 255, 255, 0.95);
+    line-height: 1;
+  }
+  .ic-total-r { display: flex; align-items: center; gap: 10px; }
+  .ic-theo-tot { font-size: 12px; font-variant-numeric: tabular-nums; color: rgba(255, 255, 255, 0.38); }
+  .ic-vbadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    max-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    border-radius: 999px;
+    background: rgba(245, 158, 11, 0.14);
+    color: #f59e0b;
+    font-size: 12px;
+    font-weight: 300;
+    font-variant-numeric: tabular-nums;
+  }
+</style>
+
+<script>
+  var IC_CONFIG = {
+    accent: '#BB86FC',
+    currency: '€',
+    countDur: 1.2,
+    stepDelay: 0.7,
+    hold: 1.2,
+    cats: [
+      ['Food',           12800, 12500, 'food'],
+      ['Alcoholic',      14200, 13800, 'wine'],
+      ['Non-alcoholic',   2200,  2100, 'cup'],
+      ['Coffee & tea',    1100,   980, 'coffee'],
+    ],
+  };
+
+  var IC_SA = 'fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"';
+  var IC_ICONS = {
+    food:   '<svg viewBox="0 0 24 24" ' + IC_SA + '><path d="M15.45 15.4c-2.13.65-4.3.32-5.7-1.1-2.29-2.27-1.76-6.5 1.17-9.42 2.93-2.93 7.15-3.46 9.43-1.18 1.41 1.41 1.74 3.57 1.1 5.71-1.4-.51-3.26-.02-4.64 1.36-1.38 1.38-1.87 3.23-1.36 4.63z"/><path d="m11.25 15.6-2.16 2.16a2.5 2.5 0 1 1-4.56 1.73 2.49 2.49 0 0 1-1.41-4.24 2.5 2.5 0 0 1 3.14-.32l2.16-2.16"/></svg>',
+    wine:   '<svg viewBox="0 0 24 24" ' + IC_SA + '><path d="M8 22h8"/><path d="M12 15v7"/><path d="M7 3h10l-1.2 6.3a4 4 0 0 1-7.6 0L7 3Z"/></svg>',
+    beer:   '<svg viewBox="0 0 24 24" ' + IC_SA + '><path d="M17 11h1a3 3 0 0 1 0 6h-1"/><path d="M9 12v6"/><path d="M13 12v6"/><path d="M14 7.5c-1 0-1.44.5-3 .5s-2-.5-3-.5-1.72.5-2.5.5a2.5 2.5 0 0 1 0-5c.78 0 1.57.5 2.5.5S9.44 3 11 3s2 .5 3 .5 1.72-.5 2.5-.5a2.5 2.5 0 0 1 0 5c-.78 0-1.5-.5-2.5-.5Z"/><path d="M5 8v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8"/></svg>',
+    cup:    '<svg viewBox="0 0 24 24" ' + IC_SA + '><path d="M6 8h12l-1 12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1L6 8Z"/><path d="M5 8h14"/><path d="M14 3l-1 5"/></svg>',
+    coffee: '<svg viewBox="0 0 24 24" ' + IC_SA + '><path d="M5 8h11v6a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4V8Z"/><path d="M16 9h2.4a2.5 2.5 0 0 1 0 5H16"/><path d="M8 2v2.4"/><path d="M12 2v2.4"/></svg>',
+  };
+  var IC_CHECK = '<svg viewBox="0 0 14 14" fill="none"><path d="M3 7.2 5.8 10 11 4.2" stroke="#34d399" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+  var icClamp = function(x) { return Math.max(0, Math.min(1, x)); };
+  var icEaseOut = function(x) { return 1 - Math.pow(1 - x, 3); };
+  var icBack = function(x) { return 1 + 2.2 * Math.pow(x - 1, 3) + 1.2 * Math.pow(x - 1, 2); };
+
+  (function() {
+    var C = IC_CONFIG;
+    var hex = C.accent.replace('#', '');
+    var ar = parseInt(hex.slice(0,2), 16), ag = parseInt(hex.slice(2,4), 16), ab = parseInt(hex.slice(4,6), 16);
+
+    var theoTotal = 0, countTotal = 0;
+    C.cats.forEach(function(c) { theoTotal += c[1]; countTotal += c[2]; });
+    var varPct = ((countTotal - theoTotal) / theoTotal) * 100;
+    var euro = function(n) { return C.currency + Math.round(n).toLocaleString('en-US'); };
+
+    var rowsEl = document.getElementById('ic-rows');
+    var icRows = C.cats.map(function(c) {
+      var row = document.createElement('div');
+      row.className = 'ic-row';
+      row.innerHTML =
+        '<span class="ic-ico">' + (IC_ICONS[c[3]] || '') + '</span>' +
+        '<span class="ic-name">' + c[0] + '</span>' +
+        '<span class="ic-vals"><span class="ic-counted">' + C.currency + '0</span>' +
+        '<span class="ic-theo">of ' + euro(c[1]) + '</span></span>' +
+        '<span class="ic-cbox">' + IC_CHECK + '</span>';
+      rowsEl.appendChild(row);
+      return { el: row, counted: row.querySelector('.ic-counted'), cb: row.querySelector('.ic-cbox'), sv: row.querySelector('.ic-cbox svg'), target: c[2] };
+    });
+
+    var statusEl = document.getElementById('ic-status');
+    var stxtEl = statusEl.querySelector('.ic-stxt');
+    var barEl = document.getElementById('ic-bar-fill');
+    var pctEl = document.getElementById('ic-pct');
+    var gvEl = document.getElementById('ic-gv');
+    var vbadge = document.getElementById('ic-vbadge');
+    document.getElementById('ic-theo-tot').textContent = 'of ' + euro(theoTotal) + ' theoretical';
+    vbadge.innerHTML = '<span style="font-size:9px">▼</span>' + (varPct.toFixed(1).replace('-', '−') + '%');
+
+    var perRow = C.countDur * 1000;
+    var gap = C.stepDelay * 1000;
+    var holdMs = C.hold * 1000;
+    var N = icRows.length;
+    var lastFinish = (N - 1) * gap + perRow;
+    var cycle = lastFinish + holdMs;
+    var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function paint(clock) {
+      var completion = 0, countedNow = 0;
+      for (var i = 0; i < N; i++) {
+        var p = icClamp((clock - i * gap) / perRow);
+        completion += p / N;
+        var e = icEaseOut(p);
+        countedNow += icRows[i].target * e;
+        icRows[i].el.style.opacity = (0.4 + 0.6 * icClamp(p / 0.12)).toFixed(3);
+        icRows[i].counted.textContent = euro(icRows[i].target * e);
+        var f = icClamp((p - 0.5) / 0.5);
+        icRows[i].cb.style.borderColor = 'transparent';
+        icRows[i].sv.style.opacity = f.toFixed(3);
+        icRows[i].sv.style.transform = 'scale(' + (0.4 + 0.6 * icBack(f)).toFixed(3) + ')';
+      }
+      var pct = Math.round(completion * 100);
+      var allDone = pct >= 100;
+      barEl.style.width = pct + '%';
+      pctEl.textContent = pct + '%';
+      gvEl.textContent = euro(countedNow);
+      statusEl.classList.toggle('complete', allDone);
+      stxtEl.textContent = allDone ? 'Count complete' : 'Counting…';
+      var vf = icClamp((completion - 0.9) / 0.1);
+      vbadge.style.maxWidth = (vf * 100).toFixed(1) + 'px';
+      vbadge.style.opacity = vf.toFixed(3);
+      vbadge.style.padding = vf > 0.02 ? '3px 9px' : '3px 0';
+    }
+
+    if (reduced) { paint(lastFinish + holdMs / 2); return; }
+    var start = null;
+    function loop(ts) {
+      if (start === null) start = ts;
+      paint((ts - start) % cycle);
+      requestAnimationFrame(loop);
+    }
+    requestAnimationFrame(loop);
+  })();
+</script>

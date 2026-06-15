@@ -20,19 +20,21 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-block: 24px;
   }
   .inv-inner {
     width: 100%;
+    max-width: 420px;
     display: flex;
     flex-direction: column;
   }
   .inv-head {
-    font-size: 11px;
+    font-size: 15px;
     font-weight: 300;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: rgba(255, 255, 255, 0.9);
-    margin: 0 0 14px;
+    margin: 0 0 18px;
   }
   .inv-clip {
     overflow: hidden;
@@ -47,7 +49,7 @@
     align-items: center;
     justify-content: space-between;
     border-top: 1px solid rgba(255, 255, 255, 0.035);
-    padding: 13px 0;
+    padding: 17px 0;
     flex-shrink: 0;
   }
   .inv-row-right {
@@ -57,7 +59,7 @@
   }
   .inv-row-name,
   .inv-row-price {
-    font-size: 13px;
+    font-size: 17px;
     font-weight: 300;
     color: rgba(255, 255, 255, 0.45);
     transition: color 0.3s ease;
@@ -82,14 +84,14 @@
     overflow: hidden;
     white-space: nowrap;
     border-radius: 3px;
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 300;
     transition: max-width 0.32s ease, padding 0.32s ease, margin-left 0.32s ease, opacity 0.2s ease;
   }
   .inv-badge.visible {
-    max-width: 70px;
-    padding: 2px 7px;
-    margin-left: 8px;
+    max-width: 80px;
+    padding: 3px 8px;
+    margin-left: 10px;
     opacity: 1;
   }
   .inv-badge.up   { color: #f59e0b; background: rgba(245, 158, 11, 0.22); }

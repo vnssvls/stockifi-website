@@ -5,6 +5,7 @@
 // The active item's body reveals (accordion) and can carry an optional CTA link.
 import MediaPlaceholder from './MediaPlaceholder.astro';
 import ProcurementAnimation from '../animations/ProcurementAnimation.astro';
+import InventoryAnimation from '../animations/InventoryAnimation.astro';
 
 interface Item { heading: string; body: string; icon?: string; cta?: { label: string; href: string }; image?: { src: string; alt: string }; animation?: string; }
 interface Props {
@@ -51,7 +52,7 @@ const { tagline, items } = Astro.props;
     <div class="fl-media">
       {items.map((it, i) => (
         <div class="fl-panel" role="tabpanel" data-index={i} hidden={i !== 0}>
-          {it.animation === 'procurement' ? <ProcurementAnimation /> : it.image ? <img src={it.image.src} alt={it.image.alt} /> : <MediaPlaceholder ratio="16 / 10" label={it.heading} />}
+          {it.animation === 'procurement' ? <ProcurementAnimation /> : it.animation === 'inventory' ? <InventoryAnimation /> : it.image ? <img src={it.image.src} alt={it.image.alt} /> : <MediaPlaceholder ratio="16 / 10" label={it.heading} />}
         </div>
       ))}
     </div>
@@ -160,12 +161,25 @@ const { tagline, items } = Astro.props;
     .fl-item-b, .fl-item-chevron { transition: none; }
   }
 
+  .fl-media { border: 1px dashed rgba(255, 255, 255, 0.07); border-radius: var(--radius-lg); padding-inline: 16px; }
   .fl-panel[hidden] { display: none; }
   .fl-panel img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: var(--radius-lg); }
 
   @media (min-width: 1024px) {
     .fl-grid { grid-template-columns: 1fr 1fr; gap: var(--space-96); max-width: none; padding-inline: 100px; }
     .fl-media { position: sticky; top: var(--space-96); }
+    .fl-media::before {
+      content: '';
+      position: absolute;
+      inset: -100px;
+      background-image:
+        radial-gradient(70% 70% at 50% 50%, rgba(158, 180, 250, 0.05), transparent 65%),
+        radial-gradient(55% 60% at 62% 32%, rgba(186, 140, 238, 0.04), transparent 65%),
+        radial-gradient(55% 55% at 38% 68%, rgba(248, 176, 214, 0.03), transparent 65%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .fl-panel { position: relative; z-index: 1; }
     .fl-items--spaced { margin-top: var(--space-32); }
   }
 </style>
