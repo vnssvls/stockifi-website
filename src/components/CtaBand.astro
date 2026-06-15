@@ -43,6 +43,9 @@ const { heading, subhead, primary, secondary } = Astro.props;
 
   .cta-actions { display: flex; flex-wrap: wrap; gap: var(--space-16); flex-shrink: 0; }
 
+  @media (min-width: 1024px) {
+    .cta-grid { padding-inline: 100px; }
+  }
   @media (max-width: 767px) {
     .cta-actions { width: 100%; }
     .cta-actions :global(.btn) { flex: 1; }
