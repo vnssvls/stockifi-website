@@ -2,10 +2,13 @@
 // Procurement animation — scrolling supplier price-change ticker.
 // 3 rows visible, middle row is the spotlight. Advances every 2.2s with a count-up badge.
 // Footer shows dynamic recipe count for the current spotlight ingredient.
+// compact prop: scaled-down variant for hero overlays.
 // Styles are global because the JS builds rows dynamically (no Astro scope hash on dynamic els).
+interface Props { compact?: boolean; }
+const { compact = false } = Astro.props;
 ---
 
-<div class="inv-wrap">
+<div class:list={['inv-wrap', compact && 'inv-wrap--compact']}>
   <div class="inv-inner">
     <p class="inv-head">Latest price changes</p>
     <div class="inv-clip">
@@ -133,6 +136,16 @@
   @media (prefers-reduced-motion: reduce) {
     .inv-sync { animation: none; }
   }
+
+  /* Compact variant — hero overlay */
+  .inv-wrap--compact .inv-inner { max-width: 300px; }
+  .inv-wrap--compact .inv-head { font-size: 12px; margin-bottom: 12px; }
+  .inv-wrap--compact .inv-row { padding: 10px 0; }
+  .inv-wrap--compact .inv-row-name,
+  .inv-wrap--compact .inv-row-price { font-size: 13px; }
+  .inv-wrap--compact .inv-badge { font-size: 11px; }
+  .inv-wrap--compact .inv-footer { font-size: 11px; margin-top: 10px; }
+  .inv-wrap--compact .inv-sync { width: 11px; height: 11px; }
 </style>
 
 <script>
