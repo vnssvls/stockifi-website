@@ -146,9 +146,8 @@
       const rows = track.children;
       const rowH = rows[0].offsetHeight;
 
-      // Collapse current spotlight badge
+      // Remove spotlight highlight but keep the badge visible as it scrolls out
       rows[SPOTLIGHT].classList.remove('spotlight');
-      rows[SPOTLIGHT].querySelector('.inv-badge').classList.remove('visible');
 
       // Slide track up one row
       track.style.transition = `transform ${Math.round(INTERVAL_MS * 0.25)}ms cubic-bezier(0.4,0,0.2,1)`;
