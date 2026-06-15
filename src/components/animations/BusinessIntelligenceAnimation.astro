@@ -271,7 +271,7 @@
     function paint(clock) {
       var reveal = biClamp(clock / revealMs);
       kpiEl.textContent = (startVal + deltaRange * reveal).toFixed(1) + '%';
-      deltaEl.textContent = '▲ ' + (deltaRange * reveal).toFixed(1) + ' pts vs Jan';
+      deltaEl.textContent = '▲ ' + (deltaRange * reveal).toFixed(1) + ' pts';
       var pt = lineEl.getPointAtLength(L * reveal);
       clipEl.setAttribute('width', pt.x.toFixed(1));
       dotEl.setAttribute('cx', pt.x.toFixed(1));

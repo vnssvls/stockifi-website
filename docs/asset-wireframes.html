@@ -289,6 +289,77 @@
     .fin-word { font-size: 7px; color: var(--text-lo); text-align: center; white-space: nowrap; }
     .fin-delta { font-size: 10px; font-weight: 300; color: var(--red); }
 
+
+    /* ══════════════════════════════════════════
+       CENTRAL KITCHEN / INTERNAL TRANSFERS
+       ══════════════════════════════════════════ */
+    .ck-canvas {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    .ck-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+    .ck-node {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 20px;
+      padding: 5px 11px;
+      font-size: 9px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.45);
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+      transition: border-color 0.3s, background 0.3s, color 0.3s;
+      pointer-events: none;
+    }
+    .ck-node.is-hub {
+      background: rgba(187,134,252,0.06);
+      border-color: rgba(187,134,252,0.18);
+      color: rgba(187,134,252,0.75);
+      font-size: 10px;
+      padding: 6px 14px;
+    }
+    .ck-node.is-active {
+      border-color: rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.8);
+      background: rgba(255,255,255,0.05);
+    }
+    .ck-node.is-hub.is-active {
+      border-color: rgba(187,134,252,0.32);
+      background: rgba(187,134,252,0.1);
+      color: rgba(187,134,252,0.9);
+    }
+    .ck-badge {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(15,15,20,0.9);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 8px;
+      padding: 3px 7px 3px 5px;
+      font-size: 8px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.55);
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      pointer-events: none;
+    }
+    .ck-badge.visible { opacity: 1; }
+    .ck-badge-dot { width: 4px; height: 4px; border-radius: 50%; flex-shrink: 0; }
+
   </style>
 </head>
 <body>
@@ -438,6 +509,71 @@
   </div>
 
 
+  <!-- ══ Central Kitchen / Internal Transfers ══ -->
+  <div class="group">
+    <div class="group-label">Product Pages — 16:10 · Central Kitchen &amp; Internal Transfers</div>
+    <div class="row-3">
+
+      <!-- CENTRAL KITCHEN -->
+      <div class="slot">
+        <div class="slot-name">Central Kitchen</div>
+        <div class="asset asset-16-10">
+          <div class="ck-canvas" id="ckCentral">
+            <svg class="ck-svg" viewBox="0 0 100 62.5" preserveAspectRatio="none">
+              <!-- Static dim lines (hub-and-spoke) -->
+              <line x1="50" y1="6.25"  x2="50" y2="26.25" stroke="rgba(255,255,255,0.06)" stroke-width="0.8" stroke-dasharray="2.5 2" />
+              <line x1="18" y1="47.5"  x2="50" y2="26.25" stroke="rgba(255,255,255,0.06)" stroke-width="0.8" stroke-dasharray="2.5 2" />
+              <line x1="82" y1="47.5"  x2="50" y2="26.25" stroke="rgba(255,255,255,0.06)" stroke-width="0.8" stroke-dasharray="2.5 2" />
+              <!-- Active line + traveling dot (set by JS) -->
+              <line id="ckCentral-activeLine" x1="0" y1="0" x2="0" y2="0" stroke="rgba(96,196,214,0.45)" stroke-width="0.9" />
+              <circle id="ckCentral-dot" cx="-5" cy="-5" r="2.5" fill="#60C4D6" opacity="0" />
+            </svg>
+
+            <div class="ck-node is-hub" data-ck-key="ck"        style="left:50%;top:42%">Central Kitchen</div>
+            <div class="ck-node"        data-ck-key="oslo"       style="left:50%;top:10%">Oslo</div>
+            <div class="ck-node"        data-ck-key="bergen"     style="left:18%;top:76%">Bergen</div>
+            <div class="ck-node"        data-ck-key="trondheim"  style="left:82%;top:76%">Trondheim</div>
+
+            <!-- Badges at line midpoints -->
+            <div class="ck-badge" data-ck-conn="0" style="left:50%;top:26%"><span class="ck-badge-dot"></span><span class="ck-badge-text"></span></div>
+            <div class="ck-badge" data-ck-conn="1" style="left:34%;top:59%"><span class="ck-badge-dot"></span><span class="ck-badge-text"></span></div>
+            <div class="ck-badge" data-ck-conn="2" style="left:66%;top:59%"><span class="ck-badge-dot"></span><span class="ck-badge-text"></span></div>
+          </div>
+        </div>
+        <div class="slot-idea">Orders travel from outlets to the kitchen. Dot follows the active line. Delivery confirmed on return.</div>
+      </div>
+
+      <!-- INTERNAL TRANSFERS -->
+      <div class="slot">
+        <div class="slot-name">Internal Transfers</div>
+        <div class="asset asset-16-10">
+          <div class="ck-canvas" id="ckInternal">
+            <svg class="ck-svg" viewBox="0 0 100 62.5" preserveAspectRatio="none">
+              <!-- Static dim lines (triangle topology) -->
+              <line x1="50" y1="7.5"   x2="15" y2="46.875" stroke="rgba(255,255,255,0.06)" stroke-width="0.8" stroke-dasharray="2.5 2" />
+              <line x1="15" y1="46.875" x2="85" y2="46.875" stroke="rgba(255,255,255,0.06)" stroke-width="0.8" stroke-dasharray="2.5 2" />
+              <line x1="85" y1="46.875" x2="50" y2="7.5"    stroke="rgba(255,255,255,0.06)" stroke-width="0.8" stroke-dasharray="2.5 2" />
+              <line id="ckInternal-activeLine" x1="0" y1="0" x2="0" y2="0" stroke="rgba(96,196,214,0.45)" stroke-width="0.9" />
+              <circle id="ckInternal-dot" cx="-5" cy="-5" r="2.5" fill="#60C4D6" opacity="0" />
+            </svg>
+
+            <div class="ck-node" data-ck-key="oslo"      style="left:50%;top:12%">Oslo</div>
+            <div class="ck-node" data-ck-key="bergen"    style="left:15%;top:75%">Bergen</div>
+            <div class="ck-node" data-ck-key="trondheim" style="left:85%;top:75%">Trondheim</div>
+
+            <!-- Badges at line midpoints -->
+            <div class="ck-badge" data-ck-conn="0" style="left:33%;top:43%"><span class="ck-badge-dot"></span><span class="ck-badge-text"></span></div>
+            <div class="ck-badge" data-ck-conn="1" style="left:50%;top:63%"><span class="ck-badge-dot"></span><span class="ck-badge-text"></span></div>
+            <div class="ck-badge" data-ck-conn="2" style="left:68%;top:43%"><span class="ck-badge-dot"></span><span class="ck-badge-text"></span></div>
+          </div>
+        </div>
+        <div class="slot-idea">Stock moves between peer locations. Same dot mechanic, triangle topology instead of hub-and-spoke.</div>
+      </div>
+
+    </div>
+  </div>
+
+
   <script>
     // ── Procurement scroll animation ──────────────────────────
     const ITEMS = [
@@ -558,6 +694,113 @@
     const initBadge = track.children[SPOTLIGHT].querySelector('.inv-badge');
     setTimeout(() => countUp(initBadge, parseInt(initBadge.dataset.target, 10)), 400);
     setInterval(tick, INTERVAL_MS);
+  </script>
+
+  <script>
+    // ── Central Kitchen / Internal Transfers network animation ──
+    function initNetworkAnim(cfg) {
+      const canvas = document.getElementById(cfg.canvasId);
+      if (!canvas) return;
+
+      const activeLine = document.getElementById(cfg.canvasId + '-activeLine');
+      const dot        = document.getElementById(cfg.canvasId + '-dot');
+      const badges     = canvas.querySelectorAll('.ck-badge');
+      const nodeEls    = canvas.querySelectorAll('.ck-node');
+
+      const DOT_MS  = 1500;
+      const STEP_MS = 2400;
+      let stepIdx   = 0;
+
+      function ease(t) { return t < 0.5 ? 2*t*t : -1+(4-2*t)*t; }
+
+      function animateDot(x1, y1, x2, y2) {
+        const t0 = performance.now();
+        dot.setAttribute('opacity', 1);
+        (function frame(now) {
+          const p = Math.min((now - t0) / DOT_MS, 1);
+          dot.setAttribute('cx', x1 + (x2 - x1) * ease(p));
+          dot.setAttribute('cy', y1 + (y2 - y1) * ease(p));
+          if (p < 1) requestAnimationFrame(frame);
+          else       dot.setAttribute('opacity', 0);
+        })(t0);
+      }
+
+      function runStep() {
+        const step  = cfg.steps[stepIdx % cfg.steps.length];
+        const fromN = cfg.nodes[step.from];
+        const toN   = cfg.nodes[step.to];
+        const badge = badges[step.conn];
+
+        // Highlight source + destination nodes
+        nodeEls.forEach(el => {
+          const k = el.dataset.ckKey;
+          el.classList.toggle('is-active', k === step.from || k === step.to);
+        });
+
+        // Show active line
+        activeLine.setAttribute('x1', fromN.svgX);
+        activeLine.setAttribute('y1', fromN.svgY);
+        activeLine.setAttribute('x2', toN.svgX);
+        activeLine.setAttribute('y2', toN.svgY);
+
+        // Update + show badge
+        badge.querySelector('.ck-badge-dot').style.background = step.color;
+        badge.querySelector('.ck-badge-text').textContent     = step.label;
+        badge.classList.add('visible');
+
+        // Animate dot along the line
+        animateDot(fromN.svgX, fromN.svgY, toN.svgX, toN.svgY);
+
+        // After step duration: clean up, pause briefly, advance
+        setTimeout(function() {
+          badge.classList.remove('visible');
+          activeLine.setAttribute('x1', 0); activeLine.setAttribute('y1', 0);
+          activeLine.setAttribute('x2', 0); activeLine.setAttribute('y2', 0);
+          nodeEls.forEach(el => el.classList.remove('is-active'));
+          stepIdx++;
+          setTimeout(runStep, 300);
+        }, STEP_MS);
+      }
+
+      setTimeout(runStep, cfg.delay || 0);
+    }
+
+    initNetworkAnim({
+      canvasId: 'ckCentral',
+      delay: 400,
+      nodes: {
+        ck:        { svgX: 50, svgY: 26.25 },
+        oslo:      { svgX: 50, svgY:  6.25 },
+        bergen:    { svgX: 18, svgY: 47.5  },
+        trondheim: { svgX: 82, svgY: 47.5  },
+      },
+      steps: [
+        { from: 'oslo',      to: 'ck',        conn: 0, label: 'Order sent',    color: '#60C4D6' },
+        { from: 'ck',        to: 'oslo',      conn: 0, label: 'Order shipped', color: '#34D399' },
+        { from: 'bergen',    to: 'ck',        conn: 1, label: 'Order sent',    color: '#60C4D6' },
+        { from: 'ck',        to: 'bergen',    conn: 1, label: 'Order shipped', color: '#34D399' },
+        { from: 'trondheim', to: 'ck',        conn: 2, label: 'Order sent',    color: '#60C4D6' },
+        { from: 'ck',        to: 'trondheim', conn: 2, label: 'Order shipped', color: '#34D399' },
+      ],
+    });
+
+    initNetworkAnim({
+      canvasId: 'ckInternal',
+      delay: 1100,
+      nodes: {
+        oslo:      { svgX: 50, svgY:  7.5   },
+        bergen:    { svgX: 15, svgY: 46.875 },
+        trondheim: { svgX: 85, svgY: 46.875 },
+      },
+      steps: [
+        { from: 'oslo',      to: 'bergen',    conn: 0, label: 'Transfer sent',     color: '#60C4D6' },
+        { from: 'bergen',    to: 'trondheim', conn: 1, label: 'Transfer sent',     color: '#60C4D6' },
+        { from: 'trondheim', to: 'oslo',      conn: 2, label: 'Transfer sent',     color: '#60C4D6' },
+        { from: 'bergen',    to: 'oslo',      conn: 0, label: 'Transfer received', color: '#34D399' },
+        { from: 'trondheim', to: 'bergen',    conn: 1, label: 'Transfer received', color: '#34D399' },
+        { from: 'oslo',      to: 'trondheim', conn: 2, label: 'Transfer received', color: '#34D399' },
+      ],
+    });
   </script>
 
 </body>

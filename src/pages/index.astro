@@ -19,6 +19,7 @@ import FeatureSteps from '../components/features/FeatureSteps.astro';
 import IntegrationPills from '../components/integrations/IntegrationPills.astro';
 import CtaBand from '../components/CtaBand.astro';
 import CtaButton from '../components/CtaButton.astro';
+import StatsCard from '../components/ui/StatsCard.astro';
 import FaqSplit from '../components/faq/FaqSplit.astro';
 import faqsHome from '../data/faqs-home.json';
 import integrations from '../data/integrations-home.json';
@@ -126,7 +127,18 @@ const faqs = faqsHome;
     body="Most of your margin leaks in the gaps between systems. Stockifi pulls them into one view, so even a 1% improvement in food cost turns into money you keep."
     items={benefits}
     imageSide="right"
-  />
+    image={{ src: '/media/photos/benefits-manager-chef.png', alt: '' }}
+  >
+    <StatsCard
+      slot="media-overlay"
+      total="€3,650"
+      rows={[
+        { label: 'Invoice anomalies', value: '€1,280' },
+        { label: 'Recipe deviation',  value: '€1,490' },
+        { label: 'Stock variance',    value: '€880'   },
+      ]}
+    />
+  </FeatureSplit>
 
   <!-- 5. By Teams — FeatureTabs -->
   <FeatureTabs
