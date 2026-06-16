@@ -194,6 +194,10 @@ const { tagline, heading, subhead, tabs } = Astro.props;
     left: auto;
     right: 20px;
   }
+  @media (max-width: 767px) {
+    .ft-body { font-size: var(--text-body-sm); }
+  }
+
   @media (max-width: 599px) {
     .ft-card-anchor { zoom: 0.72; }
   }
