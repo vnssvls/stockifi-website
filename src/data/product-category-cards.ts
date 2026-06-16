@@ -31,7 +31,7 @@ export const inventoryManagementCards: CategoryCard[] = [
   {
     heading: 'Faster counts',
     body: "Stock counts run on mobile, with pattern recognition, even offline, and syncs when you're done.",
-    iconKey: 'box',
+    iconKey: 'flash',
   },
   {
     heading: 'Waste costed',
