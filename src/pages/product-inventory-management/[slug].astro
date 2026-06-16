@@ -28,7 +28,7 @@ const benefitCards = inventoryManagementCards.map((c, i) => ({
   heading: c.heading,
   body: c.body,
   icon: icons[c.iconKey],
-  image: `/media/cta-bg-${(i % 4) + 1}.jpg`,
+  image: c.image,
 }));
 const ACCOUNTING = new Set(['PowerOffice', 'Tripletex', 'E-conomic', 'Xero', 'Fiken', 'Datev', 'Visma', 'Fortnox', 'Unimicro', 'Xledger', '24SevenOffice', 'SpareBank 1', 'Vandelanotte', 'Corpay']);
 const accountingIntegrations = integrations.filter((i) => ACCOUNTING.has(i.name));
