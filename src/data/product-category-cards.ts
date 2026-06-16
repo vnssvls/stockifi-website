@@ -25,8 +25,8 @@ export const procurementCards: CategoryCard[] = [
   },
   {
     heading: 'Supplier comparison',
-    body: 'When the same ingredient comes from multiple suppliers, the price difference is visible at a glance.',
-    iconKey: 'buildings-2',
+    body: 'Easily compare what each supplier charges for the same ingredient.',
+    iconKey: 'box-search',
     image: '/media/card-supplier-comparison.png',
   },
 ];
