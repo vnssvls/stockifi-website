@@ -28,7 +28,10 @@ const { eyebrow, heading, subhead, cta, ctaVariant = 'primary', image } = Astro.
       </div>
       {cta && (
         <div class="phi-actions">
-          <Button variant={ctaVariant} href={cta.href}>{cta.label}</Button>
+          <Button variant={ctaVariant} href={cta.href}>
+            {cta.label}
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </Button>
         </div>
       )}
     </div>
@@ -71,7 +74,7 @@ const { eyebrow, heading, subhead, cta, ctaVariant = 'primary', image } = Astro.
     background-image: var(--phi-bg);
     background-size: cover;
     background-position: center;
-    filter: blur(3px);
+    filter: blur(2px);
     z-index: 0;
   }
   /* Dark scrim, kept sharp above the blurred photo. Gradient (darker toward the
@@ -94,8 +97,16 @@ const { eyebrow, heading, subhead, cta, ctaVariant = 'primary', image } = Astro.
   .phi-heading { font-size: var(--text-h1); line-height: var(--lh-h1); }
   .phi-subhead {
     max-width: 56ch;
-    font-size: var(--text-body-lg);
+    font-size: var(--text-body);
     color: color-mix(in srgb, var(--foreground) 85%, transparent);
+  }
+
+  /* Brighter border for secondary buttons sitting on the dark photo scrim */
+  .phi-actions :global(.btn-secondary) {
+    border-color: rgba(255, 255, 255, 0.45);
+  }
+  .phi-actions :global(.btn-secondary:hover) {
+    border-color: rgba(255, 255, 255, 0.85);
   }
 
   @media (max-width: 767px) {

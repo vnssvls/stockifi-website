@@ -34,7 +34,7 @@ const single = imgs.length === 1 ? imgs[0] : '';
     {subhead && <p class="cb-subhead text-muted">{subhead}</p>}
     <div class="cb-actions">
       <Button variant="primary" href={primary.href}>{primary.label}</Button>
-      {secondary && <Button variant="secondary" href={secondary.href}>{secondary.label}</Button>}
+      {secondary && <Button variant="secondary" href={secondary.href}>{secondary.label}<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></Button>}
     </div>
   </div>
 </section>
