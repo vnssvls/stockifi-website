@@ -12,6 +12,8 @@ import ImageCardGrid from '../../components/ImageCardGrid.astro';
 import FaqSplit from '../../components/faq/FaqSplit.astro';
 import CtaBand from '../../components/CtaBand.astro';
 import integrations from '../../data/integrations-home.json';
+import navIcons from '../../data/nav-icons.json';
+import { inventoryManagementCards } from '../../data/product-category-cards';
 
 export async function getStaticPaths() {
   return (await getCollection('products'))
@@ -21,7 +23,13 @@ export async function getStaticPaths() {
 
 const { p } = Astro.props;
 const d = p.data;
-const benefitCards = d.benefits.map((b, i) => ({ ...b, image: `/media/cta-bg-${(i % 4) + 1}.jpg` }));
+const icons = navIcons as Record<string, string>;
+const benefitCards = inventoryManagementCards.map((c, i) => ({
+  heading: c.heading,
+  body: c.body,
+  icon: icons[c.iconKey],
+  image: `/media/cta-bg-${(i % 4) + 1}.jpg`,
+}));
 const ACCOUNTING = new Set(['PowerOffice', 'Tripletex', 'E-conomic', 'Xero', 'Fiken', 'Datev', 'Visma', 'Fortnox', 'Unimicro', 'Xledger', '24SevenOffice', 'SpareBank 1', 'Vandelanotte', 'Corpay']);
 const accountingIntegrations = integrations.filter((i) => ACCOUNTING.has(i.name));
 ---
