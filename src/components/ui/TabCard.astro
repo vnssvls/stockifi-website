@@ -1,0 +1,319 @@
+---
+interface Row {
+  label: string;
+  value: string;
+  value2?: string;
+  status?: 'green' | 'amber' | 'red';
+  barPct?: number;
+}
+interface KpiCompareVisual {
+  type: 'kpi-compare';
+  items: { label: string; value: string; color: 'green' | 'amber' | 'red' | 'neutral' }[];
+}
+interface DualBarsVisual {
+  type: 'dual';
+  bars: { label: string; value: string; pct: number; color: 'green' | 'amber' | 'red' }[];
+  maxPct: number;
+}
+interface Props {
+  title?: string;
+  avg?: { label: string; value: string };
+  rows?: Row[];
+  visual?: KpiCompareVisual | DualBarsVisual;
+  insight?: string;
+  insightType?: 'amber' | 'green';
+  action?: string;
+  invertValues?: boolean;
+}
+const { title, avg, rows = [], visual, insight, insightType = 'amber', action, invertValues } = Astro.props;
+
+const kpiItems = visual?.type === 'kpi-compare' ? visual.items : null;
+
+let dualRows: { label: string; value: string; fillW: number; color: string }[] | null = null;
+if (visual?.type === 'dual') {
+  dualRows = visual.bars.map(b => ({ label: b.label, value: b.value, fillW: Math.min(100, (b.pct / visual.maxPct) * 100), color: b.color }));
+}
+---
+
+<div class:list={['tc-card', invertValues && 'tc-card--inv']}>
+  {title && <p class="tc-title">{title}</p>}
+
+  {avg && (
+    <div class="tc-avg">
+      <span class="tc-avg-label">{avg.label}</span>
+      <span class="tc-avg-value">{avg.value}</span>
+    </div>
+  )}
+
+  {rows.length > 0 && (
+    <div class="tc-rows">
+      {rows.map(r => (
+        <div class="tc-row">
+          <div class="tc-row-main">
+            {r.status && <span class:list={['tc-dot', `tc-dot--${r.status}`]} aria-hidden="true"></span>}
+            <span class="tc-label">{r.label}</span>
+            <span class="tc-values">
+              <span class="tc-value">{r.value}</span>
+              {r.value2 && <><span class="tc-sep" aria-hidden="true">·</span><span class="tc-value2">{r.value2}</span></>}
+            </span>
+          </div>
+          {r.barPct !== undefined && (
+            <div class="tc-row-bar">
+              <div class:list={['tc-row-bar-fill', r.status && `tc-row-bar-fill--${r.status}`]} style={`width: ${r.barPct}%`}></div>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  )}
+
+  {kpiItems && (
+    <div class="tc-visual tc-kpi-row">
+      {kpiItems.map((item, i) => (
+        <>
+          {i > 0 && <div class="tc-kpi-sep" aria-hidden="true"></div>}
+          <div class="tc-kpi">
+            <span class="tc-kpi-label">{item.label}</span>
+            <span class:list={['tc-kpi-val', `tc-kpi-val--${item.color}`]}>{item.value}</span>
+          </div>
+        </>
+      ))}
+    </div>
+  )}
+
+  {dualRows && (
+    <div class="tc-visual tc-dual">
+      {dualRows.map(d => (
+        <div class="tc-dbar-row">
+          <span class="tc-dbar-label">{d.label}</span>
+          <div class="tc-dbar-track">
+            <div class:list={['tc-dbar-fill', `tc-dbar-fill--${d.color}`]} style={`width: ${d.fillW}%`}></div>
+          </div>
+          <span class="tc-dbar-value">{d.value}</span>
+        </div>
+      ))}
+    </div>
+  )}
+
+  {action ? (
+    <div class="tc-action" role="button">
+      <span class="tc-action-label">{action}</span>
+      <svg class="tc-action-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+        <path d="M2.5 6h7m-3-3 3 3-3 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  ) : insight ? (
+    <div class:list={['tc-insight', `tc-insight--${insightType}`]}>
+      {insightType === 'amber' ? (
+        <svg class="tc-insight-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M8 6.5v2.5m0 2h.01M3.4 13h9.2c.9 0 1.4-1 1-1.8L9 3.9a1.1 1.1 0 0 0-2 0L2.4 11.2c-.4.8.1 1.8 1 1.8z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      ) : (
+        <svg class="tc-insight-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M3 8.5 6.5 12 13 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      )}
+      <span class="tc-insight-text">{insight}</span>
+    </div>
+  ) : null}
+</div>
+
+<style>
+  .tc-card {
+    width: 290px;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.07);
+    border-radius: 14px;
+    padding: 14px 16px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.16), 0 1px 4px rgba(0, 0, 0, 0.07);
+  }
+  .tc-title {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.38);
+    margin-bottom: 10px;
+  }
+
+  /* ── Average summary ── */
+  .tc-avg {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+    padding-bottom: 10px;
+    margin-bottom: 2px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  }
+  .tc-avg-label {
+    font-size: 11px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.45);
+  }
+  .tc-avg-value {
+    font-size: 15px;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    color: rgba(0, 0, 0, 0.72);
+  }
+
+  /* ── Rows ── */
+  .tc-rows { display: flex; flex-direction: column; }
+  .tc-row { display: flex; flex-direction: column; padding: 6px 0; }
+  .tc-row + .tc-row { border-top: 1px solid rgba(0, 0, 0, 0.05); }
+  .tc-row-main { display: flex; align-items: center; gap: 8px; }
+  .tc-dot { flex-shrink: 0; width: 7px; height: 7px; border-radius: 50%; }
+  .tc-dot--green { background: #34d399; }
+  .tc-dot--amber { background: #f59e0b; }
+  .tc-dot--red   { background: #ef4444; }
+  .tc-label {
+    flex: 1;
+    font-size: 11.5px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.75);
+    white-space: nowrap;
+  }
+  .tc-values { display: flex; align-items: center; gap: 5px; white-space: nowrap; }
+  .tc-value {
+    font-size: 11.5px;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    color: rgba(0, 0, 0, 0.75);
+    min-width: 3.2em;
+    text-align: right;
+  }
+  .tc-sep  { font-size: 10px; color: rgba(0, 0, 0, 0.2); }
+  .tc-card--inv .tc-value  { color: rgba(0, 0, 0, 0.42); font-weight: 400; }
+  .tc-card--inv .tc-value2 { color: rgba(0, 0, 0, 0.75); font-weight: 500; }
+  .tc-value2 {
+    font-size: 11.5px;
+    font-weight: 400;
+    font-variant-numeric: tabular-nums;
+    color: rgba(0, 0, 0, 0.45);
+    min-width: 3.5em;
+  }
+
+  /* Inline bar below each row (management) */
+  .tc-row-bar {
+    height: 4px;
+    background: rgba(0, 0, 0, 0.08);
+    border-radius: 2px;
+    margin-top: 5px;
+    overflow: hidden;
+  }
+  .tc-row-bar-fill { height: 100%; border-radius: 2px; }
+  .tc-row-bar-fill--green { background: #34d399; }
+  .tc-row-bar-fill--amber { background: #f59e0b; }
+  .tc-row-bar-fill--red   { background: #ef4444; }
+
+  /* ── Visual section ── */
+  .tc-visual { margin-top: 10px; }
+
+  /* KPI compare (kitchen) */
+  .tc-kpi-row {
+    display: flex;
+    align-items: center;
+    padding: 4px 0 2px;
+  }
+  .tc-kpi {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .tc-kpi-label {
+    font-size: 10px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: rgba(0, 0, 0, 0.38);
+  }
+  .tc-kpi-val {
+    font-size: 22px;
+    font-weight: 300;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .tc-kpi-val--green   { color: #059669; }
+  .tc-kpi-val--amber   { color: #d97706; }
+  .tc-kpi-val--red     { color: #dc2626; }
+  .tc-kpi-val--neutral { color: rgba(0, 0, 0, 0.75); }
+  .tc-kpi-sep {
+    width: 1px;
+    height: 38px;
+    background: rgba(0, 0, 0, 0.08);
+    flex-shrink: 0;
+    margin: 0 14px;
+  }
+
+  /* Dual bars (finance) */
+  .tc-dual { display: flex; flex-direction: column; gap: 9px; }
+  .tc-dbar-row { display: flex; align-items: center; gap: 8px; }
+  .tc-dbar-label {
+    font-size: 10.5px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.62);
+    width: 68px;
+    flex-shrink: 0;
+  }
+  .tc-dbar-track {
+    flex: 1;
+    height: 7px;
+    background: rgba(0, 0, 0, 0.08);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .tc-dbar-fill { height: 100%; border-radius: 4px; }
+  .tc-dbar-fill--green { background: #34d399; }
+  .tc-dbar-fill--amber { background: #f59e0b; }
+  .tc-dbar-fill--red   { background: #ef4444; }
+  .tc-dbar-value {
+    font-size: 10.5px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    color: rgba(0, 0, 0, 0.80);
+    width: 32px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  /* ── Action button ── */
+  .tc-action {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-top: 10px;
+    padding: 9px 12px;
+    border-radius: 8px;
+    background: rgba(107, 70, 170, 0.07);
+    border: 1px solid rgba(107, 70, 170, 0.18);
+    cursor: pointer;
+  }
+  .tc-action-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: #4f3174;
+    flex: 1;
+  }
+  .tc-action-arrow { color: #6d46aa; flex-shrink: 0; }
+
+  /* ── Insight banner ── */
+  .tc-insight {
+    display: flex;
+    align-items: flex-start;
+    gap: 7px;
+    margin-top: 10px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 1.45;
+  }
+  .tc-insight--amber { background: rgba(245, 158, 11, 0.09); color: #92400e; }
+  .tc-insight--green { background: rgba(52, 211, 153, 0.09); color: #065f46; }
+  .tc-insight-icon { flex-shrink: 0; width: 14px; height: 14px; margin-top: 1px; }
+  .tc-insight-text { flex: 1; }
+</style>

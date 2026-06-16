@@ -1,5 +1,6 @@
 ---
 // Feature Layout 2 — image one side, heading + paragraph + icon checklist the other.
+// Supports a `media` slot to replace the image with an animation component.
 import MediaPlaceholder from './MediaPlaceholder.astro';
 
 interface Props {
@@ -11,15 +12,23 @@ interface Props {
   imageSide?: 'left' | 'right';
 }
 const { tagline, heading, body, items = [], image, imageSide = 'left' } = Astro.props;
+const hasMediaSlot = Astro.slots.has('media');
 ---
 
 <section class="feature-split section">
   <div class:list={['container', 'fs-grid', imageSide === 'right' && 'fs-image-right']}>
-    <div class="fs-media">
-      {image ? <img src={image.src} alt={image.alt} /> : <MediaPlaceholder ratio="1 / 1" />}
-      <div class="fs-overlay-anchor">
-        <slot name="media-overlay" />
-      </div>
+    <div class:list={['fs-media', hasMediaSlot && 'fs-media--anim']}>
+      {hasMediaSlot
+        ? <slot name="media" />
+        : image
+          ? <img src={image.src} alt={image.alt} />
+          : <MediaPlaceholder ratio="1 / 1" />
+      }
+      {!hasMediaSlot && (
+        <div class="fs-overlay-anchor">
+          <slot name="media-overlay" />
+        </div>
+      )}
     </div>
     <div class="fs-copy">
       {tagline && <p class="tagline">{tagline}</p>}
@@ -44,7 +53,10 @@ const { tagline, heading, body, items = [], image, imageSide = 'left' } = Astro.
     background-image:
       radial-gradient(50% 65% at 12% 48%, rgba(158, 180, 250, 0.05), transparent 62%),
       radial-gradient(45% 55% at 4% 28%, rgba(186, 140, 238, 0.04), transparent 64%),
-      radial-gradient(48% 52% at 16% 72%, rgba(248, 176, 214, 0.04), transparent 62%);
+      radial-gradient(48% 52% at 16% 72%, rgba(248, 176, 214, 0.04), transparent 62%),
+      radial-gradient(50% 65% at 88% 48%, rgba(158, 180, 250, 0.05), transparent 62%),
+      radial-gradient(45% 55% at 96% 28%, rgba(186, 140, 238, 0.04), transparent 64%),
+      radial-gradient(48% 52% at 84% 72%, rgba(248, 176, 214, 0.04), transparent 62%);
   }
   .fs-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-48); align-items: center; }
   /* Mobile: copy first, image below, full-width bleed */
@@ -73,6 +85,10 @@ const { tagline, heading, body, items = [], image, imageSide = 'left' } = Astro.
   .fs-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-16); }
   .fs-list li { display: flex; align-items: center; gap: var(--space-12); font-size: var(--text-body); }
   .fs-icon { color: var(--primary); flex: none; }
+
+  /* Animation variant — no gradient veil, no aspect-ratio crop */
+  .fs-media--anim::before { display: none; }
+  .fs-media--anim img { aspect-ratio: unset; }
 
   /* Scale card down on narrow phones only */
   @media (max-width: 599px) {

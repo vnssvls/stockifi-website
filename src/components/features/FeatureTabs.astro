@@ -5,7 +5,19 @@
 // media right). Wide (full-width, 60px desktop gutter). Accessible tabs.
 import Button from '../Button.astro';
 import MediaPlaceholder from './MediaPlaceholder.astro';
+import TabCard from '../ui/TabCard.astro';
 
+interface TabCardData {
+  title?: string;
+  avg?: { label: string; value: string };
+  rows?: { label: string; value: string; value2?: string; status?: 'green' | 'amber' | 'red'; barPct?: number }[];
+  visual?: any;
+  insight?: string;
+  insightType?: 'amber' | 'green';
+  action?: string;
+  invertValues?: boolean;
+  side?: 'left' | 'right';
+}
 interface Tab {
   label: string;
   tagline?: string;
@@ -14,6 +26,7 @@ interface Tab {
   primary?: { label: string; href: string };
   secondary?: { label: string; href: string };
   image?: { src: string; alt: string };
+  card?: TabCardData;
 }
 interface Props {
   tagline?: string;
@@ -65,6 +78,20 @@ const { tagline, heading, subhead, tabs } = Astro.props;
           </div>
           <div class="ft-media">
             {t.image ? <img src={t.image.src} alt={t.image.alt} /> : <MediaPlaceholder ratio="1 / 1" />}
+            {t.card && (
+              <div class:list={['ft-card-anchor', t.card.side === 'right' && 'ft-card-anchor--right']}>
+                <TabCard
+                  title={t.card.title}
+                  avg={t.card.avg}
+                  rows={t.card.rows}
+                  visual={t.card.visual}
+                  insight={t.card.insight}
+                  insightType={t.card.insightType}
+                  action={t.card.action}
+                  invertValues={t.card.invertValues}
+                />
+              </div>
+            )}
           </div>
         </div>
       ))}
@@ -154,7 +181,22 @@ const { tagline, heading, subhead, tabs } = Astro.props;
   .ft-h { font-size: var(--text-h3); }
   .ft-body { line-height: var(--lh-body); }
   .ft-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-24); margin-top: var(--space-8); }
-  .ft-media img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: var(--radius-lg); }
+  .ft-media { position: relative; }
+  .ft-media img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius-lg); }
+
+  .ft-card-anchor {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    z-index: 2;
+  }
+  .ft-card-anchor--right {
+    left: auto;
+    right: 20px;
+  }
+  @media (max-width: 599px) {
+    .ft-card-anchor { zoom: 0.72; }
+  }
 
   /* Tablet+: floating pill track (nav-style) — translucent page-bg fill (not grey),
      border, shadow, blur. Single row; the sliding indicator provides the active pill. */

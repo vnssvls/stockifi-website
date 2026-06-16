@@ -19,7 +19,7 @@ import FeatureSteps from '../components/features/FeatureSteps.astro';
 import IntegrationPills from '../components/integrations/IntegrationPills.astro';
 import CtaBand from '../components/CtaBand.astro';
 import CtaButton from '../components/CtaButton.astro';
-import StatsCard from '../components/ui/StatsCard.astro';
+import SavingsAnimation from '../components/animations/SavingsAnimation.astro';
 import FaqSplit from '../components/faq/FaqSplit.astro';
 import faqsHome from '../data/faqs-home.json';
 import integrations from '../data/integrations-home.json';
@@ -61,10 +61,87 @@ const benefits = [
 
 // 5. By Teams — FeatureTabs (tabbed). Each tab links to its solution page.
 const byTeams = [
-  { label: 'Management', heading: "The whole operation's margin at a glance", body: "Owners and GMs get cost visibility across every location, so you know where margin is won or lost without chasing a single report. See it from an owner's seat.", primary: { label: 'Stockifi for Management', href: '/solutions/management' }, image: { src: '/media/photos/teams-management.png', alt: '' } },
-  { label: 'Operations', heading: 'Run tighter service without the extra admin', body: 'Spot waste, over-portioning, and price drift early, so the day-to-day stays under control even as you add locations. See it on the floor.', primary: { label: 'Stockifi for Operations', href: '/solutions/operations' }, image: { src: '/media/photos/teams-operations.png', alt: '' } },
-  { label: 'Kitchen', heading: 'Recipes that cost themselves', body: 'Chefs see the live cost and margin of every dish, so menu calls reflect what ingredients cost today. See it in the kitchen.', primary: { label: 'Stockifi for Kitchen', href: '/solutions/kitchen' }, image: { src: '/media/photos/teams-kitchen.png', alt: '' } },
-  { label: 'Finance', heading: 'COGS you can actually trust', body: 'Finance gets actual against theoretical cost from real invoice and POS data, so month-end stops being a guessing game. See it on the books.', primary: { label: 'Stockifi for Finance', href: '/solutions/finance' }, image: { src: '/media/photos/teams-finance.png', alt: '' } },
+  {
+    label: 'Management',
+    heading: "The whole operation's margin at a glance",
+    body: "Owners and GMs get cost visibility across every location, so you know where margin is won or lost without chasing a single report. See it from an owner's seat.",
+    primary: { label: 'Stockifi for Management', href: '/solutions/management' },
+    image: { src: '/media/photos/teams-management.png', alt: '' },
+    card: {
+      title: 'COGS Overview',
+      avg: { label: 'Avg food cost', value: '29.0%' },
+      rows: [
+        { label: 'Bjørvika',  value: '€52k', value2: '26.2%', status: 'green' as const },
+        { label: 'Stavanger', value: '€47k', value2: '28.8%', status: 'amber' as const },
+        { label: 'Trondheim', value: '€38k', value2: '32.1%', status: 'red'   as const },
+      ],
+      action: 'Review Trondheim performance',
+      invertValues: true,
+      side: 'right' as const,
+    },
+  },
+  {
+    label: 'Operations',
+    heading: 'Run tighter service without the extra admin',
+    body: 'Spot waste, over-portioning, and price drift early, so the day-to-day stays under control even as you add locations. See it on the floor.',
+    primary: { label: 'Stockifi for Operations', href: '/solutions/operations' },
+    image: { src: '/media/photos/teams-operations.png', alt: '' },
+    card: {
+      title: 'Top Variances',
+      rows: [
+        { label: 'Ground beef',    value: '-3.2%', value2: '4.2 kg', status: 'amber' as const },
+        { label: 'Duck breast',    value: '-2.8%', value2: '3.6 kg', status: 'amber' as const },
+        { label: 'Potatoes',       value: '-1.9%', value2: '7.8 kg', status: 'amber' as const },
+      ],
+      insight: 'Review portions and wastage on recipes.',
+      insightType: 'amber' as const,
+    },
+  },
+  {
+    label: 'Kitchen',
+    heading: 'Recipes that cost themselves',
+    body: 'Chefs see the live cost and margin of every dish, so menu calls reflect what ingredients cost today. See it in the kitchen.',
+    primary: { label: 'Stockifi for Kitchen', href: '/solutions/kitchen' },
+    image: { src: '/media/photos/teams-kitchen.png', alt: '' },
+    card: {
+      title: 'Duck Breast',
+      rows: [
+        { label: 'Selling price', value: '€23.00' },
+      ],
+      visual: {
+        type: 'kpi-compare' as const,
+        items: [
+          { label: 'Target', value: '28%',   color: 'green' as const },
+          { label: 'Actual', value: '36.7%', color: 'amber' as const },
+        ],
+      },
+      insight: 'Food cost is 8.7 pts above target.',
+      insightType: 'amber' as const,
+      side: 'right' as const,
+    },
+  },
+  {
+    label: 'Finance',
+    heading: 'COGS you can actually trust',
+    body: 'Finance gets actual against theoretical cost from real invoice and POS data, so month-end stops being a guessing game. See it on the books.',
+    primary: { label: 'Stockifi for Finance', href: '/solutions/finance' },
+    image: { src: '/media/photos/teams-finance.png', alt: '' },
+    card: {
+      title: 'COGS',
+      rows: [],
+      visual: {
+        type: 'dual' as const,
+        bars: [
+          { label: 'Theoretical', value: '26.1%', pct: 26.1, color: 'green' as const },
+          { label: 'Actual',      value: '28.3%', pct: 28.3, color: 'amber' as const },
+        ],
+        maxPct: 35,
+      },
+      insight: '€3,180 recoverable this period.',
+      insightType: 'green' as const,
+      side: 'right' as const,
+    },
+  },
 ];
 
 // 7. Onboarding — FeatureSteps (connected vertical timeline)
@@ -127,17 +204,8 @@ const faqs = faqsHome;
     body="Most of your margin leaks in the gaps between systems. Stockifi pulls them into one view, so even a 1% improvement in food cost turns into money you keep."
     items={benefits}
     imageSide="right"
-    image={{ src: '/media/photos/benefits-manager-chef.png', alt: '' }}
   >
-    <StatsCard
-      slot="media-overlay"
-      total="€3,650"
-      rows={[
-        { label: 'Invoice anomalies', value: '€1,280' },
-        { label: 'Recipe deviation',  value: '€1,490' },
-        { label: 'Stock variance',    value: '€880'   },
-      ]}
-    />
+    <SavingsAnimation slot="media" />
   </FeatureSplit>
 
   <!-- 5. By Teams — FeatureTabs -->
