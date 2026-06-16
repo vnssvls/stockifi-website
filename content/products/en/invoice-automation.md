@@ -4,7 +4,7 @@ metaDescription: "Stockifi reads supplier invoices line by line and feeds prices
 eyebrow: "Invoice automation"
 heading: "Food cost without the data entry"
 subhead: "Your food cost can stay current without anyone typing in an invoice. Stockifi reads them straight from your accounting, so prices and quantities flow in on their own."
-heroImage: "/media/cta-bg-2.jpg"
+heroImage: "/media/product-invoice-automation.png"
 order: 10
 category: procurement
 howItWorks:

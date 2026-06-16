@@ -4,7 +4,7 @@ metaDescription: "Stockifi keeps your ingredient and recipe data clean and consi
 eyebrow: "Data quality"
 heading: "[Placeholder heading]"
 subhead: "[Placeholder subhead — copy review Wednesday]"
-heroImage: "/media/cta-bg-2.jpg"
+heroImage: "/media/product-data-quality.png"
 order: 25
 category: inventory-management
 showIntegrations: false

@@ -4,7 +4,7 @@ metaDescription: "Stockifi tells you what to reorder before you run short — ba
 eyebrow: "Ordering suggestions"
 heading: "[Placeholder heading]"
 subhead: "[Placeholder subhead — copy review Wednesday]"
-heroImage: "/media/cta-bg-2.jpg"
+heroImage: "/media/product-ordering-suggestions.png"
 order: 14
 category: procurement
 showIntegrations: false

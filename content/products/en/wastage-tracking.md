@@ -4,7 +4,7 @@ metaDescription: "Put a real cost on spoilage, kitchen mistakes, and over-produc
 eyebrow: "Wastage tracking"
 heading: "Turn wastage into a number you can act on"
 subhead: "Stockifi puts a real cost on what you waste and shows it against what you use, so it stops hiding in your variance."
-heroImage: "/media/cta-bg-2.jpg"
+heroImage: "/media/product-wastage-tracking.png"
 order: 24
 category: inventory-management
 showIntegrations: false

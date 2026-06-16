@@ -4,7 +4,7 @@ metaDescription: "Move stock between your locations inside the periodic count, s
 eyebrow: "Inventory transfers"
 heading: "Keep both sites accurate when stock moves"
 subhead: "When stock moves between your locations, you make the move in Stockifi against the period's count. Each site's count and cost stay right, so the group's numbers reconcile."
-heroImage: "/media/cta-bg-2.jpg"
+heroImage: "/media/product-inventory-transfers.png"
 order: 23
 category: inventory-management
 howItWorks:

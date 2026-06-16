@@ -3,7 +3,7 @@
 // 5 items → 3-col Parker layout (bottom 2 stretch to ~50% via flex-grow); 4 → 4-col.
 // Card: icon top-left, title+desc+arrow at bottom (space-between).
 // Hover: radial gradient spotlight follows cursor via --mouse-x / --mouse-y CSS vars.
-interface Item { heading: string; body: string; icon?: string; href?: string }
+interface Item { heading: string; body: string; icon?: string; href?: string; image?: string; }
 interface Props { items: Item[]; columns?: 3 | 4; }
 const { items, columns } = Astro.props;
 const cols = columns ?? (items.length >= 5 ? 3 : 4);
@@ -11,8 +11,13 @@ const cols = columns ?? (items.length >= 5 ? 3 : 4);
 
 <div class:list={['product-card-grid', `pcg-cols-${cols}`]}>
   {items.map((it) => (
-    <article class:list={['pcg-item', it.href && 'pcg-item--linked']}>
+    <article class:list={['pcg-item', it.href && 'pcg-item--linked', it.image && 'pcg-item--photo']}>
       {it.href && <a class="pcg-cover-link" href={it.href} aria-label={it.heading}></a>}
+      {it.image && (
+        <div class="pcg-bg" aria-hidden="true">
+          <img src={it.image} alt="" loading="lazy" />
+        </div>
+      )}
       <div class="pcg-inner">
         <span class="pcg-icon" aria-hidden="true">
           {it.icon ? <Fragment set:html={it.icon} /> : (
@@ -138,6 +143,29 @@ const cols = columns ?? (items.length >= 5 ? 3 : 4);
     opacity: 0;
     color: white;
     transition: opacity 0.18s ease, transform 0.18s ease;
+  }
+
+  /* ── Photo variant ──────────────────────────────────────────────────────────── */
+  .pcg-item--photo { background: transparent; border-color: rgba(255,255,255,0.1); }
+
+  .pcg-bg {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    overflow: hidden;
+  }
+  .pcg-bg img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  /* Dark gradient scrim — heavier at bottom so heading text is always readable */
+  .pcg-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.82) 0%,
+      rgba(0, 0, 0, 0.48) 45%,
+      rgba(0, 0, 0, 0.18) 100%
+    );
   }
 </style>
 

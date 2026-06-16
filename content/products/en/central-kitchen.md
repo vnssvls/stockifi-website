@@ -4,7 +4,7 @@ metaDescription: "Run a central production kitchen that supplies your outlets, w
 eyebrow: "Central kitchen"
 heading: "Supply every outlet from one kitchen"
 subhead: "Each outlet orders what it needs and pays the real production cost. Stockifi keeps that cost accurate, so margins stay true across the whole group."
-heroImage: "/media/cta-bg-2.jpg"
+heroImage: "/media/product-central-kitchen.png"
 order: 12
 category: procurement
 howItWorks:

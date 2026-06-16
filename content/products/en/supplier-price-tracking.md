@@ -4,7 +4,7 @@ metaDescription: "Stockifi tracks every supplier price change from your invoices
 eyebrow: "Supplier price tracking"
 heading: "Know when a supplier price moves"
 subhead: "A supplier's prices drift in small steps you would never catch by eye. Stockifi tracks every move and the dishes it touches, so you can act on a rise while there's still time."
-heroImage: "/media/cta-bg-2.jpg"
+heroImage: "/media/product-supplier-price-tracking.png"
 order: 2
 category: procurement
 howItWorks:

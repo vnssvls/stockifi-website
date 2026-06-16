@@ -4,7 +4,7 @@ metaDescription: "Run periodic stock counts on mobile or web, online or offline,
 eyebrow: "Stock counting"
 heading: "Counts that match the shelf"
 subhead: "Count on mobile or web, online or offline. See the variance against what your recipes and sales predicted the moment you close."
-heroImage: "/media/cta-bg-2.jpg"
+heroImage: "/media/product-stock-counting.png"
 order: 21
 category: inventory-management
 howItWorks:
