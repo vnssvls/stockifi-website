@@ -28,6 +28,17 @@ const {
   bgImages,
 } = Astro.props;
 
+const TERMS: Record<string, { pre: string; mid: string; link: string; post: string }> = {
+  en: { pre: 'By clicking', mid: "you're confirming that you agree with our", link: 'Terms and Conditions', post: '.' },
+  de: { pre: 'Mit Klick auf', mid: 'bestätigen Sie, dass Sie unseren', link: 'Allgemeinen Geschäftsbedingungen', post: ' zustimmen.' },
+  no: { pre: 'Ved å klikke på', mid: 'bekrefter du at du godtar våre', link: 'Vilkår og betingelser', post: '.' },
+  sv: { pre: 'Genom att klicka på', mid: 'bekräftar du att du godkänner våra', link: 'Villkor', post: '.' },
+  nl: { pre: 'Door op', mid: 'te klikken, bevestigt u dat u akkoord gaat met onze', link: 'Algemene voorwaarden', post: '.' },
+  da: { pre: 'Ved at klikke på', mid: 'bekræfter du, at du accepterer vores', link: 'Vilkår og betingelser', post: '.' },
+};
+const locale = Astro.currentLocale ?? 'en';
+const t = TERMS[locale] ?? TERMS.en;
+
 const imgs = bgImages?.length ? bgImages : bgImage ? [bgImage] : [];
 const hasBg = imgs.length > 0;
 // A single image is set server-side; for 2+ the client script picks one at random,
@@ -57,7 +68,7 @@ const single = imgs.length === 1 ? imgs[0] : '';
     </form>
 
     <p class="ce-terms text-muted">
-      By clicking {buttonLabel} you're confirming that you agree with our <a href={termsHref}>Terms and Conditions</a>.
+      {t.pre} {buttonLabel} {t.mid} <a href={termsHref}>{t.link}</a>{t.post}
     </p>
   </div>
 </section>

@@ -69,13 +69,13 @@ const byTeams = [
     image: { src: '/media/photos/teams-management.png', alt: '' },
     card: {
       title: 'COGS Overview',
-      avg: { label: 'Avg food cost', value: '29.0%' },
+      avg: { label: 'Gjennomsn. varekostprosent', value: '29.0%' },
       rows: [
         { label: 'Bjørvika',  value: '€52k', value2: '26.2%', status: 'green' as const },
         { label: 'Stavanger', value: '€47k', value2: '28.8%', status: 'amber' as const },
         { label: 'Trondheim', value: '€38k', value2: '32.1%', status: 'red'   as const },
       ],
-      action: 'Review Trondheim performance',
+      action: 'Gjennomgå Trondheim-ytelse',
       invertValues: true,
       side: 'right' as const,
     },
@@ -89,11 +89,11 @@ const byTeams = [
     card: {
       title: 'Top Variances',
       rows: [
-        { label: 'Ground beef',    value: '-3.2%', value2: '4.2 kg', status: 'amber' as const },
-        { label: 'Duck breast',    value: '-2.8%', value2: '3.6 kg', status: 'amber' as const },
-        { label: 'Potatoes',       value: '-1.9%', value2: '7.8 kg', status: 'amber' as const },
+        { label: 'Kjøttdeig',    value: '-3.2%', value2: '4.2 kg', status: 'amber' as const },
+        { label: 'Andbryst',    value: '-2.8%', value2: '3.6 kg', status: 'amber' as const },
+        { label: 'Poteter',       value: '-1.9%', value2: '7.8 kg', status: 'amber' as const },
       ],
-      insight: 'Review portions and wastage on recipes.',
+      insight: 'Gjennomgå porsjoner og svinn på oppskrifter.',
       insightType: 'amber' as const,
     },
   },
@@ -106,16 +106,16 @@ const byTeams = [
     card: {
       title: 'Duck Breast',
       rows: [
-        { label: 'Selling price', value: '€23.00' },
+        { label: 'Salgspris', value: '€23.00' },
       ],
       visual: {
         type: 'kpi-compare' as const,
         items: [
-          { label: 'Target', value: '28%',   color: 'green' as const },
-          { label: 'Actual', value: '36.7%', color: 'amber' as const },
+          { label: 'Mål', value: '28%',   color: 'green' as const },
+          { label: 'Faktisk', value: '36.7%', color: 'amber' as const },
         ],
       },
-      insight: 'Recipe cost is 8.7 pts above target.',
+      insight: 'Oppskriftskostnad er 8,7 poeng over målet.',
       insightType: 'amber' as const,
       side: 'right' as const,
     },
@@ -132,12 +132,12 @@ const byTeams = [
       visual: {
         type: 'dual' as const,
         bars: [
-          { label: 'Theoretical', value: '26.1%', pct: 26.1, color: 'green' as const },
-          { label: 'Actual',      value: '28.3%', pct: 28.3, color: 'amber' as const },
+          { label: 'Teoretisk', value: '26.1%', pct: 26.1, color: 'green' as const },
+          { label: 'Faktisk',    value: '28.3%', pct: 28.3, color: 'amber' as const },
         ],
         maxPct: 35,
       },
-      insight: '€3,180 recoverable this period.',
+      insight: '€3.180 kan gjenvunnes denne perioden.',
       insightType: 'green' as const,
       side: 'right' as const,
     },
