@@ -63,18 +63,18 @@ const byTeams = [
   {
     label: 'Ledning',
     heading: "Hela verksamhetens marginal på ett ögonkast",
-    body: "Ägare och GMs får kostnadsöversikt över varje location, så du vet var marginalen vinns eller förloras utan att jaga ett enda rapport. Se det från en ägares perspektiv.",
+    body: "Ägare och GMs får kostnadsöversikt över varje location, så du vet var marginalen vinns eller förloras utan att jaga en enda rapport. Se det från en ägares perspektiv.",
     primary: { label: 'Stockifi för ledning', href: '/sv/solutions/management' },
     image: { src: '/media/photos/teams-management.png', alt: '' },
     card: {
-      title: 'COGS Overview',
-      avg: { label: 'Gnsn. livsmedelskostnad', value: '29.0%' },
+      title: 'COGS-översikt',
+      avg: { label: 'Gnsn. livsmedelskostnad', value: '29,0 %' },
       rows: [
-        { label: 'Bjørvika',  value: '€52k', value2: '26.2%', status: 'green' as const },
-        { label: 'Stavanger', value: '€47k', value2: '28.8%', status: 'amber' as const },
-        { label: 'Trondheim', value: '€38k', value2: '32.1%', status: 'red'   as const },
+        { label: 'Bjørvika',  value: '540k kr', value2: '26,2 %', status: 'green' as const },
+        { label: 'Stavanger', value: '490k kr', value2: '28,8 %', status: 'amber' as const },
+        { label: 'Trondheim', value: '395k kr', value2: '32,1 %', status: 'red'   as const },
       ],
-      action: 'Granska Trondheim-prestanda',
+      action: 'Granska Trondheim-resultaten',
       invertValues: true,
       side: 'right' as const,
     },
@@ -86,11 +86,11 @@ const byTeams = [
     primary: { label: 'Stockifi för drift', href: '/sv/solutions/operations' },
     image: { src: '/media/photos/teams-operations.png', alt: '' },
     card: {
-      title: 'Top Variances',
+      title: 'Största avvikelser',
       rows: [
-        { label: 'Nötfärs',    value: '-3.2%', value2: '4.2 kg', status: 'amber' as const },
-        { label: 'Andbröst',    value: '-2.8%', value2: '3.6 kg', status: 'amber' as const },
-        { label: 'Potatis',       value: '-1.9%', value2: '7.8 kg', status: 'amber' as const },
+        { label: 'Nötfärs',    value: '-3,2 %', value2: '4,2 kg', status: 'amber' as const },
+        { label: 'Andbröst',    value: '-2,8 %', value2: '3,6 kg', status: 'amber' as const },
+        { label: 'Potatis',       value: '-1,9 %', value2: '7,8 kg', status: 'amber' as const },
       ],
       insight: 'Granska portioner och svinn på recept.',
       insightType: 'amber' as const,
@@ -103,15 +103,15 @@ const byTeams = [
     primary: { label: 'Stockifi för kök', href: '/sv/solutions/kitchen' },
     image: { src: '/media/photos/teams-kitchen.png', alt: '' },
     card: {
-      title: 'Duck Breast',
+      title: 'Andbröst',
       rows: [
-        { label: 'Försäljningspris', value: '€23.00' },
+        { label: 'Försäljningspris', value: '249 kr' },
       ],
       visual: {
         type: 'kpi-compare' as const,
         items: [
-          { label: 'Mål', value: '28%',   color: 'green' as const },
-          { label: 'Faktiskt', value: '36.7%', color: 'amber' as const },
+          { label: 'Mål', value: '28 %',   color: 'green' as const },
+          { label: 'Faktiskt', value: '36,7 %', color: 'amber' as const },
         ],
       },
       insight: 'Receptkostnaden är 8,7 poäng över målet.',
@@ -126,17 +126,17 @@ const byTeams = [
     primary: { label: 'Stockifi för ekonomi', href: '/sv/solutions/finance' },
     image: { src: '/media/photos/teams-finance.png', alt: '' },
     card: {
-      title: 'COGS',
+      title: 'Varukostnad',
       rows: [],
       visual: {
         type: 'dual' as const,
         bars: [
-          { label: 'Teoretisk', value: '26.1%', pct: 26.1, color: 'green' as const },
-          { label: 'Faktiskt',   value: '28.3%', pct: 28.3, color: 'amber' as const },
+          { label: 'Teoretisk', value: '26,1 %', pct: 26.1, color: 'green' as const },
+          { label: 'Faktiskt',   value: '28,3 %', pct: 28.3, color: 'amber' as const },
         ],
         maxPct: 35,
       },
-      insight: '€3 180 kan återhämtas denna period.',
+      insight: '33 000 kr kan återhämtas denna period.',
       insightType: 'green' as const,
       side: 'right' as const,
     },

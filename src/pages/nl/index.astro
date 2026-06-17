@@ -63,16 +63,16 @@ const byTeams = [
   {
     label: 'Management',
     heading: "De marge van de hele operatie in één oogopslag",
-    body: "Eigenaren en general managers krijgen kostenzichtbaarheid over elke locatie, zodat je weet waar marge wordt gewonnen of verloren zonder ook maar één rapport op te vragen. Bekijk het vanuit het perspectief van een eigenaar.",
+    body: "Eigenaren en general managers krijgen kostenzichtbaarheid over elke locatie, zodat ze weten waar marge wordt gewonnen of verloren zonder ook maar één rapport op te vragen. Bekijk het vanuit het perspectief van een eigenaar.",
     primary: { label: 'Stockifi voor Management', href: '/nl/solutions/management' },
     image: { src: '/media/photos/teams-management.png', alt: '' },
     card: {
-      title: 'COGS Overview',
-      avg: { label: 'Gemiddelde foodcost', value: '29.0%' },
+      title: 'Foodcost-overzicht',
+      avg: { label: 'Gemiddelde foodcost', value: '29,0%' },
       rows: [
-        { label: 'Bjørvika',  value: '€52k', value2: '26.2%', status: 'green' as const },
-        { label: 'Stavanger', value: '€47k', value2: '28.8%', status: 'amber' as const },
-        { label: 'Trondheim', value: '€38k', value2: '32.1%', status: 'red'   as const },
+        { label: 'Bjørvika',  value: '€52k', value2: '26,2%', status: 'green' as const },
+        { label: 'Stavanger', value: '€47k', value2: '28,8%', status: 'amber' as const },
+        { label: 'Trondheim', value: '€38k', value2: '32,1%', status: 'red'   as const },
       ],
       action: 'Bekijk Trondheim-prestaties',
       invertValues: true,
@@ -86,11 +86,11 @@ const byTeams = [
     primary: { label: 'Stockifi voor Bedrijfsvoering', href: '/nl/solutions/operations' },
     image: { src: '/media/photos/teams-operations.png', alt: '' },
     card: {
-      title: 'Top Variances',
+      title: 'Grootste afwijkingen',
       rows: [
-        { label: 'Gehakt',    value: '-3.2%', value2: '4.2 kg', status: 'amber' as const },
-        { label: 'Eendenborst',    value: '-2.8%', value2: '3.6 kg', status: 'amber' as const },
-        { label: 'Aardappelen',       value: '-1.9%', value2: '7.8 kg', status: 'amber' as const },
+        { label: 'Gehakt',    value: '-3,2%', value2: '4,2 kg', status: 'amber' as const },
+        { label: 'Eendenborst',    value: '-2,8%', value2: '3,6 kg', status: 'amber' as const },
+        { label: 'Aardappelen',       value: '-1,9%', value2: '7,8 kg', status: 'amber' as const },
       ],
       insight: 'Controleer porties en verspilling op recepten.',
       insightType: 'amber' as const,
@@ -103,18 +103,18 @@ const byTeams = [
     primary: { label: 'Stockifi voor Keuken', href: '/nl/solutions/kitchen' },
     image: { src: '/media/photos/teams-kitchen.png', alt: '' },
     card: {
-      title: 'Duck Breast',
+      title: 'Eendenborst',
       rows: [
-        { label: 'Verkoopprijs', value: '€23.00' },
+        { label: 'Verkoopprijs', value: '€23,00' },
       ],
       visual: {
         type: 'kpi-compare' as const,
         items: [
           { label: 'Doel', value: '28%',   color: 'green' as const },
-          { label: 'Werkelijk', value: '36.7%', color: 'amber' as const },
+          { label: 'Werkelijk', value: '36,7%', color: 'amber' as const },
         ],
       },
-      insight: 'Receptkosten liggen 8,7 punt boven het doel.',
+      insight: 'Receptkosten liggen 8,7 punten boven het doel.',
       insightType: 'amber' as const,
       side: 'right' as const,
     },
@@ -126,13 +126,13 @@ const byTeams = [
     primary: { label: 'Stockifi voor Financiën', href: '/nl/solutions/finance' },
     image: { src: '/media/photos/teams-finance.png', alt: '' },
     card: {
-      title: 'COGS',
+      title: 'Foodcost',
       rows: [],
       visual: {
         type: 'dual' as const,
         bars: [
-          { label: 'Theoretisch', value: '26.1%', pct: 26.1, color: 'green' as const },
-          { label: 'Werkelijk',   value: '28.3%', pct: 28.3, color: 'amber' as const },
+          { label: 'Theoretisch', value: '26,1%', pct: 26.1, color: 'green' as const },
+          { label: 'Werkelijk',   value: '28,3%', pct: 28.3, color: 'amber' as const },
         ],
         maxPct: 35,
       },
