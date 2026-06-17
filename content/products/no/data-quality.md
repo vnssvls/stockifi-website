@@ -1,6 +1,6 @@
 ---
-metaTitle: "Datakvalitet | Stockifi"
-metaDescription: "Stockifi holder ingrediens- og oppskriftsdataene dine rene og konsistente, slik at varekostnadstallene alltid er pålitelige."
+metaTitle: "Rene restaurantdata for nøyaktig matkostnad | Stockifi"
+metaDescription: "Stockifi holder ingrediens- og oppskriftsdataene dine rene, pålitelige og konsistente slik at matkostnaden du handler på alltid er nøyaktig. Book en demo nå."
 eyebrow: "Datakvalitet"
 heading: "[Placeholder heading]"
 subhead: "[Placeholder subhead — copy review Wednesday]"

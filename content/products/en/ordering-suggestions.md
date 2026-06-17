@@ -1,6 +1,6 @@
 ---
-metaTitle: "Ordering Suggestions | Stockifi"
-metaDescription: "Stockifi tells you what to reorder before you run short — based on your actual consumption, stock counts, and supplier lead times."
+metaTitle: "Smart Ordering Suggestions for Restaurants | Stockifi"
+metaDescription: "Stockifi tells you what to reorder and when, based on actual consumption, recent stock counts, and supplier lead times. Ordering gets less reactive."
 eyebrow: "Ordering suggestions"
 heading: "[Placeholder heading]"
 subhead: "[Placeholder subhead — copy review Wednesday]"

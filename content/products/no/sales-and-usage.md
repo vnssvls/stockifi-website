@@ -1,6 +1,6 @@
 ---
-metaTitle: "Salg og forbruk | Stockifi"
-metaDescription: "Se hva som ble solgt og hvordan det beveget seg gjennom varelageret — Stockifi kobler POS-salget ditt til faktisk ingrediensforbruk."
+metaTitle: "Sporing av restaurantsalg og ingrediensforbruk | Stockifi"
+metaDescription: "Stockifi kobler kassasalgene dine til faktisk ingrediensforbruk og viser deg hva som ble brukt kontra hva som skulle vært brukt, og hvor gapet ligger."
 eyebrow: "Salg og forbruk"
 heading: "[Placeholder heading]"
 subhead: "[Placeholder subhead — copy review Wednesday]"

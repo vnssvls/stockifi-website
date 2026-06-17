@@ -1,6 +1,6 @@
 ---
-metaTitle: "Lieferantenpreise verfolgen für Restaurants | Stockifi"
-metaDescription: "Stockifi erfasst jede Preisänderung Ihrer Lieferanten aus Ihren Rechnungen, markiert Überberechnungen und Trends und aktualisiert die betroffenen Rezepte automatisch."
+metaTitle: "Lieferantenpreisverfolgung für Restaurants | Stockifi"
+metaDescription: "Jedes Mal, wenn ein Lieferant einen Preis ändert, erfasst Stockifi dies aus Ihren Rechnungen, kalkuliert alle betroffenen Rezepte neu und weist auf Trends hin, damit nichts durchrutscht."
 eyebrow: "Lieferantenpreise verfolgen"
 heading: "Erkennen Sie, wenn ein Lieferantenpreis steigt"
 subhead: "Lieferantenpreise verschieben sich in kleinen Schritten, die man auf einer einzelnen Rechnung kaum bemerkt. Stockifi verfolgt jede Veränderung und zeigt Ihnen, welche Gerichte davon betroffen sind, damit Sie bei einem Anstieg noch rechtzeitig handeln können."

@@ -1,6 +1,6 @@
 ---
-metaTitle: "Restaurant Analytics Dashboards | Stockifi"
-metaDescription: "Cost, margin, variance, and COGS development at a glance, by dish, location, and period, built on your real invoice and POS data."
+metaTitle: "Restaurant Performance Dashboards & Analytics | Stockifi"
+metaDescription: "Stockifi turns your invoice and POS data into dashboards showing cost, margin, variance, and COGS by dish, location, and period. Book a demo to learn more."
 eyebrow: "Performance dashboards"
 heading: "Bring food cost and inventory management into one place"
 subhead: "See and understand your numbers like never before. Stockifi turns your invoices, sales, and inventory into one clear view of your margins."

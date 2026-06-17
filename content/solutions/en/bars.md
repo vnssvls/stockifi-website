@@ -1,6 +1,6 @@
 ---
-metaTitle: "Bar Inventory & Pour Cost Software | Stockifi"
-metaDescription: "Track pour cost, beverage variance, and supplier prices behind the bar. Stockifi connects your invoices and POS so you see where your bar margin goes."
+metaTitle: "Bar Inventory & Cost Software | Stockifi"
+metaDescription: "Track pour cost, supplier price changes, and beverage variance. Stockifi connects your invoices and POS so you see exactly where your bar margin goes."
 eyebrow: "Bars"
 heading: "Control the margin behind your bar"
 subhead: "Stockifi turns your invoices and sales into the real cost of every drink. You see where your margin goes and catch supplier price rises before they cost you."

@@ -1,6 +1,6 @@
 ---
-metaTitle: "Restaurant-Analyse-Dashboards | Stockifi"
-metaDescription: "Wareneinsatz, Marge, Abweichung und Wareneinsatz-Entwicklung auf einen Blick, nach Gericht, Standort und Zeitraum, basierend auf Ihren echten Rechnungs- und Kassensystem-Daten."
+metaTitle: "Restaurant-Performance-Dashboards & Analysen | Stockifi"
+metaDescription: "Stockifi wandelt Ihre Rechnungs- und Kassendaten in Dashboards um, die Kosten, Marge, Abweichungen und Wareneinsatzentwicklung nach Gericht, Standort und Zeitraum zeigen. Demo buchen."
 eyebrow: "Performance-Dashboards"
 heading: "Lebensmittelkosten und Lagerverwaltung an einem Ort"
 subhead: "Sehen und verstehen Sie Ihre Zahlen wie nie zuvor. Stockifi wandelt Ihre Rechnungen, Umsätze und Ihren Lagerbestand in eine klare Übersicht Ihrer Margen um."

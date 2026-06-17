@@ -1,6 +1,6 @@
 ---
-metaTitle: "Stockifi API für Restaurantdaten | Stockifi"
-metaDescription: "Übertragen Sie Ihre Stockifi-Daten zu Wareneinsatz, Abweichungen, Rezepten und Umsatz in Ihre eigenen BI-Tools und Ihr Data Warehouse, in Echtzeit oder geplant."
+metaTitle: "Stockifi API | Wareneinsatzdaten in Ihr BI-System"
+metaDescription: "Verbinden Sie Stockifi mit Ihren eigenen BI-Tools oder Ihrem Data Warehouse. Rufen Sie Wareneinsatz, Abweichungen, Rezepte und Umsatzdaten über eine saubere API ab, in Echtzeit oder geplant."
 eyebrow: "API"
 heading: "Ihre Stockifi-Daten direkt in Ihre eigenen Tools übertragen"
 subhead: "Ihr Team arbeitet mit den Stockifi-Zahlen in den BI-Tools, die es bereits nutzt. Eine saubere API gibt direkten Zugriff auf Ihre Leistungsdaten."

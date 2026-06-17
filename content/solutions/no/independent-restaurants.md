@@ -1,6 +1,6 @@
 ---
-metaTitle: "Varekostnadsverktøy for uavhengige restauranter | Stockifi"
-metaDescription: "Drev tettere drift uten regneark. Stockifi kobler fakturaer, kassesystem og oppskrifter slik at uavhengige restauranter kan følge den faktiske varekostprosenten."
+metaTitle: "Matkostnadsverktøy for selvstendige restauranter | Stockifi"
+metaDescription: "Selvstendige restauranter bruker Stockifi til å følge med på den reelle matkostnaden uten regneark. Fakturaer, kassesystem og oppskrifter samles i ett nøyaktig bilde."
 eyebrow: "Uavhengige restauranter"
 heading: "Drev tettere drift uten regneark"
 subhead: "Stockifi kobler fakturaer, kassesystem og oppskrifter og følger den faktiske varekostprosenten når priser og salg endrer seg. Du ser hvor marginen lekker og kan tette gapet, uten ekstra administrasjon."

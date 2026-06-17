@@ -1,6 +1,6 @@
 ---
-metaTitle: "Rezeptkostenverwaltung für Küchenchefs | Stockifi"
-metaDescription: "Aktuelle Rezeptkosten, schnelle Inventur und Abweichungen bis auf das einzelne Gericht, entwickelt für die Menschen, die die Küche führen. Menüentscheidungen auf Basis heutiger Preise."
+metaTitle: "Rezeptkostenkalkulation für Küchenchefs | Stockifi"
+metaDescription: "Aktuelle Rezeptkosten aus Ihren neuesten Rechnungen, mit Abweichungen nach Gericht aufgeschlüsselt und Inventuren, die die Küche nicht verlangsamen."
 eyebrow: "Küche"
 heading: "Was jedes Gericht heute kostet"
 subhead: "Stockifi hält jedes Rezept aktuell, wenn sich Preise ändern. Die Inventur geht schnell, und Abweichungen zeigen genau das betroffene Gericht."

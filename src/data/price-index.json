@@ -1,0 +1,10 @@
+{
+  "month": "May 2026",
+  "items": [
+    { "name": "Chicken Breast",  "category": "Poultry",  "change": 7.9 },
+    { "name": "Potato",          "category": "Produce",  "change": 7.2 },
+    { "name": "Grana Padano",    "category": "Dairy",    "change": 6.3 },
+    { "name": "Halibut Fillet",  "category": "Seafood",  "change": 5.3 },
+    { "name": "Beef Tenderloin", "category": "Meat",     "change": 3.1 }
+  ]
+}

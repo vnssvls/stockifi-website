@@ -1,6 +1,6 @@
 ---
-metaTitle: "Rechnungsanomalien erkennen für Restaurants | Stockifi"
-metaDescription: "Stockifi prüft jede Lieferantenrechnung und meldet Überzahlungen, Doppelberechnungen und ungewöhnliche Preissprünge, damit Abrechnungsfehler nie durchrutschen."
+metaTitle: "Rechnungsanomalie-Erkennung für Restaurants | Stockifi"
+metaDescription: "Stockifi prüft jede Lieferantenrechnung und meldet Überforderungen und ungewöhnliche Preisspitzen, bevor sie in Ihren Wareneinsatz einfließen. Demo buchen, um mehr zu erfahren."
 eyebrow: "Anomalieerkennung"
 heading: "Hören Sie auf, Ihren Lieferanten zu viel zu zahlen"
 subhead: "Eine Überzahlung sieht aus wie jede andere Zeile auf der Rechnung. Stockifi prüft jede einzelne für Sie und markiert, was eine genauere Überprüfung verdient, damit Abrechnungsfehler entdeckt werden, solange Sie sie noch zurückfordern können."

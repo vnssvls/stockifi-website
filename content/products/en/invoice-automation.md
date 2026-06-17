@@ -1,6 +1,6 @@
 ---
 metaTitle: "Invoice Automation for Restaurants | Stockifi"
-metaDescription: "Stockifi reads supplier invoices line by line and feeds prices and quantities straight into your food cost, with no manual entry."
+metaDescription: "Stockifi reads every supplier invoice and feeds ingredient prices and quantities into your food cost automatically, so it stays current without manual entry."
 eyebrow: "Invoice automation"
 heading: "Food cost without the data entry"
 subhead: "Your food cost can stay current without anyone typing in an invoice. Stockifi reads them straight from your accounting, so prices and quantities flow in on their own."

@@ -1,6 +1,6 @@
 ---
-metaTitle: "Sentralkjøkken-programvare for restauranter | Stockifi"
-metaDescription: "Kjør et sentralt produksjonskjøkken som forsyner utsalgsstedene dine, med reelle produksjonskostnader og interne bestillinger sporet på tvers av alle lokasjoner."
+metaTitle: "Programvare for sentralkjøkken | Stockifi"
+metaDescription: "Driv et sentralkjøkken som forsyner utsalgsstedene dine med reelle produksjonskostnader, interne bestillinger og lager sporet på tvers av alle steder i Stockifi."
 eyebrow: "Sentralkjøkken"
 heading: "Forsyn hvert utsalgssted fra ett kjøkken"
 subhead: "Hvert utsalgssted bestiller det de trenger og betaler den reelle produksjonskostnaden. Stockifi holder den kostnaden nøyaktig, slik at marginen forblir korrekt for hele gruppen."

@@ -1,0 +1,360 @@
+---
+import LayoutLP from '../../layouts/LayoutLP.astro';
+import PriceIndexTable from '../../components/PriceIndexTable.astro';
+import LogoBanner from '../../components/LogoBanner.astro';
+import TestimonialSlider from '../../components/TestimonialSlider.astro';
+import FeatureCards from '../../components/features/FeatureCards.astro';
+import CustomerStoryBento from '../../components/CustomerStoryBento.astro';
+import FeatureSteps from '../../components/features/FeatureSteps.astro';
+import BenefitGrid from '../../components/BenefitGrid.astro';
+import CtaBand from '../../components/CtaBand.astro';
+
+import priceIndex from '../../data/price-index.json';
+import userLogos from '../../data/user-logos.json';
+
+const PORTAL_ID  = 'YOUR_PORTAL_ID';
+const FORM_GUID  = 'YOUR_INTRO_FORM_GUID';
+
+const testimonials = [
+  { quote: "Must-have tool for restaurants. It's completely changed how we manage food costs across our group.", name: "Tom Victor Gausdal", position: "Executive Head Chef", company: "Eik&Friends" },
+  { quote: "Supplier prices are under control. We catch every price change before it hits our margins.", name: "Management", company: "PN Porsgrunn" },
+  { quote: "COGS have never been easier to track. The reports save us hours every week.", name: "Management", company: "R.E.N. Group" },
+  { quote: "Exceptional customer support and a product that actually does what it promises.", name: "Management", company: "Brasilia" },
+  { quote: "Our profits increased by 2% since we started using Stockifi. The data speaks for itself.", name: "Kim Søyland & Jama Awaleh", position: "Co-Founders", company: "byOSLO" },
+  { quote: "It's essential for profitability. Every restaurant group should be running this.", name: "Management", company: "Concept Restaurants" },
+  { quote: "Up and live in under 48 hours. The onboarding was the smoothest we've ever had.", name: "Management", company: "Villa Paradiso" },
+  { quote: "Best tool we've ever tried for food cost. Simple, accurate, and the team is fantastic.", name: "Management", company: "Døgnvill Burger" },
+];
+
+const howItWorksCards = [
+  {
+    heading: "Recipe Management",
+    body: "Import your recipes once. Every ingredient cost updates automatically as supplier prices change — no manual work.",
+  },
+  {
+    heading: "POS Integration",
+    body: "Connect your POS and see exactly what was sold, what should have been used, and where the variance is.",
+  },
+  {
+    heading: "Invoice Processing",
+    body: "Stockifi reads every supplier invoice line by line. Price increases get flagged before they slip through.",
+  },
+];
+
+const setupSteps = [
+  {
+    heading: "Connect your systems",
+    body: "We link your accounting software and POS. Most integrations take under 30 minutes.",
+  },
+  {
+    heading: "Setup done for you",
+    body: "Our team imports your recipes, configures your ingredients, and gets everything ready. You don't touch a spreadsheet.",
+  },
+  {
+    heading: "Start tracking margins",
+    body: "From day one you have live food cost data — actual vs. theoretical, ingredient by ingredient.",
+  },
+];
+
+const benefits = [
+  {
+    heading: "€3,000 Profit Guarantee",
+    body: "If Stockifi doesn't uncover at least €3,000 in hidden losses in the first 30 days, you pay nothing.",
+    icon: '<path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>',
+  },
+  {
+    heading: "Faster Stock Counting",
+    body: "Cut stock count time from hours to minutes with the mobile app. Offline-ready for any kitchen.",
+    icon: '<circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.6"/><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>',
+  },
+  {
+    heading: "Built For Real Kitchens",
+    body: "Designed around how hospitality actually works — multi-location, multiple suppliers, real-world recipe complexity.",
+    icon: '<path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>',
+  },
+  {
+    heading: "No Long-Term Contracts",
+    body: "Monthly billing, cancel anytime. We keep you because the results are there — not because you're locked in.",
+    icon: '<path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" stroke="currentColor" stroke-width="1.6"/>',
+  },
+];
+---
+
+<LayoutLP
+  title="See How Stockifi Works — Cost & Inventory Management for Restaurants"
+  description="See which supplier prices are quietly eating into your margins. Book a demo and get a personalised view of your food cost."
+>
+  <!-- Hero -->
+  <section class="intro-hero section">
+    <div class="container ih-grid">
+      <div class="ih-copy">
+        <p class="ih-eyebrow">Stockifi Supplier Price Index · {priceIndex.month}</p>
+        <h1>{priceIndex.month.split(' ')[0]}'s top {priceIndex.items.length} sneakiest price hikes</h1>
+        <p class="ih-subhead text-muted">
+          Pulled directly from 800+ suppliers. Updated monthly.
+        </p>
+
+        <form class="ih-form" id="intro-form" novalidate>
+          <div class="ih-field-wrap">
+            <input
+              type="email"
+              id="intro-email"
+              name="email"
+              placeholder="your@email.com"
+              autocomplete="email"
+              required
+              class="ih-input"
+            />
+            <button type="submit" class="ih-btn" id="intro-btn">
+              <span id="intro-btn-label">Get my personalized report &rarr;</span>
+              <span id="intro-btn-spinner" hidden aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+              </span>
+            </button>
+          </div>
+          <p class="ih-error" id="intro-error" hidden>Please enter a valid email address.</p>
+          <p class="ih-already">
+            Already see one of yours? <a href="https://calendly.com/simon-stockifi/profit-potential">Book a demo</a>
+          </p>
+        </form>
+      </div>
+
+      <div class="ih-table">
+        <PriceIndexTable month={priceIndex.month} items={priceIndex.items} />
+      </div>
+    </div>
+  </section>
+
+  <!-- Logo banner -->
+  <LogoBanner label="Trusted by 500+ restaurants across Europe" logos={userLogos} />
+
+  <!-- Testimonials -->
+  <TestimonialSlider items={testimonials} />
+
+  <!-- How It Works -->
+  <FeatureCards
+    tagline="How it works"
+    heading="Connect what you buy, sell, and use"
+    subhead="Three capabilities that give you a complete picture of your food cost."
+    cards={howItWorksCards}
+    columns={3}
+  />
+
+  <!-- Customer Stories -->
+  <CustomerStoryBento
+    eyebrow="Customer stories"
+    heading="Restaurants that got their margins back"
+    cta={{ label: "View all stories", href: "/customer-stories" }}
+    slugs={["eik-and-friends", "skigeilo", "heim-gastropub"]}
+  />
+
+  <!-- Setup steps -->
+  <FeatureSteps
+    tagline="Onboarding"
+    heading="Get onboard in 48 hours"
+    cta={{ label: "See how it works", href: "#intro-form" }}
+    steps={setupSteps}
+  />
+
+  <!-- Benefits -->
+  <section class="section">
+    <div class="container">
+      <div class="benefits-head">
+        <p class="tagline">Why Stockifi</p>
+        <h2>Built around your bottom line</h2>
+      </div>
+      <BenefitGrid items={benefits} columns={4} />
+    </div>
+  </section>
+
+  <!-- Final CTA — Simon -->
+  <CtaBand
+    heading="Still thinking it over?"
+    subhead="Book 15 minutes with Simon, one of our co-founders. He'll tell you honestly whether Stockifi is the right fit for your operation."
+    primary={{ label: "Book a call with Simon", href: "https://calendly.com/simon-stockifi/profit-potential" }}
+  />
+</LayoutLP>
+
+<style>
+  /* Hero grid */
+  .ih-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-64);
+    align-items: center;
+    padding-block: var(--space-96);
+  }
+
+  @media (min-width: 1024px) {
+    .ih-grid {
+      grid-template-columns: 1fr 480px;
+      gap: var(--space-96);
+    }
+  }
+
+  .ih-eyebrow {
+    font-size: var(--text-body-sm);
+    font-weight: var(--fw-medium);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+  }
+
+  .ih-copy {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-24);
+  }
+
+  .ih-copy h1 {
+    font-size: var(--text-h2);
+    line-height: var(--lh-h2);
+    max-width: 18ch;
+  }
+
+  .ih-subhead {
+    font-size: var(--text-body-lg);
+    line-height: 1.7;
+    max-width: 52ch;
+  }
+
+  /* Form */
+  .ih-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-12);
+    max-width: 480px;
+  }
+
+  .ih-field-wrap {
+    display: flex;
+    gap: var(--space-8);
+  }
+
+  .ih-input {
+    flex: 1;
+    height: 48px;
+    padding: 0 var(--space-16);
+    background: var(--input);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--foreground);
+    font-size: var(--text-body);
+    outline: none;
+    transition: border-color 0.15s;
+  }
+
+  .ih-input:focus {
+    border-color: var(--primary);
+  }
+
+  .ih-input::placeholder {
+    color: var(--muted-foreground);
+  }
+
+  .ih-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-8);
+    height: 48px;
+    padding: 0 var(--space-24);
+    background: var(--primary);
+    color: var(--primary-foreground);
+    border: none;
+    border-radius: 8px;
+    font-size: var(--text-body);
+    font-weight: var(--fw-semibold);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.15s;
+  }
+
+  .ih-btn:hover { background: var(--primary-dark); }
+  .ih-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+  .ih-error {
+    font-size: var(--text-body-sm);
+    color: var(--destructive);
+  }
+
+  .ih-already {
+    font-size: var(--text-body-sm);
+    color: var(--muted-foreground);
+  }
+
+  .ih-already a {
+    color: var(--primary-light);
+    font-weight: var(--fw-medium);
+  }
+
+  .ih-table {
+    display: flex;
+    justify-content: center;
+  }
+
+  @media (max-width: 640px) {
+    .ih-field-wrap {
+      flex-direction: column;
+    }
+    .ih-btn {
+      width: 100%;
+    }
+  }
+
+  /* Benefits heading */
+  .benefits-head {
+    text-align: center;
+    margin-bottom: var(--space-64);
+  }
+
+  .benefits-head h2 {
+    font-size: var(--text-h3);
+    margin-top: var(--space-8);
+  }
+</style>
+
+<script define:vars={{ PORTAL_ID, FORM_GUID }}>
+  const form = document.getElementById('intro-form');
+  const emailInput = document.getElementById('intro-email');
+  const btnLabel = document.getElementById('intro-btn-label');
+  const btnSpinner = document.getElementById('intro-btn-spinner');
+  const errorEl = document.getElementById('intro-error');
+  const btn = document.getElementById('intro-btn');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errorEl.hidden = true;
+
+    const email = emailInput.value.trim();
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      errorEl.hidden = false;
+      emailInput.focus();
+      return;
+    }
+
+    btn.disabled = true;
+    btnLabel.hidden = true;
+    btnSpinner.hidden = false;
+
+    try {
+      if (PORTAL_ID !== 'YOUR_PORTAL_ID') {
+        await fetch(
+          `https://api.hsforms.com/submissions/v3/integration/submit/${PORTAL_ID}/${FORM_GUID}`,
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              fields: [{ name: 'email', value: email }],
+              context: { pageUri: window.location.href, pageName: document.title },
+            }),
+          }
+        );
+      }
+    } catch (_) {
+      // Non-blocking — still redirect even if HubSpot call fails
+    }
+
+    window.location.href = `/intro/confirm?email=${encodeURIComponent(email)}`;
+  });
+</script>

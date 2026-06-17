@@ -1,6 +1,6 @@
 ---
-metaTitle: "Bestillingsforslag | Stockifi"
-metaDescription: "Stockifi forteller deg hva du bør bestille på nytt før du går tom, basert på faktisk forbruk, varetellinger og leverandørers leveringstider."
+metaTitle: "Smarte bestillingsforslag for restauranter | Stockifi"
+metaDescription: "Stockifi forteller deg hva du bør bestille og når, basert på faktisk forbruk, nylige varetellinger og leverandørenes leveringstider. Bestillingen blir mindre reaktiv."
 eyebrow: "Bestillingsforslag"
 heading: "[Placeholder heading]"
 subhead: "[Placeholder subhead — copy review Wednesday]"

@@ -1,6 +1,6 @@
 ---
-metaTitle: "Leverandørprissporing for restauranter | Stockifi"
-metaDescription: "Stockifi sporer alle prisendringer fra leverandørene dine via fakturaene, varsler om overbelastninger og trender, og oppdaterer kostnadene for oppskriftene som påvirkes, automatisk."
+metaTitle: "Sporing av leverandørpriser for restauranter | Stockifi"
+metaDescription: "Hver gang en leverandør endrer en pris, fanger Stockifi det opp fra fakturaene dine, omregner alle berørte oppskrifter og varsler om trender slik at ingenting slipper gjennom."
 eyebrow: "Leverandørprissporing"
 heading: "Se når en leverandørpris endrer seg"
 subhead: "Leverandørpriser beveger seg i små steg du aldri ville fanget manuelt. Stockifi sporer hvert prishopp og hvilke retter det påvirker, slik at du kan handle mens det fortsatt er tid."

@@ -1,6 +1,6 @@
 ---
-metaTitle: "Bestellvorschläge | Stockifi"
-metaDescription: "Stockifi zeigt Ihnen, was Sie nachbestellen sollten, bevor Ihnen etwas ausgeht — basierend auf Ihrem tatsächlichen Verbrauch, Ihrer Inventur und den Lieferzeiten Ihrer Lieferanten."
+metaTitle: "Intelligente Bestellvorschläge für Restaurants | Stockifi"
+metaDescription: "Stockifi sagt Ihnen, was und wann Sie nachbestellen sollten, basierend auf tatsächlichem Verbrauch, aktuellen Inventuren und den Lieferzeiten Ihrer Lieferanten. Bestellungen werden weniger reaktiv."
 eyebrow: "Bestellvorschläge"
 heading: "[Platzhalter Überschrift]"
 subhead: "[Platzhalter Unterüberschrift — Texteview Mittwoch]"

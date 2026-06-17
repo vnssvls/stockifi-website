@@ -1,6 +1,6 @@
 ---
 metaTitle: "Food Cost Variance Analysis for Restaurants | Stockifi"
-metaDescription: "See theoretical against actual food cost and find exactly where margin leaks, by dish and ingredient, from your recipes, sales, and counts."
+metaDescription: "See your theoretical food cost against your actual, and find exactly where margin leaks, by dish and ingredient, across your recipes, sales, and counts."
 eyebrow: "Variance analysis"
 heading: "Find out where your margin is going"
 subhead: "Stockifi compares what your recipes say you should use with what you actually used, dish by dish. Every gap comes with a cause you can act on."

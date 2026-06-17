@@ -1,6 +1,6 @@
 ---
 metaTitle: "Multi-Location Restaurant Food Cost Software | Stockifi"
-metaDescription: "Keep recipe costs aligned across every site and roll variance and margin into one view. Stockifi gives restaurant groups one picture of the whole operation."
+metaDescription: "Restaurant groups use Stockifi to keep recipe costs aligned across every location and see variance and margin rolled up into one view."
 eyebrow: "Restaurant groups"
 heading: "Consolidated food cost across every location"
 subhead: "Stockifi keeps recipe costs consistent across every site and rolls cost, variance, and margin into one view. You see which locations are on track and which need attention."

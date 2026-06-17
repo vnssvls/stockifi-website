@@ -1,6 +1,6 @@
 ---
 metaTitle: "Supplier Price Tracking for Restaurants | Stockifi"
-metaDescription: "Stockifi tracks every supplier price change from your invoices, flags overcharges and trends, and re-costs the recipes they affect, automatically."
+metaDescription: "Every time a supplier changes a price, Stockifi catches it from your invoices, re-costs every affected recipe, and flags trends so nothing slips through."
 eyebrow: "Supplier price tracking"
 heading: "Know when a supplier price moves"
 subhead: "A supplier's prices drift in small steps you would never catch by eye. Stockifi tracks every move and the dishes it touches, so you can act on a rise while there's still time."

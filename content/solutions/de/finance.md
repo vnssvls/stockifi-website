@@ -1,6 +1,6 @@
 ---
-metaTitle: "Wareneinsatz-Software für Restaurants | Stockifi"
-metaDescription: "Präziser, automatisierter Wareneinsatz aus Ihren Rechnungen und Verkäufen, mit der Detailtiefe, die Ihre Finanzabteilung für einen sicheren Monatsabschluss braucht."
+metaTitle: "Kostencontrolling-Software für Restaurants | Stockifi"
+metaDescription: "Finance-Teams erhalten automatisierten Wareneinsatz auf Basis tatsächlicher Rechnungs- und Kassendaten, mit der Granularität, den Monat zuverlässig abzuschließen und Kostendrift frühzeitig zu erkennen."
 eyebrow: "Finanzen"
 heading: "Eine Wareneinsatzzahl, der Sie vertrauen können"
 subhead: "Stockifi berechnet Ihren Wareneinsatz direkt aus Ihren Rechnungen und Verkaufsdaten. Sie schließen den Monat mit Sicherheit ab und behalten die Kosten im Griff."

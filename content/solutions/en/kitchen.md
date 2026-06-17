@@ -1,6 +1,6 @@
 ---
 metaTitle: "Recipe Cost Management for Head Chefs | Stockifi"
-metaDescription: "Live recipe costs, fast stock counts, and variance down to the dish, built for the people running the kitchen. Menu decisions on today's prices."
+metaDescription: "Live recipe costs updated from your latest invoices, with variance broken down by dish and stock counts that don't slow the kitchen down."
 eyebrow: "Kitchen"
 heading: "Know what every dish costs today"
 subhead: "Stockifi keeps every recipe costed as prices move. Counts are quick, and variance points to the exact dish."

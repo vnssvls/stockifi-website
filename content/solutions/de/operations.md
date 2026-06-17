@@ -1,6 +1,6 @@
 ---
-metaTitle: "Kostenkontrolle im Restaurantbetrieb | Stockifi"
-metaDescription: "Erkennen Sie Schwund, Überportionierung und Preisabweichungen frühzeitig und behalten Sie die Kosten an jedem Standort im Griff, ohne zusätzlichen Verwaltungsaufwand."
+metaTitle: "Kostencontrolling für den Restaurantbetrieb | Stockifi"
+metaDescription: "Stockifi deckt Schwund, Überportionierung und Lieferantenpreisentwicklungen frühzeitig auf, damit Kostenprobleme erkannt werden, bevor sie sich auf alle Standorte ausbreiten."
 eyebrow: "Betrieb"
 heading: "Kostenkontrolle an jedem Standort"
 subhead: "Stockifi erkennt Schwund, Überportionierung und Preisabweichungen frühzeitig. Alle Standorte arbeiten mit denselben Zahlen, sodass Standards auch beim Wachstum eingehalten werden."

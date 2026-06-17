@@ -1,6 +1,6 @@
 ---
-metaTitle: "Datenqualität | Stockifi"
-metaDescription: "Stockifi hält Ihre Zutaten- und Rezeptdaten sauber und konsistent, damit Ihre Wareneinsatzzahlen jederzeit verlässlich sind."
+metaTitle: "Saubere Restaurantdaten für genauen Wareneinsatz | Stockifi"
+metaDescription: "Stockifi hält Ihre Zutaten- und Rezeptdaten sauber, zuverlässig und konsistent, damit die Wareneinsatzzahlen, auf die Sie handeln, immer korrekt sind. Jetzt Demo buchen."
 eyebrow: "Datenqualität"
 heading: "[Placeholder heading]"
 subhead: "[Placeholder subhead — copy review Wednesday]"

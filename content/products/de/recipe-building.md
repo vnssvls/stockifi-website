@@ -1,6 +1,6 @@
 ---
-metaTitle: "Rezeptkalkulation & Rezeptverwaltung | Stockifi"
-metaDescription: "Verwalten Sie Ihre Rezepte und Teilrezepte an einem Ort, mit aktuellen Zutatenkosten aus Ihren Rechnungen, damit jedes Gericht seine realen Kosten und Marge zeigt."
+metaTitle: "Rezeptkalkulation & -aufbau | Stockifi"
+metaDescription: "Erstellen Sie Ihre Rezepte in Stockifi mit aktuellen Zutatenpreisen aus Ihren Rechnungen. Jedes Gericht trägt seinen tatsächlichen Kostensatz und aktualisiert sich automatisch bei Preisänderungen."
 eyebrow: "Rezeptverwaltung"
 heading: "Rezepte mit aktuellen Kosten hinterlegen"
 subhead: "Sobald Ihre Rezepte eingerichtet sind, kalkulieren Sie kein Gericht mehr von Hand. Stockifi zieht den Preis jeder Zutat aus Ihren Rechnungen, sodass jedes Gericht seine realen Kosten und Marge anzeigt."

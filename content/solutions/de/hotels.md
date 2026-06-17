@@ -1,6 +1,6 @@
 ---
-metaTitle: "Hotel F&B Kostenkontrolle Software | Stockifi"
-metaDescription: "Behalten Sie den Wareneinsatz in den Restaurants, Bars und Bankettbereichen Ihres Hotels im Griff. Stockifi verbindet Rechnungen, Kassensystem und Rezepte für vollständige F&B-Transparenz."
+metaTitle: "F&B-Kostencontrolling-Software für Hotels | Stockifi"
+metaDescription: "Stockifi gibt Hotel-F&B-Teams volle Kostentransparenz über Restaurants, Bars und Bankettbetrieb, mit Rechnungen, Kassensystem und Rezepten, die von Anfang an verbunden sind."
 eyebrow: "Hotels mit F&B"
 heading: "Vollständige Kostenkontrolle und Transparenz für Hotel-F&B"
 subhead: "Stockifi bringt Umsatz und Kosten aller F&B-Outlets Ihres Hotels auf eine gemeinsame Reporting-Plattform. Restaurant-, Bar- und Bankettteams arbeiten mit denselben Zahlen und haben vollständige Transparenz über den gesamten F&B-Betrieb."

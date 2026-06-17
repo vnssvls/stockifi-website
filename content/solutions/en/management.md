@@ -1,6 +1,6 @@
 ---
 metaTitle: "Profit & Margin Visibility for Owners & GMs | Stockifi"
-metaDescription: "Give owners and GMs a clear read on profit, margin, and where money leaks across the operation, without chasing reports from the team."
+metaDescription: "Owners and GMs get a clear read on profit, margin, and where the operation leaks money, without chasing numbers from the team."
 eyebrow: "Management"
 heading: "Your profit picture, ready any day"
 subhead: "Stockifi gives owners and GMs a live read on profit and margin. The picture is there without chasing the team."

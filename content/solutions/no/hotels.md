@@ -1,6 +1,6 @@
 ---
-metaTitle: "F&B-kostnadskontroll for hoteller | Stockifi"
-metaDescription: "Kontroller mat- og drikkekostnader på tvers av hotellets restauranter, barer og bankett. Stockifi kobler fakturaer, kassesystem og oppskrifter for full F&B-oversikt."
+metaTitle: "Programvare for kostnadskontroll i hotell-F&B | Stockifi"
+metaDescription: "Stockifi gir hotellenes F&B-team full kostnadsoversikt på tvers av restauranter, barer og bankettfasiliteter, med fakturaer, kassesystem og oppskrifter koblet fra dag én."
 eyebrow: "Hoteller med F&B"
 heading: "Full kostnadskontroll og oversikt for hotell-F&B"
 subhead: "Stockifi samler salg og kostnader fra alle F&B-utsalg på ett rapporteringsgrunnlag. Restaurant-, bar- og bankettteam jobber fra de samme tallene, med full innsyn i F&B-driften."

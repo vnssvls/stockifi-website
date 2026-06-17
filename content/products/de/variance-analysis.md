@@ -1,6 +1,6 @@
 ---
-metaTitle: "Abweichungsanalyse für Restaurants | Stockifi"
-metaDescription: "Vergleichen Sie Soll- und Ist-Verbrauch Ihrer Lebensmittelkosten und finden Sie genau heraus, wo Ihre Marge verloren geht, nach Gericht und Zutat."
+metaTitle: "Wareneinsatz-Abweichungsanalyse für Restaurants | Stockifi"
+metaDescription: "Vergleichen Sie Ihren theoretischen Wareneinsatz mit dem tatsächlichen und finden Sie genau heraus, wo die Marge ausläuft, nach Gericht und Zutat, über Rezepte, Umsatz und Inventuren."
 eyebrow: "Abweichungsanalyse"
 heading: "Finden Sie heraus, wo Ihre Marge bleibt"
 subhead: "Stockifi vergleicht, was Ihre Rezepte als Verbrauch vorgeben, mit dem tatsächlichen Verbrauch, Gericht für Gericht. Jede Abweichung zeigt Ihnen eine konkrete Ursache, die Sie beheben können."

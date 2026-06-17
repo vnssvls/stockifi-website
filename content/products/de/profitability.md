@@ -1,6 +1,6 @@
 ---
-metaTitle: "Restaurant-Rentabilität Software | Stockifi"
-metaDescription: "Sehen Sie Gewinn und Marge nach Gericht, Standort und Zeitraum, basierend auf Ihrem aktuellen Wareneinsatz, damit Sie wissen, welche Gerichte Geld einbringen und welche nicht."
+metaTitle: "Restaurant-Rentabilitätssoftware | Stockifi"
+metaDescription: "Sehen Sie, welche Gerichte Geld einbringen und welche Verluste machen, nach Standort und Zeitraum, mit Rentabilität auf Basis Ihres aktuellen Wareneinsatzes statt Schätzungen."
 eyebrow: "Rentabilitätsanalyse"
 heading: "Wissen Sie genau, welche Gerichte Ihnen Gewinn bringen"
 subhead: "Sehen Sie die tatsächliche Marge für jeden Teller. Stockifi zeigt, was jedes Gericht einbringt, nach Standort und Zeitraum."

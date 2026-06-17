@@ -1,6 +1,6 @@
 ---
-metaTitle: "Fortjeneste og marginoversikt for eiere og daglige ledere | Stockifi"
-metaDescription: "Gi eiere og daglige ledere et klart bilde av fortjeneste, margin og hvor penger forsvinner i driften, uten å måtte jage rapporter fra teamet."
+metaTitle: "Lønnsomhet og marginoversikt for eiere og daglige ledere | Stockifi"
+metaDescription: "Eiere og daglige ledere får et klart bilde av lønnsomhet, margin og hvor driften taper penger, uten å måtte jage tall fra teamet."
 eyebrow: "Ledelse"
 heading: "Profittbildet ditt, klart når som helst"
 subhead: "Stockifi gir eiere og daglige ledere et oppdatert bilde av fortjeneste og margin. Oversikten er der uten at du trenger å mase på teamet."

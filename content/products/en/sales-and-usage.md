@@ -1,6 +1,6 @@
 ---
-metaTitle: "Sales and Usage | Stockifi"
-metaDescription: "See what sold and how it moved through your stock — Stockifi connects your POS sales to actual ingredient consumption."
+metaTitle: "Restaurant Sales & Ingredient Usage Tracking | Stockifi"
+metaDescription: "Stockifi connects your POS sales to actual ingredient consumption and shows you what was used versus what should have been, and where the gap sits."
 eyebrow: "Sales and usage"
 heading: "[Placeholder heading]"
 subhead: "[Placeholder subhead — copy review Wednesday]"

@@ -1,6 +1,6 @@
 ---
 metaTitle: "Wareneinsatz-Software für Restaurantgruppen | Stockifi"
-metaDescription: "Rezeptkosten standortübergreifend konsistent halten und Abweichungen sowie Marge in einer Ansicht zusammenführen. Stockifi gibt Restaurantgruppen ein vollständiges Bild des gesamten Betriebs."
+metaDescription: "Restaurantgruppen nutzen Stockifi, um Rezeptkosten über alle Standorte hinweg konsistent zu halten und Abweichungen und Margen in einer Gesamtübersicht zu sehen."
 eyebrow: "Restaurantgruppen"
 heading: "Wareneinsatz konsolidiert über alle Standorte"
 subhead: "Stockifi hält Rezeptkosten standortübergreifend konsistent und fasst Kosten, Abweichungen und Marge in einer Ansicht zusammen. Sie sehen auf einen Blick, welche Standorte im Plan liegen und wo Handlungsbedarf besteht."

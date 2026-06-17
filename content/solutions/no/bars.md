@@ -1,6 +1,6 @@
 ---
-metaTitle: "Programvare for barkostnader og varetelling | Stockifi"
-metaDescription: "Følg med på varekostprosent, avvik i drikkevarer og leverandørpriser bak baren. Stockifi kobler fakturaene dine og kassesystemet slik at du ser hvor barmarginene dine forsvinner."
+metaTitle: "Programvare for barinventar og kostnad | Stockifi"
+metaDescription: "Følg med på varekostprosent, leverandørprisendringer og drikkevareavvik. Stockifi kobler fakturaene og kassesystemet ditt slik at du ser nøyaktig hvor barmarginene dine forsvinner."
 eyebrow: "Bar"
 heading: "Ta kontroll over marginene bak baren"
 subhead: "Stockifi gjør om fakturaene og salget ditt til den reelle kostnaden for hver drink. Du ser hvor marginene dine forsvinner og fanger opp prisøkninger fra leverandører før de koster deg penger."

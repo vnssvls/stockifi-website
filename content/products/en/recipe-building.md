@@ -1,6 +1,6 @@
 ---
 metaTitle: "Recipe Costing & Building Software | Stockifi"
-metaDescription: "Build your recipes and sub-recipes in one place, with live ingredient costs from your invoices, so every dish carries its real cost and margin."
+metaDescription: "Build your recipes in Stockifi with live ingredient costs from your invoices. Every dish carries its real cost and updates automatically when prices change."
 eyebrow: "Recipe building"
 heading: "Build recipes with live costs attached"
 subhead: "Once your recipes are in, you never cost a dish by hand again. Stockifi pulls each ingredient's price from your invoices, so every dish shows its real cost and margin."

@@ -1,6 +1,6 @@
 ---
-metaTitle: "Restaurantanalyse og dashboards | Stockifi"
-metaDescription: "Varekostnad, margin, avvik og varekostutvikling samlet på ett sted, fordelt på rett, lokasjon og periode, basert på fakturaer og POS-data."
+metaTitle: "Ytelsesdashboards og analyse for restaurant | Stockifi"
+metaDescription: "Stockifi gjør faktura- og kassedata om til dashboards som viser kostnad, margin, avvik og varekostnadutvikling per rett, sted og periode. Book en demo for å lære mer."
 eyebrow: "Performance-dashboards"
 heading: "Samle matkostnader og lagerstyring på ett sted"
 subhead: "Forstå tallene dine på en ny måte. Stockifi gjør om fakturaer, salg og varetellinger til ett klart bilde av marginene dine."

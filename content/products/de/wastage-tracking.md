@@ -1,6 +1,6 @@
 ---
 metaTitle: "Schwunderfassung für Restaurants | Stockifi"
-metaDescription: "Weisen Sie Verderb, Küchenfehler und Überproduktion einen konkreten Kostenwert zu, gemessen am tatsächlichen Verbrauch, damit Verluste nicht länger in der Abweichung verschwinden."
+metaDescription: "Erfassen Sie Verderb, Küchenfehler und Überproduktion gegen den tatsächlichen Verbrauch. Stockifi setzt jedem Verlust einen tatsächlichen Kostenwert, damit Schwund nicht mehr in Ihrer Abweichung versteckt bleibt."
 eyebrow: "Schwunderfassung"
 heading: "Schwund in eine Zahl verwandeln, auf die Sie reagieren können"
 subhead: "Stockifi weist Ihrem Schwund einen konkreten Kostenwert zu und zeigt ihn im Verhältnis zu Ihrem Verbrauch, damit er nicht länger in Ihrer Abweichung verborgen bleibt."

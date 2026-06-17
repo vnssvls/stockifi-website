@@ -1,6 +1,6 @@
 ---
-metaTitle: "Restaurant-Inventur-App | Stockifi"
-metaDescription: "Führen Sie periodische Inventuren auf Ihrem Mobilgerät oder im Browser durch, online oder offline, und sehen Sie die Abweichung vom Soll-Verbrauch auf einen Blick."
+metaTitle: "Inventur-App für Restaurants | Stockifi"
+metaDescription: "Führen Sie Inventuren auf Mobilgerät oder im Web durch, online oder offline. Stockifi zeigt die Differenz zwischen theoretischem und tatsächlichem Verbrauch, damit Sie wissen, wo der Bestand geblieben ist."
 eyebrow: "Inventur"
 heading: "Zählungen, die mit dem Regal übereinstimmen"
 subhead: "Zählen Sie per Mobilgerät oder im Browser, online oder offline. Sobald Sie die Inventur abschließen, sehen Sie die Abweichung gegenüber dem, was Ihre Rezepte und Umsatzzahlen prognostiziert haben."

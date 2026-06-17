@@ -1,6 +1,6 @@
 ---
-metaTitle: "Stockifi API for Restaurant Data | Stockifi"
-metaDescription: "Pull your Stockifi data, food cost, variance, recipes, and sales, into your own BI tools and data warehouse through a clean API, real-time or scheduled."
+metaTitle: "Stockifi API | Pull Food Cost Data into Your BI Stack"
+metaDescription: "Connect Stockifi to your own BI tools or data warehouse. Pull food cost, variance, recipes, and sales data through a clean API, real-time or scheduled."
 eyebrow: "API"
 heading: "Pull your Stockifi data into your own tools"
 subhead: "Your team can work with Stockifi's numbers inside the BI tools it already runs. A clean API gives them direct access to your performance data."

@@ -1,6 +1,6 @@
 ---
 metaTitle: "Food Cost Software for Independent Restaurants | Stockifi"
-metaDescription: "Run tighter operations without the spreadsheets. Stockifi connects your invoices, POS, and recipes so independent restaurants track actual food cost."
+metaDescription: "Independent restaurants use Stockifi to track their real food cost without the spreadsheets. Invoices, POS, and recipes pull together into one accurate picture."
 eyebrow: "Independent restaurants"
 heading: "Run tighter operations without the spreadsheets"
 subhead: "Stockifi connects your invoices, POS, and recipes and tracks your real food cost as prices and sales change. You see where margin is leaking and close the gap, without the extra admin."

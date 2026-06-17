@@ -1,6 +1,6 @@
 ---
-metaTitle: "Restaurant Stock Counting App | Stockifi"
-metaDescription: "Run periodic stock counts on mobile or web, online or offline, then see variance against theoretical usage, all in one place."
+metaTitle: "Stock Counting App for Restaurants | Stockifi"
+metaDescription: "Run stock counts on mobile or web, online or offline. Stockifi shows the gap between theoretical and actual usage so you know exactly where stock went."
 eyebrow: "Stock counting"
 heading: "Counts that match the shelf"
 subhead: "Count on mobile or web, online or offline. See the variance against what your recipes and sales predicted the moment you close."

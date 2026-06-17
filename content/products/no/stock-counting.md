@@ -1,6 +1,6 @@
 ---
-metaTitle: "App for varetelling på restaurant | Stockifi"
-metaDescription: "Gjennomfør periodiske varetellinger på mobil eller nett, online eller offline, og se avvik mot teoretisk forbruk samlet på ett sted."
+metaTitle: "App for restaurantvaretelling | Stockifi"
+metaDescription: "Gjennomfør varetelling på mobil eller nett, online eller offline. Stockifi viser gapet mellom teoretisk og faktisk forbruk slik at du vet nøyaktig hvor lageret tok veien."
 eyebrow: "Varetelling"
 heading: "Tellinger som stemmer med hyllen"
 subhead: "Tell på mobil eller nett, online eller offline. Se avviket mot hva oppskriftene og salget forutsa, i det øyeblikket du lukker tellingen."

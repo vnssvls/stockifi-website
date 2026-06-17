@@ -1,6 +1,6 @@
 ---
-metaTitle: "Bar-Inventur & Getränkekostenkontrolle | Stockifi"
-metaDescription: "Wareneinsatz, Getränkeabweichungen und Lieferantenpreise hinter dem Tresen im Blick. Stockifi verbindet Ihre Rechnungen und Ihr Kassensystem, damit Sie sehen, wo Ihre Bar-Marge bleibt."
+metaTitle: "Bar-Inventur & Getränkekostensoftware | Stockifi"
+metaDescription: "Verfolgen Sie Wareneinsatz, Lieferantenpreisänderungen und Getränkeabweichungen. Stockifi verbindet Ihre Rechnungen und Ihr Kassensystem, damit Sie genau sehen, wohin Ihre Bar-Marge geht."
 eyebrow: "Bar"
 heading: "Die Marge hinter dem Tresen unter Kontrolle"
 subhead: "Stockifi errechnet aus Ihren Rechnungen und Umsätzen die tatsächlichen Kosten jedes Getränks. Sie sehen, wo Ihre Marge bleibt, und erkennen Lieferantenpreiserhöhungen, bevor sie sich auswirken."

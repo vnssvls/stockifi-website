@@ -1,6 +1,6 @@
 ---
 metaTitle: "Hotel F&B Cost Control Software | Stockifi"
-metaDescription: "Control food and beverage cost across your hotel's restaurants, bars, and banqueting. Stockifi connects invoices, POS, and recipes for full F&B visibility."
+metaDescription: "Stockifi gives hotel F&B teams full cost visibility across restaurants, bars, and banqueting, with invoices, POS, and recipes connected from day one."
 eyebrow: "Hotels with F&B"
 heading: "Full cost control and visibility for hotel F&B"
 subhead: "Stockifi brings the sales and cost from every hotel F&B outlet onto one reporting platform. Restaurant, bar, and banqueting teams work from the same numbers, with full visibility into your F&B operation."

@@ -1,6 +1,6 @@
 ---
-metaTitle: "Varetransfer mellom lokasjoner | Stockifi"
-metaDescription: "Flytt varer mellom lokasjonene dine innenfor telleperioden, slik at avvik og kostnader forblir korrekte på hvert sted."
+metaTitle: "Lageroverføringer mellom steder | Stockifi"
+metaDescription: "Flytt varer mellom steder inne i den periodiske tellingen. Stockifi sporer hver overføring slik at hvert steds avvik og matkostnad forblir nøyaktige. Book en demo nå."
 eyebrow: "Varetransfer"
 heading: "Hold begge lokasjoner nøyaktige når varer flyttes"
 subhead: "Når varer flyttes mellom lokasjonene dine, registrerer du flytten i Stockifi mot periodens varetelling. Hvert steds telling og kostnad forblir korrekte, og gruppens tall stemmer."

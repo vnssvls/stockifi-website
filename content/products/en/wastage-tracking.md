@@ -1,6 +1,6 @@
 ---
 metaTitle: "Wastage Tracking for Restaurants | Stockifi"
-metaDescription: "Put a real cost on spoilage, kitchen mistakes, and over-production, against actual consumption, so losses stop hiding in your variance."
+metaDescription: "Log spoilage, kitchen mistakes, and over-production against actual consumption. Stockifi puts a real cost on every loss so waste stops hiding in your variance."
 eyebrow: "Wastage tracking"
 heading: "Turn wastage into a number you can act on"
 subhead: "Stockifi puts a real cost on what you waste and shows it against what you use, so it stops hiding in your variance."

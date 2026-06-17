@@ -1,6 +1,6 @@
 ---
 metaTitle: "Restaurant Cost Control Software for Finance | Stockifi"
-metaDescription: "Accurate, automated COGS from your invoices and sales, with the detail finance needs to close the month with confidence and control food cost."
+metaDescription: "Finance teams get automated COGS built from actual invoice and POS data, with the granularity to close the month confidently and catch cost drift early."
 eyebrow: "Finance"
 heading: "A food cost number you can trust"
 subhead: "Stockifi builds accurate COGS straight from your invoices and sales. You close the month with confidence and keep cost under control."

@@ -1,6 +1,6 @@
 ---
 metaTitle: "Rechnungsautomatisierung für Restaurants | Stockifi"
-metaDescription: "Stockifi liest Lieferantenrechnungen Zeile für Zeile und überträgt Preise und Mengen direkt in Ihren Wareneinsatz, ohne manuelle Eingabe."
+metaDescription: "Stockifi liest jede Lieferantenrechnung und überträgt Zutatenpreise und -mengen automatisch in Ihren Wareneinsatz, damit dieser ohne manuelle Eingabe aktuell bleibt."
 eyebrow: "Rechnungsautomatisierung"
 heading: "Wareneinsatz ohne Dateneingabe"
 subhead: "Ihr Wareneinsatz bleibt aktuell, ohne dass jemand eine Rechnung eintippen muss. Stockifi liest die Rechnungen direkt aus Ihrer Buchhaltung, sodass Preise und Mengen automatisch einfließen."

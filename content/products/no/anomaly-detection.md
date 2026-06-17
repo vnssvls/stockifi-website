@@ -1,6 +1,6 @@
 ---
-metaTitle: "Fakturakontroll og avviksdeteksjon for restauranter | Stockifi"
-metaDescription: "Stockifi sjekker hver leverandørfaktura og markerer feilbelastninger, dobbeltfakturaer og uvanlige prishopp, slik at fakturafeil aldri glir igjennom."
+metaTitle: "Avviksdeteksjon i fakturaer for restauranter | Stockifi"
+metaDescription: "Stockifi kontrollerer hver leverandørfaktura og varsler om overbelastninger og uvanlige prisstigninger før de påvirker matkostnaden din. Book en demo for å lære mer."
 eyebrow: "Avviksdeteksjon"
 heading: "Slutt å overbetale leverandørene dine"
 subhead: "En feilbelastning ser ut akkurat som alle andre linjer på fakturaen. Stockifi sjekker hver enkelt for deg og markerer det som er verdt en ekstra titt, slik at fakturafeil blir oppdaget mens du fortsatt kan kreve dem tilbake."

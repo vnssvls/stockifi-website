@@ -1,6 +1,6 @@
 ---
 metaTitle: "Restaurant Profitability Software | Stockifi"
-metaDescription: "See profit and margin by dish, location, and period, built on your live food cost, so you know which dishes earn and which lose money."
+metaDescription: "See which dishes earn and which lose money, by location and period, with profitability built on your live food cost rather than estimates."
 eyebrow: "Profitability Insights"
 heading: "Know exactly which dishes make you money"
 subhead: "See the real margin on every plate. Stockifi shows what each dish earns, by location and period."

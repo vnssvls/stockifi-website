@@ -1,6 +1,6 @@
 ---
-metaTitle: "Wareneinsatz-Software für Einzelrestaurants | Stockifi"
-metaDescription: "Effizienteren Betrieb ohne Tabellen führen. Stockifi verbindet Ihre Rechnungen, Kassensystem und Rezepte, damit Einzelrestaurants den tatsächlichen Wareneinsatz verfolgen."
+metaTitle: "Wareneinsatz-Software für unabhängige Restaurants | Stockifi"
+metaDescription: "Unabhängige Restaurants nutzen Stockifi, um ihren tatsächlichen Wareneinsatz ohne Tabellenkalkulationen zu verfolgen. Rechnungen, Kassensystem und Rezepte ergeben ein genaues Bild."
 eyebrow: "Einzelrestaurants"
 heading: "Effizienteren Betrieb ohne Tabellen führen"
 subhead: "Stockifi verbindet Ihre Rechnungen, Kassensystem und Rezepte und verfolgt Ihren tatsächlichen Wareneinsatz, wenn sich Preise und Umsätze verändern. Sie sehen, wo die Marge verloren geht, und schließen die Lücke ohne zusätzlichen Verwaltungsaufwand."

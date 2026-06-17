@@ -1,6 +1,6 @@
 ---
-metaTitle: "Avviksanalyse av varekost for restauranter | Stockifi"
-metaDescription: "Se teoretisk mot faktisk varekost og finn nøyaktig hvor marginene lekker, per rett og ingrediens, basert på oppskrifter, salg og varetellinger."
+metaTitle: "Avviksanalyse av matkostnad for restauranter | Stockifi"
+metaDescription: "Se den teoretiske matkostnaden opp mot den faktiske og finn nøyaktig hvor marginen lekker, per rett og ingrediens, på tvers av oppskrifter, salg og tellingene."
 eyebrow: "Avviksanalyse"
 heading: "Finn ut hvor marginene dine tar veien"
 subhead: "Stockifi sammenligner hva oppskriftene dine sier du burde ha brukt med hva du faktisk brukte, rett for rett. Hvert avvik kommer med en årsak du kan handle på."

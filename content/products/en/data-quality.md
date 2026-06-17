@@ -1,6 +1,6 @@
 ---
-metaTitle: "Data Quality | Stockifi"
-metaDescription: "Stockifi keeps your ingredient and recipe data clean and consistent, so your food cost numbers are always reliable."
+metaTitle: "Clean Restaurant Data for Accurate Food Cost | Stockifi"
+metaDescription: "Stockifi keeps your ingredient and recipe data clean, reliable, and consistent so the food cost numbers you act on are always accurate. Book a demo now."
 eyebrow: "Data quality"
 heading: "[Placeholder heading]"
 subhead: "[Placeholder subhead — copy review Wednesday]"

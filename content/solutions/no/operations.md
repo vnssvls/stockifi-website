@@ -1,6 +1,6 @@
 ---
 metaTitle: "Kostnadskontroll for restaurantdrift | Stockifi"
-metaDescription: "Fang svinn, overporsjoning og prisendringer tidlig, og hold kostnadene stramme på tvers av alle lokasjoner, uten å legge til mer administrasjon for driftsteamet ditt."
+metaDescription: "Stockifi avdekker svinn, overporsjonering og prisutvikling hos leverandører tidlig, slik at kostnadsproblemer fanges opp før de sprer seg over alle stedene dine."
 eyebrow: "Drift"
 heading: "Stram kostnadskontroll på tvers av alle lokasjoner"
 subhead: "Stockifi fanger svinn, overporsjoning og prisendringer tidlig. Alle lokasjoner jobber med de samme tallene, så standardene holder seg etter hvert som du vokser."

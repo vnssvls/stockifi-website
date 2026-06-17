@@ -1,6 +1,6 @@
 ---
 metaTitle: "Restaurant Operations Cost Control | Stockifi"
-metaDescription: "Catch waste, over-portioning, and price drift early and run tight cost control across every site, without adding admin to your operations team."
+metaDescription: "Stockifi surfaces waste, over-portioning, and supplier price drift early so cost problems get caught before they compound across your sites."
 eyebrow: "Operations"
 heading: "Tight cost control across every site"
 subhead: "Stockifi catches waste, over-portioning, and price drift early. Every site runs on the same numbers, so standards hold as you grow."

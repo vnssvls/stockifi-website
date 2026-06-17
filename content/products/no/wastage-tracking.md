@@ -1,6 +1,6 @@
 ---
-metaTitle: "Svinn-sporing for restauranter | Stockifi"
-metaDescription: "Sett en reell kostnad på matsvinn, kjøkkenfeil og overproduksjon, og mål det mot faktisk forbruk, slik at tapene slutter å gjemme seg i avviket ditt."
+metaTitle: "Svinnregistrering for restauranter | Stockifi"
+metaDescription: "Registrer svinn, kjøkkenfeil og overproduksjon mot faktisk forbruk. Stockifi setter en reell kostnad på hvert tap slik at svinn slutter å gjemme seg i avviket ditt."
 eyebrow: "Svinn-sporing"
 heading: "Gjør svinn til et tall du kan handle på"
 subhead: "Stockifi setter en reell kostnad på det du kaster og viser det mot det du bruker, slik at det slutter å gjemme seg i avviket ditt."

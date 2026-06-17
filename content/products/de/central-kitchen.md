@@ -1,6 +1,6 @@
 ---
-metaTitle: "Central-Kitchen-Software für Restaurants | Stockifi"
-metaDescription: "Betreiben Sie eine zentrale Produktionsküche, die Ihre Standorte beliefert, mit realen Produktionskosten und internen Bestellungen, die standortübergreifend erfasst werden."
+metaTitle: "Zentralküchen-Software für Restaurants | Stockifi"
+metaDescription: "Betreiben Sie eine Zentralküche, die Ihre Standorte mit tatsächlichen Produktionskosten, internen Bestellungen und standortübergreifend nachverfolgtem Inventar in Stockifi versorgt."
 eyebrow: "Zentralküche"
 heading: "Alle Standorte aus einer Küche beliefern"
 subhead: "Jeder Standort bestellt, was er benötigt, und zahlt die realen Produktionskosten. Stockifi hält diese Kosten präzise, damit die Margen in der gesamten Gruppe stimmen."

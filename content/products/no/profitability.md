@@ -1,6 +1,6 @@
 ---
-metaTitle: "Lønnsomhetsinnsikt for restauranter | Stockifi"
-metaDescription: "Se margin og fortjeneste per rett, lokasjon og periode, basert på levende varekostnad, slik at du vet hvilke retter som tjener penger og hvilke som taper."
+metaTitle: "Lønnsomhetsprogramvare for restaurant | Stockifi"
+metaDescription: "Se hvilke retter som tjener penger og hvilke som taper, per sted og periode, med lønnsomhet bygget på din levende matkostnad heller enn estimater."
 eyebrow: "Lønnsomhetsinnsikt"
 heading: "Vit nøyaktig hvilke retter som gir deg penger"
 subhead: "Se den faktiske marginen på hver rett. Stockifi viser hva hver rett tjener, fordelt på lokasjon og periode."

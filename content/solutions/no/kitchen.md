@@ -1,6 +1,6 @@
 ---
-metaTitle: "Oppskriftskostnader for kjøkkensjefer | Stockifi"
-metaDescription: "Oppdaterte oppskriftskostnader, rask varetelling og avvik ned på rettsnivå, laget for deg som driver kjøkkenet. Ta menybeslutninger basert på dagens priser."
+metaTitle: "Oppskriftskostnadsverktøy for kjøkkensjef | Stockifi"
+metaDescription: "Oppdaterte oppskriftskostnader fra dine siste fakturaer, med avvik brutt ned per rett og varetellingene som ikke bremser kjøkkenet."
 eyebrow: "Kjøkken"
 heading: "Vet hva hver rett koster i dag"
 subhead: "Stockifi holder alle oppskrifter oppdatert når prisene endrer seg. Varetelling går raskt, og avvik peker til nøyaktig hvilken rett det gjelder."

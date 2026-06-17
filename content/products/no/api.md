@@ -1,6 +1,6 @@
 ---
-metaTitle: "Stockifi API for restaurantdata | Stockifi"
-metaDescription: "Hent Stockifi-dataene dine, varekostnad, avvik, oppskrifter og salg, direkte inn i dine egne BI-verktøy og datavarehus via et ryddig API, i sanntid eller planlagt."
+metaTitle: "Stockifi API | Hent matkostnaddata til BI-verktøyet ditt"
+metaDescription: "Koble Stockifi til dine egne BI-verktøy eller datalager. Hent matkostnad, avvik, oppskrifter og salgsdata via et rent API, i sanntid eller planlagt."
 eyebrow: "API"
 heading: "Hent Stockifi-dataene dine inn i dine egne verktøy"
 subhead: "Teamet ditt kan jobbe med Stockifis tall inne i BI-verktøyene det allerede bruker. Et ryddig API gir direkte tilgang til ytelsesdataene dine."

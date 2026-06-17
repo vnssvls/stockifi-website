@@ -1,0 +1,316 @@
+---
+import LayoutLP from '../../layouts/LayoutLP.astro';
+import CustomerStoryBento from '../../components/CustomerStoryBento.astro';
+
+const PORTAL_ID  = 'YOUR_PORTAL_ID';
+const FORM_GUID  = 'YOUR_INTRO_CONFIRM_FORM_GUID';
+
+// Read email passed from step 1 as query param
+const email = Astro.url.searchParams.get('email') ?? '';
+---
+
+<LayoutLP
+  title="One more thing — Stockifi"
+  description="Tell us a bit more about your operation so we can prepare the most useful demo for you."
+>
+  <section class="confirm-section section">
+    <div class="container confirm-wrap">
+
+      <!-- Success banner -->
+      <div class="success-banner">
+        <svg class="check-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 6L9 17l-5-5"/>
+        </svg>
+        <span>You're in. We'll reach out within 24 hours.</span>
+      </div>
+
+      <!-- Form card -->
+      <div class="confirm-card">
+        <h1>A few more details</h1>
+        <p class="confirm-subhead">Optional — helps us prepare a more relevant demo for your operation.</p>
+
+        <form class="confirm-form" id="confirm-form" novalidate>
+          <input type="hidden" name="email" value={email} />
+
+          <div class="field-row">
+            <div class="field-group">
+              <label for="cf-name">Your name</label>
+              <input type="text" id="cf-name" name="firstname" placeholder="Jane Smith" autocomplete="name" class="cf-input" />
+            </div>
+
+            <div class="field-group">
+              <label for="cf-website">Restaurant website</label>
+              <input type="url" id="cf-website" name="website" placeholder="yourrestaurant.com" autocomplete="url" class="cf-input" />
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field-group">
+              <label for="cf-locations">Number of locations</label>
+              <select id="cf-locations" name="num_locations" class="cf-input cf-select">
+                <option value="" disabled selected>Select...</option>
+                <option value="1">1 location</option>
+                <option value="2-4">2–4 locations</option>
+                <option value="5-9">5–9 locations</option>
+                <option value="10+">10+ locations</option>
+              </select>
+            </div>
+
+            <div class="field-group">
+              <label for="cf-phone">Phone number</label>
+              <input type="tel" id="cf-phone" name="phone" placeholder="+1 555 000 0000" autocomplete="tel" class="cf-input" />
+            </div>
+          </div>
+
+          <div class="confirm-actions">
+            <button type="submit" class="cf-btn" id="cf-btn">
+              <span id="cf-btn-label">Contact me</span>
+              <span id="cf-btn-spinner" hidden aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+              </span>
+            </button>
+            <a href="/customer-stories" class="cf-skip">Or skip, we'll just email you</a>
+          </div>
+
+          <p class="cf-success-msg" id="cf-success" hidden>
+            Thanks! Simon will be in touch shortly.
+          </p>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- In the meantime -->
+  <CustomerStoryBento
+    eyebrow="In the meantime"
+    heading="See how other restaurants use Stockifi"
+    slugs={["eik-and-friends", "skigeilo", "heim-gastropub"]}
+  />
+</LayoutLP>
+
+<style>
+  .confirm-section {
+    padding-block: var(--space-96);
+  }
+
+  .confirm-wrap {
+    max-width: 680px;
+  }
+
+  /* Success banner */
+  .success-banner {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-12);
+    background: color-mix(in srgb, var(--success) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--success) 35%, transparent);
+    border-radius: 8px;
+    padding: var(--space-12) var(--space-16);
+    margin-bottom: var(--space-48);
+    font-size: var(--text-body);
+    color: var(--success);
+    font-weight: var(--fw-medium);
+  }
+
+  .check-icon {
+    flex-shrink: 0;
+    stroke: currentColor;
+  }
+
+  /* Card */
+  .confirm-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: var(--space-48);
+  }
+
+  .confirm-card h1 {
+    font-size: var(--text-h3);
+    font-weight: var(--fw-semibold);
+    margin-bottom: var(--space-8);
+  }
+
+  .confirm-subhead {
+    font-size: var(--text-body);
+    color: var(--muted-foreground);
+    margin-bottom: var(--space-48);
+  }
+
+  /* Form */
+  .confirm-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-24);
+  }
+
+  .field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-16);
+  }
+
+  @media (max-width: 600px) {
+    .field-row {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .field-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+  }
+
+  label {
+    font-size: var(--text-body-sm);
+    font-weight: var(--fw-medium);
+    color: var(--foreground);
+  }
+
+  .cf-input {
+    height: 48px;
+    padding: 0 var(--space-16);
+    background: var(--input);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--foreground);
+    font-size: var(--text-body);
+    outline: none;
+    transition: border-color 0.15s;
+    appearance: none;
+    -webkit-appearance: none;
+    width: 100%;
+  }
+
+  .cf-input:focus {
+    border-color: var(--primary);
+  }
+
+  .cf-input::placeholder {
+    color: var(--muted-foreground);
+  }
+
+  .cf-select {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right var(--space-16) center;
+    padding-right: var(--space-40);
+  }
+
+  .cf-select option {
+    background: var(--card);
+    color: var(--foreground);
+  }
+
+  /* Actions */
+  .confirm-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-24);
+    flex-wrap: wrap;
+  }
+
+  .cf-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-8);
+    height: 48px;
+    padding: 0 var(--space-32);
+    background: var(--primary);
+    color: var(--primary-foreground);
+    border: none;
+    border-radius: 8px;
+    font-size: var(--text-body);
+    font-weight: var(--fw-semibold);
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+
+  .cf-btn:hover { background: var(--primary-dark); }
+  .cf-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+  .cf-skip {
+    font-size: var(--text-body);
+    color: var(--muted-foreground);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: color-mix(in srgb, var(--muted-foreground) 40%, transparent);
+    transition: color 0.15s;
+  }
+
+  .cf-skip:hover {
+    color: var(--foreground);
+    text-decoration-color: var(--foreground);
+  }
+
+  .cf-success-msg {
+    font-size: var(--text-body);
+    color: var(--success);
+    font-weight: var(--fw-medium);
+  }
+
+  @media (max-width: 640px) {
+    .confirm-card {
+      padding: var(--space-32) var(--space-24);
+    }
+    .confirm-actions {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .cf-btn {
+      width: 100%;
+    }
+  }
+</style>
+
+<script define:vars={{ PORTAL_ID, FORM_GUID, email }}>
+  const form = document.getElementById('confirm-form');
+  const btn = document.getElementById('cf-btn');
+  const btnLabel = document.getElementById('cf-btn-label');
+  const btnSpinner = document.getElementById('cf-btn-spinner');
+  const successMsg = document.getElementById('cf-success');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    btn.disabled = true;
+    btnLabel.hidden = true;
+    btnSpinner.hidden = false;
+
+    const data = new FormData(form);
+    const fields = [];
+
+    if (email) fields.push({ name: 'email', value: email });
+    if (data.get('firstname')) fields.push({ name: 'firstname', value: data.get('firstname') });
+    if (data.get('website')) fields.push({ name: 'website', value: data.get('website') });
+    if (data.get('num_locations')) fields.push({ name: 'num_locations', value: data.get('num_locations') });
+    if (data.get('phone')) fields.push({ name: 'phone', value: data.get('phone') });
+
+    try {
+      if (PORTAL_ID !== 'YOUR_PORTAL_ID') {
+        await fetch(
+          `https://api.hsforms.com/submissions/v3/integration/submit/${PORTAL_ID}/${FORM_GUID}`,
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              fields,
+              context: { pageUri: window.location.href, pageName: document.title },
+            }),
+          }
+        );
+      }
+    } catch (_) {}
+
+    btnLabel.hidden = false;
+    btnSpinner.hidden = true;
+    btn.disabled = false;
+    form.reset();
+    successMsg.hidden = false;
+    successMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+</script>

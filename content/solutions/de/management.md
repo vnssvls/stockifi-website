@@ -1,6 +1,6 @@
 ---
-metaTitle: "Gewinn- und Margenübersicht für Inhaber und GMs | Stockifi"
-metaDescription: "Geben Sie Inhabern und GMs eine klare Sicht auf Gewinn, Marge und Kostenlecks im Betrieb, ohne dem Team hinterherlaufen zu müssen."
+metaTitle: "Gewinn- & Margentransparenz für Inhaber & GMs | Stockifi"
+metaDescription: "Inhaber und General Manager erhalten einen klaren Überblick über Gewinn, Marge und wo der Betrieb Geld verliert, ohne Zahlen vom Team einfordern zu müssen."
 eyebrow: "Management"
 heading: "Ihr Gewinnbild, jederzeit abrufbar"
 subhead: "Stockifi gibt Inhabern und GMs eine aktuelle Übersicht über Gewinn und Marge. Das Bild ist da, ohne dass Sie dem Team nachlaufen müssen."

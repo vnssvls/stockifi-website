@@ -1,6 +1,6 @@
 ---
-metaTitle: "Verkauf und Verbrauch | Stockifi"
-metaDescription: "Sehen Sie, was verkauft wurde und wie es Ihren Lagerbestand bewegt hat. Stockifi verbindet Ihre Kassensystem-Verkäufe mit dem tatsächlichen Zutatenverbrauch."
+metaTitle: "Umsatz- & Zutatenverbrauchsverfolgung für Restaurants | Stockifi"
+metaDescription: "Stockifi verbindet Ihre Kassenumsätze mit dem tatsächlichen Zutatenverbrauch und zeigt, was verbraucht wurde im Vergleich zu dem, was verbraucht werden sollte, und wo die Lücke liegt."
 eyebrow: "Verkauf und Verbrauch"
 heading: "[Platzhalter Überschrift]"
 subhead: "[Platzhalter Unterüberschrift — Textkontrolle Mittwoch]"

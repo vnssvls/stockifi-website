@@ -1,6 +1,6 @@
 ---
-metaTitle: "Kostnadskontroll for restaurant og økonomi | Stockifi"
-metaDescription: "Nøyaktig, automatisert varekostnad fra fakturaer og salg, med detaljene økonomiavdelingen trenger for å avslutte måneden med trygghet og kontroll over matkostnadene."
+metaTitle: "Programvare for kostnadskontroll i restaurant | Finans | Stockifi"
+metaDescription: "Finansteamet får automatisert varekostnad bygget på faktiske faktura- og salgsdata, med granulariteten til å lukke måneden trygt og fange opp kostnadsdrift tidlig."
 eyebrow: "Økonomi"
 heading: "Et varekosttall du kan stole på"
 subhead: "Stockifi beregner nøyaktig varekostnad direkte fra fakturaene og salget ditt. Du avslutter måneden med trygghet og holder kostnadene under kontroll."

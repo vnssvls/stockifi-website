@@ -1,6 +1,6 @@
 ---
-metaTitle: "Lagertransfers zwischen Standorten | Stockifi"
-metaDescription: "Verbuchen Sie Warenverschiebungen zwischen Ihren Standorten innerhalb der laufenden Inventurperiode, damit Abweichung und Wareneinsatz überall korrekt bleiben."
+metaTitle: "Lagerumbuchungen zwischen Standorten | Stockifi"
+metaDescription: "Buchen Sie Bestände zwischen Standorten innerhalb der periodischen Inventur um. Stockifi verfolgt jede Umbuchung, damit die Abweichung und der Wareneinsatz jedes Standorts korrekt bleiben. Jetzt Demo buchen."
 eyebrow: "Lagertransfers"
 heading: "Beide Standorte bleiben akkurat, wenn Ware die Küche wechselt"
 subhead: "Wenn Waren zwischen Ihren Standorten verschoben werden, erfassen Sie den Transfer in Stockifi innerhalb der laufenden Zählperiode. Der Lagerbestand und der Wareneinsatz beider Standorte stimmen, sodass die Gesamtzahlen der Restaurantgruppe aufgehen."

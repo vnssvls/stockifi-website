@@ -1,6 +1,6 @@
 ---
-metaTitle: "Varekostprogramvare for restaurantkjeder | Stockifi"
-metaDescription: "Hold oppskriftskostnadene samkjørt på tvers av alle lokasjoner og samle avvik og margin i én visning. Stockifi gir restaurantkjeder ett samlet bilde av hele driften."
+metaTitle: "Matkostnadsverktøy for restaurantkjeder | Stockifi"
+metaDescription: "Restaurantkjeder bruker Stockifi til å holde oppskriftskostnadene samkjørte på tvers av alle steder og se avvik og margin samlet i én oversikt."
 eyebrow: "Restaurantkjeder"
 heading: "Samlet varekost på tvers av alle lokasjoner"
 subhead: "Stockifi holder oppskriftskostnadene konsistente på tvers av alle lokasjoner og samler kostnad, avvik og margin i én visning. Du ser hvilke steder som er på rett spor og hvilke som trenger oppmerksomhet."

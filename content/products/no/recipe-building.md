@@ -1,6 +1,6 @@
 ---
-metaTitle: "Oppskriftskalkulasjon og oppskriftsbygging | Stockifi"
-metaDescription: "Bygg oppskrifter og deloppskrifter på ett sted, med live ingredienskostnader fra fakturaene dine, slik at hvert rett viser sin reelle kostnad og margin."
+metaTitle: "Oppskriftskalkylering og -bygging | Stockifi"
+metaDescription: "Bygg oppskriftene dine i Stockifi med levende ingredienspriser fra fakturaene dine. Hver rett bærer den reelle kostnaden og oppdateres automatisk når prisene endres."
 eyebrow: "Oppskriftsbygging"
 heading: "Bygg oppskrifter med live kostnader tilknyttet"
 subhead: "Når oppskriftene dine er lagt inn, kalkylerer du aldri en rett manuelt igjen. Stockifi henter prisen på hver ingrediens fra fakturaene dine, slik at hver rett viser sin reelle kostnad og margin."

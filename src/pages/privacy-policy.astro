@@ -1,0 +1,201 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Privacy Policy | Stockifi"
+  description="How Stockifi collects, uses, and protects your data. Read the full policy to understand your rights and how we handle your information."
+>
+  <div class="legal-hero">
+    <div class="legal-container">
+      <p class="legal-label">Legal</p>
+      <h1>Privacy Policy</h1>
+      <p class="legal-meta">Stocklio AS &middot; Hølandsgata 1 B, 0655 Oslo, Norway</p>
+    </div>
+  </div>
+
+  <div class="legal-body">
+    <div class="legal-container">
+
+      <section class="legal-section">
+        <p>At Stockifi, we prioritize the privacy of our visitors. This document outlines the types of information we collect and how we use it. It applies solely to information shared through our website and app — not to offline data collection or other channels.</p>
+        <p>By using our website and app, you consent to this Privacy Policy and agree to its terms.</p>
+      </section>
+
+      <section class="legal-section">
+        <h2>Information We Collect</h2>
+        <p>We will always communicate what personal information is being requested and why at the point of collection.</p>
+        <ul>
+          <li>When you contact us directly, we may collect your name, email address, phone number, and the contents of your message.</li>
+          <li>If you register for an account, we may ask for your name, company name, address, email address, and telephone number.</li>
+        </ul>
+      </section>
+
+      <section class="legal-section">
+        <h2>How We Use Your Information</h2>
+        <p>We use collected information to:</p>
+        <ul>
+          <li>Provide, operate, and maintain our website and services.</li>
+          <li>Improve, personalize, and expand our platform.</li>
+          <li>Understand and analyze how our website is used.</li>
+          <li>Develop new products, services, and features.</li>
+          <li>Communicate with you for customer service, updates, and marketing purposes.</li>
+          <li>Detect and prevent fraud.</li>
+        </ul>
+      </section>
+
+      <section class="legal-section">
+        <h2>Cookies and Tracking</h2>
+        <p>Stockifi uses cookies to store visitor preferences and track page visits for optimization. Cookies allow us to customize content based on your browser type and preferences.</p>
+        <p>Log files are collected following standard web procedures. These include IP addresses, browser type, ISP, timestamps, referring pages, and click data. This data is not linked to personally identifiable information and is used to analyze trends and administer the site.</p>
+        <p>You can disable cookies through your browser settings at any time.</p>
+      </section>
+
+      <section class="legal-section">
+        <h2>Bot Protection</h2>
+        <p>Our contact forms use Google reCAPTCHA to protect against spam and automated abuse. reCAPTCHA analyzes visitor behavior and device signals to distinguish humans from bots. Data collected (including IP address and browser information) is processed by Google under their Cloud Data Processing Addendum.</p>
+      </section>
+
+      <section class="legal-section">
+        <h2>Third-Party Advertising</h2>
+        <p>Third-party ad servers may use cookies, JavaScript, or Web Beacons to measure ad effectiveness and personalize content. Stockifi has no access to or control over these cookies.</p>
+        <p>Our Privacy Policy does not apply to third-party advertisers or external websites. Please consult their respective policies for details, including opt-out options.</p>
+      </section>
+
+      <section class="legal-section">
+        <h2>GDPR Rights</h2>
+        <p>If you are in the European Union, you have the right to:</p>
+        <ul>
+          <li>Access your personal data.</li>
+          <li>Request corrections to inaccurate information.</li>
+          <li>Request erasure of your data under certain conditions.</li>
+          <li>Request restrictions on data processing under certain conditions.</li>
+          <li>Object to data processing under certain conditions.</li>
+          <li>Request data portability under certain conditions.</li>
+        </ul>
+        <p>To exercise any of these rights, please contact us. We will respond within one month.</p>
+      </section>
+
+      <section class="legal-section">
+        <h2>CCPA Rights</h2>
+        <p>If you are a California resident, you have the right to know what personal data has been collected, request its deletion, and opt out of the sale of your personal data. To exercise these rights, please contact us. We will respond within one month.</p>
+      </section>
+
+      <section class="legal-section">
+        <h2>Children's Privacy</h2>
+        <p>We do not knowingly collect personal information from children under the age of 13. If you believe your child has provided such information, please contact us and we will remove it promptly from our records.</p>
+      </section>
+
+    </div>
+  </div>
+</Layout>
+
+<style>
+  /* Hero */
+  .legal-hero {
+    padding: var(--space-96) var(--space-32) var(--space-64);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .legal-label {
+    font-family: var(--font-body);
+    font-size: var(--text-body-sm);
+    font-weight: var(--fw-medium);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--primary-light);
+    margin-bottom: var(--space-12);
+  }
+
+  h1 {
+    font-family: var(--font-heading);
+    font-size: var(--text-h1);
+    font-weight: var(--fw-semibold);
+    line-height: var(--lh-h1);
+    color: var(--foreground);
+    max-width: 640px;
+    margin-bottom: var(--space-16);
+  }
+
+  .legal-meta {
+    font-size: var(--text-body-sm);
+    color: var(--muted-foreground);
+    opacity: 0.7;
+  }
+
+  /* Body */
+  .legal-body {
+    padding: var(--space-64) var(--space-32) var(--space-96);
+  }
+
+  .legal-container {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  /* Sections */
+  .legal-section {
+    padding-bottom: var(--space-48);
+    margin-bottom: var(--space-48);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .legal-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+
+  h2 {
+    font-family: var(--font-heading);
+    font-size: var(--text-h6);
+    font-weight: var(--fw-semibold);
+    color: var(--foreground);
+    margin-bottom: var(--space-16);
+  }
+
+  p {
+    font-size: var(--text-body-lg);
+    line-height: 1.8;
+    color: var(--muted-foreground);
+    margin-bottom: var(--space-16);
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+  ul {
+    margin: var(--space-8) 0 var(--space-16) var(--space-24);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+  }
+
+  li {
+    font-size: var(--text-body-lg);
+    line-height: 1.7;
+    color: var(--muted-foreground);
+    padding-left: var(--space-8);
+  }
+
+  a {
+    color: var(--primary-light);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: color-mix(in srgb, var(--primary-light) 40%, transparent);
+    transition: text-decoration-color 0.2s;
+  }
+
+  a:hover {
+    text-decoration-color: var(--primary-light);
+  }
+
+  @media (max-width: 640px) {
+    .legal-hero {
+      padding: var(--space-64) var(--space-24) var(--space-48);
+    }
+    .legal-body {
+      padding: var(--space-48) var(--space-24) var(--space-64);
+    }
+  }
+</style>

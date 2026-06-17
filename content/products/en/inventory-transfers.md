@@ -1,6 +1,6 @@
 ---
 metaTitle: "Inventory Transfers Between Locations | Stockifi"
-metaDescription: "Move stock between your locations inside the periodic count, so every site's variance and cost stays accurate."
+metaDescription: "Move stock between locations inside the periodic count. Stockifi tracks every transfer so each site's variance and food cost stays accurate. Book a demo now."
 eyebrow: "Inventory transfers"
 heading: "Keep both sites accurate when stock moves"
 subhead: "When stock moves between your locations, you make the move in Stockifi against the period's count. Each site's count and cost stay right, so the group's numbers reconcile."
