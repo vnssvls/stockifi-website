@@ -24,9 +24,9 @@ const STRINGS = {
     firstNamePh: 'John',         lastNamePh: 'Smith',
     emailPh: 'name@email.com',   phonePh: '+47 00 00 00 00',
     companyPh: 'Restaurant AS',  selectPh: 'Select...',
-    loc1: '1 location',          loc2: '2–5 locations',
-    loc3: '6–15 locations',      loc4: '16–50 locations',
-    loc5: '50+ locations',
+    loc1: '1 location',          loc2: '2 - 4 locations',
+    loc3: '5 - 10 locations',    loc4: '11 - 20 locations',
+    loc5: '20+ locations',
     submit: 'Book a demo',
     submitting: 'Booking...',
     legalPre: 'By submitting, you agree to be contacted by Stockifi in accordance with our',
@@ -66,9 +66,9 @@ const STRINGS = {
     firstNamePh: 'Ola',          lastNamePh: 'Nordmann',
     emailPh: 'navn@epost.com',   phonePh: '+47 00 00 00 00',
     companyPh: 'Restaurant AS',  selectPh: 'Velg...',
-    loc1: '1 lokasjon',          loc2: '2–5 lokasjoner',
-    loc3: '6–15 lokasjoner',     loc4: '16–50 lokasjoner',
-    loc5: '50+ lokasjoner',
+    loc1: '1 lokasjon',          loc2: '2 - 4 lokasjoner',
+    loc3: '5 - 10 lokasjoner',   loc4: '11 - 20 lokasjoner',
+    loc5: '20+ lokasjoner',
     submit: 'Book en demo',
     submitting: 'Booker...',
     legalPre: 'Ved å sende inn godtar du at Stockifi kontakter deg i henhold til vår',
@@ -108,9 +108,9 @@ const STRINGS = {
     firstNamePh: 'Max',          lastNamePh: 'Mustermann',
     emailPh: 'name@email.com',   phonePh: '+49 00 00 00 00',
     companyPh: 'Restaurant GmbH', selectPh: 'Bitte wählen...',
-    loc1: '1 Standort',          loc2: '2–5 Standorte',
-    loc3: '6–15 Standorte',      loc4: '16–50 Standorte',
-    loc5: '50+ Standorte',
+    loc1: '1 Standort',          loc2: '2 - 4 Standorte',
+    loc3: '5 - 10 Standorte',    loc4: '11 - 20 Standorte',
+    loc5: '20+ Standorte',
     submit: 'Demo buchen',
     submitting: 'Wird gebucht...',
     legalPre: 'Mit dem Absenden stimmen Sie zu, dass Stockifi Sie gemäß unserer',
@@ -150,8 +150,8 @@ const STRINGS = {
     firstNamePh: 'Lars',         lastNamePh: 'Jensen',
     emailPh: 'navn@email.com',   phonePh: '+45 00 00 00 00',
     companyPh: 'Restaurant A/S', selectPh: 'Vælg...',
-    loc1: '1 lokation',          loc2: '2–5 lokationer',
-    loc3: '6–15 lokationer',     loc4: '16–50 lokationer',
+    loc1: '1 lokation',          loc2: '2 - 4 lokationer',
+    loc3: '5 - 10 lokationer',   loc4: '11 - 20 lokationer',
     loc5: '50+ lokationer',
     submit: 'Book en demo',
     submitting: 'Booker...',
@@ -192,9 +192,9 @@ const STRINGS = {
     firstNamePh: 'Anna',         lastNamePh: 'Svensson',
     emailPh: 'namn@email.com',   phonePh: '+46 00 00 00 00',
     companyPh: 'Restaurant AB',  selectPh: 'Välj...',
-    loc1: '1 restaurang',        loc2: '2–5 restauranger',
-    loc3: '6–15 restauranger',   loc4: '16–50 restauranger',
-    loc5: '50+ restauranger',
+    loc1: '1 restaurang',        loc2: '2 - 4 restauranger',
+    loc3: '5 - 10 restauranger', loc4: '11 - 20 restauranger',
+    loc5: '20+ restauranger',
     submit: 'Boka en demo',
     submitting: 'Bokar...',
     legalPre: 'Genom att skicka in godkänner du att Stockifi kontaktar dig enligt vår',
@@ -234,9 +234,9 @@ const STRINGS = {
     firstNamePh: 'Jan',          lastNamePh: 'de Vries',
     emailPh: 'naam@email.com',   phonePh: '+31 00 00 00 00',
     companyPh: 'Restaurant BV',  selectPh: 'Selecteer...',
-    loc1: '1 locatie',           loc2: '2–5 locaties',
-    loc3: '6–15 locaties',       loc4: '16–50 locaties',
-    loc5: '50+ locaties',
+    loc1: '1 locatie',           loc2: '2 - 4 locaties',
+    loc3: '5 - 10 locaties',     loc4: '11 - 20 locaties',
+    loc5: '20+ locaties',
     submit: 'Boek een demo',
     submitting: 'Bezig met boeken...',
     legalPre: 'Door te verzenden ga je akkoord dat Stockifi contact met je opneemt in overeenstemming met ons',
@@ -353,10 +353,10 @@ const s = STRINGS[locale as keyof typeof STRINGS] ?? STRINGS.en;
                 <select class="bd-select" id="bd-locations" name="number_of_venues" required>
                   <option value="" disabled selected>{s.selectPh}</option>
                   <option value="1">{s.loc1}</option>
-                  <option value="2-5">{s.loc2}</option>
-                  <option value="6-15">{s.loc3}</option>
-                  <option value="16-50">{s.loc4}</option>
-                  <option value="50+">{s.loc5}</option>
+                  <option value="2 - 4">{s.loc2}</option>
+                  <option value="5 - 10">{s.loc3}</option>
+                  <option value="11 - 20">{s.loc4}</option>
+                  <option value="20+">{s.loc5}</option>
                 </select>
                 <svg class="bd-chev" width="16" height="16" viewBox="0 0 24 24" fill="none"
                   stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -975,6 +975,45 @@ const s = STRINGS[locale as keyof typeof STRINGS] ?? STRINGS.en;
 @media (max-width: 480px) {
   .bd-row2 {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 767px) {
+  .bd {
+    padding-top: var(--space-32);
+    padding-bottom: var(--space-48);
+  }
+
+  .bd-h1 {
+    font-size: var(--text-h3);
+    margin-bottom: var(--space-16);
+  }
+
+  .bd-sub {
+    font-size: var(--text-body-sm);
+    margin-bottom: var(--space-16);
+    opacity: 0.6;
+  }
+
+  .bd-list {
+    margin-bottom: var(--space-24);
+    gap: var(--space-12);
+  }
+
+  .bd-stats {
+    display: none;
+  }
+
+  .bd-card {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    overflow: visible;
+  }
+
+  .bd-form {
+    padding: 0;
   }
 }
 </style>
