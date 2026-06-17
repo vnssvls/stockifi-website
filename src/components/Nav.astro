@@ -83,7 +83,10 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
             {productGroups.map((g) => (
               <div class="mega-group">
                 {g.href
-                  ? <a class="mega-group-title mega-group-title--link" href={g.href}>{g.title}</a>
+                  ? <a class="mega-group-title mega-group-title--link" href={g.href}>
+                      {g.title}
+                      <svg class="mega-group-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                    </a>
                   : <p class="mega-group-title">{g.title}</p>
                 }
                 <ul>
@@ -109,7 +112,15 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
             {t.solutions}
             <svg class="caret" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg>
           </button>
-          <div class="nav-panel mega mega-2col" id="panel-solutions">
+          <div class="nav-panel mega mega-solutions" id="panel-solutions">
+            <div class="mega-intro">
+              <p class="mega-intro-heading">{t.solutionsTailored}</p>
+              <p class="mega-intro-desc">{t.solutionsTailoredDesc}</p>
+              <a class="mega-cta-btn" href={lp('/solutions')}>
+                {t.viewAllSolutions}
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              </a>
+            </div>
             {solutionsGroups.map((g) => (
               <div class="mega-group">
                 <p class="mega-group-title">{g.title}</p>
@@ -128,9 +139,6 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
                 </ul>
               </div>
             ))}
-            <div class="mega-footer">
-              <a class="mega-footer-cta" href={lp('/solutions')}>{t.viewAllSolutions} →</a>
-            </div>
           </div>
         </li>
 
@@ -403,10 +411,11 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
   /* Dark, icon-tile mega menu. Full nav-bar width at desktop (see @media lg below).
      Items carry an icon tile, title, and one-line description. */
   .mega { padding: var(--space-24); }
-  .mega-2col {
+  .mega-solutions {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-24) var(--space-48);
+    grid-template-columns: 320px 1fr 1fr;
+    gap: var(--space-24) var(--space-32);
+    align-items: stretch;
   }
   .mega-3col {
     display: grid;
@@ -419,18 +428,27 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
     padding: 0 var(--space-12) var(--space-12);
     border-bottom: 1px solid var(--border);
     font-family: var(--font-heading);
-    font-size: var(--text-caption);
-    font-weight: var(--fw-semibold);
-    letter-spacing: 0.08em;
+    font-size: var(--text-body-sm);
+    font-weight: var(--fw-bold);
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--foreground);
   }
   .mega-group-title--link {
     display: block;
     text-decoration: none;
-    transition: color 0.15s;
+    transition: border-color 0.15s;
   }
-  .mega-group-title--link:hover { color: var(--primary); }
+  .mega-group-arrow {
+    display: inline-block;
+    vertical-align: -2px;
+    margin-left: var(--space-4);
+    color: var(--primary);
+    opacity: 0.65;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+  }
+  .mega-group-title--link:hover { border-bottom-color: var(--muted-foreground); }
+  .mega-group-title--link:hover .mega-group-arrow { opacity: 1; transform: translateX(3px); }
 
   .mega-item {
     display: flex;
@@ -457,23 +475,54 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
   .mega-item-title { color: var(--popover-foreground); font-weight: var(--fw-semibold); font-size: var(--text-body-sm); line-height: 1.3; hyphens: auto; overflow-wrap: break-word; }
   .mega-item-desc { color: var(--muted-foreground); font-size: var(--text-caption); line-height: var(--lh-body-sm); hyphens: auto; overflow-wrap: break-word; }
 
-  .mega-footer {
-    grid-column: 1 / -1;
-    padding-top: var(--space-12);
-    border-top: 1px solid var(--border);
+  /* Solutions mega: left image-backed intro block — heading + one-liner overlaid
+     on a moody photo, CTA pinned to the bottom. */
+  .mega-intro {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-12);
+    max-width: 320px;
+    min-height: 340px;
+    padding: var(--space-24);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background-image:
+      linear-gradient(to bottom, rgba(10, 10, 15, 0.95) 0%, rgba(10, 10, 15, 0.74) 38%, rgba(10, 10, 15, 0.74) 60%, rgba(10, 10, 15, 0.96) 100%),
+      url('/media/cta-bg-1.jpg');
+    background-size: cover;
+    background-position: center;
   }
-  .mega-footer-cta {
+  .mega-intro-heading {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: var(--text-h5);
+    font-weight: var(--fw-semibold);
+    line-height: 1.2;
+    color: #FCFBFB;
+  }
+  .mega-intro-desc {
+    margin: 0;
+    font-size: var(--text-body-sm);
+    line-height: var(--lh-body-sm);
+    color: rgba(252, 251, 251, 0.82);
+    max-width: 32ch;
+  }
+  .mega-cta-btn {
+    align-self: flex-start;
+    margin-top: auto;
     display: inline-flex;
     align-items: center;
-    padding: var(--space-8) var(--space-12);
-    border-radius: var(--radius-sm);
+    gap: var(--space-8);
+    color: #FCFBFB;
     font-size: var(--text-body-sm);
-    font-weight: var(--fw-medium);
-    color: var(--muted-foreground);
+    font-weight: var(--fw-semibold);
     text-decoration: none;
-    transition: color 0.15s, background-color 0.15s;
+    white-space: nowrap;
   }
-  .mega-footer-cta:hover { color: var(--foreground); background: var(--accent); }
+  .mega-cta-btn svg { flex: none; transition: transform 0.15s ease; }
+  .mega-cta-btn:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .mega-cta-btn:hover svg { transform: translateX(4px); }
 
   /* ── Hamburger ─────────────────────────────────────────────────────── */
   .nav-burger {

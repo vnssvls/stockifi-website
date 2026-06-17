@@ -51,6 +51,9 @@ export interface NavStrings {
   integrations: string;
   contact: string;
   viewAllSolutions: string;
+  solutionsTailored: string;
+  solutionsTailoredDesc: string;
+  speakToExpert: string;
 }
 
 const en: NavStrings = {
@@ -71,6 +74,9 @@ const en: NavStrings = {
   savingsCalculator: 'Savings Calculator', comparisons: 'Comparisons', comingSoon: 'Coming soon',
   integrations: 'Integrations', contact: 'Contact',
   viewAllSolutions: 'View all solutions',
+  solutionsTailored: 'Explore solutions tailored for you',
+  solutionsTailoredDesc: 'See how Stockifi fits your operations and the teams who run it.',
+  speakToExpert: 'Speak to an expert',
 };
 
 const no: NavStrings = {
@@ -91,6 +97,9 @@ const no: NavStrings = {
   savingsCalculator: 'Besparelseskalkulator', comparisons: 'Sammenligninger', comingSoon: 'Kommer snart',
   integrations: 'Integrasjoner', contact: 'Kontakt',
   viewAllSolutions: 'Se alle løsninger',
+  solutionsTailored: 'Utforsk løsninger tilpasset deg',
+  solutionsTailoredDesc: 'Se hvordan Stockifi passer driften din og teamene som driver den.',
+  speakToExpert: 'Snakk med en ekspert',
 };
 
 
@@ -113,6 +122,9 @@ const de: NavStrings = {
   savingsCalculator: 'Einsparungsrechner', comparisons: 'Vergleiche', comingSoon: 'Demnächst',
   integrations: 'Integrationen', contact: 'Kontakt',
   viewAllSolutions: 'Alle Lösungen ansehen',
+  solutionsTailored: 'Entdecke Lösungen, die zu dir passen',
+  solutionsTailoredDesc: 'Sieh, wie Stockifi zu deinem Betrieb und den Teams dahinter passt.',
+  speakToExpert: 'Mit einem Experten sprechen',
 };
 
 const da: NavStrings = {
@@ -133,6 +145,9 @@ const da: NavStrings = {
   savingsCalculator: 'Besparelsesberegner', comparisons: 'Sammenligninger', comingSoon: 'Kommer snart',
   integrations: 'Integrationer', contact: 'Kontakt',
   viewAllSolutions: 'Se alle løsninger',
+  solutionsTailored: 'Udforsk løsninger tilpasset dig',
+  solutionsTailoredDesc: 'Se, hvordan Stockifi passer til din drift og teamene bag den.',
+  speakToExpert: 'Tal med en ekspert',
 };
 
 const sv: NavStrings = {
@@ -153,6 +168,9 @@ const sv: NavStrings = {
   savingsCalculator: 'Besparingsräknare', comparisons: 'Jämförelser', comingSoon: 'Kommer snart',
   integrations: 'Integrationer', contact: 'Kontakt',
   viewAllSolutions: 'Se alla lösningar',
+  solutionsTailored: 'Utforska lösningar anpassade för dig',
+  solutionsTailoredDesc: 'Se hur Stockifi passar din verksamhet och teamen som driver den.',
+  speakToExpert: 'Prata med en expert',
 };
 
 const nl: NavStrings = {
@@ -173,6 +191,9 @@ const nl: NavStrings = {
   savingsCalculator: 'Besparingsberekening', comparisons: 'Vergelijkingen', comingSoon: 'Binnenkort',
   integrations: 'Integraties', contact: 'Contact',
   viewAllSolutions: 'Alle oplossingen bekijken',
+  solutionsTailored: 'Ontdek oplossingen op maat',
+  solutionsTailoredDesc: 'Ontdek hoe Stockifi past bij jouw activiteiten en de teams die het runnen.',
+  speakToExpert: 'Spreek met een expert',
 };
 
 const map: Record<string, NavStrings> = { en, no, de, da, sv, nl };
