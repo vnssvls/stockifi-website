@@ -1,21 +1,33 @@
 ---
 // Locale switcher — circular flag + chevron, opens a list of the 6 locked locales.
-// Flags are vendored circle-flags (MIT) in /public/flags. Locale routes (/no/ /da/
-// /de/ /sv/ /nl/) are wired in DC-475; hrefs point at the eventual paths.
-const LOCALES = [
-  { code: 'en', flag: 'gb', label: 'English', href: '/' },
-  { code: 'de', flag: 'de', label: 'Deutsch', href: '/de' },
-  { code: 'nl', flag: 'nl', label: 'Nederlands', href: '/nl' },
-  { code: 'no', flag: 'no', label: 'Norsk', href: '/no' },
-  { code: 'da', flag: 'dk', label: 'Dansk', href: '/da' },
-  { code: 'sv', flag: 'se', label: 'Svenska', href: '/sv' },
-];
+// Flags are vendored circle-flags (MIT) in /public/flags.
+// Strips the current locale prefix from the URL and rebuilds it for each target locale,
+// so switching locale stays on the current page rather than falling back to the home page.
 
 interface Props {
   current?: string;
   mobile?: boolean;
 }
 const { current = 'en', mobile = false } = Astro.props;
+
+// Strip any existing locale prefix to get the bare path
+const pathname = Astro.url.pathname;
+const stripped = pathname.replace(/^\/(no|de|da|sv|nl)(?=\/|$)/, '') || '/';
+
+function localeHref(code: string): string {
+  if (code === 'en') return stripped;
+  return stripped === '/' ? `/${code}` : `/${code}${stripped}`;
+}
+
+const LOCALES = [
+  { code: 'en', flag: 'gb', label: 'English' },
+  { code: 'de', flag: 'de', label: 'Deutsch' },
+  { code: 'nl', flag: 'nl', label: 'Nederlands' },
+  { code: 'no', flag: 'no', label: 'Norsk' },
+  { code: 'da', flag: 'dk', label: 'Dansk' },
+  { code: 'sv', flag: 'se', label: 'Svenska' },
+].map((l) => ({ ...l, href: localeHref(l.code) }));
+
 const active = LOCALES.find((l) => l.code === current) ?? LOCALES[0];
 ---
 
