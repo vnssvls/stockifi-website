@@ -50,6 +50,7 @@ export interface NavStrings {
   comingSoon: string;
   integrations: string;
   contact: string;
+  viewAllSolutions: string;
 }
 
 const en: NavStrings = {
@@ -69,6 +70,7 @@ const en: NavStrings = {
   blog: 'Blog', customerStories: 'Customer Stories', faq: 'FAQ', pressAndMedia: 'Press & Media',
   savingsCalculator: 'Savings Calculator', comparisons: 'Comparisons', comingSoon: 'Coming soon',
   integrations: 'Integrations', contact: 'Contact',
+  viewAllSolutions: 'View all solutions',
 };
 
 const no: NavStrings = {
@@ -88,6 +90,7 @@ const no: NavStrings = {
   blog: 'Blogg', customerStories: 'Kundehistorier', faq: 'FAQ', pressAndMedia: 'Presse & Medier',
   savingsCalculator: 'Besparelseskalkulator', comparisons: 'Sammenligninger', comingSoon: 'Kommer snart',
   integrations: 'Integrasjoner', contact: 'Kontakt',
+  viewAllSolutions: 'Se alle løsninger',
 };
 
 
@@ -109,6 +112,7 @@ const de: NavStrings = {
   blog: 'Blog', customerStories: 'Kundengeschichten', faq: 'FAQ', pressAndMedia: 'Presse & Medien',
   savingsCalculator: 'Einsparungsrechner', comparisons: 'Vergleiche', comingSoon: 'Demnächst',
   integrations: 'Integrationen', contact: 'Kontakt',
+  viewAllSolutions: 'Alle Lösungen ansehen',
 };
 
 const da: NavStrings = {
@@ -128,6 +132,7 @@ const da: NavStrings = {
   blog: 'Blog', customerStories: 'Kundehistorier', faq: 'FAQ', pressAndMedia: 'Presse & Medier',
   savingsCalculator: 'Besparelsesberegner', comparisons: 'Sammenligninger', comingSoon: 'Kommer snart',
   integrations: 'Integrationer', contact: 'Kontakt',
+  viewAllSolutions: 'Se alle løsninger',
 };
 
 const sv: NavStrings = {
@@ -147,6 +152,7 @@ const sv: NavStrings = {
   blog: 'Blogg', customerStories: 'Kundberättelser', faq: 'FAQ', pressAndMedia: 'Press & Media',
   savingsCalculator: 'Besparingsräknare', comparisons: 'Jämförelser', comingSoon: 'Kommer snart',
   integrations: 'Integrationer', contact: 'Kontakt',
+  viewAllSolutions: 'Se alla lösningar',
 };
 
 const nl: NavStrings = {
@@ -166,6 +172,7 @@ const nl: NavStrings = {
   blog: 'Blog', customerStories: 'Klantverhalen', faq: 'FAQ', pressAndMedia: 'Pers & Media',
   savingsCalculator: 'Besparingsberekening', comparisons: 'Vergelijkingen', comingSoon: 'Binnenkort',
   integrations: 'Integraties', contact: 'Contact',
+  viewAllSolutions: 'Alle oplossingen bekijken',
 };
 
 const map: Record<string, NavStrings> = { en, no, de, da, sv, nl };
