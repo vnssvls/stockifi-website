@@ -603,7 +603,7 @@ const s = STRINGS[locale as keyof typeof STRINGS] ?? STRINGS.en;
   border: 1px solid var(--card-border);
   border-radius: var(--radius-xl);
   box-shadow: var(--card-shadow);
-  background: var(--muted);
+  background: color-mix(in srgb, var(--muted) 35%, transparent);
   overflow: hidden;
 }
 
@@ -984,6 +984,11 @@ const s = STRINGS[locale as keyof typeof STRINGS] ?? STRINGS.en;
     padding-bottom: var(--space-48);
   }
 
+  .bd-input,
+  .bd-select {
+    height: 42px;
+  }
+
   .bd-h1 {
     font-size: var(--text-h3);
     margin-bottom: var(--space-16);
@@ -1014,6 +1019,7 @@ const s = STRINGS[locale as keyof typeof STRINGS] ?? STRINGS.en;
 
   .bd-form {
     padding: 0;
+    gap: 0.875rem;
   }
 }
 </style>
