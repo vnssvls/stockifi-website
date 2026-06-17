@@ -180,3 +180,177 @@ const map: Record<string, NavStrings> = { en, no, de, da, sv, nl };
 export function getNavStrings(locale: string): NavStrings {
   return map[locale] ?? en;
 }
+
+// ── Mega menu item descriptions — one line per feature/solution ──────────────
+export interface NavDescs {
+  invoiceAutomation: string; supplierPriceTracking: string; centralKitchen: string;
+  anomalyDetection: string; orderingSuggestions: string;
+  recipeBuilding: string; stockCounting: string; inventoryTransfers: string;
+  wastageTracking: string; dataQuality: string;
+  performanceDashboards: string; varianceAnalysis: string; profitabilityInsights: string;
+  api: string; salesAndUsage: string;
+  independentRestaurants: string; restaurantGroups: string; hotelsWithFnB: string;
+  bars: string; management: string; operations: string; kitchen: string; finance: string;
+}
+
+const enDescs: NavDescs = {
+  invoiceAutomation: 'Supplier invoices read line by line, automatically.',
+  supplierPriceTracking: 'Every price change caught the day it lands.',
+  centralKitchen: 'Cost production and supply your own outlets.',
+  anomalyDetection: 'Flags overcharges and odd line items for review.',
+  orderingSuggestions: 'Know what to reorder before you run short.',
+  recipeBuilding: 'Cost every recipe from live ingredient prices.',
+  stockCounting: 'Count stock on mobile or web, online or off.',
+  inventoryTransfers: 'Track stock moved between your locations.',
+  wastageTracking: 'Log waste and see what it costs you.',
+  dataQuality: 'Clean, validated data behind every report.',
+  performanceDashboards: 'Food cost and margin across every location.',
+  varianceAnalysis: 'Theoretical usage against what actually sold.',
+  profitabilityInsights: 'See the live margin of every menu item.',
+  api: 'Push your data wherever you need it.',
+  salesAndUsage: 'See what sold and how it moved through stock.',
+  independentRestaurants: 'Tighter food cost without the spreadsheets.',
+  restaurantGroups: 'Consolidated cost visibility across sites.',
+  hotelsWithFnB: 'Control across full food and beverage.',
+  bars: 'Know the margin on every drink you pour.',
+  management: 'Margin visibility across the whole operation.',
+  operations: 'Spot waste and price drift early.',
+  kitchen: 'Live dish costs for sharper menu calls.',
+  finance: 'COGS you can trust at month-end.',
+};
+
+const noDescs: NavDescs = {
+  invoiceAutomation: 'Leverandørfakturaer leses linje for linje, automatisk.',
+  supplierPriceTracking: 'Alle prisendringer fanges opp samme dag de skjer.',
+  centralKitchen: 'Kalkul produksjonskostnader og forsyn dine egne utsalgssteder.',
+  anomalyDetection: 'Markerer overprising og uvanlige fakturalinjer for gjennomgang.',
+  orderingSuggestions: 'Vet hva du bør bestille på nytt før du går tom.',
+  recipeBuilding: 'Kalkul hvert oppskrift fra live ingredienspriser.',
+  stockCounting: 'Tell varer på mobil eller web, med eller uten nett.',
+  inventoryTransfers: 'Spor varer som flyttes mellom dine lokasjoner.',
+  wastageTracking: 'Logg svinn og se hva det koster deg.',
+  dataQuality: 'Rene, validerte data bak alle rapporter.',
+  performanceDashboards: 'Varekostnad og margin på tvers av alle lokasjoner.',
+  varianceAnalysis: 'Teoretisk forbruk mot hva som faktisk ble solgt.',
+  profitabilityInsights: 'Se live-marginen på hvert menyelement.',
+  api: 'Send dataene dine dit du trenger dem.',
+  salesAndUsage: 'Se hva som ble solgt og hvordan det beveget seg gjennom lageret.',
+  independentRestaurants: 'Strammere varekostnad uten regnearkene.',
+  restaurantGroups: 'Samlet kostnadsoversikt på tvers av steder.',
+  hotelsWithFnB: 'Full kontroll over mat og drikke.',
+  bars: 'Kjenn marginen på hver drikke du skjenker.',
+  management: 'Marginoversikt for hele driften.',
+  operations: 'Oppdager svinn og prisdrift tidlig.',
+  kitchen: 'Live rettpriser for skarpere menybeslutninger.',
+  finance: 'COGS du kan stole på ved månedsslutt.',
+};
+
+const deDescs: NavDescs = {
+  invoiceAutomation: 'Lieferantenrechnungen werden Zeile für Zeile automatisch gelesen.',
+  supplierPriceTracking: 'Jede Preisänderung am Tag ihres Eingangs erfasst.',
+  centralKitchen: 'Produktionskosten kalkulieren und eigene Standorte beliefern.',
+  anomalyDetection: 'Markiert Überberechnungen und ungewöhnliche Rechnungszeilen zur Prüfung.',
+  orderingSuggestions: 'Wissen, was nachzubestellen ist, bevor der Vorrat ausgeht.',
+  recipeBuilding: 'Jedes Rezept auf Basis aktueller Zutatenpreise kalkulieren.',
+  stockCounting: 'Inventur per App oder Browser, online oder offline.',
+  inventoryTransfers: 'Warenbewegungen zwischen Standorten nachverfolgen.',
+  wastageTracking: 'Schwund dokumentieren und die Kosten sehen.',
+  dataQuality: 'Saubere, validierte Daten hinter jedem Bericht.',
+  performanceDashboards: 'Wareneinsatz und Marge über alle Standorte.',
+  varianceAnalysis: 'Theoretischer Verbrauch gegen tatsächlich Verkauftes.',
+  profitabilityInsights: 'Live-Marge jedes Menüpunkts einsehen.',
+  api: 'Daten dorthin übertragen, wo sie gebraucht werden.',
+  salesAndUsage: 'Sehen, was verkauft wurde und wie es durch den Bestand lief.',
+  independentRestaurants: 'Genauere Lebensmittelkosten ohne Tabellen.',
+  restaurantGroups: 'Konsolidierte Kostenübersicht über alle Standorte.',
+  hotelsWithFnB: 'Volle Kontrolle über Speisen und Getränke.',
+  bars: 'Die Marge auf jeden ausgeschenkten Drink kennen.',
+  management: 'Margenübersicht für den gesamten Betrieb.',
+  operations: 'Schwund und Preisdrift frühzeitig erkennen.',
+  kitchen: 'Live-Gerichtkosten für präzisere Menüentscheidungen.',
+  finance: 'COGS, dem Sie zum Monatsende vertrauen können.',
+};
+
+const daDescs: NavDescs = {
+  invoiceAutomation: 'Leverandørfakturaer læses linje for linje, automatisk.',
+  supplierPriceTracking: 'Alle prisændringer fanget den dag, de sker.',
+  centralKitchen: 'Beregn produktionsomkostninger og forsyner egne salgssteder.',
+  anomalyDetection: 'Markerer overprissætning og usædvanlige fakturalinjer til gennemgang.',
+  orderingSuggestions: 'Vid, hvad der skal genbestilles, inden du løber tør.',
+  recipeBuilding: 'Beregn hvert recept ud fra aktuelle ingredienspriser.',
+  stockCounting: 'Tæl varer på mobil eller web, med eller uden net.',
+  inventoryTransfers: 'Spor varer, der flyttes mellem dine lokationer.',
+  wastageTracking: 'Registrer spild og se, hvad det koster dig.',
+  dataQuality: 'Rene, validerede data bag alle rapporter.',
+  performanceDashboards: 'Matkostprocent og margin på tværs af alle lokationer.',
+  varianceAnalysis: 'Teoretisk forbrug mod, hvad der faktisk blev solgt.',
+  profitabilityInsights: 'Se den live-margin for hvert menupunkt.',
+  api: 'Send dine data derhen, du har brug for det.',
+  salesAndUsage: 'Se, hvad der blev solgt, og hvordan det bevægede sig gennem lageret.',
+  independentRestaurants: 'Strammere matkostprocent uden regneark.',
+  restaurantGroups: 'Samlet kostsynlighed på tværs af steder.',
+  hotelsWithFnB: 'Kontrol på tværs af mad og drikke.',
+  bars: 'Kend marginen på hver drink, du skænker.',
+  management: 'Marginoverblik for hele driften.',
+  operations: 'Opdag spild og prisdrift tidligt.',
+  kitchen: 'Live rettpriser for skarpere menubeslutninger.',
+  finance: 'COGS du kan stole på ved månedsskiftet.',
+};
+
+const svDescs: NavDescs = {
+  invoiceAutomation: 'Leverantörsfakturor läses rad för rad, automatiskt.',
+  supplierPriceTracking: 'Varje prisändring fångad den dag den sker.',
+  centralKitchen: 'Beräkna produktionskostnader och försörj dina egna enheter.',
+  anomalyDetection: 'Flaggar överkostnader och ovanliga fakturarader för granskning.',
+  orderingSuggestions: 'Vet vad som ska beställas om innan du tar slut.',
+  recipeBuilding: 'Beräkna varje recept utifrån aktuella ingredienspriser.',
+  stockCounting: 'Inventera på mobil eller webben, online eller offline.',
+  inventoryTransfers: 'Spåra varor som förflyttas mellan dina platser.',
+  wastageTracking: 'Logga svinn och se vad det kostar dig.',
+  dataQuality: 'Rena, validerade data bakom varje rapport.',
+  performanceDashboards: 'Matkostnad och marginal på alla platser.',
+  varianceAnalysis: 'Teoretisk förbrukning mot vad som faktiskt såldes.',
+  profitabilityInsights: 'Se den aktuella marginalen för varje menyartikel.',
+  api: 'Skicka din data dit du behöver den.',
+  salesAndUsage: 'Se vad som såldes och hur det rörde sig genom lagret.',
+  independentRestaurants: 'Tätare matkostnad utan kalkylbladen.',
+  restaurantGroups: 'Konsoliderad kostnadsöversikt över alla platser.',
+  hotelsWithFnB: 'Full kontroll över mat och dryck.',
+  bars: 'Känn marginalen på varje drink du serverar.',
+  management: 'Marginöversikt för hela verksamheten.',
+  operations: 'Upptäck svinn och prisdrift tidigt.',
+  kitchen: 'Aktuella rättkostnader för skarpare menybeslut.',
+  finance: 'COGS du kan lita på vid månadsslut.',
+};
+
+const nlDescs: NavDescs = {
+  invoiceAutomation: 'Leveranciersfacturen worden regel voor regel automatisch gelezen.',
+  supplierPriceTracking: 'Elke prijswijziging gevangen op de dag dat die binnenkomt.',
+  centralKitchen: 'Bereken productiekosten en bevoorraad je eigen vestigingen.',
+  anomalyDetection: 'Markeert te hoge rekeningen en ongebruikelijke factuurregels ter controle.',
+  orderingSuggestions: 'Weet wat je moet nabestellen voordat je tekortkomt.',
+  recipeBuilding: 'Bereken elk recept op basis van actuele ingrediëntprijzen.',
+  stockCounting: 'Tel voorraad op mobiel of web, online of offline.',
+  inventoryTransfers: 'Volg goederen die tussen je locaties worden verplaatst.',
+  wastageTracking: 'Registreer verspilling en zie wat het je kost.',
+  dataQuality: 'Schone, gevalideerde data achter elk rapport.',
+  performanceDashboards: 'Foodkosten en marge over alle locaties.',
+  varianceAnalysis: 'Theoretisch gebruik versus wat er daadwerkelijk is verkocht.',
+  profitabilityInsights: 'Bekijk de live marge van elk menu-item.',
+  api: 'Stuur je data naar waar je het nodig hebt.',
+  salesAndUsage: 'Zie wat er is verkocht en hoe het door de voorraad is gegaan.',
+  independentRestaurants: 'Nauwkeurigere foodkosten zonder de spreadsheets.',
+  restaurantGroups: 'Geconsolideerd kostenoverzicht over alle locaties.',
+  hotelsWithFnB: 'Controle over het volledige food & beverage-aanbod.',
+  bars: 'Ken de marge op elk drankje dat je inschenkt.',
+  management: 'Margeoverzicht voor de hele operatie.',
+  operations: 'Spoor verspilling en prijsdrift vroeg op.',
+  kitchen: 'Actuele gerechtskosten voor scherpere menubeslissingen.',
+  finance: 'COGS waarop je kunt vertrouwen bij maandafsluiting.',
+};
+
+const descMap: Record<string, NavDescs> = { en: enDescs, no: noDescs, de: deDescs, da: daDescs, sv: svDescs, nl: nlDescs };
+
+export function getNavDescs(locale: string): NavDescs {
+  return descMap[locale] ?? enDescs;
+}

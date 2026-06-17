@@ -9,8 +9,8 @@ import BenefitGrid from '../../components/BenefitGrid.astro';
 import priceIndex from '../../data/price-index.json';
 import userLogos from '../../data/user-logos.json';
 
-const PORTAL_ID  = 'YOUR_PORTAL_ID';
-const FORM_GUID  = 'YOUR_INTRO_FORM_GUID';
+const PORTAL_ID  = '48915892';
+const FORM_GUID  = 'fbcec545-2f2a-418e-a661-20c138914435';
 
 const howItWorksItems = [
   {
@@ -382,7 +382,7 @@ const setupSteps = [
     btnSpinner.hidden = false;
 
     try {
-      if (PORTAL_ID !== 'YOUR_PORTAL_ID') {
+      if (FORM_GUID) {
         await fetch(
           `https://api.hsforms.com/submissions/v3/integration/submit/${PORTAL_ID}/${FORM_GUID}`,
           {

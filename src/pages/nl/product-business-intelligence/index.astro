@@ -1,0 +1,41 @@
+---
+// Dutch: Business Intelligence category LP (/nl/product-business-intelligence).
+import Layout from '../../../layouts/Layout.astro';
+import PageHeader from '../../../components/page-headers/PageHeader.astro';
+import ProductCardGrid from '../../../components/ProductCardGrid.astro';
+import CtaEmail from '../../../components/CtaEmail.astro';
+import navIcons from '../../../data/nav-icons.json';
+
+const icons = navIcons as Record<string, string>;
+
+const items = [
+  { heading: 'Prestatiedashboard', body: 'Foodkosten en marge over alle locaties.', href: '/nl/product-business-intelligence/performance-dashboards', icon: icons['element-4'] },
+  { heading: 'Variantieanalyse', body: 'Theoretisch gebruik versus wat er daadwerkelijk is verkocht.', href: '/nl/product-business-intelligence/variance-analysis', icon: icons['presention-chart'] },
+  { heading: 'Winstgevendheidsanalyse', body: 'Bekijk de live marge van elk menu-item.', href: '/nl/product-business-intelligence/profitability', icon: icons['trend-up'] },
+  { heading: 'API', body: 'Stuur je data naar waar je het nodig hebt.', href: '/nl/product-business-intelligence/api', icon: icons['code'] },
+  { heading: 'Verkoop en verbruik', body: 'Zie wat er is verkocht en hoe het door de voorraad is gegaan.', href: '/nl/product-business-intelligence/sales-and-usage', icon: icons['sales-usage'] },
+];
+---
+
+<Layout
+  title="Analyse en business intelligence voor restaurants | Stockifi"
+  description="Dashboards gebouwd op echte factuur- en kassagegevens. Bekijk foodkosten, marge en afwijkingen per gerecht, locatie en periode, en neem beslissingen op basis van accurate cijfers."
+>
+  <PageHeader
+    eyebrow="Business Intelligence"
+    heading="[Placeholder heading]"
+    subhead="[Placeholder subhead]"
+  />
+
+  <section class="section">
+    <div class="container">
+      <ProductCardGrid items={items} />
+    </div>
+  </section>
+
+  <CtaEmail
+    heading="[Placeholder CTA heading]"
+    subhead="[Placeholder CTA subhead]"
+    bgImages={['/media/cta-bg-1.jpg', '/media/cta-bg-2.jpg', '/media/cta-bg-3.jpg', '/media/cta-bg-4.jpg']}
+  />
+</Layout>

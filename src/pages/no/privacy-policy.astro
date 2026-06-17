@@ -1,3 +1,11 @@
 ---
-return Astro.redirect('/privacy-policy', 301);
+import Layout from '../../layouts/Layout.astro';
+import PrivacyPolicyBody from '../../components/legal/PrivacyPolicyBody.astro';
 ---
+
+<Layout
+  title="Privacy Policy | Stockifi"
+  description="How Stockifi collects, uses, and protects your data. Read the full policy to understand your rights and how we handle your information."
+>
+  <PrivacyPolicyBody />
+</Layout>

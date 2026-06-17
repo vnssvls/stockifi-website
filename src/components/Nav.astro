@@ -7,13 +7,14 @@ import Logo from './Logo.astro';
 import Button from './Button.astro';
 import LocaleSwitcher from './LocaleSwitcher.astro';
 import navIcons from '../data/nav-icons.json';
-import { getNavStrings } from '../data/nav-i18n';
+import { getNavStrings, getNavDescs } from '../data/nav-i18n';
 
 // Prefix internal links with the current locale path (e.g. /no/, /de/).
 // EN is the default locale (no prefix).
 const locale = Astro.currentLocale ?? 'en';
 const lp = (path: string) => locale === 'en' ? path : `/${locale}${path}`;
 const t = getNavStrings(locale);
+const d = getNavDescs(locale);
 
 // Mega menus = grouped columns. Grouping is a nav/UX choice, NOT the page/URL structure.
 // Each item carries an icon (key into nav-icons.json, Iconsax linear, currentColor) + a
@@ -21,39 +22,39 @@ const t = getNavStrings(locale);
 // project_website_product_taxonomy.
 const productGroups = [
   { title: t.procurementGroup, href: lp('/product-procurement'), items: [
-    { label: t.invoiceAutomation, href: lp('/product-procurement/invoice-automation'), icon: 'receipt-2', desc: 'Supplier invoices read line by line, automatically.' },
-    { label: t.supplierPriceTracking, href: lp('/product-procurement/supplier-price-tracking'), icon: 'percentage-circle', desc: 'Every price change caught the day it lands.' },
-    { label: t.centralKitchen, href: lp('/product-procurement/central-kitchen'), icon: 'building', desc: 'Cost production and supply your own outlets.' },
-    { label: t.anomalyDetection, href: lp('/product-procurement/anomaly-detection'), icon: 'fluent-wand', desc: 'Flags overcharges and odd line items for review.' },
-    { label: t.orderingSuggestions, href: lp('/product-procurement/ordering-suggestions'), icon: 'ordering-suggestions', desc: 'Know what to reorder before you run short.' },
+    { label: t.invoiceAutomation, href: lp('/product-procurement/invoice-automation'), icon: 'receipt-2', desc: d.invoiceAutomation },
+    { label: t.supplierPriceTracking, href: lp('/product-procurement/supplier-price-tracking'), icon: 'percentage-circle', desc: d.supplierPriceTracking },
+    { label: t.centralKitchen, href: lp('/product-procurement/central-kitchen'), icon: 'building', desc: d.centralKitchen },
+    { label: t.anomalyDetection, href: lp('/product-procurement/anomaly-detection'), icon: 'fluent-wand', desc: d.anomalyDetection },
+    { label: t.orderingSuggestions, href: lp('/product-procurement/ordering-suggestions'), icon: 'ordering-suggestions', desc: d.orderingSuggestions },
   ] },
   { title: t.inventoryGroup, href: lp('/product-inventory-management'), items: [
-    { label: t.recipeBuilding, href: lp('/product-inventory-management/recipe-building'), icon: 'book', desc: 'Cost every recipe from live ingredient prices.' },
-    { label: t.stockCounting, href: lp('/product-inventory-management/stock-counting'), icon: 'box', desc: 'Count stock on mobile or web, online or off.' },
-    { label: t.inventoryTransfers, href: lp('/product-inventory-management/inventory-transfers'), icon: 'convert-3d-cube', desc: 'Track stock moved between your locations.' },
-    { label: t.wastageTracking, href: lp('/product-inventory-management/wastage-tracking'), icon: 'trash', desc: 'Log waste and see what it costs you.' },
-    { label: t.dataQuality, href: lp('/product-inventory-management/data-quality'), icon: 'data-quality', desc: 'Clean, validated data behind every report.' },
+    { label: t.recipeBuilding, href: lp('/product-inventory-management/recipe-building'), icon: 'book', desc: d.recipeBuilding },
+    { label: t.stockCounting, href: lp('/product-inventory-management/stock-counting'), icon: 'box', desc: d.stockCounting },
+    { label: t.inventoryTransfers, href: lp('/product-inventory-management/inventory-transfers'), icon: 'convert-3d-cube', desc: d.inventoryTransfers },
+    { label: t.wastageTracking, href: lp('/product-inventory-management/wastage-tracking'), icon: 'trash', desc: d.wastageTracking },
+    { label: t.dataQuality, href: lp('/product-inventory-management/data-quality'), icon: 'data-quality', desc: d.dataQuality },
   ] },
   { title: t.biGroup, href: lp('/product-business-intelligence'), items: [
-    { label: t.performanceDashboards, href: lp('/product-business-intelligence/performance-dashboards'), icon: 'element-4', desc: 'Food cost and margin across every location.' },
-    { label: t.varianceAnalysis, href: lp('/product-business-intelligence/variance-analysis'), icon: 'presention-chart', desc: 'Theoretical usage against what actually sold.' },
-    { label: t.profitabilityInsights, href: lp('/product-business-intelligence/profitability'), icon: 'trend-up', desc: 'See the live margin of every menu item.' },
-    { label: t.api, href: lp('/product-business-intelligence/api'), icon: 'code', desc: 'Push your data wherever you need it.' },
-    { label: t.salesAndUsage, href: lp('/product-business-intelligence/sales-and-usage'), icon: 'sales-usage', desc: 'See what sold and how it moved through stock.' },
+    { label: t.performanceDashboards, href: lp('/product-business-intelligence/performance-dashboards'), icon: 'element-4', desc: d.performanceDashboards },
+    { label: t.varianceAnalysis, href: lp('/product-business-intelligence/variance-analysis'), icon: 'presention-chart', desc: d.varianceAnalysis },
+    { label: t.profitabilityInsights, href: lp('/product-business-intelligence/profitability'), icon: 'trend-up', desc: d.profitabilityInsights },
+    { label: t.api, href: lp('/product-business-intelligence/api'), icon: 'code', desc: d.api },
+    { label: t.salesAndUsage, href: lp('/product-business-intelligence/sales-and-usage'), icon: 'sales-usage', desc: d.salesAndUsage },
   ] },
 ];
 const solutionsGroups = [
   { title: t.byType, items: [
-    { label: t.independentRestaurants, href: lp('/solutions/independent-restaurants'), icon: 'fluent-store', desc: 'Tighter food cost without the spreadsheets.' },
-    { label: t.restaurantGroups, href: lp('/solutions/restaurant-groups'), icon: 'buildings-2', desc: 'Consolidated cost visibility across sites.' },
-    { label: t.hotelsWithFnB, href: lp('/solutions/hotels'), icon: 'reserve', desc: 'Control across full food and beverage.' },
-    { label: t.bars, href: lp('/solutions/bars'), icon: 'cocktail', desc: 'Know the margin on every drink you pour.' },
+    { label: t.independentRestaurants, href: lp('/solutions/independent-restaurants'), icon: 'fluent-store', desc: d.independentRestaurants },
+    { label: t.restaurantGroups, href: lp('/solutions/restaurant-groups'), icon: 'buildings-2', desc: d.restaurantGroups },
+    { label: t.hotelsWithFnB, href: lp('/solutions/hotels'), icon: 'reserve', desc: d.hotelsWithFnB },
+    { label: t.bars, href: lp('/solutions/bars'), icon: 'cocktail', desc: d.bars },
   ] },
   { title: t.byTeam, items: [
-    { label: t.management, href: lp('/solutions/management'), icon: 'briefcase', desc: 'Margin visibility across the whole operation.' },
-    { label: t.operations, href: lp('/solutions/operations'), icon: 'setting-2', desc: 'Spot waste and price drift early.' },
-    { label: t.kitchen, href: lp('/solutions/kitchen'), icon: 'chef-hat', desc: 'Live dish costs for sharper menu calls.' },
-    { label: t.finance, href: lp('/solutions/finance'), icon: 'fluent-finance', desc: 'COGS you can trust at month-end.' },
+    { label: t.management, href: lp('/solutions/management'), icon: 'briefcase', desc: d.management },
+    { label: t.operations, href: lp('/solutions/operations'), icon: 'setting-2', desc: d.operations },
+    { label: t.kitchen, href: lp('/solutions/kitchen'), icon: 'chef-hat', desc: d.kitchen },
+    { label: t.finance, href: lp('/solutions/finance'), icon: 'fluent-finance', desc: d.finance },
   ] },
 ];
 const resourcesItems = [

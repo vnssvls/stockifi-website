@@ -1,0 +1,41 @@
+---
+// Danish: Procurement category LP (/da/product-procurement).
+import Layout from '../../../layouts/Layout.astro';
+import PageHeader from '../../../components/page-headers/PageHeader.astro';
+import ProductCardGrid from '../../../components/ProductCardGrid.astro';
+import CtaEmail from '../../../components/CtaEmail.astro';
+import navIcons from '../../../data/nav-icons.json';
+
+const icons = navIcons as Record<string, string>;
+
+const items = [
+  { heading: 'Fakturaautomatisering', body: 'Leverandørfakturaer læses linje for linje, automatisk.', href: '/da/product-procurement/invoice-automation', icon: icons['receipt-2'], image: '/media/product-invoice-automation.png' },
+  { heading: 'Leverandørprisovervågning', body: 'Alle prisændringer fanget den dag, de sker.', href: '/da/product-procurement/supplier-price-tracking', icon: icons['percentage-circle'], image: '/media/product-supplier-price-tracking.png' },
+  { heading: 'Centralkøkken', body: 'Beregn produktionsomkostninger og forsyner egne salgssteder.', href: '/da/product-procurement/central-kitchen', icon: icons['building'], image: '/media/product-central-kitchen.png' },
+  { heading: 'Anomalidetektion', body: 'Markerer overprissætning og usædvanlige fakturalinjer til gennemgang.', href: '/da/product-procurement/anomaly-detection', icon: icons['fluent-wand'], image: '/media/product-anomaly-detection.png' },
+  { heading: 'Bestillingsforslag', body: 'Vid, hvad der skal genbestilles, inden du løber tør.', href: '/da/product-procurement/ordering-suggestions', icon: icons['ordering-suggestions'], image: '/media/product-ordering-suggestions.png' },
+];
+---
+
+<Layout
+  title="Fakturabehandling og leverandørstyring | Stockifi"
+  description="Stockifi læser hver leverandørfaktura, sporer prisændringer og advarer om faktureringsfejl, inden de påvirker din madvarekostprocent, uden manuel indtastning."
+>
+  <PageHeader
+    eyebrow="Indkøb"
+    heading="[Placeholder heading]"
+    subhead="[Placeholder subhead]"
+  />
+
+  <section class="section">
+    <div class="container">
+      <ProductCardGrid items={items} />
+    </div>
+  </section>
+
+  <CtaEmail
+    heading="[Placeholder CTA heading]"
+    subhead="[Placeholder CTA subhead]"
+    bgImages={['/media/cta-bg-1.jpg', '/media/cta-bg-2.jpg', '/media/cta-bg-3.jpg', '/media/cta-bg-4.jpg']}
+  />
+</Layout>

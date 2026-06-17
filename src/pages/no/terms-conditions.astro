@@ -1,3 +1,11 @@
 ---
-return Astro.redirect('/terms-conditions', 301);
+import Layout from '../../layouts/Layout.astro';
+import TermsConditionsBody from '../../components/legal/TermsConditionsBody.astro';
 ---
+
+<Layout
+  title="Terms & Conditions | Stockifi"
+  description="The terms that govern your use of Stockifi, covering access, billing, data handling, and what you can expect from us as a customer."
+>
+  <TermsConditionsBody privacyHref="/no/privacy-policy" />
+</Layout>

@@ -13,8 +13,11 @@ interface Props {
   subhead?: string;
   cta?: { label: string; href: string };
   slugs: string[];
+  /** Optional override for the header column max-width (default 56ch). Lets a
+      single instance widen the heading so it wraps onto fewer lines. */
+  headingMaxWidth?: string;
 }
-const { eyebrow, heading, subhead, cta, slugs } = Astro.props;
+const { eyebrow, heading, subhead, cta, slugs, headingMaxWidth } = Astro.props;
 
 const all = await getCollection('customerStories');
 const byId = new Map(all.map((s) => [s.id, s]));
@@ -33,7 +36,7 @@ const cards = slugs
 <section class="section csb">
   <span class="csb-glow" aria-hidden="true"></span>
   <div class="csb-wide">
-    <header class="csb-head">
+    <header class="csb-head" style={headingMaxWidth ? `max-width:${headingMaxWidth}` : undefined}>
       {eyebrow && <p class="tagline">{eyebrow}</p>}
       <h2 class="csb-heading">{heading}</h2>
       {subhead && <p class="csb-sub text-muted">{subhead}</p>}

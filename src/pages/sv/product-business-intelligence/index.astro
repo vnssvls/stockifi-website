@@ -1,0 +1,41 @@
+---
+// Swedish: Business Intelligence category LP (/sv/product-business-intelligence).
+import Layout from '../../../layouts/Layout.astro';
+import PageHeader from '../../../components/page-headers/PageHeader.astro';
+import ProductCardGrid from '../../../components/ProductCardGrid.astro';
+import CtaEmail from '../../../components/CtaEmail.astro';
+import navIcons from '../../../data/nav-icons.json';
+
+const icons = navIcons as Record<string, string>;
+
+const items = [
+  { heading: 'Prestandaöversikt', body: 'Matkostnad och marginal på alla platser.', href: '/sv/product-business-intelligence/performance-dashboards', icon: icons['element-4'] },
+  { heading: 'Variansanalys', body: 'Teoretisk förbrukning mot vad som faktiskt såldes.', href: '/sv/product-business-intelligence/variance-analysis', icon: icons['presention-chart'] },
+  { heading: 'Lönsamhetsanalys', body: 'Se den aktuella marginalen för varje menyartikel.', href: '/sv/product-business-intelligence/profitability', icon: icons['trend-up'] },
+  { heading: 'API', body: 'Skicka din data dit du behöver den.', href: '/sv/product-business-intelligence/api', icon: icons['code'] },
+  { heading: 'Försäljning och förbrukning', body: 'Se vad som såldes och hur det rörde sig genom lagret.', href: '/sv/product-business-intelligence/sales-and-usage', icon: icons['sales-usage'] },
+];
+---
+
+<Layout
+  title="Analys och business intelligence för restaurang | Stockifi"
+  description="Dashboards byggda på faktiska faktura- och kassadata. Se matkostnad, marginal och avvikelse per rätt, plats och period, och fatta beslut baserade på korrekta siffror."
+>
+  <PageHeader
+    eyebrow="Business Intelligence"
+    heading="[Placeholder heading]"
+    subhead="[Placeholder subhead]"
+  />
+
+  <section class="section">
+    <div class="container">
+      <ProductCardGrid items={items} />
+    </div>
+  </section>
+
+  <CtaEmail
+    heading="[Placeholder CTA heading]"
+    subhead="[Placeholder CTA subhead]"
+    bgImages={['/media/cta-bg-1.jpg', '/media/cta-bg-2.jpg', '/media/cta-bg-3.jpg', '/media/cta-bg-4.jpg']}
+  />
+</Layout>

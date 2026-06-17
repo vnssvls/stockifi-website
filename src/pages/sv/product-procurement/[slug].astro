@@ -23,11 +23,11 @@ export async function getStaticPaths() {
 const { p } = Astro.props;
 const d = p.data;
 const icons = navIcons as Record<string, string>;
-const benefitCards = procurementCards.map((c, i) => ({
+const benefitCards = procurementCards.map((c) => ({
   heading: c.heading,
   body: c.body,
   icon: icons[c.iconKey],
-  image: `/media/cta-bg-${(i % 4) + 1}.jpg`,
+  image: c.image,
 }));
 const ACCOUNTING = new Set(['PowerOffice', 'Tripletex', 'E-conomic', 'Xero', 'Fiken', 'Datev', 'Visma', 'Fortnox', 'Unimicro', 'Xledger', '24SevenOffice', 'SpareBank 1', 'Vandelanotte', 'Corpay']);
 const accountingIntegrations = integrations.filter((i) => ACCOUNTING.has(i.name));
@@ -38,7 +38,7 @@ const accountingIntegrations = integrations.filter((i) => ACCOUNTING.has(i.name)
     eyebrow={d.eyebrow}
     heading={d.heading}
     subhead={d.subhead}
-    cta={{ label: 'Boka en demo', href: '/book-a-demo' }}
+    cta={{ label: 'Boka en demo', href: '/sv/book-a-demo' }}
     ctaVariant="secondary"
     image={d.heroImage}
   />
@@ -85,7 +85,7 @@ const accountingIntegrations = integrations.filter((i) => ACCOUNTING.has(i.name)
     <FaqSplit
       heading={d.faqHeading}
       body="Vad operatörer frågar innan en demo. Fortfarande osäker? Hör av dig så hjälper vi till."
-      contact={{ label: 'Kontakta oss', href: '/contact' }}
+      contact={{ label: 'Kontakta oss', href: '/sv/contact' }}
       items={d.faqs}
     />
   )}
@@ -93,7 +93,7 @@ const accountingIntegrations = integrations.filter((i) => ACCOUNTING.has(i.name)
   <CtaBand
     heading={d.ctaHeading}
     subhead={d.ctaSubhead}
-    primary={{ label: 'Boka en demo', href: '/book-a-demo' }}
+    primary={{ label: 'Boka en demo', href: '/sv/book-a-demo' }}
     secondary={{ label: 'Se priser', href: '/sv/pricing' }}
   />
 </Layout>
