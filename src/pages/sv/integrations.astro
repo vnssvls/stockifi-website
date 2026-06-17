@@ -1,6 +1,6 @@
 ---
 // Integrations page (Figma 67:2342 header + 67:3442 filters + 67:3455 content).
-// Page header (heading + subhead + logo strip) → directory (search/sort/filter +
+// Page header (heading + subhead) → directory (search/sort/filter +
 // card grid) → CTA variant 2 (image-background email capture). Nav + Footer come
 // from the layout. DRAFT copy.
 import Layout from '../../layouts/Layout.astro';
@@ -21,11 +21,6 @@ const items = [...live]
   .sort((a, b) => a.name.localeCompare(b.name))
   .map((x) => ({ name: x.name, category: x.category, logo: x.logo }));
 
-// Recognizable subset for the header strip (rendered as uniform white silhouettes).
-const stripNames = ['Square', 'Lightspeed', 'Xero', 'Quickbooks', 'Visma', 'Fortnox', 'Mews', 'Wolt', 'Tripletex', 'Trivec'];
-const strip = stripNames
-  .map((n) => live.find((x) => x.name === n))
-  .filter((x): x is (typeof live)[number] => Boolean(x));
 ---
 
 <Layout
@@ -36,11 +31,7 @@ const strip = stripNames
     eyebrow="Integrationer"
     heading="Stockifi fungerar med de system du redan använder"
     subhead="Koppla ditt bokföringssystem och kassasystem så att fakturor, försäljning och receptkostnader hålls synkroniserade, utan manuell export och utan dubbelinmatning."
-  >
-    <div class="int-strip">
-      {strip.map((s) => <img class="int-strip-logo" src={s.logo} alt={s.name} width="120" height="40" loading="lazy" />)}
-    </div>
-  </PageHeader>
+  />
 
   <IntegrationsDirectory items={items} categories={CATEGORIES} />
 
@@ -51,19 +42,3 @@ const strip = stripNames
   />
 </Layout>
 
-<style>
-  .int-strip {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-32);
-  }
-  /* Uniform white silhouettes so the mixed brand logos read on the dark header */
-  .int-strip-logo {
-    height: 26px;
-    width: auto;
-    filter: brightness(0) invert(1);
-    opacity: 0.55;
-  }
-</style>
