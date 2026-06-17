@@ -91,12 +91,10 @@ import Layout from '../layouts/Layout.astro';
                 <span class="bd-err" id="err-email" aria-live="polite"></span>
               </div>
               <div class="bd-field">
-                <label class="bd-label" for="bd-phone">
-                  Phone
-                  <span class="bd-opt">(optional)</span>
-                </label>
+                <label class="bd-label" for="bd-phone">Phone</label>
                 <input class="bd-input" id="bd-phone" name="phone" type="tel"
-                  placeholder="+47 00 00 00 00" autocomplete="tel" />
+                  placeholder="+47 00 00 00 00" required autocomplete="tel" />
+                <span class="bd-err" id="err-phone" aria-live="polite"></span>
               </div>
             </div>
 
@@ -754,6 +752,7 @@ const REQUIRED = [
   { id: 'bd-fname',     errId: 'err-fname',     msg: 'First name is required.' },
   { id: 'bd-lname',     errId: 'err-lname',     msg: 'Last name is required.' },
   { id: 'bd-email',     errId: 'err-email',     msg: 'A valid work email is required.' },
+  { id: 'bd-phone',     errId: 'err-phone',     msg: 'Phone number is required.' },
   { id: 'bd-company',   errId: 'err-company',   msg: 'Restaurant name is required.' },
   { id: 'bd-locations', errId: 'err-locations', msg: 'Please select a number of locations.' },
 ];
