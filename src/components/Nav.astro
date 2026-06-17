@@ -422,7 +422,7 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
     font-weight: var(--fw-semibold);
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--muted-foreground);
+    color: var(--foreground);
   }
   .mega-group-title--link {
     display: block;
@@ -634,30 +634,52 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
 
 <script>
   // ── Desktop dropdowns: hover + click + keyboard, one open at a time ──
+  // Mega menus are positioned relative to .nav-bar (not the nav-item), so when the
+  // mouse travels from the trigger into the panel it briefly crosses nav-bar padding
+  // that is outside the nav-item's layout box — firing mouseleave before entering the
+  // panel. A 120ms close delay lets the mouse arrive at the panel and cancel the close.
   const desktopItems = Array.from(document.querySelectorAll<HTMLElement>('.nav-desktop .has-panel'));
+  const timers = new WeakMap<HTMLElement, ReturnType<typeof setTimeout>>();
 
   const closeItem = (item: HTMLElement) => {
     item.classList.remove('is-open');
     item.querySelector('.nav-trigger')?.setAttribute('aria-expanded', 'false');
   };
   const openItem = (item: HTMLElement) => {
-    desktopItems.forEach((other) => { if (other !== item) closeItem(other); });
+    desktopItems.forEach((other) => {
+      if (other !== item) { clearTimeout(timers.get(other)); timers.delete(other); closeItem(other); }
+    });
     item.classList.add('is-open');
     item.querySelector('.nav-trigger')?.setAttribute('aria-expanded', 'true');
+  };
+  const scheduleClose = (item: HTMLElement) => {
+    const t = setTimeout(() => { closeItem(item); timers.delete(item); }, 120);
+    timers.set(item, t);
+  };
+  const cancelClose = (item: HTMLElement) => {
+    clearTimeout(timers.get(item)); timers.delete(item);
   };
 
   desktopItems.forEach((item) => {
     const trigger = item.querySelector('.nav-trigger');
-    item.addEventListener('mouseenter', () => openItem(item));
+    const panel = item.querySelector<HTMLElement>('.nav-panel');
+
+    item.addEventListener('mouseenter', () => { cancelClose(item); openItem(item); });
     item.addEventListener('mouseleave', () => {
-      if (!item.contains(document.activeElement)) closeItem(item);
+      if (!item.contains(document.activeElement)) scheduleClose(item);
     });
+    // Panel may sit outside item's layout box (mega menus) — cancel close when mouse arrives
+    panel?.addEventListener('mouseenter', () => cancelClose(item));
+    panel?.addEventListener('mouseleave', () => {
+      if (!item.contains(document.activeElement)) scheduleClose(item);
+    });
+
     trigger?.addEventListener('click', () => {
-      item.classList.contains('is-open') ? closeItem(item) : openItem(item);
+      item.classList.contains('is-open') ? (cancelClose(item), closeItem(item)) : openItem(item);
     });
-    trigger?.addEventListener('focus', () => openItem(item));
+    trigger?.addEventListener('focus', () => { cancelClose(item); openItem(item); });
     item.addEventListener('focusout', (e) => {
-      if (!item.contains(e.relatedTarget as Node | null)) closeItem(item);
+      if (!item.contains(e.relatedTarget as Node | null)) { cancelClose(item); closeItem(item); }
     });
   });
 
