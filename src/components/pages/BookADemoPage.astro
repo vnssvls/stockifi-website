@@ -1,0 +1,1072 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const locale = Astro.currentLocale ?? 'en';
+
+const STRINGS = {
+  en: {
+    metaTitle: 'Book a Demo | Stockifi',
+    metaDesc: 'Book a 30-minute demo with the Stockifi team. See how Stockifi connects to your POS and accounting software and gives you full visibility over your food costs.',
+    eyebrow: 'Book a demo',
+    h1a: 'See what Stockifi',
+    h1b: 'can do for you',
+    subhead: 'Connect with one of our founders for a walkthrough on the platform, to see how it connects to your systems, and to tell you honestly whether it\'s the right fit.',
+    listHeading: 'Other things we will cover:',
+    items: ['Your current structure', 'What issues you\'re currently facing', 'Your goals and growth plans'],
+    statsUsers: 'users',
+    statsFoodCost: 'food cost improvement',
+    statsDays: '30 days',
+    statsDaysLabel: 'to first results',
+    firstName: 'First name',     lastName: 'Last name',
+    workEmail: 'Work email',     phone: 'Phone',
+    company: 'Venue / company name',
+    locations: 'Number of locations',
+    firstNamePh: 'John',         lastNamePh: 'Smith',
+    emailPh: 'name@email.com',   phonePh: '+47 00 00 00 00',
+    companyPh: 'Restaurant AS',  selectPh: 'Select...',
+    loc1: '1 location',          loc2: '2–5 locations',
+    loc3: '6–15 locations',      loc4: '16–50 locations',
+    loc5: '50+ locations',
+    submit: 'Book a demo',
+    submitting: 'Booking...',
+    legalPre: 'By submitting, you agree to be contacted by Stockifi in accordance with our',
+    legalLink: 'Privacy Policy',
+    legalPost: '.',
+    errFirstName: 'First name is required.',
+    errLastName: 'Last name is required.',
+    errEmail: 'A valid work email is required.',
+    errPhone: 'Phone number is required.',
+    errCompany: 'Restaurant name is required.',
+    errLocations: 'Please select a number of locations.',
+    errInvalidEmail: 'Enter a valid email address.',
+    successH: 'Got it!',
+    successP: 'Our team will be in touch shortly.',
+    successAlt: 'In the meantime, see who else uses Stockifi.',
+    successCta: 'Read customer stories',
+    successCtaHref: '/customer-stories',
+  },
+  no: {
+    metaTitle: 'Book en demo | Stockifi',
+    metaDesc: 'Book en 30 minutters demo med Stockifi-teamet. Se hvordan Stockifi kobler til ditt kassasystem og regnskapsprogram og gir deg full oversikt over varekostnadene dine.',
+    eyebrow: 'Book en demo',
+    h1a: 'Se hva Stockifi',
+    h1b: 'kan gjøre for deg',
+    subhead: 'Snakk med en av grunnleggerne våre for en gjennomgang av plattformen, se hvordan den kobler til systemene dine og hør ærlig vurdering av om det passer for deg.',
+    listHeading: 'Andre ting vi vil gå gjennom:',
+    items: ['Din nåværende struktur', 'Hvilke utfordringer du har i dag', 'Dine mål og vekstplaner'],
+    statsUsers: 'brukere',
+    statsFoodCost: 'forbedring av varekostprosent',
+    statsDays: '30 dager',
+    statsDaysLabel: 'til første resultater',
+    firstName: 'Fornavn',        lastName: 'Etternavn',
+    workEmail: 'Jobb-epost',     phone: 'Telefon',
+    company: 'Restaurantnavn',
+    locations: 'Antall lokasjoner',
+    firstNamePh: 'Ola',          lastNamePh: 'Nordmann',
+    emailPh: 'navn@epost.com',   phonePh: '+47 00 00 00 00',
+    companyPh: 'Restaurant AS',  selectPh: 'Velg...',
+    loc1: '1 lokasjon',          loc2: '2–5 lokasjoner',
+    loc3: '6–15 lokasjoner',     loc4: '16–50 lokasjoner',
+    loc5: '50+ lokasjoner',
+    submit: 'Book en demo',
+    submitting: 'Booker...',
+    legalPre: 'Ved å sende inn godtar du at Stockifi kontakter deg i henhold til vår',
+    legalLink: 'Personvernpolicy',
+    legalPost: '.',
+    errFirstName: 'Fornavn er påkrevd.',
+    errLastName: 'Etternavn er påkrevd.',
+    errEmail: 'En gyldig jobb-epost er påkrevd.',
+    errPhone: 'Telefonnummer er påkrevd.',
+    errCompany: 'Restaurantnavn er påkrevd.',
+    errLocations: 'Velg antall lokasjoner.',
+    errInvalidEmail: 'Skriv inn en gyldig e-postadresse.',
+    successH: 'Takk!',
+    successP: 'Teamet vårt tar kontakt snart.',
+    successAlt: 'I mellomtiden kan du se hvem som bruker Stockifi.',
+    successCta: 'Les kundehistorier',
+    successCtaHref: '/no/customer-stories',
+  },
+  de: {
+    metaTitle: 'Demo buchen | Stockifi',
+    metaDesc: 'Buchen Sie eine 30-minütige Demo mit dem Stockifi-Team. Erfahren Sie, wie Stockifi sich mit Ihrem Kassensystem und Ihrer Buchhaltungssoftware verbindet.',
+    eyebrow: 'Demo buchen',
+    h1a: 'Sehen Sie, was Stockifi',
+    h1b: 'für Sie leisten kann',
+    subhead: 'Sprechen Sie mit einem unserer Gründer für eine Plattform-Demo, erfahren Sie, wie sie sich mit Ihren Systemen verbindet, und hören Sie ehrlich, ob sie die richtige Wahl für Sie ist.',
+    listHeading: 'Weitere Themen der Demo:',
+    items: ['Ihre aktuelle Struktur', 'Welche Herausforderungen Sie aktuell haben', 'Ihre Ziele und Wachstumspläne'],
+    statsUsers: 'Nutzer',
+    statsFoodCost: 'Verbesserung beim Wareneinsatz',
+    statsDays: '30 Tage',
+    statsDaysLabel: 'bis erste Ergebnisse',
+    firstName: 'Vorname',        lastName: 'Nachname',
+    workEmail: 'Geschäftliche E-Mail', phone: 'Telefon',
+    company: 'Restaurant / Unternehmen',
+    locations: 'Anzahl der Standorte',
+    firstNamePh: 'Max',          lastNamePh: 'Mustermann',
+    emailPh: 'name@email.com',   phonePh: '+49 00 00 00 00',
+    companyPh: 'Restaurant GmbH', selectPh: 'Bitte wählen...',
+    loc1: '1 Standort',          loc2: '2–5 Standorte',
+    loc3: '6–15 Standorte',      loc4: '16–50 Standorte',
+    loc5: '50+ Standorte',
+    submit: 'Demo buchen',
+    submitting: 'Wird gebucht...',
+    legalPre: 'Mit dem Absenden stimmen Sie zu, dass Stockifi Sie gemäß unserer',
+    legalLink: 'Datenschutzrichtlinie',
+    legalPost: ' kontaktiert.',
+    errFirstName: 'Vorname ist erforderlich.',
+    errLastName: 'Nachname ist erforderlich.',
+    errEmail: 'Eine gültige Geschäfts-E-Mail ist erforderlich.',
+    errPhone: 'Telefonnummer ist erforderlich.',
+    errCompany: 'Restaurantname ist erforderlich.',
+    errLocations: 'Bitte wählen Sie eine Standortanzahl.',
+    errInvalidEmail: 'Geben Sie eine gültige E-Mail-Adresse ein.',
+    successH: 'Erhalten!',
+    successP: 'Unser Team meldet sich in Kürze.',
+    successAlt: 'Sehen Sie in der Zwischenzeit, wer Stockifi nutzt.',
+    successCta: 'Kundenberichte lesen',
+    successCtaHref: '/de/customer-stories',
+  },
+  da: {
+    metaTitle: 'Book en demo | Stockifi',
+    metaDesc: 'Book en 30-minutters demo med Stockifi-teamet. Se, hvordan Stockifi forbindes med dit kassesystem og regnskabsprogram og giver dig fuld indsigt i dine råvareomkostninger.',
+    eyebrow: 'Book en demo',
+    h1a: 'Se hvad Stockifi',
+    h1b: 'kan gøre for dig',
+    subhead: 'Tal med en af vores stiftere for en gennemgang af platformen, se hvordan den forbindes med dine systemer og hør ærligt, om det er det rette valg for dig.',
+    listHeading: 'Andre emner vi vil dække:',
+    items: ['Din nuværende struktur', 'Hvilke udfordringer du har i dag', 'Dine mål og vækstplaner'],
+    statsUsers: 'brugere',
+    statsFoodCost: 'forbedring af varekostprocent',
+    statsDays: '30 dage',
+    statsDaysLabel: 'til første resultater',
+    firstName: 'Fornavn',        lastName: 'Efternavn',
+    workEmail: 'Arbejdsmail',    phone: 'Telefon',
+    company: 'Restaurantnavn',
+    locations: 'Antal lokationer',
+    firstNamePh: 'Lars',         lastNamePh: 'Jensen',
+    emailPh: 'navn@email.com',   phonePh: '+45 00 00 00 00',
+    companyPh: 'Restaurant A/S', selectPh: 'Vælg...',
+    loc1: '1 lokation',          loc2: '2–5 lokationer',
+    loc3: '6–15 lokationer',     loc4: '16–50 lokationer',
+    loc5: '50+ lokationer',
+    submit: 'Book en demo',
+    submitting: 'Booker...',
+    legalPre: 'Ved at indsende accepterer du, at Stockifi kontakter dig i henhold til vores',
+    legalLink: 'Privatlivspolitik',
+    legalPost: '.',
+    errFirstName: 'Fornavn er påkrævet.',
+    errLastName: 'Efternavn er påkrævet.',
+    errEmail: 'En gyldig arbejdsmail er påkrævet.',
+    errPhone: 'Telefonnummer er påkrævet.',
+    errCompany: 'Restaurantnavn er påkrævet.',
+    errLocations: 'Vælg venligst antal lokationer.',
+    errInvalidEmail: 'Indtast en gyldig e-mailadresse.',
+    successH: 'Modtaget!',
+    successP: 'Vores team kontakter dig snart.',
+    successAlt: 'I mellemtiden kan du se, hvem der bruger Stockifi.',
+    successCta: 'Læs kundehistorier',
+    successCtaHref: '/da/customer-stories',
+  },
+  sv: {
+    metaTitle: 'Boka en demo | Stockifi',
+    metaDesc: 'Boka en 30-minutersdemo med Stockifi-teamet. Se hur Stockifi ansluter till ditt kassasystem och din bokföringsprogramvara och ger dig full insyn i dina livsmedelskostnader.',
+    eyebrow: 'Boka en demo',
+    h1a: 'Se vad Stockifi',
+    h1b: 'kan göra för dig',
+    subhead: 'Prata med en av våra grundare för en genomgång av plattformen, se hur den kopplar till dina system och hör ärligt om den passar din verksamhet.',
+    listHeading: 'Annat vi tar upp:',
+    items: ['Din nuvarande struktur', 'Vilka utmaningar du har idag', 'Dina mål och tillväxtplaner'],
+    statsUsers: 'användare',
+    statsFoodCost: 'förbättring av livsmedelskostnad',
+    statsDays: '30 dagar',
+    statsDaysLabel: 'till första resultaten',
+    firstName: 'Förnamn',        lastName: 'Efternamn',
+    workEmail: 'Jobbmejl',       phone: 'Telefon',
+    company: 'Restaurang / företag',
+    locations: 'Antal restauranger',
+    firstNamePh: 'Anna',         lastNamePh: 'Svensson',
+    emailPh: 'namn@email.com',   phonePh: '+46 00 00 00 00',
+    companyPh: 'Restaurant AB',  selectPh: 'Välj...',
+    loc1: '1 restaurang',        loc2: '2–5 restauranger',
+    loc3: '6–15 restauranger',   loc4: '16–50 restauranger',
+    loc5: '50+ restauranger',
+    submit: 'Boka en demo',
+    submitting: 'Bokar...',
+    legalPre: 'Genom att skicka in godkänner du att Stockifi kontaktar dig enligt vår',
+    legalLink: 'Integritetspolicy',
+    legalPost: '.',
+    errFirstName: 'Förnamn är obligatoriskt.',
+    errLastName: 'Efternamn är obligatoriskt.',
+    errEmail: 'En giltig jobbmejl är obligatorisk.',
+    errPhone: 'Telefonnummer är obligatoriskt.',
+    errCompany: 'Restaurangnamn är obligatoriskt.',
+    errLocations: 'Välj antal restauranger.',
+    errInvalidEmail: 'Ange en giltig e-postadress.',
+    successH: 'Klart!',
+    successP: 'Vårt team hör av sig snart.',
+    successAlt: 'Under tiden kan du se vilka som använder Stockifi.',
+    successCta: 'Läs kundberättelser',
+    successCtaHref: '/sv/customer-stories',
+  },
+  nl: {
+    metaTitle: 'Boek een demo | Stockifi',
+    metaDesc: 'Boek een demo van 30 minuten met het Stockifi-team. Zie hoe Stockifi verbinding maakt met je kassasysteem en boekhoudsoftware en je volledig inzicht geeft in je voedselkosten.',
+    eyebrow: 'Boek een demo',
+    h1a: 'Ontdek wat Stockifi',
+    h1b: 'voor jou kan betekenen',
+    subhead: 'Spreek met een van onze oprichters voor een rondleiding door het platform, zie hoe het verbinding maakt met jouw systemen en hoor eerlijk of het de juiste keuze voor je is.',
+    listHeading: 'Andere onderwerpen die we behandelen:',
+    items: ['Jouw huidige structuur', 'Welke uitdagingen je nu hebt', 'Jouw doelen en groeiplannen'],
+    statsUsers: 'gebruikers',
+    statsFoodCost: 'verbetering in voedselkosten',
+    statsDays: '30 dagen',
+    statsDaysLabel: 'tot eerste resultaten',
+    firstName: 'Voornaam',       lastName: 'Achternaam',
+    workEmail: 'Zakelijk e-mailadres', phone: 'Telefoon',
+    company: 'Restaurant / bedrijfsnaam',
+    locations: 'Aantal locaties',
+    firstNamePh: 'Jan',          lastNamePh: 'de Vries',
+    emailPh: 'naam@email.com',   phonePh: '+31 00 00 00 00',
+    companyPh: 'Restaurant BV',  selectPh: 'Selecteer...',
+    loc1: '1 locatie',           loc2: '2–5 locaties',
+    loc3: '6–15 locaties',       loc4: '16–50 locaties',
+    loc5: '50+ locaties',
+    submit: 'Boek een demo',
+    submitting: 'Bezig met boeken...',
+    legalPre: 'Door te verzenden ga je akkoord dat Stockifi contact met je opneemt in overeenstemming met ons',
+    legalLink: 'Privacybeleid',
+    legalPost: '.',
+    errFirstName: 'Voornaam is vereist.',
+    errLastName: 'Achternaam is vereist.',
+    errEmail: 'Een geldig zakelijk e-mailadres is vereist.',
+    errPhone: 'Telefoonnummer is vereist.',
+    errCompany: 'Restaurantnaam is vereist.',
+    errLocations: 'Selecteer een aantal locaties.',
+    errInvalidEmail: 'Voer een geldig e-mailadres in.',
+    successH: 'Ontvangen!',
+    successP: 'Ons team neemt snel contact met je op.',
+    successAlt: 'Bekijk ondertussen wie Stockifi al gebruikt.',
+    successCta: 'Lees klantverhalen',
+    successCtaHref: '/nl/customer-stories',
+  },
+};
+
+const s = STRINGS[locale as keyof typeof STRINGS] ?? STRINGS.en;
+---
+
+<Layout title={s.metaTitle} description={s.metaDesc}>
+  <div class="bd">
+    <span class="bd-glow" aria-hidden="true"></span>
+
+    <div class="bd-inner">
+
+      <!-- ── Left: pitch ── -->
+      <div class="bd-pitch">
+        <p class="bd-eyebrow">{s.eyebrow}</p>
+        <h1 class="bd-h1">{s.h1a}<br class="bd-break"> {s.h1b}</h1>
+        <p class="bd-sub text-muted">{s.subhead}</p>
+
+        <p class="bd-list-heading">{s.listHeading}</p>
+        <ul class="bd-list" role="list">
+          {s.items.map((item) => (
+            <li class="bd-item">
+              <span class="bd-icon" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+
+        <div class="bd-stats" aria-label="Social proof">
+          <div class="bd-stat">
+            <strong class="bd-stat-n">500+</strong>
+            <span class="bd-stat-l text-muted">{s.statsUsers}</span>
+          </div>
+          <div class="bd-stat-div" aria-hidden="true"></div>
+          <div class="bd-stat">
+            <strong class="bd-stat-n">3%</strong>
+            <span class="bd-stat-l text-muted">{s.statsFoodCost}</span>
+          </div>
+          <div class="bd-stat-div" aria-hidden="true"></div>
+          <div class="bd-stat">
+            <strong class="bd-stat-n">{s.statsDays}</strong>
+            <span class="bd-stat-l text-muted">{s.statsDaysLabel}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Right: form ── -->
+      <div class="bd-form-col">
+        <div class="bd-card" id="bd-card">
+
+          <form id="bd-form" class="bd-form" novalidate>
+            <div class="bd-row2">
+              <div class="bd-field">
+                <label class="bd-label" for="bd-fname">{s.firstName}</label>
+                <input class="bd-input" id="bd-fname" name="firstname" type="text"
+                  placeholder={s.firstNamePh} required autocomplete="given-name" />
+                <span class="bd-err" id="err-fname" aria-live="polite"></span>
+              </div>
+              <div class="bd-field">
+                <label class="bd-label" for="bd-lname">{s.lastName}</label>
+                <input class="bd-input" id="bd-lname" name="lastname" type="text"
+                  placeholder={s.lastNamePh} required autocomplete="family-name" />
+                <span class="bd-err" id="err-lname" aria-live="polite"></span>
+              </div>
+            </div>
+
+            <div class="bd-row2">
+              <div class="bd-field">
+                <label class="bd-label" for="bd-email">{s.workEmail}</label>
+                <input class="bd-input" id="bd-email" name="email" type="email"
+                  placeholder={s.emailPh} required autocomplete="email" />
+                <span class="bd-err" id="err-email" aria-live="polite"></span>
+              </div>
+              <div class="bd-field">
+                <label class="bd-label" for="bd-phone">{s.phone}</label>
+                <input class="bd-input" id="bd-phone" name="phone" type="tel"
+                  placeholder={s.phonePh} required autocomplete="tel" />
+                <span class="bd-err" id="err-phone" aria-live="polite"></span>
+              </div>
+            </div>
+
+            <div class="bd-field">
+              <label class="bd-label" for="bd-company">{s.company}</label>
+              <input class="bd-input" id="bd-company" name="company" type="text"
+                placeholder={s.companyPh} required autocomplete="organization" />
+              <span class="bd-err" id="err-company" aria-live="polite"></span>
+            </div>
+
+            <div class="bd-field">
+              <label class="bd-label" for="bd-locations">{s.locations}</label>
+              <div class="bd-sel-wrap">
+                <select class="bd-select" id="bd-locations" name="num_locations" required>
+                  <option value="" disabled selected>{s.selectPh}</option>
+                  <option value="1">{s.loc1}</option>
+                  <option value="2-5">{s.loc2}</option>
+                  <option value="6-15">{s.loc3}</option>
+                  <option value="16-50">{s.loc4}</option>
+                  <option value="50+">{s.loc5}</option>
+                </select>
+                <svg class="bd-chev" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" aria-hidden="true">
+                  <path d="m6 9 6 6 6-6"/>
+                </svg>
+              </div>
+              <span class="bd-err" id="err-locations" aria-live="polite"></span>
+            </div>
+
+            <button type="submit" class="bd-btn" id="bd-btn">
+              <span id="bd-btn-label">{s.submit}</span>
+              <svg id="bd-btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <svg id="bd-btn-spinner" class="bd-spinner bd-hidden" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="32 10"/>
+              </svg>
+            </button>
+
+            <p class="bd-legal text-muted">
+              {s.legalPre} <a href="/privacy-policy">{s.legalLink}</a>{s.legalPost}
+            </p>
+          </form>
+
+          <div id="bd-success" class="bd-success bd-hidden">
+
+            <!-- Illustration band -->
+            <div class="bd-art" aria-hidden="true">
+              <div class="rla-stage">
+                <span class="rla-star s1"></span>
+                <span class="rla-star s2"></span>
+                <span class="rla-star s3"></span>
+                <span class="rla-star s4"></span>
+                <span class="rla-star s5"></span>
+                <span class="rla-star tiny s6"></span>
+                <span class="rla-star tiny s7"></span>
+                <span class="rla-star tiny s8"></span>
+                <span class="rla-star tiny s9"></span>
+                <span class="rla-star s10"></span>
+                <span class="rla-star tiny s11"></span>
+
+                <div class="rla-puff a"></div>
+                <div class="rla-puff b"></div>
+                <div class="rla-puff c"></div>
+                <div class="rla-puff d"></div>
+                <div class="rla-puff e"></div>
+                <div class="rla-puff f"></div>
+                <div class="rla-puff g"></div>
+                <div class="rla-puff h"></div>
+
+                <span class="rla-spark s1"></span>
+                <span class="rla-spark s2"></span>
+                <span class="rla-spark s3"></span>
+                <span class="rla-spark s4"></span>
+                <span class="rla-spark s5"></span>
+                <span class="rla-spark s6"></span>
+                <span class="rla-spark s7"></span>
+                <span class="rla-spark s8"></span>
+
+                <div class="rla-flame">
+                  <svg viewBox="0 0 22 30" width="22" height="30" preserveAspectRatio="none">
+                    <path d="M11 1 C 3 9, 3 21, 11 29 C 19 21, 19 9, 11 1 Z" fill="#7c4dc2" />
+                    <path d="M11 6 C 7 12, 7 20, 11 26 C 15 20, 15 12, 11 6 Z" fill="#ffce4a" />
+                  </svg>
+                </div>
+
+                <div class="rla-rocket">
+                  <svg viewBox="0 0 56 88" width="56" height="88">
+                    <path d="M28 4 C 40 16, 44 34, 44 52 L 44 70 L 12 70 L 12 52 C 12 34, 16 16, 28 4 Z"
+                      fill="#fff" stroke="#6b3fb8" stroke-width="2.4" stroke-linejoin="round"/>
+                    <path d="M28 4 C 22 12, 18 22, 16 30 L 40 30 C 38 22, 34 12, 28 4 Z"
+                      fill="#b894e8" stroke="#6b3fb8" stroke-width="2.2" stroke-linejoin="round"/>
+                    <circle cx="28" cy="38" r="6.5" fill="#ebdcff" stroke="#6b3fb8" stroke-width="2.2"/>
+                    <circle cx="26" cy="36" r="1.8" fill="#ffffff" opacity="0.9"/>
+                    <path d="M12 54 L 2 76 L 12 70 Z"
+                      fill="#7c4dc2" stroke="#6b3fb8" stroke-width="2.2" stroke-linejoin="round"/>
+                    <path d="M44 54 L 54 76 L 44 70 Z"
+                      fill="#7c4dc2" stroke="#6b3fb8" stroke-width="2.2" stroke-linejoin="round"/>
+                    <line x1="12" y1="60" x2="44" y2="60" stroke="#6b3fb8" stroke-width="1.8"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Copy -->
+            <div class="bd-success-body">
+              <h2 class="bd-success-h">{s.successH}</h2>
+              <p class="bd-success-p">{s.successP}</p>
+              <p class="bd-success-alt text-muted">{s.successAlt}</p>
+              <a class="bd-success-link" href={s.successCtaHref}>
+                {s.successCta}
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" aria-hidden="true">
+                  <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</Layout>
+
+<style>
+.bd-hidden { display: none !important; }
+
+.bd {
+  position: relative;
+  isolation: isolate;
+  overflow-x: clip;
+  padding: var(--section-y) var(--gutter-wide);
+}
+
+.bd-glow {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  width: 120vw;
+  height: 110%;
+  background-image: url('/media/gradient-duo.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.bd-inner {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-48);
+  align-items: start;
+}
+
+.bd-eyebrow {
+  font-size: var(--text-body-sm);
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--primary-light);
+  margin-bottom: var(--space-16);
+}
+
+.bd-h1 {
+  font-size: var(--text-h2);
+  line-height: var(--lh-h2);
+  margin-bottom: var(--space-24);
+}
+
+.bd-break { display: none; }
+
+.bd-sub {
+  font-size: var(--text-body-lg);
+  line-height: var(--lh-body);
+  max-width: 44ch;
+  margin-bottom: var(--space-32);
+  hyphens: auto;
+  overflow-wrap: break-word;
+}
+
+.bd-list-heading {
+  font-size: var(--text-body-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--foreground);
+  margin-bottom: var(--space-12);
+}
+
+.bd-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-48) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.bd-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-12);
+  font-size: var(--text-body);
+  line-height: var(--lh-body);
+}
+
+.bd-icon {
+  color: var(--primary-light);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.bd-stats {
+  display: flex;
+  align-items: center;
+  gap: var(--space-24);
+  flex-wrap: wrap;
+}
+
+.bd-stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.bd-stat-n {
+  font-size: var(--text-h5);
+  font-weight: var(--fw-bold);
+  font-family: var(--font-heading);
+  color: var(--foreground);
+}
+
+.bd-stat-l {
+  font-size: var(--text-body-sm);
+}
+
+.bd-stat-div {
+  width: 1px;
+  height: 2.5rem;
+  background: var(--border);
+  flex-shrink: 0;
+}
+
+.bd-card {
+  --card-shadow: 0 8px 32px -4px rgba(0, 0, 0, 0.25);
+  --card-border: #2e283e7d;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--card-shadow);
+  background: var(--muted);
+  overflow: hidden;
+}
+
+.bd-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: var(--space-32);
+}
+
+.bd-row2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+}
+
+.bd-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.bd-label {
+  font-size: var(--text-body-sm);
+  font-weight: var(--fw-medium);
+  color: var(--foreground);
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.bd-input,
+.bd-select {
+  width: 100%;
+  height: 46px;
+  padding: 0 var(--space-16);
+  background: var(--background);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--foreground);
+  font-size: var(--text-body);
+  font-family: var(--font-body);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.bd-input::placeholder {
+  color: var(--muted-foreground);
+}
+
+.bd-input:focus,
+.bd-select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(149, 101, 219, 0.18);
+}
+
+.bd-field.is-error .bd-input,
+.bd-field.is-error .bd-select {
+  border-color: var(--destructive);
+}
+
+.bd-err {
+  font-size: var(--text-caption);
+  color: var(--destructive);
+  min-height: 1em;
+}
+
+.bd-sel-wrap {
+  position: relative;
+}
+
+.bd-sel-wrap .bd-select {
+  padding-right: 42px;
+  cursor: pointer;
+}
+
+.bd-chev {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted-foreground);
+  pointer-events: none;
+}
+
+.bd-select option {
+  background: var(--popover);
+  color: var(--foreground);
+}
+
+.bd-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-8);
+  width: 100%;
+  height: 50px;
+  padding: 0 var(--space-32);
+  background: var(--primary);
+  color: var(--primary-foreground);
+  border: none;
+  border-radius: var(--radius-full);
+  font-size: var(--text-body);
+  font-weight: var(--fw-semibold);
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: background 0.18s ease, opacity 0.18s ease;
+  margin-top: var(--space-8);
+}
+
+.bd-btn:hover {
+  background: var(--primary-dark);
+}
+
+.bd-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@keyframes bd-spin {
+  to { transform: rotate(360deg); }
+}
+.bd-spinner { animation: bd-spin 0.7s linear infinite; }
+
+.bd-legal {
+  font-size: var(--text-caption);
+  line-height: var(--lh-body);
+  margin-top: var(--space-4);
+}
+
+.bd-legal a {
+  color: var(--primary-light);
+}
+
+.bd-legal a:hover {
+  text-decoration: underline;
+}
+
+.bd-success {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  overflow: hidden;
+}
+
+.bd-art {
+  position: relative;
+  height: 200px;
+  background: transparent;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.rla-stage {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.rla-rocket {
+  position: absolute;
+  left: 50%;
+  bottom: 22px;
+  width: 56px;
+  height: 88px;
+  margin-left: -28px;
+  animation: rla-lift 3.6s cubic-bezier(.55, .05, .6, 1) infinite;
+  z-index: 3;
+}
+
+@keyframes rla-lift {
+  0%        { transform: translate(0, 18px);    opacity: 0; }
+  10%       { opacity: 1; }
+  25%       { transform: translate(0, 14px); }
+  78%       { transform: translate(0, -150px);  opacity: 1; }
+  92%, 100% { transform: translate(0, -220px);  opacity: 0; }
+}
+
+.rla-flame {
+  position: absolute;
+  left: 50%;
+  bottom: 22px;
+  width: 22px;
+  height: 30px;
+  margin-left: -11px;
+  transform-origin: 50% 0%;
+  animation:
+    rla-flame-flicker 0.14s ease-in-out infinite alternate,
+    rla-lift          3.6s cubic-bezier(.55, .05, .6, 1) infinite;
+  z-index: 2;
+}
+
+@keyframes rla-flame-flicker {
+  from { transform: scaleY(1)    scaleX(1); }
+  to   { transform: scaleY(1.18) scaleX(0.85); }
+}
+
+.rla-puff {
+  position: absolute;
+  left: 50%;
+  bottom: 8px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(149, 101, 219, 0.25);
+  transform: translateX(-50%);
+  animation: rla-puff 2s ease-out infinite;
+  z-index: 1;
+}
+.rla-puff.a { animation-delay: 0s;     --rla-x:  -2px; }
+.rla-puff.b { animation-delay: 0.25s; --rla-x: -32px; }
+.rla-puff.c { animation-delay: 0.5s;  --rla-x:  28px; }
+.rla-puff.d { animation-delay: 0.75s; --rla-x: -18px; }
+.rla-puff.e { animation-delay: 1s;    --rla-x:  16px; }
+.rla-puff.f { animation-delay: 1.25s; --rla-x: -42px; }
+.rla-puff.g { animation-delay: 1.5s;  --rla-x:  38px; }
+.rla-puff.h { animation-delay: 1.75s; --rla-x:  -8px; }
+
+@keyframes rla-puff {
+  0%   { transform: translate(calc(-50% + 0px), 0) scale(0.4);                        opacity: 0; }
+  12%  { opacity: 0.65; }
+  100% { transform: translate(calc(-50% + var(--rla-x, 0px)), 14px) scale(2.6); opacity: 0; }
+}
+
+.rla-spark {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #c39df9;
+  opacity: 0;
+  animation: rla-spark 1.4s ease-out infinite;
+  z-index: 2;
+}
+.rla-spark.s1 { bottom: 26px; left: calc(50% - 28px); animation-delay: 0s;    --rla-tx: -16px; --rla-ty: -10px; }
+.rla-spark.s2 { bottom: 26px; left: calc(50% + 24px); animation-delay: 0.2s;  --rla-tx:  18px; --rla-ty: -12px; }
+.rla-spark.s3 { bottom: 18px; left: calc(50% - 20px); animation-delay: 0.5s;  --rla-tx: -22px; --rla-ty:   6px; }
+.rla-spark.s4 { bottom: 18px; left: calc(50% + 18px); animation-delay: 0.7s;  --rla-tx:  22px; --rla-ty:   6px; }
+.rla-spark.s5 { bottom: 32px; left: calc(50% - 10px); animation-delay: 0.35s; --rla-tx:  -8px; --rla-ty: -20px; }
+.rla-spark.s6 { bottom: 32px; left: calc(50% + 8px);  animation-delay: 0.55s; --rla-tx:  10px; --rla-ty: -18px; }
+.rla-spark.s7 { bottom: 14px; left: calc(50% - 34px); animation-delay: 0.9s;  --rla-tx: -30px; --rla-ty:  12px; }
+.rla-spark.s8 { bottom: 14px; left: calc(50% + 30px); animation-delay: 1.1s;  --rla-tx:  28px; --rla-ty:  14px; }
+
+@keyframes rla-spark {
+  0%   { opacity: 0;   transform: translate(0, 0) scale(0.6); }
+  30%  { opacity: 0.9; }
+  100% { opacity: 0;   transform: translate(var(--rla-tx, 0), var(--rla-ty, 0)) scale(0.2); }
+}
+
+.rla-star {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #9565db;
+  opacity: 0.5;
+  animation: rla-twinkle 2.4s ease-in-out infinite;
+}
+.rla-star.tiny { width: 2px; height: 2px; opacity: 0.35; }
+.rla-star.s1  { top: 22px;  left: 14%;  animation-delay: 0s;   }
+.rla-star.s2  { top: 48px;  left: 70%;  animation-delay: 0.5s; }
+.rla-star.s3  { top: 20px;  left: 52%;  animation-delay: 1s;   }
+.rla-star.s4  { top: 78px;  left: 22%;  animation-delay: 1.5s; }
+.rla-star.s5  { top: 104px; left: 80%;  animation-delay: 0.8s; }
+.rla-star.s6  { top: 60px;  left: 42%;  animation-delay: 1.3s; }
+.rla-star.s7  { top: 36px;  left: 90%;  animation-delay: 0.3s; }
+.rla-star.s8  { top: 14px;  left: 32%;  animation-delay: 0.7s; }
+.rla-star.s9  { top: 90px;  left: 58%;  animation-delay: 1.8s; }
+.rla-star.s10 { top: 50px;  left: 6%;   animation-delay: 1.1s; }
+.rla-star.s11 { top: 130px; left: 44%;  animation-delay: 0.4s; }
+
+@keyframes rla-twinkle {
+  0%, 100% { opacity: 0.15; transform: scale(0.7); }
+  50%      { opacity: 0.9;  transform: scale(1.3); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rla-rocket, .rla-flame, .rla-puff, .rla-spark, .rla-star { animation: none; }
+  .rla-rocket { transform: translate(0, -40px); opacity: 1; }
+}
+
+.bd-success-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-12);
+  padding: var(--space-32) var(--space-32) 2.5rem;
+  background: var(--muted);
+  animation: success-rise 0.4s ease-out 0.3s both;
+}
+
+@keyframes success-rise {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.bd-success-h {
+  font-family: var(--font-heading);
+  font-size: var(--text-h3);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-h3);
+  color: var(--foreground);
+}
+
+.bd-success-p {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--lh-body);
+  color: var(--foreground);
+}
+
+.bd-success-alt {
+  font-family: var(--font-body);
+  font-size: var(--text-body-sm);
+  line-height: var(--lh-body);
+  color: var(--muted-foreground);
+}
+
+.bd-success-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+  margin-top: var(--space-8);
+  padding: var(--space-12) var(--space-24);
+  background: transparent;
+  border: 1.5px solid var(--accent);
+  border-radius: var(--radius-md);
+  color: var(--foreground);
+  font-family: var(--font-body);
+  font-size: var(--text-body-sm);
+  font-weight: var(--fw-semibold);
+  text-decoration: none;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.bd-success-link svg { transition: transform 0.18s ease; }
+
+.bd-success-link:hover {
+  border-color: var(--primary-light);
+  background: rgba(149, 101, 219, 0.1);
+  text-decoration: none;
+}
+
+.bd-success-link:hover svg { transform: translateX(2px); }
+
+@media (min-width: 1024px) {
+  .bd-inner {
+    grid-template-columns: 1fr 1.1fr;
+    gap: var(--space-96);
+    align-items: start;
+  }
+
+  .bd-pitch {
+    position: sticky;
+    top: calc(var(--nav-h) + var(--space-32));
+  }
+
+  .bd-break {
+    display: block;
+  }
+}
+
+@media (max-width: 480px) {
+  .bd-row2 {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+<script define:vars={{ jsT: { errFirstName: s.errFirstName, errLastName: s.errLastName, errEmail: s.errEmail, errPhone: s.errPhone, errCompany: s.errCompany, errLocations: s.errLocations, errInvalidEmail: s.errInvalidEmail, submit: s.submit, submitting: s.submitting } }}>
+const PORTAL_ID = 'YOUR_PORTAL_ID';
+const FORM_GUID = 'YOUR_FORM_GUID';
+
+const form = document.getElementById('bd-form');
+const successPanel = document.getElementById('bd-success');
+const submitBtn = document.getElementById('bd-btn');
+const submitLabel = document.getElementById('bd-btn-label');
+const submitArrow = document.getElementById('bd-btn-arrow');
+const submitSpinner = document.getElementById('bd-btn-spinner');
+
+const REQUIRED = [
+  { id: 'bd-fname',     errId: 'err-fname',     msg: jsT.errFirstName },
+  { id: 'bd-lname',     errId: 'err-lname',     msg: jsT.errLastName },
+  { id: 'bd-email',     errId: 'err-email',     msg: jsT.errEmail },
+  { id: 'bd-phone',     errId: 'err-phone',     msg: jsT.errPhone },
+  { id: 'bd-company',   errId: 'err-company',   msg: jsT.errCompany },
+  { id: 'bd-locations', errId: 'err-locations', msg: jsT.errLocations },
+];
+
+function validate() {
+  let valid = true;
+  REQUIRED.forEach(({ id, errId, msg }) => {
+    const el = document.getElementById(id);
+    const err = document.getElementById(errId);
+    const wrapper = el?.closest('.bd-field');
+    if (!el || !err || !wrapper) return;
+
+    const empty = !el.value.trim();
+    const badEmail = id === 'bd-email' && !empty && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value);
+
+    if (empty || badEmail) {
+      wrapper.classList.add('is-error');
+      err.textContent = badEmail ? jsT.errInvalidEmail : msg;
+      valid = false;
+    } else {
+      wrapper.classList.remove('is-error');
+      err.textContent = '';
+    }
+  });
+  return valid;
+}
+
+form?.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  if (!validate()) return;
+
+  submitBtn.disabled = true;
+  submitLabel.textContent = jsT.submitting;
+  submitArrow?.classList.add('bd-hidden');
+  submitSpinner?.classList.remove('bd-hidden');
+
+  const data = new FormData(form);
+  const fields = Array.from(data.entries())
+    .filter(([, v]) => String(v).trim())
+    .map(([name, value]) => ({ name, value: String(value) }));
+
+  try {
+    if (PORTAL_ID !== 'YOUR_PORTAL_ID') {
+      const res = await fetch(
+        `https://api.hsforms.com/submissions/v3/integration/submit/${PORTAL_ID}/${FORM_GUID}`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            fields,
+            context: { pageUri: window.location.href, pageName: document.title },
+          }),
+        }
+      );
+      if (!res.ok) throw new Error('HubSpot submission failed');
+    } else {
+      await new Promise((r) => setTimeout(r, 1400));
+    }
+
+    showSuccess();
+  } catch {
+    submitBtn.disabled = false;
+    submitLabel.textContent = jsT.submit;
+    submitArrow?.classList.remove('bd-hidden');
+    submitSpinner?.classList.add('bd-hidden');
+  }
+});
+
+function showSuccess() {
+  form.classList.add('bd-hidden');
+  successPanel.classList.remove('bd-hidden');
+}
+
+try {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('preview') === 'success') {
+    showSuccess();
+    params.delete('preview');
+    const qs = params.toString();
+    window.history.replaceState({}, '', window.location.pathname + (qs ? '?' + qs : ''));
+  }
+} catch (_) {}
+
+form?.querySelectorAll('.bd-input, .bd-select').forEach((el) => {
+  el.addEventListener('input', () => {
+    el.closest('.bd-field')?.classList.remove('is-error');
+  });
+});
+</script>
