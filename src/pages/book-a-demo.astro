@@ -127,9 +127,12 @@ import Layout from '../layouts/Layout.astro';
 
             <button type="submit" class="bd-btn" id="bd-btn">
               <span id="bd-btn-label">Book a demo</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <svg id="bd-btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2"
                   stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <svg id="bd-btn-spinner" class="bd-spinner bd-hidden" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="32 10"/>
               </svg>
             </button>
 
@@ -484,6 +487,11 @@ import Layout from '../layouts/Layout.astro';
   cursor: not-allowed;
 }
 
+@keyframes bd-spin {
+  to { transform: rotate(360deg); }
+}
+.bd-spinner { animation: bd-spin 0.7s linear infinite; }
+
 .bd-legal {
   font-size: var(--text-caption);
   line-height: var(--lh-body);
@@ -747,6 +755,8 @@ const form = document.getElementById('bd-form');
 const successPanel = document.getElementById('bd-success');
 const submitBtn = document.getElementById('bd-btn');
 const submitLabel = document.getElementById('bd-btn-label');
+const submitArrow = document.getElementById('bd-btn-arrow');
+const submitSpinner = document.getElementById('bd-btn-spinner');
 
 const REQUIRED = [
   { id: 'bd-fname',     errId: 'err-fname',     msg: 'First name is required.' },
@@ -786,6 +796,8 @@ form?.addEventListener('submit', async (e) => {
 
   submitBtn.disabled = true;
   submitLabel.textContent = 'Booking...';
+  submitArrow?.classList.add('bd-hidden');
+  submitSpinner?.classList.remove('bd-hidden');
 
   const data = new FormData(form);
   const fields = Array.from(data.entries())
@@ -806,12 +818,16 @@ form?.addEventListener('submit', async (e) => {
         }
       );
       if (!res.ok) throw new Error('HubSpot submission failed');
+    } else {
+      await new Promise((r) => setTimeout(r, 1400));
     }
 
     showSuccess();
   } catch {
     submitBtn.disabled = false;
     submitLabel.textContent = 'Book a demo';
+    submitArrow?.classList.remove('bd-hidden');
+    submitSpinner?.classList.add('bd-hidden');
   }
 });
 
