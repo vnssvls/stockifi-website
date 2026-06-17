@@ -1,0 +1,44 @@
+---
+metaTitle: "Rechnungsautomatisierung für Restaurants | Stockifi"
+metaDescription: "Stockifi liest Lieferantenrechnungen Zeile für Zeile und überträgt Preise und Mengen direkt in Ihren Wareneinsatz, ohne manuelle Eingabe."
+eyebrow: "Rechnungsautomatisierung"
+heading: "Wareneinsatz ohne Dateneingabe"
+subhead: "Ihr Wareneinsatz bleibt aktuell, ohne dass jemand eine Rechnung eintippen muss. Stockifi liest die Rechnungen direkt aus Ihrer Buchhaltung, sodass Preise und Mengen automatisch einfließen."
+heroImage: "/media/product-invoice-automation.png"
+order: 10
+category: procurement
+howItWorks:
+  tagline: "So funktioniert es"
+  heading: "Direkt aus Ihrer Buchhaltung"
+  body: "Jede Lieferantenrechnung landet bereits in Ihrer Buchhaltung. Stockifi liest sie Zeile für Zeile und überträgt Preise und Mengen direkt in Ihren Wareneinsatz, ohne dass jemand sie manuell eingibt."
+  points:
+    - heading: "Automatisch synchronisiert"
+      body: "Rechnungen fließen ein, sobald sie in Ihrer Buchhaltung eingehen. Es gibt nichts hochzuladen oder zu scannen."
+    - heading: "Zeile für Zeile gelesen"
+      body: "Stockifi erfasst den Preis und die Menge jeder Zutat auf der Rechnung."
+  imageSide: "right"
+  imageAlt: ""
+integrationsHeading: "Kompatibel mit"
+integrationsSubject: "Ihrer Buchhaltungssoftware"
+benefits:
+  - heading: "Nichts geht verloren"
+    body: "Jede Lieferantenrechnung wird gelesen und erfasst."
+  - heading: "Immer aktuell"
+    body: "Preise werden aktualisiert, sobald Rechnungen eingehen, noch vor dem Monatsende."
+  - heading: "Keine Tippfehler"
+    body: "Die Zahlen stammen direkt von der Rechnung, Eingabefehler entfallen."
+  - heading: "Ändert nichts an Ihrem Betrieb"
+    body: "Stockifi liest Ihre Buchhaltung und lässt sie unverändert."
+faqHeading: "Fragen zur Rechnungsautomatisierung"
+faqs:
+  - question: "Muss ich die Rechnungen prüfen, die Stockifi liest?"
+    answer: "Stockifi liest jede Zeile für Sie und markiert auffällige Einträge, zum Beispiel eine Überzahlung oder eine doppelte Abrechnung. Sie prüfen nur die Ausnahmen, nicht jede einzelne Rechnung."
+  - question: "Was passiert, wenn eine Rechnung nie in meiner Buchhaltung ankommt?"
+    answer: "Stockifi liest, was in Ihrer Buchhaltung eingeht. Eine Rechnung, die dort nie ankommt, wird nicht erfasst. Wenn Lieferantenrechnungen konsequent über die Buchhaltung laufen, bleibt das Bild vollständig."
+  - question: "Mit welchen Buchhaltungssystemen funktioniert das?"
+    answer: "Stockifi verbindet sich mit den Buchhaltungssystemen, die Sie bereits nutzen. Teilen Sie uns mit, was Sie einsetzen, und wir bestätigen es in einem kurzen Gespräch."
+  - question: "Funktioniert es neben meinem bestehenden Setup?"
+    answer: "Ja. Stockifi liest die Daten und lässt Ihre Buchhaltungssoftware genau so, wie sie ist."
+ctaHeading: "Bereit, die Rechnungserfassung abzugeben?"
+ctaSubhead: "Buchen Sie ein kurzes Gespräch und wir zeigen Ihnen, was Stockifi in Ihren ersten 30 Tagen aufdeckt."
+---

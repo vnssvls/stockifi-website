@@ -1,0 +1,202 @@
+---
+// Pricing page — Danish (da). Translated from src/pages/pricing.astro.
+// Sections: page header → pricing cards → static logo banner → feature columns (Feature v6) → FAQ (v1 split) → CTA (v1 band).
+import Layout from '../../layouts/Layout.astro';
+import PageHeader from '../../components/page-headers/PageHeader.astro';
+import PricingCards from '../../components/PricingCards.astro';
+import LogoBanner from '../../components/LogoBanner.astro';
+import FeatureColumns from '../../components/features/FeatureColumns.astro';
+import FaqSplit from '../../components/faq/FaqSplit.astro';
+import CtaButton from '../../components/CtaButton.astro';
+import SectionPlaceholder from '../../components/SectionPlaceholder.astro';
+import userLogos from '../../data/user-logos.json';
+
+const plans = [
+  {
+    name: 'Automated',
+    description: 'Til restauranter der vil eliminere manuelle lageropgaver.',
+    features: [
+      'Varetælling på mobil og web',
+      'Offline-tilstand og synkronisering i realtid',
+      'Opskriftsopsætning og sporing af ingrediensomkostninger',
+      'Automatisk fakturabehandling',
+      '30+ regnskabsintegrationer',
+      'Avanceret support',
+    ],
+    cta: { label: 'Kom i gang med Automated', href: '/da/book-a-demo' },
+  },
+  {
+    name: 'Full Control',
+    description: 'Til virksomheder der vil have fuld overblik over omkostninger og overskud.',
+    inherits: 'Automated',
+    features: [
+      'Beregning af opskriftsomkostninger',
+      'Rapporter over afvigelse og spild',
+      'Rapporter over profitstigninger',
+      '40+ kassesystemintegrationer',
+      'Dedikeret kundeservice',
+    ],
+    featured: true,
+    badge: 'Mest populær',
+    cta: { label: 'Kom i gang med Full Control', href: '/da/book-a-demo' },
+  },
+  {
+    name: 'Custom',
+    description: 'Til restaurantkæder der har brug for skræddersyede løsninger.',
+    inherits: 'Full Control',
+    features: [
+      'Integrationer til salg på tværs af kanaler',
+      'Organisationsopsætning',
+      'Tilpassede integrationer',
+      'Data og rapportering på virksomhedsniveau',
+      'Kvartalsvise forretningsgennemgange med Stockifi-eksperter',
+    ],
+    cta: { label: 'Få et tilbud', href: '/da/contact' },
+  },
+];
+
+const featureCols = [
+  {
+    eyebrow: 'Pristransparens',
+    heading: 'Opdage prisstigninger fra leverandører tidligt',
+    body: 'Stockifi læser hver faktura linje for linje, så stigende omkostninger fremgår, inden de æder din margin.',
+    link: { label: 'Læs mere', href: '/da/product/supplier-price-tracking' },
+  },
+  {
+    eyebrow: 'Forbrugskontrol',
+    heading: 'Sammenlign teoretisk og faktisk forbrug',
+    body: 'Se hvad der burde have været brugt op imod hvad der faktisk blev solgt, og find overportering og spild.',
+    link: { label: 'Læs mere', href: '/da/product/pos-integration' },
+  },
+  {
+    eyebrow: 'Fuldt overblik',
+    heading: 'Ét overblik på tværs af lokationer',
+    body: 'Konsolideret rapportering af omkostninger og afvigelser, uanset om du driver ét sted eller tyve.',
+    link: { label: 'Læs mere', href: '/da/solutions/restaurant-groups' },
+  },
+];
+
+const faqs = [
+  {
+    question: 'Hvilke planer tilbyder Stockifi?',
+    answer: 'Stockifi har tre planer: Automated, Full Control og Custom. Højere niveauer tilføjer beregning af opskriftsomkostninger, rapporter over afvigelse og spild, kassesystemintegrationer og opsætning til flere lokationer.',
+  },
+  {
+    question: 'Hvad koster Stockifi?',
+    answer: 'Prisen afhænger af størrelsen og kompleksiteten af din drift, så vi kigger på det sammen på et kort opkald. Det opkald bekræfter også, om Stockifi er den rette løsning til din forretning.',
+  },
+  {
+    question: 'Vil Stockifi finde skjulte tab i mine første 30 dage?',
+    answer: 'Ja. Stockifi garanterer at afdække mindst 30.000 DKK i skjulte tab inden for de første 30 dage, ellers betaler du ingenting. I de fleste tilfælde er beløbet væsentligt højere.',
+  },
+  {
+    question: 'Er min pris fast?',
+    answer: 'Ja. Din månedlige pris er fast. 30-dages garantien fjerner risikoen ved at afprøve Stockifi.',
+  },
+  {
+    question: 'Kan jeg starte uden kreditkort eller langsigtet kontrakt?',
+    answer: 'Ja. Du kan starte uden kreditkort og uden langsigtet kontrakt. Stockifi tjener sin plads ved at levere værdi, ikke ved at låse dig fast.',
+  },
+  {
+    question: 'Kan jeg komme i gang inden for 48 timer?',
+    answer: 'Ja. Stockifi tager sig af det tunge arbejde. Vi importerer dine varelister og opskrifter, opsætter integrationerne og gør alt klar til din første varetælling inden for 48 timer.',
+  },
+  {
+    question: 'Hvad skal jeg bruge for at komme i gang?',
+    answer: 'Et regnskabssystem, helst et kassesystem Stockifi kan koble til, samt dine menuopskrifter. Vi håndterer opsætningen sammen med dig, så der er ingen manuel dataindtastning på din side.',
+  },
+  {
+    question: 'Hvilken support får jeg?',
+    answer: 'Avanceret support på alle planer, dedikeret kundeservice på Full Control og en kvartalsvise forretningsgennemgang på Custom.',
+  },
+  {
+    question: 'Hjælper Stockifi med at forbedre mine avancer?',
+    answer: 'Ja. Stockifi giver dig klart overblik over mad- og drikkevareomkostninger, overportering, spild og prisstigninger fra leverandører. Du forbedrer dine avancer ved at se præcis, hvor pengene forsvinder.',
+  },
+  {
+    question: 'Kan Stockifi koble til mit regnskabsprogram og kassesystem?',
+    answer: 'Ja. Stockifi forbinder til 70+ regnskabs- og kassesystemer og synkroniserer automatisk dine fakturaer, salg og opskrifter. Du får én samlet datakilde uden manuelt arbejde.',
+  },
+  {
+    question: 'Er Stockifi det rigtige for min restaurant?',
+    answer: 'Ja, hvis du har etablerede processer. Stockifi passer til selvstændige restauranter, hotelrestauranter med fuldt mad- og drikkevare-tilbud og restaurantkæder med flere lokationer. Det er mindre egnet til meget tidlige virksomheder, der stadig er ved at opbygge deres processer.',
+  },
+];
+---
+
+<Layout
+  title="Priser — Software til madvareforbrug i restauranter | Stockifi"
+  description="Planer til alle typer drift, fra enkeltrestauranter til restaurantkæder med flere lokationer. Prisen ligger typisk mellem €150 og €400 pr. måned med en risikofri onboarding-garanti."
+>
+  <!-- Pricing hero: header + cards share one decorative gradient backdrop that
+       bleeds behind both sections (not clipped to either). -->
+  <div class="pricing-hero">
+    <!-- 1. Page header -->
+    <PageHeader
+      eyebrow="Priser"
+      heading="Vælg en plan der passer til din forretning"
+      subhead="Alle planer inkluderer vores risikofri onboarding-garanti. Ingen bindingsperiode, opsig når som helst."
+    />
+
+    <!-- 1b. Pricing cards -->
+    <PricingCards plans={plans} />
+  </div>
+
+  <!-- 2. Logo banner — scrolling marquee -->
+  <LogoBanner label="Brugt af 500+ restauranter i hele Europa" logos={userLogos} />
+
+  <!-- 2b. Savings calculator — reserved slot -->
+  <SectionPlaceholder
+    label="Besparelsesberegner"
+    note="Interaktivt estimat over, hvad Stockifi kan spare din forretning. Kommer snart."
+  />
+
+  <!-- 3. Feature section — Feature variant 6 (columns) -->
+  <FeatureColumns
+    tagline="Hvorfor Stockifi"
+    heading="Her tjener planerne sig selv hjem"
+    columns={featureCols}
+  />
+
+  <!-- 4. FAQ — variant 1 (split) -->
+  <FaqSplit
+    heading="Spørgsmål om priser?"
+    body="Det, restauratører spørger om, inden de vælger en plan. Er du stadig i tvivl? Skriv til os, så hjælper vi."
+    contact={{ label: 'Kontakt os', href: '/da/contact' }}
+    items={faqs}
+  />
+
+  <!-- 5. CTA — variant 2.1 (image-backed button) -->
+  <CtaButton
+    heading="Klar til at investere i din rentabilitet?"
+    primary={{ label: 'Kom i gang', href: '/da/book-a-demo' }}
+    secondary={{ label: 'Tal med en ekspert', href: '/da/contact' }}
+    bgImages={['/media/cta-bg-1.jpg', '/media/cta-bg-2.jpg', '/media/cta-bg-3.jpg', '/media/cta-bg-4.jpg']}
+  />
+</Layout>
+
+<style>
+  /* Brand gradient glow (from the ads-LP) bleeds behind BOTH the page header and the
+     pricing cards as one continuous backdrop — not clipped to either section. */
+  .pricing-hero { position: relative; isolation: isolate; }
+  .pricing-hero::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: -6%;
+    transform: translateX(-50%);
+    width: min(1200px, 150%);
+    aspect-ratio: 600 / 500;
+    background-image: url('/media/gradient-centered.png');
+    background-size: contain;
+    background-position: center top;
+    background-repeat: no-repeat;
+    opacity: 0.4;
+    z-index: -1;
+    pointer-events: none;
+  }
+  /* Header + cards read as one block: collapse the stacked section paddings between
+     them (they each carry full section padding otherwise → an awkward double gap). */
+  .pricing-hero :global(.page-header) { padding-bottom: var(--space-32); }
+  .pricing-hero :global(.pricing-cards) { padding-top: 0; }
+</style>

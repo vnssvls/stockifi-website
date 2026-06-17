@@ -1,0 +1,580 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Book a Demo | Stockifi"
+  description="Book a 30-minute demo with the Stockifi team. See how Stockifi connects to your POS and accounting software and gives you full visibility over your food costs."
+>
+  <div class="bd">
+    <span class="bd-glow" aria-hidden="true"></span>
+
+    <div class="bd-inner">
+
+      <!-- ── Left: pitch ── -->
+      <div class="bd-pitch">
+        <p class="bd-eyebrow">Book a Demo</p>
+        <h1 class="bd-h1">See Stockifi<br class="bd-break"> in action.</h1>
+        <p class="bd-sub text-muted">A 30-minute call with one of our co-founders. We walk through the platform live, show how it connects to your existing systems, and tell you honestly whether it's a fit.</p>
+
+        <ul class="bd-list" role="list">
+          <li class="bd-item">
+            <span class="bd-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8"/>
+                <path d="m8 12 3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span>Your call is run by a Stockifi co-founder</span>
+          </li>
+          <li class="bd-item">
+            <span class="bd-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8"/>
+                <path d="m8 12 3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span>See how it connects to your POS and accounting system on screen</span>
+          </li>
+          <li class="bd-item">
+            <span class="bd-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8"/>
+                <path d="m8 12 3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span>No commitment. We'll tell you honestly if it's not the right fit.</span>
+          </li>
+        </ul>
+
+        <div class="bd-stats" aria-label="Social proof">
+          <div class="bd-stat">
+            <strong class="bd-stat-n">500+</strong>
+            <span class="bd-stat-l text-muted">restaurants</span>
+          </div>
+          <div class="bd-stat-div" aria-hidden="true"></div>
+          <div class="bd-stat">
+            <strong class="bd-stat-n">2–3%</strong>
+            <span class="bd-stat-l text-muted">food cost improvement</span>
+          </div>
+          <div class="bd-stat-div" aria-hidden="true"></div>
+          <div class="bd-stat">
+            <strong class="bd-stat-n">30 days</strong>
+            <span class="bd-stat-l text-muted">to first results</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Right: form ── -->
+      <div class="bd-form-col">
+        <div class="bd-card" id="bd-card">
+
+          <form id="bd-form" class="bd-form" novalidate>
+            <div class="bd-row2">
+              <div class="bd-field">
+                <label class="bd-label" for="bd-fname">First name</label>
+                <input class="bd-input" id="bd-fname" name="firstname" type="text"
+                  placeholder="Alex" required autocomplete="given-name" />
+                <span class="bd-err" id="err-fname" aria-live="polite"></span>
+              </div>
+              <div class="bd-field">
+                <label class="bd-label" for="bd-lname">Last name</label>
+                <input class="bd-input" id="bd-lname" name="lastname" type="text"
+                  placeholder="Larsen" required autocomplete="family-name" />
+                <span class="bd-err" id="err-lname" aria-live="polite"></span>
+              </div>
+            </div>
+
+            <div class="bd-field">
+              <label class="bd-label" for="bd-email">Work email</label>
+              <input class="bd-input" id="bd-email" name="email" type="email"
+                placeholder="alex@restaurant.com" required autocomplete="email" />
+              <span class="bd-err" id="err-email" aria-live="polite"></span>
+            </div>
+
+            <div class="bd-field">
+              <label class="bd-label" for="bd-company">Restaurant / company name</label>
+              <input class="bd-input" id="bd-company" name="company" type="text"
+                placeholder="The Blue Door" required autocomplete="organization" />
+              <span class="bd-err" id="err-company" aria-live="polite"></span>
+            </div>
+
+            <div class="bd-field">
+              <label class="bd-label" for="bd-phone">
+                Phone
+                <span class="bd-opt">(optional)</span>
+              </label>
+              <input class="bd-input" id="bd-phone" name="phone" type="tel"
+                placeholder="+47 900 00 000" autocomplete="tel" />
+            </div>
+
+            <div class="bd-field">
+              <label class="bd-label" for="bd-locations">Number of locations</label>
+              <div class="bd-sel-wrap">
+                <select class="bd-select" id="bd-locations" name="num_locations" required>
+                  <option value="" disabled selected>Select...</option>
+                  <option value="1">1 location</option>
+                  <option value="2-5">2–5 locations</option>
+                  <option value="6-15">6–15 locations</option>
+                  <option value="16-50">16–50 locations</option>
+                  <option value="50+">50+ locations</option>
+                </select>
+                <svg class="bd-chev" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" aria-hidden="true">
+                  <path d="m6 9 6 6 6-6"/>
+                </svg>
+              </div>
+              <span class="bd-err" id="err-locations" aria-live="polite"></span>
+            </div>
+
+            <div class="bd-field">
+              <label class="bd-label" for="bd-role">
+                Your role
+                <span class="bd-opt">(optional)</span>
+              </label>
+              <div class="bd-sel-wrap">
+                <select class="bd-select" id="bd-role" name="jobtitle">
+                  <option value="" disabled selected>Select...</option>
+                  <option value="Owner / Operator">Owner / Operator</option>
+                  <option value="General Manager">General Manager</option>
+                  <option value="F&amp;B Director">F&amp;B Director</option>
+                  <option value="Finance / Controller">Finance / Controller</option>
+                  <option value="Other">Other</option>
+                </select>
+                <svg class="bd-chev" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" aria-hidden="true">
+                  <path d="m6 9 6 6 6-6"/>
+                </svg>
+              </div>
+            </div>
+
+            <button type="submit" class="bd-btn" id="bd-btn">
+              <span id="bd-btn-label">Book a demo</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+
+            <p class="bd-legal text-muted">
+              By submitting, you agree to be contacted by Stockifi in accordance with our
+              <a href="/privacy-policy">Privacy Policy</a>.
+            </p>
+          </form>
+
+          <div id="bd-success" class="bd-success" hidden>
+            <div class="bd-success-icon" aria-hidden="true">
+              <svg width="52" height="52" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+                <path d="m8 12 3 3 5-5" stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h2 class="bd-success-h">We'll be in touch.</h2>
+            <p class="text-muted">Simon will reach out within one business day to find a time that works for you.</p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</Layout>
+
+<style>
+/* ── Page shell ── */
+.bd {
+  position: relative;
+  isolation: isolate;
+  overflow-x: clip;
+  padding: var(--section-y) var(--gutter-wide);
+}
+
+.bd-glow {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  width: 120vw;
+  height: 110%;
+  background-image: url('/media/gradient-duo.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.bd-inner {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-48);
+  align-items: start;
+}
+
+/* ── Left: pitch ── */
+.bd-eyebrow {
+  font-size: var(--text-body-sm);
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--primary-light);
+  margin-bottom: var(--space-16);
+}
+
+.bd-h1 {
+  font-size: var(--text-h2);
+  line-height: var(--lh-h2);
+  margin-bottom: var(--space-24);
+}
+
+.bd-break { display: none; }
+
+.bd-sub {
+  font-size: var(--text-body-lg);
+  line-height: var(--lh-body);
+  max-width: 44ch;
+  margin-bottom: var(--space-32);
+}
+
+.bd-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-48) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.bd-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-12);
+  font-size: var(--text-body);
+  line-height: var(--lh-body);
+}
+
+.bd-icon {
+  color: var(--primary-light);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.bd-stats {
+  display: flex;
+  align-items: center;
+  gap: var(--space-24);
+  flex-wrap: wrap;
+}
+
+.bd-stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.bd-stat-n {
+  font-size: var(--text-h5);
+  font-weight: var(--fw-bold);
+  font-family: var(--font-heading);
+  color: var(--foreground);
+}
+
+.bd-stat-l {
+  font-size: var(--text-body-sm);
+}
+
+.bd-stat-div {
+  width: 1px;
+  height: 2.5rem;
+  background: var(--border);
+  flex-shrink: 0;
+}
+
+/* ── Right: form card ── */
+.bd-card {
+  --card-shadow: 0 8px 32px -4px rgba(0, 0, 0, 0.25);
+  --card-border: #2e283e7d;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--card-shadow);
+  background: var(--muted);
+  overflow: hidden;
+}
+
+/* ── Form ── */
+.bd-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: var(--space-32);
+}
+
+.bd-row2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+}
+
+.bd-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.bd-label {
+  font-size: var(--text-body-sm);
+  font-weight: var(--fw-medium);
+  color: var(--foreground);
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.bd-opt {
+  font-weight: var(--fw-regular);
+  color: var(--muted-foreground);
+  font-size: var(--text-caption);
+}
+
+.bd-input,
+.bd-select {
+  width: 100%;
+  height: 46px;
+  padding: 0 var(--space-16);
+  background: var(--background);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--foreground);
+  font-size: var(--text-body);
+  font-family: var(--font-body);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.bd-input::placeholder {
+  color: var(--muted-foreground);
+}
+
+.bd-input:focus,
+.bd-select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(149, 101, 219, 0.18);
+}
+
+.bd-field.is-error .bd-input,
+.bd-field.is-error .bd-select {
+  border-color: var(--destructive);
+}
+
+.bd-err {
+  font-size: var(--text-caption);
+  color: var(--destructive);
+  min-height: 1em;
+}
+
+/* Custom select */
+.bd-sel-wrap {
+  position: relative;
+}
+
+.bd-sel-wrap .bd-select {
+  padding-right: 42px;
+  cursor: pointer;
+}
+
+.bd-chev {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted-foreground);
+  pointer-events: none;
+}
+
+.bd-select option {
+  background: var(--popover);
+  color: var(--foreground);
+}
+
+/* Submit button */
+.bd-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-8);
+  width: 100%;
+  height: 50px;
+  padding: 0 var(--space-32);
+  background: var(--primary);
+  color: var(--primary-foreground);
+  border: none;
+  border-radius: var(--radius-full);
+  font-size: var(--text-body);
+  font-weight: var(--fw-semibold);
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: background 0.18s ease, opacity 0.18s ease;
+  margin-top: var(--space-8);
+}
+
+.bd-btn:hover {
+  background: var(--primary-dark);
+}
+
+.bd-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.bd-legal {
+  font-size: var(--text-caption);
+  line-height: var(--lh-body);
+  margin-top: var(--space-4);
+}
+
+.bd-legal a {
+  color: var(--primary-light);
+}
+
+.bd-legal a:hover {
+  text-decoration: underline;
+}
+
+/* ── Success ── */
+.bd-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: var(--space-16);
+  padding: var(--space-64) var(--space-32);
+  min-height: 320px;
+}
+
+.bd-success-icon {
+  color: var(--primary-light);
+}
+
+.bd-success-h {
+  font-size: var(--text-h4);
+}
+
+/* ── Responsive ── */
+@media (min-width: 1024px) {
+  .bd-inner {
+    grid-template-columns: 1fr 1.1fr;
+    gap: var(--space-96);
+    align-items: center;
+  }
+
+  .bd-pitch {
+    position: sticky;
+    top: calc(var(--nav-h) + var(--space-32));
+  }
+
+  .bd-break {
+    display: block;
+  }
+}
+
+@media (max-width: 480px) {
+  .bd-row2 {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+<script>
+// TODO: replace with your HubSpot portal ID and form GUID
+const PORTAL_ID = 'YOUR_PORTAL_ID';
+const FORM_GUID = 'YOUR_FORM_GUID';
+
+const form = document.getElementById('bd-form');
+const successPanel = document.getElementById('bd-success');
+const submitBtn = document.getElementById('bd-btn');
+const submitLabel = document.getElementById('bd-btn-label');
+
+const REQUIRED = [
+  { id: 'bd-fname',     errId: 'err-fname',     msg: 'First name is required.' },
+  { id: 'bd-lname',     errId: 'err-lname',     msg: 'Last name is required.' },
+  { id: 'bd-email',     errId: 'err-email',     msg: 'A valid work email is required.' },
+  { id: 'bd-company',   errId: 'err-company',   msg: 'Restaurant name is required.' },
+  { id: 'bd-locations', errId: 'err-locations', msg: 'Please select a number of locations.' },
+];
+
+function validate() {
+  let valid = true;
+  REQUIRED.forEach(({ id, errId, msg }) => {
+    const el = document.getElementById(id);
+    const err = document.getElementById(errId);
+    const wrapper = el?.closest('.bd-field');
+    if (!el || !err || !wrapper) return;
+
+    const empty = !el.value.trim();
+    const badEmail = id === 'bd-email' && !empty && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value);
+
+    if (empty || badEmail) {
+      wrapper.classList.add('is-error');
+      err.textContent = badEmail ? 'Enter a valid email address.' : msg;
+      valid = false;
+    } else {
+      wrapper.classList.remove('is-error');
+      err.textContent = '';
+    }
+  });
+  return valid;
+}
+
+form?.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  if (!validate()) return;
+
+  submitBtn.disabled = true;
+  submitLabel.textContent = 'Booking...';
+
+  const data = new FormData(form);
+  const fields = Array.from(data.entries())
+    .filter(([, v]) => String(v).trim())
+    .map(([name, value]) => ({ name, value: String(value) }));
+
+  try {
+    if (PORTAL_ID !== 'YOUR_PORTAL_ID') {
+      const res = await fetch(
+        `https://api.hsforms.com/submissions/v3/integration/submit/${PORTAL_ID}/${FORM_GUID}`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            fields,
+            context: { pageUri: window.location.href, pageName: document.title },
+          }),
+        }
+      );
+      if (!res.ok) throw new Error('HubSpot submission failed');
+    }
+
+    form.hidden = true;
+    successPanel.hidden = false;
+  } catch {
+    submitBtn.disabled = false;
+    submitLabel.textContent = 'Book a demo';
+  }
+});
+
+// Clear error state on input
+form?.querySelectorAll('.bd-input, .bd-select').forEach((el) => {
+  el.addEventListener('input', () => {
+    el.closest('.bd-field')?.classList.remove('is-error');
+  });
+});
+</script>

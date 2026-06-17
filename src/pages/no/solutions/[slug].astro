@@ -1,0 +1,90 @@
+---
+// Norwegian: Solutions item page (/no/solutions/[slug])
+import { getCollection } from 'astro:content';
+import Layout from '../../../layouts/Layout.astro';
+import PageHeaderHero from '../../../components/page-headers/PageHeaderHero.astro';
+import FeatureSplit from '../../../components/features/FeatureSplit.astro';
+import BenefitGrid from '../../../components/BenefitGrid.astro';
+import FeatureShowcase from '../../../components/features/FeatureShowcase.astro';
+import FaqSplit from '../../../components/faq/FaqSplit.astro';
+import TestimonialSliderCollage from '../../../components/TestimonialSliderCollage.astro';
+import CtaEmail from '../../../components/CtaEmail.astro';
+
+export async function getStaticPaths() {
+  return (await getCollection('solutionsNo'))
+    .filter((p) => !p.data.draft)
+    .map((p) => ({ params: { slug: p.id }, props: { p } }));
+}
+
+const { p } = Astro.props;
+const d = p.data;
+---
+
+<Layout title={d.metaTitle} description={d.metaDescription}>
+  <!-- 1. Hero page header -->
+  <PageHeaderHero
+    eyebrow={d.eyebrow}
+    heading={d.heading}
+    subhead={d.subhead}
+    cta={{ label: 'Book en demo', href: '/no/book-a-demo' }}
+  />
+
+  <!-- 2. Feature v2 (Split) — question→answer intro (checklist optional) -->
+  {d.problemHeading && (
+    <FeatureSplit
+      tagline={d.problemTagline}
+      heading={d.problemHeading ?? 'Problemet'}
+      body={d.problemBody}
+      items={d.problem}
+      imageSide="left"
+    />
+  )}
+
+  <!-- 2.1 Grid layout — headerless grid, grouped under Feature v2 -->
+  {d.benefits.length > 0 && (
+    <section class="section sol-grid">
+      <div class="container">
+        <BenefitGrid items={d.benefits} columns={4} />
+      </div>
+    </section>
+  )}
+
+  <!-- 3. Feature v7 (Showcase) — how it helps -->
+  {d.showcaseSubs.length > 0 && (
+    <FeatureShowcase
+      tagline={d.showcaseTagline}
+      heading={d.showcaseHeading ?? 'Slik hjelper det'}
+      body={d.showcaseBody}
+      items={d.showcaseSubs}
+      primary={{ label: 'Book en demo', href: '/no/book-a-demo' }}
+      secondary={{ label: 'Se hvordan det fungerer', href: '/no/#how-it-works' }}
+      imageSide="right"
+    />
+  )}
+
+  <!-- 4. FAQ — variant 1 (split) -->
+  {d.faqs.length > 0 && (
+    <FaqSplit
+      heading={d.faqHeading}
+      body="Hva operatører spør om før en demo. Fortsatt usikker? Ta kontakt, så hjelper vi deg."
+      contact={{ label: 'Kontakt oss', href: '/no/contact' }}
+      items={d.faqs}
+    />
+  )}
+
+  <!-- 5. Customer stories — testimonial slider -->
+  {d.testimonials.length > 0 && (
+    <TestimonialSliderCollage items={d.testimonials} ctaLabel="Les historien" />
+  )}
+
+  <!-- 6. CTA v2 (image-background email capture) -->
+  <CtaEmail
+    heading={d.ctaHeading}
+    subhead={d.ctaSubhead}
+    bgImages={['/media/cta-bg-1.jpg', '/media/cta-bg-2.jpg', '/media/cta-bg-3.jpg', '/media/cta-bg-4.jpg']}
+  />
+</Layout>
+
+<style>
+  .sol-grid { padding-top: 0; }
+</style>

@@ -1,0 +1,46 @@
+---
+// Business Intelligence category LP (/no/product-business-intelligence).
+// Section map: PageHeader → product card grid (4 items, 4-col) → CtaEmail → Footer v2
+// When Sales & Usage page ships, add 5th item and columns will auto-switch to 3-col.
+import Layout from '../../../layouts/Layout.astro';
+import PageHeader from '../../../components/page-headers/PageHeader.astro';
+import ProductCardGrid from '../../../components/ProductCardGrid.astro';
+import CtaEmail from '../../../components/CtaEmail.astro';
+import navIcons from '../../../data/nav-icons.json';
+
+const icons = navIcons as Record<string, string>;
+
+const items = [
+  { heading: 'Resultatdashbord', body: 'Varekostnad og margin på tvers av alle lokasjoner.', href: '/no/product-business-intelligence/performance-dashboards', icon: icons['element-4'] },
+  { heading: 'Avviksanalyse', body: 'Teoretisk forbruk sammenlignet med hva som faktisk ble solgt.', href: '/no/product-business-intelligence/variance-analysis', icon: icons['presention-chart'] },
+  { heading: 'Lønnsomhetsoversikt', body: 'Se den live-marginene på hvert menyelement.', href: '/no/product-business-intelligence/profitability', icon: icons['trend-up'] },
+  { heading: 'API', body: 'Send dataene dine dit du trenger dem.', href: '/no/product-business-intelligence/api', icon: icons['code'] },
+  { heading: 'Salg og forbruk', body: 'Se hva som ble solgt og hvordan det beveget seg gjennom varelageret.', href: '/no/product-business-intelligence/sales-and-usage', icon: icons['sales-usage'] },
+];
+---
+
+<Layout
+  title="Business Intelligence | Stockifi"
+  description="Resultatdashbord, lønnsomhetsoversikt og avviksanalyse bygget på dine faktiske varekostdata."
+>
+  <!-- 1. Page header — centered -->
+  <PageHeader
+    eyebrow="Business Intelligence"
+    heading="[Placeholder heading]"
+    subhead="[Placeholder subhead]"
+  />
+
+  <!-- 2. Product card grid -->
+  <section class="section">
+    <div class="container">
+      <ProductCardGrid items={items} />
+    </div>
+  </section>
+
+  <!-- 3. CTA — variant 2 centered email capture -->
+  <CtaEmail
+    heading="[Placeholder CTA heading]"
+    subhead="[Placeholder CTA subhead]"
+    bgImages={['/media/cta-bg-1.jpg', '/media/cta-bg-2.jpg', '/media/cta-bg-3.jpg', '/media/cta-bg-4.jpg']}
+  />
+</Layout>

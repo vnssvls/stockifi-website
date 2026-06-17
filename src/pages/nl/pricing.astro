@@ -1,0 +1,203 @@
+---
+// Pricing page — Dutch (NL) locale. Translated from src/pages/pricing.astro.
+// Sections: page header → pricing cards → static logo banner → feature columns (Feature v6) → FAQ (v1 split) → CTA (v1 band).
+import Layout from '../../layouts/Layout.astro';
+import PageHeader from '../../components/page-headers/PageHeader.astro';
+import PricingCards from '../../components/PricingCards.astro';
+import LogoBanner from '../../components/LogoBanner.astro';
+import FeatureColumns from '../../components/features/FeatureColumns.astro';
+import FaqSplit from '../../components/faq/FaqSplit.astro';
+import CtaButton from '../../components/CtaButton.astro';
+import SectionPlaceholder from '../../components/SectionPlaceholder.astro';
+import userLogos from '../../data/user-logos.json';
+import faqsPricing from '../../data/faqs-pricing.json';
+
+const plans = [
+  {
+    name: 'Automated',
+    description: 'Voor restaurants die handmatige voorraadtaken willen elimineren.',
+    features: [
+      'Voorraadtelling via mobiel & web',
+      'Offline modus & realtime synchronisatie',
+      'Recepten instellen & ingrediëntkosten bijhouden',
+      'Geautomatiseerde factuurverwerking',
+      '30+ boekhoudintegraties',
+      'Uitgebreide ondersteuning',
+    ],
+    cta: { label: 'Aan de slag met Automated', href: '/nl/book-a-demo' },
+  },
+  {
+    name: 'Full Control',
+    description: 'Voor bedrijven die volledige zichtbaarheid over kosten en winst willen.',
+    inherits: 'Automated',
+    features: [
+      'Receptkostenberekeningen',
+      'Afwijkings- en verspillingsrapporten',
+      'Winstverbeteringsrapporten',
+      '40+ kassasysteemintegraties',
+      'Persoonlijke klantenservice',
+    ],
+    featured: true,
+    badge: 'Meest gekozen',
+    cta: { label: 'Aan de slag met Full Control', href: '/nl/book-a-demo' },
+  },
+  {
+    name: 'Custom',
+    description: 'Voor restaurantgroepen met meerdere locaties die een oplossing op maat nodig hebben.',
+    inherits: 'Full Control',
+    features: [
+      'Multichannel verkoopintegraties',
+      'Organisatie-inrichting',
+      'Maatwerkkoppelingen',
+      'Data & rapportages op enterpriseniveau',
+      'Kwartaalbeoordeling met Stockifi-experts',
+    ],
+    cta: { label: 'Vraag een offerte aan', href: '/nl/contact' },
+  },
+];
+
+const featureCols = [
+  {
+    eyebrow: 'Prijstransparantie',
+    heading: 'Zie leveranciersprijsstijgingen voordat ze je marge raken',
+    body: 'Stockifi leest elke factuur regel voor regel, zodat kostenstijgingen zichtbaar worden voordat ze je marge aantasten.',
+    link: { label: 'Meer informatie', href: '/nl/product/supplier-price-tracking' },
+  },
+  {
+    eyebrow: 'Verbruikscontrole',
+    heading: 'Vergelijk theoretisch en werkelijk verbruik',
+    body: 'Zie wat er theoretisch gebruikt had moeten worden versus wat er daadwerkelijk verkocht is, en identificeer overportering en verspilling.',
+    link: { label: 'Meer informatie', href: '/nl/product/pos-integration' },
+  },
+  {
+    eyebrow: 'Volledig overzicht',
+    heading: 'Één weergave over al je locaties',
+    body: 'Gecombineerde kosten- en afwijkingsrapportages, of je nu één locatie of twintig runt.',
+    link: { label: 'Meer informatie', href: '/nl/solutions/restaurant-groups' },
+  },
+];
+
+const faqs = [
+  {
+    question: 'Welke abonnementen biedt Stockifi aan?',
+    answer: 'Stockifi heeft drie abonnementen: Automated, Full Control en Custom. Hogere niveaus voegen receptkostenberekeningen, afwijkings- en verspillingsrapporten, kassasysteemintegraties en multi-locatie-inrichting toe.',
+  },
+  {
+    question: 'Wat kost Stockifi?',
+    answer: 'De prijs hangt af van de omvang en complexiteit van je bedrijf, dus dat bespreken we samen in een kort gesprek. Dat gesprek bevestigt ook of Stockifi de juiste keuze is voor jouw operatie.',
+  },
+  {
+    question: 'Ontdekt Stockifi verborgen verliezen in mijn eerste 30 dagen?',
+    answer: 'Ja. Stockifi garandeert dat het binnen de eerste 30 dagen minimaal €3.000 aan verborgen verliezen ontdekt, of je betaalt niets. In de meeste gevallen is het bedrag aanzienlijk hoger.',
+  },
+  {
+    question: 'Is mijn prijs vast?',
+    answer: 'Ja. Je maandelijkse prijs staat vast. De 30-dagengarantie haalt het risico weg om Stockifi uit te proberen.',
+  },
+  {
+    question: 'Kan ik starten zonder creditcard of langlopend contract?',
+    answer: 'Ja. Je kunt starten zonder creditcard en zonder langlopend contract. Stockifi verdient zijn plek door waarde te leveren, niet door je vast te houden.',
+  },
+  {
+    question: 'Kan ik binnen 48 uur aan de slag?',
+    answer: 'Ja. Stockifi neemt het zware werk op zich. We importeren je artikellijsten en recepten, zetten de integraties op en bereiden alles voor je eerste voorraadtelling voor, binnen 48 uur.',
+  },
+  {
+    question: 'Wat heb ik nodig om te starten?',
+    answer: 'Een boekhoudsysteem, bij voorkeur een kassasysteem waarmee Stockifi verbinding kan maken, en je menucepten. Wij regelen de inrichting samen met je, dus er is geen handmatige gegevensinvoer aan jouw kant.',
+  },
+  {
+    question: 'Welke ondersteuning krijg ik?',
+    answer: 'Uitgebreide ondersteuning op elk abonnement, persoonlijke klantenservice bij Full Control, en een kwartaalbeoordeling bij Custom.',
+  },
+  {
+    question: 'Helpt Stockifi mijn winstmarges verbeteren?',
+    answer: 'Ja. Stockifi geeft je duidelijk inzicht in foodcost, overportering, verspilling en leveranciersprijswijzigingen. Je verbetert je marges door precies te zien waar geld weglekt.',
+  },
+  {
+    question: 'Koppelt Stockifi aan mijn boekhouding en kassasysteem?',
+    answer: 'Ja. Stockifi koppelt met 70+ boekhoud- en kassasystemen en synchroniseert je facturen, verkopen en recepten automatisch. Zo heb je één betrouwbare bron zonder handmatig werk.',
+  },
+  {
+    question: 'Is Stockifi geschikt voor mijn restaurant?',
+    answer: 'Ja, als je bedrijfsprocessen al goed ingeregeld zijn. Stockifi past bij zelfstandige restaurants, hotelrestaurants met een volledig food-and-drinkbedrijf en restaurantgroepen met meerdere locaties. Het is minder geschikt voor ondernemingen die nog volop in de opbouwfase zitten.',
+  },
+];
+---
+
+<Layout
+  title="Prijzen — Software voor foodcostbeheer | Stockifi"
+  description="Abonnementen voor elke operatie, van zelfstandige restaurants tot restaurantgroepen met meerdere locaties. Met een risicovrije onboardinggarantie."
+>
+  <!-- Pricing hero: header + cards share one decorative gradient backdrop that
+       bleeds behind both sections (not clipped to either). -->
+  <div class="pricing-hero">
+    <!-- 1. Page header -->
+    <PageHeader
+      eyebrow="Prijzen"
+      heading="Kies een abonnement dat bij je past"
+      subhead="Elk abonnement wordt geleverd met onze risicovrije onboardinggarantie. Geen langlopende contracten, op elk moment opzegbaar."
+    />
+
+    <!-- 1b. Pricing cards -->
+    <PricingCards plans={plans} />
+  </div>
+
+  <!-- 2. Logo banner — scrolling marquee (matches the home page) -->
+  <LogoBanner label="Vertrouwd door 500+ restaurants in heel Europa" logos={userLogos} />
+
+  <!-- 2b. Savings calculator — reserved slot, real section lands later -->
+  <SectionPlaceholder
+    label="Savings calculator"
+    note="Interactive estimate of what Stockifi could save your operation. Coming soon."
+  />
+
+  <!-- 3. Feature section — Feature variant 6 (columns) -->
+  <FeatureColumns
+    tagline="Waarom Stockifi"
+    heading="Waar de abonnementen zichzelf terugverdienen"
+    columns={featureCols}
+  />
+
+  <!-- 4. FAQ — variant 1 (split) -->
+  <FaqSplit
+    heading="Vragen over de prijzen?"
+    body="Wat operators vragen voordat ze een abonnement kiezen. Toch niet zeker? Neem contact op en we helpen je verder."
+    contact={{ label: 'Neem contact op', href: '/nl/contact' }}
+    items={faqs}
+  />
+
+  <!-- 5. CTA — variant 2.1 (image-backed button) -->
+  <CtaButton
+    heading="Klaar om te investeren in je winstgevendheid?"
+    primary={{ label: 'Aan de slag', href: '/nl/book-a-demo' }}
+    secondary={{ label: 'Praat met een expert', href: '/nl/contact' }}
+    bgImages={['/media/cta-bg-1.jpg', '/media/cta-bg-2.jpg', '/media/cta-bg-3.jpg', '/media/cta-bg-4.jpg']}
+  />
+</Layout>
+
+<style>
+  /* Brand gradient glow (from the ads-LP) bleeds behind BOTH the page header and the
+     pricing cards as one continuous backdrop — not clipped to either section. */
+  .pricing-hero { position: relative; isolation: isolate; }
+  .pricing-hero::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: -6%;
+    transform: translateX(-50%);
+    width: min(1200px, 150%);
+    aspect-ratio: 600 / 500;
+    background-image: url('/media/gradient-centered.png');
+    background-size: contain;
+    background-position: center top;
+    background-repeat: no-repeat;
+    opacity: 0.4;
+    z-index: -1;
+    pointer-events: none;
+  }
+  /* Header + cards read as one block: collapse the stacked section paddings between
+     them (they each carry full section padding otherwise → an awkward double gap). */
+  .pricing-hero :global(.page-header) { padding-bottom: var(--space-32); }
+  .pricing-hero :global(.pricing-cards) { padding-top: 0; }
+</style>

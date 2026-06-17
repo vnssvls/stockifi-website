@@ -1,0 +1,45 @@
+---
+// Norwegian: Inventory Management category LP (/no/product-inventory-management).
+// Section map: PageHeader → product card grid (5 items, 5-col) → CtaEmail → Footer v2
+import Layout from '../../../layouts/Layout.astro';
+import PageHeader from '../../../components/page-headers/PageHeader.astro';
+import ProductCardGrid from '../../../components/ProductCardGrid.astro';
+import CtaEmail from '../../../components/CtaEmail.astro';
+import navIcons from '../../../data/nav-icons.json';
+
+const icons = navIcons as Record<string, string>;
+
+const items = [
+  { heading: 'Oppskriftsbygging', body: 'Kostnad per oppskrift basert på live ingredienspriser.', href: '/no/product-inventory-management/recipe-building', icon: icons['book'], image: '/media/product-recipe-building.png' },
+  { heading: 'Varetelling', body: 'Tell varer på mobil eller web, med eller uten nett.', href: '/no/product-inventory-management/stock-counting', icon: icons['box'], image: '/media/product-stock-counting.png' },
+  { heading: 'Lageroverføringer', body: 'Spor varer som flyttes mellom lokasjonene dine.', href: '/no/product-inventory-management/inventory-transfers', icon: icons['convert-3d-cube'], image: '/media/product-inventory-transfers.png' },
+  { heading: 'Svinnregistrering', body: 'Logg svinn og se hva det koster deg.', href: '/no/product-inventory-management/wastage-tracking', icon: icons['trash'], image: '/media/product-wastage-tracking.png' },
+  { heading: 'Datakvalitet', body: 'Rene, validerte data bak alle rapporter.', href: '/no/product-inventory-management/data-quality', icon: icons['data-quality'], image: '/media/product-data-quality.png' },
+];
+---
+
+<Layout
+  title="Lagerstyring | Stockifi"
+  description="Tell varer, spor avvik, registrer svinn og håndter lageroverføringer på tvers av alle lokasjonene dine."
+>
+  <!-- 1. Page header — centered -->
+  <PageHeader
+    eyebrow="Lagerstyring"
+    heading="[Placeholder heading]"
+    subhead="[Placeholder subhead]"
+  />
+
+  <!-- 2. Product card grid -->
+  <section class="section">
+    <div class="container">
+      <ProductCardGrid items={items} />
+    </div>
+  </section>
+
+  <!-- 3. CTA — variant 2 centered email capture -->
+  <CtaEmail
+    heading="[Placeholder CTA heading]"
+    subhead="[Placeholder CTA subhead]"
+    bgImages={['/media/cta-bg-1.jpg', '/media/cta-bg-2.jpg', '/media/cta-bg-3.jpg', '/media/cta-bg-4.jpg']}
+  />
+</Layout>

@@ -1,0 +1,83 @@
+---
+// Solutions hub page (/no/solutions). One page linking to all individual solution pages
+// grouped by type and by team. No /solutions-[segment] sub-pages — this is the single
+// landing. Layout per V's wireframe (Jun 14 2026):
+// PageHeader (centered) → By Type grid (2-col) → By Team grid (2-col) → CtaEmail → Footer v2
+import Layout from '../../../layouts/Layout.astro';
+import PageHeader from '../../../components/page-headers/PageHeader.astro';
+import ImageCardGrid from '../../../components/ImageCardGrid.astro';
+import CtaEmail from '../../../components/CtaEmail.astro';
+import navIcons from '../../../data/nav-icons.json';
+
+const icons = navIcons as Record<string, string>;
+
+const byType = [
+  { heading: 'Selvstendige restauranter', body: 'Bedre kontroll på varekostnaden uten regneark.', href: '/no/solutions/independent-restaurants', image: '/media/cta-bg-1.jpg', icon: icons['fluent-store'] },
+  { heading: 'Restaurantkjeder', body: 'Samlet kostnadsoversikt på tvers av lokasjoner.', href: '/no/solutions/restaurant-groups', image: '/media/cta-bg-2.jpg', icon: icons['buildings-2'] },
+  { heading: 'Hoteller med F&B', body: 'Full kontroll over mat og drikke.', href: '/no/solutions/hotels', image: '/media/cta-bg-3.jpg', icon: icons['reserve'] },
+  { heading: 'Bar', body: 'Kjenn marginen på hver drink du serverer.', href: '/no/solutions/bars', image: '/media/cta-bg-4.jpg', icon: icons['cocktail'] },
+];
+
+const byTeam = [
+  { heading: 'Ledelse', body: 'Marginoversikt for hele driften.', href: '/no/solutions/management', image: '/media/cta-bg-1.jpg', icon: icons['briefcase'] },
+  { heading: 'Drift', body: 'Oppdage svinn og prisendringer tidlig.', href: '/no/solutions/operations', image: '/media/cta-bg-2.jpg', icon: icons['setting-2'] },
+  { heading: 'Kjøkken', body: 'Løpende rettskostnader for bedre menyvalg.', href: '/no/solutions/kitchen', image: '/media/cta-bg-3.jpg', icon: icons['chef-hat'] },
+  { heading: 'Økonomi', body: 'Vareforbruk du kan stole på ved månedsslutt.', href: '/no/solutions/finance', image: '/media/cta-bg-4.jpg', icon: icons['fluent-finance'] },
+];
+---
+
+<Layout
+  title="Løsninger | Stockifi"
+  description="Stockifi for alle driftstyper og alle roller. Finn løsningen som passer måten teamet ditt jobber på."
+>
+  <!-- 1. Page header — centered variant -->
+  <PageHeader
+    eyebrow="Løsninger"
+    heading="[Placeholder heading]"
+    subhead="[Placeholder subhead]"
+  />
+
+  <!-- 2. By Type — 4 segment solution cards -->
+  <section class="section solutions-section">
+    <div class="container">
+      <div class="solutions-group-header">
+        <p class="tagline">Etter type</p>
+        <h2 class="solutions-group-heading">[Placeholder heading]</h2>
+      </div>
+      <div class="solutions-grid">
+        <ImageCardGrid items={byType} columns={4} showArrow={true} />
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. By Team — 4 team solution cards -->
+  <section class="section solutions-section">
+    <div class="container">
+      <div class="solutions-group-header">
+        <p class="tagline">Etter team</p>
+        <h2 class="solutions-group-heading">[Placeholder heading]</h2>
+      </div>
+      <div class="solutions-grid">
+        <ImageCardGrid items={byTeam} columns={4} showArrow={true} />
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. CTA — variant 2 centered email capture -->
+  <CtaEmail
+    heading="[Placeholder CTA heading]"
+    subhead="[Placeholder CTA subhead]"
+    bgImages={['/media/cta-bg-1.jpg', '/media/cta-bg-2.jpg', '/media/cta-bg-3.jpg', '/media/cta-bg-4.jpg']}
+  />
+</Layout>
+
+<style>
+  .solutions-section { padding-block: var(--space-48); }
+  .solutions-group-header { margin-bottom: var(--space-48); }
+  .solutions-group-heading { font-size: var(--text-h2); margin-top: var(--space-12); }
+
+  /* Scoped overrides for this page only */
+  .solutions-grid :global(.icg-icon) { color: white; }
+  .solutions-grid :global(.icg-arrow) { color: white; }
+  .solutions-grid :global(.icg-item--linked:hover) { border-color: white; }
+</style>

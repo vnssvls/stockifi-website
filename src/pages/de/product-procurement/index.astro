@@ -1,0 +1,46 @@
+---
+// Procurement category LP (/de/product-procurement).
+// Section map: PageHeader → product card grid (4 items, 4-col) → CtaEmail → Footer v2
+// When Ordering page ships, add 5th item and columns will auto-switch to 3-col.
+import Layout from '../../../layouts/Layout.astro';
+import PageHeader from '../../../components/page-headers/PageHeader.astro';
+import ProductCardGrid from '../../../components/ProductCardGrid.astro';
+import CtaEmail from '../../../components/CtaEmail.astro';
+import navIcons from '../../../data/nav-icons.json';
+
+const icons = navIcons as Record<string, string>;
+
+const items = [
+  { heading: 'Rechnungsautomatisierung', body: 'Lieferantenrechnungen werden automatisch Zeile für Zeile eingelesen.', href: '/de/product-procurement/invoice-automation', icon: icons['receipt-2'], image: '/media/product-invoice-automation.png' },
+  { heading: 'Lieferantenpreis-Tracking', body: 'Jede Preisänderung wird am Tag des Eingangs erfasst.', href: '/de/product-procurement/supplier-price-tracking', icon: icons['percentage-circle'], image: '/media/product-supplier-price-tracking.png' },
+  { heading: 'Zentralküche', body: 'Produktionskosten kalkulieren und eigene Filialen beliefern.', href: '/de/product-procurement/central-kitchen', icon: icons['building'], image: '/media/product-central-kitchen.png' },
+  { heading: 'Anomalieerkennung', body: 'Überberechnungen und auffällige Positionen werden zur Prüfung markiert.', href: '/de/product-procurement/anomaly-detection', icon: icons['fluent-wand'], image: '/media/product-anomaly-detection.png' },
+  { heading: 'Bestellvorschläge', body: 'Wissen, was nachbestellt werden muss, bevor der Bestand ausgeht.', href: '/de/product-procurement/ordering-suggestions', icon: icons['ordering-suggestions'], image: '/media/product-ordering-suggestions.png' },
+];
+---
+
+<Layout
+  title="Einkauf | Stockifi"
+  description="Automatisieren Sie die Rechnungsverarbeitung, verfolgen Sie Lieferantenpreise und erkennen Sie Abrechnungsfehler, bevor sie zu Verlusten führen."
+>
+  <!-- 1. Page header — centered -->
+  <PageHeader
+    eyebrow="Einkauf"
+    heading="[Placeholder heading]"
+    subhead="[Placeholder subhead]"
+  />
+
+  <!-- 2. Product card grid -->
+  <section class="section">
+    <div class="container">
+      <ProductCardGrid items={items} />
+    </div>
+  </section>
+
+  <!-- 3. CTA — variant 2 centered email capture -->
+  <CtaEmail
+    heading="[Placeholder CTA heading]"
+    subhead="[Placeholder CTA subhead]"
+    bgImages={['/media/cta-bg-1.jpg', '/media/cta-bg-2.jpg', '/media/cta-bg-3.jpg', '/media/cta-bg-4.jpg']}
+  />
+</Layout>

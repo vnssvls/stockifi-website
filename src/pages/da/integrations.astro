@@ -1,0 +1,69 @@
+---
+// Integrations page — Danish (da). Translated from src/pages/integrations.astro.
+// Page header (heading + subhead + logo strip) → directory (search/sort/filter +
+// card grid) → CTA variant 2 (image-background email capture). Nav + Footer come
+// from the layout.
+import Layout from '../../layouts/Layout.astro';
+import PageHeader from '../../components/page-headers/PageHeader.astro';
+import IntegrationsDirectory from '../../components/integrations/IntegrationsDirectory.astro';
+import CtaEmail from '../../components/CtaEmail.astro';
+import data from '../../../content/integrations/integrations.en.json';
+
+const live = data.filter((x) => !x.draft);
+
+const CATEGORIES = [
+  { value: 'accounting', label: 'Regnskab' },
+  { value: 'pos', label: 'Kassesystem' },
+  { value: 'other', label: 'Andet' },
+];
+
+const items = [...live]
+  .sort((a, b) => a.name.localeCompare(b.name))
+  .map((x) => ({ name: x.name, category: x.category, logo: x.logo }));
+
+// Recognizable subset for the header strip (rendered as uniform white silhouettes).
+const stripNames = ['Square', 'Lightspeed', 'Xero', 'Quickbooks', 'Visma', 'Fortnox', 'Mews', 'Wolt', 'Tripletex', 'Trivec'];
+const strip = stripNames
+  .map((n) => live.find((x) => x.name === n))
+  .filter((x): x is (typeof live)[number] => Boolean(x));
+---
+
+<Layout
+  title="Integrationer — Stockifi"
+  description="Stockifi forbinder sig til 30+ regnskabssystemer og 40+ kassesystemer, så fakturaer, salg og opskriftsomkostninger altid er synkroniserede."
+>
+  <PageHeader
+    eyebrow="Integrationer"
+    heading="Stockifi fungerer med de systemer, du allerede bruger"
+    subhead="Tilslut dit regnskabssystem og kassesystem, så fakturaer, salg og opskriftsomkostninger holdes synkroniserede uden manuelle eksporter eller dobbeltindtastning."
+  >
+    <div class="int-strip">
+      {strip.map((s) => <img class="int-strip-logo" src={s.logo} alt={s.name} width="120" height="40" loading="lazy" />)}
+    </div>
+  </PageHeader>
+
+  <IntegrationsDirectory items={items} categories={CATEGORIES} />
+
+  <CtaEmail
+    heading="Se det forbundet til dit setup"
+    subhead="Giv os din e-mail, og vi viser dig, hvad Stockifi afdækker i dine første 30 dage."
+    bgImages={['/media/cta-bg-1.jpg', '/media/cta-bg-2.jpg', '/media/cta-bg-3.jpg', '/media/cta-bg-4.jpg']}
+  />
+</Layout>
+
+<style>
+  .int-strip {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-32);
+  }
+  /* Uniform white silhouettes so the mixed brand logos read on the dark header */
+  .int-strip-logo {
+    height: 26px;
+    width: auto;
+    filter: brightness(0) invert(1);
+    opacity: 0.55;
+  }
+</style>

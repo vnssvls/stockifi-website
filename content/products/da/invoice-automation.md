@@ -1,0 +1,44 @@
+---
+metaTitle: "Fakturaautomatisering til restauranter | Stockifi"
+metaDescription: "Stockifi læser leverandørfakturaer linje for linje og sender priser og mængder direkte ind i dit vareforbrug, uden manuel indtastning."
+eyebrow: "Fakturaautomatisering"
+heading: "Vareforbrug uden manuel indtastning"
+subhead: "Dit vareforbrug kan holdes opdateret, uden at nogen skal taste fakturaer ind. Stockifi læser dem direkte fra dit regnskabsprogram, så priser og mængder flyder ind af sig selv."
+heroImage: "/media/product-invoice-automation.png"
+order: 10
+category: procurement
+howItWorks:
+  tagline: "Sådan fungerer det"
+  heading: "Det kommer direkte fra dit regnskab"
+  body: "Alle leverandørfakturaer lander allerede i dit regnskabsprogram. Stockifi læser hver enkelt linje for linje og sender priser og mængder direkte ind i dit vareforbrug, uden at nogen taster dem ind."
+  points:
+    - heading: "Synkroniseres automatisk"
+      body: "Fakturaer flyder ind, efterhånden som de lander i dit regnskab, uden noget at uploade eller scanne."
+    - heading: "Læst linje for linje"
+      body: "Stockifi registrerer prisen og mængden for hver ingrediens på fakturaen."
+  imageSide: "right"
+  imageAlt: ""
+integrationsHeading: "Virker med"
+integrationsSubject: "dit regnskabsprogram"
+benefits:
+  - heading: "Intet glider igennem"
+    body: "Hver leverandørfaktura læses og registreres."
+  - heading: "Altid opdateret"
+    body: "Priser opdateres, når fakturaer ankommer, inden månedsafslutning."
+  - heading: "Ingen tastefejl"
+    body: "Tallene hentes direkte fra fakturaen, så fejl forsvinder."
+  - heading: "Ændrer ingenting"
+    body: "Stockifi læser dit regnskab og lader det forblive, som det er."
+faqHeading: "Spørgsmål om fakturaautomatisering"
+faqs:
+  - question: "Skal jeg tjekke de fakturaer, Stockifi læser?"
+    answer: "Stockifi læser hver linje for dig og markerer det, der ser forkert ud, som en overopkrævning eller en dobbeltfakturering, så du gennemgår undtagelserne frem for hver enkelt faktura."
+  - question: "Hvad sker der, hvis en faktura aldrig når mit regnskab?"
+    answer: "Stockifi læser det, der lander i dit regnskabsprogram, så en faktura, der aldrig kommer derind, vil ikke blive registreret. Hvis leverandørfakturaer routes igennem dit regnskab, holder det det samlede billede komplet."
+  - question: "Hvilke regnskabsprogrammer virker det med?"
+    answer: "Stockifi forbinder sig med de regnskabsprogrammer, du allerede bruger. Fortæl os, hvad du kører, og vi bekræfter det på et kort opkald."
+  - question: "Virker det sammen med min nuværende opsætning?"
+    answer: "Ja. Stockifi læser dataene og lader dit regnskabsprogram forblive præcis, som det er."
+ctaHeading: "Klar til at overlade fakturahåndteringen?"
+ctaSubhead: "Book et kort opkald, og vi viser dig, hvad Stockifi afdækker i dine første 30 dage."
+---

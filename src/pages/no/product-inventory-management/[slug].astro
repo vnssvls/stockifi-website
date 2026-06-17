@@ -1,0 +1,98 @@
+---
+// Norwegian: Inventory Management category — individual product pages.
+// Routes: /no/product-inventory-management/recipe-building, /stock-counting,
+//         /inventory-transfers, /wastage-tracking
+import { getCollection } from 'astro:content';
+import Layout from '../../../layouts/Layout.astro';
+import PageHeaderImage from '../../../components/page-headers/PageHeaderImage.astro';
+import FeatureSteps from '../../../components/features/FeatureSteps.astro';
+import FeatureShowcase from '../../../components/features/FeatureShowcase.astro';
+import IntegrationGrid from '../../../components/integrations/IntegrationGrid.astro';
+import ImageCardGrid from '../../../components/ImageCardGrid.astro';
+import FaqSplit from '../../../components/faq/FaqSplit.astro';
+import CtaBand from '../../../components/CtaBand.astro';
+import integrations from '../../../data/integrations-home.json';
+import navIcons from '../../../data/nav-icons.json';
+import { inventoryManagementCards } from '../../../data/product-category-cards';
+
+export async function getStaticPaths() {
+  return (await getCollection('productsNo'))
+    .filter((p) => !p.data.draft && p.data.category === 'inventory-management')
+    .map((p) => ({ params: { slug: p.id }, props: { p } }));
+}
+
+const { p } = Astro.props;
+const d = p.data;
+const icons = navIcons as Record<string, string>;
+const benefitCards = inventoryManagementCards.map((c) => ({
+  heading: c.heading,
+  body: c.body,
+  icon: icons[c.iconKey],
+  image: c.image,
+}));
+const ACCOUNTING = new Set(['PowerOffice', 'Tripletex', 'E-conomic', 'Xero', 'Fiken', 'Datev', 'Visma', 'Fortnox', 'Unimicro', 'Xledger', '24SevenOffice', 'SpareBank 1', 'Vandelanotte', 'Corpay']);
+const accountingIntegrations = integrations.filter((i) => ACCOUNTING.has(i.name));
+---
+
+<Layout title={d.metaTitle} description={d.metaDescription}>
+  <PageHeaderImage
+    eyebrow={d.eyebrow}
+    heading={d.heading}
+    subhead={d.subhead}
+    cta={{ label: 'Book en demo', href: '/no/book-a-demo' }}
+    ctaVariant="secondary"
+    image={d.heroImage}
+  />
+
+  {d.howItWorks ? (
+    <FeatureShowcase
+      tagline={d.howItWorks.tagline}
+      heading={d.howItWorks.heading}
+      body={d.howItWorks.body}
+      items={d.howItWorks.points}
+      image={d.howItWorks.image ? { src: d.howItWorks.image, alt: d.howItWorks.imageAlt } : undefined}
+      imageSide={d.howItWorks.imageSide}
+      mediaRatio="16 / 10"
+    />
+  ) : d.steps.length > 0 ? (
+    <FeatureSteps
+      tagline={d.stepsTagline}
+      heading={d.stepsHeading ?? d.heading}
+      cta={{ label: 'Se hvordan det fungerer', href: '/no/#how-it-works' }}
+      steps={d.steps}
+    />
+  ) : null}
+
+  {d.showIntegrations && (
+    <IntegrationGrid
+      heading={d.integrationsHeading}
+      defaultSubject={d.integrationsSubject}
+      cta={{ label: 'Se alle integrasjoner', href: '/no/integrations' }}
+      items={accountingIntegrations}
+    />
+  )}
+
+  {d.benefits.length > 0 && (
+    <section class="section">
+      <div class="container">
+        <ImageCardGrid items={benefitCards} columns={4} />
+      </div>
+    </section>
+  )}
+
+  {d.faqs.length > 0 && (
+    <FaqSplit
+      heading={d.faqHeading}
+      body="Hva operatører spør om før en demo. Fortsatt usikker? Ta kontakt, så hjelper vi deg."
+      contact={{ label: 'Kontakt oss', href: '/no/contact' }}
+      items={d.faqs}
+    />
+  )}
+
+  <CtaBand
+    heading={d.ctaHeading}
+    subhead={d.ctaSubhead}
+    primary={{ label: 'Book en demo', href: '/no/book-a-demo' }}
+    secondary={{ label: 'Se priser', href: '/no/pricing' }}
+  />
+</Layout>

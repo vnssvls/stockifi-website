@@ -1,0 +1,295 @@
+---
+// Home page — Norwegian (no). Translated from src/pages/index.astro.
+// Section arc: hero → logo banner → what's inside (FeatureList) → benefits (FeatureSplit)
+// → by teams (FeatureTabs) → customer stories (bento) → onboarding (FeatureSteps) →
+// integrations (pills) → risk/pricing band (CtaBand) → FAQ (FaqSplit) → final CTA
+// (CtaButton v2.1). Footer from layout (footer variant changing later, kept as-is).
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+import FoodCostAnimation from '../../components/animations/FoodCostAnimation.astro';
+import ProcurementAnimation from '../../components/animations/ProcurementAnimation.astro';
+import ManagementAnimation from '../../components/animations/ManagementAnimation.astro';
+import BusinessIntelligenceAnimation from '../../components/animations/BusinessIntelligenceAnimation.astro';
+import LogoBanner from '../../components/LogoBanner.astro';
+import FeatureList from '../../components/features/FeatureList.astro';
+import FeatureSplit from '../../components/features/FeatureSplit.astro';
+import FeatureTabs from '../../components/features/FeatureTabs.astro';
+import CustomerStoryBento from '../../components/CustomerStoryBento.astro';
+import FeatureSteps from '../../components/features/FeatureSteps.astro';
+import IntegrationPills from '../../components/integrations/IntegrationPills.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import CtaButton from '../../components/CtaButton.astro';
+import SavingsAnimation from '../../components/animations/SavingsAnimation.astro';
+import FaqSplit from '../../components/faq/FaqSplit.astro';
+import faqsHome from '../../data/faqs-home.json';
+import integrations from '../../data/integrations-home.json';
+import userLogos from '../../data/user-logos.json';
+
+// 3. What's inside — FeatureList (interactive list + swapping media). Each product
+// category reveals its body + an "Explore" CTA.
+const whatsInside = [
+  {
+    heading: 'Innkjøp',
+    icon: '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 2v6h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 13h8M8 17h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>',
+    body: "Stockifi leser leverandørfakturaene dine automatisk, sporer hver prisendring og varsler om avvik som overbelastninger, med sentralkjøkkenet kostnadsberegnet på samme sted. Se hvordan det holder leverandørkostnadene i sjakk.",
+    cta: { label: 'Utforsk innkjøp', href: '/no/product-procurement' },
+    animation: 'procurement',
+  },
+  {
+    heading: 'Varelager',
+    icon: '<path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.27 6.96 12 12.01 20.73 6.96" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 22.08V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>',
+    body: "Du teller varer og registrerer overføringer og svinn i appen, og Stockifi sammenligner det med oppskriftene vi setter opp med deg for å vise hva du faktisk brukte. Se hvordan tellingene dine blir tall du kan handle på.",
+    cta: { label: 'Utforsk varelager', href: '/no/product-inventory-management' },
+    animation: 'inventory',
+  },
+  {
+    heading: 'Business Intelligence',
+    icon: '<path d="M18 20V10M12 20V4M6 20v-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>',
+    body: "Stockifi gjør alt dette om til ytelsesdashbord, avviksanalyse og lønnsomhetsinnsikt, med et API for å sende dataene dit du trenger dem. Se hva tallene dine kan fortelle deg.",
+    cta: { label: 'Utforsk Business Intelligence', href: '/no/product-business-intelligence' },
+    animation: 'business-intelligence',
+  },
+];
+
+// 4. Benefits — FeatureSplit (heading + checklist + media)
+const benefits = [
+  'Fang opp prisendringer fra leverandører på hver faktura',
+  'Se hva en oppskrift faktisk brukte mot hva den skulle ha brukt',
+  'Kjenn lønnsomheten til hver oppskrift etter hvert som kostnadene endrer seg',
+  'Se 2 til 3 % forbedring i varekostprosent etter onboarding',
+];
+
+// 5. By Teams — FeatureTabs (tabbed). Each tab links to its solution page.
+const byTeams = [
+  {
+    label: 'Ledelse',
+    heading: "Hele driftens margin på ett blikk",
+    body: "Eiere og daglige ledere får kostnadsoversikt på tvers av alle lokasjoner, slik at du vet hvor marginen vinnes eller tapes uten å jage én eneste rapport. Se det fra en eiers ståsted.",
+    primary: { label: 'Stockifi for ledelse', href: '/no/solutions/management' },
+    image: { src: '/media/photos/teams-management.png', alt: '' },
+    card: {
+      title: 'COGS Overview',
+      avg: { label: 'Avg food cost', value: '29.0%' },
+      rows: [
+        { label: 'Bjørvika',  value: '€52k', value2: '26.2%', status: 'green' as const },
+        { label: 'Stavanger', value: '€47k', value2: '28.8%', status: 'amber' as const },
+        { label: 'Trondheim', value: '€38k', value2: '32.1%', status: 'red'   as const },
+      ],
+      action: 'Review Trondheim performance',
+      invertValues: true,
+      side: 'right' as const,
+    },
+  },
+  {
+    label: 'Drift',
+    heading: 'Stram inn driften uten ekstra administrasjon',
+    body: 'Oppdage svinn, overporsjoning og prisdrift tidlig, slik at den daglige driften holdes under kontroll selv når du legger til lokasjoner. Se det i praksis.',
+    primary: { label: 'Stockifi for drift', href: '/no/solutions/operations' },
+    image: { src: '/media/photos/teams-operations.png', alt: '' },
+    card: {
+      title: 'Top Variances',
+      rows: [
+        { label: 'Ground beef',    value: '-3.2%', value2: '4.2 kg', status: 'amber' as const },
+        { label: 'Duck breast',    value: '-2.8%', value2: '3.6 kg', status: 'amber' as const },
+        { label: 'Potatoes',       value: '-1.9%', value2: '7.8 kg', status: 'amber' as const },
+      ],
+      insight: 'Review portions and wastage on recipes.',
+      insightType: 'amber' as const,
+    },
+  },
+  {
+    label: 'Kjøkken',
+    heading: 'Oppskrifter som kostnadssetter seg selv',
+    body: 'Kokker ser den live-kostnaden og marginen på hver rett, slik at menybeslutninger gjenspeiler hva ingrediensene koster i dag. Se det på kjøkkenet.',
+    primary: { label: 'Stockifi for kjøkken', href: '/no/solutions/kitchen' },
+    image: { src: '/media/photos/teams-kitchen.png', alt: '' },
+    card: {
+      title: 'Duck Breast',
+      rows: [
+        { label: 'Selling price', value: '€23.00' },
+      ],
+      visual: {
+        type: 'kpi-compare' as const,
+        items: [
+          { label: 'Target', value: '28%',   color: 'green' as const },
+          { label: 'Actual', value: '36.7%', color: 'amber' as const },
+        ],
+      },
+      insight: 'Recipe cost is 8.7 pts above target.',
+      insightType: 'amber' as const,
+      side: 'right' as const,
+    },
+  },
+  {
+    label: 'Økonomi',
+    heading: 'Vareforbruk du faktisk kan stole på',
+    body: 'Økonomiavdelingen får faktisk mot teoretisk kostnad fra ekte faktura- og POS-data, slik at månedsslutt slutter å være et gjettespill. Se det i regnskapene.',
+    primary: { label: 'Stockifi for økonomi', href: '/no/solutions/finance' },
+    image: { src: '/media/photos/teams-finance.png', alt: '' },
+    card: {
+      title: 'COGS',
+      rows: [],
+      visual: {
+        type: 'dual' as const,
+        bars: [
+          { label: 'Theoretical', value: '26.1%', pct: 26.1, color: 'green' as const },
+          { label: 'Actual',      value: '28.3%', pct: 28.3, color: 'amber' as const },
+        ],
+        maxPct: 35,
+      },
+      insight: '€3,180 recoverable this period.',
+      insightType: 'green' as const,
+      side: 'right' as const,
+    },
+  },
+];
+
+// 7. Onboarding — FeatureSteps (connected vertical timeline)
+// Icons sourced from vnssvls/design icon library (action/sync, ui/load-item, status/check, action/eye)
+const onboarding = [
+  {
+    heading: 'Koble til systemene dine',
+    body: 'Vi kobler til regnskapssystemet og kassesystemet ditt, og fakturaene og salget begynner å flyte inn i Stockifi automatisk.',
+    iconViewBox: '0 0 20 20',
+    icon: '<path fill-rule="evenodd" clip-rule="evenodd" d="M3.96241 8.38254C4.24614 7.32265 4.8039 6.35614 5.5796 5.58016C6.3553 4.80417 7.32161 4.24607 8.3814 3.96195C9.44118 3.67784 10.5571 3.67772 11.6169 3.96161C12.6768 4.2455 13.6432 4.80339 14.4191 5.5792L16.0049 7.16504H13.3524C13.1866 7.16504 13.0277 7.23089 12.9105 7.3481C12.7933 7.46531 12.7274 7.62428 12.7274 7.79004C12.7274 7.9558 12.7933 8.11477 12.9105 8.23198C13.0277 8.34919 13.1866 8.41504 13.3524 8.41504H17.5124C17.6782 8.41504 17.8371 8.34919 17.9543 8.23198C18.0716 8.11477 18.1374 7.9558 18.1374 7.79004V3.63004C18.1374 3.46428 18.0716 3.30531 17.9543 3.1881C17.8371 3.07089 17.6782 3.00504 17.5124 3.00504C17.3466 3.00504 17.1877 3.07089 17.0705 3.1881C16.9533 3.30531 16.8874 3.46428 16.8874 3.63004V6.28004L15.3041 4.6967C14.3732 3.76542 13.2136 3.09561 11.9418 2.75462C10.6699 2.41364 9.33076 2.4135 8.05887 2.75421C6.78698 3.09492 5.6272 3.76449 4.69615 4.69558C3.76509 5.62667 3.09557 6.78647 2.75491 8.05837C2.73368 8.13771 2.72828 8.22046 2.73903 8.30188C2.74978 8.38331 2.77646 8.46182 2.81755 8.53293C2.85864 8.60405 2.91333 8.66637 2.97851 8.71635C3.04368 8.76632 3.11807 8.80297 3.19741 8.8242C3.27675 8.84543 3.35949 8.85083 3.44092 8.84008C3.52234 8.82933 3.60085 8.80265 3.67197 8.76156C3.74308 8.72047 3.80541 8.66578 3.85538 8.6006C3.90536 8.53543 3.94201 8.46104 3.96324 8.3817L3.96241 8.38254ZM16.8024 11.1759C16.7231 11.1546 16.6404 11.1491 16.559 11.1598C16.4776 11.1704 16.3991 11.197 16.328 11.238C16.2569 11.2791 16.1945 11.3337 16.1445 11.3988C16.0945 11.4639 16.0578 11.5382 16.0366 11.6175C15.7528 12.6774 15.1951 13.6439 14.4194 14.4199C13.6437 15.1959 12.6774 15.754 11.6176 16.0381C10.5578 16.3222 9.4419 16.3224 8.38205 16.0385C7.32221 15.7546 6.35577 15.1967 5.57991 14.4209L3.99491 12.835H6.64741C6.81317 12.835 6.97214 12.7692 7.08935 12.652C7.20656 12.5348 7.27241 12.3758 7.27241 12.21C7.27241 12.0443 7.20656 11.8853 7.08935 11.7681C6.97214 11.6509 6.81317 11.585 6.64741 11.585H2.48657C2.32081 11.585 2.16184 11.6509 2.04463 11.7681C1.92742 11.8853 1.86157 12.0443 1.86157 12.21V16.37C1.86157 16.5358 1.92742 16.6948 2.04463 16.812C2.16184 16.9292 2.32081 16.9950 2.48657 16.995C2.65233 16.995 2.8113 16.9292 2.92851 16.812C3.04572 16.6948 3.11157 16.5358 3.11157 16.37V13.72L4.69491 15.3034C5.62582 16.2347 6.78551 16.9044 8.05738 17.2454C9.32926 17.5863 10.6685 17.5864 11.9404 17.2456C13.2123 16.9048 14.372 16.2351 15.3031 15.3039C16.2341 14.3727 16.9035 13.2128 17.2441 11.9409C17.2868 11.7809 17.2644 11.6104 17.1815 11.467C17.0987 11.3235 16.9624 11.2188 16.8024 11.1759Z" fill="currentColor"/>',
+  },
+  {
+    heading: 'Vi setter opp oppskriftene dine',
+    body: 'Vi bygger opp oppskriftsgrunnlaget ditt sammen med deg, slik at alle kostnader stemmer fra dag én.',
+    iconViewBox: '0 0 16 16',
+    icon: '<path d="M13.3538 5.14625L9.85375 1.64625C9.80728 1.59983 9.75212 1.56303 9.69143 1.53793C9.63073 1.51284 9.56568 1.49995 9.5 1.5H3.5C3.23478 1.5 2.98043 1.60536 2.79289 1.79289C2.60536 1.98043 2.5 2.23478 2.5 2.5V13.5C2.5 13.7652 2.60536 14.0196 2.79289 14.2071C2.98043 14.3946 3.23478 14.5 3.5 14.5H12.5C12.7652 14.5 13.0196 14.3946 13.2071 14.2071C13.3946 14.0196 13.5 13.7652 13.5 13.5V5.5C13.5001 5.43432 13.4872 5.36927 13.4621 5.30858C13.437 5.24788 13.4002 5.19272 13.3538 5.14625ZM10 3.20688L11.7931 5H10V3.20688ZM12.5 13C12.5 13.2761 12.2761 13.5 12 13.5H4C3.72386 13.5 3.5 13.2761 3.5 13V3C3.5 2.72386 3.72386 2.5 4 2.5H9V5.5C9 5.63261 9.05268 5.75979 9.14645 5.85355C9.24021 5.94732 9.36739 6 9.5 6H12.5V13ZM9.85375 8.64625C9.90021 8.6927 9.93706 8.74786 9.9622 8.80855C9.98734 8.86925 10.0003 8.9343 10.0003 9C10.0003 9.0657 9.98734 9.13075 9.9622 9.19145C9.93706 9.25214 9.90021 9.3073 9.85375 9.35375C9.8073 9.40021 9.75214 9.43706 9.69145 9.4622C9.63075 9.48734 9.5657 9.50028 9.5 9.50028C9.4343 9.50028 9.36925 9.48734 9.30855 9.4622C9.24786 9.43706 9.1927 9.40021 9.14625 9.35375L8.5 8.70687V11.5C8.5 11.6326 8.44732 11.7598 8.35355 11.8536C8.25979 11.9473 8.13261 12 8 12C7.86739 12 7.74021 11.9473 7.64645 11.8536C7.55268 11.7598 7.5 11.6326 7.5 11.5V8.70687L6.85375 9.35375C6.8073 9.40021 6.75214 9.43706 6.69145 9.4622C6.63075 9.48734 6.5657 9.50028 6.5 9.50028C6.4343 9.50028 6.36925 9.48734 6.30855 9.4622C6.24786 9.43706 6.1927 9.40021 6.14625 9.35375C6.09979 9.3073 6.06294 9.25214 6.0378 9.19145C6.01266 9.13075 5.99972 9.0657 5.99972 9C5.99972 8.9343 6.01266 8.86925 6.0378 8.80855C6.06294 8.74786 6.09979 8.6927 6.14625 8.64625L7.64625 7.14625C7.69269 7.09976 7.74783 7.06288 7.80853 7.03772C7.86923 7.01256 7.93429 6.99961 8 6.99961C8.06571 6.99961 8.13077 7.01256 8.19147 7.03772C8.25217 7.06288 8.30731 7.09976 8.35375 7.14625L9.85375 8.64625Z" fill="currentColor" fill-opacity="0.7"/>',
+  },
+  {
+    heading: 'Kontoen din er klar',
+    body: 'De fleste operasjoner er live innen to dager etter at systemene er koblet til.',
+    iconViewBox: '0 0 20 20',
+    icon: '<path d="M7.5 10.625L9.375 12.5L12.5 8.125M17.5 10C17.5 10.9849 17.306 11.9602 16.9291 12.8701C16.5522 13.7801 15.9997 14.6069 15.3033 15.3033C14.6069 15.9997 13.7801 16.5522 12.8701 16.9291C11.9602 17.306 10.9849 17.5 10 17.5C9.01509 17.5 8.03982 17.306 7.12987 16.9291C6.21993 16.5522 5.39314 15.9997 4.6967 15.3033C4.00026 14.6069 3.44781 13.7801 3.0709 12.8701C2.69399 11.9602 2.5 10.9849 2.5 10C2.5 8.01088 3.29018 6.10322 4.6967 4.6967C6.10322 3.29018 8.01088 2.5 10 2.5C11.9891 2.5 13.8968 3.29018 15.3033 4.6967C16.7098 6.10322 17.5 8.01088 17.5 10Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>',
+  },
+  {
+    heading: 'Begynn å se hullene',
+    body: 'Fra de første tellingene ser du faktisk varekostprosent, avvik og prisendringer.',
+    iconViewBox: '0 0 20 20',
+    icon: '<path d="M1.69657 10.2683C1.63907 10.0955 1.63907 9.90867 1.69657 9.73583C2.85241 6.25833 6.13324 3.75 9.99991 3.75C13.8649 3.75 17.1441 6.25583 18.3024 9.73167C18.3607 9.90417 18.3607 10.0908 18.3024 10.2642C17.1474 13.7417 13.8666 16.25 9.99991 16.25C6.13491 16.25 2.85491 13.7442 1.69657 10.2683Z" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/><path d="M12.5 10C12.5 10.663 12.2366 11.2989 11.7678 11.7678C11.2989 12.2366 10.663 12.5 10 12.5C9.33696 12.5 8.70107 12.2366 8.23223 11.7678C7.76339 11.2989 7.5 10.663 7.5 10C7.5 9.33696 7.76339 8.70107 8.23223 8.23223C8.70107 7.76339 9.33696 7.5 10 7.5C10.663 7.5 11.2989 7.76739 11.7678 8.23223C12.2366 8.70107 12.5 9.33696 12.5 10Z" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>',
+  },
+];
+
+const faqs = faqsHome;
+---
+
+<Layout
+  title="Matkostnadssoftware for europeiske restauranter | Stockifi"
+  description="Kjenn din reelle matkostnad. Stockifi kobler fakturaene, kassesystemet og oppskriftene dine for å vise hvor marginen din forsvinner, med oppsett gjort for deg."
+>
+  <!-- 1. Hero -->
+  <Hero
+    wide
+    tagline="Matkostnadssoftware for restauranter"
+    heading="Kjenn din reelle matkostnad."
+    subhead="Fakturaene, salget og oppskriftene dine holder allerede svaret på matkostnaden din. Stockifi trekker dem sammen og gjør regnestykket, slik at du ser marginen din og kan handle på den."
+    primary={{ label: 'Book en demo', href: '/no/book-a-demo' }}
+    secondary={{ label: 'Se hvordan det fungerer', href: '#how-it-works' }}
+    images={[
+      { src: '/media/photos/hero-manager.png', alt: '' },
+      { src: '/media/photos/hero-chef.png',    alt: '' },
+      { src: '/media/photos/hero-owner.png',   alt: '' },
+    ]}
+  >
+    <!-- Overlay 0: slide 1 (manager) — food cost card, to build -->
+    <div slot="overlays" style="display:contents">
+      <div class="hero-overlay">
+        <FoodCostAnimation />
+      </div>
+      <!-- Overlay 1: slide 2 (chef) — supplier price ticker -->
+      <div class="hero-overlay">
+        <ProcurementAnimation compact />
+      </div>
+      <!-- Overlay 2: slide 3 (owner) — location health list -->
+      <div class="hero-overlay">
+        <ManagementAnimation />
+      </div>
+    </div>
+  </Hero>
+
+  <!-- 2. Social proof -->
+  <LogoBanner label="Brukt av 500+ restauranter i Europa" logos={userLogos} />
+
+  <!-- 3. What's inside — FeatureList (product categories) -->
+  <div id="how-it-works" class="hp-anchor">
+    <FeatureList tagline="Hva er inni" items={whatsInside} />
+  </div>
+
+  <!-- 4. Benefits — FeatureSplit -->
+  <FeatureSplit
+    tagline="Derfor er det verdt det"
+    heading="Matkostnadskontroll for restauranter som betaler seg selv"
+    body="Det meste av marginen din lekker i gapene mellom systemene. Stockifi trekker dem inn i én visning, slik at selv 1 % forbedring i matkostnad blir penger du beholder."
+    items={benefits}
+    imageSide="right"
+  >
+    <SavingsAnimation slot="media" />
+  </FeatureSplit>
+
+  <!-- 5. By Teams — FeatureTabs -->
+  <FeatureTabs
+    tagline="For teamet ditt"
+    heading="Ett sett med tall for alle roller"
+    subhead="Fra daglig leder til kjøkken jobber alle ut fra de samme tallene."
+    tabs={byTeams}
+  />
+
+  <!-- 6. Customer stories — bento -->
+  <CustomerStoryBento
+    eyebrow="Kundecaser"
+    heading="Hør det fra operatører som deg"
+    cta={{ label: 'Les alle caser', href: '/no/customer-stories' }}
+    slugs={['byoslo', 'eik-and-friends', 'koie-ramen', 'skigeilo-2']}
+  />
+
+  <!-- 7. Onboarding — FeatureSteps -->
+  <FeatureSteps
+    tagline="Personlig onboarding"
+    heading="Kom i gang på 48 timer"
+    cta={{ label: 'Book en demo', href: '/no/book-a-demo' }}
+    steps={onboarding}
+  />
+
+  <!-- 8. Integrations — pill cloud (variant 2), wide -->
+  <IntegrationPills
+    wide
+    eyebrow="Integrasjoner"
+    heading="Fungerer med verktøyene du allerede bruker"
+    subhead="Eliminer det manuelle arbeidet og la Stockifi samle POS- og regnskapsdataene dine."
+    cta={{ label: 'Se alle integrasjoner', href: '/no/integrations' }}
+    items={integrations}
+  />
+
+  <!-- 9. Risk / pricing band — CtaBand (stand-in until a dedicated band exists) -->
+  <CtaBand
+    heading="Designet for å spare deg tid og penger"
+    subhead="Vil du vite hva det koster for deg? Prisen avhenger av størrelsen og oppsettet ditt. Og hvis vi ikke finner minst 30 000 NOK i skjulte tap i løpet av de første 30 dagene, er det gratis."
+    primary={{ label: 'Utforsk planer', href: '/no/pricing' }}
+    secondary={{ label: 'Snakk med en ekspert', href: '/no/book-a-demo' }}
+  />
+
+  <!-- 10. FAQ — variant 1 (split) -->
+  <FaqSplit
+    eyebrow="Ofte stilte spørsmål"
+    heading="Spørsmål du kanskje har"
+    body="Det operatørene sjekker før en demo. Fortsatt usikker? Ta kontakt og vi hjelper deg."
+    contact={{ label: 'Kontakt oss', href: '/no/contact' }}
+    items={faqs}
+  />
+
+  <!-- 11. Final CTA — variant 2.1 (button-only, photo-backed) -->
+  <CtaButton
+    heading="Klar til å investere i lønnsomheten din?"
+    subhead="Book et kort møte og vi går gjennom dine egne tall med deg."
+    primary={{ label: 'Book en demo', href: '/no/book-a-demo' }}
+    bgImages={['/media/cta-bg-1.jpg', '/media/cta-bg-2.jpg', '/media/cta-bg-3.jpg', '/media/cta-bg-4.jpg']}
+  />
+</Layout>
+
+<style>
+  /* Offset anchored scroll so the floating nav doesn't cover the section top */
+  .hp-anchor { scroll-margin-top: var(--space-96); }
+</style>

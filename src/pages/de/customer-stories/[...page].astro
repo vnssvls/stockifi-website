@@ -1,0 +1,172 @@
+---
+// DE: Customer story library (/de/customer-stories): centered page header + a 2-up card grid,
+// numbered pagination at 6 per page via Astro's paginate(). Wide layout with an 80px gutter.
+import type { GetStaticPaths, Page, PaginateFunction } from 'astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+import Layout from '../../../layouts/Layout.astro';
+import PageHeader from '../../../components/page-headers/PageHeader.astro';
+import Button from '../../../components/Button.astro';
+import CtaButton from '../../../components/CtaButton.astro';
+
+export const getStaticPaths: GetStaticPaths = async ({ paginate }: { paginate: PaginateFunction }) => {
+  // Curated display order (by slug). Any story not listed falls to the end.
+  const ORDER = ['skigeilo-2', 'koie-ramen', 'byoslo', 'kolpin', 'schnitzelei', 'eik-and-friends', 'heim-gastropub', 'skigeilo', 'torika-gruppen'];
+  const rank = (id: string) => {
+    const i = ORDER.indexOf(id);
+    return i === -1 ? ORDER.length : i;
+  };
+  const stories = (await getCollection('customerStoriesDe'))
+    .filter((s) => !s.data.draft)
+    .sort((a, b) => rank(a.id) - rank(b.id) || a.data.companyName.localeCompare(b.data.companyName));
+  return paginate(stories, { pageSize: 6 });
+};
+
+const { page } = Astro.props as { page: Page<CollectionEntry<'customerStoriesDe'>> };
+const pageUrl = (n: number) => (n === 1 ? '/de/customer-stories' : `/de/customer-stories/${n}`);
+const pages = Array.from({ length: page.lastPage }, (_, i) => i + 1);
+---
+
+<Layout
+  title="Kundengeschichten — Restaurants mit Stockifi | Stockifi"
+  description="Wie Restaurants, Gruppen und Gastronomiebetreiber Stockifi nutzen, um den Wareneinsatz zu kontrollieren. Echte Geschichten aus echten Küchen."
+>
+  <PageHeader
+    eyebrow="Kundengeschichten"
+    heading="Echte Küchen, echte Zahlen"
+    subhead="Wie Betreiber in ganz Europa Stockifi nutzen, um zu sehen, wo ihre Marge bleibt und sie zurückzuholen."
+  >
+    <Button variant="secondary" href="/de/#how-it-works">
+      So funktioniert es
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+    </Button>
+  </PageHeader>
+
+  <section class="section csl-grid-section">
+    <div class="csl-wide">
+      <div class="csl-grid">
+        {page.data.map((s) => (
+          <a class="csl-card" href={`/de/customer-stories/${s.id}`}>
+            <div class="csl-media">
+              {s.data.thumbnail ? (
+                <img src={s.data.thumbnail} alt={s.data.companyName} loading="lazy" decoding="async" />
+              ) : (
+                <span class="csl-media-ph" aria-hidden="true"></span>
+              )}
+              {(s.data.logoTransparent || s.data.logoPrimary) && (
+                <span class="csl-logo"><img src={s.data.logoTransparent ?? s.data.logoPrimary} alt={s.data.companyName} loading="lazy" /></span>
+              )}
+            </div>
+            <h3 class="csl-title">{s.data.articleTitle}</h3>
+            <p class="csl-excerpt text-muted">{s.data.featuredQuote || s.data.oneLiner}</p>
+            <span class="csl-cta">Geschichte lesen
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </span>
+          </a>
+        ))}
+      </div>
+
+      {page.lastPage > 1 && (
+        <nav class="csl-pages" aria-label="Seitennavigation">
+          {page.url.prev ? <a class="csl-nav" href={page.url.prev}>← Zurück</a> : <span class="csl-nav is-off">← Zurück</span>}
+          <span class="csl-nums">
+            {pages.map((n) => (
+              n === page.currentPage
+                ? <span class="csl-num is-active" aria-current="page">{n}</span>
+                : <a class="csl-num" href={pageUrl(n)}>{n}</a>
+            ))}
+          </span>
+          {page.url.next ? <a class="csl-nav" href={page.url.next}>Weiter →</a> : <span class="csl-nav is-off">Weiter →</span>}
+        </nav>
+      )}
+    </div>
+  </section>
+
+  <CtaButton
+    heading="Möchten Sie ähnliche Ergebnisse?"
+    subhead="Buchen Sie ein kurzes Gespräch und wir zeigen Ihnen, was Stockifi in den ersten 30 Tagen aufdeckt."
+    primary={{ label: 'Demo buchen', href: '/de/book-a-demo' }}
+    secondary={{ label: 'Preise ansehen', href: '/de/pricing' }}
+    bgImages={['/media/cta-bg-1.jpg', '/media/cta-bg-2.jpg', '/media/cta-bg-3.jpg', '/media/cta-bg-4.jpg']}
+  />
+</Layout>
+
+<style>
+  /* Wide layout with an 80px gutter (20px on mobile). */
+  .csl-wide { width: 100%; max-width: none; margin-inline: auto; padding-inline: var(--gutter-wide); }
+
+  /* Pull the grid up so the gap to the page header is one modest spacing. */
+  .csl-grid-section { padding-top: 0; margin-top: calc(-1 * var(--space-64)); }
+
+  .csl-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-64) var(--space-48); }
+
+  .csl-card { display: flex; flex-direction: column; }
+  .csl-card:hover { text-decoration: none; }
+
+  .csl-media { position: relative; border-radius: var(--radius-lg); overflow: hidden; margin-bottom: var(--space-16); }
+  .csl-media img,
+  .csl-media-ph { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+  .csl-media-ph { background: var(--muted); }
+  /* Linear overlay from the top-left corner so the brand logo reads over the photo. */
+  .csl-media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(135deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0) 45%);
+    pointer-events: none;
+  }
+  .csl-logo { position: absolute; top: var(--space-16); left: var(--space-16); z-index: 1; }
+  .csl-logo img { width: auto; height: auto; max-width: 140px; max-height: 56px; object-fit: contain; }
+
+  /* Photo treatment: faded + desaturated with a fine film grain at rest; on hover the
+     photo comes to life (full colour, grain clears, gentle zoom). */
+  .csl-media img { filter: grayscale(0.4) brightness(0.94); transition: filter 0.5s ease, transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1); }
+  .csl-card:hover .csl-media img { filter: none; transform: scale(1.05); }
+  .csl-media::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+    background-size: 160px 160px;
+    opacity: 0.35;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+  }
+  .csl-card:hover .csl-media::before { opacity: 0; }
+  @media (prefers-reduced-motion: reduce) {
+    .csl-media img,
+    .csl-card:hover .csl-media img { transform: none; }
+  }
+
+  /* Title in body font (Inter), no purple hover. */
+  .csl-title { font-family: var(--font-body); font-size: var(--text-h5); text-wrap: pretty; }
+  .csl-excerpt { margin-top: var(--space-8); font-size: var(--text-body-sm); line-height: var(--lh-body); }
+  /* "Geschichte lesen" stays white, regular weight. */
+  .csl-cta { display: inline-flex; align-items: center; gap: var(--space-8); margin-top: var(--space-16); color: var(--foreground); font-weight: var(--fw-regular); font-size: var(--text-body-sm); }
+  .csl-card:hover .csl-cta { gap: var(--space-12); }
+
+  .csl-pages { display: flex; align-items: center; justify-content: center; gap: var(--space-16); margin-top: var(--space-64); }
+  .csl-nums { display: flex; align-items: center; gap: var(--space-8); }
+  .csl-nav { color: var(--muted-foreground); font-size: var(--text-body-sm); font-weight: var(--fw-medium); }
+  .csl-nav:hover { color: var(--foreground); text-decoration: none; }
+  .csl-nav.is-off { opacity: 0.4; pointer-events: none; }
+  .csl-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    padding-inline: var(--space-8);
+    border-radius: var(--radius-md);
+    color: var(--muted-foreground);
+    font-size: var(--text-body-sm);
+    font-weight: var(--fw-medium);
+  }
+  .csl-num:hover { color: var(--foreground); text-decoration: none; }
+  /* Active page: white fill (not primary). */
+  .csl-num.is-active { background: var(--foreground); color: var(--background); }
+
+  @media (min-width: 640px) { .csl-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1024px) { .csl-wide { padding-inline: 80px; } }
+</style>

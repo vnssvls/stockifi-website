@@ -7,55 +7,62 @@ import Logo from './Logo.astro';
 import Button from './Button.astro';
 import LocaleSwitcher from './LocaleSwitcher.astro';
 import navIcons from '../data/nav-icons.json';
+import { getNavStrings } from '../data/nav-i18n';
+
+// Prefix internal links with the current locale path (e.g. /no/, /de/).
+// EN is the default locale (no prefix).
+const locale = Astro.currentLocale ?? 'en';
+const lp = (path: string) => locale === 'en' ? path : `/${locale}${path}`;
+const t = getNavStrings(locale);
 
 // Mega menus = grouped columns. Grouping is a nav/UX choice, NOT the page/URL structure.
 // Each item carries an icon (key into nav-icons.json, Iconsax linear, currentColor) + a
 // short description. Icons + descriptions are a first pass — easy to swap. See memory:
 // project_website_product_taxonomy.
 const productGroups = [
-  { title: 'Procurement', href: '/product-procurement', items: [
-    { label: 'Invoice automation', href: '/product-procurement/invoice-automation', icon: 'receipt-2', desc: 'Supplier invoices read line by line, automatically.' },
-    { label: 'Supplier price tracking', href: '/product-procurement/supplier-price-tracking', icon: 'percentage-circle', desc: 'Every price change caught the day it lands.' },
-    { label: 'Central kitchen', href: '/product-procurement/central-kitchen', icon: 'building', desc: 'Cost production and supply your own outlets.' },
-    { label: 'Anomaly detection', href: '/product-procurement/anomaly-detection', icon: 'fluent-wand', desc: 'Flags overcharges and odd line items for review.' },
-    { label: 'Ordering suggestions', href: '/product-procurement/ordering-suggestions', icon: 'ordering-suggestions', desc: 'Know what to reorder before you run short.' },
+  { title: t.procurementGroup, href: lp('/product-procurement'), items: [
+    { label: t.invoiceAutomation, href: lp('/product-procurement/invoice-automation'), icon: 'receipt-2', desc: 'Supplier invoices read line by line, automatically.' },
+    { label: t.supplierPriceTracking, href: lp('/product-procurement/supplier-price-tracking'), icon: 'percentage-circle', desc: 'Every price change caught the day it lands.' },
+    { label: t.centralKitchen, href: lp('/product-procurement/central-kitchen'), icon: 'building', desc: 'Cost production and supply your own outlets.' },
+    { label: t.anomalyDetection, href: lp('/product-procurement/anomaly-detection'), icon: 'fluent-wand', desc: 'Flags overcharges and odd line items for review.' },
+    { label: t.orderingSuggestions, href: lp('/product-procurement/ordering-suggestions'), icon: 'ordering-suggestions', desc: 'Know what to reorder before you run short.' },
   ] },
-  { title: 'Inventory Management', href: '/product-inventory-management', items: [
-    { label: 'Recipe building', href: '/product-inventory-management/recipe-building', icon: 'book', desc: 'Cost every recipe from live ingredient prices.' },
-    { label: 'Stock counting', href: '/product-inventory-management/stock-counting', icon: 'box', desc: 'Count stock on mobile or web, online or off.' },
-    { label: 'Inventory transfers', href: '/product-inventory-management/inventory-transfers', icon: 'convert-3d-cube', desc: 'Track stock moved between your locations.' },
-    { label: 'Wastage tracking', href: '/product-inventory-management/wastage-tracking', icon: 'trash', desc: 'Log waste and see what it costs you.' },
-    { label: 'Data quality', href: '/product-inventory-management/data-quality', icon: 'data-quality', desc: 'Clean, validated data behind every report.' },
+  { title: t.inventoryGroup, href: lp('/product-inventory-management'), items: [
+    { label: t.recipeBuilding, href: lp('/product-inventory-management/recipe-building'), icon: 'book', desc: 'Cost every recipe from live ingredient prices.' },
+    { label: t.stockCounting, href: lp('/product-inventory-management/stock-counting'), icon: 'box', desc: 'Count stock on mobile or web, online or off.' },
+    { label: t.inventoryTransfers, href: lp('/product-inventory-management/inventory-transfers'), icon: 'convert-3d-cube', desc: 'Track stock moved between your locations.' },
+    { label: t.wastageTracking, href: lp('/product-inventory-management/wastage-tracking'), icon: 'trash', desc: 'Log waste and see what it costs you.' },
+    { label: t.dataQuality, href: lp('/product-inventory-management/data-quality'), icon: 'data-quality', desc: 'Clean, validated data behind every report.' },
   ] },
-  { title: 'Business Intelligence', href: '/product-business-intelligence', items: [
-    { label: 'Performance Dashboards', href: '/product-business-intelligence/performance-dashboards', icon: 'element-4', desc: 'Food cost and margin across every location.' },
-    { label: 'Variance analysis', href: '/product-business-intelligence/variance-analysis', icon: 'presention-chart', desc: 'Theoretical usage against what actually sold.' },
-    { label: 'Profitability insights', href: '/product-business-intelligence/profitability', icon: 'trend-up', desc: 'See the live margin of every menu item.' },
-    { label: 'API', href: '/product-business-intelligence/api', icon: 'code', desc: 'Push your data wherever you need it.' },
-    { label: 'Sales and usage', href: '/product-business-intelligence/sales-and-usage', icon: 'sales-usage', desc: 'See what sold and how it moved through stock.' },
+  { title: t.biGroup, href: lp('/product-business-intelligence'), items: [
+    { label: t.performanceDashboards, href: lp('/product-business-intelligence/performance-dashboards'), icon: 'element-4', desc: 'Food cost and margin across every location.' },
+    { label: t.varianceAnalysis, href: lp('/product-business-intelligence/variance-analysis'), icon: 'presention-chart', desc: 'Theoretical usage against what actually sold.' },
+    { label: t.profitabilityInsights, href: lp('/product-business-intelligence/profitability'), icon: 'trend-up', desc: 'See the live margin of every menu item.' },
+    { label: t.api, href: lp('/product-business-intelligence/api'), icon: 'code', desc: 'Push your data wherever you need it.' },
+    { label: t.salesAndUsage, href: lp('/product-business-intelligence/sales-and-usage'), icon: 'sales-usage', desc: 'See what sold and how it moved through stock.' },
   ] },
 ];
 const solutionsGroups = [
-  { title: 'By Type', items: [
-    { label: 'Independent restaurants', href: '/solutions/independent-restaurants', icon: 'fluent-store', desc: 'Tighter food cost without the spreadsheets.' },
-    { label: 'Restaurant groups', href: '/solutions/restaurant-groups', icon: 'buildings-2', desc: 'Consolidated cost visibility across sites.' },
-    { label: 'Hotels with F&B', href: '/solutions/hotels', icon: 'reserve', desc: 'Control across full food and beverage.' },
-    { label: 'Bars', href: '/solutions/bars', icon: 'cocktail', desc: 'Know the margin on every drink you pour.' },
+  { title: t.byType, items: [
+    { label: t.independentRestaurants, href: lp('/solutions/independent-restaurants'), icon: 'fluent-store', desc: 'Tighter food cost without the spreadsheets.' },
+    { label: t.restaurantGroups, href: lp('/solutions/restaurant-groups'), icon: 'buildings-2', desc: 'Consolidated cost visibility across sites.' },
+    { label: t.hotelsWithFnB, href: lp('/solutions/hotels'), icon: 'reserve', desc: 'Control across full food and beverage.' },
+    { label: t.bars, href: lp('/solutions/bars'), icon: 'cocktail', desc: 'Know the margin on every drink you pour.' },
   ] },
-  { title: 'By team', items: [
-    { label: 'Management', href: '/solutions/management', icon: 'briefcase', desc: 'Margin visibility across the whole operation.' },
-    { label: 'Operations', href: '/solutions/operations', icon: 'setting-2', desc: 'Spot waste and price drift early.' },
-    { label: 'Kitchen', href: '/solutions/kitchen', icon: 'chef-hat', desc: 'Live dish costs for sharper menu calls.' },
-    { label: 'Finance', href: '/solutions/finance', icon: 'fluent-finance', desc: 'COGS you can trust at month-end.' },
+  { title: t.byTeam, items: [
+    { label: t.management, href: lp('/solutions/management'), icon: 'briefcase', desc: 'Margin visibility across the whole operation.' },
+    { label: t.operations, href: lp('/solutions/operations'), icon: 'setting-2', desc: 'Spot waste and price drift early.' },
+    { label: t.kitchen, href: lp('/solutions/kitchen'), icon: 'chef-hat', desc: 'Live dish costs for sharper menu calls.' },
+    { label: t.finance, href: lp('/solutions/finance'), icon: 'fluent-finance', desc: 'COGS you can trust at month-end.' },
   ] },
 ];
 const resourcesItems = [
-  { label: 'Blog', href: '/blog' },
-  { label: 'Customer Stories', href: '/customer-stories' },
-  { label: 'FAQ', href: '/faq' },
-  { label: 'Press & Media', href: '/press' },
-  { label: 'Savings Calculator', href: '/savings-calculator' },
-  { label: 'Comparisons', href: null, soon: true },
+  { label: t.blog, href: lp('/blog') },
+  { label: t.customerStories, href: lp('/customer-stories') },
+  { label: t.faq, href: lp('/faq') },
+  { label: t.pressAndMedia, href: lp('/press') },
+  { label: t.savingsCalculator, href: lp('/savings-calculator') },
+  { label: t.comparisons, href: null, soon: true },
 ];
 const LOGIN_URL = 'https://web.stockifi.io/#/login';
 ---
@@ -68,7 +75,7 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
       <ul class="nav-list">
         <li class="nav-item has-panel">
           <button type="button" class="nav-trigger" aria-haspopup="true" aria-expanded="false" aria-controls="panel-product">
-            Product
+            {t.product}
             <svg class="caret" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg>
           </button>
           <div class="nav-panel mega mega-3col" id="panel-product">
@@ -95,7 +102,7 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
 
         <li class="nav-item has-panel">
           <button type="button" class="nav-trigger" aria-haspopup="true" aria-expanded="false" aria-controls="panel-solutions">
-            Solutions
+            {t.solutions}
             <svg class="caret" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg>
           </button>
           <div class="nav-panel mega mega-2col" id="panel-solutions">
@@ -122,7 +129,7 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
 
         <li class="nav-item has-panel">
           <button type="button" class="nav-trigger" aria-haspopup="true" aria-expanded="false" aria-controls="panel-resources">
-            Resources
+            {t.resources}
             <svg class="caret" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg>
           </button>
           <div class="nav-panel" id="panel-resources">
@@ -139,23 +146,23 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="/integrations">Integrations</a>
+          <a class="nav-link" href={lp('/integrations')}>{t.integrations}</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="/pricing">Pricing</a>
+          <a class="nav-link" href={lp('/pricing')}>{t.pricing}</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="/contact">Contact</a>
+          <a class="nav-link" href={lp('/contact')}>{t.contact}</a>
         </li>
       </ul>
     </nav>
 
     <div class="nav-actions">
-      <LocaleSwitcher current="en" />
-      <Button variant="secondary" href={LOGIN_URL}>Login</Button>
-      <Button variant="primary" href="/book-a-demo">Get Started</Button>
+      <LocaleSwitcher current={locale} />
+      <Button variant="secondary" href={LOGIN_URL}>{t.login}</Button>
+      <Button variant="primary" href={lp('/book-a-demo')}>{t.bookDemo}</Button>
     </div>
 
     <button type="button" class="nav-burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
@@ -175,7 +182,7 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
       <nav aria-label="Mobile">
         <div class="m-acc">
           <button type="button" class="m-acc-trigger" aria-expanded="false" aria-controls="m-product">
-            Product
+            {t.product}
             <svg class="caret" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
           </button>
           <div class="m-acc-panel" id="m-product" hidden>
@@ -195,7 +202,7 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
 
         <div class="m-acc">
           <button type="button" class="m-acc-trigger" aria-expanded="false" aria-controls="m-solutions">
-            Solutions
+            {t.solutions}
             <svg class="caret" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
           </button>
           <div class="m-acc-panel" id="m-solutions" hidden>
@@ -215,7 +222,7 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
 
         <div class="m-acc">
           <button type="button" class="m-acc-trigger" aria-expanded="false" aria-controls="m-resources">
-            Resources
+            {t.resources}
             <svg class="caret" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
           </button>
           <div class="m-acc-panel" id="m-resources" hidden>
@@ -227,17 +234,17 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
           </div>
         </div>
 
-        <a class="m-acc-link" href="/integrations">Integrations</a>
-        <a class="m-acc-link" href="/pricing">Pricing</a>
-        <a class="m-acc-link" href="/contact">Contact</a>
+        <a class="m-acc-link" href={lp('/integrations')}>{t.integrations}</a>
+        <a class="m-acc-link" href={lp('/pricing')}>{t.pricing}</a>
+        <a class="m-acc-link" href={lp('/contact')}>{t.contact}</a>
       </nav>
 
-      <div class="mobile-locale"><LocaleSwitcher current="en" mobile={true} /></div>
+      <div class="mobile-locale"><LocaleSwitcher current={locale} mobile={true} /></div>
     </div>
     </div>
   <div class="mobile-actions">
-    <Button variant="secondary" href={LOGIN_URL} block>Login</Button>
-    <Button variant="primary" href="/book-a-demo" block>Get Started</Button>
+    <Button variant="secondary" href={LOGIN_URL} block>{t.login}</Button>
+    <Button variant="primary" href={lp('/book-a-demo')} block>{t.bookDemo}</Button>
   </div>
   </div>
   <div class="mobile-backdrop" id="mobile-backdrop" aria-hidden="true"></div>

@@ -1,0 +1,83 @@
+---
+// Solutions hub page (/nl/solutions). One page linking to all individual solution pages
+// grouped by type and by team. No /solutions-[segment] sub-pages — this is the single
+// landing. Layout per V's wireframe (Jun 14 2026):
+// PageHeader (centered) → By Type grid (2-col) → By Team grid (2-col) → CtaEmail → Footer v2
+import Layout from '../../../layouts/Layout.astro';
+import PageHeader from '../../../components/page-headers/PageHeader.astro';
+import ImageCardGrid from '../../../components/ImageCardGrid.astro';
+import CtaEmail from '../../../components/CtaEmail.astro';
+import navIcons from '../../../data/nav-icons.json';
+
+const icons = navIcons as Record<string, string>;
+
+const byType = [
+  { heading: 'Zelfstandige restaurants', body: 'Betere foodcostcontrole, zonder spreadsheets.', href: '/nl/solutions/independent-restaurants', image: '/media/cta-bg-1.jpg', icon: icons['fluent-store'] },
+  { heading: 'Restaurantgroepen', body: 'Gecombineerd kostenoverzicht over alle locaties.', href: '/nl/solutions/restaurant-groups', image: '/media/cta-bg-2.jpg', icon: icons['buildings-2'] },
+  { heading: 'Hotels met F&B', body: 'Controle over het volledige food- en beverageprogramma.', href: '/nl/solutions/hotels', image: '/media/cta-bg-3.jpg', icon: icons['reserve'] },
+  { heading: 'Bars', body: 'Weet wat de marge is op ieder drankje dat je inschenkt.', href: '/nl/solutions/bars', image: '/media/cta-bg-4.jpg', icon: icons['cocktail'] },
+];
+
+const byTeam = [
+  { heading: 'Management', body: 'Margeoverzicht over de hele bedrijfsvoering.', href: '/nl/solutions/management', image: '/media/cta-bg-1.jpg', icon: icons['briefcase'] },
+  { heading: 'Bedrijfsvoering', body: 'Ontdek verspilling en prijsafwijkingen vroeg.', href: '/nl/solutions/operations', image: '/media/cta-bg-2.jpg', icon: icons['setting-2'] },
+  { heading: 'Keuken', body: 'Live gerechtkostenprijs voor scherpere menukeuzes.', href: '/nl/solutions/kitchen', image: '/media/cta-bg-3.jpg', icon: icons['chef-hat'] },
+  { heading: 'Financiën', body: 'Inkoopkosten waar je op kunt vertrouwen aan het einde van de maand.', href: '/nl/solutions/finance', image: '/media/cta-bg-4.jpg', icon: icons['fluent-finance'] },
+];
+---
+
+<Layout
+  title="Oplossingen | Stockifi"
+  description="Stockifi voor elk type horecabedrijf en elke rol. Vind de oplossing die past bij hoe jouw team werkt."
+>
+  <!-- 1. Page header — centered variant -->
+  <PageHeader
+    eyebrow="Oplossingen"
+    heading="[Placeholder heading]"
+    subhead="[Placeholder subhead]"
+  />
+
+  <!-- 2. By Type — 4 segment solution cards -->
+  <section class="section solutions-section">
+    <div class="container">
+      <div class="solutions-group-header">
+        <p class="tagline">Per type</p>
+        <h2 class="solutions-group-heading">[Placeholder heading]</h2>
+      </div>
+      <div class="solutions-grid">
+        <ImageCardGrid items={byType} columns={4} showArrow={true} />
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. By Team — 4 team solution cards -->
+  <section class="section solutions-section">
+    <div class="container">
+      <div class="solutions-group-header">
+        <p class="tagline">Per team</p>
+        <h2 class="solutions-group-heading">[Placeholder heading]</h2>
+      </div>
+      <div class="solutions-grid">
+        <ImageCardGrid items={byTeam} columns={4} showArrow={true} />
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. CTA — variant 2 centered email capture -->
+  <CtaEmail
+    heading="[Placeholder CTA heading]"
+    subhead="[Placeholder CTA subhead]"
+    bgImages={['/media/cta-bg-1.jpg', '/media/cta-bg-2.jpg', '/media/cta-bg-3.jpg', '/media/cta-bg-4.jpg']}
+  />
+</Layout>
+
+<style>
+  .solutions-section { padding-block: var(--space-48); }
+  .solutions-group-header { margin-bottom: var(--space-48); }
+  .solutions-group-heading { font-size: var(--text-h2); margin-top: var(--space-12); }
+
+  /* Scoped overrides for this page only */
+  .solutions-grid :global(.icg-icon) { color: white; }
+  .solutions-grid :global(.icg-arrow) { color: white; }
+  .solutions-grid :global(.icg-item--linked:hover) { border-color: white; }
+</style>

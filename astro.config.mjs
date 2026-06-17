@@ -9,6 +9,11 @@ export default defineConfig({
   redirects: {
     '/product': '/#how-it-works',
   },
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'no', 'de', 'da', 'sv', 'nl'],
+    routing: { prefixDefaultLocale: false },
+  },
   // Non-trailing-slash canonical, one policy site-wide (see docs/audit/09-redirect-map.md).
   trailingSlash: 'never',
   integrations: [

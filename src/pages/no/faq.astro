@@ -1,0 +1,62 @@
+---
+// FAQ page (Figma 132:734): page header with a search field → category filter strip →
+// double accordion (category blocks → nested FAQ accordions) → CTA. Categories/FAQs come
+// from src/data/faqs.json (draft content, pending review).
+import Layout from '../../layouts/Layout.astro';
+import PageHeader from '../../components/page-headers/PageHeader.astro';
+import FaqHub from '../../components/faq/FaqHub.astro';
+import CtaEmail from '../../components/CtaEmail.astro';
+import faqs from '../../data/faqs.json';
+---
+
+<Layout
+  title="FAQ | Stockifi"
+  description="Svar om hvordan Stockifi fungerer, integrasjoner, priser, produktet, onboarding og om det passer for restauranten din."
+>
+  <PageHeader
+    eyebrow="FAQ"
+    heading="Leter du etter noe?"
+    subhead="Søk blant spørsmålene restauranter stiller oftest, eller bla gjennom kategoriene nedenfor."
+  >
+    <label class="faq-search">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="m21 21-4.3-4.3" /></svg>
+      <input type="search" data-faq-search placeholder="Søk i FAQ" aria-label="Søk i FAQ" />
+    </label>
+  </PageHeader>
+
+  <FaqHub categories={faqs} />
+
+  <CtaEmail
+    heading="Fant du ikke svaret?"
+    subhead="Send e-posten din, så gir vi deg et direkte svar."
+    bgImages={['/media/cta-bg-1.jpg', '/media/cta-bg-2.jpg', '/media/cta-bg-3.jpg', '/media/cta-bg-4.jpg']}
+  />
+</Layout>
+
+<style>
+  .faq-search {
+    display: flex;
+    align-items: center;
+    gap: var(--space-12);
+    width: min(100%, 34rem);
+    margin-inline: auto;
+    padding: var(--space-12) var(--space-16);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-full);
+    background-color: color-mix(in srgb, var(--foreground) 5%, transparent);
+    transition: border-color 0.18s ease;
+  }
+  .faq-search:focus-within { border-color: var(--muted-foreground); }
+  .faq-search svg { flex: none; color: var(--muted-foreground); }
+  .faq-search input {
+    flex: 1;
+    min-width: 0;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--foreground);
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+  }
+  .faq-search input::placeholder { color: var(--muted-foreground); }
+</style>

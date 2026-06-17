@@ -1,0 +1,44 @@
+---
+metaTitle: "Fakturaautomatisering för restauranger | Stockifi"
+metaDescription: "Stockifi läser leverantörsfakturor rad för rad och skickar priser och kvantiteter direkt till din varukostnad, utan manuell inmatning."
+eyebrow: "Fakturaautomatisering"
+heading: "Varukostnad utan dataregistrering"
+subhead: "Din varukostnad kan hållas aktuell utan att någon behöver skriva in en faktura. Stockifi läser dem direkt från ditt redovisningssystem, så att priser och kvantiteter flödar in på egen hand."
+heroImage: "/media/product-invoice-automation.png"
+order: 10
+category: procurement
+howItWorks:
+  tagline: "Så här fungerar det"
+  heading: "Det kommer direkt från din redovisning"
+  body: "Varje leverantörsfaktura landar redan i din redovisning. Stockifi läser varje faktura rad för rad och skickar priser och kvantiteter direkt till din varukostnad, utan att någon behöver mata in dem manuellt."
+  points:
+    - heading: "Synkroniseras automatiskt"
+      body: "Fakturor flödar in när de landar i din redovisning, utan att behöva laddas upp eller skannas."
+    - heading: "Läses rad för rad"
+      body: "Stockifi fångar priset och kvantiteten för varje ingrediens på fakturan."
+  imageSide: "right"
+  imageAlt: ""
+integrationsHeading: "Fungerar med"
+integrationsSubject: "ditt redovisningssystem"
+benefits:
+  - heading: "Inget går igenom oläst"
+    body: "Varje leverantörsfaktura läses och registreras."
+  - heading: "Alltid aktuell"
+    body: "Priser uppdateras när fakturorna kommer in, före månadsslutet."
+  - heading: "Inga inmatningsfel"
+    body: "Siffrorna hämtas direkt från fakturan, så stavfel försvinner."
+  - heading: "Förändrar ingenting"
+    body: "Stockifi läser din redovisning och lämnar den oförändrad."
+faqHeading: "Frågor om fakturaautomatisering"
+faqs:
+  - question: "Behöver jag kontrollera de fakturor som Stockifi läser?"
+    answer: "Stockifi läser varje rad åt dig och flaggar allt som verkar fel, som en överdebitering eller en dubbelfakturering, så att du granskar undantagen snarare än varje enskild faktura."
+  - question: "Vad händer om en faktura aldrig når min redovisning?"
+    answer: "Stockifi läser det som landar i din redovisning, så en faktura som aldrig kommer dit registreras inte. Att skicka leverantörsfakturor via din redovisning håller bilden fullständig."
+  - question: "Vilka redovisningssystem fungerar det med?"
+    answer: "Stockifi kopplas till de redovisningssystem du redan använder. Berätta vilket du kör så bekräftar vi det på ett kort samtal."
+  - question: "Fungerar det tillsammans med min nuvarande setup?"
+    answer: "Ja. Stockifi läser datan och lämnar ditt redovisningssystem precis som det är."
+ctaHeading: "Redo att slippa fakturainmatning?"
+ctaSubhead: "Boka ett kort samtal så visar vi dig vad Stockifi hittar under dina första 30 dagar."
+---

@@ -1,0 +1,44 @@
+---
+metaTitle: "Lieferantenpreise verfolgen für Restaurants | Stockifi"
+metaDescription: "Stockifi erfasst jede Preisänderung Ihrer Lieferanten aus Ihren Rechnungen, markiert Überberechnungen und Trends und aktualisiert die betroffenen Rezepte automatisch."
+eyebrow: "Lieferantenpreise verfolgen"
+heading: "Erkennen Sie, wenn ein Lieferantenpreis steigt"
+subhead: "Lieferantenpreise verschieben sich in kleinen Schritten, die man auf einer einzelnen Rechnung kaum bemerkt. Stockifi verfolgt jede Veränderung und zeigt Ihnen, welche Gerichte davon betroffen sind, damit Sie bei einem Anstieg noch rechtzeitig handeln können."
+heroImage: "/media/product-supplier-price-tracking.png"
+order: 2
+category: procurement
+howItWorks:
+  tagline: "So funktioniert es"
+  heading: "Stockifi beobachtet jeden Preis, den Sie zahlen"
+  body: "Lieferantenpreise verschieben sich laufend, und die meisten Bewegungen sind auf einer einzelnen Rechnung zu klein, um aufzufallen. Stockifi prüft jeden Preis gegen die eigene Preishistorie und aktualisiert die betroffenen Rezepte sofort, sodass ein anhaltender Anstieg sichtbar wird, bevor er die Marge belastet."
+  points:
+    - heading: "Abgleich mit der Preishistorie"
+      body: "Jeder Preis wird mit dem gemessen, was diese Zutat normalerweise kostet."
+    - heading: "Rezepte sofort aktualisiert"
+      body: "Ändert sich ein Preis, werden die betroffenen Gerichte noch am selben Tag neu kalkuliert."
+  imageSide: "right"
+  imageAlt: ""
+integrationsHeading: "Funktioniert mit"
+integrationsSubject: "Ihrer Buchhaltungssoftware"
+benefits:
+  - heading: "Früh erkannt"
+    body: "Sehen Sie einen Preisanstieg am Tag, an dem er eingeht, solange Sie noch handeln können."
+  - heading: "Die vollständige Historie"
+    body: "Jede Zutat führt ein lückenloses Protokoll Ihrer Einkaufspreise."
+  - heading: "Bereit für Verhandlungen"
+    body: "Gehen Sie mit dem Preisverlauf in der Hand in ein Gespräch mit Ihrem Lieferanten."
+  - heading: "Über alle Standorte hinweg"
+    body: "Steigt der Preis eines gemeinsamen Lieferanten, werden alle Standorte gleichzeitig neu kalkuliert."
+faqHeading: "Fragen zur Lieferantenpreisverfolgung"
+faqs:
+  - question: "Wie unterscheidet Stockifi einen normalen Preisanstieg von einer Überberechnung?"
+    answer: "Stockifi prüft jede Rechnung gegen die Preishistorie der jeweiligen Zutat. Ein Anstieg, der zum bisherigen Trend passt, wird ohne Hinweis verarbeitet. Weicht ein Preis deutlich nach oben ab, wird er zur Prüfung markiert."
+  - question: "Wie weit reicht die Preishistorie zurück?"
+    answer: "Die Historie beginnt mit der ersten Rechnung, die Stockifi einliest, und wächst mit jeder weiteren Rechnung. Je länger Sie Stockifi nutzen, desto aussagekräftiger wird das Protokoll."
+  - question: "Funktioniert das auch über mehrere Standorte hinweg?"
+    answer: "Ja. Bei einer Restaurantgruppe fließen die Rechnungen aller Standorte in eine gemeinsame Preishistorie. Ein Anstieg bei einem gemeinsamen Lieferanten wird einmalig erkannt und sofort für alle Standorte neu kalkuliert."
+  - question: "Mit welchen Buchhaltungssystemen ist das kompatibel?"
+    answer: "Stockifi verbindet sich mit den Buchhaltungssystemen, die Sie bereits nutzen. Teilen Sie uns mit, welches System Sie einsetzen, und wir bestätigen die Kompatibilität in einem kurzen Gespräch."
+ctaHeading: "Sehen Sie, was Ihre Lieferanten wirklich berechnen"
+ctaSubhead: "Buchen Sie ein kurzes Gespräch und wir zeigen Ihnen, was Stockifi in Ihren ersten 30 Tagen aufdeckt."
+---

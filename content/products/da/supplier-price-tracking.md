@@ -1,0 +1,44 @@
+---
+metaTitle: "Leverandørprissporing til restauranter | Stockifi"
+metaDescription: "Stockifi sporer alle leverandørprisændringer fra dine fakturaer, markerer overopkrævninger og tendenser og genprisberegner de opskrifter, de berører, automatisk."
+eyebrow: "Leverandørprissporing"
+heading: "Vid, når en leverandørpris bevæger sig"
+subhead: "En leverandørs priser glider i små skridt, du aldrig ville opdage ved øjekast. Stockifi sporer hvert trin og de retter, det berører, så du kan reagere på en stigning, mens der stadig er tid."
+heroImage: "/media/product-supplier-price-tracking.png"
+order: 2
+category: procurement
+howItWorks:
+  tagline: "Sådan fungerer det"
+  heading: "Stockifi holder øje med alle de priser, du betaler"
+  body: "Leverandørpriser bevæger sig konstant, og det meste af bevægelsen er for lille til at bemærke på en enkelt faktura. Stockifi tjekker hver pris mod dens egen historik og genprisberegner de opskrifter, den berører, så en støt stigning viser sig, længe inden den æder en margin."
+  points:
+    - heading: "Tjekket mod historikken"
+      body: "Hver pris måles mod, hvad den ingrediens normalt koster."
+    - heading: "Opskrifter genprisberegnet"
+      body: "Når en pris bevæger sig, opdaterer de retter, der bruger den, samme dag."
+  imageSide: "right"
+  imageAlt: ""
+integrationsHeading: "Virker med"
+integrationsSubject: "dit regnskabsprogram"
+benefits:
+  - heading: "Opdaget tidligt"
+    body: "Se en stigning den dag, den lander, mens du stadig kan handle."
+  - heading: "Den fulde historik"
+    body: "Hver ingrediens gemmer registreringen af, hvad du betaler."
+  - heading: "Klar til forhandling"
+    body: "Gå ind til et leverandørmøde med tendensen i hånden."
+  - heading: "På tværs af alle steder"
+    body: "En delt leverandørs stigning genprisberegner alle lokationer på én gang."
+faqHeading: "Spørgsmål om leverandørprissporing"
+faqs:
+  - question: "Hvordan skelner Stockifi mellem en normal prisstigning og en overopkrævning?"
+    answer: "Den tjekker hver opkrævning mod ingrediensens egen prishistorik. En stigning, der passer til tendensen, passerer uden besvær. En, der hopper over den, markeres, så du kan reklamere."
+  - question: "Hvor langt tilbage går prishistorikken?"
+    answer: "Historikken bygges op fra den første faktura, Stockifi læser, og vokser med hver faktura derefter, så registreringen bliver rigere, jo længere du kører det."
+  - question: "Virker dette på tværs af flere lokationer?"
+    answer: "Ja. For en kæde føder alle lokationernes fakturaer én samlet prishistorik, så en stigning fra en delt leverandør opdages én gang og genprisberegner alle lokationer."
+  - question: "Hvilke regnskabssystemer virker det med?"
+    answer: "Stockifi forbinder sig med de regnskabssystemer, du allerede bruger. Fortæl os, hvad du kører, og vi bekræfter det på et kort opkald."
+ctaHeading: "Se, hvad dine leverandører reelt opkræver"
+ctaSubhead: "Book et kort opkald, og vi viser dig, hvad Stockifi afdækker i dine første 30 dage."
+---

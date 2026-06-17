@@ -1,0 +1,44 @@
+---
+metaTitle: "Leveranciersprijs bijhouden voor restaurants | Stockifi"
+metaDescription: "Stockifi registreert elke prijswijziging van leveranciers op basis van je facturen, markeert overberekeningen en trends, en herberekent de recepten die erdoor worden geraakt, automatisch."
+eyebrow: "Leveranciersprijs bijhouden"
+heading: "Weet wanneer een leveranciersprijs beweegt"
+subhead: "Leveranciersprijen verschuiven in kleine stapjes die je met het blote oog nooit opmerkt. Stockifi volgt elke beweging en de gerechten die erdoor worden geraakt, zodat je op een stijging kunt reageren zolang er nog ruimte is."
+heroImage: "/media/product-supplier-price-tracking.png"
+order: 2
+category: procurement
+howItWorks:
+  tagline: "Zo werkt het"
+  heading: "Stockifi bewaakt elke prijs die je betaalt"
+  body: "Leveranciersprijen veranderen voortdurend, en het meeste van die beweging is te klein om op een enkele factuur op te vallen. Stockifi vergelijkt elke prijs met zijn eigen geschiedenis en herberekent de recepten die erdoor worden geraakt, zodat een gestage stijging zichtbaar wordt lang voordat ze de marge aantast."
+  points:
+    - heading: "Vergeleken met de geschiedenis"
+      body: "Elke prijs wordt gemeten tegen wat dat ingredient normaal kost."
+    - heading: "Recepten herberekend"
+      body: "Wanneer een prijs beweegt, worden de gerechten die het gebruiken dezelfde dag bijgewerkt."
+  imageSide: "right"
+  imageAlt: ""
+integrationsHeading: "Werkt met"
+integrationsSubject: "je boekhoudsoftware"
+benefits:
+  - heading: "Vroeg gesignaleerd"
+    body: "Zie een stijging de dag dat die binnenkomt, terwijl je er nog op kunt reageren."
+  - heading: "De volledige geschiedenis"
+    body: "Elk ingredient houdt bij wat je betaalt."
+  - heading: "Klaar om te onderhandelen"
+    body: "Ga een leveranciersgesprek in met de trend bij de hand."
+  - heading: "Over elke locatie"
+    body: "Een stijging van een gedeelde leverancier herberekent elke locatie tegelijk."
+faqHeading: "Vragen over het bijhouden van leveranciersprijzen"
+faqs:
+  - question: "Hoe onderscheidt Stockifi een normale prijsstijging van een overberekening?"
+    answer: "Het vergelijkt elke factuurprijs met de prijshistorie van dat ingredient. Een stijging die past bij de trend wordt zonder ophef doorgelaten. Eén die er duidelijk boven uitkomt, wordt voor je gemarkeerd zodat je het kunt aanvechten."
+  - question: "Hoe ver gaat de prijshistorie terug?"
+    answer: "De geschiedenis wordt opgebouwd vanaf de eerste factuur die Stockifi leest en groeit met elke volgende factuur mee, zodat het overzicht rijker wordt naarmate je het langer gebruikt."
+  - question: "Werkt dit over meerdere locaties?"
+    answer: "Ja. Voor een groep voeden de facturen van alle locaties één prijsgeschiedenis, zodat een stijging van een gedeelde leverancier één keer wordt opgemerkt en elke locatie wordt herberekend."
+  - question: "Met welke boekhoudprogramma's werkt dit?"
+    answer: "Stockifi koppelt met de boekhoudprogramma's die je al gebruikt. Vertel ons wat je draait en we bevestigen het in een kort gesprek."
+ctaHeading: "Zie wat je leveranciers echt in rekening brengen"
+ctaSubhead: "Boek een kort gesprek en we laten je zien wat Stockifi in je eerste 30 dagen naar boven haalt."
+---

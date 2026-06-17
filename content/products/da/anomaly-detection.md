@@ -1,0 +1,44 @@
+---
+metaTitle: "Faktura-anomalidetektion til restauranter | Stockifi"
+metaDescription: "Stockifi tjekker hver leverandørfaktura og markerer overopkrævninger, dobbeltfaktureringer og usædvanlige prisudsving, så faktureringsfejl aldrig glider igennem."
+eyebrow: "Anomalidetektion"
+heading: "Stop med at betale for meget til dine leverandører"
+subhead: "En overopkrævning ser ud præcis som alle andre linjer på fakturaen. Stockifi tjekker hver enkelt for dig og markerer det, der er værd at kigge nærmere på, så faktureringsfejl opdages, mens du stadig kan kræve dem tilbage."
+heroImage: "/media/product-anomaly-detection.png"
+order: 13
+category: procurement
+howItWorks:
+  tagline: "Sådan fungerer det"
+  heading: "Det mistænkelige opkræv skiller sig ud"
+  body: "En måneds fakturaer kan indeholde hundredvis af linjer, og en overopkrævning eller en dobbeltfakturering ser ud præcis som alle andre poster. Stockifi tjekker hver linje op mod, hvad den pågældende ingrediens normalt koster, og markerer dem, der ikke passer ind, så en faktureringsfejl opdages, mens du stadig kan sætte spørgsmålstegn ved den."
+  points:
+    - heading: "Hver linje kontrolleres"
+      body: "Stockifi sammenligner hvert opkræv med ingrediensens normale pris."
+    - heading: "Afvigelser markeres"
+      body: "Overopkrævninger, dobbeltfaktureringer og usædvanlige udsving fremhæves til gennemgang."
+  imageSide: "right"
+  imageAlt: ""
+integrationsHeading: "Virker med"
+integrationsSubject: "dit regnskabsprogram"
+benefits:
+  - heading: "Reel eller forkert"
+    body: "En reel prisstigning passerer; et mistænkeligt opkræv bliver markeret."
+  - heading: "Dobbeltfaktureringer også"
+    body: "Dublerede linjer og dobbeltfaktureringer fanges ligeledes."
+  - heading: "Reklamér med dokumentation"
+    body: "Hvert markeret punkt viser opkrævningen og grunden til, at det skilte sig ud."
+  - heading: "Penge tilbage"
+    body: "Opdager du en fejl tidligt, kan du stadig kræve den tilbage."
+faqHeading: "Spørgsmål om anomalidetektion"
+faqs:
+  - question: "Vil Stockifi markere en normal prisstigning som en fejl?"
+    answer: "Nej. En stigning, der passer ind i en ingrediens' sædvanlige prisudvikling, behandles som en prisændring. Stockifi markerer de opkræv, der springer over, hvad historikken ville forvente."
+  - question: "Hvad sker der, efter en anomali er markeret?"
+    answer: "Fakturaen fremhæves til din gennemgang med opkrævningen og det, den er tjekket op mod, så du kan kontakte leverandøren, mens det stadig er aktuelt."
+  - question: "Hvad er forskellen på dette og leverandørprissporng?"
+    answer: "Prissporning følger, hvordan priser bevæger sig over tid. Anomalidetektion markerer de enkelte fakturaer, der ser forkerte ud, så du kan sætte spørgsmålstegn ved dem."
+  - question: "Har Stockifi brug for prishistorik, før det kan fange fejl?"
+    answer: "Det begynder at tjekke op mod hver ingrediens' priser, efterhånden som fakturaer kommer ind, og markeringerne bliver mere præcise, jo mere historik der opbygges."
+ctaHeading: "Stop med at betale for faktureringsfejl"
+ctaSubhead: "Book et kort opkald, og vi viser dig, hvad Stockifi afdækker i dine første 30 dage."
+---

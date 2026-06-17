@@ -1,0 +1,201 @@
+---
+// Pricing page — DE locale. Translated from src/pages/pricing.astro.
+// Sections: Seitenheader → Preiskarten → Logo-Banner → Feature-Spalten (v6) → FAQ (v1 split) → CTA (v1 Band).
+import Layout from '../../layouts/Layout.astro';
+import PageHeader from '../../components/page-headers/PageHeader.astro';
+import PricingCards from '../../components/PricingCards.astro';
+import LogoBanner from '../../components/LogoBanner.astro';
+import FeatureColumns from '../../components/features/FeatureColumns.astro';
+import FaqSplit from '../../components/faq/FaqSplit.astro';
+import CtaButton from '../../components/CtaButton.astro';
+import SectionPlaceholder from '../../components/SectionPlaceholder.astro';
+import userLogos from '../../data/user-logos.json';
+
+const plans = [
+  {
+    name: 'Automated',
+    description: 'Für Restaurants, die manuelle Inventuraufgaben eliminieren möchten.',
+    features: [
+      'Inventur per Mobil & Web',
+      'Offline-Modus & Echtzeit-Synchronisation',
+      'Rezeptanlage & Zutatkostenverfolgung',
+      'Automatische Rechnungsverarbeitung',
+      '30+ Buchhaltungsintegrationen',
+      'Erweiterter Support',
+    ],
+    cta: { label: 'Automated starten', href: '/de/book-a-demo' },
+  },
+  {
+    name: 'Full Control',
+    description: 'Für Betriebe, die vollständige Transparenz über Kosten und Margen wünschen.',
+    inherits: 'Automated',
+    features: [
+      'Rezeptkostenkalkulationen',
+      'Abweichungs- und Schwundberichte',
+      'Berichte zur Gewinnsteigerung',
+      '40+ Kassensystem-Integrationen',
+      'Dedizierter Kundendienst',
+    ],
+    featured: true,
+    badge: 'Beliebtester Plan',
+    cta: { label: 'Full Control starten', href: '/de/book-a-demo' },
+  },
+  {
+    name: 'Custom',
+    description: 'Für Betriebe mit mehreren Standorten, die individuelle Lösungen benötigen.',
+    inherits: 'Full Control',
+    features: [
+      'Multichannel-Verkaufsintegrationen',
+      'Organisations-Setup',
+      'Individuelle Integrationen',
+      'Daten & Reporting auf Enterprise-Niveau',
+      'Quartalsweises Business-Review mit Stockifi-Experten',
+    ],
+    cta: { label: 'Angebot anfordern', href: '/de/contact' },
+  },
+];
+
+const featureCols = [
+  {
+    eyebrow: 'Preistransparenz',
+    heading: 'Lieferantenpreiserhöhungen früh erkennen',
+    body: 'Stockifi liest jede Rechnung Zeile für Zeile, sodass Kostensteigerungen sichtbar werden, bevor sie Ihre Marge belasten.',
+    link: { label: 'Mehr erfahren', href: '/de/product/supplier-price-tracking' },
+  },
+  {
+    eyebrow: 'Verbrauchskontrolle',
+    heading: 'Soll- mit Ist-Verbrauch vergleichen',
+    body: 'Vergleichen Sie, was verbraucht werden sollte, mit dem, was tatsächlich verkauft wurde, und identifizieren Sie Überportionierung und Schwund.',
+    link: { label: 'Mehr erfahren', href: '/de/product/pos-integration' },
+  },
+  {
+    eyebrow: 'Vollständige Transparenz',
+    heading: 'Eine Übersicht für alle Standorte',
+    body: 'Konsolidiertes Kosten- und Abweichungs-Reporting, ob Sie einen Standort oder zwanzig betreiben.',
+    link: { label: 'Mehr erfahren', href: '/de/solutions/restaurant-groups' },
+  },
+];
+
+const faqs = [
+  {
+    question: 'Welche Pläne bietet Stockifi an?',
+    answer: 'Stockifi bietet drei Pläne: Automated, Full Control und Custom. Höhere Stufen enthalten Rezeptkostenkalkulationen, Abweichungs- und Schwundberichte, Kassensystem-Integrationen und Multi-Standort-Setup.',
+  },
+  {
+    question: 'Was kostet Stockifi?',
+    answer: 'Der Preis hängt von Größe und Komplexität Ihres Betriebs ab, daher besprechen wir das gemeinsam in einem kurzen Gespräch. Dieses Gespräch bestätigt auch, ob Stockifi die richtige Lösung für Sie ist.',
+  },
+  {
+    question: 'Deckt Stockifi in den ersten 30 Tagen versteckte Verluste auf?',
+    answer: 'Ja. Stockifi garantiert, in den ersten 30 Tagen versteckte Verluste von mindestens 3.000 € aufzudecken, oder Sie zahlen nichts. In den meisten Fällen liegt der Betrag deutlich höher.',
+  },
+  {
+    question: 'Ist mein Preis fest?',
+    answer: 'Ja. Ihr monatlicher Preis ist fest. Die 30-Tage-Garantie nimmt das Risiko, Stockifi auszuprobieren.',
+  },
+  {
+    question: 'Kann ich ohne Kreditkarte oder Langzeitvertrag starten?',
+    answer: 'Ja. Sie können ohne Kreditkarte und ohne Langzeitvertrag starten. Stockifi verdient seinen Platz durch messbaren Nutzen, nicht durch Vertragsbindung.',
+  },
+  {
+    question: 'Kann ich innerhalb von 48 Stunden loslegen?',
+    answer: 'Ja. Stockifi übernimmt den Großteil der Arbeit. Wir importieren Ihre Artikellisten und Rezepte, richten die Integrationen ein und bereiten alles für Ihre erste Inventur vor, innerhalb von 48 Stunden.',
+  },
+  {
+    question: 'Was benötige ich, um loszulegen?',
+    answer: 'Ein Buchhaltungssystem, idealerweise ein Kassensystem, mit dem Stockifi sich verbinden kann, sowie Ihre Menürezepte. Wir begleiten das Setup gemeinsam mit Ihnen, Sie müssen keine Daten manuell eingeben.',
+  },
+  {
+    question: 'Welchen Support erhalte ich?',
+    answer: 'Erweiterter Support in jedem Plan, dedizierter Kundendienst bei Full Control und ein quartalsweises Business-Review bei Custom.',
+  },
+  {
+    question: 'Hilft Stockifi dabei, meine Margen zu verbessern?',
+    answer: 'Ja. Stockifi gibt Ihnen klare Transparenz über Lebensmittel- und Getränkekosten, Überportionierung, Schwund und Lieferantenpreisveränderungen. Sie verbessern Ihre Margen, indem Sie genau sehen, wo Geld verloren geht.',
+  },
+  {
+    question: 'Verbindet sich Stockifi mit meiner Buchhaltung und meinem Kassensystem?',
+    answer: 'Ja. Stockifi verbindet sich mit über 70 Buchhaltungs- und Kassensystemen und synchronisiert Ihre Rechnungen, Verkaufsdaten und Rezepte automatisch. Sie erhalten eine zentrale Datenbasis ohne manuelle Arbeit.',
+  },
+  {
+    question: 'Ist Stockifi das Richtige für mein Restaurant?',
+    answer: 'Ja, wenn Sie etablierte Prozesse haben. Stockifi eignet sich für unabhängige Restaurants, Hotelrestaurants mit vollem Speisen- und Getränkeangebot sowie für Restaurantgruppen mit mehreren Standorten. Für Betriebe, die ihre Prozesse noch aufbauen, ist es weniger geeignet.',
+  },
+];
+---
+
+<Layout
+  title="Preise — Restaurant-Wareneinsatz-Software | Stockifi"
+  description="Pläne für jeden Betrieb, vom Einzelrestaurant bis zur Restaurantgruppe. Typische Kosten: 150–400 € pro Monat, mit risikofreier Onboarding-Garantie."
+>
+  <!-- Pricing hero: Header und Karten teilen sich einen dekorativen Farbverlauf-Hintergrund,
+       der hinter beiden Sektionen durchläuft. -->
+  <div class="pricing-hero">
+    <!-- 1. Seitenheader -->
+    <PageHeader
+      eyebrow="Preise"
+      heading="Wählen Sie den Plan, der zu Ihrem Betrieb passt"
+      subhead="Jeder Plan beinhaltet unsere risikofreie Onboarding-Garantie. Keine Vertragsbindung, jederzeit kündbar."
+    />
+
+    <!-- 1b. Preiskarten -->
+    <PricingCards plans={plans} />
+  </div>
+
+  <!-- 2. Logo-Banner — scrollendes Marquee -->
+  <LogoBanner label="Vertraut von 500+ Restaurants in ganz Europa" logos={userLogos} />
+
+  <!-- 2b. Einsparungsrechner — reservierter Bereich, folgt später -->
+  <SectionPlaceholder
+    label="Einsparungsrechner"
+    note="Interaktive Schätzung, was Stockifi Ihrem Betrieb einsparen könnte. Demnächst verfügbar."
+  />
+
+  <!-- 3. Feature-Sektion — Feature-Variante 6 (Spalten) -->
+  <FeatureColumns
+    tagline="Warum Stockifi"
+    heading="Wo sich die Pläne selbst bezahlt machen"
+    columns={featureCols}
+  />
+
+  <!-- 4. FAQ — Variante 1 (Split) -->
+  <FaqSplit
+    heading="Fragen zu den Preisen?"
+    body="Was Betreiber fragen, bevor sie einen Plan wählen. Noch unsicher? Sprechen Sie uns an, wir helfen Ihnen gerne weiter."
+    contact={{ label: 'Kontakt aufnehmen', href: '/de/contact' }}
+    items={faqs}
+  />
+
+  <!-- 5. CTA — Variante 2.1 (bildunterlegter Button) -->
+  <CtaButton
+    heading="Bereit, in Ihre Rentabilität zu investieren?"
+    primary={{ label: 'Jetzt starten', href: '/de/book-a-demo' }}
+    secondary={{ label: 'Mit einem Experten sprechen', href: '/de/contact' }}
+    bgImages={['/media/cta-bg-1.jpg', '/media/cta-bg-2.jpg', '/media/cta-bg-3.jpg', '/media/cta-bg-4.jpg']}
+  />
+</Layout>
+
+<style>
+  /* Marken-Farbverlauf (aus der Ads-LP) läuft hinter BEIDEN Sektionen
+     als ein durchgehender Hintergrund durch. */
+  .pricing-hero { position: relative; isolation: isolate; }
+  .pricing-hero::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: -6%;
+    transform: translateX(-50%);
+    width: min(1200px, 150%);
+    aspect-ratio: 600 / 500;
+    background-image: url('/media/gradient-centered.png');
+    background-size: contain;
+    background-position: center top;
+    background-repeat: no-repeat;
+    opacity: 0.4;
+    z-index: -1;
+    pointer-events: none;
+  }
+  /* Header und Karten wirken als ein Block: Doppelabstand zwischen ihnen aufheben. */
+  .pricing-hero :global(.page-header) { padding-bottom: var(--space-32); }
+  .pricing-hero :global(.pricing-cards) { padding-top: 0; }
+</style>

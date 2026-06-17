@@ -1,0 +1,194 @@
+---
+// Kontakt-side (Figma 3:876): centreret header → kontaktblok (Book en demo-kort + billede,
+// Kundesupport, Andre henvendelser) → FAQ variant 2 (FaqGrid).
+import Layout from '../../layouts/Layout.astro';
+import PageHeader from '../../components/page-headers/PageHeader.astro';
+import Button from '../../components/Button.astro';
+import FaqGrid from '../../components/faq/FaqGrid.astro';
+import faqsContact from '../../data/faqs-contact.json';
+
+const faqs = faqsContact;
+---
+
+<Layout
+  title="Kontakt Stockifi | Book en demo og support"
+  description="Tal med Stockifi-teamet om fit, priser og integrationer, book en demo, eller kontakt kundesupport og grundlæggerne direkte."
+>
+  <div class="ct-hero">
+    <PageHeader
+      eyebrow="Kontakt"
+      heading="Kom i kontakt"
+      subhead="Har du spørgsmål om fit, priser eller hvordan Stockifi forbinder til dine systemer? Kontakt dem, der bygger og driver det."
+    />
+
+    <section class="section ct-section" id="contact">
+      <span class="ct-glow" aria-hidden="true"></span>
+      <div class="ct-wide">
+        <div class="ct-row">
+        <!-- Book en demo — billede + tekst -->
+        <article class="ct-demo">
+          <div class="ct-demo-media">
+            <img src="/media/cta-bg-1.jpg" alt="Et restaurantkøkken under service" loading="lazy" decoding="async" />
+          </div>
+          <div class="ct-demo-body">
+            <h2 class="ct-demo-h">Book en demo</h2>
+            <p class="ct-demo-text text-muted">Klar til at se Stockifi i aktion? Vi viser dig gerne rundt.</p>
+            <div class="ct-demo-action">
+              <Button variant="primary" href="/da/book-a-demo">
+                Book en demo
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              </Button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Højre kolonne: support + henvendelser -->
+        <div class="ct-col">
+          <article class="ct-card">
+            <span class="ct-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" /><circle cx="12" cy="12" r="3.4" /><path d="m4.9 4.9 4.2 4.2m5.8 5.8 4.2 4.2m0-14.2-4.2 4.2m-5.8 5.8-4.2 4.2" /></svg>
+            </span>
+            <div class="ct-card-head">
+              <h3 class="ct-card-h">Kundesupport</h3>
+              <p class="ct-card-text text-muted">Ægte, responsiv og faglig support, når du har brug for det.</p>
+            </div>
+            <div class="ct-links">
+              <a class="ct-contact" href="mailto:support@stockifi.io">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 7 9 6 9-6" /></svg>
+                support@stockifi.io
+              </a>
+              <a class="ct-contact" href="tel:+4721051403">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.22 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+                +47 21 05 14 03
+              </a>
+            </div>
+          </article>
+
+          <article class="ct-card">
+            <span class="ct-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>
+            </span>
+            <div class="ct-card-head">
+              <h3 class="ct-card-h">Andre henvendelser</h3>
+              <p class="ct-card-text text-muted">Har du noget på hjerte? Send os en besked.</p>
+            </div>
+            <div class="ct-people">
+              <div class="ct-person">
+                <p class="ct-person-name">Sime Buzeca</p>
+                <p class="ct-person-role text-muted">CEO &amp; medstifter</p>
+                <a class="ct-contact" href="mailto:sime@stockifi.io">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 7 9 6 9-6" /></svg>
+                  sime@stockifi.io
+                </a>
+              </div>
+              <div class="ct-person">
+                <p class="ct-person-name">Simon Burman</p>
+                <p class="ct-person-role text-muted">COO &amp; medstifter</p>
+                <a class="ct-contact" href="mailto:simon@stockifi.io">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 7 9 6 9-6" /></svg>
+                  simon@stockifi.io
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+    </section>
+  </div>
+
+  <FaqGrid
+    heading="Ofte stillede spørgsmål"
+    subhead="Svar på de spørgsmål, restauranter oftest stiller, før de kommer i gang."
+    items={faqs}
+    cta={{
+      heading: 'Har du stadig spørgsmål?',
+      body: "Send os en besked, så vender vi tilbage til dig.",
+      label: 'Kontakt os',
+      href: '#contact',
+    }}
+  />
+</Layout>
+
+<style>
+  .ct-hero { position: relative; isolation: isolate; overflow-x: clip; }
+  /* Tighten the gap so the cards sit above the fold (header still carries section-y below
+     its copy; this pulls the cards up under it). */
+  .ct-section { position: relative; padding-top: 0; margin-top: calc(-1 * var(--space-64)); scroll-margin-top: var(--nav-h); }
+  /* gradient-duo as a shared backdrop centred on the header↔cards seam — bleeds up into
+     the header and down into the cards, painted behind both (z-index:-1 within the
+     isolated hero, so it never clips at a section edge). */
+  .ct-glow {
+    position: absolute;
+    left: 50%;
+    /* Centre sits below the seam so most of the glow backs the cards, while the top still
+       feathers up into the header. */
+    top: 220px;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    /* Wider than the cards (which now run to the 80px gutter) so it reads in the gutters,
+       and taller so it bleeds well up into the header. Clipped to the hero (overflow-x)
+       so 110vw can't cause a horizontal scrollbar. */
+    width: 110vw;
+    height: 1000px;
+    background-image: url('/media/gradient-duo.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  .ct-wide { width: 100%; max-width: none; margin-inline: auto; padding-inline: var(--gutter-wide); }
+
+  .ct-row { display: grid; grid-template-columns: 1fr; gap: var(--space-32); }
+
+  /* Transparent fill + a faint translucent border + soft shadow, so the card floats and
+     the gradient backdrop shows through it (V's DevTools tuning: border #2e283e at ~49%,
+     solid background dropped). Raw hex via a local var to satisfy the token lint. */
+  .ct-demo,
+  .ct-card {
+    --ct-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.2);
+    --ct-border: #2e283e7d;
+    border: 1px solid var(--ct-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--ct-shadow);
+    overflow: hidden;
+  }
+
+  /* Book en demo — billede ved siden af tekst. */
+  .ct-demo { display: grid; grid-template-columns: 1fr; }
+  .ct-demo-media { background: var(--muted); }
+  .ct-demo-media img { display: block; width: 100%; height: 100%; min-height: 14rem; object-fit: cover; }
+  .ct-demo-body { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: var(--space-16); padding: var(--space-32); }
+  .ct-demo-h { font-size: var(--text-h3); }
+  .ct-demo-text { font-size: var(--text-body-lg); max-width: 36ch; }
+  .ct-demo-action { margin-top: var(--space-8); }
+
+  /* Højre kolonne. */
+  .ct-col { display: grid; grid-template-columns: 1fr; gap: var(--space-32); align-content: start; }
+  .ct-card { display: flex; flex-direction: column; gap: var(--space-16); padding: var(--space-32); }
+  .ct-icon { color: var(--foreground); }
+  .ct-card-head { display: flex; flex-direction: column; gap: var(--space-8); }
+  .ct-card-h { font-size: var(--text-h5); }
+  .ct-card-text { font-size: var(--text-body); }
+
+  .ct-links,
+  .ct-people { display: flex; flex-direction: column; gap: var(--space-16); margin-top: var(--space-8); }
+
+  .ct-person { display: flex; flex-direction: column; gap: var(--space-4); }
+  .ct-person-name { font-weight: var(--fw-semibold); color: var(--foreground); }
+  .ct-person-role { font-size: var(--text-body-sm); }
+  .ct-person .ct-contact { margin-top: var(--space-8); }
+
+  .ct-contact { display: inline-flex; align-items: center; gap: var(--space-12); color: var(--foreground); font-size: var(--text-body); }
+  .ct-contact svg { color: var(--muted-foreground); flex: none; transition: color 0.18s ease; }
+  .ct-contact:hover { color: var(--primary-light); text-decoration: none; }
+  .ct-contact:hover svg { color: var(--primary-light); }
+
+  @media (min-width: 1024px) {
+    .ct-wide { padding-inline: 80px; }
+    .ct-row { grid-template-columns: 2fr 1fr; align-items: stretch; }
+    .ct-demo { grid-template-columns: 1fr 1fr; }
+  }
+</style>

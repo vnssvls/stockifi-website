@@ -1,0 +1,43 @@
+---
+metaTitle: "App for varetelling på restaurant | Stockifi"
+metaDescription: "Gjennomfør periodiske varetellinger på mobil eller nett, online eller offline, og se avvik mot teoretisk forbruk samlet på ett sted."
+eyebrow: "Varetelling"
+heading: "Tellinger som stemmer med hyllen"
+subhead: "Tell på mobil eller nett, online eller offline. Se avviket mot hva oppskriftene og salget forutsa, i det øyeblikket du lukker tellingen."
+heroImage: "/media/product-stock-counting.png"
+order: 21
+category: inventory-management
+howItWorks:
+  tagline: "Slik fungerer det"
+  heading: "En telling låses ikke før den er godkjent"
+  body: "Du teller på telefonen eller nettbrettet teamet allerede har, i den rekkefølgen hyllene er arrangert, online eller offline. Før tellingen lukkes, markerer Stockifi alt som ser rart ut, for eksempel et uvanlig høyt eller lavt tall på en vare, slik at et sannsynlig feiltast blir fanget opp. Bare en verifisert telling låser varelageret for perioden."
+  points:
+    - heading: "Etter hyllerekkefølge"
+      body: "Tellingen følger hvordan hyllene dine er arrangert."
+    - heading: "Verifisert, deretter låst"
+      body: "Merkelige tall flagges før tellingen lukkes."
+  imageSide: "right"
+  imageAlt: ""
+showIntegrations: false
+benefits:
+  - heading: "Tell 10 ganger raskere"
+    body: "På en telefon i stedet for en klemmappe tar en telling bare en brøkdel av tiden."
+  - heading: "Fungerer offline"
+    body: "Tellinger fortsetter uten signal og synkroniseres når du kobler til igjen."
+  - heading: "Avvik du kan stole på"
+    body: "Tellinger mates direkte inn i avviksberegningen, slik at tallet gjenspeiler faktisk varelager."
+  - heading: "Én kilde"
+    body: "Alle tellinger ligger i Stockifi, uten separate versjoner å avstemme."
+faqHeading: "Spørsmål om varetelling"
+faqs:
+  - question: "Kan jeg telle varelager etter min egen plan?"
+    answer: "Ja. Stockifi bruker periodiske varetellinger med avviksanalyse i appen. Du teller når det passer deg, og ser deretter faktisk forbruk mot hva oppskriftene forutsa."
+  - question: "Hvor ofte bør jeg telle varelageret?"
+    answer: "De fleste operatører teller ved periodeslutt, månedlig for mange. Stockifi tilpasser seg den periodiske syklusen du kjører og viser avvik for den perioden."
+  - question: "Trenger jeg en strekkodeskanner eller spesielt utstyr?"
+    answer: "Nei. Telling kjører på telefonen eller nettbrettet teamet allerede har, uten noe ekstra å kjøpe."
+  - question: "Kan teamet mitt dele en telling mellom seg?"
+    answer: "Ja. Tellingen kan deles mellom teammedlemmene og enhetene deres, område for område, og Stockifi samler det til én telling for perioden."
+ctaHeading: "Se det faktiske varelageret ditt"
+ctaSubhead: "Book en kort samtale, så viser vi deg hva Stockifi avdekker i løpet av de første 30 dagene."
+---

@@ -1,0 +1,44 @@
+---
+metaTitle: "Software voor receptenbeheer en kostprijsberekening | Stockifi"
+metaDescription: "Bouw je recepten en subrecepten op één plek, met live ingrediëntkosten vanuit je facturen, zodat elk gerecht zijn werkelijke kostprijs en marge toont."
+eyebrow: "Receptenbeheer"
+heading: "Bouw recepten met live kosten"
+subhead: "Zodra je recepten zijn ingevoerd, bereken je nooit meer handmatig de kostprijs van een gerecht. Stockifi haalt de prijs van elk ingrediënt op uit je facturen, zodat elk gerecht zijn werkelijke kostprijs en marge toont."
+heroImage: "/media/product-recipe-building.png"
+order: 20
+category: inventory-management
+howItWorks:
+  tagline: "Hoe het werkt"
+  heading: "Een gerecht kost precies wat de ingrediënten jou kosten"
+  body: "Elk ingrediënt in een recept is gekoppeld aan de werkelijke aankoopprijs uit je facturen. Een prebatch of subrecept wordt eenmalig berekend en rolt door in elk gerecht dat het gebruikt, zodat de kostprijs van een gerecht de som is van wat de ingrediënten jou kosten en meebeweegt zodra een leveranciersprijs wijzigt."
+  points:
+    - heading: "Geprijsd vanuit facturen"
+      body: "Elk ingrediënt is gekoppeld aan de werkelijke aankoopprijs."
+    - heading: "Subrecepten rollen door"
+      body: "Een prebatch wordt eenmalig berekend en cascadeert door in elk gerecht."
+  imageSide: "right"
+  imageAlt: ""
+integrationsHeading: "Werkt met"
+integrationsSubject: "je boekhoudsoftware"
+benefits:
+  - heading: "Één receptenbibliotheek"
+    body: "Op dezelfde manier opgebouwd en berekend op elke locatie."
+  - heading: "Volledige kostenopbouw"
+    body: "Zie wat elk ingrediënt en subrecept bijdraagt aan een gerecht."
+  - heading: "Geen kostendrift"
+    body: "Prijzen volgen je facturen in plaats van een spreadsheet die verouderd raakt."
+  - heading: "Wij bouwen ze in"
+    body: "Je deelt je recepten en wij zetten ze op tijdens de onboarding."
+faqHeading: "Vragen over recepten"
+faqs:
+  - question: "Zetten jullie onze recepten voor ons op?"
+    answer: "Ja. Je deelt je recepten en wij bouwen ze in, met ingrediëntkosten die vanaf het begin worden bijgehouden. De handmatige setup wordt voor je afgehandeld."
+  - question: "Hoe worden ingrediëntkosten gekoppeld aan een recept?"
+    answer: "Elk ingrediënt in een recept is gekoppeld aan de werkelijke aankoopprijs uit je facturen, zodat de kostprijs van een recept de som is van wat die ingrediënten je op dat moment kosten."
+  - question: "Houden recepten rekening met putlosses en yield?"
+    answer: "Ja. Je stelt in hoeveel van een ingrediënt een recept daadwerkelijk gebruikt, zodat het snijverlies van bijvoorbeeld een hele vis of een groot snijstuk in elke portie wordt verrekend. Die putloss of uitsnijding komt in je gerechtkostprijs terecht in plaats van te verdwijnen in de afwijking."
+  - question: "Kan ik één receptenbibliotheek gebruiken voor al mijn locaties?"
+    answer: "Ja. Je recepten staan in één bibliotheek die gedeeld wordt over locaties, zodat een gerecht overal op dezelfde manier is opgebouwd en berekend, en een update elke locatie bereikt."
+ctaHeading: "Zie je recepten live berekend"
+ctaSubhead: "Boek een kort gesprek en we laten je zien wat Stockifi in je eerste 30 dagen boven water haalt."
+---

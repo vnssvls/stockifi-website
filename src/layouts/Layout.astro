@@ -25,9 +25,12 @@ interface Props {
   image?: string;
   /** Keep this page out of search indexes (e.g. /intro ad LPs). Styleguide auto-noindexes. */
   noindex?: boolean;
+  /** BCP-47 language code for <html lang>. Defaults to current Astro i18n locale or 'en'. */
+  lang?: string;
 }
 
-const { title = 'Stockifi', description = '', bare = false, image, noindex = false } = Astro.props;
+const { title = 'Stockifi', description = '', bare = false, image, noindex = false, lang } = Astro.props;
+const htmlLang = lang ?? Astro.currentLocale ?? 'en';
 
 // Canonical absolute URL for this page (host + path, no trailing slash beyond root).
 const canonical = new URL(Astro.url.pathname.replace(/(.)\/$/, '$1'), Astro.site);
@@ -38,7 +41,7 @@ const robotsNoindex = noindex || Astro.url.pathname.startsWith('/styleguide');
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={htmlLang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
