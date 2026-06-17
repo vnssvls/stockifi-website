@@ -44,6 +44,7 @@ const STRINGS = {
     successAlt: 'In the meantime, see who else uses Stockifi.',
     successCta: 'Read customer stories',
     successCtaHref: '/customer-stories',
+    errSubmit: 'Something went wrong. Please try again.',
   },
   no: {
     metaTitle: 'Book en demo | Stockifi',
@@ -85,6 +86,7 @@ const STRINGS = {
     successAlt: 'I mellomtiden kan du se hvem som bruker Stockifi.',
     successCta: 'Les kundehistorier',
     successCtaHref: '/no/customer-stories',
+    errSubmit: 'Noe gikk galt. Prøv igjen.',
   },
   de: {
     metaTitle: 'Demo buchen | Stockifi',
@@ -126,6 +128,7 @@ const STRINGS = {
     successAlt: 'Sehen Sie in der Zwischenzeit, wer Stockifi nutzt.',
     successCta: 'Kundenberichte lesen',
     successCtaHref: '/de/customer-stories',
+    errSubmit: 'Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.',
   },
   da: {
     metaTitle: 'Book en demo | Stockifi',
@@ -167,6 +170,7 @@ const STRINGS = {
     successAlt: 'I mellemtiden kan du se, hvem der bruger Stockifi.',
     successCta: 'Læs kundehistorier',
     successCtaHref: '/da/customer-stories',
+    errSubmit: 'Noget gik galt. Prøv venligst igen.',
   },
   sv: {
     metaTitle: 'Boka en demo | Stockifi',
@@ -208,6 +212,7 @@ const STRINGS = {
     successAlt: 'Under tiden kan du se vilka som använder Stockifi.',
     successCta: 'Läs kundberättelser',
     successCtaHref: '/sv/customer-stories',
+    errSubmit: 'Något gick fel. Försök igen.',
   },
   nl: {
     metaTitle: 'Boek een demo | Stockifi',
@@ -249,6 +254,7 @@ const STRINGS = {
     successAlt: 'Bekijk ondertussen wie Stockifi al gebruikt.',
     successCta: 'Lees klantverhalen',
     successCtaHref: '/nl/customer-stories',
+    errSubmit: 'Er is iets misgegaan. Probeer het opnieuw.',
   },
 };
 
@@ -372,6 +378,8 @@ const s = STRINGS[locale as keyof typeof STRINGS] ?? STRINGS.en;
               </svg>
             </button>
 
+            <p class="bd-form-error bd-hidden" id="bd-form-error" role="alert"></p>
+
             <p class="bd-legal text-muted">
               {s.legalPre} <a href="/privacy-policy">{s.legalLink}</a>{s.legalPost}
             </p>
@@ -462,6 +470,12 @@ const s = STRINGS[locale as keyof typeof STRINGS] ?? STRINGS.en;
 
 <style>
 .bd-hidden { display: none !important; }
+
+.bd-form-error {
+  font-size: var(--text-body-sm);
+  color: #f87171;
+  margin-top: var(--space-4);
+}
 
 .bd {
   position: relative;
@@ -965,9 +979,9 @@ const s = STRINGS[locale as keyof typeof STRINGS] ?? STRINGS.en;
 }
 </style>
 
-<script define:vars={{ jsT: { errFirstName: s.errFirstName, errLastName: s.errLastName, errEmail: s.errEmail, errPhone: s.errPhone, errCompany: s.errCompany, errLocations: s.errLocations, errInvalidEmail: s.errInvalidEmail, submit: s.submit, submitting: s.submitting } }}>
-const PORTAL_ID = 'YOUR_PORTAL_ID';
-const FORM_GUID = 'YOUR_FORM_GUID';
+<script define:vars={{ jsT: { errFirstName: s.errFirstName, errLastName: s.errLastName, errEmail: s.errEmail, errPhone: s.errPhone, errCompany: s.errCompany, errLocations: s.errLocations, errInvalidEmail: s.errInvalidEmail, errSubmit: s.errSubmit, submit: s.submit, submitting: s.submitting } }}>
+const PORTAL_ID = '48915892';
+const FORM_GUID = '32c272c3-584c-4db1-883f-1cf00fa44a1c';
 
 const form = document.getElementById('bd-form');
 const successPanel = document.getElementById('bd-success');
@@ -1008,10 +1022,13 @@ function validate() {
   return valid;
 }
 
+const formError = document.getElementById('bd-form-error');
+
 form?.addEventListener('submit', async (e) => {
   e.preventDefault();
   if (!validate()) return;
 
+  formError?.classList.add('bd-hidden');
   submitBtn.disabled = true;
   submitLabel.textContent = jsT.submitting;
   submitArrow?.classList.add('bd-hidden');
@@ -1022,23 +1039,25 @@ form?.addEventListener('submit', async (e) => {
     .filter(([, v]) => String(v).trim())
     .map(([name, value]) => ({ name, value: String(value) }));
 
+  const hutk = document.cookie.split(';').map(c => c.trim()).find(c => c.startsWith('hubspotutk='))?.split('=')[1];
+
   try {
-    if (PORTAL_ID !== 'YOUR_PORTAL_ID') {
-      const res = await fetch(
-        `https://api.hsforms.com/submissions/v3/integration/submit/${PORTAL_ID}/${FORM_GUID}`,
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            fields,
-            context: { pageUri: window.location.href, pageName: document.title },
-          }),
-        }
-      );
-      if (!res.ok) throw new Error('HubSpot submission failed');
-    } else {
-      await new Promise((r) => setTimeout(r, 1400));
-    }
+    const res = await fetch(
+      `https://api.hsforms.com/submissions/v3/integration/submit/${PORTAL_ID}/${FORM_GUID}`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          fields,
+          context: {
+            pageUri: window.location.href,
+            pageName: document.title,
+            ...(hutk && { hutk }),
+          },
+        }),
+      }
+    );
+    if (!res.ok) throw new Error('HubSpot submission failed');
 
     showSuccess();
   } catch {
@@ -1046,6 +1065,10 @@ form?.addEventListener('submit', async (e) => {
     submitLabel.textContent = jsT.submit;
     submitArrow?.classList.remove('bd-hidden');
     submitSpinner?.classList.add('bd-hidden');
+    if (formError) {
+      formError.textContent = jsT.errSubmit;
+      formError.classList.remove('bd-hidden');
+    }
   }
 });
 
