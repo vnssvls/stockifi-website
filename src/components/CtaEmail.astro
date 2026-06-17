@@ -28,13 +28,52 @@ const {
   bgImages,
 } = Astro.props;
 
-const TERMS: Record<string, { pre: string; mid: string; link: string; post: string; success: string }> = {
-  en: { pre: 'By clicking', mid: "you're confirming that you agree with our", link: 'Terms and Conditions', post: '.', success: "You're in. We'll be in touch." },
-  de: { pre: 'Mit Klick auf', mid: 'bestätigen Sie, dass Sie unseren', link: 'Allgemeinen Geschäftsbedingungen', post: ' zustimmen.', success: 'Eingetragen. Wir melden uns.' },
-  no: { pre: 'Ved å klikke på', mid: 'bekrefter du at du godtar våre', link: 'Vilkår og betingelser', post: '.', success: 'Du er med. Vi tar kontakt.' },
-  sv: { pre: 'Genom att klicka på', mid: 'bekräftar du att du godkänner våra', link: 'Villkor', post: '.', success: 'Du är med. Vi hör av oss.' },
-  nl: { pre: 'Door op', mid: 'te klikken, bevestigt u dat u akkoord gaat met onze', link: 'Algemene voorwaarden', post: '.', success: 'Gelukt. We nemen contact op.' },
-  da: { pre: 'Ved at klikke på', mid: 'bekræfter du, at du accepterer vores', link: 'Vilkår og betingelser', post: '.', success: 'Du er tilmeldt. Vi tager kontakt.' },
+const TERMS: Record<string, {
+  pre: string; mid: string; link: string; post: string; success: string;
+  successH: string; successP: string; successAlt: string; successCta: string; successCtaHref: string;
+}> = {
+  en: {
+    pre: 'By clicking', mid: "you're confirming that you agree with our", link: 'Terms and Conditions', post: '.',
+    success: "You're in. We'll be in touch.",
+    successH: "You're in.", successP: "We'll be in touch shortly.",
+    successAlt: "See how other restaurants cut food costs with Stockifi.",
+    successCta: "Read customer stories", successCtaHref: "/customer-stories",
+  },
+  de: {
+    pre: 'Mit Klick auf', mid: 'bestätigen Sie, dass Sie unseren', link: 'Allgemeinen Geschäftsbedingungen', post: ' zustimmen.',
+    success: 'Eingetragen. Wir melden uns.',
+    successH: "Erhalten!", successP: "Unser Team meldet sich in Kürze.",
+    successAlt: "Sehen Sie, wie andere Restaurants mit Stockifi Kosten senken.",
+    successCta: "Kundenberichte lesen", successCtaHref: "/de/customer-stories",
+  },
+  no: {
+    pre: 'Ved å klikke på', mid: 'bekrefter du at du godtar våre', link: 'Vilkår og betingelser', post: '.',
+    success: 'Du er med. Vi tar kontakt.',
+    successH: "Takk!", successP: "Teamet vårt tar kontakt snart.",
+    successAlt: "Se hvordan andre restauranter kutter kostnader med Stockifi.",
+    successCta: "Les kundehistorier", successCtaHref: "/no/customer-stories",
+  },
+  sv: {
+    pre: 'Genom att klicka på', mid: 'bekräftar du att du godkänner våra', link: 'Villkor', post: '.',
+    success: 'Du är med. Vi hör av oss.',
+    successH: "Klart!", successP: "Vårt team hör av sig snart.",
+    successAlt: "Se hur andra restauranger sänker kostnader med Stockifi.",
+    successCta: "Läs kundberättelser", successCtaHref: "/sv/customer-stories",
+  },
+  nl: {
+    pre: 'Door op', mid: 'te klikken, bevestigt u dat u akkoord gaat met onze', link: 'Algemene voorwaarden', post: '.',
+    success: 'Gelukt. We nemen contact op.',
+    successH: "Ontvangen!", successP: "Ons team neemt snel contact met je op.",
+    successAlt: "Bekijk hoe andere restaurants kosten verlagen met Stockifi.",
+    successCta: "Lees klantverhalen", successCtaHref: "/nl/customer-stories",
+  },
+  da: {
+    pre: 'Ved at klikke på', mid: 'bekræfter du, at du accepterer vores', link: 'Vilkår og betingelser', post: '.',
+    success: 'Du er tilmeldt. Vi tager kontakt.',
+    successH: "Modtaget!", successP: "Vores team kontakter dig snart.",
+    successAlt: "Se, hvordan andre restauranter reducerer omkostninger med Stockifi.",
+    successCta: "Læs kundehistorier", successCtaHref: "/da/customer-stories",
+  },
 };
 const locale = Astro.currentLocale ?? 'en';
 const t = TERMS[locale] ?? TERMS.en;
@@ -75,6 +114,26 @@ const single = imgs.length === 1 ? imgs[0] : '';
     </p>
   </div>
 </section>
+
+<dialog class="ce-dialog" data-ce-dialog>
+  <div class="ce-dialog-inner">
+    <button class="ce-dialog-close" data-ce-dialog-close aria-label="Close">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M12 4L4 12M4 4l8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <div class="ce-dialog-check" aria-hidden="true">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <circle cx="14" cy="14" r="13" stroke="var(--primary)" stroke-width="1.5"/>
+        <path d="M8.5 14l4 4 7-8" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <p class="ce-dialog-h">{t.successH}</p>
+    <p class="ce-dialog-p">{t.successP}</p>
+    <p class="ce-dialog-alt">{t.successAlt}</p>
+    <a class="ce-dialog-cta" href={t.successCtaHref}>{t.successCta} →</a>
+  </div>
+</dialog>
 
 <style>
   /* Full-bleed image background. `background-image` (not the linted `background`
@@ -145,6 +204,76 @@ const single = imgs.length === 1 ? imgs[0] : '';
   @media (max-width: 639px) {
     .ce-form { flex-direction: column; }
   }
+
+  /* Dialog — display goes on the inner div, not .ce-dialog, to keep dialog:not([open]) working */
+  .ce-dialog {
+    border: none;
+    border-radius: var(--radius-lg);
+    background: var(--card);
+    padding: 0;
+    max-width: 360px;
+    width: calc(100% - 2rem);
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.45);
+  }
+  .ce-dialog::backdrop {
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(4px);
+  }
+  .ce-dialog[open] .ce-dialog-inner {
+    animation: ce-dialog-in 0.22s ease-out both;
+  }
+  @keyframes ce-dialog-in {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .ce-dialog-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--space-12);
+    padding: var(--space-32) var(--space-32) 2.5rem;
+    position: relative;
+  }
+  .ce-dialog-close {
+    position: absolute;
+    top: var(--space-16);
+    right: var(--space-16);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--muted-foreground);
+    padding: var(--space-4);
+    line-height: 0;
+    border-radius: var(--radius-sm);
+    transition: color 0.15s;
+  }
+  .ce-dialog-close:hover { color: var(--foreground); }
+  .ce-dialog-check { margin-bottom: var(--space-4); }
+  .ce-dialog-h {
+    font-family: var(--font-heading);
+    font-size: var(--text-h3);
+    font-weight: var(--fw-bold);
+    line-height: var(--lh-h3);
+    color: var(--foreground);
+  }
+  .ce-dialog-p {
+    font-size: var(--text-body);
+    line-height: var(--lh-body);
+    color: var(--foreground);
+  }
+  .ce-dialog-alt {
+    font-size: var(--text-body-sm);
+    line-height: var(--lh-body);
+    color: var(--muted-foreground);
+  }
+  .ce-dialog-cta {
+    font-size: var(--text-body-sm);
+    color: var(--primary);
+    text-decoration: none;
+    margin-top: var(--space-4);
+  }
+  .ce-dialog-cta:hover { text-decoration: underline; }
 </style>
 
 <script>
@@ -161,6 +290,19 @@ const single = imgs.length === 1 ? imgs[0] : '';
   const FORM_GUID = 'a9687b88-dcf6-4d77-9288-abc68e2bb521';
 
   document.querySelectorAll<HTMLFormElement>('[data-ce-form]').forEach((form) => {
+    const section = form.closest('section');
+    const dialog = section?.querySelector<HTMLDialogElement>('[data-ce-dialog]');
+    const wrap = form.closest('.ce-form-wrap');
+    const successEl = wrap?.querySelector<HTMLElement>('[data-ce-success]');
+
+    // Close on backdrop click
+    dialog?.addEventListener('click', (e) => {
+      if (e.target === dialog) dialog.close();
+    });
+    dialog?.querySelector('[data-ce-dialog-close]')?.addEventListener('click', () => {
+      dialog?.close();
+    });
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
@@ -170,9 +312,6 @@ const single = imgs.length === 1 ? imgs[0] : '';
 
       const email = input.value.trim();
       if (!email) return;
-
-      const wrap = form.closest('.ce-form-wrap');
-      const successEl = wrap?.querySelector<HTMLElement>('[data-ce-success]');
 
       btn.disabled = true;
 
@@ -203,11 +342,13 @@ const single = imgs.length === 1 ? imgs[0] : '';
 
         if (!res.ok) throw new Error(`${res.status}`);
 
+        // Hide form, show inline submitted state, open dialog
+        form.classList.add('ce-hidden');
         if (successEl) {
           successEl.textContent = successEl.dataset.msg ?? '';
-          form.classList.add('ce-hidden');
           successEl.classList.remove('ce-hidden');
         }
+        dialog?.showModal();
       } catch {
         btn.disabled = false;
       }
