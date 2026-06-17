@@ -69,13 +69,13 @@ const byTeams = [
     image: { src: '/media/photos/teams-management.png', alt: '' },
     card: {
       title: 'COGS Overview',
-      avg: { label: 'Gjennomsn. varekostprosent', value: '29.0%' },
+      avg: { label: 'Varekostprosent', value: '29.0%' },
       rows: [
         { label: 'Bjørvika',  value: '€52k', value2: '26.2%', status: 'green' as const },
         { label: 'Stavanger', value: '€47k', value2: '28.8%', status: 'amber' as const },
         { label: 'Trondheim', value: '€38k', value2: '32.1%', status: 'red'   as const },
       ],
-      action: 'Gjennomgå Trondheim-ytelse',
+      action: 'Gjennomgå Trondheim-resultater',
       invertValues: true,
       side: 'right' as const,
     },
@@ -91,7 +91,7 @@ const byTeams = [
       rows: [
         { label: 'Kjøttdeig',    value: '-3.2%', value2: '4.2 kg', status: 'amber' as const },
         { label: 'Andbryst',    value: '-2.8%', value2: '3.6 kg', status: 'amber' as const },
-        { label: 'Poteter',       value: '-1.9%', value2: '7.8 kg', status: 'amber' as const },
+        { label: 'Potet',         value: '-1.9%', value2: '7.8 kg', status: 'amber' as const },
       ],
       insight: 'Gjennomgå porsjoner og svinn på oppskrifter.',
       insightType: 'amber' as const,
@@ -137,7 +137,7 @@ const byTeams = [
         ],
         maxPct: 35,
       },
-      insight: '€3.180 kan gjenvunnes denne perioden.',
+      insight: '€3 180 kan hentes inn denne perioden.',
       insightType: 'green' as const,
       side: 'right' as const,
     },
