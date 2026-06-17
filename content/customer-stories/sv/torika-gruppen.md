@@ -1,4 +1,6 @@
 ---
+metaTitle: "Stabiliserade marginaler och effektiv rutin för Torika Gruppen"
+metaDescription: "Marginalprocenten har ökat markant och stabiliserat sig, eftersom det nu är superenkelt att följa prisförändringar och justera menypriserna därefter."
 companyName: "Torika Gruppen"
 slug: "torika-gruppen"
 articleTitle: "Stabiliserade marginaler och effektiv rutin för Torika Gruppen"

@@ -1,4 +1,6 @@
 ---
+metaTitle: "Van onduidelijke cijfers naar volledig inzicht in alle Schnitzelei-locaties"
+metaDescription: "We zagen eindelijk waar het geld naartoe gaat, en dat verandert hoe je het bedrijf runt."
 companyName: "Schnitzelei Group"
 slug: "schnitzelei"
 articleTitle: "Van onduidelijke cijfers naar volledig inzicht in alle Schnitzelei-locaties"

@@ -1,4 +1,6 @@
 ---
+metaTitle: "Hoe Heim Gastropub de kosten over 6 locaties beheert in 20 minuten per week"
+metaDescription: "Bijna geen tijd nodig. Het is zo eenvoudig en houdt alles op orde met minimale tijdsinvestering."
 companyName: "Heim Gastropub"
 slug: "heim-gastropub"
 articleTitle: "Hoe Heim Gastropub de kosten over 6 locaties beheert in 20 minuten per week"

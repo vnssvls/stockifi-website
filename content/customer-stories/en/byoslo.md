@@ -1,4 +1,6 @@
 ---
+metaTitle: "What's \"
+metaDescription: "It's more than just an inventory tool. Stockifi provides insights that help us focus on profit-driving areas."
 companyName: "byOSLO"
 slug: "byoslo"
 articleTitle: "What's \"just\" a 2% margin increase worth? byOSLO found out"

@@ -1,4 +1,6 @@
 ---
+metaTitle: "SkiGeilos tilgang til omkostningskontrol på tværs af 8 køkkener på et bjerg"
+metaDescription: "Stockifi har ikke bare sparet os for tid og ressourcer, men har også øget vores samlede produktivitet markant."
 companyName: "SkiGeilo"
 slug: "skigeilo"
 articleTitle: "SkiGeilos tilgang til omkostningskontrol på tværs af 8 køkkener på et bjerg"

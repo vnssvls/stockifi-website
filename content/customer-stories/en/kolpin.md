@@ -1,4 +1,6 @@
 ---
+metaTitle: "Why Kolpin chose Stockifi as their F&B partner"
+metaDescription: "Stockifi continues to impress us with both their product and their people, and we're super happy to have them in our corner."
 companyName: "Kolpin"
 slug: "kolpin"
 articleTitle: "Why Kolpin chose Stockifi as their F&B partner"

@@ -1,4 +1,6 @@
 ---
+metaTitle: "Hur Heim Gastropub hanterar kostnader på 6 restauranger på bara 20 minuter i veckan"
+metaDescription: "Nästan ingen tid alls. Det är så enkelt och håller allt i ordning med minimal tidsåtgång."
 companyName: "Heim Gastropub"
 slug: "heim-gastropub"
 articleTitle: "Hur Heim Gastropub hanterar kostnader på 6 restauranger på bara 20 minuter i veckan"

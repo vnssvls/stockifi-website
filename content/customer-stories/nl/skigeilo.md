@@ -1,4 +1,6 @@
 ---
+metaTitle: "Hoe SkiGeilo de kosten beheerst over 8 keukens op een berg"
+metaDescription: "Stockifi heeft ons niet alleen tijd en middelen bespaard, maar ook onze algehele productiviteit flink verhoogd."
 companyName: "SkiGeilo"
 slug: "skigeilo"
 articleTitle: "Hoe SkiGeilo de kosten beheerst over 8 keukens op een berg"

@@ -1,4 +1,6 @@
 ---
+metaTitle: "Stabilisierte Margen und ein effizienter Ablauf für Torika Gruppen"
+metaDescription: "„Die Wareneinsatzquote ist deutlich gestiegen und hat sich stabilisiert, weil es jetzt sehr einfach ist, Preisänderungen nachzuverfolgen und die Speisekarte..."
 companyName: "Torika Gruppen"
 slug: "torika-gruppen"
 articleTitle: "Stabilisierte Margen und ein effizienter Ablauf für Torika Gruppen"

@@ -1,4 +1,6 @@
 ---
+metaTitle: "Hoe Stockifi SkiGeilo 46.000 NOK op één factuur bespaarde"
+metaDescription: "Die ene melding alleen al heeft het systeem vele malen terugverdiend."
 companyName: "SkiGeilo"
 slug: "skigeilo-2"
 articleTitle: "Hoe Stockifi SkiGeilo 46.000 NOK op één factuur bespaarde"

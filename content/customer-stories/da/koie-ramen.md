@@ -1,4 +1,6 @@
 ---
+metaTitle: "Sådan holder Koie Ramen styr på varekostprocenten på tværs af fem lokationer"
+metaDescription: "Jeg kan se, hvilke lokationer der er på rette kurs, og hvilke der stadig mangler at blive justeret, helt ned til den enkelte ingrediens. Den slags overblik..."
 companyName: "Koie Ramen"
 slug: "koie-ramen"
 articleTitle: "Sådan holder Koie Ramen styr på varekostprocenten på tværs af fem lokationer"

@@ -1,4 +1,6 @@
 ---
+metaTitle: "Sådan sparede Stockifi SkiGeilo 46.000 NOK på én enkelt faktura"
+metaDescription: "Den advarsel alene betalte systemet mange gange over."
 companyName: "SkiGeilo"
 slug: "skigeilo-2"
 articleTitle: "Sådan sparede Stockifi SkiGeilo 46.000 NOK på én enkelt faktura"

@@ -1,4 +1,6 @@
 ---
+metaTitle: "Hvordan Stockifi reddet SkiGeilo 46 000 NOK på én enkelt faktura"
+metaDescription: "Den ene varslingen alene betalte for systemet mange ganger over."
 companyName: "SkiGeilo"
 slug: "skigeilo-2"
 articleTitle: "Hvordan Stockifi reddet SkiGeilo 46 000 NOK på én enkelt faktura"

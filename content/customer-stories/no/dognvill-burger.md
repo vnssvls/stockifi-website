@@ -1,4 +1,6 @@
 ---
+metaTitle: "Hvorfor Døgnvill Burger valgte Stockifi for varetelling og kostnadskontroll"
+metaDescription: "«Det er uten tvil det beste systemet vi har prøvd. Tellingen går raskt og er nøyaktig, og kostnadene oppdateres automatisk med gjeldende priser.»"
 companyName: "Døgnvill Burger"
 slug: "dognvill-burger"
 articleTitle: "Hvorfor Døgnvill Burger valgte Stockifi for varetelling og kostnadskontroll"

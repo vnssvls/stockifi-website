@@ -1,4 +1,6 @@
 ---
+metaTitle: "Wat is een marge-stijging van 'maar' 2% waard? byOSLO ontdekte het"
+metaDescription: "Het is meer dan alleen een voorraadtool. Stockifi geeft inzichten die ons helpen te focussen op de gebieden die winst opleveren."
 companyName: "byOSLO"
 slug: "byoslo"
 articleTitle: "Wat is een marge-stijging van 'maar' 2% waard? byOSLO ontdekte het"

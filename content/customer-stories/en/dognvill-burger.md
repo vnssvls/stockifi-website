@@ -1,4 +1,6 @@
 ---
+metaTitle: "Why Døgnvill Burger chose Stockifi for inventory and cost control"
+metaDescription: "It's without a doubt the best system we've tried. Counting is fast and accurate, and costs update automatically with current prices."
 companyName: "Døgnvill Burger"
 slug: "dognvill-burger"
 articleTitle: "Why Døgnvill Burger chose Stockifi for inventory and cost control"

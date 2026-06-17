@@ -1,4 +1,6 @@
 ---
+metaTitle: "Fra uklare tal til fuldt overblik på tværs af Schnitzeleis restauranter"
+metaDescription: "Vi fik overblik over, hvor pengene forsvinder, og det ændrer måden, vi driver forretningen på."
 companyName: "Schnitzelei Group"
 slug: "schnitzelei"
 articleTitle: "Fra uklare tal til fuldt overblik på tværs af Schnitzeleis restauranter"

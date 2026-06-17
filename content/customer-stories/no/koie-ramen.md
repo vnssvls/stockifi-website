@@ -1,4 +1,6 @@
 ---
+metaTitle: "Slik holder Koie Ramen varekosten under kontroll på tvers av fem lokasjoner"
+metaDescription: "Jeg kan se hvilke lokasjoner som er på rett spor og hvilke som fortsatt trenger arbeid, helt ned til den spesifikke ingrediensen. Det er den oversikten alle..."
 companyName: "Koie Ramen"
 slug: "koie-ramen"
 articleTitle: "Slik holder Koie Ramen varekosten under kontroll på tvers av fem lokasjoner"

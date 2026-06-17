@@ -1,4 +1,6 @@
 ---
+metaTitle: "How Eik&Friends keeps control of 54 venues with Stockifi"
+metaDescription: "Stockifi has made recipe building so easy. It keeps track of ingredient price changes and keeps my margins updated.”"
 companyName: "Eik&Friends"
 slug: "eik-and-friends"
 articleTitle: "How Eik&Friends keeps control of 54 venues with Stockifi"

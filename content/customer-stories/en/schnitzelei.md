@@ -1,4 +1,6 @@
 ---
+metaTitle: "From unclear numbers to full visibility across Schnitzelei locations"
+metaDescription: "We got visibility on where the money goes, and that changes how we run the business."
 companyName: "Schnitzelei Group"
 slug: "schnitzelei"
 articleTitle: "From unclear numbers to full visibility across Schnitzelei locations"

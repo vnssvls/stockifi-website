@@ -1,4 +1,6 @@
 ---
+metaTitle: "Slik holder SkiGeilo kontroll på kostnadene i 8 kjøkken på fjellet"
+metaDescription: "Stockifi har ikke bare spart oss for tid og ressurser, men også økt den samlede produktiviteten vår betydelig."
 companyName: "SkiGeilo"
 slug: "skigeilo"
 articleTitle: "Slik holder SkiGeilo kontroll på kostnadene i 8 kjøkken på fjellet"

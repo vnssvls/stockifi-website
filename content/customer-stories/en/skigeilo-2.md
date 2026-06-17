@@ -1,4 +1,6 @@
 ---
+metaTitle: "How Stockifi saved SkiGeilo 46,000 NOK on a single invoice"
+metaDescription: "That single alert alone paid for the system many times over."
 companyName: "SkiGeilo"
 slug: "skigeilo-2"
 articleTitle: "How Stockifi saved SkiGeilo 46,000 NOK on a single invoice"

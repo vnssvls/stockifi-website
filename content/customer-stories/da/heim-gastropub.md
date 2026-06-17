@@ -1,4 +1,6 @@
 ---
+metaTitle: "Sådan styrer Heim Gastropub omkostningerne på 6 lokationer på kun 20 minutter om ugen"
+metaDescription: "Næsten ingen tid nødvendig. Det er så enkelt og holder alt i orden med minimal tidsinvestering."
 companyName: "Heim Gastropub"
 slug: "heim-gastropub"
 articleTitle: "Sådan styrer Heim Gastropub omkostningerne på 6 lokationer på kun 20 minutter om ugen"

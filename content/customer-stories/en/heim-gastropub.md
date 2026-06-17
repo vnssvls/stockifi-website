@@ -1,4 +1,6 @@
 ---
+metaTitle: "How Heim Gastropub manages costs across 6 locations in just 20 minutes per week"
+metaDescription: "Almost no time needed. It's so simple and keeps everything in order with minimal time spent."
 companyName: "Heim Gastropub"
 slug: "heim-gastropub"
 articleTitle: "How Heim Gastropub manages costs across 6 locations in just 20 minutes per week"

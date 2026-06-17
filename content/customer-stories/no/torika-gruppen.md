@@ -1,4 +1,6 @@
 ---
+metaTitle: "Stabile marginer og effektiv varetellerrouting for Torika Gruppen"
+metaDescription: "Varekostprosenten har økt betydelig og stabilisert seg, fordi det nå er veldig enkelt å følge med på prisendringer og justere menyprisene deretter."
 companyName: "Torika Gruppen"
 slug: "torika-gruppen"
 articleTitle: "Stabile marginer og effektiv varetellerrouting for Torika Gruppen"

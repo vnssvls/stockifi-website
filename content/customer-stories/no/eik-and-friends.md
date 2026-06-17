@@ -1,4 +1,6 @@
 ---
+metaTitle: "Slik holder Eik&Friends kontroll over 54 steder med Stockifi"
+metaDescription: "Stockifi har gjort det veldig enkelt å bygge oppskrifter. Det holder styr på prisendringer fra leverandørene og holder marginene mine oppdatert."
 companyName: "Eik&Friends"
 slug: "eik-and-friends"
 articleTitle: "Slik holder Eik&Friends kontroll over 54 steder med Stockifi"

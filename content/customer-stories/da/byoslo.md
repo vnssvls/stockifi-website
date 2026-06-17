@@ -1,4 +1,6 @@
 ---
+metaTitle: "Hvad er en marginstigning på \"
+metaDescription: "Det er mere end bare et lagerstyringsværktøj. Stockifi giver os indsigt, der hjælper os med at fokusere på de områder, der driver overskuddet."
 companyName: "byOSLO"
 slug: "byoslo"
 articleTitle: "Hvad er en marginstigning på \"bare\" 2% egentlig værd? byOSLO fandt svaret"

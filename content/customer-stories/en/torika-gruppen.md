@@ -1,4 +1,6 @@
 ---
+metaTitle: "Stabilized margins and efficient routine for Torika Gruppen"
+metaDescription: "The margin ratio has increased significantly and stabilized, because it is now super easy to track price changes and adjust menu prices accordingly."
 companyName: "Torika Gruppen"
 slug: "torika-gruppen"
 articleTitle: "Stabilized margins and efficient routine for Torika Gruppen"

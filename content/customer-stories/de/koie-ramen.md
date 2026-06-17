@@ -1,4 +1,6 @@
 ---
+metaTitle: "Wie Koie Ramen die Wareneinsatzkosten über fünf Standorte hinweg im Griff behält"
+metaDescription: "Ich sehe, welche Standorte auf Kurs sind und welche noch Nachbesserung brauchen, bis hin zur einzelnen Zutat. Das ist die Transparenz, die jede..."
 companyName: "Koie Ramen"
 slug: "koie-ramen"
 articleTitle: "Wie Koie Ramen die Wareneinsatzkosten über fünf Standorte hinweg im Griff behält"

@@ -1,4 +1,6 @@
 ---
+metaTitle: "SkiGeilo's approach to controlling costs across 8 kitchens on a mountain"
+metaDescription: "Stockifi has not only saved us time and resources but also significantly boosted our overall productivity."
 companyName: "SkiGeilo"
 slug: "skigeilo"
 articleTitle: "SkiGeilo's approach to controlling costs across 8 kitchens on a mountain"

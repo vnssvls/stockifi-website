@@ -1,4 +1,6 @@
 ---
+metaTitle: "Så håller Eik&Friends koll på 54 verksamheter med Stockifi"
+metaDescription: "Stockifi har gjort det så enkelt att bygga recept. Det håller koll på leverantörsprisförändringar och uppdaterar mina marginaler automatiskt."
 companyName: "Eik&Friends"
 slug: "eik-and-friends"
 articleTitle: "Så håller Eik&Friends koll på 54 verksamheter med Stockifi"

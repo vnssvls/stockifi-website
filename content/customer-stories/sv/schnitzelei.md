@@ -1,4 +1,6 @@
 ---
+metaTitle: "Från oklara siffror till full synlighet över Schnitzeleis restauranger"
+metaDescription: "Vi fick synlighet på var pengarna tar vägen, och det förändrar hur vi driver verksamheten."
 companyName: "Schnitzelei Group"
 slug: "schnitzelei"
 articleTitle: "Från oklara siffror till full synlighet över Schnitzeleis restauranger"

@@ -1,4 +1,6 @@
 ---
+metaTitle: "Stabiele marges en een efficiënte routine voor Torika Gruppen"
+metaDescription: "De marge is sterk gestegen en gestabiliseerd, omdat het nu heel eenvoudig is om prijswijzigingen bij te houden en de menuprijzen daarop aan te passen."
 companyName: "Torika Gruppen"
 slug: "torika-gruppen"
 articleTitle: "Stabiele marges en een efficiënte routine voor Torika Gruppen"

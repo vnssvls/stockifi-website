@@ -1,4 +1,6 @@
 ---
+metaTitle: "Vad är en marginalförbättring på 2% egentligen värd? byOSLO fick svaret"
+metaDescription: "Det är mer än ett inventeringsverktyg. Stockifi ger insikter som hjälper oss att fokusera på det som driver lönsamhet."
 companyName: "byOSLO"
 slug: "byoslo"
 articleTitle: "Vad är en marginalförbättring på 2% egentligen värd? byOSLO fick svaret"

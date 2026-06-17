@@ -1,4 +1,6 @@
 ---
+metaTitle: "How Koie Ramen keeps food costs on track across five locations"
+metaDescription: "I can see which locations are on track and which still need work, down to the specific ingredient. That's the visibility every restaurant group should have."
 companyName: "Koie Ramen"
 slug: "koie-ramen"
 articleTitle: "How Koie Ramen keeps food costs on track across five locations"

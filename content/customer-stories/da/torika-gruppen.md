@@ -1,4 +1,6 @@
 ---
+metaTitle: "Stabiliserede marginer og en effektiv rutine for Torika Gruppen"
+metaDescription: "Marginratioen er steget markant og stabiliseret sig, fordi det nu er super nemt at følge prisændringer og justere menupriserne i overensstemmelse hermed."
 companyName: "Torika Gruppen"
 slug: "torika-gruppen"
 articleTitle: "Stabiliserede marginer og en effektiv rutine for Torika Gruppen"
