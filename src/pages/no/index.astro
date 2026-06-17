@@ -71,9 +71,9 @@ const byTeams = [
       title: 'COGS Overview',
       avg: { label: 'Varekostprosent', value: '29.0%' },
       rows: [
-        { label: 'Bjørvika',  value: '€52k', value2: '26.2%', status: 'green' as const },
-        { label: 'Stavanger', value: '€47k', value2: '28.8%', status: 'amber' as const },
-        { label: 'Trondheim', value: '€38k', value2: '32.1%', status: 'red'   as const },
+        { label: 'Bjørvika',  value: 'kr 540k', value2: '26.2%', status: 'green' as const },
+        { label: 'Stavanger', value: 'kr 490k', value2: '28.8%', status: 'amber' as const },
+        { label: 'Trondheim', value: 'kr 395k', value2: '32.1%', status: 'red'   as const },
       ],
       action: 'Gjennomgå Trondheim-resultater',
       invertValues: true,
@@ -106,7 +106,7 @@ const byTeams = [
     card: {
       title: 'Duck Breast',
       rows: [
-        { label: 'Salgspris', value: '€23.00' },
+        { label: 'Salgspris', value: 'kr 245' },
       ],
       visual: {
         type: 'kpi-compare' as const,
@@ -137,7 +137,7 @@ const byTeams = [
         ],
         maxPct: 35,
       },
-      insight: '€3 180 kan hentes inn denne perioden.',
+      insight: 'kr 33 000 kan hentes inn denne perioden.',
       insightType: 'green' as const,
       side: 'right' as const,
     },
