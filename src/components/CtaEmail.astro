@@ -28,13 +28,13 @@ const {
   bgImages,
 } = Astro.props;
 
-const TERMS: Record<string, { pre: string; mid: string; link: string; post: string }> = {
-  en: { pre: 'By clicking', mid: "you're confirming that you agree with our", link: 'Terms and Conditions', post: '.' },
-  de: { pre: 'Mit Klick auf', mid: 'bestätigen Sie, dass Sie unseren', link: 'Allgemeinen Geschäftsbedingungen', post: ' zustimmen.' },
-  no: { pre: 'Ved å klikke på', mid: 'bekrefter du at du godtar våre', link: 'Vilkår og betingelser', post: '.' },
-  sv: { pre: 'Genom att klicka på', mid: 'bekräftar du att du godkänner våra', link: 'Villkor', post: '.' },
-  nl: { pre: 'Door op', mid: 'te klikken, bevestigt u dat u akkoord gaat met onze', link: 'Algemene voorwaarden', post: '.' },
-  da: { pre: 'Ved at klikke på', mid: 'bekræfter du, at du accepterer vores', link: 'Vilkår og betingelser', post: '.' },
+const TERMS: Record<string, { pre: string; mid: string; link: string; post: string; success: string }> = {
+  en: { pre: 'By clicking', mid: "you're confirming that you agree with our", link: 'Terms and Conditions', post: '.', success: "You're in. We'll be in touch." },
+  de: { pre: 'Mit Klick auf', mid: 'bestätigen Sie, dass Sie unseren', link: 'Allgemeinen Geschäftsbedingungen', post: ' zustimmen.', success: 'Eingetragen. Wir melden uns.' },
+  no: { pre: 'Ved å klikke på', mid: 'bekrefter du at du godtar våre', link: 'Vilkår og betingelser', post: '.', success: 'Du er med. Vi tar kontakt.' },
+  sv: { pre: 'Genom att klicka på', mid: 'bekräftar du att du godkänner våra', link: 'Villkor', post: '.', success: 'Du är med. Vi hör av oss.' },
+  nl: { pre: 'Door op', mid: 'te klikken, bevestigt u dat u akkoord gaat met onze', link: 'Algemene voorwaarden', post: '.', success: 'Gelukt. We nemen contact op.' },
+  da: { pre: 'Ved at klikke på', mid: 'bekræfter du, at du accepterer vores', link: 'Vilkår og betingelser', post: '.', success: 'Du er tilmeldt. Vi tager kontakt.' },
 };
 const locale = Astro.currentLocale ?? 'en';
 const t = TERMS[locale] ?? TERMS.en;
@@ -55,17 +55,20 @@ const single = imgs.length === 1 ? imgs[0] : '';
     <h2 class="ce-heading">{heading}</h2>
     {subhead && <p class="ce-subhead text-muted">{subhead}</p>}
 
-    <form class="ce-form" action={action} method="get">
-      <input
-        class="ce-input"
-        type="email"
-        name="email"
-        required
-        placeholder={placeholder}
-        aria-label="Email address"
-      />
-      <Button variant="primary" type="submit">{buttonLabel}</Button>
-    </form>
+    <div class="ce-form-wrap">
+      <form class="ce-form" data-ce-form action={action} method="get">
+        <input
+          class="ce-input"
+          type="email"
+          name="email"
+          required
+          placeholder={placeholder}
+          aria-label="Email address"
+        />
+        <Button variant="primary" type="submit">{buttonLabel}</Button>
+      </form>
+      <p class="ce-success ce-hidden" data-ce-success data-msg={t.success}></p>
+    </div>
 
     <p class="ce-terms text-muted">
       {t.pre} {buttonLabel} {t.mid} <a href={termsHref}>{t.link}</a>{t.post}
@@ -112,6 +115,17 @@ const single = imgs.length === 1 ? imgs[0] : '';
   }
   .ce-input::placeholder { color: var(--muted-foreground); }
 
+  .ce-hidden { display: none; }
+  .ce-success {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    font-size: var(--text-body);
+    color: var(--foreground);
+    opacity: 0.85;
+  }
+
   .ce-terms { margin-top: var(--space-16); font-size: var(--text-caption); }
   .ce-terms a { color: var(--muted-foreground); text-decoration: underline; }
   .ce-terms a:hover { color: var(--foreground); }
@@ -141,5 +155,62 @@ const single = imgs.length === 1 ? imgs[0] : '';
     if (imgs.length < 2) return;
     const pick = imgs[Math.floor(Math.random() * imgs.length)];
     el.style.setProperty('--ce-bg', `url('${pick}')`);
+  });
+
+  const PORTAL_ID = '48915892';
+  const FORM_GUID = 'a9687b88-dcf6-4d77-9288-abc68e2bb521';
+
+  document.querySelectorAll<HTMLFormElement>('[data-ce-form]').forEach((form) => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const input = form.querySelector<HTMLInputElement>('[name="email"]');
+      const btn = form.querySelector<HTMLButtonElement>('[type="submit"]');
+      if (!input || !btn) return;
+
+      const email = input.value.trim();
+      if (!email) return;
+
+      const wrap = form.closest('.ce-form-wrap');
+      const successEl = wrap?.querySelector<HTMLElement>('[data-ce-success]');
+
+      btn.disabled = true;
+
+      const hutk = document.cookie
+        .split(';')
+        .map((c) => c.trim())
+        .find((c) => c.startsWith('hubspotutk='))
+        ?.split('=')[1];
+
+      const payload: Record<string, unknown> = {
+        fields: [{ name: 'email', value: email }],
+        context: {
+          pageUri: window.location.href,
+          pageName: document.title,
+          ...(hutk && { hutk }),
+        },
+      };
+
+      try {
+        const res = await fetch(
+          `https://api.hsforms.com/submissions/v3/integration/submit/${PORTAL_ID}/${FORM_GUID}`,
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          }
+        );
+
+        if (!res.ok) throw new Error(`${res.status}`);
+
+        if (successEl) {
+          successEl.textContent = successEl.dataset.msg ?? '';
+          form.classList.add('ce-hidden');
+          successEl.classList.remove('ce-hidden');
+        }
+      } catch {
+        btn.disabled = false;
+      }
+    });
   });
 </script>
