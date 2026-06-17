@@ -401,21 +401,21 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
 
   /* Dark, icon-tile mega menu. Full nav-bar width at desktop (see @media lg below).
      Items carry an icon tile, title, and one-line description. */
-  .mega { padding: var(--space-20); }
+  .mega { padding: var(--space-24); }
   .mega-2col {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-20) var(--space-40);
+    gap: var(--space-24) var(--space-48);
   }
   .mega-3col {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-20) var(--space-32);
+    gap: var(--space-24) var(--space-40);
   }
-  .mega-group ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: var(--space-4); }
+  .mega-group ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: var(--space-8); }
   .mega-group-title {
-    margin: 0 0 var(--space-12);
-    padding: 0 var(--space-12) var(--space-8);
+    margin: 0 0 var(--space-16);
+    padding: 0 var(--space-12) var(--space-12);
     border-bottom: 1px solid var(--border);
     font-family: var(--font-heading);
     font-size: var(--text-caption);
@@ -435,7 +435,7 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
     display: flex;
     align-items: flex-start;
     gap: var(--space-12);
-    padding: var(--space-10) var(--space-12);
+    padding: var(--space-12) var(--space-12);
     border-radius: var(--radius-md);
   }
   .mega-item:hover { background: var(--accent); text-decoration: none; }
