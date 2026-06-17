@@ -6,7 +6,7 @@ heading: "[Placeholder overskrift]"
 subhead: "[Placeholder underoverskrift — tekstgennemgang onsdag]"
 heroImage: "/media/product-data-quality.png"
 order: 25
-category: inventory-management
+category: business-intelligence
 showIntegrations: false
 howItWorks:
   tagline: "Sådan fungerer det"

@@ -6,7 +6,7 @@ heading: "[Placeholder heading]"
 subhead: "[Placeholder subhead — copy review Wednesday]"
 heroImage: "/media/cta-bg-2.jpg"
 order: 35
-category: business-intelligence
+category: inventory-management
 showIntegrations: false
 howItWorks:
   tagline: "Zo werkt het"

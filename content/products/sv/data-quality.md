@@ -6,7 +6,7 @@ heading: "[Platshållare rubrik]"
 subhead: "[Platshållare underrubrik — granskning onsdag]"
 heroImage: "/media/product-data-quality.png"
 order: 25
-category: inventory-management
+category: business-intelligence
 showIntegrations: false
 howItWorks:
   tagline: "Så fungerar det"

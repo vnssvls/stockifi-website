@@ -6,7 +6,7 @@ heading: "[Placeholder heading]"
 subhead: "[Placeholder subhead — copy review Wednesday]"
 heroImage: "/media/product-data-quality.png"
 order: 25
-category: inventory-management
+category: business-intelligence
 showIntegrations: false
 howItWorks:
   tagline: "How it works"

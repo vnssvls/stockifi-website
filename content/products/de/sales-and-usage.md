@@ -6,7 +6,7 @@ heading: "[Platzhalter Überschrift]"
 subhead: "[Platzhalter Unterüberschrift — Textkontrolle Mittwoch]"
 heroImage: "/media/cta-bg-2.jpg"
 order: 35
-category: business-intelligence
+category: inventory-management
 showIntegrations: false
 howItWorks:
   tagline: "So funktioniert es"
