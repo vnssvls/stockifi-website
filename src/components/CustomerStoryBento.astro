@@ -19,7 +19,15 @@ interface Props {
 }
 const { eyebrow, heading, subhead, cta, slugs, headingMaxWidth } = Astro.props;
 
-const all = await getCollection('customerStories');
+// Load the customer stories in the current locale (translated card snippets live
+// in the per-locale collections); fall back to EN. Links get the locale prefix.
+const locale = Astro.currentLocale ?? 'en';
+const lp = (p: string) => (locale === 'en' ? p : `/${locale}${p}`);
+const COLLECTIONS: Record<string, string> = {
+  en: 'customerStories', no: 'customerStoriesNo', de: 'customerStoriesDe',
+  da: 'customerStoriesDa', sv: 'customerStoriesSv', nl: 'customerStoriesNl',
+};
+const all = await getCollection((COLLECTIONS[locale] || 'customerStories') as 'customerStories');
 const byId = new Map(all.map((s) => [s.id, s]));
 const cards = slugs
   .map((sl) => byId.get(sl))
@@ -29,7 +37,7 @@ const cards = slugs
     company: s.data.companyName,
     blurb: s.data.cardSummary || s.data.oneLiner || s.data.featuredQuote || '',
     image: s.data.thumbnail || s.data.singleImage || '',
-    href: `/customer-stories/${s.id}`,
+    href: lp(`/customer-stories/${s.id}`),
   }));
 ---
 
