@@ -1,8 +1,8 @@
 ---
-metaTitle: "Avviksanalyse av matkostnad for restauranter | Stockifi"
-metaDescription: "Se den teoretiske matkostnaden opp mot den faktiske og finn nøyaktig hvor marginen lekker, per rett og ingrediens, på tvers av oppskrifter, salg og tellingene."
+metaTitle: "Avviksanalyse av varekost for restauranter | Stockifi"
+metaDescription: "Se den teoretiske varekosten mot den faktiske, og finn nøyaktig hvor marginen lekker, per rett og ingrediens, på tvers av oppskrifter, salg og tellinger."
 eyebrow: "Avviksanalyse"
-heading: "Finn ut hvor marginene dine tar veien"
+heading: "Finn ut hvor marginen din forsvinner"
 subhead: "Stockifi sammenligner hva oppskriftene dine sier du burde ha brukt med hva du faktisk brukte, rett for rett. Hvert avvik kommer med en årsak du kan handle på."
 heroImage: "/media/cta-bg-2.jpg"
 order: 32
@@ -21,7 +21,7 @@ howItWorks:
   imageAlt: ""
 benefits:
   - heading: "Overporsjoning"
-    body: "Retter som bruker mer enn oppskriften viser, sortert per vare."
+    body: "Retter som bruker mer enn oppskriften tilsier, vist per vare."
   - heading: "Udefinert salg"
     body: "Salg som ikke er koblet til en oppskrift dukker opp, slik at forbruket stemmer."
   - heading: "Kostnadsført svinn"
@@ -37,7 +37,7 @@ faqs:
   - question: "Hvor nøyaktig er avviket?"
     answer: "Det er like nøyaktig som oppskriftene, tellingene og fakturaene dine, som Stockifi holder oppdatert, slik at tallet gjenspeiler faktisk forbruk fremfor en inntastingsfeil."
   - question: "Hvor ofte ser jeg avviket?"
-    answer: "Det beregnes for hver telleperiode, så du ser avviket hver gang du lukker en varetelling fremfor å vente på årsavslutningen."
+    answer: "Det beregnes for hver telleperiode, så du ser avviket hver gang du lukker en telling, ikke først ved årsavslutningen."
 ctaHeading: "Tett gapet i marginene dine"
-ctaSubhead: "Book en kort samtale, så viser vi deg hva Stockifi avdekker i dine første 30 dager."
+ctaSubhead: "Book en kort samtale, så viser vi deg hva Stockifi avdekker i løpet av de første 30 dagene."
 ---

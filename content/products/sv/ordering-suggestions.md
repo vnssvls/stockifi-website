@@ -1,6 +1,6 @@
 ---
 metaTitle: "Beställningsförslag för restauranger | Stockifi"
-metaDescription: "Stockifi talar om för dig vad du behöver beställa om innan du tar slut på lager, baserat på faktisk förbrukning, inventeringar och leverantörers ledtider."
+metaDescription: "Stockifi talar om vad du behöver beställa och när, baserat på faktisk förbrukning, senaste inventeringar och leverantörers ledtider. Beställningen blir mindre reaktiv."
 eyebrow: "Beställningsförslag"
 heading: "[Placeholder heading]"
 subhead: "[Placeholder subhead — copy review Wednesday]"

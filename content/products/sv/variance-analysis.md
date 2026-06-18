@@ -1,9 +1,9 @@
 ---
-metaTitle: "Avvikelseanalys av varukostnad för restauranger | Stockifi"
-metaDescription: "Jämför teoretisk mot faktisk varukostnad och se exakt var marginalen försvinner, rätt ned på rätt och ingrediens, utifrån dina recept, försäljning och inventeringar."
+metaTitle: "Avvikelseanalys av råvarukostnad för restauranger | Stockifi"
+metaDescription: "Jämför teoretisk mot faktisk råvarukostnad och se exakt var marginalen läcker, ned på rätt och ingrediens, utifrån dina recept, försäljning och inventeringar."
 eyebrow: "Avvikelseanalys"
 heading: "Ta reda på var din marginal tar vägen"
-subhead: "Stockifi jämför vad dina recept säger att du borde ha använt med vad du faktiskt använde, rätt ned per rätt. Varje avvikelse kommer med en orsak du kan agera på."
+subhead: "Stockifi jämför vad recepten säger att du borde använda med vad du faktiskt använde, rätt för rätt. Varje glapp kommer med en orsak du kan agera på."
 heroImage: "/media/cta-bg-2.jpg"
 order: 32
 category: business-intelligence
@@ -37,7 +37,7 @@ faqs:
   - question: "Hur exakt är avvikelsen?"
     answer: "Den är lika exakt som dina recept, inventeringar och fakturor, som Stockifi håller aktuella, så att talet speglar verklig förbrukning snarare än ett inmatningsfel."
   - question: "Hur ofta ser jag avvikelsen?"
-    answer: "Den räknas ut för varje inventeringsperiod, så du ser avvikelsen varje gång du stänger en inventering i stället för att vänta på årsbilden."
-ctaHeading: "Täpp till glappet i din marginal"
+    answer: "Den räknas ut för varje inventeringsperiod, så du ser avvikelsen varje gång du stänger en inventering, inte först vid årsbokslutet."
+ctaHeading: "Täpp till glappet i marginalen"
 ctaSubhead: "Boka ett kort samtal så visar vi dig vad Stockifi hittar under dina första 30 dagar."
 ---

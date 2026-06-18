@@ -1,6 +1,6 @@
 ---
 metaTitle: "Försäljning och förbrukning | Stockifi"
-metaDescription: "Se vad som såldes och hur det rörde sig genom ditt varulager — Stockifi kopplar ditt kassasystems försäljning till faktisk ingrediensförbrukning."
+metaDescription: "Stockifi kopplar ditt kassasystems försäljning till faktisk ingrediensförbrukning och visar vad som förbrukades mot vad som borde ha förbrukats, och var gapet ligger."
 eyebrow: "Försäljning och förbrukning"
 heading: "[Placeholder heading]"
 subhead: "[Placeholder subhead — copy review Wednesday]"
@@ -32,6 +32,6 @@ faqs:
   - question: "[Placeholder FAQ 2 — copy review Wednesday]"
     answer: "[Placeholder FAQ 2 answer]"
 ctaHeading: "Se det i dina egna siffror"
-ctaSubhead: "Boka ett kort samtal så visar vi vad Stockifi identifierar under dina första 30 dagar."
+ctaSubhead: "Boka ett kort samtal så visar vi dig vad Stockifi hittar under dina första 30 dagar."
 draft: false
 ---

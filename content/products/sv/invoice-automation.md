@@ -1,16 +1,16 @@
 ---
 metaTitle: "Fakturaautomatisering för restauranger | Stockifi"
-metaDescription: "Stockifi läser leverantörsfakturor rad för rad och skickar priser och kvantiteter direkt till din varukostnad, utan manuell inmatning."
+metaDescription: "Stockifi läser leverantörsfakturor rad för rad och skickar priser och kvantiteter direkt till din råvarukostnad, utan manuell inmatning."
 eyebrow: "Fakturaautomatisering"
-heading: "Varukostnad utan dataregistrering"
-subhead: "Din varukostnad kan hållas aktuell utan att någon behöver skriva in en faktura. Stockifi läser dem direkt från ditt redovisningssystem, så att priser och kvantiteter flödar in på egen hand."
+heading: "Råvarukostnad utan dataregistrering"
+subhead: "Din råvarukostnad kan hållas aktuell utan att någon behöver skriva in en faktura. Stockifi läser dem direkt från ditt redovisningssystem, så att priser och kvantiteter flödar in på egen hand."
 heroImage: "/media/product-invoice-automation.png"
 order: 10
 category: procurement
 howItWorks:
   tagline: "Så här fungerar det"
   heading: "Det kommer direkt från din redovisning"
-  body: "Varje leverantörsfaktura landar redan i din redovisning. Stockifi läser varje faktura rad för rad och skickar priser och kvantiteter direkt till din varukostnad, utan att någon behöver mata in dem manuellt."
+  body: "Varje leverantörsfaktura landar redan i din redovisning. Stockifi läser varje faktura rad för rad och skickar priser och kvantiteter direkt till din råvarukostnad, utan att någon behöver mata in dem manuellt."
   points:
     - heading: "Synkroniseras automatiskt"
       body: "Fakturor flödar in när de landar i din redovisning, utan att behöva laddas upp eller skannas."

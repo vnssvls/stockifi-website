@@ -1,19 +1,19 @@
 ---
 metaTitle: "Programvare for kostnadskontroll i restaurant | Finans | Stockifi"
-metaDescription: "Finansteamet får automatisert varekostnad bygget på faktiske faktura- og salgsdata, med granulariteten til å lukke måneden trygt og fange opp kostnadsdrift tidlig."
+metaDescription: "Finansteamet får automatisert varekostnad bygget på faktiske faktura- og salgsdata, med detaljnivået til å lukke måneden trygt og fange opp kostnadsdrift tidlig."
 eyebrow: "Økonomi"
 heading: "Et varekosttall du kan stole på"
 subhead: "Stockifi beregner nøyaktig varekostnad direkte fra fakturaene og salget ditt. Du avslutter måneden med trygghet og holder kostnadene under kontroll."
 order: 8
 group: "team"
-problemTagline: "Månedsslutt"
+problemTagline: "Månedsavslutningen"
 problemHeading: "Vil du ha en varekostnad du kan stå inne for?"
 problemBody: "Stockifi bygger den for deg. Den leser leverandørfakturaene i regnskapssystemet ditt og salget fra kassesystemet, og beregner den faktiske varekostnaden linje for linje. Du trenger ikke holde liv i et regneark."
 problem: []
 benefits:
   - heading: "Raskere månedsslutt"
     body: "Oppdaterte, avstemte tall, klare når du lukker måneden."
-  - heading: "Gå inn i tallene"
+  - heading: "Bor deg ned i tallene"
     body: "Åpne en hvilken som helst kostnad ned til rett, ingrediens eller leverandør."
   - heading: "Faktisk vs. teoretisk"
     body: "Se hva som burde ha blitt brukt opp mot hva som faktisk ble brukt."
@@ -21,7 +21,7 @@ benefits:
     body: "Varekostnad som henger sammen med bøkene dine."
 showcaseTagline: "Slik hjelper det"
 showcaseHeading: "Hva endrer seg for økonomi?"
-showcaseBody: "Stockifi beregner varekostnaden fortløpende etter hvert som dataene kommer inn. Ved månedsslutt er tallet klart, så du kan bruke tiden på å forstå hva det betyr."
+showcaseBody: "Stockifi beregner varekosten løpende etter hvert som dataene kommer inn. Ved månedsslutt er tallet klart, så tiden din går til å forstå hva det betyr."
 showcaseSubs:
   - heading: "Mindre sammenstilling"
     body: "Ingenting å kompilere ved slutten av måneden; tallene er allerede klare."

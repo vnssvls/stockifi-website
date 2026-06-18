@@ -1,18 +1,18 @@
 ---
 metaTitle: "Oppskriftskostnadsverktøy for kjøkkensjef | Stockifi"
-metaDescription: "Oppdaterte oppskriftskostnader fra dine siste fakturaer, med avvik brutt ned per rett og varetellingene som ikke bremser kjøkkenet."
+metaDescription: "Oppskriftskostnader i sanntid fra dine siste fakturaer, avvik brutt ned per rett og varetelling som ikke bremser kjøkkenet."
 eyebrow: "Kjøkken"
-heading: "Vet hva hver rett koster i dag"
-subhead: "Stockifi holder alle oppskrifter oppdatert når prisene endrer seg. Varetelling går raskt, og avvik peker til nøyaktig hvilken rett det gjelder."
+heading: "Vit hva hver rett koster i dag"
+subhead: "Stockifi holder hver oppskrift kostnadsberegnet når prisene endrer seg. Varetelling går raskt, og avvik peker rett på retten det gjelder."
 order: 7
 group: "team"
-problemTagline: "Oppdaterte oppskriftskostnader"
+problemTagline: "Oppskriftskostnader i sanntid"
 problemHeading: "Vil du ha oppskriftskostnader som holder tritt med prisene?"
-problemBody: "Stockifi holder dem oppdatert for deg. Når leverandørpriser endrer seg, oppdateres alle oppskrifter som bruker ingrediensen, slik at kostnaden på menyen din alltid er dagens kostnad."
+problemBody: "Stockifi holder dem oppdatert for deg. Når en leverandørpris endrer seg, oppdateres alle oppskrifter som bruker ingrediensen, så kostnaden på menyen alltid er dagens."
 problem: []
 benefits:
-  - heading: "Oppskriftene koster seg selv"
-    body: "Hver rett bærer sin faktiske kostnad når prisene beveger seg."
+  - heading: "Oppskrifter som koster seg selv"
+    body: "Hver rett bærer sin oppdaterte kostnad når prisene beveger seg."
   - heading: "Fang opp overporsjoning"
     body: "Avvik markerer rettene som bruker mer enn oppskriften tilsier."
   - heading: "Kost en ny rett raskt"
@@ -21,7 +21,7 @@ benefits:
     body: "Tell kjøkkenet i din egen rekkefølge, uten papirarbeid."
 showcaseTagline: "Slik hjelper det"
 showcaseHeading: "Hva endrer seg på kjøkkenet?"
-showcaseBody: "Menybeslutninger baseres på virkelige tall. Du ser marginen på hver rett, og når en pris hopper, ser du nøyaktig hvilke retter det påvirker."
+showcaseBody: "Menybeslutninger tas på virkelige tall. Du ser marginen på hver rett, og når en pris hopper, ser du nøyaktig hvilke retter det treffer."
 showcaseSubs:
   - heading: "Margin per rett"
     body: "Se hva hver tallerken gir på dagens priser."
@@ -31,8 +31,8 @@ faqHeading: "Spørsmål kjøkkensjefer stiller"
 faqs:
   - question: "Hvordan holdes oppskriftskostnadene oppdaterte?"
     answer: "Stockifi leser leverandørfakturaer og oppdaterer alle berørte oppskrifter automatisk, som regel samme dag."
-  - question: "Støtter det del-oppskrifter og prebatcher?"
-    answer: "Ja. En prebatch kostes én gang og ruller inn i alle retter som bruker den."
+  - question: "Støtter det deloppskrifter og prebatcher?"
+    answer: "Ja. En prebatch kostnadsberegnes én gang og ruller inn i hver rett som bruker den."
   - question: "Kan jeg se hvilke retter som overporsjoner?"
     answer: "Ja. Ved å sammenligne teoretisk mot faktisk forbruk viser Stockifi rettene som avviker fra oppskriften."
   - question: "Går varetelling raskt?"
@@ -98,6 +98,6 @@ testimonials:
         alt: Schnitzelei restaurant
       - src: /media/customer-stories/69ccbd2a2a92b0614edecc5b_schnitzelei.outdoor.jpg
         alt: Schnitzelei outdoor
-ctaHeading: "Hold kjøkkenets kostnader oppdaterte"
+ctaHeading: "Hold kjøkkenets kostnader i sanntid"
 ctaSubhead: "Legg igjen e-posten din, så viser vi deg hva Stockifi avdekker i de første 30 dagene."
 ---

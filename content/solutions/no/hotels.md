@@ -1,14 +1,14 @@
 ---
 metaTitle: "Programvare for kostnadskontroll i hotell-F&B | Stockifi"
-metaDescription: "Stockifi gir hotellenes F&B-team full kostnadsoversikt på tvers av restauranter, barer og bankettfasiliteter, med fakturaer, kassesystem og oppskrifter koblet fra dag én."
+metaDescription: "Stockifi gir F&B-teamet på hotellet full kostnadsoversikt på tvers av restauranter, barer og bankett, med fakturaer, kassesystem og oppskrifter koblet sammen fra dag én."
 eyebrow: "Hoteller med F&B"
 heading: "Full kostnadskontroll og oversikt for hotell-F&B"
-subhead: "Stockifi samler salg og kostnader fra alle F&B-utsalg på ett rapporteringsgrunnlag. Restaurant-, bar- og bankettteam jobber fra de samme tallene, med full innsyn i F&B-driften."
+subhead: "Stockifi samler salg og kostnad fra hvert F&B-utsalg på ett rapporteringsgrunnlag. Restaurant, bar og bankett jobber ut fra de samme tallene, med full innsyn i F&B-driften."
 order: 3
 group: "segment"
-problemTagline: "Ett F&B-bilde"
+problemTagline: "Ett samlet F&B-bilde"
 problemHeading: "Vil du ha alle utsalg på ett sett med tall?"
-problemBody: "Stockifi samler dem for deg. Restaurant, bar og bankett rapporterer alle inn i én F&B-visning, slik at kostnaden i hvert utsalg er synlig fremfor begravd i hotellets resultatregnskap."
+problemBody: "Stockifi samler dem for deg. Restaurant, bar og bankett rapporterer alle inn i én F&B-visning, slik at kostnaden i hvert utsalg blir synlig i stedet for begravd i hotellets resultatregnskap."
 problem: []
 benefits:
   - heading: "Alle utsalg, én visning"
@@ -24,9 +24,9 @@ showcaseHeading: "Alle utsalg rulles opp i ett F&B-tall"
 showcaseBody: "Hvert utsalg beholder sin egen kostnad og avvik, og de rulles opp i ett F&B-tall. Du ser hele driften, og kan åpne et enkelt utsalg for detaljene."
 showcaseSubs:
   - heading: "Utover rommene"
-    body: "Skill F&B-resultatet fra rominntekkssiden."
-  - heading: "Bygget for hospitality"
-    body: "Laget for F&B i hotellskala, med alle de bevegelige delene det innebærer."
+    body: "Skill F&B-resultatet fra rominntektene."
+  - heading: "Bygget for servering i stort format"
+    body: "Laget for F&B i hotellskala, med alt det innebærer av bevegelige deler."
 faqHeading: "Spørsmål hoteller stiller"
 faqs:
   - question: "Passer Stockifi for hoteller?"
@@ -34,7 +34,7 @@ faqs:
   - question: "Kan det håndtere flere utsalg i ett hotell?"
     answer: "Ja. Kostnad og avvik for hvert utsalg spores separat og rulles opp i én F&B-visning."
   - question: "Dekker det baren i tillegg til kjøkkenet?"
-    answer: "Ja. Stockifi sporer drikkevareforbruk og avvik på porsjoner ved siden av matkostnaden."
+    answer: "Ja. Stockifi sporer drikkevarekost og skjenkeavvik ved siden av matkost."
   - question: "Fungerer det med systemene vi allerede bruker?"
     answer: "Ja. Stockifi kobler seg til kassesystemet og regnskapsprogrammet du allerede kjører, leser dataene og lar oppsettet ditt være som det er."
 testimonials:

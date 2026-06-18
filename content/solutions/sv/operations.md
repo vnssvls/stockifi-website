@@ -1,6 +1,6 @@
 ---
 metaTitle: "Kostnadskontroll för restaurangdrift | Stockifi"
-metaDescription: "Fånga svinn, överportering och prisglidning tidigt och håll stram kostnadskontroll på varje anläggning, utan att lägga extra administration på driftteamet."
+metaDescription: "Stockifi fångar svinn, överportering och prisglidning hos leverantörer tidigt, så att kostnadsproblem fångas innan de sprider sig över alla dina enheter."
 eyebrow: "Drift"
 heading: "Stram kostnadskontroll på varje anläggning"
 subhead: "Stockifi fångar svinn, överportering och prisglidning tidigt. Varje anläggning arbetar med samma siffror, så standarderna håller när ni växer."
@@ -8,7 +8,7 @@ order: 6
 group: "team"
 problemTagline: "Kostnadskontroll på flera anläggningar"
 problemHeading: "Vill du se läckagen innan månaden är slut?"
-problemBody: "Stockifi flaggar dem tidigt åt dig. När fakturor och inventeringar kommer in jämför systemet vad varje anläggning borde ha förbrukat med vad den faktiskt förbrukade, så att problemen syns inom dagar."
+problemBody: "Stockifi flaggar dem tidigt åt dig. Allteftersom fakturor och inventeringar kommer in jämför systemet vad varje enhet borde ha förbrukat med vad den faktiskt gjorde, så att problemen syns inom dagar."
 problem: []
 benefits:
   - heading: "Tidig varning"
@@ -18,7 +18,7 @@ benefits:
   - heading: "Avvikelse per anläggning"
     body: "Se vilken anläggning som avviker och på vad."
   - heading: "Ingen extra administration"
-    body: "Körs på de fakturor, försäljningsdata och inventeringar du redan producerar."
+    body: "Körs på de fakturor, försäljningsdata och inventeringar du redan har."
 showcaseTagline: "Så hjälper det"
 showcaseHeading: "Vad förändras för driften?"
 showcaseBody: "Problem syns inom dagar, långt innan månadsavstämningen. En ny anläggning öppnar med samma recept, så den fungerar som resten från dag ett."
@@ -30,11 +30,11 @@ showcaseSubs:
 faqHeading: "Frågor som driftteam ställer"
 faqs:
   - question: "Innebär det mer arbete för mitt team?"
-    answer: "Nej. Stockifi körs på de fakturor, försäljningsdata och inventeringar som dina anläggningar redan producerar, så det tillkommer ingen extra administration."
+    answer: "Nej. Stockifi körs på de fakturor, försäljningsdata och inventeringar som dina enheter redan har, så det tillkommer ingen extra administration."
   - question: "Kan jag hålla standarderna konsekventa på alla anläggningar?"
     answer: "Ja. Recept och rapportering delas mellan anläggningarna, så varje enhet arbetar mot samma siffror."
   - question: "Hur tidigt ser jag ett problem?"
-    answer: "När fakturor och inventeringar kommer in, så du fångar svinn, överportering och prishöjningar inom dagar snarare än vid månadsslut."
+    answer: "Allteftersom fakturor och inventeringar kommer in, så du fångar svinn, överportering och prishöjningar inom dagar i stället för vid månadsslut."
   - question: "Fungerar det när vi öppnar fler anläggningar?"
     answer: "Ja. Nya anläggningar kopplas in på samma recept och rapportering, så konsekvensen håller när ni växer."
 testimonials:

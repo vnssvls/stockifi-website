@@ -21,7 +21,7 @@ howItWorks:
 showIntegrations: false
 benefits:
   - heading: "Tell 10 ganger raskere"
-    body: "På en telefon i stedet for en klemmappe tar en telling bare en brøkdel av tiden."
+    body: "På telefon i stedet for klemmebrett tar en telling en brøkdel av tiden."
   - heading: "Fungerer offline"
     body: "Tellinger fortsetter uten signal og synkroniseres når du kobler til igjen."
   - heading: "Avvik du kan stole på"
@@ -33,7 +33,7 @@ faqs:
   - question: "Kan jeg telle varelager etter min egen plan?"
     answer: "Ja. Stockifi bruker periodiske varetellinger med avviksanalyse i appen. Du teller når det passer deg, og ser deretter faktisk forbruk mot hva oppskriftene forutsa."
   - question: "Hvor ofte bør jeg telle varelageret?"
-    answer: "De fleste operatører teller ved periodeslutt, månedlig for mange. Stockifi tilpasser seg den periodiske syklusen du kjører og viser avvik for den perioden."
+    answer: "De fleste teller ved periodeslutt, månedlig for mange. Stockifi følger den telleperioden du kjører og viser avvik for perioden."
   - question: "Trenger jeg en strekkodeskanner eller spesielt utstyr?"
     answer: "Nei. Telling kjører på telefonen eller nettbrettet teamet allerede har, uten noe ekstra å kjøpe."
   - question: "Kan teamet mitt dele en telling mellom seg?"

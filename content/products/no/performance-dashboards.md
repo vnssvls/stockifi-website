@@ -1,9 +1,9 @@
 ---
 metaTitle: "Ytelsesdashboards og analyse for restaurant | Stockifi"
-metaDescription: "Stockifi gjør faktura- og kassedata om til dashboards som viser kostnad, margin, avvik og varekostnadutvikling per rett, sted og periode. Book en demo for å lære mer."
-eyebrow: "Performance-dashboards"
-heading: "Samle matkostnader og lagerstyring på ett sted"
-subhead: "Forstå tallene dine på en ny måte. Stockifi gjør om fakturaer, salg og varetellinger til ett klart bilde av marginene dine."
+metaDescription: "Stockifi gjør faktura- og kassedata om til dashboards som viser kostnad, margin, avvik og varekostutvikling per rett, sted og periode. Book en demo for å lære mer."
+eyebrow: "Ytelsesdashbord"
+heading: "Samle varekost og lagerstyring på ett sted"
+subhead: "Forstå tallene dine på en helt ny måte. Stockifi gjør fakturaer, salg og varetellinger om til ett klart bilde av marginene dine."
 heroImage: "/media/cta-bg-2.jpg"
 order: 30
 category: business-intelligence
@@ -11,7 +11,7 @@ showIntegrations: false
 howItWorks:
   tagline: "Slik fungerer det"
   heading: "Hvor tallene kommer fra"
-  body: "Stockifi har allerede delene som driver kostnadene dine. Systemet henter priser fra leverandørfakturaene og salg fra kassesystemet ditt, veier dem opp mot hva oppskrifter og tellinger sier du har brukt, og gjør alt om til handlingsdyktig innsikt på én skjerm. Du leser ett tydelig bilde i stedet for å sette det sammen fra ulike systemer."
+  body: "Stockifi har allerede delene som styrer kostnadene dine. Systemet henter prisene fra leverandørfakturaene og salget fra kassesystemet, veier dem mot hva oppskrifter og tellinger sier du har brukt, og gjør alt om til innsikt du kan handle på, på én skjerm. Du leser ett tydelig bilde i stedet for å sette det sammen fra ulike systemer."
   points:
     - heading: "Direkte fra kilden"
       body: "Fakturaer hentes fra regnskapssystemet, salg fra kassesystemet ditt."
@@ -23,7 +23,7 @@ benefits:
   - heading: "Alle rapportene"
     body: "Dekker varekostutvikling, avvik, overporsjoning og prisendringer fra leverandører."
   - heading: "Drill ned og sammenlign"
-    body: "Se på tvers av lokasjon, periode og rett, eller sammenlign stedene dine."
+    body: "Bryt ned på lokasjon, periode og rett, eller sammenlign stedene dine."
   - heading: "Alltid oppdatert"
     body: "Dashbordet oppdateres når nye fakturaer og salg kommer inn."
   - heading: "Innebygd"
@@ -31,7 +31,7 @@ benefits:
 faqHeading: "Spørsmål om dashboards og rapportering"
 faqs:
   - question: "Hva er varekostutvikling?"
-    answer: "Varekostutvikling viser hvordan vareforbruket ditt beveger seg over tid. Stockifi sporer det sammen med varekostprosent og margin, slik at du ser trenden i stedet for ett enkelt tall."
+    answer: "Varekostutvikling viser hvordan varekostnaden din beveger seg over tid. Stockifi sporer det sammen med varekostprosent og margin, slik at du ser trenden i stedet for ett enkelt tall."
   - question: "Hvor oppdaterte er tallene? Er dette i sanntid?"
     answer: "Fakturaer og salg hentes inn løpende, så kostnader og margin speiler de nyeste dataene dine. Lagertall følger de periodiske varetellinger i tråd med hvordan Stockifi håndterer varelager."
   - question: "Kan et hovedkontor se alle lokasjoner samlet?"

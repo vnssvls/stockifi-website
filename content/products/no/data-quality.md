@@ -1,6 +1,6 @@
 ---
-metaTitle: "Rene restaurantdata for nøyaktig matkostnad | Stockifi"
-metaDescription: "Stockifi holder ingrediens- og oppskriftsdataene dine rene, pålitelige og konsistente slik at matkostnaden du handler på alltid er nøyaktig. Book en demo nå."
+metaTitle: "Rene restaurantdata for nøyaktig varekostnad | Stockifi"
+metaDescription: "Stockifi holder ingrediens- og oppskriftsdataene dine rene, pålitelige og konsistente slik at varekosten du handler på alltid er nøyaktig. Book en demo nå."
 eyebrow: "Datakvalitet"
 heading: "[Placeholder heading]"
 subhead: "[Placeholder subhead — copy review Wednesday]"
@@ -32,6 +32,6 @@ faqs:
   - question: "[Placeholder FAQ 2 — copy review Wednesday]"
     answer: "[Placeholder FAQ 2 answer]"
 ctaHeading: "Se det i dine tall"
-ctaSubhead: "Bestill en kort samtale, så viser vi deg hva Stockifi avdekker i løpet av de første 30 dagene."
+ctaSubhead: "Book et kort møte, så viser vi deg hva Stockifi avdekker i løpet av de første 30 dagene."
 draft: false
 ---

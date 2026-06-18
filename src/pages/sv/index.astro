@@ -54,8 +54,8 @@ const whatsInside = [
 const benefits = [
   'Fånga leverantörsprisändringar på varje faktura',
   'Se vad ett recept faktiskt förbrukade mot vad det borde ha förbrukat',
-  'Känn till lönsamheten för varje recept när kostnaderna rör sig',
-  'Se 2 till 3 % förbättring i varukostnad efter onboarding',
+  'Ha koll på lönsamheten för varje recept när kostnaderna rör sig',
+  'Se 2 till 3 % förbättring i råvaruprocent efter onboarding',
 ];
 
 // 5. By Teams — FeatureTabs (tabbed). Each tab links to its solution page.
@@ -63,7 +63,7 @@ const byTeams = [
   {
     label: 'Ledning',
     heading: "Hela verksamhetens marginal på ett ögonkast",
-    body: "Ägare och GMs får kostnadsöversikt över varje location, så du vet var marginalen vinns eller förloras utan att jaga en enda rapport. Se det från en ägares perspektiv.",
+    body: "Ägare och driftschefer får kostnadsöversikt över varje enhet, så du vet var marginalen vinns eller förloras utan att jaga en enda rapport. Se det från en ägares perspektiv.",
     primary: { label: 'Stockifi för ledning', href: '/sv/solutions/management' },
     image: { src: '/media/photos/teams-management.png', alt: '' },
     card: {
@@ -81,8 +81,8 @@ const byTeams = [
   },
   {
     label: 'Drift',
-    heading: 'Håll driften stram utan extra administration',
-    body: 'Fånga upp svinn, överportering och prisdrift tidigt, så att den dagliga driften hålls under kontroll även när du lägger till fler locations. Se det i praktiken.',
+    heading: 'Strama åt driften utan extra administration',
+    body: 'Fånga upp svinn, överportering och prisdrift tidigt, så att den dagliga driften hålls under kontroll även när du lägger till fler enheter. Se det i praktiken.',
     primary: { label: 'Stockifi för drift', href: '/sv/solutions/operations' },
     image: { src: '/media/photos/teams-operations.png', alt: '' },
     card: {
@@ -121,7 +121,7 @@ const byTeams = [
   },
   {
     label: 'Ekonomi',
-    heading: 'Varukostnad du faktiskt kan lita på',
+    heading: 'Råvarukostnad du faktiskt kan lita på',
     body: 'Ekonomiavdelningen får faktisk mot teoretisk kostnad från riktiga faktura- och kassauppgifter, så att månadsavslutet slutar vara ett gissningsspel. Se det i böckerna.',
     primary: { label: 'Stockifi för ekonomi', href: '/sv/solutions/finance' },
     image: { src: '/media/photos/teams-finance.png', alt: '' },
@@ -166,7 +166,7 @@ const onboarding = [
   },
   {
     heading: 'Börja se luckorna',
-    body: 'Från dina första inventeringar ser du faktisk varukostnad, avvikelser och prisändringar.',
+    body: 'Från dina första inventeringar ser du faktisk råvarukostnad, avvikelser och prisändringar.',
     iconViewBox: '0 0 20 20',
     icon: '<path d="M1.69657 10.2683C1.63907 10.0955 1.63907 9.90867 1.69657 9.73583C2.85241 6.25833 6.13324 3.75 9.99991 3.75C13.8649 3.75 17.1441 6.25583 18.3024 9.73167C18.3607 9.90417 18.3607 10.0908 18.3024 10.2642C17.1474 13.7417 13.8666 16.25 9.99991 16.25C6.13491 16.25 2.85491 13.7442 1.69657 10.2683Z" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/><path d="M12.5 10C12.5 10.663 12.2366 11.2989 11.7678 11.7678C11.2989 12.2366 10.663 12.5 10 12.5C9.33696 12.5 8.70107 12.2366 8.23223 11.7678C7.76339 11.2989 7.5 10.663 7.5 10C7.5 9.33696 7.76339 8.70107 8.23223 8.23223C8.70107 7.76339 9.33696 7.5 10 7.5C10.663 7.5 11.2989 7.76739 11.7678 8.23223C12.2366 8.70107 12.5 9.33696 12.5 10Z" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>',
   },
@@ -183,14 +183,14 @@ const faqs = [
 
 <Layout
   title="Programvara för varukostnad för europeiska restauranger | Stockifi"
-  description="Känn din faktiska varukostnad. Stockifi kopplar ihop dina fakturor, kassasystem och recept för att visa var din marginal tar vägen, med inställningen gjord åt dig."
+  description="Förstå din faktiska råvarukostnad. Stockifi kopplar ihop dina fakturor, kassasystem och recept för att visa var din marginal tar vägen, med inställningen gjord åt dig."
 >
   <!-- 1. Hero -->
   <Hero
     wide
-    tagline="Programvara för varukostnad för restauranger"
-    heading="Känn din faktiska varukostnad."
-    subhead="Dina fakturor, din försäljning och dina recept har redan svaret på din varukostnad. Stockifi samlar dem och räknar ut det, så att du ser din marginal och kan agera på den."
+    tagline="Programvara för råvarukostnad i restaurang"
+    heading="Förstå din faktiska råvarukostnad."
+    subhead="Dina fakturor, din försäljning och dina recept har redan svaret på din råvarukostnad. Stockifi samlar dem och räknar ut det, så att du ser din marginal och kan agera utifrån den."
     primary={{ label: 'Boka en demo', href: '/sv/book-a-demo' }}
     secondary={{ label: 'Se hur det fungerar', href: '#how-it-works' }}
     images={[
@@ -226,8 +226,8 @@ const faqs = [
   <!-- 4. Benefits — FeatureSplit -->
   <FeatureSplit
     tagline="Därför är det värt det"
-    heading="Varukostnadskontroll för restauranger som betalar sig själv"
-    body="Det mesta av din marginal läcker i gapen mellan systemen. Stockifi samlar dem i en vy, så att redan 1 % förbättring i varukostnad förvandlas till pengar du behåller."
+    heading="Råvarukostnadskontroll för restauranger som betalar sig själv"
+    body="Det mesta av din marginal läcker i gapen mellan systemen. Stockifi samlar dem i en vy, så att redan 1 % förbättring i råvarukostnad förvandlas till pengar du behåller."
     items={benefits}
     imageSide="right"
   >
@@ -238,14 +238,14 @@ const faqs = [
   <FeatureTabs
     tagline="För ditt team"
     heading="En uppsättning siffror för varje roll"
-    subhead="Från GM till kök arbetar alla utifrån samma siffror."
+    subhead="Från driftschef till kök arbetar alla utifrån samma siffror."
     tabs={byTeams}
   />
 
   <!-- 6. Customer stories — bento -->
   <CustomerStoryBento
     eyebrow="Kundberättelser"
-    heading="Hör det från operatörer som du"
+    heading="Hör det från krögare som du"
     cta={{ label: 'Läs alla berättelser', href: '/sv/customer-stories' }}
     slugs={['byoslo', 'eik-and-friends', 'koie-ramen', 'skigeilo-2']}
   />
@@ -280,7 +280,7 @@ const faqs = [
   <FaqSplit
     eyebrow="Vanliga frågor"
     heading="Frågor du kanske har"
-    body="Det operatörer kontrollerar innan en demo. Fortfarande osäker? Hör av dig så hjälper vi dig."
+    body="Det krögare kontrollerar innan en demo. Fortfarande osäker? Hör av dig så hjälper vi dig."
     contact={{ label: 'Kontakta oss', href: '/sv/contact' }}
     items={faqs}
   />

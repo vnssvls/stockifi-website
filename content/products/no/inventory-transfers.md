@@ -1,8 +1,8 @@
 ---
-metaTitle: "Lageroverføringer mellom steder | Stockifi"
-metaDescription: "Flytt varer mellom steder inne i den periodiske tellingen. Stockifi sporer hver overføring slik at hvert steds avvik og matkostnad forblir nøyaktige. Book en demo nå."
-eyebrow: "Varetransfer"
-heading: "Hold begge lokasjoner nøyaktige når varer flyttes"
+metaTitle: "Lageroverføringer mellom enheter | Stockifi"
+metaDescription: "Flytt varer mellom enheter inne i den periodiske tellingen. Stockifi sporer hver overføring slik at hvert steds avvik og varekost holder seg riktig. Book en demo nå."
+eyebrow: "Lageroverføringer"
+heading: "Hold begge enheter nøyaktige når varer flyttes"
 subhead: "Når varer flyttes mellom lokasjonene dine, registrerer du flytten i Stockifi mot periodens varetelling. Hvert steds telling og kostnad forblir korrekte, og gruppens tall stemmer."
 heroImage: "/media/product-inventory-transfers.png"
 order: 23
@@ -27,7 +27,7 @@ benefits:
   - heading: "Overført til kostpris"
     body: "Kostnad forlater det sendende stedet og lander hos mottakeren."
   - heading: "Bygget for kjeder"
-    body: "Operatører med flere lokasjoner holder tallene i samsvar uten sidestilte regneark."
+    body: "Drivere med flere enheter holder tallene avstemt uten regneark ved siden av."
 faqHeading: "Spørsmål om varetransfer"
 faqs:
   - question: "Spores overføringer i sanntid?"

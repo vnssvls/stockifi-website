@@ -1,6 +1,6 @@
 ---
 metaTitle: "Fakturaautomatisering for restauranter | Stockifi"
-metaDescription: "Stockifi leser hver leverandørfaktura og mater ingredienspriser og mengder inn i matkostnaden din automatisk, slik at den alltid er oppdatert uten manuell inntasting."
+metaDescription: "Stockifi leser hver leverandørfaktura og mater ingredienspriser og mengder rett inn i varekosten din, så den alltid er oppdatert uten manuell inntasting."
 eyebrow: "Fakturaautomatisering"
 heading: "Varekostnad uten manuell inntasting"
 subhead: "Varekostnaden din kan holdes oppdatert uten at noen trenger å taste inn en faktura. Stockifi henter dem direkte fra regnskapet ditt, så priser og mengder flyter inn av seg selv."

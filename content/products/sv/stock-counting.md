@@ -1,6 +1,6 @@
 ---
 metaTitle: "Inventeringsapp för restaurang | Stockifi"
-metaDescription: "Gör periodiska inventeringar på mobil eller webb, online eller offline, och se sedan avvikelsen mot teoretisk användning, allt på ett ställe."
+metaDescription: "Gör inventeringar på mobil eller webb, online eller offline. Stockifi visar glappet mellan teoretisk och faktisk förbrukning, så du vet exakt vart lagret tog vägen."
 eyebrow: "Inventering"
 heading: "Inventeringar som stämmer med hyllan"
 subhead: "Inventera på mobil eller webb, online eller offline. Se avvikelsen mot vad dina recept och din försäljning förutsåg i det ögonblick du stänger."
@@ -10,7 +10,7 @@ category: inventory-management
 howItWorks:
   tagline: "Så här fungerar det"
   heading: "En inventering låser inte förrän den stämmer"
-  body: "Du inventerar på den telefon eller surfplatta ditt team redan använder, i den ordning dina hyllor är uppställda, online eller offline. Innan den stängs flaggar Stockifi allt som ser konstigt ut, till exempel ett ovanligt högt eller lågt tal för en artikel, så att ett sannolikt felslag fångas upp. Bara en verifierad inventering låser ditt varulager för perioden."
+  body: "Du inventerar på den telefon eller surfplatta teamet redan har, i den ordning hyllorna står, online eller offline. Innan inventeringen stängs flaggar Stockifi allt som ser konstigt ut, som ett ovanligt högt eller lågt tal på en artikel, så ett troligt felslag fångas. Bara en verifierad inventering låser lagret för perioden."
   points:
     - heading: "I hyllordning"
       body: "Inventeringen följer hur dina hyllor är uppställda."
@@ -21,7 +21,7 @@ howItWorks:
 showIntegrations: false
 benefits:
   - heading: "Inventera 10 gånger snabbare"
-    body: "Med en telefon istället för ett urklipp tar en inventering en bråkdel av tiden."
+    body: "Med en telefon i stället för klippbräda tar en inventering en bråkdel av tiden."
   - heading: "Fungerar offline"
     body: "Inventeringar fortsätter utan signal och synkroniseras när du återansluter."
   - heading: "Avvikelse du litar på"
@@ -33,7 +33,7 @@ faqs:
   - question: "Kan jag inventera på mitt eget schema?"
     answer: "Ja. Stockifi använder periodiska inventeringar med avvikelseanalys i appen. Du inventerar när det passar dig och ser sedan faktisk användning mot vad dina recept förutsåg."
   - question: "Hur ofta bör jag inventera?"
-    answer: "De flesta operatörer inventerar vid periodslutet, månadsvis för många. Stockifi passar vilket periodiskt schema du kör och visar avvikelse för den perioden."
+    answer: "De flesta krögare inventerar vid periodslutet, månadsvis för många. Stockifi passar vilket periodiskt schema du kör och visar avvikelse för den perioden."
   - question: "Behöver jag en streckkodsläsare eller specialutrustning?"
     answer: "Nej. Inventering körs på den telefon eller surfplatta ditt team redan använder, utan något extra att köpa."
   - question: "Kan mitt team dela upp en inventering mellan sig?"

@@ -1,6 +1,6 @@
 ---
-metaTitle: "Stockifi API för restaurangdata | Stockifi"
-metaDescription: "Hämta din Stockifi-data, varukostnad, avvikelse, recept och försäljning, till dina egna BI-verktyg och ditt datalager via ett rent API, i realtid eller schemalagt."
+metaTitle: "Stockifi API | Hämta din råvarukostnadsdata till din BI-stack"
+metaDescription: "Koppla Stockifi till dina egna BI-verktyg eller ditt datalager. Hämta råvarukostnad, avvikelse, recept och försäljning via ett rent API, i realtid eller schemalagt."
 eyebrow: "API"
 heading: "Hämta din Stockifi-data till dina egna verktyg"
 subhead: "Ditt team kan arbeta med Stockifis siffror i de BI-verktyg det redan använder. Ett rent API ger dem direkt åtkomst till din prestandadata."
@@ -11,7 +11,7 @@ showIntegrations: false
 howItWorks:
   tagline: "Så här fungerar det"
   heading: "Vad du kan hämta, och hur"
-  body: "Allt Stockifi räknar ut finns bakom API:et: din varukostnad, avvikelse, recept, fakturor och försäljning, strukturerat och klart. Dina utvecklare ansluter direkt och hämtar det de behöver till ditt BI-verktyg eller dina egna dashboards, i realtid eller enligt ett schema."
+  body: "Allt Stockifi räknar ut finns bakom API:et: din råvarukostnad, avvikelse, recept, fakturor och försäljning, strukturerat och klart. Dina utvecklare ansluter direkt och hämtar det de behöver till ditt BI-verktyg eller dina egna dashboards, i realtid eller enligt ett schema."
   points:
     - heading: "Strukturerade endpoints"
       body: "Varje dataset har sin egen rena endpoint att anropa."
@@ -23,15 +23,15 @@ benefits:
   - heading: "I dina verktyg"
     body: "Stockifis siffror lever i de BI-verktyg ditt team använder."
   - heading: "Siffror som stämmer"
-    body: "Samma varukostnadsdata matar Stockifi och ditt övriga system."
+    body: "Samma råvarukostnadsdata matar både Stockifi och dina övriga system."
   - heading: "Inga manuella exporter"
     body: "Hämta via API:et i stället för att kopiera kalkylblad mellan system."
   - heading: "För datateam"
-    body: "Byggt för de utvecklare och analytiker som driver ditt system."
+    body: "Byggt för utvecklarna och analytikerna som driver era system."
 faqHeading: "Frågor om API:et"
 faqs:
   - question: "Behöver jag en utvecklare för att använda API:et?"
-    answer: "Ja. Det är byggt för ett team som arbetar med strukturerad data, dina egna utvecklare eller BI-analytiker. Om du hellre inte bygger något täcker Stockifis egna dashboards den rapportering de flesta operatörer behöver."
+    answer: "Ja. Det är byggt för ett team som arbetar med strukturerad data, dina egna utvecklare eller BI-analytiker. Om du hellre inte bygger något täcker Stockifis egna dashboards den rapportering de flesta krögare behöver."
   - question: "Kan jag skicka data till Stockifi via API:et, eller bara hämta ut det?"
     answer: "API:et är till för att hämta ut din Stockifi-data till dina egna verktyg. Att föra in data, som försäljning och fakturor, hanteras av Stockifis kassasystem- och bokföringsintegrationer."
   - question: "Hur aktuell är datan som API:et returnerar?"

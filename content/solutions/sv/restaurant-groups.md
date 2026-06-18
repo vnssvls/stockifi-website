@@ -1,8 +1,8 @@
 ---
-metaTitle: "Mjukvara för varukostnad i restaurangkedjor | Stockifi"
-metaDescription: "Håll receptkostnaderna i linje på alla restauranger och samla avvikelser och marginal i en vy. Stockifi ger restauranggrupper en samlad bild av hela verksamheten."
+metaTitle: "Mjukvara för råvarukostnad i restaurangkedjor | Stockifi"
+metaDescription: "Restauranggrupper använder Stockifi för att hålla receptkostnaderna i linje på varje restaurang och se avvikelse och marginal samlade i en vy."
 eyebrow: "Restauranggrupper"
-heading: "Samlad varukostnad för alla restauranger"
+heading: "Samlad råvarukostnad för alla restauranger"
 subhead: "Stockifi håller receptkostnaderna konsekventa på varje restaurang och samlar kostnad, avvikelse och marginal i en vy. Du ser vilka restauranger som är på rätt spår och vilka som behöver uppmärksamhet."
 order: 2
 group: "segment"
@@ -16,7 +16,7 @@ benefits:
   - heading: "Samlad avvikelse"
     body: "Kostnad och avvikelse för gruppen och per restaurang."
   - heading: "Hitta avvikaren"
-    body: "Se vilken restaurang som glider iväg innan det drar ned hela gruppen."
+    body: "Hitta restaurangen som glider iväg innan den drar ned hela gruppen."
   - heading: "Snabbare månadsavslut"
     body: "Siffrorna stäms av mellan restaurangerna på egen hand."
 showcaseTagline: "Hur det hjälper"
@@ -26,7 +26,7 @@ showcaseSubs:
   - heading: "Grupp och restaurang"
     body: "Hela gruppen i en överblick, vilken restaurang som helst ett klick bort."
   - heading: "Redo för centralkök"
-    body: "Ett centralkök försörjer dina restauranger som en intern leverantör, med sin kostnad inräknad i varje restaurangs varukostnad."
+    body: "Ett centralkök försörjer dina restauranger som en intern leverantör, med sin kostnad inräknad i varje restaurangs råvarukostnad."
 faqHeading: "Frågor restauranggrupper ställer"
 faqs:
   - question: "Fungerar Stockifi för flera restauranger?"
@@ -34,7 +34,7 @@ faqs:
   - question: "Kan receptkostnaderna vara konsekventa på alla restauranger?"
     answer: "Ja. Ett recept kostsätts en gång och samma kostnad gäller för varje restaurang som använder det, och uppdateras för alla när ett leverantörspris ändras."
   - question: "Stöder ni centralkök?"
-    answer: "Ja. Ett centralkök kan försörja dina restauranger som en intern leverantör, med sina produktionskostnader inräknade i varje restaurangs varukostnad."
+    answer: "Ja. Ett centralkök kan försörja dina restauranger som en intern leverantör, med sina produktionskostnader inräknade i varje restaurangs råvarukostnad."
   - question: "Hur hanteras lagerflyttningar mellan restauranger?"
     answer: "Lageröverföringar registreras inom varje inventering, så att varor som flyttas mellan restauranger inte syns som en falsk vinst eller förlust."
 testimonials:

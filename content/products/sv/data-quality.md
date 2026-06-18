@@ -1,6 +1,6 @@
 ---
 metaTitle: "Datakvalitet | Stockifi"
-metaDescription: "Stockifi håller dina ingrediens- och receptdata rena och konsekventa, så att dina varukostnadssiffror alltid är tillförlitliga."
+metaDescription: "Stockifi håller dina ingrediens- och receptdata rena, pålitliga och konsekventa, så att råvarukostnaden du agerar på alltid stämmer. Boka en demo nu."
 eyebrow: "Datakvalitet"
 heading: "[Platshållare rubrik]"
 subhead: "[Platshållare underrubrik — granskning onsdag]"

@@ -1,27 +1,27 @@
 ---
 metaTitle: "Receptkostnadshantering för kökschefer | Stockifi"
-metaDescription: "Levande receptkostnader, snabb inventering och avvikelse ner till rätten, byggt för de som driver köket. Menybeslut baserade på dagens priser."
+metaDescription: "Receptkostnader i realtid från dina senaste fakturor, avvikelse nedbruten per rätt och inventering som inte bromsar köket."
 eyebrow: "Kök"
-heading: "Vet vad varje rätt kostar i dag"
-subhead: "Stockifi håller varje recept uppdaterat när priserna rör sig. Inventeringen går snabbt och avvikelsen pekar på exakt vilken rätt det gäller."
+heading: "Vet vad varje rätt kostar idag"
+subhead: "Stockifi håller varje recept kostnadsberäknat när priserna rör sig. Inventeringen går snabbt och avvikelsen pekar rakt på rätten det gäller."
 order: 7
 group: "team"
-problemTagline: "Levande receptkostnader"
+problemTagline: "Receptkostnader i realtid"
 problemHeading: "Vill du ha receptkostnader som håller jämna steg med priserna?"
-problemBody: "Stockifi håller dem aktuella åt dig. När leverantörspriser förändras uppdateras varje recept som använder ingrediensen, så kostnaden på din meny är alltid dagens kostnad."
+problemBody: "Stockifi håller dem aktuella åt dig. När ett leverantörspris ändras uppdateras varje recept som använder ingrediensen, så kostnaden på menyn alltid är dagens."
 problem: []
 benefits:
   - heading: "Recept som kostsätter sig själva"
-    body: "Varje rätt bär sin levande kostnad när priserna rör sig."
+    body: "Varje rätt bär sin aktuella kostnad när priserna rör sig."
   - heading: "Fånga upp överportering"
     body: "Avvikelsen flaggar rätterna som använder mer än receptet anger."
   - heading: "Kostsätt en ny rätt snabbt"
     body: "Bygg receptet och se kostnad och marginal direkt."
   - heading: "Inventera med mobilen"
-    body: "Inventera köket i din egen ordning, utan pappersarbete."
+    body: "Inventera köket i din egen ordning, utan papper."
 showcaseTagline: "Så hjälper det"
 showcaseHeading: "Vad förändras i köket?"
-showcaseBody: "Menybeslut fattas utifrån verkliga siffror. Du ser marginalen på varje rätt och, när ett pris stiger, exakt vilka rätter det påverkar."
+showcaseBody: "Menybesluten fattas på verkliga siffror. Du ser marginalen på varje rätt och, när ett pris hoppar, exakt vilka rätter det slår mot."
 showcaseSubs:
   - heading: "Marginal per rätt"
     body: "Se vad varje tallrik ger på dagens priser."
@@ -31,8 +31,8 @@ faqHeading: "Frågor kökschefer ställer"
 faqs:
   - question: "Hur hålls receptkostnaderna aktuella?"
     answer: "Stockifi läser leverantörsfakturor och uppdaterar varje berört recept automatiskt, vanligtvis samma dag."
-  - question: "Hanterar det delrecept och förberedda satser?"
-    answer: "Ja. En förberedd sats kostsätts en gång och rullas upp i varje rätt som använder den."
+  - question: "Hanterar det delrecept och prebatcher?"
+    answer: "Ja. En prebatch kostsätts en gång och rullar in i varje rätt som använder den."
   - question: "Kan jag se vilka rätter som har överportering?"
     answer: "Ja. Genom att jämföra teoretisk mot faktisk förbrukning lyfter Stockifi fram de rätter som avviker från receptet."
   - question: "Går inventeringen snabbt?"
@@ -98,6 +98,6 @@ testimonials:
         alt: Schnitzelei restaurant
       - src: /media/customer-stories/69ccbd2a2a92b0614edecc5b_schnitzelei.outdoor.jpg
         alt: Schnitzelei outdoor
-ctaHeading: "Håll kökets kostnader levande"
+ctaHeading: "Håll kökets kostnader aktuella"
 ctaSubhead: "Lämna din e-post så visar vi vad Stockifi hittar under dina första 30 dagar."
 ---

@@ -1,5 +1,5 @@
 ---
-metaTitle: "Matkostnadsverktøy for restaurantkjeder | Stockifi"
+metaTitle: "Programvare for varekost i restaurantkjeder | Stockifi"
 metaDescription: "Restaurantkjeder bruker Stockifi til å holde oppskriftskostnadene samkjørte på tvers av alle steder og se avvik og margin samlet i én oversikt."
 eyebrow: "Restaurantkjeder"
 heading: "Samlet varekost på tvers av alle lokasjoner"
@@ -8,15 +8,15 @@ order: 2
 group: "segment"
 problemTagline: "Ett sett med tall"
 problemHeading: "Vil du ha alle lokasjoner på de samme oppskriftskostnadene?"
-problemBody: "Stockifi holder dem samkjørt for deg. En oppskrift kostsettes én gang og gjelder for alle lokasjoner som bruker den, og oppdateres overalt i det en leverandørpris endrer seg."
+problemBody: "Stockifi holder dem samkjørt for deg. En oppskrift kostnadssettes én gang og gjelder for alle steder som bruker den, og oppdateres overalt i det en leverandørpris endrer seg."
 problem: []
 benefits:
-  - heading: "Oppskriftskostnader i sync"
-    body: "Én oppskriftskost, brukt på tvers av alle lokasjoner."
+  - heading: "Oppskriftskostnader i synk"
+    body: "Én oppskriftskost, brukt på tvers av alle steder."
   - heading: "Samlet avvik"
     body: "Kostnad og avvik for hele kjeden og per lokasjon."
   - heading: "Finn avvikslokasjonen"
-    body: "Oppdage lokasjonen som sklir ut før den drar ned resten av kjeden."
+    body: "Oppdag stedet som sklir ut før det drar ned resten av kjeden."
   - heading: "Raskere månedsslutt"
     body: "Tallene avstemmes på tvers av lokasjoner automatisk."
 showcaseTagline: "Slik hjelper det"
@@ -36,7 +36,7 @@ faqs:
   - question: "Støtter dere sentralkjøkken?"
     answer: "Ja. Et sentralkjøkken kan forsyne dine utsalgssteder som en intern leverandør, med produksjonskostnadene som flyter inn i hvert steds varekost."
   - question: "Hvordan håndterer det varebevegelser mellom lokasjoner?"
-    answer: "Varetransaksjoner mellom lokasjoner registreres innenfor hver varetelling, slik at varer som flyttes mellom steder ikke vises som et falskt overskudd eller tap."
+    answer: "Vareoverføringer mellom steder registreres innenfor hver telling, slik at varer som flyttes mellom steder ikke vises som et falskt overskudd eller tap."
 testimonials:
   - quote: "\"It's more than just an inventory tool. Stockifi provides insights that help us focus on profit-driving areas.\""
     name: "Kim Søyland & Jama Awaleh"

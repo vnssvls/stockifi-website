@@ -1,32 +1,32 @@
 ---
 metaTitle: "Programvara för kostnadskontroll av hotell F&B | Stockifi"
-metaDescription: "Kontrollera mat- och dryckeskostnad i hela hotellets restauranger, barer och bankettverksamhet. Stockifi kopplar samman fakturor, kassasystem och recept för full F&B-synlighet."
+metaDescription: "Få kontroll på mat- och dryckeskostnaden i hotellets alla restauranger, barer och banketter. Stockifi kopplar ihop fakturor, kassasystem och recept för full F&B-synlighet."
 eyebrow: "Hotell med F&B"
 heading: "Full kostnadskontroll och synlighet för hotell F&B"
-subhead: "Stockifi samlar försäljning och kostnad från varje F&B-enhet på en rapporteringsplattform. Restaurang-, bar- och bankettteam arbetar med samma siffror och har full insyn i hela F&B-driften."
+subhead: "Stockifi samlar försäljning och kostnad från varje F&B-enhet på en rapporteringsplattform. Restaurang, bar och bankett arbetar utifrån samma siffror, med full insyn i hela F&B-driften."
 order: 3
 group: "segment"
 problemTagline: "En samlad F&B-bild"
-problemHeading: "Vill du ha alla enheter på ett och samma siffersystem?"
-problemBody: "Stockifi samlar dem åt dig. Restaurang, bar och bankett rapporterar alla till en gemensam F&B-vy, så att kostnaden i varje enhet syns direkt i stället för att begrava sig i hotellets resultaträkning."
+problemHeading: "Vill du ha alla enheter på samma siffror?"
+problemBody: "Stockifi samlar dem åt dig. Restaurang, bar och bankett rapporterar alla in i en gemensam F&B-vy, så att kostnaden i varje enhet syns direkt i stället för att begravas i hotellets resultaträkning."
 problem: []
 benefits:
   - heading: "Alla enheter, en vy"
-    body: "Kostnad och marginal för restaurang, bar och event samlat."
+    body: "Kostnad och marginal samlat för restaurang, bar och event."
   - heading: "Löpande receptkostnader"
     body: "Rätter och drycker omräknas när leverantörspriserna förändras."
   - heading: "Avvikelse per enhet"
     body: "Hitta vilken enhet som läcker marginal, och varför."
   - heading: "Byggd för full F&B"
     body: "Varje avdelning ser de siffror den behöver."
-showcaseTagline: "Hur det hjälper"
+showcaseTagline: "Så hjälper det"
 showcaseHeading: "Varje enhet rullar upp till ett samlat F&B-tal"
 showcaseBody: "Varje enhet behåller sin egen kostnad och avvikelse, och de rullas upp till ett samlat F&B-tal. Du ser hela driften och kan sedan öppna valfri enhet för detaljerna."
 showcaseSubs:
   - heading: "Bortom rummen"
-    body: "Separera F&B-resultatet från rumsintäktssidan."
+    body: "Skilj F&B-resultatet från rumsintäkterna."
   - heading: "Byggd för hospitality"
-    body: "Anpassad för hotellskalig F&B med alla dess rörliga delar."
+    body: "Byggd för hotellskalig F&B med alla dess rörliga delar."
 faqHeading: "Frågor hotell ställer"
 faqs:
   - question: "Passar Stockifi för hotell?"
@@ -34,7 +34,7 @@ faqs:
   - question: "Kan det hantera flera enheter i ett och samma hotell?"
     answer: "Ja. Varje enhets kostnad och avvikelse spåras separat och rullas upp till en samlad F&B-vy."
   - question: "Täcker det baren lika väl som köket?"
-    answer: "Ja. Stockifi spårar dryckeskostnad och avvikelse i serveringsvolym parallellt med matkostnad."
+    answer: "Ja. Stockifi spårar dryckeskostnad och tappningsavvikelse parallellt med råvarukostnaden på maten."
   - question: "Fungerar det med våra befintliga system?"
     answer: "Ja. Stockifi ansluter till det kassasystem och det bokföringsprogram du redan använder, läser data och lämnar din nuvarande uppsättning orörd."
 testimonials:
@@ -99,6 +99,6 @@ testimonials:
         alt: Torika Gruppen venue
       - src: /media/customer-stories/6957455c5d05996572eaa091_torika-1-cropped.jpeg
         alt: Torika Gruppen interior
-ctaHeading: "Se din hotels F&B-kostnad tydligt"
+ctaHeading: "Se ditt hotells F&B-kostnad tydligt"
 ctaSubhead: "Ange din e-postadress så visar vi vad Stockifi hittar under dina första 30 dagar."
 ---

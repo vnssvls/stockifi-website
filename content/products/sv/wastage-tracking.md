@@ -3,7 +3,7 @@ metaTitle: "Svinnregistrering för restauranger | Stockifi"
 metaDescription: "Sätt ett verkligt kostnadsvärde på spill, köksmisstag och överproduktion mot faktisk förbrukning, så att förlusterna slutar gömma sig i din avvikelse."
 eyebrow: "Svinnregistrering"
 heading: "Gör svinnet till en siffra du kan agera på"
-subhead: "Stockifi sätter ett verkligt kostnadsvärde på det du svinnar och visar det mot det du förbrukar, så att det slutar gömma sig i din avvikelse."
+subhead: "Stockifi sätter en verklig kostnad på det du slänger och visar det mot det du förbrukar, så att det slutar gömma sig i avvikelsen."
 heroImage: "/media/product-wastage-tracking.png"
 order: 24
 category: inventory-management
@@ -11,12 +11,12 @@ showIntegrations: false
 howItWorks:
   tagline: "Så fungerar det"
   heading: "Se kostnaden i spill och misstag"
-  body: "Mycket av det ett kök förlorar syns aldrig i siffrorna. En förstörd låda råvaror eller en bricka som tappas på passagen är en verklig kostnad som försvinner in i din avvikelse. Att registrera det ger varje förlust ett värde, per ingrediens."
+  body: "Mycket av det ett kök förlorar syns aldrig i siffrorna. En förstörd back råvaror eller en bricka som tappas i utlämningen är verklig kostnad som försvinner in i avvikelsen. Att registrera det ger varje förlust ett värde, per ingrediens."
   points:
     - heading: "Registrerat på plats"
       body: "Personalen registrerar ett svinn i appen direkt när det händer."
     - heading: "Prissatt till inköpskostnad"
-      body: "Varje svinn hämtar ingrediensens aktuella pris och matas in i din varukostnad."
+      body: "Varje svinn sätts till ingrediensens aktuella pris och slår igenom i råvarukostnaden."
   imageSide: "right"
   imageAlt: ""
 benefits:
@@ -37,7 +37,7 @@ faqs:
   - question: "Hur skiljer sig svinnregistrering från avvikelseanalys?"
     answer: "Avvikelse är hela gapet mellan förväntad och faktisk förbrukning. Svinn är en av orsakerna. Att registrera svinn flyttar den förlusten ur det oförklarade gapet och in i en siffra du kan agera på."
   - question: "Bromsar svinnregistrering köket?"
-    answer: "Nej. En registrering tar sekunder i appen, så linjen håller takten och förlusten fångas ändå."
+    answer: "Nej. En registrering tar några sekunder i appen, så det flyter på och förlusten fångas ändå."
   - question: "Måste jag registrera varje post för att det ska vara värt det?"
     answer: "Nej. Även om du bara registrerar dina dyraste råvaror, som proteiner, ser du var det mesta av pengarna försvinner. Sedan kan du bredda det därifrån."
 ctaHeading: "Se vad svinnet verkligen kostar dig"

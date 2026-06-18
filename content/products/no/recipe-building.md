@@ -1,21 +1,21 @@
 ---
 metaTitle: "Oppskriftskalkylering og -bygging | Stockifi"
-metaDescription: "Bygg oppskriftene dine i Stockifi med levende ingredienspriser fra fakturaene dine. Hver rett bærer den reelle kostnaden og oppdateres automatisk når prisene endres."
+metaDescription: "Bygg oppskriftene dine i Stockifi med ingredienspriser i sanntid fra fakturaene dine. Hver rett bærer sin reelle kostnad og oppdateres automatisk når prisene endres."
 eyebrow: "Oppskriftsbygging"
-heading: "Bygg oppskrifter med live kostnader tilknyttet"
-subhead: "Når oppskriftene dine er lagt inn, kalkylerer du aldri en rett manuelt igjen. Stockifi henter prisen på hver ingrediens fra fakturaene dine, slik at hver rett viser sin reelle kostnad og margin."
+heading: "Bygg oppskrifter med kostnader i sanntid"
+subhead: "Når oppskriftene dine er lagt inn, kalkulerer du aldri en rett for hånd igjen. Stockifi henter prisen på hver ingrediens fra fakturaene dine, slik at hver rett viser sin reelle kostnad og margin."
 heroImage: "/media/product-recipe-building.png"
 order: 20
 category: inventory-management
 howItWorks:
   tagline: "Slik fungerer det"
   heading: "En rett koster nøyaktig det ingrediensene koster deg"
-  body: "Hver ingrediens i en oppskrift er koblet til den faktiske innkjøpsprisen fra fakturaene dine. En prebatch eller deloppskrift kalkuleres én gang og rulles inn i alle retter som bruker den, slik at kostprisen på en rett er summen av hva ingrediensene koster deg og oppdateres den dagen en leverandørpris endres."
+  body: "Hver ingrediens i en oppskrift kobles til den faktiske innkjøpsprisen fra fakturaene dine. En prebatch eller deloppskrift kalkuleres én gang og rulles inn i alle retter som bruker den, slik at kostnaden på en rett er summen av hva ingrediensene koster deg, og endres samme dag en leverandørpris gjør det."
   points:
     - heading: "Priset fra fakturaer"
       body: "Hver ingrediens er koblet til sin faktiske innkjøpspris."
     - heading: "Deloppskrifter ruller opp"
-      body: "En prebatch kalkuleres én gang og kaskaderer inn i alle retter."
+      body: "En prebatch kalkuleres én gang og ruller inn i alle retter."
   imageSide: "right"
   imageAlt: ""
 integrationsHeading: "Fungerer med"
@@ -34,11 +34,11 @@ faqs:
   - question: "Setter dere opp oppskriftene våre for oss?"
     answer: "Ja. Du deler oppskriftene dine og vi bygger dem inn, med ingredienskostnader sporet fra starten av. Det manuelle oppsettet håndteres for deg."
   - question: "Hvordan knyttes ingredienskostnader til en oppskrift?"
-    answer: "Hver ingrediens i en oppskrift er koblet til den faktiske innkjøpsprisen fra fakturaene dine, slik at kostprisen på en oppskrift er summen av hva de ingrediensene koster deg akkurat nå."
+    answer: "Hver ingrediens i en oppskrift kobles til den faktiske innkjøpsprisen fra fakturaene dine, slik at kostnaden på en oppskrift er summen av hva de ingrediensene koster deg akkurat nå."
   - question: "Tar oppskrifter høyde for svinn og utbytte?"
     answer: "Ja. Du angir hvor mye av en ingrediens en oppskrift faktisk bruker, slik at trimmingen på for eksempel en hel fisk eller et stykke kjøtt kalkuleres inn i hver porsjon. Det svinnet, eller kuttet, havner i kostnaden på retten i stedet for å forsvinne i avvik."
   - question: "Kan jeg bruke ett oppskriftsbibliotek på tvers av alle lokasjonene mine?"
     answer: "Ja. Oppskriftene dine ligger i ett bibliotek som deles på tvers av lokasjoner, slik at en rett er bygget og kalkulert på samme måte overalt, og en oppdatering når alle steder."
-ctaHeading: "Se oppskriftene dine kalkulert live"
+ctaHeading: "Se oppskriftene dine kalkulert i sanntid"
 ctaSubhead: "Book en kort samtale, og vi viser deg hva Stockifi avdekker i løpet av de første 30 dagene dine."
 ---

@@ -3,7 +3,7 @@ metaTitle: "Sporing av leverandørpriser for restauranter | Stockifi"
 metaDescription: "Hver gang en leverandør endrer en pris, fanger Stockifi det opp fra fakturaene dine, omregner alle berørte oppskrifter og varsler om trender slik at ingenting slipper gjennom."
 eyebrow: "Leverandørprissporing"
 heading: "Se når en leverandørpris endrer seg"
-subhead: "Leverandørpriser beveger seg i små steg du aldri ville fanget manuelt. Stockifi sporer hvert prishopp og hvilke retter det påvirker, slik at du kan handle mens det fortsatt er tid."
+subhead: "Leverandørpriser kryper oppover i små steg du aldri ville fanget for hånd. Stockifi sporer hver endring og hvilke retter den treffer, så du kan handle på en økning mens det fortsatt er tid."
 heroImage: "/media/product-supplier-price-tracking.png"
 order: 2
 category: procurement
@@ -22,13 +22,13 @@ integrationsHeading: "Fungerer med"
 integrationsSubject: "regnskapsprogramvaren din"
 benefits:
   - heading: "Fanget tidlig"
-    body: "Se en prisstigning den dagen den ankommer, mens du fortsatt kan handle."
+    body: "Se en økning samme dag den kommer inn, mens du fortsatt kan handle."
   - heading: "Hele historikken"
     body: "Hver ingrediens beholder oversikten over hva du betaler."
   - heading: "Klar til forhandling"
-    body: "Gå inn i leverandørmøtet med pristrenden klar."
+    body: "Møt leverandøren med pristrenden i hånda."
   - heading: "På tvers av alle steder"
-    body: "En prisøkning fra en felles leverandør oppdaterer kostnadene på alle lokasjoner samtidig."
+    body: "En prisøkning fra en felles leverandør oppdaterer alle steder samtidig."
 faqHeading: "Spørsmål om leverandørprissporing"
 faqs:
   - question: "Hvordan skiller Stockifi mellom en normal prisøkning og en feilbelastning?"
@@ -40,5 +40,5 @@ faqs:
   - question: "Hvilke regnskapssystemer fungerer dette med?"
     answer: "Stockifi kobler seg til regnskapssystemene du allerede bruker. Fortell oss hva du kjører, så bekrefter vi det på en kort samtale."
 ctaHeading: "Se hva leverandørene dine faktisk tar betalt"
-ctaSubhead: "Bestill en kort samtale, så viser vi deg hva Stockifi avdekker i de første 30 dagene."
+ctaSubhead: "Book en kort samtale, så viser vi deg hva Stockifi avdekker i løpet av de første 30 dagene."
 ---
