@@ -54,6 +54,13 @@ export interface NavStrings {
   solutionsTailored: string;
   solutionsTailoredDesc: string;
   speakToExpert: string;
+  footerCtaHeading: string;
+  footerCtaText: string;
+  footerContact: string;
+  footerFollow: string;
+  footerRights: string;
+  privacyPolicy: string;
+  termsConditions: string;
 }
 
 const en: NavStrings = {
@@ -77,6 +84,13 @@ const en: NavStrings = {
   solutionsTailored: 'Explore solutions tailored for you',
   solutionsTailoredDesc: 'See how Stockifi fits your operations and the teams who run it.',
   speakToExpert: 'Speak to an expert',
+  footerCtaHeading: "Take control of your food cost.",
+  footerCtaText: "See where margin leaks across recipes, suppliers, and sales. Book a demo and we will map it with you.",
+  footerContact: "Contact:",
+  footerFollow: "Follow us",
+  footerRights: "All rights reserved.",
+  privacyPolicy: "Privacy Policy",
+  termsConditions: "Terms & Conditions",
 };
 
 const no: NavStrings = {
@@ -100,6 +114,13 @@ const no: NavStrings = {
   solutionsTailored: 'Utforsk løsninger tilpasset deg',
   solutionsTailoredDesc: 'Se hvordan Stockifi passer driften din og teamene som driver den.',
   speakToExpert: 'Snakk med en ekspert',
+  footerCtaHeading: "Få kontroll på varekosten din.",
+  footerCtaText: "Se hvor marginen lekker på tvers av oppskrifter, leverandører og salg. Book en demo, så kartlegger vi det sammen.",
+  footerContact: "Kontakt:",
+  footerFollow: "Følg oss",
+  footerRights: "Med enerett.",
+  privacyPolicy: "Personvern",
+  termsConditions: "Vilkår og betingelser",
 };
 
 
@@ -125,6 +146,13 @@ const de: NavStrings = {
   solutionsTailored: 'Entdecke Lösungen, die zu dir passen',
   solutionsTailoredDesc: 'Sieh, wie Stockifi zu deinem Betrieb und den Teams dahinter passt.',
   speakToExpert: 'Mit einem Experten sprechen',
+  footerCtaHeading: "Bringen Sie Ihren Wareneinsatz unter Kontrolle.",
+  footerCtaText: "Sehen Sie, wo Marge über Rezepte, Lieferanten und Verkäufe verloren geht. Buchen Sie eine Demo, und wir kartieren es gemeinsam.",
+  footerContact: "Kontakt:",
+  footerFollow: "Folgen Sie uns",
+  footerRights: "Alle Rechte vorbehalten.",
+  privacyPolicy: "Datenschutz",
+  termsConditions: "AGB",
 };
 
 const da: NavStrings = {
@@ -148,6 +176,13 @@ const da: NavStrings = {
   solutionsTailored: 'Udforsk løsninger tilpasset dig',
   solutionsTailoredDesc: 'Se, hvordan Stockifi passer til din drift og teamene bag den.',
   speakToExpert: 'Tal med en ekspert',
+  footerCtaHeading: "Få styr på dit vareforbrug.",
+  footerCtaText: "Se hvor marginen lækker på tværs af opskrifter, leverandører og salg. Book en demo, så kortlægger vi det sammen.",
+  footerContact: "Kontakt:",
+  footerFollow: "Følg os",
+  footerRights: "Alle rettigheder forbeholdes.",
+  privacyPolicy: "Privatlivspolitik",
+  termsConditions: "Vilkår og betingelser",
 };
 
 const sv: NavStrings = {
@@ -171,6 +206,13 @@ const sv: NavStrings = {
   solutionsTailored: 'Utforska lösningar anpassade för dig',
   solutionsTailoredDesc: 'Se hur Stockifi passar din verksamhet och teamen som driver den.',
   speakToExpert: 'Prata med en expert',
+  footerCtaHeading: "Få kontroll på din råvarukostnad.",
+  footerCtaText: "Se var marginalen läcker över recept, leverantörer och försäljning. Boka en demo, så kartlägger vi det tillsammans.",
+  footerContact: "Kontakt:",
+  footerFollow: "Följ oss",
+  footerRights: "Med ensamrätt.",
+  privacyPolicy: "Integritetspolicy",
+  termsConditions: "Villkor",
 };
 
 const nl: NavStrings = {
@@ -194,6 +236,13 @@ const nl: NavStrings = {
   solutionsTailored: 'Ontdek oplossingen op maat',
   solutionsTailoredDesc: 'Ontdek hoe Stockifi past bij jouw activiteiten en de teams die het runnen.',
   speakToExpert: 'Spreek met een expert',
+  footerCtaHeading: "Krijg grip op je foodcost.",
+  footerCtaText: "Zie waar marge weglekt over recepten, leveranciers en verkopen. Plan een demo en we brengen het samen in kaart.",
+  footerContact: "Contact:",
+  footerFollow: "Volg ons",
+  footerRights: "Alle rechten voorbehouden.",
+  privacyPolicy: "Privacybeleid",
+  termsConditions: "Voorwaarden",
 };
 
 const map: Record<string, NavStrings> = { en, no, de, da, sv, nl };

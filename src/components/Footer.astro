@@ -9,50 +9,56 @@
 import Button from './Button.astro';
 import Logo from './Logo.astro';
 import wordmark from '../assets/wordmark.svg?raw';
+import { getNavStrings } from '../data/nav-i18n';
 
 interface Props {
   showCta?: boolean;
 }
 const { showCta = true } = Astro.props;
 
+// Locale-aware: labels from the shared nav strings, internal links prefixed.
+const locale = Astro.currentLocale ?? 'en';
+const lp = (p: string) => (locale === 'en' ? p : `/${locale}${p}`);
+const t = getNavStrings(locale);
+
 // Curated (not exhaustive): the top pages per area. The full Product/Solutions sets
 // live in the nav mega menus — the footer carries a representative slice + Integrations.
 const columns = [
   {
-    title: 'Product',
+    title: t.product,
     links: [
-      { label: 'Invoice automation', href: '/product-procurement/invoice-automation' },
-      { label: 'Supplier price tracking', href: '/product-procurement/supplier-price-tracking' },
-      { label: 'Recipe building', href: '/product-inventory-management/recipe-building' },
-      { label: 'Stock counting', href: '/product-inventory-management/stock-counting' },
-      { label: 'Variance analysis', href: '/product-business-intelligence/variance-analysis' },
-      { label: 'Integrations', href: '/integrations' },
+      { label: t.invoiceAutomation, href: lp('/product-procurement/invoice-automation') },
+      { label: t.supplierPriceTracking, href: lp('/product-procurement/supplier-price-tracking') },
+      { label: t.recipeBuilding, href: lp('/product-inventory-management/recipe-building') },
+      { label: t.stockCounting, href: lp('/product-inventory-management/stock-counting') },
+      { label: t.varianceAnalysis, href: lp('/product-business-intelligence/variance-analysis') },
+      { label: t.integrations, href: lp('/integrations') },
     ],
   },
   {
-    title: 'Solutions',
+    title: t.solutions,
     links: [
-      { label: 'Independent restaurants', href: '/solutions/independent-restaurants' },
-      { label: 'Restaurant groups', href: '/solutions/restaurant-groups' },
-      { label: 'Hotels with F&B', href: '/solutions/hotels' },
-      { label: 'Bars', href: '/solutions/bars' },
+      { label: t.independentRestaurants, href: lp('/solutions/independent-restaurants') },
+      { label: t.restaurantGroups, href: lp('/solutions/restaurant-groups') },
+      { label: t.hotelsWithFnB, href: lp('/solutions/hotels') },
+      { label: t.bars, href: lp('/solutions/bars') },
     ],
   },
   {
-    title: 'Resources',
+    title: t.resources,
     links: [
-      { label: 'Blog', href: '/blog' },
-      { label: 'Customer Stories', href: '/customer-stories' },
-      { label: 'FAQ', href: '/faq' },
+      { label: t.blog, href: lp('/blog') },
+      { label: t.customerStories, href: lp('/customer-stories') },
+      { label: t.faq, href: lp('/faq') },
       // Post-launch: Press & Media, Savings Calculator
     ],
   },
   {
-    title: 'Company',
+    title: t.company,
     links: [
-      { label: 'Pricing', href: '/pricing' },
-      { label: 'Contact', href: '/contact' },
-      { label: 'Login', href: 'https://web.stockifi.io/#/login' },
+      { label: t.pricing, href: lp('/pricing') },
+      { label: t.contact, href: lp('/contact') },
+      { label: t.login, href: 'https://web.stockifi.io/#/login' },
     ],
   },
 ];
@@ -70,17 +76,17 @@ const year = new Date().getFullYear();
   <div class="footer-top">
     {showCta ? (
       <div class="footer-cta">
-        <h2 class="footer-heading">Take control of your food cost.</h2>
-        <p class="footer-text text-muted">See where margin leaks across recipes, suppliers, and sales. Book a demo and we will map it with you.</p>
+        <h2 class="footer-heading">{t.footerCtaHeading}</h2>
+        <p class="footer-text text-muted">{t.footerCtaText}</p>
         <div class="footer-buttons">
-          <Button variant="secondary" href="/contact">Book a demo</Button>
+          <Button variant="secondary" href={lp('/contact')}>{t.bookDemo}</Button>
         </div>
       </div>
     ) : (
       <div class="footer-brand">
         <Logo height={32} />
         <div class="footer-contact">
-          <p class="footer-contact-title">Contact:</p>
+          <p class="footer-contact-title">{t.footerContact}</p>
           <a href="tel:+4721051403">+47 21 05 14 03</a>
           <a href="mailto:support@stockifi.io">support@stockifi.io</a>
         </div>
@@ -108,7 +114,7 @@ const year = new Date().getFullYear();
 
       {showCta && (
         <div class="footer-col">
-          <p class="footer-col-title">Follow us</p>
+          <p class="footer-col-title">{t.footerFollow}</p>
           <ul class="footer-social">
             {socials.map((s) => (
               <li>
@@ -124,10 +130,10 @@ const year = new Date().getFullYear();
   </div>
 
   <div class="footer-bottom">
-    <p class="text-muted">© {year} Stockifi. All rights reserved.</p>
+    <p class="text-muted">© {year} Stockifi. {t.footerRights}</p>
     <ul class="footer-legal">
-      <li><a href="/privacy-policy">Privacy Policy</a></li>
-      <li><a href="/terms-conditions">Terms &amp; Conditions</a></li>
+      <li><a href={lp('/privacy-policy')}>{t.privacyPolicy}</a></li>
+      <li><a href={lp('/terms-conditions')}>{t.termsConditions}</a></li>
     </ul>
   </div>
 
