@@ -14,7 +14,7 @@ import CtaBand from '../../../components/CtaBand.astro';
 import integrations from '../../../data/integrations-home.json';
 import navIcons from '../../../data/nav-icons.json';
 import { productHowItWorksIcons } from '../../../data/product-howitworks-icons';
-import { inventoryManagementCards } from '../../../data/product-category-cards';
+import { getCategoryCards } from '../../../data/product-category-cards';
 
 export async function getStaticPaths() {
   return (await getCollection('productsNo'))
@@ -26,7 +26,7 @@ const { p } = Astro.props;
 const d = p.data;
 const icons = navIcons as Record<string, string>;
 const howItWorksItems = d.howItWorks ? d.howItWorks.points.map((pt, i) => ({ ...pt, icon: icons[(productHowItWorksIcons[p.id] ?? [])[i]] })) : [];
-const benefitCards = inventoryManagementCards.map((c) => ({
+const benefitCards = getCategoryCards('inventory-management', Astro.currentLocale ?? 'en').map((c) => ({
   heading: c.heading,
   body: c.body,
   icon: icons[c.iconKey],
