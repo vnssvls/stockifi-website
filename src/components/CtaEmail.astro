@@ -92,7 +92,6 @@ const single = imgs.length === 1 ? imgs[0] : '';
 >
   <div class="container ce-inner">
     <h2 class="ce-heading">{heading}</h2>
-    {subhead && <p class="ce-subhead text-muted">{subhead}</p>}
 
     <div class="ce-form-wrap">
       <form class="ce-form" data-ce-form action={action} method="get">
@@ -364,7 +363,6 @@ const single = imgs.length === 1 ? imgs[0] : '';
         // Clear the page state behind the dialog: hide the form, subhead and terms,
         // then show the inline confirmation so the band reads clean once dismissed.
         form.classList.add('ce-hidden');
-        section?.querySelector('.ce-subhead')?.classList.add('ce-hidden');
         section?.querySelector('.ce-terms')?.classList.add('ce-hidden');
         if (successEl) {
           successEl.textContent = successEl.dataset.msg ?? '';
