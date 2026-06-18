@@ -61,9 +61,7 @@ const resourcesItems = [
   { label: t.blog, href: lp('/blog') },
   { label: t.customerStories, href: lp('/customer-stories') },
   { label: t.faq, href: lp('/faq') },
-  { label: t.pressAndMedia, href: lp('/press') },
-  { label: t.savingsCalculator, href: lp('/savings-calculator') },
-  { label: t.comparisons, href: null, soon: true },
+  // Post-launch: Press & Media, Savings Calculator, Comparisons
 ];
 const LOGIN_URL = 'https://web.stockifi.io/#/login';
 ---
@@ -333,10 +331,10 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
     cursor: pointer;
   }
   .nav-link:hover,
-  .nav-trigger:hover { color: var(--primary); text-decoration: none; }
+  .nav-trigger:hover { background: var(--accent); text-decoration: none; }
   .caret { transition: transform 0.18s ease; }
   .nav-item.is-open .caret { transform: rotate(180deg); }
-  .nav-item.is-open .nav-trigger { color: var(--primary); }
+  .nav-item.is-open .nav-trigger { background: var(--accent); }
 
   .nav-panel {
     position: absolute;

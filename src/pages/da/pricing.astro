@@ -8,7 +8,6 @@ import LogoBanner from '../../components/LogoBanner.astro';
 import FeatureColumns from '../../components/features/FeatureColumns.astro';
 import FaqSplit from '../../components/faq/FaqSplit.astro';
 import CtaButton from '../../components/CtaButton.astro';
-import SectionPlaceholder from '../../components/SectionPlaceholder.astro';
 import userLogos from '../../data/user-logos.json';
 
 const plans = [
@@ -144,12 +143,6 @@ const faqs = [
 
   <!-- 2. Logo banner — scrolling marquee -->
   <LogoBanner label="Brugt af 500+ restauranter i hele Europa" logos={userLogos} />
-
-  <!-- 2b. Savings calculator — reserved slot -->
-  <SectionPlaceholder
-    label="Besparelsesberegner"
-    note="Interaktivt estimat over, hvad Stockifi kan spare din forretning. Kommer snart."
-  />
 
   <!-- 3. Feature section — Feature variant 6 (columns) -->
   <FeatureColumns

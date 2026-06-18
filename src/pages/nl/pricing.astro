@@ -8,7 +8,6 @@ import LogoBanner from '../../components/LogoBanner.astro';
 import FeatureColumns from '../../components/features/FeatureColumns.astro';
 import FaqSplit from '../../components/faq/FaqSplit.astro';
 import CtaButton from '../../components/CtaButton.astro';
-import SectionPlaceholder from '../../components/SectionPlaceholder.astro';
 import userLogos from '../../data/user-logos.json';
 import faqsPricing from '../../data/faqs-pricing.json';
 
@@ -145,12 +144,6 @@ const faqs = [
 
   <!-- 2. Logo banner — scrolling marquee (matches the home page) -->
   <LogoBanner label="Vertrouwd door 500+ restaurants in heel Europa" logos={userLogos} />
-
-  <!-- 2b. Savings calculator — reserved slot, real section lands later -->
-  <SectionPlaceholder
-    label="Savings calculator"
-    note="Interactive estimate of what Stockifi could save your operation. Coming soon."
-  />
 
   <!-- 3. Feature section — Feature variant 6 (columns) -->
   <FeatureColumns
