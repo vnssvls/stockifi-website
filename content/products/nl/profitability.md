@@ -4,7 +4,7 @@ metaDescription: "Zie de marge per gerecht, locatie en periode, gebaseerd op je 
 eyebrow: "Inzicht in winstgevendheid"
 heading: "Weet precies welke gerechten je geld opleveren"
 subhead: "Zie de echte marge op elk bord. Stockifi laat zien wat elk gerecht verdient, per locatie en per periode."
-heroImage: "/media/cta-bg-2.jpg"
+heroImage: "/media/bi-profitability-insights.jpg"
 order: 33
 category: business-intelligence
 showIntegrations: false

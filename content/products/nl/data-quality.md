@@ -4,7 +4,7 @@ metaDescription: "Stockifi houdt je ingrediënt- en receptdata schoon en consist
 eyebrow: "Datakwaliteit"
 heading: "[Placeholder heading]"
 subhead: "[Placeholder subhead — copy review Wednesday]"
-heroImage: "/media/product-data-quality.png"
+heroImage: "/media/bi-data-quality.jpg"
 order: 25
 category: business-intelligence
 showIntegrations: false

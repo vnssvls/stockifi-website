@@ -4,7 +4,7 @@ metaDescription: "Stockifi keeps your ingredient and recipe data clean, reliable
 eyebrow: "Data quality"
 heading: "Clean data behind every decision"
 subhead: "A single miskeyed invoice or an unmapped till button quietly skews every report it touches. Stockifi checks and validates your data as it flows in, keeping every dashboard on numbers that hold up."
-heroImage: "/media/product-data-quality.png"
+heroImage: "/media/bi-data-quality.jpg"
 order: 25
 category: business-intelligence
 showIntegrations: false

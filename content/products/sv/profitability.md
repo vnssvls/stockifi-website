@@ -4,7 +4,7 @@ metaDescription: "Se marginal per rätt, lokal och period, baserat på din aktue
 eyebrow: "Lönsamhetsinsikter"
 heading: "Vet exakt vilka rätter som tjänar dig pengar"
 subhead: "Se den verkliga marginalen på varje tallrik. Stockifi visar vad varje rätt tjänar, per lokal och period."
-heroImage: "/media/cta-bg-2.jpg"
+heroImage: "/media/bi-profitability-insights.jpg"
 order: 33
 category: business-intelligence
 showIntegrations: false

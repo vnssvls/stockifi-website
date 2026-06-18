@@ -4,7 +4,7 @@ metaDescription: "Sehen Sie, welche Gerichte Geld einbringen und welche Verluste
 eyebrow: "Rentabilitätsanalyse"
 heading: "Wissen Sie genau, welche Gerichte Ihnen Gewinn bringen"
 subhead: "Sehen Sie die tatsächliche Marge für jeden Teller. Stockifi zeigt, was jedes Gericht einbringt, nach Standort und Zeitraum."
-heroImage: "/media/cta-bg-2.jpg"
+heroImage: "/media/bi-profitability-insights.jpg"
 order: 33
 category: business-intelligence
 showIntegrations: false

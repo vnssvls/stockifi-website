@@ -4,7 +4,7 @@ metaDescription: "Stockifi wandelt Ihre Rechnungs- und Kassendaten in Dashboards
 eyebrow: "Performance-Dashboards"
 heading: "Wareneinsatz und Lagerverwaltung an einem Ort"
 subhead: "Sehen und verstehen Sie Ihre Zahlen wie nie zuvor. Stockifi wandelt Ihre Rechnungen, Umsätze und Ihren Lagerbestand in eine klare Übersicht Ihrer Margen um."
-heroImage: "/media/cta-bg-2.jpg"
+heroImage: "/media/bi-performance-dashboards.jpg"
 order: 30
 category: business-intelligence
 showIntegrations: false

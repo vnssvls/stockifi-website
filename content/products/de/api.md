@@ -4,7 +4,7 @@ metaDescription: "Verbinden Sie Stockifi mit Ihren eigenen BI-Tools oder Ihrem D
 eyebrow: "API"
 heading: "Ihre Stockifi-Daten direkt in Ihre eigenen Tools übertragen"
 subhead: "Ihr Team arbeitet mit den Stockifi-Zahlen in den BI-Tools, die es bereits nutzt. Eine saubere API gibt direkten Zugriff auf Ihre Leistungsdaten."
-heroImage: "/media/cta-bg-2.jpg"
+heroImage: "/media/bi-api.jpg"
 order: 31
 category: business-intelligence
 showIntegrations: false

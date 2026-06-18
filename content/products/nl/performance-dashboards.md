@@ -4,7 +4,7 @@ metaDescription: "Foodcost, marge, afwijkingen en inkoopkostentrend in één oog
 eyebrow: "Performance dashboards"
 heading: "Foodcost en voorraadbeheer op één plek"
 subhead: "Zie en begrijp je cijfers zoals nooit tevoren. Stockifi zet je facturen, verkopen en voorraad om naar één helder beeld van je marges."
-heroImage: "/media/cta-bg-2.jpg"
+heroImage: "/media/bi-performance-dashboards.jpg"
 order: 30
 category: business-intelligence
 showIntegrations: false

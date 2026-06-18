@@ -4,7 +4,7 @@ metaDescription: "Stockifi holder ingrediens- og oppskriftsdataene dine rene, pÃ
 eyebrow: "Datakvalitet"
 heading: "[Placeholder heading]"
 subhead: "[Placeholder subhead â€” copy review Wednesday]"
-heroImage: "/media/product-data-quality.png"
+heroImage: "/media/bi-data-quality.jpg"
 order: 25
 category: business-intelligence
 showIntegrations: false

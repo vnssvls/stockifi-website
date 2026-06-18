@@ -4,7 +4,7 @@ metaDescription: "Koppla Stockifi till dina egna BI-verktyg eller ditt datalager
 eyebrow: "API"
 heading: "Hämta din Stockifi-data till dina egna verktyg"
 subhead: "Ditt team kan arbeta med Stockifis siffror i de BI-verktyg det redan använder. Ett rent API ger dem direkt åtkomst till din prestandadata."
-heroImage: "/media/cta-bg-2.jpg"
+heroImage: "/media/bi-api.jpg"
 order: 31
 category: business-intelligence
 showIntegrations: false

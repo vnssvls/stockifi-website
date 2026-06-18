@@ -4,7 +4,7 @@ metaDescription: "Hent dine Stockifi-data, varekostprocent, afvigelse, opskrifte
 eyebrow: "API"
 heading: "Hent dine Stockifi-data ind i dine egne værktøjer"
 subhead: "Dit team kan arbejde med Stockifis tal i de BI-værktøjer, det allerede bruger. Et rent API giver dem direkte adgang til dine performancedata."
-heroImage: "/media/cta-bg-2.jpg"
+heroImage: "/media/bi-api.jpg"
 order: 31
 category: business-intelligence
 showIntegrations: false

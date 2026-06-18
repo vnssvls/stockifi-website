@@ -4,7 +4,7 @@ metaDescription: "Vergleichen Sie Ihren theoretischen Wareneinsatz mit dem tats�
 eyebrow: "Abweichungsanalyse"
 heading: "Finden Sie heraus, wo Ihre Marge bleibt"
 subhead: "Stockifi vergleicht, was Ihre Rezepte als Verbrauch vorgeben, mit dem tatsächlichen Verbrauch, Gericht für Gericht. Jede Abweichung zeigt Ihnen eine konkrete Ursache, die Sie beheben können."
-heroImage: "/media/cta-bg-2.jpg"
+heroImage: "/media/bi-variance-analysis.jpg"
 order: 32
 category: business-intelligence
 showIntegrations: false

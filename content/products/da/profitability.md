@@ -4,7 +4,7 @@ metaDescription: "Se margin og profit pr. ret, location og periode, bygget på d
 eyebrow: "Lønnsomhedsindsigt"
 heading: "Véd præcis hvilke retter der tjener dig penge"
 subhead: "Se den reelle margin på hver enkelt ret. Stockifi viser hvad hver ret indbringer, pr. location og periode."
-heroImage: "/media/cta-bg-2.jpg"
+heroImage: "/media/bi-profitability-insights.jpg"
 order: 33
 category: business-intelligence
 showIntegrations: false

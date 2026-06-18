@@ -4,7 +4,7 @@ metaDescription: "Kostnad, marginal, avvikelse och råvarukostnadsutveckling i e
 eyebrow: "Prestandaöversikt"
 heading: "Samla råvarukostnad och lagerhantering på ett ställe"
 subhead: "Se och förstå dina siffror på ett helt nytt sätt. Stockifi gör om dina fakturor, din försäljning och ditt varulager till en tydlig bild av dina marginaler."
-heroImage: "/media/cta-bg-2.jpg"
+heroImage: "/media/bi-performance-dashboards.jpg"
 order: 30
 category: business-intelligence
 showIntegrations: false

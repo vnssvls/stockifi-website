@@ -4,7 +4,7 @@ metaDescription: "Se hvilke retter som tjener penger og hvilke som taper, per st
 eyebrow: "Lønnsomhetsinnsikt"
 heading: "Vit nøyaktig hvilke retter som tjener deg penger"
 subhead: "Se den faktiske marginen på hver tallerken. Stockifi viser hva hver rett tjener, per lokasjon og periode."
-heroImage: "/media/cta-bg-2.jpg"
+heroImage: "/media/bi-profitability-insights.jpg"
 order: 33
 category: business-intelligence
 showIntegrations: false

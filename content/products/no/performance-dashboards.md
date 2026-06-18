@@ -4,7 +4,7 @@ metaDescription: "Stockifi gjør faktura- og kassedata om til dashboards som vis
 eyebrow: "Ytelsesdashbord"
 heading: "Samle varekost og lagerstyring på ett sted"
 subhead: "Forstå tallene dine på en helt ny måte. Stockifi gjør fakturaer, salg og varetellinger om til ett klart bilde av marginene dine."
-heroImage: "/media/cta-bg-2.jpg"
+heroImage: "/media/bi-performance-dashboards.jpg"
 order: 30
 category: business-intelligence
 showIntegrations: false

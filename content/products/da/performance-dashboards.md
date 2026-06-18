@@ -4,7 +4,7 @@ metaDescription: "Vareforbrug, margin, afvigelse og vareomkostningsudvikling sam
 eyebrow: "Performance-dashboards"
 heading: "Saml madomkostninger og varelager på ét sted"
 subhead: "Se og forstå dine tal på en ny måde. Stockifi omdanner dine fakturaer, salg og varelager til ét klart billede af dine marginer."
-heroImage: "/media/cta-bg-2.jpg"
+heroImage: "/media/bi-performance-dashboards.jpg"
 order: 30
 category: business-intelligence
 showIntegrations: false

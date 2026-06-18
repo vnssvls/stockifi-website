@@ -4,7 +4,7 @@ metaDescription: "See your theoretical food cost against your actual, and find e
 eyebrow: "Variance analysis"
 heading: "Find out where your margin is going"
 subhead: "Stockifi compares what your recipes say you should use with what you actually used, dish by dish. Every gap comes with a cause you can act on."
-heroImage: "/media/cta-bg-2.jpg"
+heroImage: "/media/bi-variance-analysis.jpg"
 order: 32
 category: business-intelligence
 showIntegrations: false
