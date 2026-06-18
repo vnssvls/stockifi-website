@@ -5,7 +5,7 @@
 import Button from '../Button.astro';
 import MediaPlaceholder from './MediaPlaceholder.astro';
 
-interface Sub { heading: string; body: string }
+interface Sub { heading: string; body: string; icon?: string }
 interface Props {
   tagline?: string;
   heading: string;
@@ -35,7 +35,9 @@ const { tagline, heading, body, items = [], primary, secondary, image, imageSide
           {items.map((s) => (
             <div class="fs7-sub">
               <span class="fs7-sub-icon" aria-hidden="true">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" /><path d="m3.3 7 8.7 5 8.7-5" /><path d="M12 22V12" /></svg>
+                {s.icon ? <Fragment set:html={s.icon} /> : (
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" /><path d="m3.3 7 8.7 5 8.7-5" /><path d="M12 22V12" /></svg>
+                )}
               </span>
               <h3 class="fs7-sub-h">{s.heading}</h3>
               <p class="fs7-sub-b text-muted">{s.body}</p>
@@ -70,7 +72,8 @@ const { tagline, heading, body, items = [], primary, secondary, image, imageSide
   .fs7-body { margin-top: var(--space-16); font-size: var(--text-body-lg); }
 
   .fs7-subs { display: grid; grid-template-columns: 1fr; gap: var(--space-32); margin-top: var(--space-32); }
-  .fs7-sub-icon { display: inline-flex; color: var(--primary); }
+  .fs7-sub-icon { display: inline-flex; color: #fff; }
+  .fs7-sub-icon :global(svg) { width: 24px; height: 24px; }
   .fs7-sub-h { margin-top: var(--space-12); font-size: var(--text-h6); }
   .fs7-sub-b { margin-top: var(--space-8); font-size: var(--text-body-sm); line-height: var(--lh-body); }
 

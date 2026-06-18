@@ -29,7 +29,8 @@ const { items, columns = 4 } = Astro.props;
 <style>
   .benefit-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-48) var(--space-32); }
   .bgr-item { display: flex; flex-direction: column; align-items: center; gap: var(--space-12); text-align: center; }
-  .bgr-icon { display: inline-flex; color: var(--primary); }
+  .bgr-icon { display: inline-flex; color: #fff; }
+  .bgr-icon :global(svg) { width: 28px; height: 28px; }
   .bgr-title { font-size: var(--text-h6); }
   .bgr-body { max-width: 32ch; font-size: var(--text-body-sm); line-height: var(--lh-body); }
 

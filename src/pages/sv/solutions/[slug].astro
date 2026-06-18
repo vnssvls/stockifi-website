@@ -11,7 +11,7 @@ import TestimonialSliderCollage from '../../../components/TestimonialSliderColla
 import CtaEmail from '../../../components/CtaEmail.astro';
 import { solutionImages } from '../../../data/solution-section-images';
 import navIcons from '../../../data/nav-icons.json';
-import { solutionBenefitIcons } from '../../../data/solution-benefit-icons';
+import { solutionBenefitIcons, solutionShowcaseIcons } from '../../../data/solution-benefit-icons';
 
 export async function getStaticPaths() {
   return (await getCollection('solutionsSv'))
@@ -24,6 +24,8 @@ const d = p.data;
 const imgs = solutionImages(p.id);
 const benefitIcons = solutionBenefitIcons[p.id] ?? [];
 const benefitItems = d.benefits.map((b, i) => ({ ...b, icon: (navIcons as Record<string, string>)[benefitIcons[i]] }));
+const showcaseIconKeys = solutionShowcaseIcons[p.id] ?? [];
+const showcaseItems = d.showcaseSubs.map((s, i) => ({ ...s, icon: (navIcons as Record<string, string>)[showcaseIconKeys[i]] }));
 ---
 
 <Layout title={d.metaTitle} description={d.metaDescription}>
@@ -64,7 +66,7 @@ const benefitItems = d.benefits.map((b, i) => ({ ...b, icon: (navIcons as Record
       tagline={d.showcaseTagline}
       heading={d.showcaseHeading ?? 'Hur det hjälper'}
       body={d.showcaseBody}
-      items={d.showcaseSubs}
+      items={showcaseItems}
       primary={{ label: 'Boka en demo', href: '/book-a-demo' }}
       secondary={{ label: 'Se hur det fungerar', href: '/sv/#how-it-works' }}
       image={{ src: imgs[2], alt: '' }}

@@ -14,3 +14,16 @@ export const solutionBenefitIcons: Record<string, string[]> = {
   kitchen: ['book', 'percentage-circle', 'chef-hat', 'box'],
   finance: ['fluent-finance', 'box-search', 'presention-chart', 'book'],
 };
+
+// Icon key per showcase sub-point (FeatureShowcase "how it helps", 2 per page),
+// in content order. Same conventions as above.
+export const solutionShowcaseIcons: Record<string, string[]> = {
+  'independent-restaurants': ['book', 'fluent-wand'],
+  'restaurant-groups': ['buildings-2', 'chef-hat'],
+  hotels: ['building', 'reserve'],
+  bars: ['box-search', 'cocktail'],
+  management: ['bolt', 'box-search'],
+  operations: ['bolt', 'buildings-2'],
+  kitchen: ['percentage-circle', 'receipt-2'],
+  finance: ['fluent-wand', 'presention-chart'],
+};
