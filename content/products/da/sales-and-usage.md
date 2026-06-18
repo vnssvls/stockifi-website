@@ -1,6 +1,6 @@
 ---
 metaTitle: "Salg og forbrug | Stockifi"
-metaDescription: "Se hvad der er solgt, og hvordan det bevæger sig gennem dit varelager — Stockifi forbinder dit kassesystems salg med det faktiske ingrediensforbrug."
+metaDescription: "Se hvad der er solgt, og hvordan det bevæger sig gennem dit varelager. Stockifi forbinder dit kassesystems salg med det faktiske ingrediensforbrug."
 eyebrow: "Salg og forbrug"
 heading: "[Placeholder heading]"
 subhead: "[Placeholder subhead — copy review Wednesday]"

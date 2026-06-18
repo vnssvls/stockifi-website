@@ -1,6 +1,6 @@
 ---
 metaTitle: "Bestillingsforslag | Stockifi"
-metaDescription: "Stockifi fortæller dig, hvad du skal genbestille, før du løber tør — baseret på dit faktiske forbrug, varetællinger og leverandørers leveringstider."
+metaDescription: "Stockifi fortæller dig, hvad du skal genbestille, før du løber tør, baseret på dit faktiske forbrug, varetællinger og leverandørers leveringstider."
 eyebrow: "Bestillingsforslag"
 heading: "[Placeholder overskrift]"
 subhead: "[Placeholder underoverskrift — tekst til gennemgang onsdag]"

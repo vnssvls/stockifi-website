@@ -1,6 +1,6 @@
 ---
 metaTitle: "Verkoop en verbruik | Stockifi"
-metaDescription: "Zie wat er verkocht is en hoe het door je voorraad bewoog — Stockifi koppelt je kassasysteem-verkopen aan het werkelijke ingrediëntenverbruik."
+metaDescription: "Zie wat er verkocht is en hoe het door je voorraad bewoog. Stockifi koppelt je kassasysteem-verkopen aan het werkelijke ingrediëntenverbruik."
 eyebrow: "Verkoop en verbruik"
 heading: "[Placeholder heading]"
 subhead: "[Placeholder subhead — copy review Wednesday]"

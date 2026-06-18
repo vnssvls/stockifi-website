@@ -1,6 +1,6 @@
 ---
 metaTitle: "Besteladvies | Stockifi"
-metaDescription: "Stockifi vertelt je wat je moet bijbestellen voordat je tekort komt — op basis van je werkelijke verbruik, voorraadtellingen en levertijden van leveranciers."
+metaDescription: "Stockifi vertelt je wat je moet bijbestellen voordat je tekort komt, op basis van je werkelijke verbruik, voorraadtellingen en levertijden van leveranciers."
 eyebrow: "Besteladvies"
 heading: "[Placeholder heading]"
 subhead: "[Placeholder subhead — copy review Wednesday]"
