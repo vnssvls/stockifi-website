@@ -63,6 +63,12 @@ const { tagline, heading, subhead, cta, steps } = Astro.props;
     justify-content: center;
     padding: var(--space-12);
     flex: none;
+    /* Pin to the top of the step so the marker stays a fixed 56px box; without
+       this it stretches to the full row height and the icon (centered inside)
+       drifts down into the path of the connector line. */
+    align-self: start;
+    position: relative;
+    z-index: 1;
     background: var(--card);
     border-radius: var(--radius-md);
     color: #fff;
