@@ -34,43 +34,43 @@ const TERMS: Record<string, {
 }> = {
   en: {
     pre: 'By clicking', mid: "you're confirming that you agree with our", link: 'Terms and Conditions', post: '.',
-    success: "You're in. We'll be in touch.",
-    successH: "You're in.", successP: "We'll be in touch shortly.",
+    success: "Thank you! Someone will be in touch shortly.",
+    successH: "Thank you!", successP: "Someone will be in touch shortly.",
     successAlt: "See how other restaurants cut food costs with Stockifi.",
     successCta: "Read customer stories", successCtaHref: "/customer-stories",
   },
   de: {
     pre: 'Mit Klick auf', mid: 'bestätigen Sie, dass Sie unseren', link: 'Allgemeinen Geschäftsbedingungen', post: ' zustimmen.',
-    success: 'Eingetragen. Wir melden uns.',
-    successH: "Erhalten!", successP: "Unser Team meldet sich in Kürze.",
+    success: 'Vielen Dank! Jemand meldet sich in Kürze.',
+    successH: "Vielen Dank!", successP: "Jemand aus unserem Team meldet sich in Kürze.",
     successAlt: "Sehen Sie, wie andere Restaurants mit Stockifi Kosten senken.",
     successCta: "Kundenberichte lesen", successCtaHref: "/de/customer-stories",
   },
   no: {
     pre: 'Ved å klikke på', mid: 'bekrefter du at du godtar våre', link: 'Vilkår og betingelser', post: '.',
-    success: 'Du er med. Vi tar kontakt.',
-    successH: "Takk!", successP: "Teamet vårt tar kontakt snart.",
+    success: 'Takk! Noen tar kontakt snart.',
+    successH: "Takk!", successP: "Noen tar kontakt med deg snart.",
     successAlt: "Se hvordan andre restauranter kutter varekosten med Stockifi.",
     successCta: "Les kundehistorier", successCtaHref: "/no/customer-stories",
   },
   sv: {
     pre: 'Genom att klicka på', mid: 'bekräftar du att du godkänner våra', link: 'Villkor', post: '.',
-    success: 'Du är med. Vi hör av oss.',
-    successH: "Klart!", successP: "Vårt team hör av sig snart.",
+    success: 'Tack! Någon hör av sig inom kort.',
+    successH: "Tack!", successP: "Någon hör av sig till dig inom kort.",
     successAlt: "Se hur andra restauranger sänker råvarukostnaden med Stockifi.",
     successCta: "Läs kundberättelser", successCtaHref: "/sv/customer-stories",
   },
   nl: {
     pre: 'Door op', mid: 'te klikken, bevestigt u dat u akkoord gaat met onze', link: 'Algemene voorwaarden', post: '.',
-    success: 'Gelukt. We nemen contact op.',
-    successH: "Ontvangen!", successP: "Ons team neemt snel contact met je op.",
+    success: 'Bedankt! Iemand neemt binnenkort contact op.',
+    successH: "Bedankt!", successP: "Iemand neemt binnenkort contact met je op.",
     successAlt: "Bekijk hoe andere restaurants kosten verlagen met Stockifi.",
     successCta: "Lees klantverhalen", successCtaHref: "/nl/customer-stories",
   },
   da: {
     pre: 'Ved at klikke på', mid: 'bekræfter du, at du accepterer vores', link: 'Vilkår og betingelser', post: '.',
-    success: 'Du er tilmeldt. Vi tager kontakt.',
-    successH: "Modtaget!", successP: "Vores team kontakter dig snart.",
+    success: 'Tak! Nogen kontakter dig snart.',
+    successH: "Tak!", successP: "Nogen kontakter dig snart.",
     successAlt: "Se, hvordan andre restauranter reducerer omkostninger med Stockifi.",
     successCta: "Læs kundehistorier", successCtaHref: "/da/customer-stories",
   },
@@ -109,13 +109,12 @@ const single = imgs.length === 1 ? imgs[0] : '';
       <p class="ce-success ce-hidden" data-ce-success data-msg={t.success}></p>
     </div>
 
-    <p class="ce-terms text-muted">
+    <p class="ce-terms text-muted" data-ce-terms>
       {t.pre} {buttonLabel} {t.mid} <a href={termsHref}>{t.link}</a>{t.post}
     </p>
   </div>
-</section>
 
-<dialog class="ce-dialog" data-ce-dialog>
+  <dialog class="ce-dialog" data-ce-dialog>
   <div class="ce-dialog-inner">
     <button class="ce-dialog-close" data-ce-dialog-close aria-label="Close">
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -133,7 +132,8 @@ const single = imgs.length === 1 ? imgs[0] : '';
     <p class="ce-dialog-alt">{t.successAlt}</p>
     <a class="ce-dialog-cta" href={t.successCtaHref}>{t.successCta} →</a>
   </div>
-</dialog>
+  </dialog>
+</section>
 
 <style>
   /* Full-bleed image background. `background-image` (not the linted `background`
@@ -191,9 +191,10 @@ const single = imgs.length === 1 ? imgs[0] : '';
     align-items: center;
     justify-content: center;
     min-height: 48px;
-    font-size: var(--text-body);
+    margin-top: var(--space-32);
+    font-size: var(--text-body-lg);
+    font-weight: var(--fw-medium);
     color: var(--foreground);
-    opacity: 0.85;
   }
 
   .ce-terms { margin-top: var(--space-16); font-size: var(--text-caption); }
@@ -353,8 +354,11 @@ const single = imgs.length === 1 ? imgs[0] : '';
 
         if (!res.ok) throw new Error(`${res.status}`);
 
-        // Hide form, show inline submitted state, open dialog
+        // Clear the page state behind the dialog: hide the form, subhead and terms,
+        // then show the inline confirmation so the band reads clean once dismissed.
         form.classList.add('ce-hidden');
+        section?.querySelector('.ce-subhead')?.classList.add('ce-hidden');
+        section?.querySelector('.ce-terms')?.classList.add('ce-hidden');
         if (successEl) {
           successEl.textContent = successEl.dataset.msg ?? '';
           successEl.classList.remove('ce-hidden');
