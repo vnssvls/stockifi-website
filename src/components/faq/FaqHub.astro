@@ -8,6 +8,19 @@ interface Item { question: string; answer: string; }
 interface Category { id: string; name: string; items: Item[]; }
 interface Props { categories: Category[]; }
 const { categories } = Astro.props;
+
+const locale = Astro.currentLocale ?? 'en';
+const lp = (p: string) => (locale === 'en' ? p : `/${locale}${p}`);
+
+const STRINGS = {
+  en: { title: 'Frequently asked questions', notePre: "Don't see the answer you're looking for? ", noteLink: 'Get in touch', empty: 'No FAQs match your search.' },
+  no: { title: 'Ofte stilte spørsmål',        notePre: 'Finner du ikke svaret du leter etter? ', noteLink: 'Ta kontakt',      empty: 'Ingen spørsmål matcher søket ditt.' },
+  da: { title: 'Ofte stillede spørgsmål',     notePre: 'Kan du ikke finde svaret, du leder efter? ', noteLink: 'Kontakt os', empty: 'Ingen spørgsmål matcher din søgning.' },
+  sv: { title: 'Vanliga frågor',              notePre: 'Hittar du inte svaret du letar efter? ', noteLink: 'Kontakta oss',   empty: 'Inga frågor matchar din sökning.' },
+  nl: { title: 'Veelgestelde vragen',         notePre: 'Vind je niet het antwoord dat je zoekt? ', noteLink: 'Neem contact op', empty: 'Geen vragen komen overeen met je zoekopdracht.' },
+  de: { title: 'Häufig gestellte Fragen',     notePre: 'Sie finden nicht die gesuchte Antwort? ', noteLink: 'Kontaktieren Sie uns', empty: 'Keine Fragen entsprechen Ihrer Suche.' },
+};
+const t = STRINGS[locale as keyof typeof STRINGS] ?? STRINGS.en;
 ---
 
 <section class="faq-hub section" data-faq-hub>
@@ -19,12 +32,12 @@ const { categories } = Astro.props;
           <button class:list={['fh-filter', i === 0 && 'is-active']} type="button" data-cat={c.id} aria-pressed={i === 0 ? 'true' : 'false'}>{c.name}</button>
         ))}
       </nav>
-      <p class="fh-note">Don't see the answer you're looking for? <a href="/contact">Get in touch</a>.</p>
+      <p class="fh-note">{t.notePre}<a href={lp('/contact')}>{t.noteLink}</a>.</p>
     </aside>
 
     <!-- Right: title + per-category FAQ panels (only the selected one shows) -->
     <div class="fh-content">
-      <h2 class="fh-content-title">Frequently asked questions</h2>
+      <h2 class="fh-content-title">{t.title}</h2>
       {categories.map((c, i) => (
         <div class="fh-panel" data-cat={c.id} hidden={i !== 0}>
           <p class="fh-panel-cat">{c.name}</p>
@@ -43,7 +56,7 @@ const { categories } = Astro.props;
           </div>
         </div>
       ))}
-      <p class="fh-empty" data-faq-empty hidden>No FAQs match your search.</p>
+      <p class="fh-empty" data-faq-empty hidden>{t.empty}</p>
     </div>
   </div>
 </section>
