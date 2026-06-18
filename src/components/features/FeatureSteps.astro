@@ -26,7 +26,7 @@ const { tagline, heading, subhead, cta, steps } = Astro.props;
       {steps.map((s) => (
         <li class="fst-step">
           <span class="fst-marker" aria-hidden="true">
-            <svg width="26" height="26" viewBox={s.iconViewBox ?? '0 0 24 24'} fill="none" set:html={s.icon ?? '<path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" /><path d="m3 7 9 5 9-5M12 12v10" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />'} />
+            <svg width="32" height="32" viewBox={s.iconViewBox ?? '0 0 24 24'} fill="none" set:html={s.icon ?? '<path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" /><path d="m3 7 9 5 9-5M12 12v10" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />'} />
           </span>
           <div class="fst-content">
             <h3>{s.heading}</h3>
@@ -45,7 +45,7 @@ const { tagline, heading, subhead, cta, steps } = Astro.props;
   .fst-cta { margin-top: var(--space-32); }
 
   .fst-steps { list-style: none; margin: 0; padding: 0; }
-  .fst-step { position: relative; display: grid; grid-template-columns: auto 1fr; gap: var(--space-24); padding-bottom: var(--space-32); }
+  .fst-step { position: relative; display: grid; grid-template-columns: auto 1fr; gap: var(--space-24); padding-bottom: var(--space-64); }
   .fst-step:last-child { padding-bottom: 0; }
   .fst-step:not(:last-child)::before {
     content: '';
