@@ -18,6 +18,7 @@ howItWorks:
     - heading: "Worked out for you"
       body: "Stockifi does the calculating, with no report to build by hand."
   imageSide: "right"
+  image: "/media/photos/benefits-manager-chef.png"
   imageAlt: ""
 benefits:
   - heading: "All the reports"

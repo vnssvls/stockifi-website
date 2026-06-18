@@ -17,6 +17,7 @@ howItWorks:
     - heading: "Carried to each outlet"
       body: "Outlets pay that cost, so their recipes and margins stay true."
   imageSide: "right"
+  image: "/media/photos/teams-kitchen.png"
   imageAlt: ""
 showIntegrations: false
 benefits:

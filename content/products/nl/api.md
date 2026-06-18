@@ -18,6 +18,7 @@ howItWorks:
     - heading: "Real-time of gepland"
       body: "Haal realtime op, of synchroniseer op het schema dat je rapportage vereist."
   imageSide: "right"
+  image: "/media/photos/teams-operations.png"
   imageAlt: ""
 benefits:
   - heading: "In je eigen tools"

@@ -18,6 +18,7 @@ howItWorks:
     - heading: "Varje inventeringsperiod"
       body: "Du ser avvikelsen direkt när du stänger en inventering."
   imageSide: "right"
+  image: "/media/photos/hero-owner.png"
   imageAlt: ""
 benefits:
   - heading: "Överportering"

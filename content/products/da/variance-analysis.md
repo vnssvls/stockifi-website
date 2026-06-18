@@ -18,6 +18,7 @@ howItWorks:
     - heading: "Hver varetællingsperiode"
       body: "Du ser afvigelsen i det øjeblik du lukker en varetælling."
   imageSide: "right"
+  image: "/media/photos/hero-owner.png"
   imageAlt: ""
 benefits:
   - heading: "Overportering"

@@ -18,6 +18,7 @@ howItWorks:
     - heading: "Realtid eller schemalagt"
       body: "Hämta live, eller synkronisera enligt det schema din rapportering kräver."
   imageSide: "right"
+  image: "/media/photos/teams-operations.png"
   imageAlt: ""
 benefits:
   - heading: "I dina verktyg"

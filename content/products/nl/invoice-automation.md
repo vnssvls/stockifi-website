@@ -17,6 +17,7 @@ howItWorks:
     - heading: "Regel voor regel gelezen"
       body: "Stockifi legt de prijs en hoeveelheid van elk ingredient op de factuur vast."
   imageSide: "right"
+  image: "/media/photos/hero-owner.png"
   imageAlt: ""
 integrationsHeading: "Werkt met"
 integrationsSubject: "je boekhoudsoftware"

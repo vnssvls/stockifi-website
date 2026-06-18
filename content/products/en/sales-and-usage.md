@@ -18,6 +18,7 @@ howItWorks:
     - heading: "Counted as usage"
       body: "Every sale adds up the stock it drew from the shelf."
   imageSide: "right"
+  image: "/media/photos/teams-kitchen.png"
   imageAlt: ""
 benefits:
   - heading: "[Benefit 1]"

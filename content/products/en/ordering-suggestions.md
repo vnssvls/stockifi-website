@@ -18,6 +18,7 @@ howItWorks:
     - heading: "Measured from the last count"
       body: "Suggestions start from your most recent stock count."
   imageSide: "right"
+  image: "/media/photos/hero-chef.png"
   imageAlt: ""
 benefits:
   - heading: "[Benefit 1]"

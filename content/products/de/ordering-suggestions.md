@@ -9,6 +9,7 @@ order: 14
 category: procurement
 showIntegrations: false
 howItWorks:
+  image: "/media/photos/hero-chef.png"
   tagline: "So funktioniert es"
   heading: "[Platzhalter Überschrift „So funktioniert es\"]"
   body: "[Platzhalter Text — Textreview Mittwoch]"

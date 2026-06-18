@@ -17,6 +17,7 @@ howItWorks:
     - heading: "Verifisert, deretter låst"
       body: "Merkelige tall flagges før tellingen lukkes."
   imageSide: "right"
+  image: "/media/photos/teams-finance.png"
   imageAlt: ""
 showIntegrations: false
 benefits:

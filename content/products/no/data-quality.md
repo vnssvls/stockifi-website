@@ -9,6 +9,7 @@ order: 25
 category: business-intelligence
 showIntegrations: false
 howItWorks:
+  image: "/media/photos/teams-finance.png"
   tagline: "Slik fungerer det"
   heading: "[Placeholder how it works heading]"
   body: "[Placeholder body — copy review Wednesday]"

@@ -17,6 +17,7 @@ howItWorks:
     - heading: "Delrecept rullar upp"
       body: "En prebatch kalkyleras en gång och rullar in i varje rätt."
   imageSide: "right"
+  image: "/media/photos/teams-operations.png"
   imageAlt: ""
 integrationsHeading: "Fungerar med"
 integrationsSubject: "ditt redovisningssystem"

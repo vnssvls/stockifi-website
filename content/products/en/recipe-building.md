@@ -17,6 +17,7 @@ howItWorks:
     - heading: "Sub-recipes roll up"
       body: "A prebatch is costed once and cascades into every dish."
   imageSide: "right"
+  image: "/media/photos/teams-operations.png"
   imageAlt: ""
 integrationsHeading: "Works with"
 integrationsSubject: "your accounting software"

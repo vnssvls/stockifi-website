@@ -17,6 +17,7 @@ howItWorks:
     - heading: "Geverifieerd, dan vergrendeld"
       body: "Afwijkende waarden worden gemarkeerd voordat de telling sluit."
   imageSide: "right"
+  image: "/media/photos/teams-finance.png"
   imageAlt: ""
 showIntegrations: false
 benefits:

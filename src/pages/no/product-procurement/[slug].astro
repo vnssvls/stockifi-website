@@ -46,17 +46,28 @@ const accountingIntegrations = integrations.filter((i) => ACCOUNTING.has(i.name)
   />
 
   {d.howItWorks ? (
-    <FeatureShowcase
-      tagline={d.howItWorks.tagline}
-      heading={d.howItWorks.heading}
-      body={d.howItWorks.body}
-      items={d.howItWorks.points}
-      image={d.howItWorks.image ? { src: d.howItWorks.image, alt: d.howItWorks.imageAlt } : undefined}
-      imageSide={d.howItWorks.imageSide}
-      mediaRatio="16 / 10"
-    >
-      {p.id === 'supplier-price-tracking' && <ProcurementAnimation slot="media" />}
-    </FeatureShowcase>
+    p.id === 'supplier-price-tracking' ? (
+      <FeatureShowcase
+        tagline={d.howItWorks.tagline}
+        heading={d.howItWorks.heading}
+        body={d.howItWorks.body}
+        items={d.howItWorks.points}
+        imageSide={d.howItWorks.imageSide}
+        mediaRatio="16 / 10"
+      >
+        <ProcurementAnimation slot="media" />
+      </FeatureShowcase>
+    ) : (
+      <FeatureShowcase
+        tagline={d.howItWorks.tagline}
+        heading={d.howItWorks.heading}
+        body={d.howItWorks.body}
+        items={d.howItWorks.points}
+        image={d.howItWorks.image ? { src: d.howItWorks.image, alt: d.howItWorks.imageAlt } : undefined}
+        imageSide={d.howItWorks.imageSide}
+        mediaRatio="16 / 10"
+      />
+    )
   ) : d.steps.length > 0 ? (
     <FeatureSteps
       tagline={d.stepsTagline}

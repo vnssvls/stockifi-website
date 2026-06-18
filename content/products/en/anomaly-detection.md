@@ -17,6 +17,7 @@ howItWorks:
     - heading: "Outliers flagged"
       body: "Overcharges, double-bills, and odd jumps are surfaced for review."
   imageSide: "right"
+  image: "/media/photos/teams-management.png"
   imageAlt: ""
 integrationsHeading: "Works with"
 integrationsSubject: "your accounting software"

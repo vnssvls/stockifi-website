@@ -9,6 +9,7 @@ order: 14
 category: procurement
 showIntegrations: false
 howItWorks:
+  image: "/media/photos/hero-chef.png"
   tagline: "Zo werkt het"
   heading: "[Placeholder how it works heading]"
   body: "[Placeholder body — copy review Wednesday]"

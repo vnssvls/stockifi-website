@@ -17,6 +17,7 @@ howItWorks:
     - heading: "Afvigelser markeres"
       body: "Overopkrævninger, dobbeltfaktureringer og usædvanlige udsving fremhæves til gennemgang."
   imageSide: "right"
+  image: "/media/photos/teams-management.png"
   imageAlt: ""
 integrationsHeading: "Virker med"
 integrationsSubject: "dit regnskabsprogram"

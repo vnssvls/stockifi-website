@@ -17,6 +17,7 @@ howItWorks:
     - heading: "Videreført til hvert utsalgssted"
       body: "Utsalgsstedene betaler den kostnaden, slik at oppskriftene og marginen holder seg korrekt."
   imageSide: "right"
+  image: "/media/photos/teams-kitchen.png"
   imageAlt: ""
 showIntegrations: false
 benefits:

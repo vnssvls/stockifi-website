@@ -17,6 +17,7 @@ howItWorks:
     - heading: "Godkendt, derefter låst"
       body: "Mærkelige tal markeres, inden tællingen lukkes."
   imageSide: "right"
+  image: "/media/photos/teams-finance.png"
   imageAlt: ""
 showIntegrations: false
 benefits:

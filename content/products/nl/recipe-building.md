@@ -17,6 +17,7 @@ howItWorks:
     - heading: "Subrecepten rollen door"
       body: "Een prebatch wordt eenmalig berekend en cascadeert door in elk gerecht."
   imageSide: "right"
+  image: "/media/photos/teams-operations.png"
   imageAlt: ""
 integrationsHeading: "Werkt met"
 integrationsSubject: "je boekhoudsoftware"

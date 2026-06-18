@@ -17,6 +17,7 @@ howItWorks:
     - heading: "Läses rad för rad"
       body: "Stockifi fångar priset och kvantiteten för varje ingrediens på fakturan."
   imageSide: "right"
+  image: "/media/photos/hero-owner.png"
   imageAlt: ""
 integrationsHeading: "Fungerar med"
 integrationsSubject: "ditt redovisningssystem"

@@ -17,6 +17,7 @@ howItWorks:
     - heading: "Læst linje for linje"
       body: "Stockifi registrerer prisen og mængden for hver ingrediens på fakturaen."
   imageSide: "right"
+  image: "/media/photos/hero-owner.png"
   imageAlt: ""
 integrationsHeading: "Virker med"
 integrationsSubject: "dit regnskabsprogram"

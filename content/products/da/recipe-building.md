@@ -17,6 +17,7 @@ howItWorks:
     - heading: "Delopskrifter rulles op"
       body: "En prebatch kalkuleres én gang og kaskaderer ind i alle retter."
   imageSide: "right"
+  image: "/media/photos/teams-operations.png"
   imageAlt: ""
 integrationsHeading: "Virker med"
 integrationsSubject: "dit regnskabsprogram"

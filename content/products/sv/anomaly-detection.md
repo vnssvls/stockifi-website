@@ -17,6 +17,7 @@ howItWorks:
     - heading: "Avvikelser flaggas"
       body: "Överdebiteringar, dubbelfaktureringar och ovanliga prisjumpar lyfts fram för granskning."
   imageSide: "right"
+  image: "/media/photos/teams-management.png"
   imageAlt: ""
 integrationsHeading: "Fungerar med"
 integrationsSubject: "ditt redovisningssystem"

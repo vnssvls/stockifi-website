@@ -18,6 +18,7 @@ howItWorks:
     - heading: "Outliers flagged"
       body: "Anything that does not fit is surfaced for a quick look."
   imageSide: "right"
+  image: "/media/photos/teams-finance.png"
   imageAlt: ""
 benefits:
   - heading: "[Benefit 1]"

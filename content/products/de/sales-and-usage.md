@@ -9,6 +9,7 @@ order: 35
 category: inventory-management
 showIntegrations: false
 howItWorks:
+  image: "/media/photos/teams-kitchen.png"
   tagline: "So funktioniert es"
   heading: "[Platzhalter Überschrift So funktioniert es]"
   body: "[Platzhalter Text — Textkontrolle Mittwoch]"

@@ -17,6 +17,7 @@ howItWorks:
     - heading: "An jeden Standort weitergegeben"
       body: "Standorte zahlen diese Kosten, damit ihre Rezepte und Margen korrekt bleiben."
   imageSide: "right"
+  image: "/media/photos/teams-kitchen.png"
   imageAlt: ""
 showIntegrations: false
 benefits:

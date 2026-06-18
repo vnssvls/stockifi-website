@@ -17,6 +17,7 @@ howItWorks:
     - heading: "Recept räknas om"
       body: "När ett pris rör sig uppdateras de rätter som använder det samma dag."
   imageSide: "right"
+  image: "/media/photos/hero-manager.png"
   imageAlt: ""
 integrationsHeading: "Fungerar med"
 integrationsSubject: "ditt redovisningssystem"

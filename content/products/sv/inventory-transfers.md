@@ -17,6 +17,7 @@ howItWorks:
     - heading: "Båda inventeringarna justeras"
       body: "Varor lämnar en enhets inventering och läggs till den andras."
   imageSide: "right"
+  image: "/media/photos/hero-manager.png"
   imageAlt: ""
 showIntegrations: false
 benefits:

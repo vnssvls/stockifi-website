@@ -9,6 +9,7 @@ order: 14
 category: procurement
 showIntegrations: false
 howItWorks:
+  image: "/media/photos/hero-chef.png"
   tagline: "Sådan fungerer det"
   heading: "[Placeholder overskrift til sådan fungerer det]"
   body: "[Placeholder brødtekst — tekst til gennemgang onsdag]"

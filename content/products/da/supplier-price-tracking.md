@@ -17,6 +17,7 @@ howItWorks:
     - heading: "Opskrifter genprisberegnet"
       body: "Når en pris bevæger sig, opdaterer de retter, der bruger den, samme dag."
   imageSide: "right"
+  image: "/media/photos/hero-manager.png"
   imageAlt: ""
 integrationsHeading: "Virker med"
 integrationsSubject: "dit regnskabsprogram"

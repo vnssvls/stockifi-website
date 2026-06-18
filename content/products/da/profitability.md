@@ -18,6 +18,7 @@ howItWorks:
     - heading: "Hver enkelt ret"
       body: "Profit beregnes pr. tallerken på tværs af hele din menu."
   imageSide: "right"
+  image: "/media/photos/teams-management.png"
   imageAlt: ""
 benefits:
   - heading: "Vindere og tabere"

@@ -17,6 +17,7 @@ howItWorks:
     - heading: "Uitschieters gemarkeerd"
       body: "Overberekeningen, dubbele facturen en vreemde sprongen worden ter controle weergegeven."
   imageSide: "right"
+  image: "/media/photos/teams-management.png"
   imageAlt: ""
 integrationsHeading: "Werkt met"
 integrationsSubject: "je boekhoudsoftware"

@@ -17,6 +17,7 @@ howItWorks:
     - heading: "Recepten herberekend"
       body: "Wanneer een prijs beweegt, worden de gerechten die het gebruiken dezelfde dag bijgewerkt."
   imageSide: "right"
+  image: "/media/photos/hero-manager.png"
   imageAlt: ""
 integrationsHeading: "Werkt met"
 integrationsSubject: "je boekhoudsoftware"

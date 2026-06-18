@@ -18,6 +18,7 @@ howItWorks:
     - heading: "Hver telleperiode"
       body: "Du ser avviket i det du lukker en varetelling."
   imageSide: "right"
+  image: "/media/photos/hero-owner.png"
   imageAlt: ""
 benefits:
   - heading: "Overporsjoning"

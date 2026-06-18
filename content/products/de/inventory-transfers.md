@@ -17,6 +17,7 @@ howItWorks:
     - heading: "Beide Inventuren passen sich an"
       body: "Die Ware verlässt den Lagerbestand des einen Standorts und geht in den des anderen über."
   imageSide: "right"
+  image: "/media/photos/hero-manager.png"
   imageAlt: ""
 showIntegrations: false
 benefits:

@@ -18,6 +18,7 @@ howItWorks:
     - heading: "Echtzeit oder geplant"
       body: "Rufen Sie Daten in Echtzeit ab oder synchronisieren Sie sie nach dem Zeitplan, den Ihr Reporting erfordert."
   imageSide: "right"
+  image: "/media/photos/teams-operations.png"
   imageAlt: ""
 benefits:
   - heading: "In Ihren Tools"

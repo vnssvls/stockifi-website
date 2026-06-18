@@ -17,6 +17,7 @@ howItWorks:
     - heading: "Oppskrifter oppdatert"
       body: "Når en pris endrer seg, oppdateres rettene som bruker den samme dag."
   imageSide: "right"
+  image: "/media/photos/hero-manager.png"
   imageAlt: ""
 integrationsHeading: "Fungerer med"
 integrationsSubject: "regnskapsprogramvaren din"

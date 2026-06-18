@@ -18,6 +18,7 @@ howItWorks:
     - heading: "Priset til innkjøpskost"
       body: "Hvert tap settes til ingrediensens gjeldende pris og slår inn i varekosten."
   imageSide: "right"
+  image: "/media/photos/hero-chef.png"
   imageAlt: ""
 benefits:
   - heading: "Alle typer svinn"

@@ -17,6 +17,7 @@ howItWorks:
     - heading: "Ført videre til hvert outlet"
       body: "Outlets betaler den omkostning, så deres opskrifter og marginer forbliver korrekte."
   imageSide: "right"
+  image: "/media/photos/teams-kitchen.png"
   imageAlt: ""
 showIntegrations: false
 benefits:

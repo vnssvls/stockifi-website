@@ -9,6 +9,7 @@ order: 35
 category: inventory-management
 showIntegrations: false
 howItWorks:
+  image: "/media/photos/teams-kitchen.png"
   tagline: "Slik fungerer det"
   heading: "[Placeholder how it works heading]"
   body: "[Placeholder body — copy review Wednesday]"

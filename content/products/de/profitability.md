@@ -18,6 +18,7 @@ howItWorks:
     - heading: "Jedes Gericht"
       body: "Der Gewinn wird pro Teller berechnet, über die gesamte Speisekarte hinweg."
   imageSide: "right"
+  image: "/media/photos/teams-management.png"
   imageAlt: ""
 benefits:
   - heading: "Gewinner und Verlierer"

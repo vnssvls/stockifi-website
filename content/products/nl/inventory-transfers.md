@@ -17,6 +17,7 @@ howItWorks:
     - heading: "Beide tellingen passen zich aan"
       body: "Voorraad verlaat de telling van de ene vestiging en sluit aan bij de andere."
   imageSide: "right"
+  image: "/media/photos/hero-manager.png"
   imageAlt: ""
 showIntegrations: false
 benefits:

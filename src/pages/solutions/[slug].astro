@@ -13,6 +13,7 @@ import FeatureShowcase from '../../components/features/FeatureShowcase.astro';
 import FaqSplit from '../../components/faq/FaqSplit.astro';
 import TestimonialSliderCollage from '../../components/TestimonialSliderCollage.astro';
 import CtaEmail from '../../components/CtaEmail.astro';
+import { solutionImages } from '../../data/solution-section-images';
 
 export async function getStaticPaths() {
   return (await getCollection('solutions'))
@@ -22,6 +23,7 @@ export async function getStaticPaths() {
 
 const { p } = Astro.props;
 const d = p.data;
+const imgs = solutionImages(p.id);
 ---
 
 <Layout title={d.metaTitle} description={d.metaDescription}>
@@ -31,6 +33,8 @@ const d = p.data;
     heading={d.heading}
     subhead={d.subhead}
     cta={{ label: 'Book a demo', href: '/book-a-demo' }}
+    image={{ src: imgs[0], alt: '' }}
+    veil
   />
 
   <!-- 2. Feature v2 (Split) — question→answer intro (checklist optional) -->
@@ -40,6 +44,7 @@ const d = p.data;
       heading={d.problemHeading ?? 'The problem'}
       body={d.problemBody}
       items={d.problem}
+      image={{ src: imgs[1], alt: '' }}
       imageSide="left"
     />
   )}
@@ -62,6 +67,7 @@ const d = p.data;
       items={d.showcaseSubs}
       primary={{ label: 'Book a demo', href: '/book-a-demo' }}
       secondary={{ label: 'See how it works', href: '/#how-it-works' }}
+      image={{ src: imgs[2], alt: '' }}
       imageSide="right"
     />
   )}

@@ -17,6 +17,7 @@ howItWorks:
     - heading: "Doorberekend naar elke vestiging"
       body: "Vestigingen betalen die kostprijs, zodat hun recepten en marges kloppen."
   imageSide: "right"
+  image: "/media/photos/teams-kitchen.png"
   imageAlt: ""
 showIntegrations: false
 benefits:

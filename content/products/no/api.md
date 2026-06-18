@@ -18,6 +18,7 @@ howItWorks:
     - heading: "Sanntid eller planlagt"
       body: "Hent live, eller synkroniser etter den planen rapporteringen krever."
   imageSide: "right"
+  image: "/media/photos/teams-operations.png"
   imageAlt: ""
 benefits:
   - heading: "I dine egne verktøy"

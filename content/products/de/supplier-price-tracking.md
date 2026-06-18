@@ -17,6 +17,7 @@ howItWorks:
     - heading: "Rezepte sofort aktualisiert"
       body: "Ändert sich ein Preis, werden die betroffenen Gerichte noch am selben Tag neu kalkuliert."
   imageSide: "right"
+  image: "/media/photos/hero-manager.png"
   imageAlt: ""
 integrationsHeading: "Funktioniert mit"
 integrationsSubject: "Ihrer Buchhaltungssoftware"

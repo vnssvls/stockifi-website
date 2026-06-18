@@ -18,6 +18,7 @@ howItWorks:
     - heading: "Prissatt till inköpskostnad"
       body: "Varje svinn sätts till ingrediensens aktuella pris och slår igenom i råvarukostnaden."
   imageSide: "right"
+  image: "/media/photos/hero-chef.png"
   imageAlt: ""
 benefits:
   - heading: "Alla typer av förluster"

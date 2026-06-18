@@ -18,6 +18,7 @@ howItWorks:
     - heading: "Zum Einkaufspreis bewertet"
       body: "Jeder Verlust übernimmt den aktuellen Preis der Zutat und fließt in Ihren Wareneinsatz ein."
   imageSide: "right"
+  image: "/media/photos/hero-chef.png"
   imageAlt: ""
 benefits:
   - heading: "Jede Art von Verlust"

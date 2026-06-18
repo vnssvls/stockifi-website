@@ -17,6 +17,7 @@ howItWorks:
     - heading: "Both counts adjust"
       body: "Stock leaves one site's count and joins the other's."
   imageSide: "right"
+  image: "/media/photos/hero-manager.png"
   imageAlt: ""
 showIntegrations: false
 benefits:

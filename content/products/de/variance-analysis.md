@@ -18,6 +18,7 @@ howItWorks:
     - heading: "Jede Inventurperiode"
       body: "Sie sehen die Abweichung in dem Moment, in dem Sie eine Inventur abschließen."
   imageSide: "right"
+  image: "/media/photos/hero-owner.png"
   imageAlt: ""
 benefits:
   - heading: "Überportionierung"

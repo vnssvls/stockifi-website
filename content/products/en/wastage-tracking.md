@@ -18,6 +18,7 @@ howItWorks:
     - heading: "Priced at cost"
       body: "Each loss takes the ingredient's current price and feeds your food cost."
   imageSide: "right"
+  image: "/media/photos/hero-chef.png"
   imageAlt: ""
 benefits:
   - heading: "Every kind of loss"

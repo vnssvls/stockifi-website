@@ -17,6 +17,7 @@ howItWorks:
     - heading: "Begge optællinger justeres"
       body: "Varer forlader én afdelings optælling og indgår i den andens."
   imageSide: "right"
+  image: "/media/photos/hero-manager.png"
   imageAlt: ""
 showIntegrations: false
 benefits:

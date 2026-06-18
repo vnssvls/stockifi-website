@@ -18,6 +18,7 @@ howItWorks:
     - heading: "Every count period"
       body: "You see the variance the moment you close a count."
   imageSide: "right"
+  image: "/media/photos/hero-owner.png"
   imageAlt: ""
 benefits:
   - heading: "Over-portioning"

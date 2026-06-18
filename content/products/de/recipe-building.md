@@ -17,6 +17,7 @@ howItWorks:
     - heading: "Teilrezepte werden hochgerechnet"
       body: "Ein Prebatch wird einmal kalkuliert und überträgt sich auf jedes Gericht."
   imageSide: "right"
+  image: "/media/photos/teams-operations.png"
   imageAlt: ""
 integrationsHeading: "Funktioniert mit"
 integrationsSubject: "Ihrer Buchhaltungssoftware"

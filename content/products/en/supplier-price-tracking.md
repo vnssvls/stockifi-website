@@ -17,6 +17,7 @@ howItWorks:
     - heading: "Recipes re-costed"
       body: "When a price moves, the dishes that use it update the same day."
   imageSide: "right"
+  image: "/media/photos/hero-manager.png"
   imageAlt: ""
 integrationsHeading: "Works with"
 integrationsSubject: "your accounting software"

@@ -17,6 +17,7 @@ howItWorks:
     - heading: "Verified, then locked"
       body: "Odd figures are flagged before the count closes."
   imageSide: "right"
+  image: "/media/photos/teams-finance.png"
   imageAlt: ""
 showIntegrations: false
 benefits:

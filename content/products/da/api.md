@@ -18,6 +18,7 @@ howItWorks:
     - heading: "Realtid eller planlagt"
       body: "Hent i realtid, eller synkroniser efter den tidsplan, din rapportering kræver."
   imageSide: "right"
+  image: "/media/photos/teams-operations.png"
   imageAlt: ""
 benefits:
   - heading: "I dine værktøjer"

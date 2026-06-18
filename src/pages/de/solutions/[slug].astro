@@ -11,6 +11,7 @@ import FeatureShowcase from '../../../components/features/FeatureShowcase.astro'
 import FaqSplit from '../../../components/faq/FaqSplit.astro';
 import TestimonialSliderCollage from '../../../components/TestimonialSliderCollage.astro';
 import CtaEmail from '../../../components/CtaEmail.astro';
+import { solutionImages } from '../../../data/solution-section-images';
 
 export async function getStaticPaths() {
   return (await getCollection('solutionsDe'))
@@ -20,6 +21,7 @@ export async function getStaticPaths() {
 
 const { p } = Astro.props;
 const d = p.data;
+const imgs = solutionImages(p.id);
 ---
 
 <Layout title={d.metaTitle} description={d.metaDescription}>
@@ -28,6 +30,8 @@ const d = p.data;
     eyebrow={d.eyebrow}
     heading={d.heading}
     subhead={d.subhead}
+    image={{ src: imgs[0], alt: '' }}
+    veil
     cta={{ label: 'Demo buchen', href: '/de/book-a-demo' }}
   />
 
@@ -38,6 +42,7 @@ const d = p.data;
       heading={d.problemHeading ?? 'Das Problem'}
       body={d.problemBody}
       items={d.problem}
+      image={{ src: imgs[1], alt: '' }}
       imageSide="left"
     />
   )}
@@ -60,6 +65,7 @@ const d = p.data;
       items={d.showcaseSubs}
       primary={{ label: 'Demo buchen', href: '/de/book-a-demo' }}
       secondary={{ label: 'So funktioniert es', href: '/de/#how-it-works' }}
+      image={{ src: imgs[2], alt: '' }}
       imageSide="right"
     />
   )}

@@ -17,6 +17,7 @@ howItWorks:
     - heading: "Zeile für Zeile gelesen"
       body: "Stockifi erfasst den Preis und die Menge jeder Zutat auf der Rechnung."
   imageSide: "right"
+  image: "/media/photos/hero-owner.png"
   imageAlt: ""
 integrationsHeading: "Kompatibel mit"
 integrationsSubject: "Ihrer Buchhaltungssoftware"

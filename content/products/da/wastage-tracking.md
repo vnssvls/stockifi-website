@@ -18,6 +18,7 @@ howItWorks:
     - heading: "Prissat til kostpris"
       body: "Hvert tab bruger ingrediensens aktuelle pris og indgår i din varekostprocent."
   imageSide: "right"
+  image: "/media/photos/hero-chef.png"
   imageAlt: ""
 benefits:
   - heading: "Alle typer tab"

@@ -17,6 +17,7 @@ howItWorks:
     - heading: "Geprüft, dann gespeichert"
       body: "Auffällige Werte werden vor dem Abschluss markiert."
   imageSide: "right"
+  image: "/media/photos/teams-finance.png"
   imageAlt: ""
 showIntegrations: false
 benefits:

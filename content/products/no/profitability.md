@@ -18,6 +18,7 @@ howItWorks:
     - heading: "Hver enkelt rett"
       body: "Fortjenesten beregnes per tallerken, på tvers av hele menyen."
   imageSide: "right"
+  image: "/media/photos/teams-management.png"
   imageAlt: ""
 benefits:
   - heading: "Vinnere og tapere"

@@ -17,6 +17,7 @@ howItWorks:
     - heading: "Förs vidare till varje enhet"
       body: "Enheterna betalar den kostnaden, så deras recept och marginaler stämmer."
   imageSide: "right"
+  image: "/media/photos/teams-kitchen.png"
   imageAlt: ""
 showIntegrations: false
 benefits:

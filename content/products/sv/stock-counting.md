@@ -17,6 +17,7 @@ howItWorks:
     - heading: "Verifierad, sedan låst"
       body: "Avvikande siffror flaggas innan inventeringen stängs."
   imageSide: "right"
+  image: "/media/photos/teams-finance.png"
   imageAlt: ""
 showIntegrations: false
 benefits:

@@ -18,6 +18,7 @@ howItWorks:
     - heading: "Every dish"
       body: "Profit is worked out per plate, across your whole menu."
   imageSide: "right"
+  image: "/media/photos/teams-management.png"
   imageAlt: ""
 benefits:
   - heading: "Winners and losers"

@@ -18,6 +18,7 @@ howItWorks:
     - heading: "Varje rätt"
       body: "Lönsamheten räknas ut per tallrik, för hela din meny."
   imageSide: "right"
+  image: "/media/photos/teams-management.png"
   imageAlt: ""
 benefits:
   - heading: "Vinnare och förlorare"

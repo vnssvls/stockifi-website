@@ -18,6 +18,7 @@ howItWorks:
     - heading: "Elk gerecht"
       body: "De winst wordt per bord berekend, voor je hele menu."
   imageSide: "right"
+  image: "/media/photos/teams-management.png"
   imageAlt: ""
 benefits:
   - heading: "Winnaars en verliezers"

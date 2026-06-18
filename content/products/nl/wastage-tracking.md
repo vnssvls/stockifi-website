@@ -18,6 +18,7 @@ howItWorks:
     - heading: "Geprijsd op inkoopkosten"
       body: "Elk verlies neemt de huidige prijs van het ingrediënt over en voedt je foodcostpercentage."
   imageSide: "right"
+  image: "/media/photos/hero-chef.png"
   imageAlt: ""
 benefits:
   - heading: "Elk type verlies"

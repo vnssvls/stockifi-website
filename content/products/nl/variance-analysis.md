@@ -18,6 +18,7 @@ howItWorks:
     - heading: "Elke telperiode"
       body: "Je ziet de afwijking zodra je een telling afsluit."
   imageSide: "right"
+  image: "/media/photos/hero-owner.png"
   imageAlt: ""
 benefits:
   - heading: "Overportering"

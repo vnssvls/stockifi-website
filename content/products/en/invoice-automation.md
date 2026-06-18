@@ -17,6 +17,7 @@ howItWorks:
     - heading: "Read line by line"
       body: "Stockifi captures the price and quantity of every ingredient on the invoice."
   imageSide: "right"
+  image: "/media/photos/hero-owner.png"
   imageAlt: ""
 integrationsHeading: "Works with"
 integrationsSubject: "your accounting software"

@@ -18,6 +18,7 @@ howItWorks:
     - heading: "Real time or scheduled"
       body: "Pull live, or sync on the schedule your reporting needs."
   imageSide: "right"
+  image: "/media/photos/teams-operations.png"
   imageAlt: ""
 benefits:
   - heading: "In your tools"

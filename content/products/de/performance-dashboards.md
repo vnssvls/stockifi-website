@@ -18,6 +18,7 @@ howItWorks:
     - heading: "Fertig berechnet"
       body: "Stockifi übernimmt die Berechnung, ohne dass Sie manuell einen Bericht erstellen müssen."
   imageSide: "right"
+  image: "/media/photos/benefits-manager-chef.png"
   imageAlt: ""
 benefits:
   - heading: "Alle Berichte"

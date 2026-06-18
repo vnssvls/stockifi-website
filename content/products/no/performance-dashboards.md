@@ -18,6 +18,7 @@ howItWorks:
     - heading: "Regnet ut for deg"
       body: "Stockifi gjør beregningene, uten at du trenger å bygge rapporter manuelt."
   imageSide: "right"
+  image: "/media/photos/benefits-manager-chef.png"
   imageAlt: ""
 benefits:
   - heading: "Alle rapportene"

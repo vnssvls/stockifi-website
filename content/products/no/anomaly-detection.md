@@ -17,6 +17,7 @@ howItWorks:
     - heading: "Avvik markert"
       body: "Feilfaktureringer, dobbeltfakturaer og uvanlige prishopp løftes fram for gjennomgang."
   imageSide: "right"
+  image: "/media/photos/teams-management.png"
   imageAlt: ""
 integrationsHeading: "Fungerer med"
 integrationsSubject: "regnskapssystemet ditt"

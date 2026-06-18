@@ -17,6 +17,7 @@ howItWorks:
     - heading: "Ausreißer markiert"
       body: "Überzahlungen, Doppelberechnungen und ungewöhnliche Sprünge werden zur Überprüfung angezeigt."
   imageSide: "right"
+  image: "/media/photos/teams-management.png"
   imageAlt: ""
 integrationsHeading: "Funktioniert mit"
 integrationsSubject: "Ihrer Buchhaltungssoftware"

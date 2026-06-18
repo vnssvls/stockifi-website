@@ -17,6 +17,7 @@ howItWorks:
     - heading: "Begge tellinger justeres"
       body: "Varer forlater ett steds telling og legges til det andre."
   imageSide: "right"
+  image: "/media/photos/hero-manager.png"
   imageAlt: ""
 showIntegrations: false
 benefits:
