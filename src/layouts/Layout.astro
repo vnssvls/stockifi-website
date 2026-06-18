@@ -44,6 +44,25 @@ const robotsNoindex = noindex || Astro.url.pathname.startsWith('/styleguide');
 <html lang={htmlLang}>
   <head>
     <meta charset="utf-8" />
+    <!-- Google Tag Manager — shared Stockifi container GTM-MLCJD2PB (same GA4 +
+         Google Ads account as the old Webflow site). Host-gated to production so
+         staging (stocki-stu.pages.dev) and localhost never pollute analytics. -->
+    <script is:inline>
+      (function () {
+        var PROD_HOSTS = ['stockifi.io', 'www.stockifi.io'];
+        if (PROD_HOSTS.indexOf(window.location.hostname) === -1) return;
+        (function (w, d, s, l, i) {
+          w[l] = w[l] || [];
+          w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+          var f = d.getElementsByTagName(s)[0],
+              j = d.createElement(s),
+              dl = l !== 'dataLayer' ? '&l=' + l : '';
+          j.async = true;
+          j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+          f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-MLCJD2PB');
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
@@ -68,6 +87,10 @@ const robotsNoindex = noindex || Astro.url.pathname.startsWith('/styleguide');
     <slot name="head" />
   </head>
   <body>
+    <!-- GTM noscript fallback (only loads if JS is disabled) -->
+    <noscript>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MLCJD2PB" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
     {bare ? (
       <slot />
     ) : (
