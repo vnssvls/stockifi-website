@@ -342,7 +342,7 @@ const s = STRINGS[locale as keyof typeof STRINGS] ?? STRINGS.en;
 
             <div class="bd-field">
               <label class="bd-label" for="bd-company">{s.company}</label>
-              <input class="bd-input" id="bd-company" name="company" type="text"
+              <input class="bd-input" id="bd-company" name="name" type="text"
                 placeholder={s.companyPh} required autocomplete="organization" />
               <span class="bd-err" id="err-company" aria-live="polite"></span>
             </div>
@@ -1079,10 +1079,13 @@ form?.addEventListener('submit', async (e) => {
   submitArrow?.classList.add('bd-hidden');
   submitSpinner?.classList.remove('bd-hidden');
 
+  // HubSpot maps some fields to the Company object (0-2), the rest to the Contact (0-1).
+  const OBJECT_TYPES = { name: '0-2', number_of_venues: '0-2' };
+
   const data = new FormData(form);
   const fields = Array.from(data.entries())
     .filter(([, v]) => String(v).trim())
-    .map(([name, value]) => ({ name, value: String(value) }));
+    .map(([name, value]) => ({ objectTypeId: OBJECT_TYPES[name] ?? '0-1', name, value: String(value) }));
 
   const hutk = document.cookie.split(';').map(c => c.trim()).find(c => c.startsWith('hubspotutk='))?.split('=')[1];
 
