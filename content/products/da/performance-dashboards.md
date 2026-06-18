@@ -2,7 +2,7 @@
 metaTitle: "Restaurantanalyse og dashboards | Stockifi"
 metaDescription: "Vareforbrug, margin, afvigelse og vareomkostningsudvikling samlet ét sted, opdelt på ret, lokation og periode, baseret på dine rigtige faktura- og kassesystemdata."
 eyebrow: "Performance-dashboards"
-heading: "Saml madomkostninger og varelager på ét sted"
+heading: "Saml vareforbrug og varelager på ét sted"
 subhead: "Se og forstå dine tal på en ny måde. Stockifi omdanner dine fakturaer, salg og varelager til ét klart billede af dine marginer."
 heroImage: "/media/bi-performance-dashboards.jpg"
 order: 30

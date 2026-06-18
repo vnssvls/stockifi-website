@@ -11,7 +11,7 @@ problemHeading: "Vil du have alle lokationer på de samme opskriftspriser?"
 problemBody: "Stockifi holder dem aligned for dig. En opskrift prissættes én gang og gælder for alle lokationer, der bruger den, og opdateres overalt, så snart en leverandørpris ændrer sig."
 problem: []
 benefits:
-  - heading: "Opskriftspriser i sync"
+  - heading: "Opskriftspriser i synk"
     body: "Én opskriftspris, der gælder på tværs af alle lokationer."
   - heading: "Samlet afvigelse"
     body: "Varekost og afvigelse for hele kæden og pr. lokation."

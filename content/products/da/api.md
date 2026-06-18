@@ -16,7 +16,7 @@ howItWorks:
     - heading: "Strukturerede endpoints"
       body: "Hvert datasæt har sit eget rene endpoint at kalde."
     - heading: "Realtid eller planlagt"
-      body: "Hent live, eller synkroniser efter den tidsplan, din rapportering kræver."
+      body: "Hent i realtid, eller synkroniser efter den tidsplan, din rapportering kræver."
   imageSide: "right"
   imageAlt: ""
 benefits:

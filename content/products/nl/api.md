@@ -16,7 +16,7 @@ howItWorks:
     - heading: "Gestructureerde endpoints"
       body: "Elke dataset heeft een eigen overzichtelijk endpoint."
     - heading: "Real-time of gepland"
-      body: "Haal live op, of synchroniseer op het schema dat je rapportage vereist."
+      body: "Haal realtime op, of synchroniseer op het schema dat je rapportage vereist."
   imageSide: "right"
   imageAlt: ""
 benefits:

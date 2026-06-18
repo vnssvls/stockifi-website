@@ -1,5 +1,5 @@
 ---
-metaTitle: "Food Cost Software voor Restaurantgroepen | Stockifi"
+metaTitle: "Foodcost software voor restaurantgroepen | Stockifi"
 metaDescription: "Houd receptkosten op één lijn op elke locatie en rol afwijking en marge samen in één overzicht. Stockifi geeft restaurantgroepen één beeld van de hele bedrijfsvoering."
 eyebrow: "Restaurantgroepen"
 heading: "Geconsolideerde foodcost op elke locatie"

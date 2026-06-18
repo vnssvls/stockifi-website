@@ -33,7 +33,7 @@ faqs:
   - question: "Wat is inkoopkostentrend?"
     answer: "Inkoopkostentrend laat zien hoe je inkoopkosten zich in de loop van de tijd bewegen. Stockifi volgt die naast foodcost en marge, zodat je de trend ziet in plaats van één losse maand."
   - question: "Hoe actueel zijn de cijfers? Is dit realtime?"
-    answer: "Je facturen en verkopen komen continu binnen, dus kosten en marge weerspiegelen je meest recente gegevens. Voorraadcijfers volgen je periodieke tellingen in plaats van live tracking, in lijn met hoe Stockifi de voorraad bijhoudt."
+    answer: "Je facturen en verkopen komen continu binnen, dus kosten en marge weerspiegelen je meest recente gegevens. Voorraadcijfers volgen je periodieke tellingen in plaats van realtime tracking, in lijn met hoe Stockifi de voorraad bijhoudt."
   - question: "Kan een hoofdkantoor alle locaties op één plek zien?"
     answer: "Ja. Groepen krijgen een geconsolideerd overzicht over alle locaties, en je kunt inzoomen op elke afzonderlijke vestiging of elk gerecht."
   - question: "Wat als ik nog niet alle gegevens heb gekoppeld?"

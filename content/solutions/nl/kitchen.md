@@ -1,18 +1,18 @@
 ---
 metaTitle: "Receptkosten beheren voor hoofdkoks | Stockifi"
-metaDescription: "Live receptkosten, snelle voorraadtellingen en afwijkingen tot op het gerecht nauwkeurig, gebouwd voor de mensen die de keuken runnen. Menubeslissingen op basis van de prijzen van vandaag."
+metaDescription: "Realtime receptkosten, snelle voorraadtellingen en afwijkingen tot op het gerecht nauwkeurig, gebouwd voor de mensen die de keuken runnen. Menubeslissingen op basis van de prijzen van vandaag."
 eyebrow: "Keuken"
 heading: "Weet wat elk gerecht vandaag kost"
 subhead: "Stockifi houdt elk recept actueel terwijl prijzen bewegen. Tellingen gaan snel, en afwijkingen wijzen naar het exacte gerecht."
 order: 7
 group: "team"
-problemTagline: "Live receptkosten"
+problemTagline: "Realtime receptkosten"
 problemHeading: "Wil je receptkosten die de prijzen bijhouden?"
 problemBody: "Stockifi houdt ze actueel voor je. Zodra leveranciersprijzen veranderen, werkt elk recept dat het ingrediënt gebruikt automatisch bij, zodat de kostprijs op je menu de prijs van vandaag is."
 problem: []
 benefits:
   - heading: "Recepten kosten zichzelf"
-    body: "Elk gerecht draagt zijn live kostprijs mee terwijl prijzen bewegen."
+    body: "Elk gerecht draagt zijn realtime kostprijs mee terwijl prijzen bewegen."
   - heading: "Vang portieafwijkingen op"
     body: "Afwijkingen signaleren de gerechten die meer verbruiken dan het recept aangeeft."
   - heading: "Kostprijs van een nieuw gerecht in een oogwenk"
@@ -98,6 +98,6 @@ testimonials:
         alt: Schnitzelei restaurant
       - src: /media/customer-stories/69ccbd2a2a92b0614edecc5b_schnitzelei.outdoor.jpg
         alt: Schnitzelei outdoor
-ctaHeading: "Houd de kosten van de keuken live"
+ctaHeading: "Houd de kosten van de keuken realtime"
 ctaSubhead: "Laat je e-mailadres achter en we laten je zien wat Stockifi in je eerste 30 dagen boven water haalt."
 ---

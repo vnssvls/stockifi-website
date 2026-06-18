@@ -31,7 +31,7 @@ benefits:
 faqHeading: "Vragen over voorraadoverdrachten"
 faqs:
   - question: "Worden overdrachten in realtime bijgehouden?"
-    answer: "Overdrachten worden verwerkt binnen de telperiode in plaats van live gevolgd, in lijn met hoe Stockifi voorraad beheert: periodieke tellingen met afwijkingsanalyse."
+    answer: "Overdrachten worden verwerkt binnen de telperiode in plaats van realtime gevolgd, in lijn met hoe Stockifi voorraad beheert: periodieke tellingen met afwijkingsanalyse."
   - question: "Tegen welke waarde wordt een overdracht gemaakt?"
     answer: "Tegen de werkelijke kostprijs van de verplaatste voorraad, zodat de kosten van de verzendende vestiging dalen en die van de ontvangende vestiging met hetzelfde bedrag stijgen."
   - question: "Wat gebeurt er als een overdracht wordt gemist?"

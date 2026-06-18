@@ -34,7 +34,7 @@ faqs:
   - question: "Kan det håndtere flere outlets i ét hotel?"
     answer: "Ja. Hvert outlets omkostninger og afvigelser spores separat og samles i én F&B-visning."
   - question: "Dækker det også baren ud over køkkenet?"
-    answer: "Ja. Stockifi sporer drikkevareomkostninger og hældningsafvigelser side om side med madvareforbrug."
+    answer: "Ja. Stockifi sporer drikkevareomkostninger og hældningsafvigelser side om side med vareforbrug."
   - question: "Fungerer det med vores eksisterende systemer?"
     answer: "Ja. Stockifi forbinder sig til det kassesystem og den regnskabssoftware, du allerede bruger, læser dataene og lader din opsætning forblive som den er."
 testimonials:

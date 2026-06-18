@@ -11,7 +11,7 @@ problemHeading: "Wil je dat de kleine lekken niet meer onopgemerkt blijven?"
 problemBody: "Stockifi zet er een getal op. Leverancierssluip, overportering en verspilling kosten elk een beetje, en Stockifi houdt ze bij tegen wat je verkocht hebt zodat je het gat ziet en kunt dichten."
 problem: []
 benefits:
-  - heading: "Live receptkosten"
+  - heading: "Realtime receptkosten"
     body: "Recepten worden opnieuw berekend als leveranciersprij­zen bewegen."
   - heading: "Geautomatiseerde facturen"
     body: "Facturen worden automatisch ingelezen, met prijsverhogingen gemarkeerd."

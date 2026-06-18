@@ -1,6 +1,6 @@
 ---
 metaTitle: "Winstgevendheid per gerecht | Stockifi"
-metaDescription: "Zie de marge per gerecht, locatie en periode, gebaseerd op je live foodcost, zodat je weet welke gerechten geld opleveren en welke niet."
+metaDescription: "Zie de marge per gerecht, locatie en periode, gebaseerd op je realtime foodcost, zodat je weet welke gerechten geld opleveren en welke niet."
 eyebrow: "Inzicht in winstgevendheid"
 heading: "Weet precies welke gerechten je geld opleveren"
 subhead: "Zie de echte marge op elk bord. Stockifi laat zien wat elk gerecht verdient, per locatie en per periode."
@@ -35,7 +35,7 @@ faqs:
   - question: "Wat is de contributiemarge?"
     answer: "De contributiemarge is wat een gerecht oplevert na aftrek van de eigen ingrediëntkosten. Stockifi toont die per gerecht, zodat je ziet welke items de keuken dragen en welke er alleen winstgevend uitzien."
   - question: "Heb ik een koppeling met een kassasysteem nodig voor winstgevendheid?"
-    answer: "Ja. Winst heeft je verkoopdata nodig, dus via een kassasysteem­koppeling kan Stockifi zetten wat er verkocht is, en tegen welke prijs, tegenover de live kosten van elk gerecht."
+    answer: "Ja. Winst heeft je verkoopdata nodig, dus via een kassasysteem­koppeling kan Stockifi zetten wat er verkocht is, en tegen welke prijs, tegenover de realtime kosten van elk gerecht."
   - question: "Hoe vaak wordt de winst bijgewerkt?"
     answer: "De winst beweegt mee met je kosten en verkopen, zodat een gerecht dat in de min gaat als een ingrediëntprijs stijgt, in de huidige periode zichtbaar is."
 ctaHeading: "Zie welke gerechten je marge dragen"

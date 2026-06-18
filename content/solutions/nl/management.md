@@ -3,7 +3,7 @@ metaTitle: "Winst- en margeoverzicht voor eigenaren & GM's | Stockifi"
 metaDescription: "Geef eigenaren en GM's een helder beeld van winst, marge en waar geld weglekt in de operatie, zonder rapporten op te vragen bij het team."
 eyebrow: "Management"
 heading: "Je winstplaatje, altijd beschikbaar"
-subhead: "Stockifi geeft eigenaren en GM's een live beeld van winst en marge. Het overzicht is er zonder het team achterna te zitten."
+subhead: "Stockifi geeft eigenaren en GM's een realtime beeld van winst en marge. Het overzicht is er zonder het team achterna te zitten."
 order: 5
 group: "team"
 problemTagline: "Het winstplaatje"

@@ -1,8 +1,8 @@
 ---
 metaTitle: "Software voor receptenbeheer en kostprijsberekening | Stockifi"
-metaDescription: "Bouw je recepten en subrecepten op één plek, met live ingrediëntkosten vanuit je facturen, zodat elk gerecht zijn werkelijke kostprijs en marge toont."
+metaDescription: "Bouw je recepten en subrecepten op één plek, met realtime ingrediëntkosten vanuit je facturen, zodat elk gerecht zijn werkelijke kostprijs en marge toont."
 eyebrow: "Receptenbeheer"
-heading: "Bouw recepten met live kosten"
+heading: "Bouw recepten met realtime kosten"
 subhead: "Zodra je recepten zijn ingevoerd, bereken je nooit meer handmatig de kostprijs van een gerecht. Stockifi haalt de prijs van elk ingrediënt op uit je facturen, zodat elk gerecht zijn werkelijke kostprijs en marge toont."
 heroImage: "/media/product-recipe-building.png"
 order: 20
@@ -39,6 +39,6 @@ faqs:
     answer: "Ja. Je stelt in hoeveel van een ingrediënt een recept daadwerkelijk gebruikt, zodat het snijverlies van bijvoorbeeld een hele vis of een groot snijstuk in elke portie wordt verrekend. Die putloss of uitsnijding komt in je gerechtkostprijs terecht in plaats van te verdwijnen in de afwijking."
   - question: "Kan ik één receptenbibliotheek gebruiken voor al mijn locaties?"
     answer: "Ja. Je recepten staan in één bibliotheek die gedeeld wordt over locaties, zodat een gerecht overal op dezelfde manier is opgebouwd en berekend, en een update elke locatie bereikt."
-ctaHeading: "Zie je recepten live berekend"
+ctaHeading: "Zie je recepten realtime berekend"
 ctaSubhead: "Boek een kort gesprek en we laten je zien wat Stockifi in je eerste 30 dagen boven water haalt."
 ---

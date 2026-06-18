@@ -13,7 +13,7 @@ problem: []
 benefits:
   - heading: "Elke outlet, één overzicht"
     body: "Kosten en marge van restaurant, bar en evenementen in één beeld."
-  - heading: "Live receptkosten"
+  - heading: "Realtime receptkosten"
     body: "Gerechten en dranken worden opnieuw berekend zodra leveranciersprijzen veranderen."
   - heading: "Afwijking per outlet"
     body: "Ontdek welke outlet marge verliest, en waarom."

@@ -1,8 +1,8 @@
 ---
 metaTitle: "Software til opskriftskalkulation og opbygning | Stockifi"
-metaDescription: "Byg dine opskrifter og delopskrifter ét sted, med live ingredienspriser fra dine fakturaer, så hvert produkt afspejler sin reelle pris og margin."
+metaDescription: "Byg dine opskrifter og delopskrifter ét sted, med ingredienspriser i realtid fra dine fakturaer, så hvert produkt afspejler sin reelle pris og margin."
 eyebrow: "Opskriftsbygning"
-heading: "Byg opskrifter med live priser tilknyttet"
+heading: "Byg opskrifter med tilknyttede priser i realtid"
 subhead: "Når dine opskrifter er oprettet, kalkulerer du aldrig mere en ret manuelt. Stockifi henter prisen på hver ingrediens fra dine fakturaer, så alle retter viser deres reelle pris og margin."
 heroImage: "/media/product-recipe-building.png"
 order: 20
@@ -39,6 +39,6 @@ faqs:
     answer: "Ja. Du angiver, hvor meget af en ingrediens en opskrift faktisk bruger, så trimningen på for eksempel en hel fisk eller et primærstykke er kalkuleret ind i hver portion. Det svind lander i din retpris i stedet for at gemme sig i afvigelsen."
   - question: "Kan jeg bruge ét opskriftsbibliotek på tværs af alle mine lokationer?"
     answer: "Ja. Dine opskrifter ligger i ét bibliotek, der deles på tværs af lokationer, så en ret bygges og kalkuleres på samme måde overalt, og en opdatering når alle steder."
-ctaHeading: "Se dine opskrifter kalkuleret live"
+ctaHeading: "Se dine opskrifter kalkuleret i realtid"
 ctaSubhead: "Book et kort møde, og vi viser dig, hvad Stockifi afdækker i dine første 30 dage."
 ---
