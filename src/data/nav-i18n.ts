@@ -279,17 +279,17 @@ const deDescs: NavDescs = {
   dataQuality: 'Hält Ihre Daten kontinuierlich auf höchster Qualität.',
   performanceDashboards: 'Wareneinsatz und Marge über alle Standorte.',
   varianceAnalysis: 'Theoretischer Verbrauch gegen tatsächlich Verkauftes.',
-  profitabilityInsights: 'Live-Marge jedes Menüpunkts einsehen.',
+  profitabilityInsights: 'Echtzeit-Marge jedes Menüpunkts einsehen.',
   api: 'Daten dorthin übertragen, wo sie gebraucht werden.',
   salesAndUsage: 'Sehen, was verkauft wurde und wie es durch den Bestand lief.',
-  independentRestaurants: 'Genauere Lebensmittelkosten ohne Tabellen.',
+  independentRestaurants: 'Genauerer Wareneinsatz ohne Tabellen.',
   restaurantGroups: 'Konsolidierte Kostenübersicht über alle Standorte.',
   hotelsWithFnB: 'Volle Kontrolle über Speisen und Getränke.',
   bars: 'Die Marge auf jeden ausgeschenkten Drink kennen.',
   management: 'Margenübersicht für den gesamten Betrieb.',
   operations: 'Schwund und Preisdrift frühzeitig erkennen.',
-  kitchen: 'Live-Gerichtkosten für präzisere Menüentscheidungen.',
-  finance: 'COGS, dem Sie zum Monatsende vertrauen können.',
+  kitchen: 'Echtzeit-Gerichtkosten für präzisere Menüentscheidungen.',
+  finance: 'Wareneinsatz, dem Sie zum Monatsende vertrauen können.',
 };
 
 const daDescs: NavDescs = {

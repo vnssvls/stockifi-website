@@ -2,7 +2,7 @@
 metaTitle: "Restaurant-Performance-Dashboards & Analysen | Stockifi"
 metaDescription: "Stockifi wandelt Ihre Rechnungs- und Kassendaten in Dashboards um, die Kosten, Marge, Abweichungen und Wareneinsatzentwicklung nach Gericht, Standort und Zeitraum zeigen. Demo buchen."
 eyebrow: "Performance-Dashboards"
-heading: "Lebensmittelkosten und Lagerverwaltung an einem Ort"
+heading: "Wareneinsatz und Lagerverwaltung an einem Ort"
 subhead: "Sehen und verstehen Sie Ihre Zahlen wie nie zuvor. Stockifi wandelt Ihre Rechnungen, Umsätze und Ihren Lagerbestand in eine klare Übersicht Ihrer Margen um."
 heroImage: "/media/cta-bg-2.jpg"
 order: 30
@@ -33,7 +33,7 @@ faqs:
   - question: "Was ist die Wareneinsatz-Entwicklung?"
     answer: "Die Wareneinsatz-Entwicklung zeigt, wie sich Ihr Wareneinsatz (COGS) über die Zeit verändert. Stockifi verfolgt ihn zusammen mit der Wareneinsatzquote und der Marge, sodass Sie den Trend erkennen und nicht nur einen einzelnen Monat betrachten."
   - question: "Wie aktuell sind die Zahlen? Handelt es sich um Echtzeit-Daten?"
-    answer: "Ihre Rechnungen und Umsätze werden fortlaufend eingespeist, sodass Kosten und Marge Ihre neuesten Daten widerspiegeln. Die Lagerbestandszahlen folgen Ihren periodischen Inventuren statt einem Live-Tracking, entsprechend der Art, wie Stockifi die Lagerverwaltung handhabt."
+    answer: "Ihre Rechnungen und Umsätze werden fortlaufend eingespeist, sodass Kosten und Marge Ihre neuesten Daten widerspiegeln. Die Lagerbestandszahlen folgen Ihren periodischen Inventuren statt einer Echtzeitverfolgung, entsprechend der Art, wie Stockifi die Lagerverwaltung handhabt."
   - question: "Kann eine Zentrale alle Standorte an einem Ort einsehen?"
     answer: "Ja. Restaurantgruppen erhalten eine konsolidierte Ansicht aller Standorte, mit der Möglichkeit, in einen einzelnen Betrieb oder ein bestimmtes Gericht zu wechseln."
   - question: "Was, wenn ich noch nicht alle Daten verknüpft habe?"

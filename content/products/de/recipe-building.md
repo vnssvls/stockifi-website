@@ -39,6 +39,6 @@ faqs:
     answer: "Ja. Sie legen fest, wie viel von einer Zutat ein Rezept tatsächlich verwendet, sodass der Putzabfall bei einem ganzen Fisch oder einem Fleischstück in jede Portion einfließt. Dieser Putzabfall landet in Ihren Gerichtskosten, anstatt im Schwund zu verschwinden."
   - question: "Kann ich eine Rezeptbibliothek für alle meine Standorte nutzen?"
     answer: "Ja. Ihre Rezepte liegen in einer gemeinsamen Bibliothek für alle Standorte, sodass ein Gericht überall gleich aufgebaut und kalkuliert wird und eine Aktualisierung jeden Standort sofort erreicht."
-ctaHeading: "Sehen Sie Ihre Rezepte live kalkuliert"
+ctaHeading: "Sehen Sie Ihre Rezepte in Echtzeit kalkuliert"
 ctaSubhead: "Vereinbaren Sie einen kurzen Anruf und wir zeigen Ihnen, was Stockifi in Ihren ersten 30 Tagen aufdeckt."
 ---

@@ -31,7 +31,7 @@ benefits:
 faqHeading: "Fragen zu Lagertransfers"
 faqs:
   - question: "Werden Transfers in Echtzeit erfasst?"
-    answer: "Transfers werden innerhalb der Inventurperiode verbucht und nicht live verfolgt, entsprechend der Art, wie Stockifi Lagerbestände handhabt: periodische Inventur mit Abweichungsanalyse."
+    answer: "Transfers werden innerhalb der Inventurperiode verbucht und nicht in Echtzeit verfolgt, entsprechend der Art, wie Stockifi Lagerbestände handhabt: periodische Inventur mit Abweichungsanalyse."
   - question: "Zu welchem Wert wird ein Transfer gebucht?"
     answer: "Zum tatsächlichen Einstandspreis der verschobenen Ware, sodass der Wareneinsatz des sendenden Standorts sinkt und der des empfangenden um denselben Betrag steigt."
   - question: "Was passiert, wenn ein Transfer vergessen wird?"

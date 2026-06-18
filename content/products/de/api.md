@@ -16,7 +16,7 @@ howItWorks:
     - heading: "Strukturierte Endpunkte"
       body: "Jeder Datensatz hat seinen eigenen sauberen Endpunkt zum Abrufen."
     - heading: "Echtzeit oder geplant"
-      body: "Rufen Sie Daten live ab oder synchronisieren Sie sie nach dem Zeitplan, den Ihr Reporting erfordert."
+      body: "Rufen Sie Daten in Echtzeit ab oder synchronisieren Sie sie nach dem Zeitplan, den Ihr Reporting erfordert."
   imageSide: "right"
   imageAlt: ""
 benefits:
