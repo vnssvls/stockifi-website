@@ -34,44 +34,44 @@ const TERMS: Record<string, {
 }> = {
   en: {
     pre: 'By clicking', mid: "you're confirming that you agree with our", link: 'Terms and Conditions', post: '.',
-    success: "Thank you! Someone will be in touch shortly.",
-    successH: "Thank you!", successP: "Someone will be in touch shortly.",
-    successAlt: "See how other restaurants cut food costs with Stockifi.",
+    success: "Got it! Someone will be in touch shortly.",
+    successH: "Got it!", successP: "Someone will be in touch shortly.",
+    successAlt: "In the meantime, read about how other businesses improved their operations with Stockifi.",
     successCta: "Read customer stories", successCtaHref: "/customer-stories",
   },
   de: {
     pre: 'Mit Klick auf', mid: 'bestätigen Sie, dass Sie unseren', link: 'Allgemeinen Geschäftsbedingungen', post: ' zustimmen.',
-    success: 'Vielen Dank! Jemand meldet sich in Kürze.',
-    successH: "Vielen Dank!", successP: "Jemand aus unserem Team meldet sich in Kürze.",
-    successAlt: "Sehen Sie, wie andere Restaurants mit Stockifi Kosten senken.",
+    success: 'Alles klar! Jemand meldet sich in Kürze.',
+    successH: "Alles klar!", successP: "Jemand aus unserem Team meldet sich in Kürze.",
+    successAlt: "Lesen Sie in der Zwischenzeit, wie andere Betriebe ihre Abläufe mit Stockifi verbessert haben.",
     successCta: "Kundenberichte lesen", successCtaHref: "/de/customer-stories",
   },
   no: {
     pre: 'Ved å klikke på', mid: 'bekrefter du at du godtar våre', link: 'Vilkår og betingelser', post: '.',
-    success: 'Takk! Noen tar kontakt snart.',
-    successH: "Takk!", successP: "Noen tar kontakt med deg snart.",
-    successAlt: "Se hvordan andre restauranter kutter varekosten med Stockifi.",
+    success: 'Mottatt! Noen tar kontakt snart.',
+    successH: "Mottatt!", successP: "Noen tar kontakt med deg snart.",
+    successAlt: "Les i mellomtiden hvordan andre virksomheter har forbedret driften sin med Stockifi.",
     successCta: "Les kundehistorier", successCtaHref: "/no/customer-stories",
   },
   sv: {
     pre: 'Genom att klicka på', mid: 'bekräftar du att du godkänner våra', link: 'Villkor', post: '.',
-    success: 'Tack! Någon hör av sig inom kort.',
-    successH: "Tack!", successP: "Någon hör av sig till dig inom kort.",
-    successAlt: "Se hur andra restauranger sänker råvarukostnaden med Stockifi.",
+    success: 'Klart! Någon hör av sig inom kort.',
+    successH: "Klart!", successP: "Någon hör av sig till dig inom kort.",
+    successAlt: "Läs under tiden hur andra verksamheter har förbättrat sin verksamhet med Stockifi.",
     successCta: "Läs kundberättelser", successCtaHref: "/sv/customer-stories",
   },
   nl: {
     pre: 'Door op', mid: 'te klikken, bevestigt u dat u akkoord gaat met onze', link: 'Algemene voorwaarden', post: '.',
-    success: 'Bedankt! Iemand neemt binnenkort contact op.',
-    successH: "Bedankt!", successP: "Iemand neemt binnenkort contact met je op.",
-    successAlt: "Bekijk hoe andere restaurants kosten verlagen met Stockifi.",
+    success: 'Gelukt! Iemand neemt binnenkort contact op.',
+    successH: "Gelukt!", successP: "Iemand neemt binnenkort contact met je op.",
+    successAlt: "Lees ondertussen hoe andere bedrijven hun bedrijfsvoering hebben verbeterd met Stockifi.",
     successCta: "Lees klantverhalen", successCtaHref: "/nl/customer-stories",
   },
   da: {
     pre: 'Ved at klikke på', mid: 'bekræfter du, at du accepterer vores', link: 'Vilkår og betingelser', post: '.',
-    success: 'Tak! Nogen kontakter dig snart.',
-    successH: "Tak!", successP: "Nogen kontakter dig snart.",
-    successAlt: "Se, hvordan andre restauranter reducerer omkostninger med Stockifi.",
+    success: 'Modtaget! Nogen kontakter dig snart.',
+    successH: "Modtaget!", successP: "Nogen kontakter dig snart.",
+    successAlt: "Læs i mellemtiden, hvordan andre virksomheder har forbedret deres drift med Stockifi.",
     successCta: "Læs kundehistorier", successCtaHref: "/da/customer-stories",
   },
 };
@@ -152,13 +152,13 @@ const single = imgs.length === 1 ? imgs[0] : '';
   }
 
   .ce-inner { text-align: center; }
-  .ce-heading { max-width: 20ch; margin-inline: auto; }
-  .ce-subhead { margin-top: var(--space-16); margin-inline: auto; max-width: 48ch; font-size: var(--text-body-lg); }
+  .ce-heading { max-width: 26ch; margin-inline: auto; }
+  .ce-subhead { margin-top: var(--space-16); margin-inline: auto; max-width: 56ch; font-size: var(--text-body-lg); }
 
   .ce-form {
     display: flex;
     gap: var(--space-12);
-    max-width: 30rem;
+    max-width: 38rem;
     margin: var(--space-32) auto 0;
   }
   .ce-input {
@@ -219,6 +219,13 @@ const single = imgs.length === 1 ? imgs[0] : '';
 
   /* Dialog — display goes on the inner div, not .ce-dialog, to keep dialog:not([open]) working */
   .ce-dialog {
+    /* The global `* { margin: 0 }` reset overrides the UA `margin: auto` that
+       centers a modal dialog, dropping it top-left. Re-center it explicitly. */
+    position: fixed;
+    inset: 0;
+    margin: auto;
+    height: fit-content;
+    max-height: calc(100dvh - 2rem);
     border: none;
     border-radius: var(--radius-lg);
     background: var(--card);
