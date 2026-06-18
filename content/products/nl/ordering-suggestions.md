@@ -22,13 +22,13 @@ howItWorks:
   imageAlt: ""
 benefits:
   - heading: "[Voordeel 1]"
-    body: "[Placeholder benefit body — copy review Wednesday]"
+    body: "[Placeholder benefit body, copy review Wednesday]"
   - heading: "[Voordeel 2]"
-    body: "[Placeholder benefit body — copy review Wednesday]"
+    body: "[Placeholder benefit body, copy review Wednesday]"
   - heading: "[Voordeel 3]"
-    body: "[Placeholder benefit body — copy review Wednesday]"
+    body: "[Placeholder benefit body, copy review Wednesday]"
   - heading: "[Voordeel 4]"
-    body: "[Placeholder benefit body — copy review Wednesday]"
+    body: "[Placeholder benefit body, copy review Wednesday]"
 faqHeading: "Vragen over besteladvies"
 faqs:
   - question: "Waarop baseert Stockifi zijn besteladvies?"

@@ -22,13 +22,13 @@ howItWorks:
   imageAlt: ""
 benefits:
   - heading: "[Fordel 1]"
-    body: "[Placeholder fordeltekst — tekst til gennemgang onsdag]"
+    body: "[Placeholder fordeltekst, tekst til gennemgang onsdag]"
   - heading: "[Fordel 2]"
-    body: "[Placeholder fordeltekst — tekst til gennemgang onsdag]"
+    body: "[Placeholder fordeltekst, tekst til gennemgang onsdag]"
   - heading: "[Fordel 3]"
-    body: "[Placeholder fordeltekst — tekst til gennemgang onsdag]"
+    body: "[Placeholder fordeltekst, tekst til gennemgang onsdag]"
   - heading: "[Fordel 4]"
-    body: "[Placeholder fordeltekst — tekst til gennemgang onsdag]"
+    body: "[Placeholder fordeltekst, tekst til gennemgang onsdag]"
 faqHeading: "Spørgsmål om bestillingsforslag"
 faqs:
   - question: "Hvad baserer Stockifi sine bestillingsforslag på?"

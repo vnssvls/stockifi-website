@@ -22,13 +22,13 @@ howItWorks:
   imageAlt: ""
 benefits:
   - heading: "[Vorteil 1]"
-    body: "[Platzhalter Vorteilstext — Textreview Mittwoch]"
+    body: "[Platzhalter Vorteilstext, Textreview Mittwoch]"
   - heading: "[Vorteil 2]"
-    body: "[Platzhalter Vorteilstext — Textreview Mittwoch]"
+    body: "[Platzhalter Vorteilstext, Textreview Mittwoch]"
   - heading: "[Vorteil 3]"
-    body: "[Platzhalter Vorteilstext — Textreview Mittwoch]"
+    body: "[Platzhalter Vorteilstext, Textreview Mittwoch]"
   - heading: "[Vorteil 4]"
-    body: "[Platzhalter Vorteilstext — Textreview Mittwoch]"
+    body: "[Platzhalter Vorteilstext, Textreview Mittwoch]"
 faqHeading: "Fragen zu Bestellvorschlägen"
 faqs:
   - question: "Worauf basiert Stockifi seine Bestellvorschläge?"
