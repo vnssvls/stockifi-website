@@ -10,6 +10,8 @@ import FaqSplit from '../../../components/faq/FaqSplit.astro';
 import TestimonialSliderCollage from '../../../components/TestimonialSliderCollage.astro';
 import CtaEmail from '../../../components/CtaEmail.astro';
 import { solutionImages } from '../../../data/solution-section-images';
+import navIcons from '../../../data/nav-icons.json';
+import { solutionBenefitIcons } from '../../../data/solution-benefit-icons';
 
 export async function getStaticPaths() {
   return (await getCollection('solutionsSv'))
@@ -20,6 +22,8 @@ export async function getStaticPaths() {
 const { p } = Astro.props;
 const d = p.data;
 const imgs = solutionImages(p.id);
+const benefitIcons = solutionBenefitIcons[p.id] ?? [];
+const benefitItems = d.benefits.map((b, i) => ({ ...b, icon: (navIcons as Record<string, string>)[benefitIcons[i]] }));
 ---
 
 <Layout title={d.metaTitle} description={d.metaDescription}>
@@ -49,7 +53,7 @@ const imgs = solutionImages(p.id);
   {d.benefits.length > 0 && (
     <section class="section sol-grid">
       <div class="container">
-        <BenefitGrid items={d.benefits} columns={4} />
+        <BenefitGrid items={benefitItems} columns={4} />
       </div>
     </section>
   )}
