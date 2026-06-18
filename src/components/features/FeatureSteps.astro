@@ -50,8 +50,8 @@ const { tagline, heading, subhead, cta, steps } = Astro.props;
   .fst-step:not(:last-child)::before {
     content: '';
     position: absolute;
-    left: 22px;
-    top: 44px;
+    left: 28px;
+    top: 56px;
     bottom: 0;
     width: 1px;
     background: var(--border);
@@ -61,11 +61,9 @@ const { tagline, heading, subhead, cta, steps } = Astro.props;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 44px;
-    height: 44px;
+    padding: var(--space-12);
     flex: none;
     background: var(--card);
-    border: 1px solid var(--border);
     border-radius: var(--radius-md);
     color: #fff;
   }
