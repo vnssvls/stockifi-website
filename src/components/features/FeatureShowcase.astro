@@ -17,11 +17,13 @@ interface Props {
   imageSide?: 'left' | 'right';
   /** Aspect ratio for the media slot / placeholder, e.g. '16 / 10' for landscape. */
   mediaRatio?: string;
+  /** Full-bleed width matching FeatureSplit, for stacked sections that must align. */
+  wide?: boolean;
 }
-const { tagline, heading, body, items = [], primary, secondary, image, imageSide = 'right', mediaRatio = '1 / 1' } = Astro.props;
+const { tagline, heading, body, items = [], primary, secondary, image, imageSide = 'right', mediaRatio = '1 / 1', wide = false } = Astro.props;
 ---
 
-<section class:list={['feature-showcase section', `fs7--${imageSide}`]}>
+<section class:list={['feature-showcase section', `fs7--${imageSide}`, wide && 'fs7--wide']}>
   <div class="container fs7-grid">
     <div class="fs7-copy">
       {tagline && <p class="tagline">{tagline}</p>}
@@ -80,5 +82,8 @@ const { tagline, heading, body, items = [], primary, secondary, image, imageSide
     .fs7-grid { grid-template-columns: 1fr 1fr; gap: var(--space-96); }
     .fs7--left .fs7-copy { order: 2; }
     .fs7--left .fs7-media { order: 1; }
+    /* Wide variant — full-bleed width matching FeatureSplit, so stacked sections
+       on a page share the same gutters instead of this one sitting narrower. */
+    .fs7--wide .fs7-grid { max-width: none; padding-inline: 100px; }
   }
 </style>

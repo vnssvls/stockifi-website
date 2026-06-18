@@ -16,9 +16,8 @@ export const solutionSectionImages: Record<string, [string, string, string]> = {
   'independent-restaurants': [S('independent-restaurants'), P('teams-management'), P('hero-chef')],
   'restaurant-groups': [S('restaurant-groups'), P('teams-finance'), P('hero-manager')],
   hotels: [S('hotels'), P('teams-operations'), P('benefits-manager-chef')],
-  // bars has no UI composites; alternate the two bar photos so blocks stay on-theme
-  // without repeating side by side (only two bar photos exist).
-  bars: ['/media/solution-bars-hero.jpg', S('bars'), '/media/solution-bars-hero.jpg'],
+  // bars has no UI composites; three distinct bar photos, one per block.
+  bars: ['/media/solution-bars-hero.jpg', S('bars'), '/media/solution-bars-3.jpg'],
 };
 
 const FALLBACK: [string, string, string] = [S('management'), P('hero-manager'), P('teams-finance')];
