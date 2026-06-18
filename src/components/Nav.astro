@@ -113,14 +113,14 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
             <svg class="caret" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg>
           </button>
           <div class="nav-panel mega mega-solutions" id="panel-solutions">
-            <div class="mega-intro">
+            <a class="mega-intro" href={lp('/solutions')} aria-label={t.viewAllSolutions}>
               <p class="mega-intro-heading">{t.solutionsTailored}</p>
               <p class="mega-intro-desc">{t.solutionsTailoredDesc}</p>
-              <a class="mega-cta-btn" href={lp('/solutions')}>
+              <span class="mega-cta-btn">
                 {t.viewAllSolutions}
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" /></svg>
-              </a>
-            </div>
+              </span>
+            </a>
             {solutionsGroups.map((g) => (
               <div class="mega-group">
                 <p class="mega-group-title">{g.title}</p>
@@ -492,7 +492,11 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
       url('/media/cta-bg-1.jpg');
     background-size: cover;
     background-position: center;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
   }
+  .mega-intro:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35); }
   .mega-intro-heading {
     margin: 0;
     font-family: var(--font-heading);
@@ -521,8 +525,8 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
     white-space: nowrap;
   }
   .mega-cta-btn svg { flex: none; transition: transform 0.15s ease; }
-  .mega-cta-btn:hover { text-decoration: underline; text-underline-offset: 4px; }
-  .mega-cta-btn:hover svg { transform: translateX(4px); }
+  .mega-intro:hover .mega-cta-btn { text-decoration: underline; text-underline-offset: 4px; }
+  .mega-intro:hover .mega-cta-btn svg { transform: translateX(4px); }
 
   /* ── Hamburger ─────────────────────────────────────────────────────── */
   .nav-burger {
