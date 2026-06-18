@@ -68,6 +68,15 @@ const { eyebrow, heading, subhead, cta, image, imageSide = 'right', veil = false
     .phh--left .phh-copy { order: 2; }
     .phh--left .phh-media { order: 1; }
 
+    /* Veil hero: go full-width with a larger media column so the image is the focal
+       point, matching the home hero proportions (1fr 1.3fr, tighter gap). */
+    .phh--veil .phh-grid {
+      max-width: none;
+      padding-inline: 100px;
+      grid-template-columns: 1fr 1.3fr;
+      gap: var(--space-32);
+    }
+
     /* Desktop: drop the overlay veil, fade the image pixels into the bg via a mask. */
     .phh--veil .phh-media { margin-inline: 0; }
     .phh--veil .phh-media img { border-radius: var(--radius-lg); }

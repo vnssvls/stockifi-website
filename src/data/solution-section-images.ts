@@ -16,7 +16,8 @@ export const solutionSectionImages: Record<string, [string, string, string]> = {
   'independent-restaurants': [S('independent-restaurants'), P('teams-management'), P('hero-chef')],
   'restaurant-groups': [S('restaurant-groups'), P('teams-finance'), P('hero-manager')],
   hotels: [S('hotels'), P('teams-operations'), P('benefits-manager-chef')],
-  bars: ['/media/solution-bars-hero.jpg', P('teams-kitchen'), P('hero-chef')],
+  // bars has no UI composites; reuse the landing bar photo so blocks 2-3 stay on-theme
+  bars: ['/media/solution-bars-hero.jpg', S('bars'), S('bars')],
 };
 
 const FALLBACK: [string, string, string] = [S('management'), P('hero-manager'), P('teams-finance')];
