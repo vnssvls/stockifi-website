@@ -20,7 +20,7 @@ howItWorks:
   image: "/media/photos/hero-manager.png"
   imageAlt: ""
 integrationsHeading: "Virker med"
-integrationsSubject: "dit regnskabsprogram"
+integrationsSubject: "dine eksisterende værktøjer"
 benefits:
   - heading: "Opdaget tidligt"
     body: "Se en stigning den dag, den lander, mens du stadig kan handle."

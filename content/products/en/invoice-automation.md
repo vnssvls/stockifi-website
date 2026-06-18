@@ -20,7 +20,7 @@ howItWorks:
   image: "/media/photos/hero-owner.png"
   imageAlt: ""
 integrationsHeading: "Works with"
-integrationsSubject: "your accounting software"
+integrationsSubject: "your existing tools"
 benefits:
   - heading: "Nothing slips by"
     body: "Every supplier invoice is read and captured."

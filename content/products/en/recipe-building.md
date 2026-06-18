@@ -20,7 +20,7 @@ howItWorks:
   image: "/media/photos/teams-operations.png"
   imageAlt: ""
 integrationsHeading: "Works with"
-integrationsSubject: "your accounting software"
+integrationsSubject: "your existing tools"
 benefits:
   - heading: "One recipe library"
     body: "Built and costed the same way across every location."

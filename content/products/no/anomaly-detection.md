@@ -20,7 +20,7 @@ howItWorks:
   image: "/media/photos/teams-management.png"
   imageAlt: ""
 integrationsHeading: "Fungerer med"
-integrationsSubject: "regnskapssystemet ditt"
+integrationsSubject: "verktøyene du bruker"
 benefits:
   - heading: "Ekte vs. feil"
     body: "En reell prisøkning slipper gjennom, en uvanlig post markeres."

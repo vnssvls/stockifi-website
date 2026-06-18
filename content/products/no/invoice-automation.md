@@ -20,7 +20,7 @@ howItWorks:
   image: "/media/photos/hero-owner.png"
   imageAlt: ""
 integrationsHeading: "Fungerer med"
-integrationsSubject: "regnskapsprogrammet ditt"
+integrationsSubject: "verktøyene du bruker"
 benefits:
   - heading: "Ingenting slippes forbi"
     body: "Alle leverandørfakturaer leses og registreres."

@@ -20,7 +20,7 @@ howItWorks:
   image: "/media/photos/hero-owner.png"
   imageAlt: ""
 integrationsHeading: "Kompatibel mit"
-integrationsSubject: "Ihrer Buchhaltungssoftware"
+integrationsSubject: "Ihren bestehenden Tools"
 benefits:
   - heading: "Nichts geht verloren"
     body: "Jede Lieferantenrechnung wird gelesen und erfasst."

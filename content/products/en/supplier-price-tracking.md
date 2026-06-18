@@ -20,7 +20,7 @@ howItWorks:
   image: "/media/photos/hero-manager.png"
   imageAlt: ""
 integrationsHeading: "Works with"
-integrationsSubject: "your accounting software"
+integrationsSubject: "your existing tools"
 benefits:
   - heading: "Caught early"
     body: "See a rise the day it lands, while you can still act."

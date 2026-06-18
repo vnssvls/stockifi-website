@@ -20,7 +20,7 @@ howItWorks:
   image: "/media/photos/hero-manager.png"
   imageAlt: ""
 integrationsHeading: "Werkt met"
-integrationsSubject: "je boekhoudsoftware"
+integrationsSubject: "je bestaande tools"
 benefits:
   - heading: "Vroeg gesignaleerd"
     body: "Zie een stijging de dag dat die binnenkomt, terwijl je er nog op kunt reageren."

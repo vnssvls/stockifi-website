@@ -20,7 +20,7 @@ howItWorks:
   image: "/media/photos/teams-operations.png"
   imageAlt: ""
 integrationsHeading: "Funktioniert mit"
-integrationsSubject: "Ihrer Buchhaltungssoftware"
+integrationsSubject: "Ihren bestehenden Tools"
 benefits:
   - heading: "Eine Rezeptbibliothek"
     body: "Einheitlich aufgebaut und kalkuliert für alle Standorte."

@@ -20,7 +20,7 @@ howItWorks:
   image: "/media/photos/teams-operations.png"
   imageAlt: ""
 integrationsHeading: "Fungerar med"
-integrationsSubject: "ditt redovisningssystem"
+integrationsSubject: "dina befintliga verktyg"
 benefits:
   - heading: "Ett receptbibliotek"
     body: "Byggt och kalkylerat på samma sätt på varje plats."

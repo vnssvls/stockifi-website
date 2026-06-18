@@ -20,7 +20,7 @@ howItWorks:
   image: "/media/photos/teams-management.png"
   imageAlt: ""
 integrationsHeading: "Virker med"
-integrationsSubject: "dit regnskabsprogram"
+integrationsSubject: "dine eksisterende værktøjer"
 benefits:
   - heading: "Reel eller forkert"
     body: "En reel prisstigning passerer; et mistænkeligt opkræv bliver markeret."

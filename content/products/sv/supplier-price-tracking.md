@@ -20,7 +20,7 @@ howItWorks:
   image: "/media/photos/hero-manager.png"
   imageAlt: ""
 integrationsHeading: "Fungerar med"
-integrationsSubject: "ditt redovisningssystem"
+integrationsSubject: "dina befintliga verktyg"
 benefits:
   - heading: "Fångat tidigt"
     body: "Se en höjning den dag den kommer in, medan du fortfarande kan agera."

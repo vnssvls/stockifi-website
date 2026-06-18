@@ -20,7 +20,7 @@ howItWorks:
   image: "/media/photos/hero-owner.png"
   imageAlt: ""
 integrationsHeading: "Werkt met"
-integrationsSubject: "je boekhoudsoftware"
+integrationsSubject: "je bestaande tools"
 benefits:
   - heading: "Niets glipt erdoor"
     body: "Elke leveranciersfactuur wordt gelezen en vastgelegd."

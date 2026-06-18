@@ -20,7 +20,7 @@ howItWorks:
   image: "/media/photos/hero-owner.png"
   imageAlt: ""
 integrationsHeading: "Virker med"
-integrationsSubject: "dit regnskabsprogram"
+integrationsSubject: "dine eksisterende værktøjer"
 benefits:
   - heading: "Intet glider igennem"
     body: "Hver leverandørfaktura læses og registreres."

@@ -20,7 +20,7 @@ howItWorks:
   image: "/media/photos/hero-owner.png"
   imageAlt: ""
 integrationsHeading: "Fungerar med"
-integrationsSubject: "ditt redovisningssystem"
+integrationsSubject: "dina befintliga verktyg"
 benefits:
   - heading: "Inget går igenom oläst"
     body: "Varje leverantörsfaktura läses och registreras."

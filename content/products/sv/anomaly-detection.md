@@ -20,7 +20,7 @@ howItWorks:
   image: "/media/photos/teams-management.png"
   imageAlt: ""
 integrationsHeading: "Fungerar med"
-integrationsSubject: "ditt redovisningssystem"
+integrationsSubject: "dina befintliga verktyg"
 benefits:
   - heading: "Verklig vs. felaktig"
     body: "En verklig prishöjning släpps igenom; en avvikande post flaggas."

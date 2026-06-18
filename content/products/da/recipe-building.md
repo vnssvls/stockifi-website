@@ -20,7 +20,7 @@ howItWorks:
   image: "/media/photos/teams-operations.png"
   imageAlt: ""
 integrationsHeading: "Virker med"
-integrationsSubject: "dit regnskabsprogram"
+integrationsSubject: "dine eksisterende værktøjer"
 benefits:
   - heading: "Ét opskriftsbibliotek"
     body: "Bygget og kalkuleret på samme måde på tværs af alle lokationer."

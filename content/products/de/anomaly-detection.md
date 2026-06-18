@@ -20,7 +20,7 @@ howItWorks:
   image: "/media/photos/teams-management.png"
   imageAlt: ""
 integrationsHeading: "Funktioniert mit"
-integrationsSubject: "Ihrer Buchhaltungssoftware"
+integrationsSubject: "Ihren bestehenden Tools"
 benefits:
   - heading: "Echte Preisänderung oder Fehler"
     body: "Eine reale Preissteigerung wird akzeptiert; ein ungewöhnlicher Posten wird markiert."

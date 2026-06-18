@@ -20,7 +20,7 @@ howItWorks:
   image: "/media/photos/teams-management.png"
   imageAlt: ""
 integrationsHeading: "Works with"
-integrationsSubject: "your accounting software"
+integrationsSubject: "your existing tools"
 benefits:
   - heading: "Real from wrong"
     body: "A real rise passes; an odd charge gets flagged."

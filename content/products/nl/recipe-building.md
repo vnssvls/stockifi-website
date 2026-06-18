@@ -20,7 +20,7 @@ howItWorks:
   image: "/media/photos/teams-operations.png"
   imageAlt: ""
 integrationsHeading: "Werkt met"
-integrationsSubject: "je boekhoudsoftware"
+integrationsSubject: "je bestaande tools"
 benefits:
   - heading: "Één receptenbibliotheek"
     body: "Op dezelfde manier opgebouwd en berekend op elke locatie."

@@ -20,7 +20,7 @@ howItWorks:
   image: "/media/photos/hero-manager.png"
   imageAlt: ""
 integrationsHeading: "Funktioniert mit"
-integrationsSubject: "Ihrer Buchhaltungssoftware"
+integrationsSubject: "Ihren bestehenden Tools"
 benefits:
   - heading: "Früh erkannt"
     body: "Sehen Sie einen Preisanstieg am Tag, an dem er eingeht, solange Sie noch handeln können."

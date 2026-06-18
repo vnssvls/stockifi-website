@@ -20,7 +20,7 @@ howItWorks:
   image: "/media/photos/teams-management.png"
   imageAlt: ""
 integrationsHeading: "Werkt met"
-integrationsSubject: "je boekhoudsoftware"
+integrationsSubject: "je bestaande tools"
 benefits:
   - heading: "Echt of fout"
     body: "Een echte prijsstijging wordt doorgelaten; een vreemde post wordt gemarkeerd."
