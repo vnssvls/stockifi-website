@@ -152,7 +152,7 @@ const bookHref = lp('/book-a-demo');
   .sc-sub { font-size: var(--text-body-lg); line-height: var(--lh-body); }
 
   .sc-grid {
-    display: grid; grid-template-columns: 1fr; align-items: stretch;
+    display: grid; grid-template-columns: minmax(0, 1fr); align-items: stretch;
     border: 1px solid #ececec; border-radius: var(--radius-xl);
     background: #fff; color: #1a1620;
     box-shadow: 0 10px 40px -12px rgba(60, 40, 100, 0.18);
