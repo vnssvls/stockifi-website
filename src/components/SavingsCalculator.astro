@@ -103,8 +103,8 @@ const bookHref = lp('/book-a-demo');
   .sc { position: relative; isolation: isolate; overflow: clip; }
   /* Subtle brand gradient glow behind the panels (same asset as book-a-demo). */
   .sc-glow {
-    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
-    z-index: -1; width: 120vw; height: 120%;
+    position: absolute; inset-inline: 0; top: -10%; height: 120%;
+    z-index: -1;
     background-image: url('/media/gradient-duo.png');
     background-position: center; background-size: cover; background-repeat: no-repeat;
     opacity: 0.2; pointer-events: none;
