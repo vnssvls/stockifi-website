@@ -107,7 +107,7 @@ const bookHref = lp('/book-a-demo');
     z-index: -1;
     background-image: url('/media/gradient-duo.png');
     background-position: center; background-size: cover; background-repeat: no-repeat;
-    opacity: 0.2; pointer-events: none;
+    opacity: 0.3; pointer-events: none;
   }
 
   .sc-inner { display: flex; flex-direction: column; gap: var(--space-48); }
@@ -124,19 +124,16 @@ const bookHref = lp('/book-a-demo');
      (divider between them), so they read as one component. */
   .sc-grid {
     display: grid; grid-template-columns: 1fr; align-items: stretch;
-    border: 1px solid #2e283e7d; border-radius: var(--radius-xl);
-    background: var(--card);
-    box-shadow: 0 8px 32px -4px rgba(0, 0, 0, 0.25);
+    border: none; border-radius: var(--radius-xl);
+    background: #f5f5f5; color: #1a1620;
+    box-shadow: 0 12px 48px -12px rgba(0, 0, 0, 0.55);
     overflow: hidden;
   }
-  /* Two-tone (Fin-style): light input panel (left) + dark results panel (right).
-     The tone change is the divider — no border needed at the seam. */
-  .sc-inputs {
-    display: flex; flex-direction: column; gap: var(--space-32); padding: var(--space-32);
-    background: #f5f3ee; color: #1a1620;
-  }
-  .sc-inputs .sc-label { color: #1a1620; }
-  .sc-inputs .sc-pct { color: #6d46aa; }
+  /* Full light card on the dark page (pricing — meant to grab attention). */
+  .sc-inputs { display: flex; flex-direction: column; gap: var(--space-32); padding: var(--space-32); }
+  .sc-grid .sc-label { color: #1a1620; }
+  .sc-grid .sc-pct { color: #6d46aa; }
+  .sc-grid .text-muted { color: #6b6675; }
   .sc-field { display: flex; flex-direction: column; gap: var(--space-16); }
 
   .sc-label { font-size: var(--text-body-sm); font-weight: var(--fw-medium); color: var(--foreground); }
@@ -146,7 +143,7 @@ const bookHref = lp('/book-a-demo');
   /* White fill so it reads clearly as an editable field on the dark page. */
   .sc-input {
     width: 100%; height: 56px; padding: 0 var(--space-16);
-    background: #fff; border: 1.5px solid #e6e1d6;
+    background: #fff; border: 1.5px solid #e2e2e2;
     border-radius: var(--radius-md); color: #1a1620;
     font-size: var(--text-body); font-family: var(--font-body); font-weight: var(--fw-medium);
     transition: border-color 0.15s ease, box-shadow 0.15s ease;
@@ -171,7 +168,7 @@ const bookHref = lp('/book-a-demo');
   .sc-range {
     -webkit-appearance: none; appearance: none; width: 100%; height: 6px;
     border-radius: 999px; cursor: pointer; margin: 10px 0;
-    background: linear-gradient(to right, var(--primary) var(--fill, 50%), #dcd6ca var(--fill, 50%));
+    background: linear-gradient(to right, var(--primary) var(--fill, 50%), #dcdcdc var(--fill, 50%));
   }
   .sc-range::-webkit-slider-thumb {
     -webkit-appearance: none; appearance: none; width: 22px; height: 22px;
@@ -185,40 +182,40 @@ const bookHref = lp('/book-a-demo');
   .sc-range:focus-visible { outline: 2px solid var(--primary); outline-offset: 4px; }
 
   /* Results column (inside the unified card) — divider separates it from inputs. */
-  .sc-card { padding: var(--space-32); }
+  .sc-card { padding: var(--space-32); border-top: 1px solid #e5e5e5; }
   .sc-result { display: flex; flex-direction: column; gap: var(--space-32); height: 100%; justify-content: space-between; }
 
   /* Primary result — centered hero */
   .sc-primary { display: flex; flex-direction: column; align-items: center; text-align: center; gap: var(--space-8); }
-  .sc-result-h { font-family: var(--font-heading); font-size: var(--text-h5); font-weight: var(--fw-bold); color: var(--foreground); }
+  .sc-result-h { font-family: var(--font-heading); font-size: var(--text-h5); font-weight: var(--fw-bold); color: #1a1620; }
   .sc-result-n {
     font-family: var(--font-body); font-size: var(--text-h3); line-height: 1.1; font-weight: var(--fw-bold);
-    color: var(--foreground); font-variant-numeric: tabular-nums;
+    color: #1a1620; font-variant-numeric: tabular-nums;
   }
   .sc-result-sub { font-size: var(--text-body-sm); }
 
   /* Secondary results — unchanged row layout */
-  .sc-rows { display: flex; flex-direction: column; gap: var(--space-16); padding-top: var(--space-32); border-top: 1px solid var(--border); }
+  .sc-rows { display: flex; flex-direction: column; gap: var(--space-16); padding-top: var(--space-32); border-top: 1px solid #e5e5e5; }
   .sc-srow { display: flex; align-items: center; justify-content: space-between; gap: var(--space-16); font-size: var(--text-body); }
-  .sc-srow span:last-child { font-weight: var(--fw-semibold); color: var(--foreground); font-variant-numeric: tabular-nums; }
+  .sc-srow span:last-child { font-weight: var(--fw-semibold); color: #1a1620; font-variant-numeric: tabular-nums; }
 
-  /* CTA — white fill with arrow */
+  /* CTA — purple fill (pops on the light card) with arrow */
   .sc-cta {
     display: inline-flex; align-items: center; justify-content: center; gap: var(--space-8);
     width: 100%; height: 54px; padding: 0 var(--space-32); margin-top: var(--space-8);
-    background: var(--foreground); color: var(--background); border: none;
+    background: var(--primary); color: #fff; border: none;
     border-radius: var(--radius-full); font-size: var(--text-body);
     font-weight: var(--fw-semibold); font-family: var(--font-body); cursor: pointer;
     transition: background 0.18s ease;
   }
-  .sc-cta:hover { background: color-mix(in srgb, var(--foreground) 88%, transparent); }
+  .sc-cta:hover { background: var(--primary-dark); }
   .sc-cta-arrow { transition: transform 0.18s ease; }
   .sc-cta:hover .sc-cta-arrow { transform: translateX(3px); }
 
   @media (min-width: 1024px) {
     .sc-grid { grid-template-columns: 1fr 1fr; }
     .sc-inputs { padding: var(--space-64); gap: var(--space-48); }
-    .sc-card { padding: var(--space-64); }
+    .sc-card { padding: var(--space-64); border-top: none; border-left: 1px solid #e5e5e5; }
     .sc-head { max-width: none; }
   }
 
