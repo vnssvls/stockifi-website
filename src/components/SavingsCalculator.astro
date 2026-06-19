@@ -36,7 +36,6 @@ const bookHref = lp('/book-a-demo');
 ---
 
 <section class="sc section" data-sc data-tag={c.tag} data-cur={c.cur} data-book={bookHref}>
-  <span class="sc-glow" aria-hidden="true"></span>
   <div class="container sc-inner">
     <header class="sc-head">
       <p class="sc-eyebrow">{s.eyebrow}</p>
@@ -100,40 +99,37 @@ const bookHref = lp('/book-a-demo');
 </section>
 
 <style>
-  .sc { position: relative; isolation: isolate; overflow: clip; }
-  /* Subtle brand gradient glow behind the panels (same asset as book-a-demo). */
-  .sc-glow {
-    position: absolute; inset-inline: 0; top: -10%; height: 120%;
-    z-index: -1;
-    background-image: url('/media/gradient-duo.png');
-    background-position: center; background-size: cover; background-repeat: no-repeat;
-    opacity: 0.3; pointer-events: none;
+  /* Full LIGHT section on the dark page — reads as a built-in band, not an embed.
+     Subtle brand-tinted gradient backdrop baked into the section. */
+  .sc {
+    position: relative; isolation: isolate; overflow: clip;
+    background: radial-gradient(115% 90% at 50% 0%, color-mix(in srgb, var(--primary) 8%, #f4f4f5), #f4f4f5 72%);
+    color: #1a1620;
   }
 
   .sc-inner { display: flex; flex-direction: column; gap: var(--space-48); }
   .sc-head { max-width: 40ch; }
   .sc-eyebrow {
     font-size: var(--text-body-sm); font-weight: var(--fw-semibold);
-    letter-spacing: 0.08em; text-transform: uppercase; color: var(--primary-light);
+    letter-spacing: 0.08em; text-transform: uppercase; color: #6d46aa;
     margin-bottom: var(--space-12);
   }
-  .sc-heading { font-size: var(--text-h2); line-height: var(--lh-h2); margin-bottom: var(--space-16); }
+  .sc-heading { font-size: var(--text-h2); line-height: var(--lh-h2); margin-bottom: var(--space-16); color: #1a1620; }
   .sc-sub { font-size: var(--text-body-lg); line-height: var(--lh-body); }
 
   /* One unified card: inputs + results are two columns inside a single container
      (divider between them), so they read as one component. */
   .sc-grid {
     display: grid; grid-template-columns: 1fr; align-items: stretch;
-    border: none; border-radius: var(--radius-xl);
-    background: #f5f5f5; color: #1a1620;
-    box-shadow: 0 12px 48px -12px rgba(0, 0, 0, 0.55);
+    border: 1px solid #ececec; border-radius: var(--radius-xl);
+    background: #fff; color: #1a1620;
+    box-shadow: 0 10px 40px -12px rgba(60, 40, 100, 0.18);
     overflow: hidden;
   }
-  /* Full light card on the dark page (pricing — meant to grab attention). */
   .sc-inputs { display: flex; flex-direction: column; gap: var(--space-32); padding: var(--space-32); }
-  .sc-grid .sc-label { color: #1a1620; }
-  .sc-grid .sc-pct { color: #6d46aa; }
-  .sc-grid .text-muted { color: #6b6675; }
+  .sc .sc-label { color: #1a1620; }
+  .sc .sc-pct { color: #6d46aa; }
+  .sc .text-muted { color: #6b6675; }
   .sc-field { display: flex; flex-direction: column; gap: var(--space-16); }
 
   .sc-label { font-size: var(--text-body-sm); font-weight: var(--fw-medium); color: var(--foreground); }
