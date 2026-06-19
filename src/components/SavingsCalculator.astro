@@ -36,6 +36,7 @@ const bookHref = lp('/book-a-demo');
 ---
 
 <section class="sc section" data-sc data-tag={c.tag} data-cur={c.cur} data-book={bookHref}>
+  <span class="sc-glow" aria-hidden="true"></span>
   <div class="container sc-inner">
     <header class="sc-head">
       <p class="sc-eyebrow">{s.eyebrow}</p>
@@ -44,38 +45,33 @@ const bookHref = lp('/book-a-demo');
     </header>
 
     <div class="sc-grid">
-      <!-- Inputs -->
+      <!-- Inputs panel (single column, mirrors the results card) -->
       <div class="sc-inputs">
-        <div class="sc-row2">
-          <div class="sc-field">
-            <label class="sc-label" for="sc-rev">{s.revenue}</label>
-            <div class="sc-money">
-              <span class="sc-sym" aria-hidden="true">{c.sym}</span>
-              <input class="sc-input sc-input--money" id="sc-rev" type="text" inputmode="numeric"
-                autocomplete="off" placeholder={D.revenue.toLocaleString(c.tag)} value={D.revenue.toLocaleString(c.tag)} />
-            </div>
-          </div>
-          <div class="sc-field">
-            <label class="sc-label" for="sc-loc">{s.locations}</label>
-            <div class="sc-sel-wrap">
-              <select class="sc-input sc-select" id="sc-loc">
-                {LOC_OPTS.map((v) => (<option value={v} selected={v === D.locDefault}>{v}</option>))}
-              </select>
-              <svg class="sc-chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
-            </div>
+        <div class="sc-field">
+          <label class="sc-label" for="sc-rev">{s.revenue}</label>
+          <div class="sc-money">
+            <span class="sc-sym" aria-hidden="true">{c.sym}</span>
+            <input class="sc-input sc-input--money" id="sc-rev" type="text" inputmode="numeric"
+              autocomplete="off" placeholder={D.revenue.toLocaleString(c.tag)} value={D.revenue.toLocaleString(c.tag)} />
           </div>
         </div>
-
-        <div class="sc-row2">
-          <div class="sc-field">
-            <div class="sc-slabel"><span class="sc-label">{s.current}</span><span class="sc-pct" id="sc-cur-val">{D.current}%</span></div>
-            <input class="sc-range" id="sc-cur" type="range" min={D.min} max={D.max} step="1" value={D.current} />
+        <div class="sc-field">
+          <label class="sc-label" for="sc-loc">{s.locations}</label>
+          <div class="sc-sel-wrap">
+            <select class="sc-input sc-select" id="sc-loc">
+              {LOC_OPTS.map((v) => (<option value={v} selected={v === D.locDefault}>{v}</option>))}
+            </select>
+            <svg class="sc-chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
           </div>
-          <div class="sc-field">
-            <div class="sc-slabel"><span class="sc-label">{s.target}</span><span class="sc-pct" id="sc-tgt-val">{D.target}%</span></div>
-            <input class="sc-range" id="sc-tgt" type="range" min={D.min} max={D.max} step="1" value={D.target} />
-          </div>
+        </div>
+        <div class="sc-field">
+          <div class="sc-slabel"><span class="sc-label">{s.current}</span><span class="sc-pct" id="sc-cur-val">{D.current}%</span></div>
+          <input class="sc-range" id="sc-cur" type="range" min={D.min} max={D.max} step="1" value={D.current} />
+        </div>
+        <div class="sc-field">
+          <div class="sc-slabel"><span class="sc-label">{s.target}</span><span class="sc-pct" id="sc-tgt-val">{D.target}%</span></div>
+          <input class="sc-range" id="sc-tgt" type="range" min={D.min} max={D.max} step="1" value={D.target} />
         </div>
       </div>
 
@@ -104,6 +100,16 @@ const bookHref = lp('/book-a-demo');
 </section>
 
 <style>
+  .sc { position: relative; isolation: isolate; overflow: clip; }
+  /* Subtle brand gradient glow behind the panels (same asset as book-a-demo). */
+  .sc-glow {
+    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+    z-index: -1; width: 120vw; height: 120%;
+    background-image: url('/media/gradient-duo.png');
+    background-position: center; background-size: cover; background-repeat: no-repeat;
+    opacity: 0.2; pointer-events: none;
+  }
+
   .sc-inner { display: flex; flex-direction: column; gap: var(--space-48); }
   .sc-head { max-width: 40ch; }
   .sc-eyebrow {
@@ -114,10 +120,16 @@ const bookHref = lp('/book-a-demo');
   .sc-heading { font-size: var(--text-h2); line-height: var(--lh-h2); margin-bottom: var(--space-16); }
   .sc-sub { font-size: var(--text-body-lg); line-height: var(--lh-body); }
 
-  .sc-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-48); align-items: start; }
+  .sc-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-48); align-items: stretch; }
 
-  .sc-inputs { display: flex; flex-direction: column; gap: var(--space-48); }
-  .sc-row2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-32); }
+  /* Inputs panel mirrors the results card so the two sides balance (Fin-style). */
+  .sc-inputs {
+    display: flex; flex-direction: column; gap: var(--space-32);
+    border: 1px solid #2e283e7d; border-radius: var(--radius-xl);
+    background: color-mix(in srgb, var(--muted) 35%, transparent);
+    box-shadow: 0 8px 32px -4px rgba(0, 0, 0, 0.25);
+    padding: var(--space-48);
+  }
   .sc-field { display: flex; flex-direction: column; gap: var(--space-16); }
 
   .sc-label { font-size: var(--text-body-sm); font-weight: var(--fw-medium); color: var(--foreground); }
@@ -172,7 +184,7 @@ const bookHref = lp('/book-a-demo');
     box-shadow: 0 8px 32px -4px rgba(0, 0, 0, 0.25);
     padding: var(--space-48);
   }
-  .sc-result { display: flex; flex-direction: column; gap: var(--space-32); }
+  .sc-result { display: flex; flex-direction: column; gap: var(--space-32); height: 100%; justify-content: space-between; }
 
   /* Primary result — centered hero */
   .sc-primary { display: flex; flex-direction: column; align-items: center; text-align: center; gap: var(--space-8); }
@@ -202,18 +214,15 @@ const bookHref = lp('/book-a-demo');
   .sc-cta:hover .sc-cta-arrow { transform: translateX(3px); }
 
   @media (min-width: 1024px) {
-    .sc-grid { grid-template-columns: 1.05fr 0.95fr; gap: var(--space-96); }
+    .sc-grid { grid-template-columns: 1fr 1fr; gap: var(--space-32); }
     .sc-head { max-width: none; }
   }
 
   @media (max-width: 1023px) {
     .sc-inner { gap: var(--space-32); }
     .sc-grid { gap: var(--space-32); }
-    .sc-inputs { gap: var(--space-32); }
+    .sc-inputs { gap: var(--space-32); padding: var(--space-32); }
     .sc-card { padding: var(--space-32); }
-  }
-  @media (max-width: 600px) {
-    .sc-row2 { grid-template-columns: 1fr; }
   }
 </style>
 
