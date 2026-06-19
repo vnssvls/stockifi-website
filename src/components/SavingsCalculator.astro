@@ -120,16 +120,16 @@ const bookHref = lp('/book-a-demo');
   .sc-heading { font-size: var(--text-h2); line-height: var(--lh-h2); margin-bottom: var(--space-16); }
   .sc-sub { font-size: var(--text-body-lg); line-height: var(--lh-body); }
 
-  .sc-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-48); align-items: stretch; }
-
-  /* Inputs panel mirrors the results card so the two sides balance (Fin-style). */
-  .sc-inputs {
-    display: flex; flex-direction: column; gap: var(--space-32);
+  /* One unified card: inputs + results are two columns inside a single container
+     (divider between them), so they read as one component. */
+  .sc-grid {
+    display: grid; grid-template-columns: 1fr; align-items: stretch;
     border: 1px solid #2e283e7d; border-radius: var(--radius-xl);
     background: color-mix(in srgb, var(--muted) 35%, transparent);
     box-shadow: 0 8px 32px -4px rgba(0, 0, 0, 0.25);
-    padding: var(--space-48);
+    overflow: hidden;
   }
+  .sc-inputs { display: flex; flex-direction: column; gap: var(--space-32); padding: var(--space-32); }
   .sc-field { display: flex; flex-direction: column; gap: var(--space-16); }
 
   .sc-label { font-size: var(--text-body-sm); font-weight: var(--fw-medium); color: var(--foreground); }
@@ -177,13 +177,8 @@ const bookHref = lp('/book-a-demo');
   }
   .sc-range:focus-visible { outline: 2px solid var(--primary); outline-offset: 4px; }
 
-  /* Result card */
-  .sc-card {
-    border: 1px solid #2e283e7d; border-radius: var(--radius-xl);
-    background: color-mix(in srgb, var(--muted) 35%, transparent);
-    box-shadow: 0 8px 32px -4px rgba(0, 0, 0, 0.25);
-    padding: var(--space-48);
-  }
+  /* Results column (inside the unified card) — divider separates it from inputs. */
+  .sc-card { padding: var(--space-32); border-top: 1px solid var(--border); }
   .sc-result { display: flex; flex-direction: column; gap: var(--space-32); height: 100%; justify-content: space-between; }
 
   /* Primary result — centered hero */
@@ -214,15 +209,14 @@ const bookHref = lp('/book-a-demo');
   .sc-cta:hover .sc-cta-arrow { transform: translateX(3px); }
 
   @media (min-width: 1024px) {
-    .sc-grid { grid-template-columns: 1fr 1fr; gap: var(--space-32); }
+    .sc-grid { grid-template-columns: 1fr 1fr; }
+    .sc-inputs { padding: var(--space-64); gap: var(--space-48); }
+    .sc-card { padding: var(--space-64); border-top: none; border-left: 1px solid var(--border); }
     .sc-head { max-width: none; }
   }
 
   @media (max-width: 1023px) {
     .sc-inner { gap: var(--space-32); }
-    .sc-grid { gap: var(--space-32); }
-    .sc-inputs { gap: var(--space-32); padding: var(--space-32); }
-    .sc-card { padding: var(--space-32); }
   }
 </style>
 
