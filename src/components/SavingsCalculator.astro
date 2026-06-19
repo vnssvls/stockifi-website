@@ -137,7 +137,9 @@ const bookHref = lp('/book-a-demo');
     color: #1a1620;
   }
 
-  .sc-inner { display: flex; flex-direction: column; gap: var(--space-48); }
+  /* Wider than the page's 1280 container so the results + breakdown table get
+     Fin-like room (this is a featured light band, intentionally wider). */
+  .sc-inner { max-width: 1600px; display: flex; flex-direction: column; gap: var(--space-48); }
   .sc-head { max-width: 50rem; margin-inline: auto; text-align: center; }
   .sc-eyebrow {
     font-size: var(--text-body-sm); font-weight: var(--fw-semibold);
@@ -230,7 +232,7 @@ const bookHref = lp('/book-a-demo');
 
   @media (min-width: 1024px) {
     /* Inputs narrower, results + table wider (Fin layout). */
-    .sc-grid { grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr); }
+    .sc-grid { grid-template-columns: 400px minmax(0, 1fr); }
     .sc-inputs { padding: var(--space-64); gap: var(--space-48); }
     .sc-card { padding: var(--space-64); border-left: 1px solid #e5e5e5; }
   }
