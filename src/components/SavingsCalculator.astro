@@ -2,24 +2,23 @@
 // Savings calculator (pricing section 2b). Live, ungated estimate that mirrors the
 // old Webflow logic: annualSavings = revenue/location × locations × (current% − target%).
 // The inputs ARE the lead data; the "Unlock savings" CTA carries them onward.
-// HubSpot wiring is intentionally provisional (see the script) until V picks the
-// approach (reuse book-a-demo vs dedicated form). Localized across all 6 locales.
+// Locations is a dropdown using the SAME ranges as the book-a-demo `number_of_venues`
+// field, so the carry-over maps 1:1. HubSpot wiring is provisional (see the script)
+// until V picks the approach. Localized across all 6 locales.
 
 const locale = Astro.currentLocale ?? 'en';
 const lp = (p: string) => (locale === 'en' ? p : `/${locale}${p}`);
 
 const STRINGS = {
-  en: { eyebrow: 'Savings calculator', heading: 'See what Stockifi could save you', subhead: 'Enter your numbers and watch your first-year savings update live.', revenue: 'Annual revenue per location', locations: 'Number of locations', current: 'Current food & drink cost %', target: 'Target food & drink cost %', resultH: 'Annual savings', resultSub: 'In year one with Stockifi', per1: 'Every 1% improvement', perLoc: 'Savings per location', cta: 'Unlock savings', note: 'An estimate based on the numbers you enter.' },
-  no: { eyebrow: 'Besparingskalkulator', heading: 'Se hva Stockifi kan spare deg for', subhead: 'Legg inn tallene dine og se besparelsen for det første året oppdateres live.', revenue: 'Årlig omsetning per lokasjon', locations: 'Antall lokasjoner', current: 'Nåværende varekost %', target: 'Mål for varekost %', resultH: 'Årlig besparelse', resultSub: 'Det første året med Stockifi', per1: 'Hver forbedring på 1 %', perLoc: 'Besparelse per lokasjon', cta: 'Lås opp besparelsen', note: 'Et estimat basert på tallene du legger inn.' },
-  da: { eyebrow: 'Besparelsesberegner', heading: 'Se hvad Stockifi kan spare dig for', subhead: 'Indtast dine tal og se din besparelse i det første år opdateres live.', revenue: 'Årlig omsætning per lokation', locations: 'Antal lokationer', current: 'Nuværende vareforbrug %', target: 'Mål for vareforbrug %', resultH: 'Årlig besparelse', resultSub: 'Det første år med Stockifi', per1: 'Hver forbedring på 1 %', perLoc: 'Besparelse per lokation', cta: 'Lås op for besparelsen', note: 'Et estimat baseret på dine tal.' },
-  sv: { eyebrow: 'Besparingskalkylator', heading: 'Se vad Stockifi kan spara dig', subhead: 'Ange dina siffror och se besparingen för det första året uppdateras live.', revenue: 'Årlig omsättning per restaurang', locations: 'Antal restauranger', current: 'Nuvarande råvarukostnad %', target: 'Mål för råvarukostnad %', resultH: 'Årlig besparing', resultSub: 'Det första året med Stockifi', per1: 'Varje förbättring på 1 %', perLoc: 'Besparing per restaurang', cta: 'Lås upp besparingen', note: 'En uppskattning baserad på dina siffror.' },
-  nl: { eyebrow: 'Besparingscalculator', heading: 'Zie wat Stockifi je kan besparen', subhead: 'Vul je cijfers in en zie je besparing in het eerste jaar live.', revenue: 'Jaaromzet per locatie', locations: 'Aantal locaties', current: 'Huidige foodcost %', target: 'Doel-foodcost %', resultH: 'Jaarlijkse besparing', resultSub: 'In het eerste jaar met Stockifi', per1: 'Elke verbetering van 1%', perLoc: 'Besparing per locatie', cta: 'Ontgrendel je besparing', note: 'Een schatting op basis van je ingevoerde cijfers.' },
-  de: { eyebrow: 'Einsparungsrechner', heading: 'Sehen Sie, was Stockifi Ihnen sparen kann', subhead: 'Geben Sie Ihre Zahlen ein und sehen Sie Ihre Einsparungen im ersten Jahr live.', revenue: 'Jahresumsatz pro Standort', locations: 'Anzahl der Standorte', current: 'Aktueller Wareneinsatz %', target: 'Ziel-Wareneinsatz %', resultH: 'Jährliche Einsparungen', resultSub: 'Im ersten Jahr mit Stockifi', per1: 'Jede Verbesserung um 1 %', perLoc: 'Einsparungen pro Standort', cta: 'Einsparungen freischalten', note: 'Eine Schätzung auf Basis Ihrer Eingaben.' },
+  en: { eyebrow: 'Savings calculator', heading: 'See how much you could save with Stockifi', subhead: 'Share your numbers below to calculate your potential savings.', revenue: 'Annual revenue per location', locations: 'Number of locations', current: 'Current food & drink cost %', target: 'Target food & drink cost %', resultH: 'Annual savings', resultSub: 'In year one with Stockifi', per1: 'Every 1% improvement', perLoc: 'Savings per location', cta: 'Unlock savings', locs: ['1 location', '2 - 4 locations', '5 - 10 locations', '11 - 20 locations', '20+ locations'] },
+  no: { eyebrow: 'Besparingskalkulator', heading: 'Se hvor mye du kan spare med Stockifi', subhead: 'Del tallene dine nedenfor for å beregne din potensielle besparelse.', revenue: 'Årlig omsetning per lokasjon', locations: 'Antall lokasjoner', current: 'Nåværende varekost %', target: 'Mål for varekost %', resultH: 'Årlig besparelse', resultSub: 'Det første året med Stockifi', per1: 'Hver forbedring på 1 %', perLoc: 'Besparelse per lokasjon', cta: 'Lås opp besparelsen', locs: ['1 lokasjon', '2 - 4 lokasjoner', '5 - 10 lokasjoner', '11 - 20 lokasjoner', '20+ lokasjoner'] },
+  da: { eyebrow: 'Besparelsesberegner', heading: 'Se hvor meget du kan spare med Stockifi', subhead: 'Del dine tal nedenfor for at beregne din potentielle besparelse.', revenue: 'Årlig omsætning per lokation', locations: 'Antal lokationer', current: 'Nuværende vareforbrug %', target: 'Mål for vareforbrug %', resultH: 'Årlig besparelse', resultSub: 'Det første år med Stockifi', per1: 'Hver forbedring på 1 %', perLoc: 'Besparelse per lokation', cta: 'Lås op for besparelsen', locs: ['1 lokation', '2 - 4 lokationer', '5 - 10 lokationer', '11 - 20 lokationer', '20+ lokationer'] },
+  sv: { eyebrow: 'Besparingskalkylator', heading: 'Se hur mycket du kan spara med Stockifi', subhead: 'Dela dina siffror nedan för att beräkna din potentiella besparing.', revenue: 'Årlig omsättning per restaurang', locations: 'Antal restauranger', current: 'Nuvarande råvarukostnad %', target: 'Mål för råvarukostnad %', resultH: 'Årlig besparing', resultSub: 'Det första året med Stockifi', per1: 'Varje förbättring på 1 %', perLoc: 'Besparing per restaurang', cta: 'Lås upp besparingen', locs: ['1 restaurang', '2 - 4 restauranger', '5 - 10 restauranger', '11 - 20 restauranger', '20+ restauranger'] },
+  nl: { eyebrow: 'Besparingscalculator', heading: 'Ontdek hoeveel je kunt besparen met Stockifi', subhead: 'Deel hieronder je cijfers om je mogelijke besparing te berekenen.', revenue: 'Jaaromzet per locatie', locations: 'Aantal locaties', current: 'Huidige foodcost %', target: 'Doel-foodcost %', resultH: 'Jaarlijkse besparing', resultSub: 'In het eerste jaar met Stockifi', per1: 'Elke verbetering van 1%', perLoc: 'Besparing per locatie', cta: 'Ontgrendel je besparing', locs: ['1 locatie', '2 - 4 locaties', '5 - 10 locaties', '11 - 20 locaties', '20+ locaties'] },
+  de: { eyebrow: 'Einsparungsrechner', heading: 'Sehen Sie, wie viel Sie mit Stockifi sparen können', subhead: 'Geben Sie unten Ihre Zahlen ein, um Ihre möglichen Einsparungen zu berechnen.', revenue: 'Jahresumsatz pro Standort', locations: 'Anzahl der Standorte', current: 'Aktueller Wareneinsatz %', target: 'Ziel-Wareneinsatz %', resultH: 'Jährliche Einsparungen', resultSub: 'Im ersten Jahr mit Stockifi', per1: 'Jede Verbesserung um 1 %', perLoc: 'Einsparungen pro Standort', cta: 'Einsparungen freischalten', locs: ['1 Standort', '2 - 4 Standorte', '5 - 10 Standorte', '11 - 20 Standorte', '20+ Standorte'] },
 };
 const s = STRINGS[locale as keyof typeof STRINGS] ?? STRINGS.en;
 
-// Locale → number-format tag + currency. Drives both the live results and the
-// revenue field's grouping/symbol.
 const CUR: Record<string, { tag: string; cur: string; sym: string }> = {
   en: { tag: 'en-IE', cur: 'EUR', sym: '€' },
   de: { tag: 'de-DE', cur: 'EUR', sym: '€' },
@@ -30,13 +29,13 @@ const CUR: Record<string, { tag: string; cur: string; sym: string }> = {
 };
 const c = CUR[locale] ?? CUR.en;
 
-const D = { revenue: 1300000, locations: 5, current: 30, target: 27, min: 5, max: 60 };
+// Location ranges match book-a-demo's number_of_venues values 1:1 for clean carry-over.
+const LOC_VALUES = ['1', '2 - 4', '5 - 10', '11 - 20', '20+'];
+const D = { revenue: 1300000, locDefault: '5 - 10', current: 30, target: 27, min: 5, max: 60 };
 const bookHref = lp('/book-a-demo');
 ---
 
-<section class="sc section" data-sc
-  data-tag={c.tag} data-cur={c.cur} data-book={bookHref}
-  data-d-current={D.current} data-d-target={D.target}>
+<section class="sc section" data-sc data-tag={c.tag} data-cur={c.cur} data-book={bookHref}>
   <div class="container sc-inner">
     <header class="sc-head">
       <p class="sc-eyebrow">{s.eyebrow}</p>
@@ -58,8 +57,15 @@ const bookHref = lp('/book-a-demo');
           </div>
           <div class="sc-field">
             <label class="sc-label" for="sc-loc">{s.locations}</label>
-            <input class="sc-input" id="sc-loc" type="number" min="1" step="1"
-              inputmode="numeric" autocomplete="off" placeholder={String(D.locations)} value={D.locations} />
+            <div class="sc-sel-wrap">
+              <select class="sc-input sc-select" id="sc-loc">
+                {LOC_VALUES.map((v, i) => (
+                  <option value={v} selected={v === D.locDefault}>{s.locs[i]}</option>
+                ))}
+              </select>
+              <svg class="sc-chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </div>
           </div>
         </div>
 
@@ -73,11 +79,9 @@ const bookHref = lp('/book-a-demo');
             <input class="sc-range" id="sc-tgt" type="range" min={D.min} max={D.max} step="1" value={D.target} />
           </div>
         </div>
-
-        <p class="sc-note text-muted">{s.note}</p>
       </div>
 
-      <!-- Result card -->
+      <!-- Result card (sticky to bottom on mobile so the number stays visible while editing) -->
       <div class="sc-card">
         <div class="sc-result">
           <div class="sc-result-top">
@@ -139,6 +143,11 @@ const bookHref = lp('/book-a-demo');
   }
   .sc-input--money { padding-left: 2.25rem; }
 
+  .sc-sel-wrap { position: relative; }
+  .sc-select { padding-right: 42px; cursor: pointer; }
+  .sc-select option { background: var(--popover); color: var(--foreground); }
+  .sc-chev { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); color: var(--muted-foreground); pointer-events: none; }
+
   /* Range slider — track filled to the thumb with the brand purple. */
   .sc-range {
     -webkit-appearance: none; appearance: none; width: 100%; height: 6px;
@@ -146,17 +155,15 @@ const bookHref = lp('/book-a-demo');
     background: linear-gradient(to right, var(--primary) var(--fill, 50%), color-mix(in srgb, var(--foreground) 12%, transparent) var(--fill, 50%));
   }
   .sc-range::-webkit-slider-thumb {
-    -webkit-appearance: none; appearance: none; width: 20px; height: 20px;
+    -webkit-appearance: none; appearance: none; width: 22px; height: 22px;
     border-radius: 50%; background: #fff; border: none;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4); cursor: pointer;
   }
   .sc-range::-moz-range-thumb {
-    width: 20px; height: 20px; border-radius: 50%; background: #fff; border: none;
+    width: 22px; height: 22px; border-radius: 50%; background: #fff; border: none;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4); cursor: pointer;
   }
   .sc-range:focus-visible { outline: 2px solid var(--primary); outline-offset: 4px; }
-
-  .sc-note { font-size: var(--text-caption); }
 
   /* Result card */
   .sc-card {
@@ -191,19 +198,41 @@ const bookHref = lp('/book-a-demo');
     .sc-grid { grid-template-columns: 1.05fr 0.95fr; gap: var(--space-96); }
     .sc-head { max-width: none; }
   }
+
+  /* Mobile: compact fields + pin the result to the bottom so it stays visible while
+     the user edits the inputs above. Big number stacks under its label. */
+  @media (max-width: 1023px) {
+    .sc-inner { gap: var(--space-32); }
+    .sc-grid { gap: var(--space-24); }
+    .sc-inputs { gap: var(--space-24); }
+    .sc-input { height: 46px; }
+
+    .sc-card {
+      position: sticky; bottom: var(--space-12); z-index: 5;
+      background: var(--card);
+      padding: var(--space-24);
+      box-shadow: 0 -8px 28px -6px rgba(0, 0, 0, 0.55);
+    }
+    .sc-result { gap: var(--space-16); }
+    .sc-result-top { flex-direction: column; gap: var(--space-4); }
+    .sc-result-n { text-align: left; font-size: var(--text-h2); }
+    .sc-rows { padding-top: var(--space-16); gap: var(--space-12); }
+  }
   @media (max-width: 600px) {
     .sc-row2 { grid-template-columns: 1fr; }
   }
 </style>
 
 <script>
+  const COUNT: Record<string, number> = { '1': 1, '2 - 4': 2, '5 - 10': 5, '11 - 20': 11, '20+': 20 };
+
   document.querySelectorAll<HTMLElement>('[data-sc]').forEach((root) => {
     const tag = root.dataset.tag || 'en-IE';
     const cur = root.dataset.cur || 'EUR';
     const bookHref = root.dataset.book || '/book-a-demo';
 
     const rev = root.querySelector<HTMLInputElement>('#sc-rev')!;
-    const loc = root.querySelector<HTMLInputElement>('#sc-loc')!;
+    const loc = root.querySelector<HTMLSelectElement>('#sc-loc')!;
     const curS = root.querySelector<HTMLInputElement>('#sc-cur')!;
     const tgtS = root.querySelector<HTMLInputElement>('#sc-tgt')!;
     const curV = root.querySelector<HTMLElement>('#sc-cur-val')!;
@@ -216,18 +245,17 @@ const bookHref = lp('/book-a-demo');
     const money = new Intl.NumberFormat(tag, { style: 'currency', currency: cur, maximumFractionDigits: 0 });
     const groups = new Intl.NumberFormat(tag);
     const digits = (v: string) => parseInt(v.replace(/\D/g, ''), 10) || 0;
-
-    const DEF_REV = 1300000, DEF_LOC = 5;
+    const DEF_REV = 1300000;
 
     function fillTrack(el: HTMLInputElement) {
       const min = Number(el.min), max = Number(el.max);
-      const pct = ((Number(el.value) - min) / (max - min)) * 100;
-      el.style.setProperty('--fill', pct + '%');
+      el.style.setProperty('--fill', ((Number(el.value) - min) / (max - min)) * 100 + '%');
     }
 
     function calc() {
       const revenue = digits(rev.value) || DEF_REV;
-      const locations = Math.max(1, parseInt(loc.value, 10) || DEF_LOC);
+      const range = loc.value;
+      const locations = COUNT[range] ?? 5;
       const current = Number(curS.value);
       const target = Number(tgtS.value);
       const costDiff = Math.max(0, (current - target) / 100);
@@ -243,25 +271,23 @@ const bookHref = lp('/book-a-demo');
       tgtV.textContent = target + '%';
       fillTrack(curS); fillTrack(tgtS);
 
-      return { revenue, locations, current, target, annual };
+      return { revenue, locationsRange: range, locations, current, target, annual };
     }
 
-    // Revenue field: keep grouped digits as the user types.
     rev.addEventListener('input', () => {
       const n = digits(rev.value);
-      const pos = rev.selectionStart;
       rev.value = n ? groups.format(n) : '';
-      if (pos !== null) rev.setSelectionRange(rev.value.length, rev.value.length);
+      rev.setSelectionRange(rev.value.length, rev.value.length);
       calc();
     });
-    [loc, curS, tgtS].forEach((el) => el.addEventListener('input', calc));
+    loc.addEventListener('change', calc);
+    [curS, tgtS].forEach((el) => el.addEventListener('input', calc));
 
     cta.addEventListener('click', () => {
       const data = calc();
-      // PROVISIONAL: stash the calculator inputs + result and send the user to the
-      // book-a-demo page. The actual carry-over into HubSpot is wired once V picks
-      // the approach (reuse book-a-demo form vs dedicated form). The stash is
-      // forward-compatible — book-a-demo can read it when that's decided.
+      // PROVISIONAL: stash inputs + result and route to book-a-demo. The HubSpot
+      // carry-over is wired once V picks the approach. locationsRange already
+      // matches the book-a-demo number_of_venues values 1:1.
       try { sessionStorage.setItem('stockifi_savings', JSON.stringify(data)); } catch (_) {}
       window.location.href = bookHref;
     });
