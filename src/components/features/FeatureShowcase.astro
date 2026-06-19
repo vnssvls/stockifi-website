@@ -19,11 +19,13 @@ interface Props {
   mediaRatio?: string;
   /** Full-bleed width matching FeatureSplit, for stacked sections that must align. */
   wide?: boolean;
+  /** Run the media column to the page edge on its side, image filling it edge-to-edge. Assumes `wide`. */
+  mediaBleed?: boolean;
 }
-const { tagline, heading, body, items = [], primary, secondary, image, imageSide = 'right', mediaRatio = '1 / 1', wide = false } = Astro.props;
+const { tagline, heading, body, items = [], primary, secondary, image, imageSide = 'right', mediaRatio = '1 / 1', wide = false, mediaBleed = false } = Astro.props;
 ---
 
-<section class:list={['feature-showcase section', `fs7--${imageSide}`, wide && 'fs7--wide']}>
+<section class:list={['feature-showcase section', `fs7--${imageSide}`, wide && 'fs7--wide', mediaBleed && 'fs7--bleed']}>
   <div class="container fs7-grid">
     <div class="fs7-copy">
       {tagline && <p class="tagline">{tagline}</p>}
@@ -88,5 +90,16 @@ const { tagline, heading, body, items = [], primary, secondary, image, imageSide
     /* Wide variant — full-bleed width matching FeatureSplit, so stacked sections
        on a page share the same gutters instead of this one sitting narrower. */
     .fs7--wide .fs7-grid { max-width: none; padding-inline: 100px; }
+
+    /* Bleed variant — the media column cancels the gutter on its side and runs to
+       the page edge; the image fills the column edge-to-edge and matches the copy
+       height. Pairs with --wide (cancels its 100px gutter). */
+    .fs7--bleed .fs7-grid { align-items: stretch; }
+    .fs7--bleed .fs7-copy { align-self: center; }
+    .fs7--bleed .fs7-media { align-self: stretch; }
+    /* Square all corners — the column runs to the page edge, so radius reads wrong here. */
+    .fs7--bleed .fs7-media img { height: 100%; object-fit: cover; border-radius: 0; }
+    .fs7--bleed.fs7--right .fs7-media { margin-right: -100px; }
+    .fs7--bleed.fs7--left .fs7-media { margin-left: -100px; }
   }
 </style>

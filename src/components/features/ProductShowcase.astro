@@ -1,0 +1,43 @@
+---
+// Product-page "How it works" section. Wraps FeatureShowcase with the treatment
+// locked on — full-width gutter matching the FAQ (`wide`) and the media column
+// bleeding to the page edge (`mediaBleed`) — and composes a two-layer media slot:
+// a full-bleed background photo with an optional light-mode UI card on top (the
+// homepage team-showcase model). Documented in /styleguide/features.
+import FeatureShowcase from './FeatureShowcase.astro';
+
+interface Props {
+  tagline?: string;
+  heading: string;
+  body?: string;
+  items?: { heading: string; body: string; icon?: string }[];
+  image?: string;
+  imageAlt?: string;
+  imageSide?: 'left' | 'right';
+}
+const { tagline, heading, body, items = [], image, imageAlt = '', imageSide = 'right' } = Astro.props;
+const hasOverlay = Astro.slots.has('overlay');
+---
+
+<FeatureShowcase
+  tagline={tagline}
+  heading={heading}
+  body={body}
+  items={items}
+  imageSide={imageSide}
+  wide={true}
+  mediaBleed={true}
+>
+  <div class="ps-media" slot="media">
+    {image && <img src={image} alt={imageAlt} />}
+    {hasOverlay && <div class="ps-overlay"><slot name="overlay" /></div>}
+  </div>
+</FeatureShowcase>
+
+<style>
+  .ps-media { position: relative; width: 100%; height: 100%; }
+  .ps-media > img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  /* Light UI card layered on the photo, centred. pointer-events stay on the card. */
+  .ps-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: var(--space-32); pointer-events: none; }
+  .ps-overlay > :global(*) { pointer-events: auto; }
+</style>

@@ -1,0 +1,19 @@
+// Single source of truth for product-page "How it works" media, keyed by product
+// slug and locale-agnostic — change an image or attach a UI overlay here once and
+// every locale picks it up. Mirrors the solution-section-images.ts pattern.
+//
+// - image:   full-bleed background photo for the showcase. Falls back to the
+//            page's frontmatter `howItWorks.image` when omitted here.
+// - overlay: name of the light-mode UI card laid on top of the image (resolved in
+//            ProductOverlay.astro). Omit / null for image-only pages.
+
+export interface ProductMedia {
+  image?: string;
+  overlay?: string | null;
+}
+
+export const productMedia: Record<string, ProductMedia> = {
+  // procurement
+  'central-kitchen': { image: '/media/product-central-kitchen.png' },
+  'supplier-price-tracking': { overlay: 'ProcurementAnimation' },
+};

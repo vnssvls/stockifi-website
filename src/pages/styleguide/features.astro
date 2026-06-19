@@ -10,6 +10,7 @@ import FeatureCards from '../../components/features/FeatureCards.astro';
 import FeatureTabs from '../../components/features/FeatureTabs.astro';
 import FeatureColumns from '../../components/features/FeatureColumns.astro';
 import FeatureShowcase from '../../components/features/FeatureShowcase.astro';
+import ProductShowcase from '../../components/features/ProductShowcase.astro';
 
 const variants = [
   { label: '1 · List + image' },
@@ -19,6 +20,7 @@ const variants = [
   { label: '5 · Tabbed showcase' },
   { label: '6 · Columns' },
   { label: '7 · Showcase' },
+  { label: '8 · Product showcase (bleed)' },
 ];
 
 const listItems = [
@@ -68,7 +70,7 @@ const showcaseSubs = [
     <div class="container sgf-head">
       <a class="sg-back" href="/styleguide">← Style guide</a>
       <h1>Features</h1>
-      <p class="text-muted">Seven layouts to choose from per section or page. Full width, with representative draft content.</p>
+      <p class="text-muted">Eight layouts to choose from per section or page. Full width, with representative draft content.</p>
       <div class="sgf-tabs" role="tablist" aria-label="Feature layouts" data-sg-tabs>
         {variants.map((v, i) => (
           <button class="sgf-tab" type="button" role="tab" data-index={i} aria-selected={i === 0 ? 'true' : 'false'}>{v.label}</button>
@@ -96,6 +98,13 @@ const showcaseSubs = [
     </div>
     <div class="sgf-panel" role="tabpanel" data-index="6" hidden>
       <FeatureShowcase tagline="How it helps" heading="From guesswork to numbers you trust" body="Stockifi turns the invoices and sales you already produce into a clear picture of food cost." items={showcaseSubs} primary={{ label: 'Book a demo', href: '/book-a-demo' }} secondary={{ label: 'See how it works', href: '/#how-it-works' }} imageSide="right" />
+    </div>
+    <div class="sgf-panel" role="tabpanel" data-index="7" hidden>
+      {/* Product-page "How it works" section: FAQ-matched gutter, media bleeds to the
+          page edge, photo fills the column. An optional light UI card layers on top
+          via the `overlay` slot (the homepage team-showcase model). Used across all
+          product pages through ProductHowItWorks + the product-media map. */}
+      <ProductShowcase tagline="How it works" heading="See what central production really costs" body="A full-bleed background photo with an optional light UI card laid on top." items={showcaseSubs} image="/media/product-central-kitchen.png" imageSide="right" />
     </div>
   </div>
 

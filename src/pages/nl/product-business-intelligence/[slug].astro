@@ -5,6 +5,7 @@ import Layout from '../../../layouts/Layout.astro';
 import PageHeaderImage from '../../../components/page-headers/PageHeaderImage.astro';
 import FeatureSteps from '../../../components/features/FeatureSteps.astro';
 import FeatureShowcase from '../../../components/features/FeatureShowcase.astro';
+import ProductHowItWorks from '../../../components/features/ProductHowItWorks.astro';
 import IntegrationGrid from '../../../components/integrations/IntegrationGrid.astro';
 import ImageCardGrid from '../../../components/ImageCardGrid.astro';
 import FaqSplit from '../../../components/faq/FaqSplit.astro';
@@ -43,15 +44,7 @@ const benefitCards = getCategoryCards('business-intelligence', Astro.currentLoca
   />
 
   {d.howItWorks ? (
-    <FeatureShowcase
-      tagline={d.howItWorks.tagline}
-      heading={d.howItWorks.heading}
-      body={d.howItWorks.body}
-      items={howItWorksItems}
-      image={d.howItWorks.image ? { src: d.howItWorks.image, alt: d.howItWorks.imageAlt } : undefined}
-      imageSide={d.howItWorks.imageSide}
-      mediaRatio="16 / 10"
-    />
+      <ProductHowItWorks p={p} />
   ) : d.steps.length > 0 ? (
     <FeatureSteps
       tagline={d.stepsTagline}

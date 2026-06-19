@@ -1,0 +1,40 @@
+---
+// Self-contained product-page "How it works" section. Given the product entry it
+// resolves the background image (shared product-media map, falling back to the
+// page's frontmatter image), the sub-feature icons, and the optional light-mode
+// overlay card — then renders ProductShowcase. Every locale template calls this
+// the same way (`<ProductHowItWorks p={p} />`), so images and overlays are wired
+// once in the shared data and apply across all locales.
+import ProductShowcase from './ProductShowcase.astro';
+import ProductOverlay from './ProductOverlay.astro';
+import { productMedia } from '../../data/product-media';
+import { productHowItWorksIcons } from '../../data/product-howitworks-icons';
+import navIcons from '../../data/nav-icons.json';
+
+interface Props { p: { id: string; data: any }; }
+const { p } = Astro.props;
+const d = p.data;
+const hiw = d.howItWorks;
+const icons = navIcons as Record<string, string>;
+const items = hiw
+  ? hiw.points.map((pt: { heading: string; body: string }, i: number) => ({
+      ...pt,
+      icon: icons[(productHowItWorksIcons[p.id] ?? [])[i]],
+    }))
+  : [];
+const media = productMedia[p.id] ?? {};
+const image = media.image ?? hiw?.image;
+const hasOverlay = !!media.overlay;
+---
+
+<ProductShowcase
+  tagline={hiw.tagline}
+  heading={hiw.heading}
+  body={hiw.body}
+  items={items}
+  image={image}
+  imageAlt={hiw.imageAlt}
+  imageSide={hiw.imageSide}
+>
+  {hasOverlay && <ProductOverlay slug={p.id} slot="overlay" />}
+</ProductShowcase>
