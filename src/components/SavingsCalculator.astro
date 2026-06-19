@@ -10,12 +10,12 @@ const locale = Astro.currentLocale ?? 'en';
 const lp = (p: string) => (locale === 'en' ? p : `/${locale}${p}`);
 
 const STRINGS = {
-  en: { eyebrow: 'Savings calculator', heading: 'See how much you could save with Stockifi', subhead: 'Share your numbers below to calculate your potential savings.', revenue: 'Annual revenue per location', locations: 'Number of locations', current: 'Current food & drink cost %', target: 'Target food & drink cost %', resultH: 'Annual savings', resultSub: 'In year one with Stockifi', per1: 'Every 1% improvement', perLoc: 'Savings per location', cta: 'Unlock savings', locs: ['1 location', '2 - 4 locations', '5 - 10 locations', '11 - 20 locations', '20+ locations'] },
-  no: { eyebrow: 'Besparingskalkulator', heading: 'Se hvor mye du kan spare med Stockifi', subhead: 'Del tallene dine nedenfor for å beregne din potensielle besparelse.', revenue: 'Årlig omsetning per lokasjon', locations: 'Antall lokasjoner', current: 'Nåværende varekost %', target: 'Mål for varekost %', resultH: 'Årlig besparelse', resultSub: 'Det første året med Stockifi', per1: 'Hver forbedring på 1 %', perLoc: 'Besparelse per lokasjon', cta: 'Lås opp besparelsen', locs: ['1 lokasjon', '2 - 4 lokasjoner', '5 - 10 lokasjoner', '11 - 20 lokasjoner', '20+ lokasjoner'] },
-  da: { eyebrow: 'Besparelsesberegner', heading: 'Se hvor meget du kan spare med Stockifi', subhead: 'Del dine tal nedenfor for at beregne din potentielle besparelse.', revenue: 'Årlig omsætning per lokation', locations: 'Antal lokationer', current: 'Nuværende vareforbrug %', target: 'Mål for vareforbrug %', resultH: 'Årlig besparelse', resultSub: 'Det første år med Stockifi', per1: 'Hver forbedring på 1 %', perLoc: 'Besparelse per lokation', cta: 'Lås op for besparelsen', locs: ['1 lokation', '2 - 4 lokationer', '5 - 10 lokationer', '11 - 20 lokationer', '20+ lokationer'] },
-  sv: { eyebrow: 'Besparingskalkylator', heading: 'Se hur mycket du kan spara med Stockifi', subhead: 'Dela dina siffror nedan för att beräkna din potentiella besparing.', revenue: 'Årlig omsättning per restaurang', locations: 'Antal restauranger', current: 'Nuvarande råvarukostnad %', target: 'Mål för råvarukostnad %', resultH: 'Årlig besparing', resultSub: 'Det första året med Stockifi', per1: 'Varje förbättring på 1 %', perLoc: 'Besparing per restaurang', cta: 'Lås upp besparingen', locs: ['1 restaurang', '2 - 4 restauranger', '5 - 10 restauranger', '11 - 20 restauranger', '20+ restauranger'] },
-  nl: { eyebrow: 'Besparingscalculator', heading: 'Ontdek hoeveel je kunt besparen met Stockifi', subhead: 'Deel hieronder je cijfers om je mogelijke besparing te berekenen.', revenue: 'Jaaromzet per locatie', locations: 'Aantal locaties', current: 'Huidige foodcost %', target: 'Doel-foodcost %', resultH: 'Jaarlijkse besparing', resultSub: 'In het eerste jaar met Stockifi', per1: 'Elke verbetering van 1%', perLoc: 'Besparing per locatie', cta: 'Ontgrendel je besparing', locs: ['1 locatie', '2 - 4 locaties', '5 - 10 locaties', '11 - 20 locaties', '20+ locaties'] },
-  de: { eyebrow: 'Einsparungsrechner', heading: 'Sehen Sie, wie viel Sie mit Stockifi sparen können', subhead: 'Geben Sie unten Ihre Zahlen ein, um Ihre möglichen Einsparungen zu berechnen.', revenue: 'Jahresumsatz pro Standort', locations: 'Anzahl der Standorte', current: 'Aktueller Wareneinsatz %', target: 'Ziel-Wareneinsatz %', resultH: 'Jährliche Einsparungen', resultSub: 'Im ersten Jahr mit Stockifi', per1: 'Jede Verbesserung um 1 %', perLoc: 'Einsparungen pro Standort', cta: 'Einsparungen freischalten', locs: ['1 Standort', '2 - 4 Standorte', '5 - 10 Standorte', '11 - 20 Standorte', '20+ Standorte'] },
+  en: { eyebrow: 'Savings calculator', heading: 'See the impact Stockifi could have on your profit', subhead: 'Share your numbers below to calculate your potential savings.', revenue: 'Annual revenue per location', locations: 'Number of locations', current: 'Current food & drink cost %', target: 'Target food & drink cost %', resultH: 'Annual savings', resultSub: 'In year one with Stockifi', per1: 'Every 1% improvement', perLoc: 'Savings per location', cta: 'Unlock savings', locs: ['1 location', '2 - 4 locations', '5 - 10 locations', '11 - 20 locations', '20+ locations'] },
+  no: { eyebrow: 'Besparingskalkulator', heading: 'Se hvilken effekt Stockifi kan ha på fortjenesten din', subhead: 'Del tallene dine nedenfor for å beregne din potensielle besparelse.', revenue: 'Årlig omsetning per lokasjon', locations: 'Antall lokasjoner', current: 'Nåværende varekost %', target: 'Mål for varekost %', resultH: 'Årlig besparelse', resultSub: 'Det første året med Stockifi', per1: 'Hver forbedring på 1 %', perLoc: 'Besparelse per lokasjon', cta: 'Lås opp besparelsen', locs: ['1 lokasjon', '2 - 4 lokasjoner', '5 - 10 lokasjoner', '11 - 20 lokasjoner', '20+ lokasjoner'] },
+  da: { eyebrow: 'Besparelsesberegner', heading: 'Se, hvilken effekt Stockifi kan have på din fortjeneste', subhead: 'Del dine tal nedenfor for at beregne din potentielle besparelse.', revenue: 'Årlig omsætning per lokation', locations: 'Antal lokationer', current: 'Nuværende vareforbrug %', target: 'Mål for vareforbrug %', resultH: 'Årlig besparelse', resultSub: 'Det første år med Stockifi', per1: 'Hver forbedring på 1 %', perLoc: 'Besparelse per lokation', cta: 'Lås op for besparelsen', locs: ['1 lokation', '2 - 4 lokationer', '5 - 10 lokationer', '11 - 20 lokationer', '20+ lokationer'] },
+  sv: { eyebrow: 'Besparingskalkylator', heading: 'Se vilken effekt Stockifi kan ha på din vinst', subhead: 'Dela dina siffror nedan för att beräkna din potentiella besparing.', revenue: 'Årlig omsättning per restaurang', locations: 'Antal restauranger', current: 'Nuvarande råvarukostnad %', target: 'Mål för råvarukostnad %', resultH: 'Årlig besparing', resultSub: 'Det första året med Stockifi', per1: 'Varje förbättring på 1 %', perLoc: 'Besparing per restaurang', cta: 'Lås upp besparingen', locs: ['1 restaurang', '2 - 4 restauranger', '5 - 10 restauranger', '11 - 20 restauranger', '20+ restauranger'] },
+  nl: { eyebrow: 'Besparingscalculator', heading: 'Zie welke impact Stockifi op je winst kan hebben', subhead: 'Deel hieronder je cijfers om je mogelijke besparing te berekenen.', revenue: 'Jaaromzet per locatie', locations: 'Aantal locaties', current: 'Huidige foodcost %', target: 'Doel-foodcost %', resultH: 'Jaarlijkse besparing', resultSub: 'In het eerste jaar met Stockifi', per1: 'Elke verbetering van 1%', perLoc: 'Besparing per locatie', cta: 'Ontgrendel je besparing', locs: ['1 locatie', '2 - 4 locaties', '5 - 10 locaties', '11 - 20 locaties', '20+ locaties'] },
+  de: { eyebrow: 'Einsparungsrechner', heading: 'Sehen Sie, welchen Einfluss Stockifi auf Ihren Gewinn haben kann', subhead: 'Geben Sie unten Ihre Zahlen ein, um Ihre möglichen Einsparungen zu berechnen.', revenue: 'Jahresumsatz pro Standort', locations: 'Anzahl der Standorte', current: 'Aktueller Wareneinsatz %', target: 'Ziel-Wareneinsatz %', resultH: 'Jährliche Einsparungen', resultSub: 'Im ersten Jahr mit Stockifi', per1: 'Jede Verbesserung um 1 %', perLoc: 'Einsparungen pro Standort', cta: 'Einsparungen freischalten', locs: ['1 Standort', '2 - 4 Standorte', '5 - 10 Standorte', '11 - 20 Standorte', '20+ Standorte'] },
 };
 const s = STRINGS[locale as keyof typeof STRINGS] ?? STRINGS.en;
 
@@ -81,7 +81,7 @@ const bookHref = lp('/book-a-demo');
         </div>
       </div>
 
-      <!-- Result card (sticky to bottom on mobile so the number stays visible while editing) -->
+      <!-- Result card -->
       <div class="sc-card">
         <div class="sc-result">
           <div class="sc-result-top">
@@ -207,12 +207,7 @@ const bookHref = lp('/book-a-demo');
     .sc-inputs { gap: var(--space-24); }
     .sc-input { height: 46px; }
 
-    .sc-card {
-      position: sticky; bottom: var(--space-12); z-index: 5;
-      background: var(--card);
-      padding: var(--space-24);
-      box-shadow: 0 -8px 28px -6px rgba(0, 0, 0, 0.55);
-    }
+    .sc-card { padding: var(--space-24); }
     .sc-result { gap: var(--space-16); }
     .sc-result-top { flex-direction: column; gap: var(--space-4); }
     .sc-result-n { text-align: left; font-size: var(--text-h2); }
