@@ -106,17 +106,8 @@ const bookHref = lp('/book-a-demo');
     background: radial-gradient(100% 85% at 50% -8%, color-mix(in srgb, var(--primary) 22%, #f4f4f5), #f4f4f5 62%);
     color: #1a1620;
   }
-  /* Crossfade the dark page into the light band (and back) across the section's
-     padding only — content stays on the solid light middle. Fade height tracks the
-     section padding so the content never sits on a low-contrast zone. */
-  .sc::before, .sc::after {
-    content: ''; position: absolute; left: 0; right: 0; height: var(--section-y);
-    pointer-events: none; z-index: 0;
-  }
-  .sc::before { top: 0; background: linear-gradient(to bottom, var(--background), transparent); }
-  .sc::after { bottom: 0; background: linear-gradient(to top, var(--background), transparent); }
 
-  .sc-inner { position: relative; z-index: 1; display: flex; flex-direction: column; gap: var(--space-48); }
+  .sc-inner { display: flex; flex-direction: column; gap: var(--space-48); }
   .sc-head { max-width: 50rem; margin-inline: auto; text-align: center; }
   .sc-eyebrow {
     font-size: var(--text-body-sm); font-weight: var(--fw-semibold);
