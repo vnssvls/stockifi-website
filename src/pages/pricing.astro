@@ -7,7 +7,7 @@ import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/page-headers/PageHeader.astro';
 import PricingCards from '../components/PricingCards.astro';
 import LogoBanner from '../components/LogoBanner.astro';
-import FeatureColumns from '../components/features/FeatureColumns.astro';
+import FeatureCards from '../components/features/FeatureCards.astro';
 import FaqSplit from '../components/faq/FaqSplit.astro';
 import CtaButton from '../components/CtaButton.astro';
 import SavingsCalculator from '../components/SavingsCalculator.astro';
@@ -58,6 +58,11 @@ const plans = [
   },
 ];
 
+const locale = Astro.currentLocale ?? 'en';
+const lp = (p) => (locale === 'en' ? p : `/${locale}${p}`);
+// Real targets (the old /product/* links 404'd); images injected by index.
+const CARD_HREFS = ['/product-procurement/supplier-price-tracking', '/product-business-intelligence/variance-analysis', '/solutions/restaurant-groups'];
+const CARD_IMGS = ['/media/product-invoice-automation.png', '/media/bi-variance-analysis.jpg', '/media/bi-performance-dashboards.jpg'];
 const featureCols = [
   { eyebrow: 'Price transparency', heading: 'Catch supplier price rises early', body: 'Stockifi reads every invoice line by line, so cost increases surface before they erode your margin.', link: { label: 'Learn more', href: '/product/supplier-price-tracking' } },
   { eyebrow: 'Consumption control', heading: 'See theoretical against actual', body: 'Compare what should have been used against what actually sold, and find over-portioning and waste.', link: { label: 'Learn more', href: '/product/pos-integration' } },
@@ -91,11 +96,12 @@ const faqs = faqsPricing;
   <!-- 2b. Savings calculator -->
   <SavingsCalculator />
 
-  <!-- 3. Feature section — Feature variant 6 (columns) -->
-  <FeatureColumns
+  <!-- 3. Feature section — Feature cards (v4), centered header to match the calculator -->
+  <FeatureCards
     tagline="Why Stockifi"
     heading="Where the plans pay for themselves"
-    columns={featureCols}
+    columns={3}
+    cards={featureCols.map((col, i) => ({ heading: col.heading, body: col.body, link: { label: col.link.label, href: lp(CARD_HREFS[i]) }, image: { src: CARD_IMGS[i], alt: col.heading } }))}
   />
 
   <!-- 4. FAQ — variant 1 (split) -->

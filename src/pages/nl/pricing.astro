@@ -5,7 +5,7 @@ import Layout from '../../layouts/Layout.astro';
 import PageHeader from '../../components/page-headers/PageHeader.astro';
 import PricingCards from '../../components/PricingCards.astro';
 import LogoBanner from '../../components/LogoBanner.astro';
-import FeatureColumns from '../../components/features/FeatureColumns.astro';
+import FeatureCards from '../../components/features/FeatureCards.astro';
 import FaqSplit from '../../components/faq/FaqSplit.astro';
 import CtaButton from '../../components/CtaButton.astro';
 import SavingsCalculator from '../../components/SavingsCalculator.astro';
@@ -56,6 +56,11 @@ const plans = [
   },
 ];
 
+const locale = Astro.currentLocale ?? 'en';
+const lp = (p) => (locale === 'en' ? p : `/${locale}${p}`);
+// Real targets (the old /product/* links 404'd); images injected by index.
+const CARD_HREFS = ['/product-procurement/supplier-price-tracking', '/product-business-intelligence/variance-analysis', '/solutions/restaurant-groups'];
+const CARD_IMGS = ['/media/product-invoice-automation.png', '/media/bi-variance-analysis.jpg', '/media/bi-performance-dashboards.jpg'];
 const featureCols = [
   {
     eyebrow: 'Prijstransparantie',
@@ -149,10 +154,11 @@ const faqs = [
   <!-- 2b. Savings calculator -->
   <SavingsCalculator />
   <!-- 3. Feature section — Feature variant 6 (columns) -->
-  <FeatureColumns
+  <FeatureCards
     tagline="Waarom Stockifi"
     heading="Waar de abonnementen zichzelf terugverdienen"
-    columns={featureCols}
+    columns={3}
+    cards={featureCols.map((col, i) => ({ heading: col.heading, body: col.body, link: { label: col.link.label, href: lp(CARD_HREFS[i]) }, image: { src: CARD_IMGS[i], alt: col.heading } }))}
   />
 
   <!-- 4. FAQ — variant 1 (split) -->
