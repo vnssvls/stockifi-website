@@ -1,0 +1,271 @@
+---
+// Savings calculator (pricing section 2b). Live, ungated estimate that mirrors the
+// old Webflow logic: annualSavings = revenue/location × locations × (current% − target%).
+// The inputs ARE the lead data; the "Unlock savings" CTA carries them onward.
+// HubSpot wiring is intentionally provisional (see the script) until V picks the
+// approach (reuse book-a-demo vs dedicated form). Localized across all 6 locales.
+
+const locale = Astro.currentLocale ?? 'en';
+const lp = (p: string) => (locale === 'en' ? p : `/${locale}${p}`);
+
+const STRINGS = {
+  en: { eyebrow: 'Savings calculator', heading: 'See what Stockifi could save you', subhead: 'Enter your numbers and watch your first-year savings update live.', revenue: 'Annual revenue per location', locations: 'Number of locations', current: 'Current food & drink cost %', target: 'Target food & drink cost %', resultH: 'Annual savings', resultSub: 'In year one with Stockifi', per1: 'Every 1% improvement', perLoc: 'Savings per location', cta: 'Unlock savings', note: 'An estimate based on the numbers you enter.' },
+  no: { eyebrow: 'Besparingskalkulator', heading: 'Se hva Stockifi kan spare deg for', subhead: 'Legg inn tallene dine og se besparelsen for det første året oppdateres live.', revenue: 'Årlig omsetning per lokasjon', locations: 'Antall lokasjoner', current: 'Nåværende varekost %', target: 'Mål for varekost %', resultH: 'Årlig besparelse', resultSub: 'Det første året med Stockifi', per1: 'Hver forbedring på 1 %', perLoc: 'Besparelse per lokasjon', cta: 'Lås opp besparelsen', note: 'Et estimat basert på tallene du legger inn.' },
+  da: { eyebrow: 'Besparelsesberegner', heading: 'Se hvad Stockifi kan spare dig for', subhead: 'Indtast dine tal og se din besparelse i det første år opdateres live.', revenue: 'Årlig omsætning per lokation', locations: 'Antal lokationer', current: 'Nuværende vareforbrug %', target: 'Mål for vareforbrug %', resultH: 'Årlig besparelse', resultSub: 'Det første år med Stockifi', per1: 'Hver forbedring på 1 %', perLoc: 'Besparelse per lokation', cta: 'Lås op for besparelsen', note: 'Et estimat baseret på dine tal.' },
+  sv: { eyebrow: 'Besparingskalkylator', heading: 'Se vad Stockifi kan spara dig', subhead: 'Ange dina siffror och se besparingen för det första året uppdateras live.', revenue: 'Årlig omsättning per restaurang', locations: 'Antal restauranger', current: 'Nuvarande råvarukostnad %', target: 'Mål för råvarukostnad %', resultH: 'Årlig besparing', resultSub: 'Det första året med Stockifi', per1: 'Varje förbättring på 1 %', perLoc: 'Besparing per restaurang', cta: 'Lås upp besparingen', note: 'En uppskattning baserad på dina siffror.' },
+  nl: { eyebrow: 'Besparingscalculator', heading: 'Zie wat Stockifi je kan besparen', subhead: 'Vul je cijfers in en zie je besparing in het eerste jaar live.', revenue: 'Jaaromzet per locatie', locations: 'Aantal locaties', current: 'Huidige foodcost %', target: 'Doel-foodcost %', resultH: 'Jaarlijkse besparing', resultSub: 'In het eerste jaar met Stockifi', per1: 'Elke verbetering van 1%', perLoc: 'Besparing per locatie', cta: 'Ontgrendel je besparing', note: 'Een schatting op basis van je ingevoerde cijfers.' },
+  de: { eyebrow: 'Einsparungsrechner', heading: 'Sehen Sie, was Stockifi Ihnen sparen kann', subhead: 'Geben Sie Ihre Zahlen ein und sehen Sie Ihre Einsparungen im ersten Jahr live.', revenue: 'Jahresumsatz pro Standort', locations: 'Anzahl der Standorte', current: 'Aktueller Wareneinsatz %', target: 'Ziel-Wareneinsatz %', resultH: 'Jährliche Einsparungen', resultSub: 'Im ersten Jahr mit Stockifi', per1: 'Jede Verbesserung um 1 %', perLoc: 'Einsparungen pro Standort', cta: 'Einsparungen freischalten', note: 'Eine Schätzung auf Basis Ihrer Eingaben.' },
+};
+const s = STRINGS[locale as keyof typeof STRINGS] ?? STRINGS.en;
+
+// Locale → number-format tag + currency. Drives both the live results and the
+// revenue field's grouping/symbol.
+const CUR: Record<string, { tag: string; cur: string; sym: string }> = {
+  en: { tag: 'en-IE', cur: 'EUR', sym: '€' },
+  de: { tag: 'de-DE', cur: 'EUR', sym: '€' },
+  nl: { tag: 'nl-NL', cur: 'EUR', sym: '€' },
+  no: { tag: 'nb-NO', cur: 'NOK', sym: 'kr' },
+  sv: { tag: 'sv-SE', cur: 'SEK', sym: 'kr' },
+  da: { tag: 'da-DK', cur: 'DKK', sym: 'kr' },
+};
+const c = CUR[locale] ?? CUR.en;
+
+const D = { revenue: 1300000, locations: 5, current: 30, target: 27, min: 5, max: 60 };
+const bookHref = lp('/book-a-demo');
+---
+
+<section class="sc section" data-sc
+  data-tag={c.tag} data-cur={c.cur} data-book={bookHref}
+  data-d-current={D.current} data-d-target={D.target}>
+  <div class="container sc-inner">
+    <header class="sc-head">
+      <p class="sc-eyebrow">{s.eyebrow}</p>
+      <h2 class="sc-heading">{s.heading}</h2>
+      <p class="sc-sub text-muted">{s.subhead}</p>
+    </header>
+
+    <div class="sc-grid">
+      <!-- Inputs -->
+      <div class="sc-inputs">
+        <div class="sc-row2">
+          <div class="sc-field">
+            <label class="sc-label" for="sc-rev">{s.revenue}</label>
+            <div class="sc-money">
+              <span class="sc-sym" aria-hidden="true">{c.sym}</span>
+              <input class="sc-input sc-input--money" id="sc-rev" type="text" inputmode="numeric"
+                autocomplete="off" placeholder={D.revenue.toLocaleString(c.tag)} value={D.revenue.toLocaleString(c.tag)} />
+            </div>
+          </div>
+          <div class="sc-field">
+            <label class="sc-label" for="sc-loc">{s.locations}</label>
+            <input class="sc-input" id="sc-loc" type="number" min="1" step="1"
+              inputmode="numeric" autocomplete="off" placeholder={String(D.locations)} value={D.locations} />
+          </div>
+        </div>
+
+        <div class="sc-row2">
+          <div class="sc-field">
+            <div class="sc-slabel"><span class="sc-label">{s.current}</span><span class="sc-pct" id="sc-cur-val">{D.current}%</span></div>
+            <input class="sc-range" id="sc-cur" type="range" min={D.min} max={D.max} step="1" value={D.current} />
+          </div>
+          <div class="sc-field">
+            <div class="sc-slabel"><span class="sc-label">{s.target}</span><span class="sc-pct" id="sc-tgt-val">{D.target}%</span></div>
+            <input class="sc-range" id="sc-tgt" type="range" min={D.min} max={D.max} step="1" value={D.target} />
+          </div>
+        </div>
+
+        <p class="sc-note text-muted">{s.note}</p>
+      </div>
+
+      <!-- Result card -->
+      <div class="sc-card">
+        <div class="sc-result">
+          <div class="sc-result-top">
+            <div>
+              <p class="sc-result-h">{s.resultH}</p>
+              <p class="sc-result-sub text-muted">{s.resultSub}</p>
+            </div>
+            <strong class="sc-result-n" id="sc-annual">—</strong>
+          </div>
+
+          <div class="sc-rows">
+            <div class="sc-srow"><span class="text-muted">{s.per1}</span><span id="sc-per1">—</span></div>
+            <div class="sc-srow"><span class="text-muted">{s.perLoc}</span><span id="sc-perloc">—</span></div>
+          </div>
+
+          <button class="sc-cta" id="sc-cta" type="button">{s.cta}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .sc-inner { display: flex; flex-direction: column; gap: var(--space-48); }
+  .sc-head { max-width: 40ch; }
+  .sc-eyebrow {
+    font-size: var(--text-body-sm); font-weight: var(--fw-semibold);
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--primary-light);
+    margin-bottom: var(--space-12);
+  }
+  .sc-heading { font-size: var(--text-h2); line-height: var(--lh-h2); margin-bottom: var(--space-16); }
+  .sc-sub { font-size: var(--text-body-lg); line-height: var(--lh-body); }
+
+  .sc-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-48); align-items: start; }
+
+  .sc-inputs { display: flex; flex-direction: column; gap: var(--space-32); }
+  .sc-row2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-24); }
+  .sc-field { display: flex; flex-direction: column; gap: var(--space-12); }
+
+  .sc-label { font-size: var(--text-body-sm); font-weight: var(--fw-medium); color: var(--foreground); }
+  .sc-slabel { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-12); }
+  .sc-pct { font-size: var(--text-body); font-weight: var(--fw-semibold); color: var(--primary-light); font-variant-numeric: tabular-nums; }
+
+  .sc-input {
+    width: 100%; height: 50px; padding: 0 var(--space-16);
+    background: var(--background); border: 1.5px solid var(--border);
+    border-radius: var(--radius-md); color: var(--foreground);
+    font-size: var(--text-body); font-family: var(--font-body);
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    -webkit-appearance: none; appearance: none;
+  }
+  .sc-input::placeholder { color: var(--muted-foreground); }
+  .sc-input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(149, 101, 219, 0.18); }
+
+  .sc-money { position: relative; }
+  .sc-money .sc-sym {
+    position: absolute; left: var(--space-16); top: 50%; transform: translateY(-50%);
+    color: var(--muted-foreground); font-size: var(--text-body); pointer-events: none;
+  }
+  .sc-input--money { padding-left: 2.25rem; }
+
+  /* Range slider — track filled to the thumb with the brand purple. */
+  .sc-range {
+    -webkit-appearance: none; appearance: none; width: 100%; height: 6px;
+    border-radius: 999px; cursor: pointer; margin: 8px 0;
+    background: linear-gradient(to right, var(--primary) var(--fill, 50%), color-mix(in srgb, var(--foreground) 12%, transparent) var(--fill, 50%));
+  }
+  .sc-range::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none; width: 20px; height: 20px;
+    border-radius: 50%; background: #fff; border: none;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4); cursor: pointer;
+  }
+  .sc-range::-moz-range-thumb {
+    width: 20px; height: 20px; border-radius: 50%; background: #fff; border: none;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4); cursor: pointer;
+  }
+  .sc-range:focus-visible { outline: 2px solid var(--primary); outline-offset: 4px; }
+
+  .sc-note { font-size: var(--text-caption); }
+
+  /* Result card */
+  .sc-card {
+    border: 1px solid #2e283e7d; border-radius: var(--radius-xl);
+    background: color-mix(in srgb, var(--muted) 35%, transparent);
+    box-shadow: 0 8px 32px -4px rgba(0, 0, 0, 0.25);
+    padding: var(--space-32);
+  }
+  .sc-result { display: flex; flex-direction: column; gap: var(--space-24); }
+  .sc-result-top { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-16); }
+  .sc-result-h { font-family: var(--font-heading); font-size: var(--text-h4); font-weight: var(--fw-bold); color: var(--foreground); }
+  .sc-result-sub { font-size: var(--text-body-sm); margin-top: var(--space-4); }
+  .sc-result-n {
+    font-family: var(--font-heading); font-size: var(--text-h3); font-weight: var(--fw-bold);
+    color: var(--foreground); text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap;
+  }
+  .sc-rows { display: flex; flex-direction: column; gap: var(--space-16); padding-top: var(--space-24); border-top: 1px solid var(--border); }
+  .sc-srow { display: flex; align-items: center; justify-content: space-between; gap: var(--space-16); font-size: var(--text-body); }
+  .sc-srow span:last-child { font-weight: var(--fw-semibold); color: var(--foreground); font-variant-numeric: tabular-nums; }
+
+  .sc-cta {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 100%; height: 50px; padding: 0 var(--space-32); margin-top: var(--space-8);
+    background: var(--primary); color: var(--primary-foreground); border: none;
+    border-radius: var(--radius-full); font-size: var(--text-body);
+    font-weight: var(--fw-semibold); font-family: var(--font-body); cursor: pointer;
+    transition: background 0.18s ease;
+  }
+  .sc-cta:hover { background: var(--primary-dark); }
+
+  @media (min-width: 1024px) {
+    .sc-grid { grid-template-columns: 1.05fr 0.95fr; gap: var(--space-96); }
+    .sc-head { max-width: none; }
+  }
+  @media (max-width: 600px) {
+    .sc-row2 { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-sc]').forEach((root) => {
+    const tag = root.dataset.tag || 'en-IE';
+    const cur = root.dataset.cur || 'EUR';
+    const bookHref = root.dataset.book || '/book-a-demo';
+
+    const rev = root.querySelector<HTMLInputElement>('#sc-rev')!;
+    const loc = root.querySelector<HTMLInputElement>('#sc-loc')!;
+    const curS = root.querySelector<HTMLInputElement>('#sc-cur')!;
+    const tgtS = root.querySelector<HTMLInputElement>('#sc-tgt')!;
+    const curV = root.querySelector<HTMLElement>('#sc-cur-val')!;
+    const tgtV = root.querySelector<HTMLElement>('#sc-tgt-val')!;
+    const outAnnual = root.querySelector<HTMLElement>('#sc-annual')!;
+    const outPer1 = root.querySelector<HTMLElement>('#sc-per1')!;
+    const outPerLoc = root.querySelector<HTMLElement>('#sc-perloc')!;
+    const cta = root.querySelector<HTMLButtonElement>('#sc-cta')!;
+
+    const money = new Intl.NumberFormat(tag, { style: 'currency', currency: cur, maximumFractionDigits: 0 });
+    const groups = new Intl.NumberFormat(tag);
+    const digits = (v: string) => parseInt(v.replace(/\D/g, ''), 10) || 0;
+
+    const DEF_REV = 1300000, DEF_LOC = 5;
+
+    function fillTrack(el: HTMLInputElement) {
+      const min = Number(el.min), max = Number(el.max);
+      const pct = ((Number(el.value) - min) / (max - min)) * 100;
+      el.style.setProperty('--fill', pct + '%');
+    }
+
+    function calc() {
+      const revenue = digits(rev.value) || DEF_REV;
+      const locations = Math.max(1, parseInt(loc.value, 10) || DEF_LOC);
+      const current = Number(curS.value);
+      const target = Number(tgtS.value);
+      const costDiff = Math.max(0, (current - target) / 100);
+
+      const annual = revenue * locations * costDiff;
+      const per1 = revenue * 0.01 * locations;
+      const perLoc = annual / locations;
+
+      outAnnual.textContent = money.format(annual);
+      outPer1.textContent = money.format(per1);
+      outPerLoc.textContent = money.format(perLoc);
+      curV.textContent = current + '%';
+      tgtV.textContent = target + '%';
+      fillTrack(curS); fillTrack(tgtS);
+
+      return { revenue, locations, current, target, annual };
+    }
+
+    // Revenue field: keep grouped digits as the user types.
+    rev.addEventListener('input', () => {
+      const n = digits(rev.value);
+      const pos = rev.selectionStart;
+      rev.value = n ? groups.format(n) : '';
+      if (pos !== null) rev.setSelectionRange(rev.value.length, rev.value.length);
+      calc();
+    });
+    [loc, curS, tgtS].forEach((el) => el.addEventListener('input', calc));
+
+    cta.addEventListener('click', () => {
+      const data = calc();
+      // PROVISIONAL: stash the calculator inputs + result and send the user to the
+      // book-a-demo page. The actual carry-over into HubSpot is wired once V picks
+      // the approach (reuse book-a-demo form vs dedicated form). The stash is
+      // forward-compatible — book-a-demo can read it when that's decided.
+      try { sessionStorage.setItem('stockifi_savings', JSON.stringify(data)); } catch (_) {}
+      window.location.href = bookHref;
+    });
+
+    calc();
+  });
+</script>
