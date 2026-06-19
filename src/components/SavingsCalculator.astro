@@ -10,12 +10,12 @@ const locale = Astro.currentLocale ?? 'en';
 const lp = (p: string) => (locale === 'en' ? p : `/${locale}${p}`);
 
 const STRINGS = {
-  en: { eyebrow: 'Savings calculator', heading: 'See the impact Stockifi could have on your profit', subhead: 'Share your numbers below to calculate your potential savings.', revenue: 'Annual revenue per location', locations: 'Number of locations', current: 'Current food & drink cost %', target: 'Target food & drink cost %', saveHeadline: 'Stockifi could save you', over3: 'over 3 years', perLoc: 'Savings per location', colBefore: 'Before Stockifi', colY1: 'Year 1', colY2: 'Year 2', colY3: 'Year 3', colTotal: 'Total', rowCost: 'Food & drink cost', rowSavings: 'Your savings', cta: 'Get my savings plan' },
-  no: { eyebrow: 'Besparingskalkulator', heading: 'Se hvilken effekt Stockifi kan ha på fortjenesten din', subhead: 'Del tallene dine nedenfor for å beregne din potensielle besparelse.', revenue: 'Årlig omsetning per lokasjon', locations: 'Antall lokasjoner', current: 'Nåværende varekost %', target: 'Mål for varekost %', saveHeadline: 'Stockifi kan spare deg', over3: 'over 3 år', perLoc: 'Besparelse per lokasjon', colBefore: 'Før Stockifi', colY1: 'År 1', colY2: 'År 2', colY3: 'År 3', colTotal: 'Totalt', rowCost: 'Varekost', rowSavings: 'Din besparelse', cta: 'Få spareplanen min' },
-  da: { eyebrow: 'Besparelsesberegner', heading: 'Se, hvilken effekt Stockifi kan have på din fortjeneste', subhead: 'Del dine tal nedenfor for at beregne din potentielle besparelse.', revenue: 'Årlig omsætning per lokation', locations: 'Antal lokationer', current: 'Nuværende vareforbrug %', target: 'Mål for vareforbrug %', saveHeadline: 'Stockifi kan spare dig', over3: 'over 3 år', perLoc: 'Besparelse per lokation', colBefore: 'Før Stockifi', colY1: 'År 1', colY2: 'År 2', colY3: 'År 3', colTotal: 'I alt', rowCost: 'Vareforbrug', rowSavings: 'Din besparelse', cta: 'Få min besparelsesplan' },
-  sv: { eyebrow: 'Besparingskalkylator', heading: 'Se vilken effekt Stockifi kan ha på din vinst', subhead: 'Dela dina siffror nedan för att beräkna din potentiella besparing.', revenue: 'Årlig omsättning per restaurang', locations: 'Antal restauranger', current: 'Nuvarande råvarukostnad %', target: 'Mål för råvarukostnad %', saveHeadline: 'Stockifi kan spara dig', over3: 'över 3 år', perLoc: 'Besparing per restaurang', colBefore: 'Före Stockifi', colY1: 'År 1', colY2: 'År 2', colY3: 'År 3', colTotal: 'Totalt', rowCost: 'Råvarukostnad', rowSavings: 'Din besparing', cta: 'Få min besparingsplan' },
-  nl: { eyebrow: 'Besparingscalculator', heading: 'Zie welke impact Stockifi op je winst kan hebben', subhead: 'Deel hieronder je cijfers om je mogelijke besparing te berekenen.', revenue: 'Jaaromzet per locatie', locations: 'Aantal locaties', current: 'Huidige foodcost %', target: 'Doel-foodcost %', saveHeadline: 'Stockifi kan je besparen', over3: 'over 3 jaar', perLoc: 'Besparing per locatie', colBefore: 'Vóór Stockifi', colY1: 'Jaar 1', colY2: 'Jaar 2', colY3: 'Jaar 3', colTotal: 'Totaal', rowCost: 'Foodcost', rowSavings: 'Jouw besparing', cta: 'Ontvang mijn besparingsplan' },
-  de: { eyebrow: 'Einsparungsrechner', heading: 'Sehen Sie, welchen Einfluss Stockifi auf Ihren Gewinn haben kann', subhead: 'Geben Sie unten Ihre Zahlen ein, um Ihre möglichen Einsparungen zu berechnen.', revenue: 'Jahresumsatz pro Standort', locations: 'Anzahl der Standorte', current: 'Aktueller Wareneinsatz %', target: 'Ziel-Wareneinsatz %', saveHeadline: 'Stockifi kann Ihnen sparen', over3: 'über 3 Jahre', perLoc: 'Einsparungen pro Standort', colBefore: 'Vor Stockifi', colY1: 'Jahr 1', colY2: 'Jahr 2', colY3: 'Jahr 3', colTotal: 'Gesamt', rowCost: 'Wareneinsatz', rowSavings: 'Ihre Einsparung', cta: 'Meinen Einsparungsplan erhalten' },
+  en: { eyebrow: 'Savings calculator', heading: 'See the impact Stockifi could have on your profit', subhead: 'Share your numbers below to calculate your potential savings.', revenue: 'Annual revenue per location', locations: 'Number of locations', current: 'Current food & drink cost %', target: 'Target food & drink cost %', saveHeadline: 'Stockifi could save you', inYear: 'in a year', unitLoc: 'location', unitLocs: 'locations', perYear: 'per year', perLoc: 'Savings per location', colBefore: 'Before Stockifi', colY1: 'Year 1', colY2: 'Year 2', colY3: 'Year 3', colTotal: 'Total', rowCost: 'Food & drink cost', rowSavings: 'Your savings', cta: 'Get my savings plan' },
+  no: { eyebrow: 'Besparingskalkulator', heading: 'Se hvilken effekt Stockifi kan ha på fortjenesten din', subhead: 'Del tallene dine nedenfor for å beregne din potensielle besparelse.', revenue: 'Årlig omsetning per lokasjon', locations: 'Antall lokasjoner', current: 'Nåværende varekost %', target: 'Mål for varekost %', saveHeadline: 'Stockifi kan spare deg', inYear: 'i året', unitLoc: 'lokasjon', unitLocs: 'lokasjoner', perYear: 'per år', perLoc: 'Besparelse per lokasjon', colBefore: 'Før Stockifi', colY1: 'År 1', colY2: 'År 2', colY3: 'År 3', colTotal: 'Totalt', rowCost: 'Varekost', rowSavings: 'Din besparelse', cta: 'Få spareplanen min' },
+  da: { eyebrow: 'Besparelsesberegner', heading: 'Se, hvilken effekt Stockifi kan have på din fortjeneste', subhead: 'Del dine tal nedenfor for at beregne din potentielle besparelse.', revenue: 'Årlig omsætning per lokation', locations: 'Antal lokationer', current: 'Nuværende vareforbrug %', target: 'Mål for vareforbrug %', saveHeadline: 'Stockifi kan spare dig', inYear: 'om året', unitLoc: 'lokation', unitLocs: 'lokationer', perYear: 'om året', perLoc: 'Besparelse per lokation', colBefore: 'Før Stockifi', colY1: 'År 1', colY2: 'År 2', colY3: 'År 3', colTotal: 'I alt', rowCost: 'Vareforbrug', rowSavings: 'Din besparelse', cta: 'Få min besparelsesplan' },
+  sv: { eyebrow: 'Besparingskalkylator', heading: 'Se vilken effekt Stockifi kan ha på din vinst', subhead: 'Dela dina siffror nedan för att beräkna din potentiella besparing.', revenue: 'Årlig omsättning per restaurang', locations: 'Antal restauranger', current: 'Nuvarande råvarukostnad %', target: 'Mål för råvarukostnad %', saveHeadline: 'Stockifi kan spara dig', inYear: 'per år', unitLoc: 'restaurang', unitLocs: 'restauranger', perYear: 'per år', perLoc: 'Besparing per restaurang', colBefore: 'Före Stockifi', colY1: 'År 1', colY2: 'År 2', colY3: 'År 3', colTotal: 'Totalt', rowCost: 'Råvarukostnad', rowSavings: 'Din besparing', cta: 'Få min besparingsplan' },
+  nl: { eyebrow: 'Besparingscalculator', heading: 'Zie welke impact Stockifi op je winst kan hebben', subhead: 'Deel hieronder je cijfers om je mogelijke besparing te berekenen.', revenue: 'Jaaromzet per locatie', locations: 'Aantal locaties', current: 'Huidige foodcost %', target: 'Doel-foodcost %', saveHeadline: 'Stockifi kan je besparen', inYear: 'per jaar', unitLoc: 'locatie', unitLocs: 'locaties', perYear: 'per jaar', perLoc: 'Besparing per locatie', colBefore: 'Vóór Stockifi', colY1: 'Jaar 1', colY2: 'Jaar 2', colY3: 'Jaar 3', colTotal: 'Totaal', rowCost: 'Foodcost', rowSavings: 'Jouw besparing', cta: 'Ontvang mijn besparingsplan' },
+  de: { eyebrow: 'Einsparungsrechner', heading: 'Sehen Sie, welchen Einfluss Stockifi auf Ihren Gewinn haben kann', subhead: 'Geben Sie unten Ihre Zahlen ein, um Ihre möglichen Einsparungen zu berechnen.', revenue: 'Jahresumsatz pro Standort', locations: 'Anzahl der Standorte', current: 'Aktueller Wareneinsatz %', target: 'Ziel-Wareneinsatz %', saveHeadline: 'Stockifi kann Ihnen sparen', inYear: 'pro Jahr', unitLoc: 'Standort', unitLocs: 'Standorte', perYear: 'pro Jahr', perLoc: 'Einsparungen pro Standort', colBefore: 'Vor Stockifi', colY1: 'Jahr 1', colY2: 'Jahr 2', colY3: 'Jahr 3', colTotal: 'Gesamt', rowCost: 'Wareneinsatz', rowSavings: 'Ihre Einsparung', cta: 'Meinen Einsparungsplan erhalten' },
 };
 const s = STRINGS[locale as keyof typeof STRINGS] ?? STRINGS.en;
 
@@ -34,7 +34,8 @@ const D = { revenue: 1300000, locDefault: '5', current: 30, target: 27, min: 5, 
 const bookHref = lp('/book-a-demo');
 ---
 
-<section class="sc section" data-sc data-tag={c.tag} data-cur={c.cur} data-book={bookHref}>
+<section class="sc section" data-sc data-tag={c.tag} data-cur={c.cur} data-book={bookHref}
+  data-inyear={s.inYear} data-uloc={s.unitLoc} data-ulocs={s.unitLocs}>
   <div class="container sc-inner">
     <header class="sc-head">
       <p class="sc-eyebrow">{s.eyebrow}</p>
@@ -76,14 +77,15 @@ const bookHref = lp('/book-a-demo');
       <!-- Results panel (right, wider) — headline + year-by-year breakdown -->
       <div class="sc-card">
         <div class="sc-rtop">
-          <div class="sc-rhead">
-            <p class="sc-result-h">{s.saveHeadline}</p>
+          <div class="sc-stat sc-stat--primary">
+            <p class="sc-stat-l text-muted">{s.saveHeadline}</p>
             <strong class="sc-result-n" id="sc-total">—</strong>
-            <p class="sc-result-sub text-muted">{s.over3}</p>
+            <p class="sc-result-sub text-muted" id="sc-ctx">{s.inYear}</p>
           </div>
-          <div class="sc-rstat">
+          <div class="sc-stat">
             <p class="sc-stat-l text-muted">{s.perLoc}</p>
             <strong class="sc-stat-n" id="sc-perloc">—</strong>
+            <p class="sc-result-sub text-muted">{s.perYear}</p>
           </div>
         </div>
 
@@ -198,13 +200,13 @@ const bookHref = lp('/book-a-demo');
   /* Results panel */
   .sc-card { display: flex; flex-direction: column; gap: var(--space-32); padding: var(--space-32); }
 
-  .sc-rtop { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--space-24); flex-wrap: wrap; }
-  .sc-result-h { font-size: var(--text-body); font-weight: var(--fw-medium); color: #6b6675; }
-  .sc-result-n { font-family: var(--font-body); font-size: var(--text-h2); line-height: 1.05; font-weight: var(--fw-bold); color: #1a1620; font-variant-numeric: tabular-nums; }
-  .sc-result-sub { font-size: var(--text-body-sm); margin-top: var(--space-4); }
-  .sc-rstat { text-align: right; }
+  /* Two stats aligned at the top (primary + per-location) read as a clear pair. */
+  .sc-rtop { display: flex; align-items: flex-start; gap: var(--space-48); flex-wrap: wrap; }
+  .sc-stat { text-align: left; }
   .sc-stat-l { font-size: var(--text-body-sm); }
-  .sc-stat-n { display: block; font-family: var(--font-body); font-size: var(--text-h5); font-weight: var(--fw-bold); color: #1a1620; font-variant-numeric: tabular-nums; margin-top: var(--space-4); }
+  .sc-result-n { display: block; font-family: var(--font-body); font-size: var(--text-h2); line-height: 1.05; font-weight: var(--fw-bold); color: #1a1620; font-variant-numeric: tabular-nums; margin-top: var(--space-4); }
+  .sc-stat-n { display: block; font-family: var(--font-body); font-size: var(--text-h4); font-weight: var(--fw-bold); color: #1a1620; font-variant-numeric: tabular-nums; margin-top: var(--space-4); }
+  .sc-result-sub { font-size: var(--text-body-sm); margin-top: var(--space-8); }
 
   /* Breakdown table */
   .sc-table-wrap { overflow-x: auto; }
@@ -220,7 +222,7 @@ const bookHref = lp('/book-a-demo');
 
   .sc-cta {
     display: inline-flex; align-items: center; justify-content: center; gap: var(--space-8);
-    width: 100%; height: 54px; padding: 0 var(--space-32); margin-top: var(--space-4);
+    align-self: flex-start; width: auto; height: 54px; padding: 0 var(--space-48); margin-top: var(--space-4);
     background: var(--primary); color: #fff; border: none;
     border-radius: var(--radius-full); font-size: var(--text-body);
     font-weight: var(--fw-semibold); font-family: var(--font-body); cursor: pointer;
@@ -247,6 +249,9 @@ const bookHref = lp('/book-a-demo');
     const tag = root.dataset.tag || 'en-IE';
     const cur = root.dataset.cur || 'EUR';
     const bookHref = root.dataset.book || '/book-a-demo';
+    const inYear = root.dataset.inyear || '';
+    const uloc = root.dataset.uloc || '';
+    const ulocs = root.dataset.ulocs || '';
 
     const $ = (id: string) => root.querySelector<HTMLElement>('#' + id)!;
     const rev = $('sc-rev') as HTMLInputElement;
@@ -279,7 +284,8 @@ const bookHref = lp('/book-a-demo');
       const total3 = annual * 3;
       const perLoc = annual / locations;
 
-      $('sc-total').textContent = money.format(total3);
+      $('sc-total').textContent = money.format(annual);
+      $('sc-ctx').textContent = inYear + ' · ' + locations + ' ' + (locations === 1 ? uloc : ulocs);
       $('sc-perloc').textContent = money.format(perLoc);
       $('sc-cost-b').textContent = money.format(baseline);
       $('sc-cost-1').textContent = $('sc-cost-2').textContent = $('sc-cost-3').textContent = money.format(reduced);
