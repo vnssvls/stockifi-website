@@ -103,12 +103,12 @@ const bookHref = lp('/book-a-demo');
      Subtle brand-tinted gradient backdrop baked into the section. */
   .sc {
     position: relative; isolation: isolate; overflow: clip;
-    background: radial-gradient(115% 90% at 50% 0%, color-mix(in srgb, var(--primary) 8%, #f4f4f5), #f4f4f5 72%);
+    background: radial-gradient(100% 85% at 50% -8%, color-mix(in srgb, var(--primary) 22%, #f4f4f5), #f4f4f5 62%);
     color: #1a1620;
   }
 
   .sc-inner { display: flex; flex-direction: column; gap: var(--space-48); }
-  .sc-head { max-width: 40ch; }
+  .sc-head { max-width: 52ch; margin-inline: auto; text-align: center; }
   .sc-eyebrow {
     font-size: var(--text-body-sm); font-weight: var(--fw-semibold);
     letter-spacing: 0.08em; text-transform: uppercase; color: #6d46aa;
@@ -212,7 +212,6 @@ const bookHref = lp('/book-a-demo');
     .sc-grid { grid-template-columns: 1fr 1fr; }
     .sc-inputs { padding: var(--space-64); gap: var(--space-48); }
     .sc-card { padding: var(--space-64); border-top: none; border-left: 1px solid #e5e5e5; }
-    .sc-head { max-width: none; }
   }
 
   @media (max-width: 1023px) {
