@@ -209,7 +209,7 @@ const bookHref = lp('/book-a-demo');
   .sc-result-sub { font-size: var(--text-body-sm); margin-top: var(--space-8); }
 
   /* Breakdown table */
-  .sc-table-wrap { overflow-x: auto; }
+  .sc-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .sc-table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
   .sc-table th, .sc-table td { padding: var(--space-12) var(--space-12); text-align: right; font-size: var(--text-body-sm); white-space: nowrap; }
   .sc-table thead th { color: #6b6675; font-weight: var(--fw-medium); border-bottom: 1px solid #e5e5e5; }
@@ -241,6 +241,11 @@ const bookHref = lp('/book-a-demo');
 
   @media (max-width: 1023px) {
     .sc-inner { gap: var(--space-32); }
+    /* Freeze the label column; the year columns scroll horizontally under it. */
+    .sc-table th:first-child, .sc-table td:first-child {
+      position: sticky; left: 0; z-index: 2; background: #fff;
+      box-shadow: 8px 0 10px -8px rgba(0, 0, 0, 0.14);
+    }
   }
 </style>
 
