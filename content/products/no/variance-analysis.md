@@ -4,7 +4,7 @@ metaDescription: "Se den teoretiske varekosten mot den faktiske, og finn nøyakt
 eyebrow: "Avviksanalyse"
 heading: "Finn ut hvor marginen din forsvinner"
 subhead: "Stockifi sammenligner hva oppskriftene dine sier du burde ha brukt med hva du faktisk brukte, rett for rett. Hvert avvik kommer med en årsak du kan handle på."
-heroImage: "/media/bi-variance-analysis.jpg"
+heroImage: "/media/photos/hero-owner.png"
 order: 32
 category: business-intelligence
 showIntegrations: false
@@ -18,7 +18,7 @@ howItWorks:
     - heading: "Hver telleperiode"
       body: "Du ser avviket i det du lukker en varetelling."
   imageSide: "right"
-  image: "/media/photos/hero-owner.png"
+  image: "/media/bi-variance-analysis.jpg"
   imageAlt: ""
 benefits:
   - heading: "Overporsjoning"

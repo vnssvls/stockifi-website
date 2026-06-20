@@ -4,7 +4,7 @@ metaDescription: "Jämför teoretisk mot faktisk råvarukostnad och se exakt var
 eyebrow: "Avvikelseanalys"
 heading: "Ta reda på var din marginal tar vägen"
 subhead: "Stockifi jämför vad recepten säger att du borde använda med vad du faktiskt använde, rätt för rätt. Varje glapp kommer med en orsak du kan agera på."
-heroImage: "/media/bi-variance-analysis.jpg"
+heroImage: "/media/photos/hero-owner.png"
 order: 32
 category: business-intelligence
 showIntegrations: false
@@ -18,7 +18,7 @@ howItWorks:
     - heading: "Varje inventeringsperiod"
       body: "Du ser avvikelsen direkt när du stänger en inventering."
   imageSide: "right"
-  image: "/media/photos/hero-owner.png"
+  image: "/media/bi-variance-analysis.jpg"
   imageAlt: ""
 benefits:
   - heading: "Överportering"

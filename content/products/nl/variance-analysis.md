@@ -4,7 +4,7 @@ metaDescription: "Vergelijk werkelijke met theoretische foodcost en zie precies 
 eyebrow: "Afwijkingsanalyse"
 heading: "Ontdek waar je marge naartoe gaat"
 subhead: "Stockifi vergelijkt wat je recepten zeggen dat je had moeten gebruiken met wat je daadwerkelijk hebt gebruikt, gerecht voor gerecht. Elk verschil heeft een oorzaak die je kunt aanpakken."
-heroImage: "/media/bi-variance-analysis.jpg"
+heroImage: "/media/photos/hero-owner.png"
 order: 32
 category: business-intelligence
 showIntegrations: false
@@ -18,7 +18,7 @@ howItWorks:
     - heading: "Elke telperiode"
       body: "Je ziet de afwijking zodra je een telling afsluit."
   imageSide: "right"
-  image: "/media/photos/hero-owner.png"
+  image: "/media/bi-variance-analysis.jpg"
   imageAlt: ""
 benefits:
   - heading: "Overportering"

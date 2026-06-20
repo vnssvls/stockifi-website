@@ -4,7 +4,7 @@ metaDescription: "Se teoretisk mod faktisk vareforbrug og find præcis hvor din 
 eyebrow: "Afvigelsesanalyse"
 heading: "Find ud af hvor din margin er på vej hen"
 subhead: "Stockifi sammenligner hvad dine opskrifter siger du burde have brugt, med hvad du faktisk brugte, ret for ret. Hvert gap kommer med en årsag du kan handle på."
-heroImage: "/media/bi-variance-analysis.jpg"
+heroImage: "/media/photos/hero-owner.png"
 order: 32
 category: business-intelligence
 showIntegrations: false
@@ -18,7 +18,7 @@ howItWorks:
     - heading: "Hver varetællingsperiode"
       body: "Du ser afvigelsen i det øjeblik du lukker en varetælling."
   imageSide: "right"
-  image: "/media/photos/hero-owner.png"
+  image: "/media/bi-variance-analysis.jpg"
   imageAlt: ""
 benefits:
   - heading: "Overportering"
