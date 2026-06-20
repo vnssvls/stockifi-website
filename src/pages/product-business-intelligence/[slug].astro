@@ -11,7 +11,7 @@ import ProductHowItWorks from '../../components/features/ProductHowItWorks.astro
 import IntegrationGrid from '../../components/integrations/IntegrationGrid.astro';
 import ImageCardGrid from '../../components/ImageCardGrid.astro';
 import FaqSplit from '../../components/faq/FaqSplit.astro';
-import CtaBand from '../../components/CtaBand.astro';
+import CtaEmail from '../../components/CtaEmail.astro';
 import integrations from '../../data/integrations-home.json';
 import navIcons from '../../data/nav-icons.json';
 import { productHowItWorksIcons } from '../../data/product-howitworks-icons';
@@ -67,7 +67,7 @@ const benefitCards = businessIntelligenceCards.map((c, i) => ({
 
   {d.benefits.length > 0 && (
     <section class="section">
-      <div class="container">
+      <div class="container-page">
         <ImageCardGrid items={benefitCards} columns={4} />
       </div>
     </section>
@@ -82,10 +82,9 @@ const benefitCards = businessIntelligenceCards.map((c, i) => ({
     />
   )}
 
-  <CtaBand
+  <CtaEmail
     heading={d.ctaHeading}
     subhead={d.ctaSubhead}
-    primary={{ label: 'Book a demo', href: '/book-a-demo' }}
-    secondary={{ label: 'View pricing', href: '/pricing' }}
+    bgImages={['/media/cta-bg-1.jpg', '/media/cta-bg-2.jpg', '/media/cta-bg-3.jpg', '/media/cta-bg-4.jpg']}
   />
 </Layout>

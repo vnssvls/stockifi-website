@@ -9,7 +9,7 @@ import ProductHowItWorks from '../../../components/features/ProductHowItWorks.as
 import IntegrationGrid from '../../../components/integrations/IntegrationGrid.astro';
 import ImageCardGrid from '../../../components/ImageCardGrid.astro';
 import FaqSplit from '../../../components/faq/FaqSplit.astro';
-import CtaBand from '../../../components/CtaBand.astro';
+import CtaEmail from '../../../components/CtaEmail.astro';
 import ProcurementAnimation from '../../../components/animations/ProcurementAnimation.astro';
 import integrations from '../../../data/integrations-home.json';
 import navIcons from '../../../data/nav-icons.json';
@@ -66,7 +66,7 @@ const benefitCards = getCategoryCards('procurement', Astro.currentLocale ?? 'en'
 
   {d.benefits.length > 0 && (
     <section class="section">
-      <div class="container">
+      <div class="container-page">
         <ImageCardGrid items={benefitCards} columns={4} />
       </div>
     </section>
@@ -81,10 +81,9 @@ const benefitCards = getCategoryCards('procurement', Astro.currentLocale ?? 'en'
     />
   )}
 
-  <CtaBand
+  <CtaEmail
     heading={d.ctaHeading}
     subhead={d.ctaSubhead}
-    primary={{ label: 'Boka en demo', href: '/sv/book-a-demo' }}
-    secondary={{ label: 'Se priser', href: '/sv/pricing' }}
+    bgImages={['/media/cta-bg-1.jpg', '/media/cta-bg-2.jpg', '/media/cta-bg-3.jpg', '/media/cta-bg-4.jpg']}
   />
 </Layout>
