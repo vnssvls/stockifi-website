@@ -16,4 +16,8 @@ export const productMedia: Record<string, ProductMedia> = {
   // procurement
   'central-kitchen': { image: '/media/product-central-kitchen.png' },
   'supplier-price-tracking': { overlay: 'ProcurementAnimation' },
+  // business-intelligence
+  'performance-dashboards': { image: '/media/product-performance-dashboards.png' },
+  'data-quality': { image: '/media/product-data-quality.png' },
+  'api': { image: '/media/product-api.png' },
 };

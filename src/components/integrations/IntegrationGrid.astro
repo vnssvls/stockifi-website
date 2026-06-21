@@ -23,7 +23,7 @@ for (let i = 0; i < items.length && rows.length < 3; i += cols) {
 ---
 
 <section class="integrations section" data-integrations>
-  <div class="container ig-grid">
+  <div class="container-page ig-grid">
     <div class="ig-copy">
       <h2 class="ig-heading">
         <span class="ig-line">{heading}</span>
@@ -144,10 +144,20 @@ for (let i = 0; i < items.length && rows.length < 3; i += cols) {
      heading beside the icons. Below this, the copy stacks full-width and never
      wraps awkwardly. The container is capped at --container-max, so above 1280
      the copy column width is fixed and the heading always fits on two lines. */
+  /* From the full-width breakpoint up, the page runs to a 100px gutter, so the icons
+     bleed to the viewport's right edge by cancelling exactly that gutter (the old
+     1280-based calc over-pulled and clipped the tiles off-screen). */
+  @media (min-width: 1024px) {
+    .ig-icons { margin-right: -100px; }
+  }
+
   @media (min-width: 1280px) {
     .ig-grid {
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: var(--space-48);
+      /* Cap the copy column so the short heading doesn't leave a dead gap before the
+         icons at full width; the icons column takes all remaining space. */
+      grid-template-columns: minmax(420px, 600px) 1fr;
+      gap: var(--space-64);
+      align-items: center;
     }
     /* Each line stays unbroken → heading is always exactly two lines */
     .ig-line,
@@ -155,8 +165,9 @@ for (let i = 0; i < items.length && rows.length < 3; i += cols) {
     .ig-icons {
       --ig-tile: 72px;
       --ig-gap: 18px;
-      mask-image: linear-gradient(to right, black 45%, transparent 95%);
-      -webkit-mask-image: linear-gradient(to right, black 45%, transparent 95%);
+      /* More room now, so keep tiles solid further across before the fade. */
+      mask-image: linear-gradient(to right, black 60%, transparent 98%);
+      -webkit-mask-image: linear-gradient(to right, black 60%, transparent 98%);
     }
   }
 </style>

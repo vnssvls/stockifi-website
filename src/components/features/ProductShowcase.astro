@@ -30,6 +30,7 @@ const hasOverlay = Astro.slots.has('overlay');
 >
   <div class="ps-media" slot="media">
     {image && <img src={image} alt={imageAlt} />}
+    {hasOverlay && <div class="ps-scrim"></div>}
     {hasOverlay && <div class="ps-overlay"><slot name="overlay" /></div>}
   </div>
 </FeatureShowcase>
@@ -37,7 +38,31 @@ const hasOverlay = Astro.slots.has('overlay');
 <style>
   .ps-media { position: relative; width: 100%; height: 100%; }
   .ps-media > img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  /* Light UI card layered on the photo, centred. pointer-events stay on the card. */
-  .ps-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: var(--space-32); pointer-events: none; }
-  .ps-overlay > :global(*) { pointer-events: auto; }
+  /* Dark veil from the left edge so the overlay card reads against the photo, fading
+     to clear on the right where the photo's subject sits (homepage-hero model). */
+  .ps-scrim {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+      to right,
+      color-mix(in srgb, var(--background) 90%, transparent) 0%,
+      color-mix(in srgb, var(--background) 60%, transparent) 35%,
+      transparent 70%
+    );
+  }
+  /* Light UI card layered on the photo, anchored to the left edge of the media.
+     pointer-events stay on the card. */
+  .ps-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-block: var(--space-32);
+    padding-inline: var(--space-48);
+    pointer-events: none;
+  }
+  .ps-overlay > :global(*) { width: 100%; max-width: 460px; pointer-events: auto; }
 </style>

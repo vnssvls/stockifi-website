@@ -46,6 +46,11 @@ img, picture, svg, video { display: block; max-width: 100%; }
 /* Near-full-width variant: no max-width cap, minimal 20px gutter. For sections or
    components that should run almost edge-to-edge instead of capping at 1280px. */
 .container-wide { width: 100%; max-width: none; margin-inline: auto; padding-inline: var(--gutter-wide); }
+/* Full-width page gutter used across product pages (How it works / integrations /
+   benefit cards / FAQ) so stacked sections align: default container below 1024,
+   full-width at a 100px gutter from 1024 up. Matches FaqSplit + FeatureShowcase --wide. */
+.container-page { width: 100%; max-width: var(--container-max); margin-inline: auto; padding-inline: var(--gutter); }
+@media (min-width: 1024px) { .container-page { max-width: none; padding-inline: 100px; } }
 .prose { max-width: var(--prose-max); }
 .section { padding-block: var(--section-y); }
 .section-sm { padding-block: var(--section-y-sm); }
