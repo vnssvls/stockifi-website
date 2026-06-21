@@ -16,8 +16,15 @@ export const productMedia: Record<string, ProductMedia> = {
   // procurement
   'central-kitchen': { image: '/media/product-central-kitchen.png' },
   'supplier-price-tracking': { overlay: 'ProcurementAnimation' },
+  'anomaly-detection': { image: '/media/product-anomaly-detection.png' },
+  'invoice-automation': { image: '/media/product-invoice-automation.png' },
+  // inventory-management
+  'stock-counting': { image: '/media/product-stock-counting.png' },
+  'inventory-transfers': { image: '/media/product-inventory-transfers.png' },
+  'sales-and-usage': { image: '/media/product-sales-and-usage.png' },
   // business-intelligence
   'performance-dashboards': { image: '/media/product-performance-dashboards.png' },
   'data-quality': { image: '/media/product-data-quality.png' },
   'api': { image: '/media/product-api.png' },
+  'profitability': { image: '/media/product-profitability.png' },
 };
