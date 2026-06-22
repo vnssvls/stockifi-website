@@ -31,6 +31,10 @@ const c = CUR[locale] ?? CUR.en;
 
 const LOC_OPTS = Array.from({ length: 30 }, (_, i) => String(i + 1)).concat('30+');
 const D = { revenue: 1300000, locDefault: '5', current: 30, target: 27, min: 5, max: 60 };
+// Region-typical default annual revenue per location, in the local currency (a round
+// market figure, not a literal conversion of the EUR default).
+const REV_DEFAULTS: Record<string, number> = { en: 1300000, de: 1300000, nl: 1300000, no: 12000000, sv: 12000000, da: 8000000 };
+const defRev = REV_DEFAULTS[locale] ?? D.revenue;
 const bookHref = lp('/book-a-demo');
 ---
 
@@ -51,7 +55,7 @@ const bookHref = lp('/book-a-demo');
           <div class="sc-money">
             <span class="sc-sym" aria-hidden="true">{c.sym}</span>
             <input class="sc-input sc-input--money" id="sc-rev" type="text" inputmode="numeric"
-              autocomplete="off" placeholder={D.revenue.toLocaleString(c.tag)} value={D.revenue.toLocaleString(c.tag)} />
+              autocomplete="off" data-def-rev={defRev} placeholder={defRev.toLocaleString(c.tag)} value={defRev.toLocaleString(c.tag)} />
           </div>
         </div>
         <div class="sc-field">
@@ -269,7 +273,7 @@ const bookHref = lp('/book-a-demo');
     const money = new Intl.NumberFormat(tag, { style: 'currency', currency: cur, maximumFractionDigits: 0 });
     const groups = new Intl.NumberFormat(tag);
     const digits = (v: string) => parseInt(v.replace(/\D/g, ''), 10) || 0;
-    const DEF_REV = 1300000;
+    const DEF_REV = Number(rev.dataset.defRev) || 1300000;
     const venueBucket = (n: number) => n <= 1 ? '1' : n <= 4 ? '2 - 4' : n <= 10 ? '5 - 10' : n <= 20 ? '11 - 20' : '20+';
 
     function fillTrack(el: HTMLInputElement) {

@@ -6,6 +6,7 @@
 import ProcurementAnimation from '../animations/ProcurementAnimation.astro';
 import CentralKitchenFlow from '../animations/CentralKitchenFlow.astro';
 import InvoiceScan from '../animations/InvoiceScan.astro';
+import AnomalyDetect from '../animations/AnomalyDetect.astro';
 import { productMedia } from '../../data/product-media';
 
 interface Props { slug: string; }
@@ -15,3 +16,4 @@ const overlay = productMedia[slug]?.overlay ?? null;
 {overlay === 'ProcurementAnimation' && <ProcurementAnimation />}
 {overlay === 'CentralKitchenFlow' && <CentralKitchenFlow />}
 {overlay === 'InvoiceScan' && <InvoiceScan />}
+{overlay === 'AnomalyDetect' && <AnomalyDetect />}

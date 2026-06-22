@@ -4,20 +4,33 @@
 // down; as it crosses a row the skeletons resolve into the real ingredient + price,
 // then a check appears and the tally ticks up. Loops. Light card, reads on the dark
 // left veil. Static DOM + a small script that toggles classes, so styles stay scoped.
-const ROWS = [
-  { name: 'Cherry tomatoes', price: '€4.80' },
-  { name: 'Olive oil 5 L',   price: '€18.20' },
-  { name: 'Chicken breast',  price: '€24.50' },
-  { name: 'Grana Padano',    price: '€9.40' },
-  { name: 'Sea salt 1 kg',   price: '€3.20' },
+import { formatPrice } from '../../data/currency';
+
+const locale = Astro.currentLocale ?? 'en';
+const STRINGS: Record<string, { doc: string; captured: string }> = {
+  en: { doc: 'Invoice', captured: 'captured' },
+  de: { doc: 'Rechnung', captured: 'erfasst' },
+  nl: { doc: 'Factuur', captured: 'vastgelegd' },
+  no: { doc: 'Faktura', captured: 'registrert' },
+  sv: { doc: 'Faktura', captured: 'registrerade' },
+  da: { doc: 'Faktura', captured: 'registreret' },
+};
+const s = STRINGS[locale] ?? STRINGS.en;
+
+const ROWS: { name: string; base: number }[] = [
+  { name: 'Cherry tomatoes 3 kg', base: 18.00 },
+  { name: 'Olive oil 5 L',        base: 58.00 },
+  { name: 'Chicken breast 15 kg', base: 150.00 },
+  { name: 'Grana Padano 1 kg',    base: 16.00 },
+  { name: 'Sea salt 10 kg',       base: 22.00 },
 ];
 ---
 
 <div class="iv-wrap">
   <div class="iv-card">
     <div class="iv-top">
-      <span class="iv-doc">Invoice</span>
-      <span class="iv-tally"><b class="iv-n">0</b> items captured</span>
+      <span class="iv-doc">{s.doc}</span>
+      <span class="iv-tally"><b class="iv-n">0</b> {s.captured}</span>
     </div>
     <div class="iv-rows">
       {ROWS.map((r) => (
@@ -28,7 +41,7 @@ const ROWS = [
           </span>
           <span class="iv-right">
             <span class="iv-pricewrap">
-              <span class="iv-price">{r.price}</span>
+              <span class="iv-price">{formatPrice(r.base, locale)}</span>
               <i class="iv-sk" aria-hidden="true"></i>
             </span>
             <svg class="iv-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>

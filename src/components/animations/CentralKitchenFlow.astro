@@ -3,6 +3,12 @@
 // One hub ("Central kitchen") supplying three venue nodes, with dots flowing down
 // the connectors to show distribution. Minimal text; reads on the dark left veil.
 // Single SVG so the lines, nodes and animated dots scale and stay aligned as a unit.
+const locale = Astro.currentLocale ?? 'en';
+const HUB: Record<string, string> = {
+  en: 'Central kitchen', de: 'Zentralküche', nl: 'Centrale keuken',
+  no: 'Sentralkjøkken', sv: 'Centralkök', da: 'Centralkøkken',
+};
+const hub = HUB[locale] ?? HUB.en;
 ---
 
 <div class="ck-wrap">
@@ -25,7 +31,7 @@
     <!-- hub -->
     <g class="ck-hub">
       <rect x="86" y="12" width="168" height="46" rx="23" />
-      <text x="170" y="40" text-anchor="middle">Central kitchen</text>
+      <text x="170" y="40" text-anchor="middle">{hub}</text>
     </g>
 
     <!-- venues -->

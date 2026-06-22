@@ -1,0 +1,188 @@
+---
+// Anomaly detection — supplier invoice checked line by line against what each
+// ingredient normally costs. Same scan mechanic as InvoiceScan, but the payoff is
+// the odd charge: most rows resolve to a quiet check, one resolves to a wild
+// overcharge (10x usual) and gets flagged in amber, with a "usually €X" caption and
+// a one-time pulse. Light card, reads on the dark left veil. Static DOM + a small
+// script that toggles classes, so styles stay scoped.
+import { formatPrice } from '../../data/currency';
+
+const locale = Astro.currentLocale ?? 'en';
+const STRINGS: Record<string, { doc: string; checking: string; flagged: string }> = {
+  en: { doc: 'Invoice', checking: 'Checking…',      flagged: '1 flagged' },
+  de: { doc: 'Rechnung', checking: 'Prüfung läuft…', flagged: '1 markiert' },
+  nl: { doc: 'Factuur', checking: 'Controleren…',   flagged: '1 gemarkeerd' },
+  no: { doc: 'Faktura', checking: 'Sjekker…',        flagged: '1 merket' },
+  sv: { doc: 'Faktura', checking: 'Kontrollerar…',   flagged: '1 flaggad' },
+  da: { doc: 'Faktura', checking: 'Tjekker…',        flagged: '1 markeret' },
+};
+const s = STRINGS[locale] ?? STRINGS.en;
+
+const ROWS: { name: string; base: number; flag?: boolean }[] = [
+  { name: 'Cherry tomatoes 3 kg', base: 18.00 },
+  { name: 'Olive oil 5 L',        base: 58.00 },
+  { name: 'Chicken breast 15 kg', base: 150.00 },
+  { name: 'Grana Padano 1 kg',    base: 1740.00, flag: true },
+];
+---
+
+<div class="ad-wrap">
+  <div class="ad-card">
+    <div class="ad-top">
+      <span class="ad-doc">{s.doc}</span>
+      <span class="ad-status" data-checking={s.checking} data-flagged={s.flagged}>{s.checking}</span>
+    </div>
+    <div class="ad-rows">
+      {ROWS.map((r) => (
+        <div class:list={['ad-row', r.flag && 'is-flag']}>
+          <span class="ad-name">
+            <span class="ad-real">{r.name}</span>
+            <i class="ad-sk" aria-hidden="true"></i>
+          </span>
+          <span class="ad-right">
+            <span class="ad-pricewrap">
+              <span class="ad-vals">
+                <span class="ad-price">{formatPrice(r.base, locale)}</span>
+              </span>
+              <i class="ad-sk" aria-hidden="true"></i>
+            </span>
+            {r.flag ? (
+              <svg class="ad-mark ad-warn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" /><path d="M12 9v4" /><path d="M12 17h.01" /></svg>
+            ) : (
+              <svg class="ad-mark ad-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
+            )}
+          </span>
+        </div>
+      ))}
+      <div class="ad-beam" aria-hidden="true"></div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .ad-wrap { width: 100%; padding-block: 24px; display: flex; justify-content: flex-start; }
+  .ad-card {
+    position: relative;
+    width: 100%;
+    max-width: 340px;
+    background: rgba(255, 255, 255, 0.055);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: var(--radius-lg, 12px);
+    padding: 15px 18px 17px;
+    overflow: hidden;
+    font-family: var(--font-body, 'Inter', sans-serif);
+  }
+  .ad-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+  .ad-doc { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255, 255, 255, 0.6); }
+  .ad-status { font-size: 12px; color: rgba(255, 255, 255, 0.5); transition: color 0.3s ease; }
+  .ad-status.flagged { color: #f59e0b; }
+
+  .ad-rows { position: relative; }
+  .ad-row { display: flex; align-items: center; gap: 12px; padding: 8px 6px; border-top: 1px solid rgba(255, 255, 255, 0.07); border-radius: 6px; }
+  .ad-row:first-child { border-top: none; }
+
+  .ad-name { position: relative; flex: 0 1 auto; min-width: 64px; }
+  .ad-right { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+  .ad-pricewrap { position: relative; min-width: 46px; }
+  .ad-vals { display: flex; flex-direction: column; align-items: flex-end; line-height: 1.25; }
+
+  .ad-real, .ad-price { font-size: 14px; font-weight: 300; color: rgba(255, 255, 255, 0.92); white-space: nowrap; opacity: 0; transition: opacity 0.3s ease; }
+  .ad-price { font-variant-numeric: tabular-nums; }
+  .ad-usual { font-size: 11px; color: #f59e0b; white-space: nowrap; opacity: 0; transition: opacity 0.3s ease; transition-delay: 0.1s; }
+
+  .ad-sk {
+    position: absolute;
+    left: 0; right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 8px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.18);
+    animation: ad-pulse 1.4s ease-in-out infinite;
+  }
+  @keyframes ad-pulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 0.85; } }
+
+  .ad-mark { width: 15px; height: 15px; flex: 0 0 auto; opacity: 0; transform: scale(0.6); transition: opacity 0.3s ease, transform 0.3s ease; }
+  .ad-ok { color: rgba(255, 255, 255, 0.65); }
+  .ad-warn { color: #f59e0b; }
+
+  /* resolved */
+  .ad-row.done .ad-sk { animation: none; opacity: 0; transition: opacity 0.25s ease; }
+  .ad-row.done .ad-real,
+  .ad-row.done .ad-price,
+  .ad-row.done .ad-usual { opacity: 1; }
+  .ad-row.done .ad-mark { opacity: 1; transform: scale(1); transition-delay: 0.12s; }
+
+  /* the flagged row stands out */
+  .ad-row.is-flag.done { background: rgba(245, 158, 11, 0.10); animation: ad-flag-pop 0.5s ease; }
+  .ad-row.is-flag.done .ad-price { color: #f59e0b; font-weight: 400; }
+  @keyframes ad-flag-pop { 0% { background: rgba(245, 158, 11, 0); } 40% { background: rgba(245, 158, 11, 0.22); } 100% { background: rgba(245, 158, 11, 0.10); } }
+
+  .ad-beam {
+    position: absolute;
+    left: -18px; right: -18px;
+    top: 0;
+    height: 2px;
+    background: #bb86fc;
+    box-shadow: 0 0 12px 2px rgba(187, 134, 252, 0.7);
+    opacity: 0;
+  }
+  .ad-beam.on { opacity: 1; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ad-beam { display: none; }
+    .ad-sk { animation: none; }
+    .ad-row.is-flag.done { animation: none; }
+  }
+</style>
+
+<script>
+  const SWEEP = 1600; // beam top -> bottom (ms)
+  const HOLD = 1000;  // pause before the loop restarts (ms)
+
+  document.querySelectorAll<HTMLElement>('.ad-card').forEach((card) => {
+    const beam = card.querySelector<HTMLElement>('.ad-beam');
+    const rows = Array.from(card.querySelectorAll<HTMLElement>('.ad-row'));
+    const status = card.querySelector<HTMLElement>('.ad-status');
+    if (!beam || !rows.length) return;
+
+    let timers: number[] = [];
+    const clearAll = () => { timers.forEach((t) => clearTimeout(t)); timers = []; };
+
+    const setChecking = () => { if (status) { status.textContent = status.dataset.checking ?? 'Checking…'; status.classList.remove('flagged'); } };
+    const setFlagged = () => { if (status) { status.textContent = status.dataset.flagged ?? '1 flagged'; status.classList.add('flagged'); } };
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      rows.forEach((r) => r.classList.add('done'));
+      setFlagged();
+      return;
+    }
+
+    function run() {
+      clearAll();
+      beam!.style.transition = 'none';
+      beam!.style.top = '0%';
+      beam!.classList.remove('on');
+      rows.forEach((r) => r.classList.remove('done'));
+      setChecking();
+
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        beam!.style.transition = `top ${SWEEP}ms linear`;
+        beam!.classList.add('on');
+        beam!.style.top = '100%';
+      }));
+
+      rows.forEach((r, i) => {
+        const at = SWEEP * ((i + 0.5) / rows.length);
+        timers.push(window.setTimeout(() => {
+          r.classList.add('done');
+          if (r.classList.contains('is-flag')) setFlagged();
+        }, at));
+      });
+
+      timers.push(window.setTimeout(run, SWEEP + HOLD));
+    }
+
+    run();
+  });
+</script>
