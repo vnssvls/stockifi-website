@@ -18,7 +18,9 @@ export const productMedia: Record<string, ProductMedia> = {
   'supplier-price-tracking': { overlay: 'ProcurementAnimation' },
   'anomaly-detection': { image: '/media/product-anomaly-detection.png', overlay: 'AnomalyDetect' },
   'invoice-automation': { image: '/media/product-invoice-automation.png', overlay: 'InvoiceScan' },
+  'ordering-suggestions': { overlay: 'OrderSuggestions' },
   // inventory-management
+  'recipe-building': { overlay: 'RecipeCost' },
   'stock-counting': { image: '/media/product-stock-counting.png' },
   'inventory-transfers': { image: '/media/product-inventory-transfers.png' },
   'sales-and-usage': { image: '/media/product-sales-and-usage.png' },

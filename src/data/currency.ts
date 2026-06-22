@@ -10,13 +10,30 @@ const CUR: Record<string, { tag: string; cur: string; rate: number; frac: number
   da: { tag: 'da-DK', cur: 'DKK', rate: 7.46, frac: 0 },
 };
 
-/** Format a EUR base amount into the given locale's currency (converted + localised). */
-export function formatPrice(baseEur: number, locale: string | undefined): string {
+/** Convert a EUR base to the locale's currency and round to its display precision,
+ *  returning the NUMBER. Use when amounts must stay self-consistent (e.g. rows that
+ *  sum to a total), so the maths is done on the same rounded figures that are shown. */
+export function convertAmount(baseEur: number, locale: string | undefined, opts?: { whole?: boolean }): number {
   const c = CUR[locale ?? 'en'] ?? CUR.en;
+  const frac = opts?.whole ? 0 : c.frac;
+  const f = Math.pow(10, frac);
+  return Math.round(baseEur * c.rate * f) / f;
+}
+
+/** Format an amount already in the locale's currency (no conversion). */
+export function formatAmount(amount: number, locale: string | undefined, opts?: { whole?: boolean }): string {
+  const c = CUR[locale ?? 'en'] ?? CUR.en;
+  const frac = opts?.whole ? 0 : c.frac;
   return new Intl.NumberFormat(c.tag, {
     style: 'currency',
     currency: c.cur,
-    minimumFractionDigits: c.frac,
-    maximumFractionDigits: c.frac,
-  }).format(baseEur * c.rate);
+    minimumFractionDigits: frac,
+    maximumFractionDigits: frac,
+  }).format(amount);
+}
+
+/** Format a EUR base amount into the given locale's currency (converted + localised).
+ *  Pass `{ whole: true }` to drop decimals (e.g. round menu prices). */
+export function formatPrice(baseEur: number, locale: string | undefined, opts?: { whole?: boolean }): string {
+  return formatAmount(convertAmount(baseEur, locale, opts), locale, opts);
 }

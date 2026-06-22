@@ -1,0 +1,105 @@
+---
+// Ordering suggestions — a "Reorder" panel the system fills in from usage. Functional
+// panel label + a "✦ Suggested" pill (the affordance that says "auto-generated", no
+// marketing sentence). Each suggested quantity counts up, then loops quietly. Units
+// (kg / ×) are universal, so only the chrome localises. Light card on the dark veil.
+const locale = Astro.currentLocale ?? 'en';
+const STRINGS: Record<string, { title: string; suggested: string }> = {
+  en: { title: 'Reorder', suggested: 'Suggested' },
+  de: { title: 'Nachbestellung', suggested: 'Vorgeschlagen' },
+  nl: { title: 'Nabestelling', suggested: 'Voorgesteld' },
+  no: { title: 'Etterbestilling', suggested: 'Foreslått' },
+  sv: { title: 'Återbeställning', suggested: 'Föreslaget' },
+  da: { title: 'Genbestilling', suggested: 'Foreslået' },
+};
+const s = STRINGS[locale] ?? STRINGS.en;
+
+const ROWS: { name: string; value: number; prefix?: string; suffix?: string }[] = [
+  { name: 'Cherry tomatoes', value: 8,  suffix: ' kg' },
+  { name: 'Olive oil 5 L',   value: 3,  prefix: '× ' },
+  { name: 'Chicken breast',  value: 15, suffix: ' kg' },
+  { name: 'Grana Padano',    value: 2,  suffix: ' kg' },
+];
+---
+
+<div class="os-wrap">
+  <div class="os-card">
+    <div class="os-top">
+      <span class="os-doc">{s.title}</span>
+      <span class="os-tag">
+        <svg class="os-spark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l1.7 6.1 6.3 1.9-6.3 1.9L12 19l-1.7-6.1L4 11l6.3-1.9z" /></svg>
+        {s.suggested}
+      </span>
+    </div>
+    <div class="os-rows">
+      {ROWS.map((r) => (
+        <div class="os-row">
+          <span class="os-name">{r.name}</span>
+          <span class="os-qty" data-val={r.value} data-prefix={r.prefix ?? ''} data-suffix={r.suffix ?? ''}>{(r.prefix ?? '') + r.value + (r.suffix ?? '')}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .os-wrap { width: 100%; padding-block: 24px; display: flex; justify-content: flex-start; }
+  .os-card {
+    width: 100%;
+    max-width: 330px;
+    background: rgba(255, 255, 255, 0.055);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: var(--radius-lg, 12px);
+    padding: 15px 18px 17px;
+    font-family: var(--font-body, 'Inter', sans-serif);
+  }
+  .os-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+  .os-doc { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255, 255, 255, 0.6); }
+  .os-tag {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 11px; font-weight: 500;
+    color: #c9a6ff;
+    background: rgba(187, 134, 252, 0.14);
+    border: 1px solid rgba(187, 134, 252, 0.28);
+    border-radius: var(--radius-full, 999px);
+    padding: 3px 9px 3px 7px;
+  }
+  .os-spark { width: 12px; height: 12px; color: #bb86fc; }
+
+  .os-rows { position: relative; }
+  .os-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 9px 0; border-top: 1px solid rgba(255, 255, 255, 0.07); }
+  .os-row:first-child { border-top: none; }
+  .os-name { font-size: 14px; font-weight: 300; color: rgba(255, 255, 255, 0.82); white-space: nowrap; }
+  .os-qty { font-size: 14px; font-weight: 400; color: rgba(255, 255, 255, 0.95); font-variant-numeric: tabular-nums; white-space: nowrap; }
+</style>
+
+<script>
+  const DUR = 800;   // count-up duration (ms)
+  const HOLD = 3600; // hold before the loop restarts (ms)
+
+  document.querySelectorAll<HTMLElement>('.os-card').forEach((card) => {
+    const qtys = Array.from(card.querySelectorAll<HTMLElement>('.os-qty'));
+    if (!qtys.length) return;
+
+    const render = (el: HTMLElement, n: number) => {
+      el.textContent = (el.dataset.prefix ?? '') + Math.round(n) + (el.dataset.suffix ?? '');
+    };
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      qtys.forEach((el) => render(el, Number(el.dataset.val)));
+      return;
+    }
+
+    function run() {
+      const t0 = performance.now();
+      (function step(now: number) {
+        const p = Math.min((now - t0) / DUR, 1);
+        const e = 1 - Math.pow(1 - p, 3); // easeOutCubic
+        qtys.forEach((el) => render(el, Number(el.dataset.val) * e));
+        if (p < 1) requestAnimationFrame(step);
+        else window.setTimeout(() => { qtys.forEach((el) => render(el, 0)); run(); }, HOLD);
+      })(performance.now());
+    }
+    run();
+  });
+</script>

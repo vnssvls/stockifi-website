@@ -1,0 +1,172 @@
+---
+// Recipe building — a menu item (one plated dish) being built. Ingredient names type
+// into the entry field one by one; each lands as a row with its cost auto-filled (the
+// price Stockifi pulls from invoices). Selling price is fixed; recipe cost steps up and
+// the margin recalculates live as each ingredient is added. Costs localise via
+// currency.ts; chrome via STRINGS. Light card on the dark left veil. Static DOM + a
+// small script (scoped styles).
+import { convertAmount, formatAmount } from '../../data/currency';
+
+const locale = Astro.currentLocale ?? 'en';
+const STRINGS: Record<string, { tag: string; placeholder: string; sell: string; cost: string; margin: string }> = {
+  en: { tag: 'Main', placeholder: 'Add ingredient', sell: 'Selling price', cost: 'Recipe cost', margin: 'Margin' },
+  de: { tag: 'Hauptgericht', placeholder: 'Zutat hinzufügen', sell: 'Verkaufspreis', cost: 'Rezeptkosten', margin: 'Marge' },
+  nl: { tag: 'Hoofdgerecht', placeholder: 'Ingrediënt toevoegen', sell: 'Verkoopprijs', cost: 'Receptkosten', margin: 'Marge' },
+  no: { tag: 'Hovedrett', placeholder: 'Legg til ingrediens', sell: 'Salgspris', cost: 'Oppskriftskostnad', margin: 'Margin' },
+  sv: { tag: 'Huvudrätt', placeholder: 'Lägg till ingrediens', sell: 'Försäljningspris', cost: 'Receptkostnad', margin: 'Marginal' },
+  da: { tag: 'Hovedret', placeholder: 'Tilføj ingrediens', sell: 'Salgspris', cost: 'Opskriftspris', margin: 'Margin' },
+};
+const s = STRINGS[locale] ?? STRINGS.en;
+
+const DISH = 'Beef ragù';
+const SELL = 22; // round menu price (EUR base) — ~27% food cost
+const ING: { name: string; base: number }[] = [
+  { name: 'Beef mince 180 g', base: 2.90 },
+  { name: 'Tomatoes 120 g',   base: 0.75 },
+  { name: 'Soffritto 60 g',   base: 0.30 },
+  { name: 'Red wine 80 ml',   base: 0.95 },
+  { name: 'Parmesan 25 g',    base: 1.05 },
+];
+// Work in the displayed currency (convert + round per row) so the rows always sum to
+// the shown recipe cost and the margin is computed from the exact figures on screen.
+const sellDisp = convertAmount(SELL, locale, { whole: true });
+const sellFmt = formatAmount(sellDisp, locale, { whole: true });
+let cum = 0;
+const rows = ING.map((i) => {
+  const cost = convertAmount(i.base, locale);
+  cum = Math.round((cum + cost) * 100) / 100;
+  return { name: i.name, cost: formatAmount(cost, locale), cum: formatAmount(cum, locale), margin: Math.round(((sellDisp - cum) / sellDisp) * 100) };
+});
+const totalFmt = formatAmount(cum, locale);
+const finalMargin = Math.round(((sellDisp - cum) / sellDisp) * 100);
+---
+
+<div class="rc-wrap">
+  <div class="rc-card">
+    <div class="rc-top">
+      <span class="rc-dish">{DISH}</span>
+      <span class="rc-chip">{s.tag}</span>
+    </div>
+
+    <div class="rc-input">
+      <span class="rc-typed" data-placeholder={s.placeholder}></span>
+      <span class="rc-caret" aria-hidden="true"></span>
+    </div>
+
+    <div class="rc-rows">
+      {rows.map((r) => (
+        <div class="rc-row" data-cum={r.cum} data-margin={r.margin}>
+          <span class="rc-name">{r.name}</span>
+          <span class="rc-cost">{r.cost}</span>
+        </div>
+      ))}
+    </div>
+
+    <div class="rc-metrics">
+      <div class="rc-metric">
+        <span class="rc-m-l">{s.sell}</span>
+        <span class="rc-m-v">{sellFmt}</span>
+      </div>
+      <div class="rc-metric">
+        <span class="rc-m-l">{s.cost}</span>
+        <span class="rc-cost-total" data-final={totalFmt}>{totalFmt}</span>
+      </div>
+      <div class="rc-metric">
+        <span class="rc-m-l">{s.margin}</span>
+        <span class="rc-margin-v" data-final={`${finalMargin}%`}>{finalMargin}%</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .rc-wrap { width: 100%; padding-block: 24px; display: flex; justify-content: flex-start; }
+  .rc-card {
+    width: 100%;
+    max-width: 340px;
+    background: rgba(255, 255, 255, 0.055);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: var(--radius-lg, 12px);
+    padding: 15px 18px 17px;
+    font-family: var(--font-body, 'Inter', sans-serif);
+  }
+  .rc-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+  .rc-dish { font-size: 15px; font-weight: 500; color: rgba(255, 255, 255, 0.95); }
+  .rc-chip {
+    font-size: 11px; color: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: var(--radius-full, 999px);
+    padding: 2px 9px;
+  }
+
+  /* entry field — only shown while animating */
+  .rc-input { display: none; align-items: center; gap: 1px; margin-bottom: 10px; padding: 8px 11px; border-radius: 8px; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(187, 134, 252, 0.4); }
+  .rc-typed { font-size: 13.5px; color: rgba(255, 255, 255, 0.9); white-space: nowrap; }
+  .rc-typed:empty::before { content: attr(data-placeholder); color: rgba(255, 255, 255, 0.4); }
+  .rc-caret { width: 1.5px; height: 15px; background: #bb86fc; animation: rc-blink 1s step-end infinite; }
+  @keyframes rc-blink { 50% { opacity: 0; } }
+
+  .rc-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 8px 0; border-top: 1px solid rgba(255, 255, 255, 0.07); }
+  .rc-row:first-child { border-top: none; }
+  .rc-name { font-size: 13.5px; font-weight: 300; color: rgba(255, 255, 255, 0.82); white-space: nowrap; }
+  .rc-cost { font-size: 13.5px; font-weight: 300; color: rgba(255, 255, 255, 0.82); font-variant-numeric: tabular-nums; }
+
+  .rc-metrics { display: flex; gap: 16px; margin-top: 13px; padding-top: 13px; border-top: 1px solid rgba(255, 255, 255, 0.18); }
+  .rc-metric { display: flex; flex-direction: column; gap: 3px; flex: 1 1 0; min-width: 0; }
+  .rc-m-l { font-size: 10.5px; letter-spacing: 0.03em; text-transform: uppercase; color: rgba(255, 255, 255, 0.55); white-space: nowrap; }
+  .rc-m-v, .rc-cost-total, .rc-margin-v { font-size: 16px; font-weight: 500; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .rc-m-v, .rc-cost-total { color: rgba(255, 255, 255, 0.95); }
+  .rc-margin-v { color: #c9a6ff; }
+
+  /* animated build */
+  .rc-card.rc-anim .rc-input { display: flex; }
+  .rc-card.rc-anim .rc-row { opacity: 0; transform: translateY(4px); transition: opacity 0.3s ease, transform 0.3s ease; }
+  .rc-card.rc-anim .rc-row.show { opacity: 1; transform: none; }
+</style>
+
+<script>
+  const TYPE = 46;     // per-character (ms)
+  const COMMIT = 320;  // pause after a name finishes typing (ms)
+  const NEXT = 260;    // gap before the next ingredient starts (ms)
+  const END = 2000;    // hold at the end before reset (ms)
+  const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+  document.querySelectorAll<HTMLElement>('.rc-card').forEach((card) => {
+    const typed = card.querySelector<HTMLElement>('.rc-typed');
+    const rows = Array.from(card.querySelectorAll<HTMLElement>('.rc-row'));
+    const costTotal = card.querySelector<HTMLElement>('.rc-cost-total');
+    const marginV = card.querySelector<HTMLElement>('.rc-margin-v');
+    if (!typed || !rows.length || !costTotal || !marginV) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    card.classList.add('rc-anim');
+    const names = rows.map((r) => r.querySelector('.rc-name')!.textContent ?? '');
+
+    async function loop() {
+      while (card.isConnected) {
+        rows.forEach((r) => r.classList.remove('show'));
+        costTotal!.textContent = '';
+        marginV!.textContent = '';
+        typed!.textContent = '';
+        await sleep(500);
+
+        for (let i = 0; i < rows.length; i++) {
+          const name = names[i];
+          for (let c = 1; c <= name.length; c++) {
+            typed!.textContent = name.slice(0, c);
+            await sleep(TYPE);
+          }
+          await sleep(COMMIT);
+          rows[i].classList.add('show');
+          costTotal!.textContent = rows[i].dataset.cum ?? '';
+          marginV!.textContent = (rows[i].dataset.margin ?? '') + '%';
+          typed!.textContent = '';
+          await sleep(NEXT);
+        }
+        await sleep(END);
+      }
+    }
+    loop();
+  });
+</script>
