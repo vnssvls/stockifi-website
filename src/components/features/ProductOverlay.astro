@@ -9,6 +9,7 @@ import InvoiceScan from '../animations/InvoiceScan.astro';
 import AnomalyDetect from '../animations/AnomalyDetect.astro';
 import OrderSuggestions from '../animations/OrderSuggestions.astro';
 import RecipeCost from '../animations/RecipeCost.astro';
+import StockCount from '../animations/StockCount.astro';
 import { productMedia } from '../../data/product-media';
 
 interface Props { slug: string; }
@@ -21,3 +22,4 @@ const overlay = productMedia[slug]?.overlay ?? null;
 {overlay === 'AnomalyDetect' && <AnomalyDetect />}
 {overlay === 'OrderSuggestions' && <OrderSuggestions />}
 {overlay === 'RecipeCost' && <RecipeCost />}
+{overlay === 'StockCount' && <StockCount />}

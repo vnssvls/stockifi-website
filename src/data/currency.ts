@@ -10,6 +10,13 @@ const CUR: Record<string, { tag: string; cur: string; rate: number; frac: number
   da: { tag: 'da-DK', cur: 'DKK', rate: 7.46, frac: 0 },
 };
 
+/** The locale's Intl tag + ISO currency code — for client-side formatting of values
+ *  computed in the browser (e.g. a running total accumulated in random order). */
+export function currencyMeta(locale: string | undefined): { tag: string; cur: string } {
+  const c = CUR[locale ?? 'en'] ?? CUR.en;
+  return { tag: c.tag, cur: c.cur };
+}
+
 /** Convert a EUR base to the locale's currency and round to its display precision,
  *  returning the NUMBER. Use when amounts must stay self-consistent (e.g. rows that
  *  sum to a total), so the maths is done on the same rounded figures that are shown. */
