@@ -15,7 +15,7 @@ export interface ProductMedia {
 export const productMedia: Record<string, ProductMedia> = {
   // procurement
   'central-kitchen': { image: '/media/product-central-kitchen.png', overlay: 'CentralKitchenFlow' },
-  'supplier-price-tracking': { overlay: 'ProcurementAnimation' },
+  'supplier-price-tracking': { overlay: 'SupplierPrices' },
   'anomaly-detection': { image: '/media/product-anomaly-detection.png', overlay: 'AnomalyDetect' },
   'invoice-automation': { image: '/media/product-invoice-automation.png', overlay: 'InvoiceScan' },
   'ordering-suggestions': { overlay: 'OrderSuggestions' },

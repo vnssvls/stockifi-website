@@ -3,7 +3,6 @@
 // product slug. Add a page's overlay component here once and every locale's
 // template renders it (templates only pass the slug). Pages without an overlay
 // render nothing here and show the background photo alone.
-import ProcurementAnimation from '../animations/ProcurementAnimation.astro';
 import CentralKitchenFlow from '../animations/CentralKitchenFlow.astro';
 import InvoiceScan from '../animations/InvoiceScan.astro';
 import AnomalyDetect from '../animations/AnomalyDetect.astro';
@@ -13,13 +12,13 @@ import StockCount from '../animations/StockCount.astro';
 import InventoryTransfer from '../animations/InventoryTransfer.astro';
 import SalesReport from '../animations/SalesReport.astro';
 import WastageLog from '../animations/WastageLog.astro';
+import SupplierPrices from '../animations/SupplierPrices.astro';
 import { productMedia } from '../../data/product-media';
 
 interface Props { slug: string; }
 const { slug } = Astro.props;
 const overlay = productMedia[slug]?.overlay ?? null;
 ---
-{overlay === 'ProcurementAnimation' && <ProcurementAnimation />}
 {overlay === 'CentralKitchenFlow' && <CentralKitchenFlow />}
 {overlay === 'InvoiceScan' && <InvoiceScan />}
 {overlay === 'AnomalyDetect' && <AnomalyDetect />}
@@ -29,3 +28,4 @@ const overlay = productMedia[slug]?.overlay ?? null;
 {overlay === 'InventoryTransfer' && <InventoryTransfer />}
 {overlay === 'SalesReport' && <SalesReport />}
 {overlay === 'WastageLog' && <WastageLog />}
+{overlay === 'SupplierPrices' && <SupplierPrices />}

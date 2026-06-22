@@ -1,0 +1,149 @@
+---
+// Supplier price tracking — carded version of the Latest price changes ticker (the
+// product-page counterpart to ProcurementAnimation, which stays as-is for the
+// homepage). Same scrolling animation: 3 rows, spotlight middle, advancing with a
+// count-up ↑% badge, footer recipe count. Restyled into the family card UI. Prices
+// localise via currency.ts; chrome via STRINGS. Global styles (JS builds the rows).
+import { formatPrice } from '../../data/currency';
+const locale = Astro.currentLocale ?? 'en';
+const STRINGS: Record<string, { head: string; updated: string }> = {
+  en: { head: 'Latest price changes', updated: 'recipes updated' },
+  de: { head: 'Aktuelle Preisänderungen', updated: 'Rezepte aktualisiert' },
+  nl: { head: 'Recente prijswijzigingen', updated: 'recepten bijgewerkt' },
+  no: { head: 'Siste prisendringer', updated: 'oppskrifter oppdatert' },
+  sv: { head: 'Senaste prisändringar', updated: 'recept uppdaterade' },
+  da: { head: 'Seneste prisændringer', updated: 'opskrifter opdateret' },
+};
+const s = STRINGS[locale] ?? STRINGS.en;
+const ITEMS_BASE = [
+  { name: 'Cherry tomatoes',      base: 4.80,  change: 4,  recipes: 6  },
+  { name: 'Chicken breast',       base: 24.50, change: 8,  recipes: 4  },
+  { name: 'Olive oil 5 L',        base: 18.20, change: 5,  recipes: 14 },
+  { name: 'Grana Padano 1 kg',    base: 9.40,  change: 12, recipes: 3  },
+  { name: 'Beef tenderloin 1 kg', base: 32.00, change: 6,  recipes: 2  },
+  { name: 'Halibut fillet 1 kg',  base: 21.50, change: 9,  recipes: 3  },
+  { name: 'Potato 10 kg',         base: 9.20,  change: 5,  recipes: 8  },
+  { name: 'Parmesan 1 kg',        base: 22.00, change: 7,  recipes: 5  },
+];
+const items = ITEMS_BASE.map((i) => ({ name: i.name, price: formatPrice(i.base, locale), change: i.change, recipes: i.recipes }));
+---
+
+<div class="sp-wrap">
+  <div class="sp-card" data-items={JSON.stringify(items)}>
+    <p class="sp-head">{s.head}</p>
+    <div class="sp-clip">
+      <div class="sp-track"></div>
+    </div>
+    <div class="sp-footer">
+      <svg class="sp-sync" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/>
+        <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/>
+        <path d="M3 21v-5h5"/><path d="M21 3v5h-5"/>
+      </svg>
+      <span class="sp-footer-count"></span>
+      <span class="sp-footer-label"> {s.updated}</span>
+    </div>
+  </div>
+</div>
+
+<style is:global>
+  .sp-wrap { width: 100%; padding-block: 24px; display: flex; justify-content: flex-start; }
+  .sp-card {
+    width: 100%;
+    max-width: 330px;
+    background: rgba(255, 255, 255, 0.055);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: var(--radius-lg, 12px);
+    padding: 15px 18px 16px;
+    font-family: var(--font-body, 'Inter', sans-serif);
+  }
+  .sp-head { margin: 0 0 6px; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255, 255, 255, 0.6); }
+  .sp-clip { overflow: hidden; }
+  .sp-track { display: flex; flex-direction: column; will-change: transform; }
+
+  .sp-row { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(255, 255, 255, 0.07); padding: 10px 0; flex-shrink: 0; }
+  .sp-row-right { display: flex; align-items: center; flex-shrink: 0; }
+  .sp-row-name, .sp-row-price { font-size: 13.5px; font-weight: 300; color: rgba(255, 255, 255, 0.45); transition: color 0.3s ease; font-variant-numeric: tabular-nums; }
+  .sp-row-name { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding-right: 8px; font-variant-numeric: normal; }
+  .sp-row.spotlight .sp-row-name, .sp-row.spotlight .sp-row-price { color: rgba(255, 255, 255, 0.92); }
+
+  .sp-badge { max-width: 0; padding: 0; margin-left: 0; opacity: 0; overflow: hidden; white-space: nowrap; border-radius: 4px; font-size: 12px; font-weight: 400; transition: max-width 0.32s ease, padding 0.32s ease, margin-left 0.32s ease, opacity 0.2s ease; }
+  .sp-badge.visible { max-width: 80px; padding: 2px 7px; margin-left: 9px; opacity: 1; }
+  .sp-badge.up { color: #f59e0b; background: rgba(245, 158, 11, 0.22); }
+  .sp-badge.down { color: #34d399; background: rgba(52, 211, 153, 0.2); }
+
+  .sp-footer { margin-top: 11px; padding-top: 12px; border-top: 1px solid rgba(255, 255, 255, 0.18); display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 300; color: rgba(255, 255, 255, 0.5); }
+  .sp-footer-count { font-variant-numeric: tabular-nums; color: rgba(255, 255, 255, 0.9); }
+  .sp-sync { flex-shrink: 0; width: 13px; height: 13px; color: #34d399; animation: sp-spin 2s linear infinite; }
+  @keyframes sp-spin { to { transform: rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce) { .sp-sync { animation: none; } }
+</style>
+
+<script>
+  const VISIBLE = 3;
+  const SPOTLIGHT = 1;
+  const INTERVAL_MS = 2200;
+
+  function initTicker(track: Element) {
+    const ITEMS = JSON.parse(track.closest('.sp-card')?.getAttribute('data-items') || '[]');
+    if (!ITEMS.length) return;
+    let head = 0;
+    const card = track.closest('.sp-card')!;
+    const footerCountEl = card.querySelector('.sp-footer-count')!;
+
+    function updateFooter(item: any) {
+      const target = item.recipes; const dur = 380; const t0 = performance.now();
+      (function step(now: number) {
+        const p = Math.min((now - t0) / dur, 1);
+        footerCountEl.textContent = String(Math.round(p * target));
+        if (p < 1) requestAnimationFrame(step);
+      })(performance.now());
+    }
+    function makeRow(item: any, isSpot: boolean) {
+      const row = document.createElement('div');
+      row.className = 'sp-row' + (isSpot ? ' spotlight' : '');
+      row.innerHTML =
+        `<span class="sp-row-name">${item.name}</span>` +
+        `<span class="sp-row-right"><span class="sp-row-price">${item.price}</span>` +
+        `<span class="sp-badge ${item.change > 0 ? 'up' : 'down'}"></span></span>`;
+      return row;
+    }
+    function countUp(el: Element, target: number) {
+      const sign = target > 0 ? '↑' : '↓'; const abs = Math.abs(target); const dur = 550; const t0 = performance.now();
+      (function step(now: number) {
+        const p = Math.min((now - t0) / dur, 1);
+        el.textContent = sign + Math.round(p * abs) + '%';
+        if (p < 1) requestAnimationFrame(step);
+      })(performance.now());
+    }
+
+    for (let i = 0; i < VISIBLE; i++) track.appendChild(makeRow(ITEMS[(head + i) % ITEMS.length], i === SPOTLIGHT));
+
+    const initItem = ITEMS[(head + SPOTLIGHT) % ITEMS.length];
+    const initBadge = (track.children[SPOTLIGHT] as Element).querySelector('.sp-badge')!;
+    footerCountEl.textContent = '0';
+    setTimeout(() => { initBadge.classList.add('visible'); countUp(initBadge, initItem.change); updateFooter(initItem); }, 400);
+
+    function tick() {
+      const rows = track.children;
+      const rowH = (rows[0] as HTMLElement).offsetHeight;
+      rows[SPOTLIGHT].classList.remove('spotlight');
+      (track as HTMLElement).style.transition = `transform ${Math.round(INTERVAL_MS * 0.25)}ms cubic-bezier(0.4,0,0.2,1)`;
+      (track as HTMLElement).style.transform = `translateY(-${rowH}px)`;
+      setTimeout(() => {
+        (track as HTMLElement).style.transition = 'none';
+        (track as HTMLElement).style.transform = '';
+        track.removeChild(rows[0]);
+        head = (head + 1) % ITEMS.length;
+        track.appendChild(makeRow(ITEMS[(head + VISIBLE - 1) % ITEMS.length], false));
+        track.children[SPOTLIGHT].classList.add('spotlight');
+        const newItem = ITEMS[(head + SPOTLIGHT) % ITEMS.length];
+        const badge = (track.children[SPOTLIGHT] as Element).querySelector('.sp-badge')!;
+        setTimeout(() => { badge.classList.add('visible'); countUp(badge, newItem.change); updateFooter(newItem); }, 80);
+      }, Math.round(INTERVAL_MS * 0.3));
+    }
+    setInterval(tick, INTERVAL_MS);
+  }
+
+  document.querySelectorAll('.sp-track').forEach(initTicker);
+</script>
