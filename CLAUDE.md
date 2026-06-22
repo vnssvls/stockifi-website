@@ -14,7 +14,7 @@ The site serves 6 locales: EN, NO (`no`), DA (`da`), SV (`sv`), NL (`nl`), DE (`
 - **New strings:** add the key to **every** locale in the relevant string file. If a real translation isn't ready, add the EN value as a clearly-flagged placeholder and tell V — never silently ship EN-only.
 - **Before committing a UI/copy change:** confirm it renders for a non-EN locale (grep the new key across all locale blocks, or build + spot-check a `/de/…` route).
 
-Legal pages are EN-canonical (locale files 301-redirect to EN) — the one intentional exception.
+Legal pages are EN-canonical, the one intentional exception: each locale has its own page (`/de/terms-conditions`, etc.) that renders the shared English body (`TermsConditionsBody` / `PrivacyPolicyBody`) with locale-prefixed internal links. The URL stays on-locale; the legal copy is intentionally English on every locale (not a redirect, not translated).
 
 **Translation review / native sign-off:** follow Simon's SOP at `../stockifi-agents/website-copy/translation-review-sop.md` (locale sweep → reviewer edits → apply). Locked food-cost terms + currency conventions live in `../stockifi-agents/website-copy/spi-intro-translations.md`.
 
