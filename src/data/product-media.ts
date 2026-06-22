@@ -26,7 +26,7 @@ export const productMedia: Record<string, ProductMedia> = {
   'sales-and-usage': { image: '/media/product-sales-and-usage.png', overlay: 'SalesReport' },
   'wastage-tracking': { overlay: 'WastageLog' },
   // business-intelligence
-  'performance-dashboards': { image: '/media/product-performance-dashboards.png' },
+  'performance-dashboards': { image: '/media/product-performance-dashboards.png', overlay: 'Performance' },
   'data-quality': { image: '/media/product-data-quality.png', overlay: 'DataQuality' },
   'variance-analysis': { image: '/media/bi-variance-analysis.jpg', overlay: 'Variance' },
   'api': { image: '/media/product-api.png' },

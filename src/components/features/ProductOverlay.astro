@@ -16,6 +16,7 @@ import SupplierPrices from '../animations/SupplierPrices.astro';
 import DataQuality from '../animations/DataQuality.astro';
 import Profitability from '../animations/Profitability.astro';
 import Variance from '../animations/Variance.astro';
+import Performance from '../animations/Performance.astro';
 import { productMedia } from '../../data/product-media';
 
 interface Props { slug: string; }
@@ -35,3 +36,4 @@ const overlay = productMedia[slug]?.overlay ?? null;
 {overlay === 'DataQuality' && <DataQuality />}
 {overlay === 'Profitability' && <Profitability />}
 {overlay === 'Variance' && <Variance />}
+{overlay === 'Performance' && <Performance />}

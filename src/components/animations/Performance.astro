@@ -1,0 +1,108 @@
+---
+// Performance dashboards — the "everything in one place" overview. A 2×2 KPI grid
+// (food cost, gross margin, variance, wastage) with period-over-period deltas, scoped
+// year-to-date, and a food-cost sparkline trending down (31% → 27%, the improvement
+// Stockifi drives over the year so far). Internally consistent: food cost 27% + gross
+// margin 73% = 100, every delta points the favourable way. Variance is the one money
+// figure (localised via currency.ts); everything else is currency-agnostic.
+import { convertAmount, formatAmount } from '../../data/currency';
+
+const locale = Astro.currentLocale ?? 'en';
+const T: Record<string, { title: string; period: string; foodcost: string; margin: string; variance: string; wastage: string; pts: string }> = {
+  en: { title: 'Overview', period: 'Year to date', foodcost: 'Food cost', margin: 'Gross margin', variance: 'Variance', wastage: 'Wastage', pts: 'pts' },
+  de: { title: 'Übersicht', period: 'Seit Jahresbeginn', foodcost: 'Wareneinsatz', margin: 'Bruttomarge', variance: 'Abweichung', wastage: 'Verschwendung', pts: 'Pkt.' },
+  nl: { title: 'Overzicht', period: 'Jaar tot heden', foodcost: 'Foodcost', margin: 'Brutomarge', variance: 'Afwijking', wastage: 'Verspilling', pts: 'ppt' },
+  no: { title: 'Oversikt', period: 'Hittil i år', foodcost: 'Varekost', margin: 'Bruttomargin', variance: 'Avvik', wastage: 'Svinn', pts: 'poeng' },
+  sv: { title: 'Översikt', period: 'Hittills i år', foodcost: 'Råvarukostnad', margin: 'Bruttomarginal', variance: 'Avvikelse', wastage: 'Svinn', pts: 'punkter' },
+  da: { title: 'Oversigt', period: 'År til dato', foodcost: 'Vareforbrug', margin: 'Bruttomargin', variance: 'Afvigelse', wastage: 'Spild', pts: 'point' },
+};
+const t = T[locale] ?? T.en;
+
+const varFmt = '−' + formatAmount(convertAmount(2480, locale, { whole: true }), locale, { whole: true });
+
+// dir = up/down over the year; every move here is favourable (green). Variance value is
+// amber (the standing loss) but its delta is green (the loss is shrinking).
+const KPIS = [
+  { label: t.foodcost, value: '27%',   delta: `0.8 ${t.pts}`, dir: 'down', accent: false },
+  { label: t.margin,   value: '73%',   delta: `0.8 ${t.pts}`, dir: 'up',   accent: false },
+  { label: t.variance, value: varFmt,  delta: '6%',           dir: 'down', accent: true  },
+  { label: t.wastage,  value: '0.9%',  delta: `0.3 ${t.pts}`, dir: 'down', accent: false },
+];
+---
+
+<div class="pd-wrap">
+  <div class="pd-card">
+    <div class="pd-top">
+      <span class="pd-title">{t.title}</span>
+      <span class="pd-chip">{t.period}</span>
+    </div>
+
+    <div class="pd-grid">
+      {KPIS.map((k, i) => (
+        <div class="pd-tile" style={`--d:${0.08 * i}s`}>
+          <span class="pd-k-l">{k.label}</span>
+          <span class={`pd-k-v ${k.accent ? 'pd-accent' : ''}`}>{k.value}</span>
+          <span class="pd-k-d pd-good">{k.dir === 'up' ? '▲' : '▼'} {k.delta}</span>
+        </div>
+      ))}
+    </div>
+
+    <div class="pd-trend">
+      <span class="pd-trend-l">{t.foodcost}</span>
+      <div class="pd-trend-row">
+        <span class="pd-trend-s">31%</span>
+        <svg class="pd-spark" viewBox="0 0 100 40" preserveAspectRatio="none" aria-hidden="true">
+          <polyline class="pd-line" points="0,6 17,10 33,13 50,18 67,23 83,28 100,33" pathLength="100" />
+        </svg>
+        <span class="pd-trend-e">27%</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .pd-wrap { width: 100%; padding-block: 24px; display: flex; justify-content: flex-start; }
+  .pd-card {
+    width: 100%; max-width: 300px;
+    font-family: var(--font-body, 'Inter', sans-serif);
+  }
+  .pd-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 13px; }
+  .pd-title { font-size: 14px; font-weight: 600; letter-spacing: 0.02em; color: #fff; text-shadow: 0 1px 8px rgba(0, 0, 0, 0.55); }
+  .pd-chip { font-size: 11px; color: rgba(255, 255, 255, 0.88); background: rgba(16, 18, 24, 0.5); border: 1px solid rgba(255, 255, 255, 0.18); border-radius: var(--radius-full, 999px); padding: 3px 10px; white-space: nowrap; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+
+  .pd-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+  /* tiles float on the photo as frosted glass — strong frost so they read on the bright daytime shot */
+  .pd-tile {
+    display: flex; flex-direction: column; gap: 3px;
+    background: rgba(16, 18, 24, 0.52);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 10px; padding: 10px 12px;
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
+    opacity: 0; transform: translateY(6px);
+    animation: pd-rise 0.5s ease-out var(--d, 0s) forwards;
+  }
+  .pd-k-l { font-size: 9.5px; letter-spacing: 0.03em; text-transform: uppercase; color: rgba(255, 255, 255, 0.55); white-space: nowrap; }
+  .pd-k-v { font-size: 17px; font-weight: 600; color: #fff; font-variant-numeric: tabular-nums; }
+  .pd-accent { color: #f59e0b; }
+  .pd-k-d { font-size: 10.5px; font-variant-numeric: tabular-nums; }
+  .pd-good { color: #34d399; }
+
+  .pd-trend { margin-top: 15px; padding-top: 13px; border-top: 1px solid rgba(255, 255, 255, 0.22); }
+  .pd-trend-l { display: block; font-size: 9.5px; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255, 255, 255, 0.6); text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5); margin-bottom: 8px; }
+  .pd-trend-row { display: flex; align-items: stretch; gap: 10px; height: 40px; }
+  .pd-trend-s { align-self: flex-start; font-size: 10.5px; color: rgba(255, 255, 255, 0.7); text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5); font-variant-numeric: tabular-nums; flex: 0 0 auto; }
+  .pd-trend-e { align-self: flex-end; font-size: 10.5px; color: #34d399; font-weight: 600; text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5); font-variant-numeric: tabular-nums; flex: 0 0 auto; }
+  .pd-spark { flex: 1 1 auto; min-width: 0; height: 100%; display: block; }
+  .pd-line {
+    fill: none; stroke: #34d399; stroke-width: 2; vector-effect: non-scaling-stroke;
+    stroke-linecap: round; stroke-linejoin: round;
+    filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.55));
+  }
+
+  @keyframes pd-rise { to { opacity: 1; transform: translateY(0); } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pd-tile { opacity: 1; transform: none; animation: none; }
+  }
+</style>
