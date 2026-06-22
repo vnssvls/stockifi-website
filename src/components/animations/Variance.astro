@@ -1,0 +1,155 @@
+---
+// Variance — theoretical vs actual food cost, and the gap broken down to the items
+// driving it (the page's core: two numbers per period, the difference is where margin
+// goes). A focal money variance (negative — actual over theoretical is unfavourable),
+// two compare bars labelled with food cost % where the actual bar crosses the
+// theoretical line into amber, then the top items by variance: quantity over + money
+// lost. Money localises via currency.ts; the headline is the period's total variance,
+// the rows are its biggest contributors (they don't sum to the total).
+import { convertAmount, formatAmount, currencyMeta } from '../../data/currency';
+
+const locale = Astro.currentLocale ?? 'en';
+const T: Record<string, { title: string; period: string; theoretical: string; actual: string; over: string; top: string; beef: string; chicken: string; cheese: string }> = {
+  en: { title: 'Variance', period: 'This period', theoretical: 'Theoretical', actual: 'Actual', over: 'pts over theoretical', top: 'Top items by variance', beef: 'Beef tenderloin', chicken: 'Chicken breast', cheese: 'Grana Padano' },
+  de: { title: 'Abweichung', period: 'Dieser Zeitraum', theoretical: 'Theoretisch', actual: 'Tatsächlich', over: 'Pkt. über theoretisch', top: 'Größte Abweichungen nach Artikel', beef: 'Rinderfilet', chicken: 'Hähnchenbrust', cheese: 'Grana Padano' },
+  nl: { title: 'Afwijking', period: 'Deze periode', theoretical: 'Theoretisch', actual: 'Werkelijk', over: 'ppt boven theoretisch', top: 'Grootste afwijkingen per item', beef: 'Runderhaas', chicken: 'Kipfilet', cheese: 'Grana Padano' },
+  no: { title: 'Avvik', period: 'Denne perioden', theoretical: 'Teoretisk', actual: 'Faktisk', over: 'poeng over teoretisk', top: 'Største avvik per vare', beef: 'Oksefilet', chicken: 'Kyllingfilet', cheese: 'Grana Padano' },
+  sv: { title: 'Avvikelse', period: 'Denna period', theoretical: 'Teoretisk', actual: 'Faktisk', over: 'punkter över teoretisk', top: 'Största avvikelser per vara', beef: 'Oxfilé', chicken: 'Kycklingfilé', cheese: 'Grana Padano' },
+  da: { title: 'Afvigelse', period: 'Denne periode', theoretical: 'Teoretisk', actual: 'Faktisk', over: 'point over teoretisk', top: 'Største afvigelser per vare', beef: 'Oksemørbrad', chicken: 'Kyllingebryst', cheese: 'Grana Padano' },
+};
+const t = T[locale] ?? T.en;
+const meta = currencyMeta(locale);
+
+// Food cost % is the variance metric shown on the bars (currency-agnostic).
+const TH_PCT = 28;
+const AC_PCT = 31;
+const ptsGap = AC_PCT - TH_PCT; // 3 points higher than the recipes say
+
+// Headline is the period's total variance across the whole restaurant (a long tail of
+// items), NOT the sum of the rows below — the rows are just the biggest contributors.
+const TOTAL = 2480; // EUR base
+const varAbs = convertAmount(TOTAL, locale, { whole: true });
+const varFmt = formatAmount(varAbs, locale, { whole: true });
+
+// Top contributors — name, quantity over recipe, and the money lost (EUR base).
+const ITEMS = [
+  { label: t.beef, qty: '25 kg', eur: 750 },
+  { label: t.cheese, qty: '24 kg', eur: 300 },
+  { label: t.chicken, qty: '40 kg', eur: 280 },
+];
+const itemDisp = ITEMS.map((c) => convertAmount(c.eur, locale, { whole: true }));
+
+// One bar, full length = actual food cost. The neutral base is the theoretical share;
+// the amber segment beyond is the gap (actual − theoretical). The dashed line sits at
+// the theoretical level so the amber is visibly the part that crossed it.
+const thW = +((TH_PCT / AC_PCT) * 100).toFixed(1);
+const gapW = +((ptsGap / AC_PCT) * 100).toFixed(1);
+---
+
+<div class="vr-wrap">
+  <div class="vr-card" data-tag={meta.tag} data-cur={meta.cur}>
+    <div class="vr-top">
+      <span class="vr-title">{t.title}</span>
+      <span class="vr-chip">{t.period}</span>
+    </div>
+
+    <div class="vr-head">
+      <span class="vr-var" data-count={varAbs} data-sign="−">−{varFmt}</span>
+      <span class="vr-sub">+{ptsGap} {t.over}</span>
+    </div>
+
+    <div class="vr-bar-block">
+      <span class="vr-track">
+        <span class="vr-fill vr-fill--base" style={`--w:${thW}%`}></span>
+        <span class="vr-fill vr-fill--gap" style={`--w:${gapW}%;--x:${thW}%`}></span>
+        <span class="vr-guide" style={`--x:${thW}%`}></span>
+      </span>
+      <span class="vr-legend">
+        <span class="vr-leg"><i class="vr-sw vr-sw--th"></i>{t.theoretical} {TH_PCT}%</span>
+        <span class="vr-leg vr-leg--ac"><i class="vr-sw vr-sw--ac"></i>{t.actual} {AC_PCT}%</span>
+      </span>
+    </div>
+
+    <div class="vr-items">
+      <span class="vr-items-h">{t.top}</span>
+      {ITEMS.map((c, i) => (
+        <div class="vr-item" style={`--d:${0.13 * i}s`}>
+          <span class="vr-i-name">{c.label}</span>
+          <span class="vr-i-qty">{c.qty}</span>
+          <span class="vr-i-v" data-count={itemDisp[i]} data-sign="−">−{formatAmount(itemDisp[i], locale, { whole: true })}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .vr-wrap { width: 100%; padding-block: 24px; display: flex; justify-content: flex-start; }
+  .vr-card {
+    width: 100%; max-width: 306px;
+    background: rgba(255, 255, 255, 0.055);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: var(--radius-lg, 12px);
+    padding: 15px 18px 17px;
+    font-family: var(--font-body, 'Inter', sans-serif);
+  }
+  .vr-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+  .vr-title { font-size: 13px; font-weight: 500; letter-spacing: 0.02em; color: rgba(255, 255, 255, 0.92); }
+  .vr-chip { font-size: 11px; color: rgba(255, 255, 255, 0.6); background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.14); border-radius: var(--radius-full, 999px); padding: 2px 9px; }
+
+  .vr-head { display: flex; align-items: baseline; gap: 8px; margin-bottom: 15px; }
+  .vr-var { font-size: 21px; font-weight: 600; color: #f59e0b; font-variant-numeric: tabular-nums; line-height: 1; }
+  .vr-sub { font-size: 11.5px; color: rgba(255, 255, 255, 0.55); }
+
+  /* one bar: neutral base = theoretical, amber tail = the gap, full length = actual */
+  .vr-bar-block { display: flex; flex-direction: column; gap: 8px; }
+  .vr-track { position: relative; height: 10px; border-radius: 5px; background: rgba(255, 255, 255, 0.1); }
+  .vr-fill { position: absolute; top: 0; height: 100%; width: 0; }
+  .vr-fill--base { left: 0; border-radius: 5px 0 0 5px; background: rgba(255, 255, 255, 0.5); animation: vr-grow 0.9s ease-out 0.2s forwards; }
+  .vr-fill--gap { left: var(--x); border-radius: 0 5px 5px 0; background: #f59e0b; box-shadow: 0 0 8px 0 rgba(245, 158, 11, 0.5); animation: vr-grow 0.6s ease-out 1.05s forwards; }
+  /* dashed "theoretical level" line the amber crosses */
+  .vr-guide { position: absolute; left: var(--x); top: -4px; bottom: -4px; width: 0; border-left: 1px dashed rgba(255, 255, 255, 0.6); z-index: 2; }
+
+  .vr-legend { display: flex; justify-content: space-between; }
+  .vr-leg { display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; color: rgba(255, 255, 255, 0.65); font-variant-numeric: tabular-nums; }
+  .vr-leg--ac { color: #f59e0b; }
+  .vr-sw { width: 8px; height: 8px; border-radius: 2px; flex: 0 0 auto; }
+  .vr-sw--th { background: rgba(255, 255, 255, 0.5); }
+  .vr-sw--ac { background: #f59e0b; }
+
+  .vr-items { margin-top: 16px; padding-top: 12px; border-top: 1px solid rgba(255, 255, 255, 0.14); display: flex; flex-direction: column; gap: 10px; }
+  .vr-items-h { font-size: 9.5px; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255, 255, 255, 0.45); margin-bottom: 1px; }
+  .vr-item { display: grid; grid-template-columns: 1fr auto auto; align-items: baseline; gap: 12px; opacity: 0; animation: vr-fade 0.5s ease-out forwards; animation-delay: calc(1.25s + var(--d, 0s)); }
+  .vr-i-name { font-size: 12.5px; color: rgba(255, 255, 255, 0.88); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .vr-i-qty { font-size: 11px; color: rgba(255, 255, 255, 0.5); font-variant-numeric: tabular-nums; white-space: nowrap; text-align: right; }
+  .vr-i-v { font-size: 12.5px; font-weight: 500; color: #f59e0b; font-variant-numeric: tabular-nums; text-align: right; }
+
+  @keyframes vr-grow { to { width: var(--w); } }
+  @keyframes vr-fade { to { opacity: 1; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .vr-fill { width: var(--w); animation: none; }
+    .vr-item { opacity: 1; animation: none; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.vr-card').forEach((card) => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const fmt = new Intl.NumberFormat(card.dataset.tag, { style: 'currency', currency: card.dataset.cur, minimumFractionDigits: 0, maximumFractionDigits: 0 });
+    const els = Array.from(card.querySelectorAll<HTMLElement>('[data-count]'));
+    const DUR = 900;
+
+    els.forEach((el) => {
+      const target = Number(el.dataset.count) || 0;
+      const lead = el.dataset.sign ?? '';
+      const t0 = performance.now();
+      (function step(now: number) {
+        const p = Math.min((now - t0) / DUR, 1);
+        const e = 1 - Math.pow(1 - p, 3);
+        el.textContent = lead + fmt.format(Math.round(target * e));
+        if (p < 1) requestAnimationFrame(step);
+      })(performance.now());
+    });
+  });
+</script>

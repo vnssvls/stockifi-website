@@ -28,6 +28,7 @@ export const productMedia: Record<string, ProductMedia> = {
   // business-intelligence
   'performance-dashboards': { image: '/media/product-performance-dashboards.png' },
   'data-quality': { image: '/media/product-data-quality.png', overlay: 'DataQuality' },
+  'variance-analysis': { image: '/media/bi-variance-analysis.jpg', overlay: 'Variance' },
   'api': { image: '/media/product-api.png' },
   'profitability': { image: '/media/product-profitability.png', overlay: 'Profitability' },
 };
