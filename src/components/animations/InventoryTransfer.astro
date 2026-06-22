@@ -1,0 +1,141 @@
+---
+// Inventory transfers — a stock transfer between two locations as a request/accept
+// handshake: the source sends an item to the destination, the destination gets a
+// notification (pulsing bell) to accept, then it's accepted (✓). Quantities are
+// kg/units (universal); only the chrome + location names localise. Light card on veil.
+const locale = Astro.currentLocale ?? 'en';
+const T: Record<string, { title: string; sending: string; accepted: string; items: string }> = {
+  en: { title: 'Transfer status', sending: 'Sending…', accepted: 'Accepted', items: 'Items' },
+  de: { title: 'Transferstatus', sending: 'Senden…', accepted: 'Angenommen', items: 'Artikel' },
+  nl: { title: 'Overdrachtsstatus', sending: 'Verzenden…', accepted: 'Geaccepteerd', items: 'Artikelen' },
+  no: { title: 'Overføringsstatus', sending: 'Sender…', accepted: 'Akseptert', items: 'Varer' },
+  sv: { title: 'Överföringsstatus', sending: 'Skickar…', accepted: 'Accepterad', items: 'Varor' },
+  da: { title: 'Overførselsstatus', sending: 'Sender…', accepted: 'Accepteret', items: 'Varer' },
+};
+const t = T[locale] ?? T.en;
+// Two of the group's branches (proper venue names — same across locales).
+const FROM = 'Bjørvika';
+const TO = 'Frogner';
+
+const ITEMS = [
+  { name: 'Beef mince', qty: '12 kg' },
+  { name: 'Olive oil 5 L', qty: '× 3' },
+  { name: 'Tomatoes', qty: '8 kg' },
+];
+---
+
+<div class="tr-wrap">
+  <div class="tr-card accepted" data-sending={t.sending}>
+    <div class="tr-top">
+      <span class="tr-doc">{t.title}</span>
+      <span class="tr-status">
+        <svg class="tr-st-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-6.22-8.56" /></svg>
+        <svg class="tr-st-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
+        <span class="tr-st-t">{t.accepted}</span>
+      </span>
+    </div>
+
+    <div class="tr-route">
+      <span class="tr-loc">{FROM}</span>
+      <span class="tr-line" aria-hidden="true"></span>
+      <span class="tr-loc tr-to">
+        <span>{TO}</span>
+        <span class="tr-recv">
+          <svg class="tr-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" /><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" /></svg>
+          <svg class="tr-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
+        </span>
+      </span>
+    </div>
+
+    <div class="tr-items">
+      <div class="tr-items-label">{t.items}</div>
+      {ITEMS.map((it) => (
+        <div class="tr-item">
+          <span class="tr-name">{it.name}</span>
+          <span class="tr-qty">{it.qty}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .tr-wrap { width: 100%; padding-block: 24px; display: flex; justify-content: flex-start; }
+  .tr-card {
+    width: 100%;
+    max-width: 330px;
+    background: rgba(255, 255, 255, 0.055);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: var(--radius-lg, 12px);
+    padding: 15px 18px 16px;
+    font-family: var(--font-body, 'Inter', sans-serif);
+  }
+  .tr-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+  .tr-doc { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255, 255, 255, 0.6); }
+
+  .tr-status { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 500; }
+  .tr-status svg { width: 13px; height: 13px; flex: 0 0 auto; }
+  .tr-st-spin { animation: tr-spin 0.9s linear infinite; }
+  .tr-card.sending .tr-status { color: #c9a6ff; }
+  .tr-card.accepted .tr-status { color: #34d399; }
+  .tr-card.sending .tr-st-check, .tr-card.accepted .tr-st-spin { display: none; }
+  /* arrow colour follows state: white while pending, green once accepted */
+  .tr-card.sending { --tr-c: rgba(255, 255, 255, 0.85); }
+  .tr-card.accepted { --tr-c: #34d399; }
+
+  .tr-route { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+  .tr-loc { font-size: 13px; font-weight: 500; color: rgba(255, 255, 255, 0.92); white-space: nowrap; }
+  .tr-to { display: inline-flex; align-items: center; gap: 6px; }
+  .tr-line { flex: 1 1 auto; height: 2px; position: relative; background-image: linear-gradient(to right, var(--tr-c, rgba(255, 255, 255, 0.85)) 50%, transparent 50%); background-size: 8px 2px; background-repeat: repeat-x; }
+  .tr-line::after { content: ''; position: absolute; right: -2px; top: 50%; transform: translateY(-50%); border-left: 6px solid var(--tr-c, rgba(255, 255, 255, 0.85)); border-top: 4px solid transparent; border-bottom: 4px solid transparent; }
+  .tr-card.sending .tr-line { animation: tr-flow 0.5s linear infinite; }
+  @keyframes tr-flow { to { background-position: 8px 0; } }
+
+  .tr-recv { display: inline-flex; width: 15px; height: 15px; }
+  .tr-recv svg { width: 15px; height: 15px; }
+  .tr-bell { color: #c9a6ff; }
+  .tr-check { color: #34d399; }
+  .tr-card.sending .tr-bell { display: inline; animation: tr-ring 0.7s ease-in-out infinite; }
+  .tr-card.sending .tr-check { display: none; }
+  .tr-card.accepted .tr-bell { display: none; }
+  .tr-card.accepted .tr-check { display: inline; }
+  @keyframes tr-ring { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(12deg); } 75% { transform: rotate(-12deg); } }
+
+  .tr-items { margin-top: 13px; padding-top: 13px; border-top: 1px solid rgba(255, 255, 255, 0.16); }
+  .tr-items-label { font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255, 255, 255, 0.45); margin-bottom: 4px; }
+  .tr-item { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 6px 0; border-top: 1px solid rgba(255, 255, 255, 0.07); }
+  .tr-item:first-child { border-top: none; }
+  .tr-name { font-size: 13.5px; font-weight: 300; color: rgba(255, 255, 255, 0.82); white-space: nowrap; }
+  .tr-qty { font-size: 13.5px; font-weight: 400; color: rgba(255, 255, 255, 0.92); font-variant-numeric: tabular-nums; }
+
+  @keyframes tr-spin { to { transform: rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce) { .tr-st-spin, .tr-card.sending .tr-line, .tr-card.sending .tr-bell { animation: none; } }
+</style>
+
+<script>
+  const SEND = 1700;   // sending + awaiting accept (ms)
+  const HOLD = 2400;   // hold once accepted, before the loop restarts (ms)
+  const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+  document.querySelectorAll<HTMLElement>('.tr-card').forEach((card) => {
+    const stText = card.querySelector<HTMLElement>('.tr-st-t');
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const sendingTxt = card.dataset.sending ?? '';
+    const acceptedTxt = stText?.textContent ?? '';
+
+    async function loop() {
+      while (card.isConnected) {
+        card.classList.remove('accepted');
+        card.classList.add('sending');
+        if (stText && sendingTxt) stText.textContent = sendingTxt;
+        await sleep(SEND);
+        card.classList.remove('sending');
+        card.classList.add('accepted');
+        if (stText) stText.textContent = acceptedTxt;
+        await sleep(HOLD);
+      }
+    }
+    loop();
+  });
+</script>
