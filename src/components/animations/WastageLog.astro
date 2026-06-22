@@ -1,0 +1,105 @@
+---
+// Wastage tracking — a waste log that turns waste into a number you can act on. Each
+// record shows the item, how much was wasted (size) and why, with its cost; the costs
+// tick up and the "Total" tallies in amber (money lost). Costs localise via
+// currency.ts; sizes are universal; item names EN; reasons + chrome via STRINGS.
+import { convertAmount, formatAmount, currencyMeta } from '../../data/currency';
+
+const locale = Astro.currentLocale ?? 'en';
+const T: Record<string, { title: string; week: string; total: string; r: Record<string, string> }> = {
+  en: { title: 'Wastage', week: 'This week', total: 'Total', r: { spoiled: 'Spoiled', expired: 'Expired', burnt: 'Burnt', spilled: 'Spilled' } },
+  de: { title: 'Schwund', week: 'Diese Woche', total: 'Gesamt', r: { spoiled: 'Verdorben', expired: 'Abgelaufen', burnt: 'Verbrannt', spilled: 'Verschüttet' } },
+  nl: { title: 'Verspilling', week: 'Deze week', total: 'Totaal', r: { spoiled: 'Bedorven', expired: 'Verlopen', burnt: 'Aangebrand', spilled: 'Gemorst' } },
+  no: { title: 'Svinn', week: 'Denne uken', total: 'Totalt', r: { spoiled: 'Bedervet', expired: 'Utgått', burnt: 'Brent', spilled: 'Sølt' } },
+  sv: { title: 'Svinn', week: 'Denna vecka', total: 'Totalt', r: { spoiled: 'Förstörd', expired: 'Utgången', burnt: 'Bränd', spilled: 'Spilld' } },
+  da: { title: 'Spild', week: 'Denne uge', total: 'I alt', r: { spoiled: 'Fordærvet', expired: 'Udløbet', burnt: 'Brændt', spilled: 'Spildt' } },
+};
+const t = T[locale] ?? T.en;
+const meta = currencyMeta(locale);
+
+const ITEMS = [
+  { name: 'Salmon fillet', reason: 'spoiled', qty: '2 kg', base: 58 },
+  { name: 'Beef tenderloin', reason: 'burnt', qty: '0.4 kg', base: 26 },
+  { name: 'Pre-batch sauce', reason: 'spilled', qty: '4 L', base: 42 },
+  { name: 'Cream', reason: 'expired', qty: '500 ml', base: 18 },
+];
+let cum = 0;
+const rows = ITEMS.map((it) => {
+  const c = convertAmount(it.base, locale, { whole: true });
+  cum += c;
+  return { name: it.name, meta: `${it.qty} · ${t.r[it.reason] ?? it.reason}`, cost: c, costFmt: formatAmount(c, locale, { whole: true }) };
+});
+const totalFmt = formatAmount(cum, locale, { whole: true });
+---
+
+<div class="wl-wrap">
+  <div class="wl-card" data-tag={meta.tag} data-cur={meta.cur}>
+    <div class="wl-top">
+      <span class="wl-doc">{t.title}</span>
+      <span class="wl-date">{t.week}</span>
+    </div>
+    <div class="wl-rows">
+      {rows.map((r) => (
+        <div class="wl-row">
+          <span class="wl-name">{r.name}</span>
+          <span class="wl-cost wl-cur" data-to={r.cost}>{r.costFmt}</span>
+          <span class="wl-meta">{r.meta}</span>
+        </div>
+      ))}
+    </div>
+    <div class="wl-total">
+      <span class="wl-total-l">{t.total}</span>
+      <span class="wl-total-v wl-cur" data-to={cum}>{totalFmt}</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .wl-wrap { width: 100%; padding-block: 24px; display: flex; justify-content: flex-start; }
+  .wl-card {
+    width: 100%;
+    max-width: 330px;
+    background: rgba(255, 255, 255, 0.055);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: var(--radius-lg, 12px);
+    padding: 15px 18px 16px;
+    font-family: var(--font-body, 'Inter', sans-serif);
+  }
+  .wl-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+  .wl-doc { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255, 255, 255, 0.6); }
+  .wl-date { font-size: 11px; color: rgba(255, 255, 255, 0.5); background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.14); border-radius: var(--radius-full, 999px); padding: 2px 9px; }
+
+  .wl-row { display: grid; grid-template-columns: 1fr auto; align-items: baseline; padding: 7px 0; }
+  .wl-name { grid-row: 1; grid-column: 1; font-size: 13.5px; font-weight: 400; color: rgba(255, 255, 255, 0.9); }
+  .wl-cost { grid-row: 1; grid-column: 2; text-align: right; font-size: 13.5px; font-weight: 400; color: rgba(255, 255, 255, 0.82); font-variant-numeric: tabular-nums; }
+  .wl-meta { grid-row: 2; grid-column: 1; margin-top: 1px; font-size: 11px; color: rgba(255, 255, 255, 0.45); }
+
+  .wl-total { display: flex; align-items: baseline; justify-content: space-between; margin-top: 11px; padding-top: 12px; border-top: 1px solid rgba(255, 255, 255, 0.18); }
+  .wl-total-l { font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; color: rgba(255, 255, 255, 0.6); }
+  .wl-total-v { font-size: 19px; font-weight: 600; color: #f59e0b; font-variant-numeric: tabular-nums; }
+</style>
+
+<script>
+  const DUR = 1100;  // count-up duration (ms)
+  const HOLD = 2600; // hold once tallied, before the loop restarts (ms)
+
+  document.querySelectorAll<HTMLElement>('.wl-card').forEach((card) => {
+    const curs = Array.from(card.querySelectorAll<HTMLElement>('.wl-cur'));
+    if (!curs.length) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const fmt = new Intl.NumberFormat(card.dataset.tag, { style: 'currency', currency: card.dataset.cur, minimumFractionDigits: 0, maximumFractionDigits: 0 });
+
+    function run() {
+      const t0 = performance.now();
+      (function step(now: number) {
+        const p = Math.min((now - t0) / DUR, 1);
+        const e = 1 - Math.pow(1 - p, 3);
+        curs.forEach((c) => { c.textContent = fmt.format(Math.round(Number(c.dataset.to) * e)); });
+        if (p < 1) requestAnimationFrame(step);
+        else window.setTimeout(run, HOLD);
+      })(performance.now());
+    }
+    run();
+  });
+</script>

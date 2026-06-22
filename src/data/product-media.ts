@@ -24,6 +24,7 @@ export const productMedia: Record<string, ProductMedia> = {
   'stock-counting': { image: '/media/product-stock-counting.png', overlay: 'StockCount' },
   'inventory-transfers': { image: '/media/product-inventory-transfers.png', overlay: 'InventoryTransfer' },
   'sales-and-usage': { image: '/media/product-sales-and-usage.png', overlay: 'SalesReport' },
+  'wastage-tracking': { overlay: 'WastageLog' },
   // business-intelligence
   'performance-dashboards': { image: '/media/product-performance-dashboards.png' },
   'data-quality': { image: '/media/product-data-quality.png' },
