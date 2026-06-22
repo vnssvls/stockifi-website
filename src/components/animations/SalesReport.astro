@@ -1,0 +1,120 @@
+---
+// Sales & usage — a weekly POS sales report: each day's covers + revenue tick up,
+// the week total tallies, then a footer confirms "Theoretical usage calculated"
+// (the sales are what Stockifi reads to work out what came out of stock). Revenue
+// localises via currency.ts; day names + chrome via STRINGS.
+import { convertAmount, formatAmount, currencyMeta } from '../../data/currency';
+
+const locale = Astro.currentLocale ?? 'en';
+const T: Record<string, { title: string; week: string; sold: string; usage: string; days: string[] }> = {
+  en: { title: 'Sales', week: 'This week', sold: 'sold', usage: 'Theoretical usage calculated', days: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] },
+  de: { title: 'Verkäufe', week: 'Diese Woche', sold: 'verkauft', usage: 'Theoretischer Verbrauch berechnet', days: ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'] },
+  nl: { title: 'Verkopen', week: 'Deze week', sold: 'verkocht', usage: 'Theoretisch verbruik berekend', days: ['ma', 'di', 'wo', 'do', 'vr', 'za', 'zo'] },
+  no: { title: 'Salg', week: 'Denne uken', sold: 'solgt', usage: 'Teoretisk forbruk beregnet', days: ['man', 'tir', 'ons', 'tor', 'fre', 'lør', 'søn'] },
+  sv: { title: 'Försäljning', week: 'Denna vecka', sold: 'sålda', usage: 'Teoretisk förbrukning beräknad', days: ['mån', 'tis', 'ons', 'tor', 'fre', 'lör', 'sön'] },
+  da: { title: 'Salg', week: 'Denne uge', sold: 'solgt', usage: 'Teoretisk forbrug beregnet', days: ['man', 'tir', 'ons', 'tor', 'fre', 'lør', 'søn'] },
+};
+const t = T[locale] ?? T.en;
+const meta = currencyMeta(locale);
+
+const DAYS_BASE = [
+  { u: 142, r: 2180 }, { u: 156, r: 2410 }, { u: 138, r: 2090 }, { u: 171, r: 2640 },
+  { u: 224, r: 3480 }, { u: 248, r: 3860 }, { u: 180, r: 2720 },
+];
+let cumRev = 0;
+const days = DAYS_BASE.map((d, i) => {
+  const rv = convertAmount(d.r, locale, { whole: true });
+  cumRev += rv;
+  return { day: t.days[i] ?? '', units: d.u, revNum: rv, revFmt: formatAmount(rv, locale, { whole: true }) };
+});
+const totalUnits = DAYS_BASE.reduce((s, d) => s + d.u, 0);
+const totalRevFmt = formatAmount(cumRev, locale, { whole: true });
+---
+
+<div class="sr-wrap">
+  <div class="sr-card" data-tag={meta.tag} data-cur={meta.cur}>
+    <div class="sr-top">
+      <span class="sr-doc">{t.title}</span>
+      <span class="sr-date">{t.week}</span>
+    </div>
+    <div class="sr-rows">
+      {days.map((d) => (
+        <div class="sr-row">
+          <span class="sr-day">{d.day}</span>
+          <span class="sr-units sr-int" data-to={d.units}>{d.units}</span>
+          <span class="sr-rev sr-cur" data-to={d.revNum}>{d.revFmt}</span>
+        </div>
+      ))}
+    </div>
+    <div class="sr-total">
+      <span class="sr-total-u"><b class="sr-int" data-to={totalUnits}>{totalUnits}</b> {t.sold}</span>
+      <span class="sr-total-r sr-cur" data-to={cumRev}>{totalRevFmt}</span>
+    </div>
+    <div class="sr-foot">
+      <svg class="sr-foot-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
+      {t.usage}
+    </div>
+  </div>
+</div>
+
+<style>
+  .sr-wrap { width: 100%; padding-block: 24px; display: flex; justify-content: flex-start; }
+  .sr-card {
+    width: 100%;
+    max-width: 330px;
+    background: rgba(255, 255, 255, 0.055);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: var(--radius-lg, 12px);
+    padding: 15px 18px 16px;
+    font-family: var(--font-body, 'Inter', sans-serif);
+  }
+  .sr-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+  .sr-doc { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255, 255, 255, 0.6); }
+  .sr-date { font-size: 11px; color: rgba(255, 255, 255, 0.5); background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.14); border-radius: var(--radius-full, 999px); padding: 2px 9px; }
+
+  .sr-row { display: flex; align-items: center; padding: 5px 0; }
+  .sr-day { flex: 1 1 auto; font-size: 13px; font-weight: 300; color: rgba(255, 255, 255, 0.78); }
+  .sr-units { width: 52px; text-align: right; font-size: 12.5px; color: rgba(255, 255, 255, 0.5); font-variant-numeric: tabular-nums; }
+  .sr-rev { width: 78px; text-align: right; font-size: 13px; font-weight: 400; color: rgba(255, 255, 255, 0.92); font-variant-numeric: tabular-nums; }
+
+  .sr-total { display: flex; align-items: baseline; justify-content: space-between; margin-top: 10px; padding-top: 12px; border-top: 1px solid rgba(255, 255, 255, 0.18); }
+  .sr-total-u { font-size: 12px; color: rgba(255, 255, 255, 0.6); }
+  .sr-total-u b { color: rgba(255, 255, 255, 0.95); font-weight: 600; font-variant-numeric: tabular-nums; }
+  .sr-total-r { font-size: 18px; font-weight: 500; color: rgba(255, 255, 255, 0.96); font-variant-numeric: tabular-nums; }
+
+  .sr-foot { display: flex; align-items: center; gap: 6px; margin-top: 11px; font-size: 12px; color: #34d399; }
+  .sr-foot-ic { width: 13px; height: 13px; flex: 0 0 auto; }
+
+  .sr-card.sr-anim .sr-foot { opacity: 0; transition: opacity 0.3s ease; }
+  .sr-card.sr-anim .sr-foot.show { opacity: 1; }
+</style>
+
+<script>
+  const DUR = 1200;  // count-up duration (ms)
+  const HOLD = 2600; // hold once filled, before the loop restarts (ms)
+
+  document.querySelectorAll<HTMLElement>('.sr-card').forEach((card) => {
+    const ints = Array.from(card.querySelectorAll<HTMLElement>('.sr-int'));
+    const curs = Array.from(card.querySelectorAll<HTMLElement>('.sr-cur'));
+    const foot = card.querySelector<HTMLElement>('.sr-foot');
+    if ((!ints.length && !curs.length) || !foot) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const fmt = new Intl.NumberFormat(card.dataset.tag, { style: 'currency', currency: card.dataset.cur, minimumFractionDigits: 0, maximumFractionDigits: 0 });
+    card.classList.add('sr-anim');
+
+    function run() {
+      foot!.classList.remove('show');
+      const t0 = performance.now();
+      (function step(now: number) {
+        const p = Math.min((now - t0) / DUR, 1);
+        const e = 1 - Math.pow(1 - p, 3);
+        ints.forEach((c) => { c.textContent = String(Math.round(Number(c.dataset.to) * e)); });
+        curs.forEach((c) => { c.textContent = fmt.format(Math.round(Number(c.dataset.to) * e)); });
+        if (p < 1) requestAnimationFrame(step);
+        else { foot!.classList.add('show'); window.setTimeout(run, HOLD); }
+      })(performance.now());
+    }
+    run();
+  });
+</script>

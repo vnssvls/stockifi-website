@@ -23,7 +23,7 @@ export const productMedia: Record<string, ProductMedia> = {
   'recipe-building': { overlay: 'RecipeCost' },
   'stock-counting': { image: '/media/product-stock-counting.png', overlay: 'StockCount' },
   'inventory-transfers': { image: '/media/product-inventory-transfers.png', overlay: 'InventoryTransfer' },
-  'sales-and-usage': { image: '/media/product-sales-and-usage.png' },
+  'sales-and-usage': { image: '/media/product-sales-and-usage.png', overlay: 'SalesReport' },
   // business-intelligence
   'performance-dashboards': { image: '/media/product-performance-dashboards.png' },
   'data-quality': { image: '/media/product-data-quality.png' },
