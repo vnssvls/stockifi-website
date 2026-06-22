@@ -1,0 +1,133 @@
+---
+// Profitability — the profitability of one plated dish (ties to the page's plating
+// photo). A margin ring (green arc = the share of the price that's profit) with the
+// margin % in the centre, and Price + Profit/plate below. The ring fills and the %
+// + profit count up, then loop. Money localises via currency.ts.
+import { convertAmount, formatAmount, currencyMeta } from '../../data/currency';
+
+const locale = Astro.currentLocale ?? 'en';
+const T: Record<string, { tag: string; margin: string; price: string; profit: string; foodcost: string }> = {
+  en: { tag: 'Main', margin: 'margin', price: 'Price', profit: 'Profit', foodcost: 'Food cost' },
+  de: { tag: 'Hauptgericht', margin: 'Marge', price: 'Preis', profit: 'Gewinn', foodcost: 'Wareneinsatz' },
+  nl: { tag: 'Hoofdgerecht', margin: 'marge', price: 'Prijs', profit: 'Winst', foodcost: 'Foodcost' },
+  no: { tag: 'Hovedrett', margin: 'margin', price: 'Pris', profit: 'Fortjeneste', foodcost: 'Varekost' },
+  sv: { tag: 'Huvudrätt', margin: 'marginal', price: 'Pris', profit: 'Vinst', foodcost: 'Råvarukostnad' },
+  da: { tag: 'Hovedret', margin: 'margin', price: 'Pris', profit: 'Fortjeneste', foodcost: 'Vareforbrug' },
+};
+const t = T[locale] ?? T.en;
+const meta = currencyMeta(locale);
+
+const DISH = 'Seared cod';
+const SELL = 22;
+const COST = 5.95;
+const margin = Math.round(((SELL - COST) / SELL) * 100); // 73
+const sellsDisp = convertAmount(SELL, locale, { whole: true });
+const profitDisp = convertAmount(SELL - COST, locale, { whole: true });
+const sellsFmt = formatAmount(sellsDisp, locale, { whole: true });
+const profitFmt = formatAmount(profitDisp, locale, { whole: true });
+
+const R = 46;
+const C = 2 * Math.PI * R;
+const filledOffset = +(C * (1 - margin / 100)).toFixed(2);
+---
+
+<div class="pf-wrap">
+  <div class="pf-card" data-tag={meta.tag} data-cur={meta.cur} data-profit={profitDisp} data-margin={margin} data-c={C.toFixed(2)}>
+    <div class="pf-top">
+      <span class="pf-dish">{DISH}</span>
+      <span class="pf-chip">{t.tag}</span>
+    </div>
+
+    <div class="pf-ring-wrap">
+      <svg class="pf-ring" viewBox="0 0 120 120" aria-hidden="true">
+        <circle class="pf-track" cx="60" cy="60" r={R} />
+        <circle class="pf-arc" cx="60" cy="60" r={R} transform="rotate(-90 60 60)" style={`stroke-dasharray:${C.toFixed(2)};stroke-dashoffset:${filledOffset}`} />
+      </svg>
+      <div class="pf-center">
+        <span class="pf-pct">{margin}%</span>
+        <span class="pf-pct-l">{t.margin}</span>
+      </div>
+    </div>
+
+    <div class="pf-foot">
+      <div class="pf-metric">
+        <span class="pf-m-l">{t.price}</span>
+        <span class="pf-m-v">{sellsFmt}</span>
+      </div>
+      <div class="pf-metric">
+        <span class="pf-m-l">{t.foodcost}</span>
+        <span class="pf-m-v pf-fc">{100 - margin}%</span>
+      </div>
+      <div class="pf-metric">
+        <span class="pf-m-l">{t.profit}</span>
+        <span class="pf-m-v pf-profit">{profitFmt}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .pf-wrap { width: 100%; padding-block: 24px; display: flex; justify-content: flex-start; }
+  .pf-card {
+    width: 100%; max-width: 290px;
+    background: rgba(255, 255, 255, 0.055);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: var(--radius-lg, 12px);
+    padding: 15px 18px 17px;
+    font-family: var(--font-body, 'Inter', sans-serif);
+  }
+  .pf-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+  .pf-dish { font-size: 15px; font-weight: 500; color: rgba(255, 255, 255, 0.95); }
+  .pf-chip { font-size: 11px; color: rgba(255, 255, 255, 0.6); background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.14); border-radius: var(--radius-full, 999px); padding: 2px 9px; }
+
+  .pf-ring-wrap { position: relative; width: 132px; height: 132px; margin: 6px auto 4px; }
+  .pf-ring { width: 100%; height: 100%; }
+  .pf-track { fill: none; stroke: rgba(255, 255, 255, 0.12); stroke-width: 9; }
+  .pf-arc { fill: none; stroke: #34d399; stroke-width: 9; stroke-linecap: round; }
+  .pf-center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; }
+  .pf-pct { font-size: 28px; font-weight: 600; color: rgba(255, 255, 255, 0.96); font-variant-numeric: tabular-nums; line-height: 1; }
+  .pf-pct-l { font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; color: rgba(255, 255, 255, 0.5); }
+
+  .pf-foot { display: flex; gap: 14px; margin-top: 8px; padding-top: 13px; border-top: 1px solid rgba(255, 255, 255, 0.14); }
+  .pf-metric { flex: 1 1 0; display: flex; flex-direction: column; gap: 2px; }
+  .pf-m-l { font-size: 9.5px; letter-spacing: 0.02em; text-transform: uppercase; color: rgba(255, 255, 255, 0.55); white-space: nowrap; }
+  .pf-m-v { font-size: 15px; font-weight: 500; color: rgba(255, 255, 255, 0.95); font-variant-numeric: tabular-nums; }
+  .pf-fc { color: rgba(255, 255, 255, 0.7); }
+  .pf-profit { color: #34d399; }
+</style>
+
+<script>
+  const DUR = 1100;  // fill + count-up duration (ms)
+  const HOLD = 2600; // hold once filled, before the loop restarts (ms)
+
+  document.querySelectorAll<HTMLElement>('.pf-card').forEach((card) => {
+    const arc = card.querySelector<SVGCircleElement>('.pf-arc');
+    const pct = card.querySelector<HTMLElement>('.pf-pct');
+    const profitEl = card.querySelector<HTMLElement>('.pf-profit');
+    const fcEl = card.querySelector<HTMLElement>('.pf-fc');
+    if (!arc || !pct || !profitEl) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const C = Number(card.dataset.c) || 289;
+    const marginTarget = Number(card.dataset.margin) || 0;
+    const profitTarget = Number(card.dataset.profit) || 0;
+    const fmt = new Intl.NumberFormat(card.dataset.tag, { style: 'currency', currency: card.dataset.cur, minimumFractionDigits: 0, maximumFractionDigits: 0 });
+    arc.style.strokeDasharray = String(C);
+
+    function run() {
+      const t0 = performance.now();
+      (function step(now: number) {
+        const p = Math.min((now - t0) / DUR, 1);
+        const e = 1 - Math.pow(1 - p, 3);
+        const m = Math.round(marginTarget * e);
+        arc!.style.strokeDashoffset = String(C - (C * marginTarget / 100) * e);
+        pct!.textContent = m + '%';
+        profitEl!.textContent = fmt.format(Math.round(profitTarget * e));
+        if (fcEl) fcEl.textContent = (100 - m) + '%';
+        if (p < 1) requestAnimationFrame(step);
+        else window.setTimeout(run, HOLD);
+      })(performance.now());
+    }
+    run();
+  });
+</script>
