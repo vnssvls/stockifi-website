@@ -12,9 +12,9 @@ howItWorks:
   heading: "Det kommer direkte fra dit regnskab"
   body: "Alle leverandørfakturaer lander allerede i dit regnskabsprogram. Stockifi læser hver enkelt linje for linje og sender priser og mængder direkte ind i dit vareforbrug, uden at nogen taster dem ind."
   points:
-    - heading: "Synkroniseres automatisk"
+    - heading: "Automatisk"
       body: "Fakturaer flyder ind, efterhånden som de lander i dit regnskab, uden noget at uploade eller scanne."
-    - heading: "Læst linje for linje"
+    - heading: "Nøjagtig"
       body: "Stockifi registrerer prisen og mængden for hver ingrediens på fakturaen."
   imageSide: "right"
   image: "/media/photos/hero-owner.png"

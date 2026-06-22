@@ -4,6 +4,8 @@
 // template renders it (templates only pass the slug). Pages without an overlay
 // render nothing here and show the background photo alone.
 import ProcurementAnimation from '../animations/ProcurementAnimation.astro';
+import CentralKitchenFlow from '../animations/CentralKitchenFlow.astro';
+import InvoiceScan from '../animations/InvoiceScan.astro';
 import { productMedia } from '../../data/product-media';
 
 interface Props { slug: string; }
@@ -11,3 +13,5 @@ const { slug } = Astro.props;
 const overlay = productMedia[slug]?.overlay ?? null;
 ---
 {overlay === 'ProcurementAnimation' && <ProcurementAnimation />}
+{overlay === 'CentralKitchenFlow' && <CentralKitchenFlow />}
+{overlay === 'InvoiceScan' && <InvoiceScan />}

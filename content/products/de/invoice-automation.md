@@ -12,9 +12,9 @@ howItWorks:
   heading: "Direkt aus Ihrer Buchhaltung"
   body: "Jede Lieferantenrechnung landet bereits in Ihrer Buchhaltung. Stockifi liest sie Zeile für Zeile und überträgt Preise und Mengen direkt in Ihren Wareneinsatz, ohne dass jemand sie manuell eingibt."
   points:
-    - heading: "Automatisch synchronisiert"
+    - heading: "Automatisch"
       body: "Rechnungen fließen ein, sobald sie in Ihrer Buchhaltung eingehen. Es gibt nichts hochzuladen oder zu scannen."
-    - heading: "Zeile für Zeile gelesen"
+    - heading: "Genau"
       body: "Stockifi erfasst den Preis und die Menge jeder Zutat auf der Rechnung."
   imageSide: "right"
   image: "/media/photos/hero-owner.png"

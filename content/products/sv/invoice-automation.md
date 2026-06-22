@@ -12,9 +12,9 @@ howItWorks:
   heading: "Det kommer direkt från din redovisning"
   body: "Varje leverantörsfaktura landar redan i din redovisning. Stockifi läser varje faktura rad för rad och skickar priser och kvantiteter direkt till din råvarukostnad, utan att någon behöver mata in dem manuellt."
   points:
-    - heading: "Synkroniseras automatiskt"
+    - heading: "Automatiskt"
       body: "Fakturor flödar in när de landar i din redovisning, utan att behöva laddas upp eller skannas."
-    - heading: "Läses rad för rad"
+    - heading: "Noggrann"
       body: "Stockifi fångar priset och kvantiteten för varje ingrediens på fakturan."
   imageSide: "right"
   image: "/media/photos/hero-owner.png"

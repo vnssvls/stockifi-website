@@ -1,0 +1,81 @@
+---
+// Central-kitchen flow — light overlay diagram for the central-kitchen showcase.
+// One hub ("Central kitchen") supplying three venue nodes, with dots flowing down
+// the connectors to show distribution. Minimal text; reads on the dark left veil.
+// Single SVG so the lines, nodes and animated dots scale and stay aligned as a unit.
+---
+
+<div class="ck-wrap">
+  <svg class="ck-svg" viewBox="0 0 340 210" fill="none" role="img"
+       aria-label="One central kitchen supplying every venue">
+    <!-- connectors -->
+    <g class="ck-lines">
+      <path d="M170 58 C 130 106 75 108 58 152" />
+      <path d="M170 58 L 170 152" />
+      <path d="M170 58 C 210 106 265 108 282 152" />
+    </g>
+
+    <!-- items flowing from the kitchen down to each venue -->
+    <g class="ck-dots">
+      <circle r="3.6"><animateMotion dur="2.4s" begin="0s"    repeatCount="indefinite" path="M170 58 C 130 106 75 108 58 152" /></circle>
+      <circle r="3.6"><animateMotion dur="2.4s" begin="-0.8s" repeatCount="indefinite" path="M170 58 L 170 152" /></circle>
+      <circle r="3.6"><animateMotion dur="2.4s" begin="-1.6s" repeatCount="indefinite" path="M170 58 C 210 106 265 108 282 152" /></circle>
+    </g>
+
+    <!-- hub -->
+    <g class="ck-hub">
+      <rect x="86" y="12" width="168" height="46" rx="23" />
+      <text x="170" y="40" text-anchor="middle">Central kitchen</text>
+    </g>
+
+    <!-- venues -->
+    <g class="ck-venues">
+      <g transform="translate(58,175)">
+        <rect x="-28" y="-23" width="56" height="46" rx="12" />
+        <g class="ck-venue-icon" transform="translate(-12 -12)"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 21v-7.5a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349M3.75 21V9.349m0 0a3.001 3.001 0 0 0 3.75-.615A2.993 2.993 0 0 0 9.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 0 0 2.25 1.016c.896 0 1.7-.393 2.25-1.015a3.001 3.001 0 0 0 3.75.614m-16.5 0a3.004 3.004 0 0 1-.621-4.72l1.189-1.19A1.5 1.5 0 0 1 5.378 3h13.243a1.5 1.5 0 0 1 1.06.44l1.19 1.189a3 3 0 0 1-.621 4.72M6.75 18h3.75a.75.75 0 0 0 .75-.75V13.5a.75.75 0 0 0-.75-.75H6.75a.75.75 0 0 0-.75.75v3.75c0 .414.336.75.75.75Z" /></g>
+      </g>
+      <g transform="translate(170,175)">
+        <rect x="-28" y="-23" width="56" height="46" rx="12" />
+        <g class="ck-venue-icon" transform="translate(-12 -12)"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 21v-7.5a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349M3.75 21V9.349m0 0a3.001 3.001 0 0 0 3.75-.615A2.993 2.993 0 0 0 9.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 0 0 2.25 1.016c.896 0 1.7-.393 2.25-1.015a3.001 3.001 0 0 0 3.75.614m-16.5 0a3.004 3.004 0 0 1-.621-4.72l1.189-1.19A1.5 1.5 0 0 1 5.378 3h13.243a1.5 1.5 0 0 1 1.06.44l1.19 1.189a3 3 0 0 1-.621 4.72M6.75 18h3.75a.75.75 0 0 0 .75-.75V13.5a.75.75 0 0 0-.75-.75H6.75a.75.75 0 0 0-.75.75v3.75c0 .414.336.75.75.75Z" /></g>
+      </g>
+      <g transform="translate(282,175)">
+        <rect x="-28" y="-23" width="56" height="46" rx="12" />
+        <g class="ck-venue-icon" transform="translate(-12 -12)"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 21v-7.5a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349M3.75 21V9.349m0 0a3.001 3.001 0 0 0 3.75-.615A2.993 2.993 0 0 0 9.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 0 0 2.25 1.016c.896 0 1.7-.393 2.25-1.015a3.001 3.001 0 0 0 3.75.614m-16.5 0a3.004 3.004 0 0 1-.621-4.72l1.189-1.19A1.5 1.5 0 0 1 5.378 3h13.243a1.5 1.5 0 0 1 1.06.44l1.19 1.189a3 3 0 0 1-.621 4.72M6.75 18h3.75a.75.75 0 0 0 .75-.75V13.5a.75.75 0 0 0-.75-.75H6.75a.75.75 0 0 0-.75.75v3.75c0 .414.336.75.75.75Z" /></g>
+      </g>
+    </g>
+  </svg>
+</div>
+
+<style>
+  .ck-wrap { width: 100%; padding-block: 24px; display: flex; justify-content: flex-start; }
+  .ck-svg { width: 100%; max-width: 380px; height: auto; }
+
+  .ck-lines path {
+    stroke: rgba(255, 255, 255, 0.26);
+    stroke-width: 1.5;
+    stroke-dasharray: 3 5;
+    stroke-linecap: round;
+  }
+  .ck-dots circle { fill: #bb86fc; }
+
+  .ck-hub rect,
+  .ck-venues rect {
+    fill: rgba(255, 255, 255, 0.08);
+    stroke: rgba(255, 255, 255, 0.22);
+    stroke-width: 1;
+  }
+  .ck-hub text {
+    fill: rgba(255, 255, 255, 0.92);
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+  }
+  .ck-venues g { color: rgba(255, 255, 255, 0.82); }
+  .ck-venue-icon { stroke: currentColor; stroke-width: 1.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* No travelling dots when motion is reduced — the static hub/lines/venues remain. */
+  @media (prefers-reduced-motion: reduce) {
+    .ck-dots circle { display: none; }
+  }
+</style>

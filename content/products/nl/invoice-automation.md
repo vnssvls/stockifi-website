@@ -12,9 +12,9 @@ howItWorks:
   heading: "Het komt rechtstreeks uit je boekhouding"
   body: "Elke leveranciersfactuur belandt al in je boekhouding. Stockifi leest ze regel voor regel en voert de prijzen en hoeveelheden direct door naar je foodcost, zonder dat iemand ze hoeft in te typen."
   points:
-    - heading: "Automatisch gesynchroniseerd"
+    - heading: "Automatisch"
       body: "Facturen komen binnen zodra ze in je boekhouding staan, zonder iets te uploaden of te scannen."
-    - heading: "Regel voor regel gelezen"
+    - heading: "Nauwkeurig"
       body: "Stockifi legt de prijs en hoeveelheid van elk ingredient op de factuur vast."
   imageSide: "right"
   image: "/media/photos/hero-owner.png"

@@ -12,9 +12,9 @@ howItWorks:
   heading: "It comes straight from your accounting"
   body: "Every supplier invoice already lands in your accounting. Stockifi reads each one line by line and feeds the prices and quantities straight into your food cost, with nobody keying them in."
   points:
-    - heading: "Synced automatically"
+    - heading: "Automatic"
       body: "Invoices flow in as they land in your accounting, with nothing to upload or scan."
-    - heading: "Read line by line"
+    - heading: "Accurate"
       body: "Stockifi captures the price and quantity of every ingredient on the invoice."
   imageSide: "right"
   image: "/media/photos/hero-owner.png"
