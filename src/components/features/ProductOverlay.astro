@@ -13,6 +13,7 @@ import InventoryTransfer from '../animations/InventoryTransfer.astro';
 import SalesReport from '../animations/SalesReport.astro';
 import WastageLog from '../animations/WastageLog.astro';
 import SupplierPrices from '../animations/SupplierPrices.astro';
+import DataQuality from '../animations/DataQuality.astro';
 import { productMedia } from '../../data/product-media';
 
 interface Props { slug: string; }
@@ -29,3 +30,4 @@ const overlay = productMedia[slug]?.overlay ?? null;
 {overlay === 'SalesReport' && <SalesReport />}
 {overlay === 'WastageLog' && <WastageLog />}
 {overlay === 'SupplierPrices' && <SupplierPrices />}
+{overlay === 'DataQuality' && <DataQuality />}

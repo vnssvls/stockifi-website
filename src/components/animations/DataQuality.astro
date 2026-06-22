@@ -1,0 +1,141 @@
+---
+// Data quality — hub-and-flow diagram. POS sales (left) + supplier invoices (right)
+// flow into Recipes (the centre powerhouse, a glowing pill, dots travelling in), and
+// Recipes produces reports: the bar tile drops out of the hub first (centred), then
+// the pie + trend slide out from behind it to the sides. Loops. Story: live in-sync
+// source data → recipes → clean reports. Compact, on the veil. Labels via STRINGS.
+const locale = Astro.currentLocale ?? 'en';
+const T: Record<string, { pos: string; invoices: string; recipes: string }> = {
+  en: { pos: 'POS sales', invoices: 'Invoices', recipes: 'Recipes' },
+  de: { pos: 'POS-Verkäufe', invoices: 'Rechnungen', recipes: 'Rezepte' },
+  nl: { pos: 'POS-verkopen', invoices: 'Facturen', recipes: 'Recepten' },
+  no: { pos: 'POS-salg', invoices: 'Fakturaer', recipes: 'Oppskrifter' },
+  sv: { pos: 'POS-försäljning', invoices: 'Fakturor', recipes: 'Recept' },
+  da: { pos: 'POS-salg', invoices: 'Fakturaer', recipes: 'Opskrifter' },
+};
+const t = T[locale] ?? T.en;
+---
+
+<div class="dq-wrap">
+  <div class="dq-diagram">
+    <div class="dq-top">
+      <div class="dq-side">
+        <div class="dq-node">
+          <svg class="dq-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1.5" /><path d="M8 20h8M12 16v4" /></svg>
+          <span class="dq-label">{t.pos}</span>
+        </div>
+        <div class="dq-conn"><span class="dq-dot"></span></div>
+      </div>
+
+      <div class="dq-core">
+        <svg class="dq-ic dq-core-ic" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M7.41423 12.9088L6.76782 10.3232" stroke="currentColor" stroke-width="1.29282" stroke-linecap="round" stroke-linejoin="round"/><path d="M12.5857 12.9088L13.2321 10.3232" stroke="currentColor" stroke-width="1.29282" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 12.9088V10.3232" stroke="currentColor" stroke-width="1.29282" stroke-linecap="round" stroke-linejoin="round"/><path d="M13.6887 5.24241C14.2205 5.12547 14.771 5.12182 15.3043 5.23171C15.8376 5.3416 16.3419 5.56256 16.7841 5.88021C17.2264 6.19787 17.5968 6.60509 17.8713 7.07538C18.1458 7.54567 18.3182 8.06848 18.3772 8.6098C18.4363 9.15112 18.3807 9.6988 18.2141 10.2172C18.0474 10.7356 17.7735 11.2131 17.4101 11.6187C17.0467 12.0242 16.602 12.3487 16.1049 12.571C15.6078 12.7933 15.0695 12.9084 14.525 12.9089H5.47521C4.93068 12.9084 4.39236 12.7933 3.89527 12.571C3.39818 12.3487 2.95347 12.0242 2.59008 11.6187C2.22669 11.2131 1.95277 10.7356 1.78615 10.2172C1.61952 9.6988 1.56392 9.15112 1.62297 8.6098C1.68202 8.06848 1.85439 7.54567 2.12887 7.07538C2.40335 6.60509 2.77378 6.19787 3.21606 5.88021C3.65834 5.56256 4.16255 5.3416 4.69587 5.23171C5.2292 5.12182 5.77969 5.12547 6.31151 5.24241" stroke="currentColor" stroke-width="1.29282" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.12158 6.44476C6.12158 5.41612 6.53021 4.42962 7.25756 3.70226C7.98492 2.97491 8.97142 2.56628 10.0001 2.56628C11.0287 2.56628 12.0152 2.97491 12.7425 3.70226C13.4699 4.42962 13.8785 5.41612 13.8785 6.44476" stroke="currentColor" stroke-width="1.29282" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.8178 12.6883V16.7874C15.8178 16.9588 15.7497 17.1232 15.6285 17.2444C15.5072 17.3657 15.3428 17.4338 15.1714 17.4338H4.82879C4.65735 17.4338 4.49293 17.3657 4.3717 17.2444C4.25048 17.1232 4.18237 16.9588 4.18237 16.7874V12.6883" stroke="currentColor" stroke-width="1.29282" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="dq-core-label">{t.recipes}</span>
+      </div>
+
+      <div class="dq-side dq-side--rev">
+        <div class="dq-conn dq-conn--rev"><span class="dq-dot"></span></div>
+        <div class="dq-node">
+          <svg class="dq-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-2-1.4-2 1.4-2-1.4-2 1.4-2-1.4L6 21z" /><path d="M9 8h6M9 12h6" /></svg>
+          <span class="dq-label">{t.invoices}</span>
+        </div>
+      </div>
+    </div>
+
+    <span class="dq-down" aria-hidden="true"></span>
+
+    <div class="dq-reports">
+      <span class="dq-report">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9h-9z" /><path d="M12 3v9h9A9 9 0 0 0 12 3z" /></svg>
+      </span>
+      <span class="dq-report">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h16" /><path d="M6 20v-6M11 20V8M16 20v-9" /></svg>
+      </span>
+      <span class="dq-report">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l5-5 4 4 8-8" /><path d="M17 8h4v4" /></svg>
+      </span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .dq-wrap { width: 100%; padding-block: 26px; display: flex; justify-content: flex-start; }
+  .dq-diagram { display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 400px; font-family: var(--font-body, 'Inter', sans-serif); }
+  .dq-top { display: flex; align-items: center; gap: 8px; width: 100%; }
+  /* equal-width sides keep the hub dead-centre, so the dashed line + reports align under it */
+  .dq-side { flex: 1 1 0; min-width: 0; display: flex; align-items: center; gap: 8px; }
+
+  .dq-node { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 6px; padding: 7px 11px; border-radius: var(--radius-full, 999px); background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.18); }
+  .dq-ic { width: 15px; height: 15px; flex: 0 0 auto; color: rgba(255, 255, 255, 0.7); }
+  .dq-label { font-size: 12.5px; font-weight: 400; color: rgba(255, 255, 255, 0.9); white-space: nowrap; }
+
+  .dq-conn { flex: 1 1 auto; min-width: 20px; position: relative; height: 2px; background-image: linear-gradient(to right, rgba(255, 255, 255, 0.28) 50%, transparent 50%); background-size: 7px 2px; background-repeat: repeat-x; }
+  .dq-dot { position: absolute; top: 50%; left: 0; width: 6px; height: 6px; margin-top: -3px; border-radius: 50%; background: #bb86fc; box-shadow: 0 0 8px 2px rgba(187, 134, 252, 0.7); animation: dq-flow 1.8s linear infinite; }
+  .dq-conn--rev .dq-dot { animation: dq-flow-rev 1.8s linear infinite; animation-delay: 0.4s; }
+  @keyframes dq-flow { 0% { left: 0; opacity: 0; } 12% { opacity: 1; } 88% { opacity: 1; } 100% { left: 100%; opacity: 0; } }
+  @keyframes dq-flow-rev { 0% { left: 100%; opacity: 0; } 12% { opacity: 1; } 88% { opacity: 1; } 100% { left: 0; opacity: 0; } }
+
+  /* hub: glowing circle (the powerhouse), chef-hat + label stacked inside */
+  .dq-core {
+    flex: 0 0 auto;
+    width: 78px; height: 78px; border-radius: 50%;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+    color: #fff;
+    background: rgba(187, 134, 252, 0.12);
+    border: 1px solid rgba(187, 134, 252, 0.55);
+    box-shadow: 0 0 22px 3px rgba(187, 134, 252, 0.35);
+    animation: dq-pulse 2.6s ease-in-out infinite;
+  }
+  .dq-core-ic { width: 22px; height: 22px; color: #fff; }
+  .dq-core-label { font-size: 10px; font-weight: 500; color: #fff; white-space: nowrap; letter-spacing: 0.01em; }
+  @keyframes dq-pulse { 0%, 100% { box-shadow: 0 0 16px 2px rgba(187, 134, 252, 0.3); } 50% { box-shadow: 0 0 26px 5px rgba(187, 134, 252, 0.5); } }
+
+  .dq-down { width: 2px; height: 18px; margin-top: 10px; background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3) 50%, transparent 50%); background-size: 2px 6px; }
+
+  .dq-reports { display: flex; gap: 10px; margin-top: 8px; }
+  .dq-report {
+    width: 34px; height: 34px; border-radius: 9px;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(187, 134, 252, 0.4);
+    color: rgba(255, 255, 255, 0.88);
+    opacity: 0;
+    transition: opacity 0.35s ease, transform 0.45s cubic-bezier(0.34, 1.2, 0.64, 1);
+  }
+  .dq-report svg { width: 17px; height: 17px; }
+  /* start states: centre tile drops from the hub; side tiles start behind it (at centre) */
+  .dq-report:nth-child(2) { transform: translateY(-24px) scale(0.4); }
+  .dq-report:nth-child(1) { transform: translateX(44px) scale(0.5); }
+  .dq-report:nth-child(3) { transform: translateX(-44px) scale(0.5); }
+  .dq-report.show { opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .dq-dot { display: none; }
+    .dq-core { animation: none; }
+    .dq-report { opacity: 1; transform: none; transition: none; }
+  }
+</style>
+
+<script>
+  const GAP = 150;   // delay between the centre tile and the two sides (ms)
+  const HOLD = 2200; // hold once all 3 are out, before the loop restarts (ms)
+  const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+  document.querySelectorAll<HTMLElement>('.dq-diagram').forEach((dia) => {
+    const reports = Array.from(dia.querySelectorAll<HTMLElement>('.dq-report'));
+    if (reports.length < 3) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    async function loop() {
+      while (dia.isConnected) {
+        reports.forEach((r) => r.classList.remove('show'));
+        await sleep(700);
+        reports[1].classList.add('show');          // bar — centre, drops first
+        await sleep(GAP);
+        reports[0].classList.add('show');          // pie — slides out left
+        reports[2].classList.add('show');          // trend — slides out right
+        await sleep(HOLD);
+      }
+    }
+    loop();
+  });
+</script>
