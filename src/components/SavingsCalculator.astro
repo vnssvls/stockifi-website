@@ -204,8 +204,10 @@ const bookHref = lp('/book-a-demo');
   /* Results panel */
   .sc-card { display: flex; flex-direction: column; gap: var(--space-32); padding: var(--space-32); }
 
-  /* Two stats aligned at the top (primary + per-location) read as a clear pair. */
-  .sc-rtop { display: flex; align-items: flex-start; justify-content: flex-start; gap: 100px; flex-wrap: wrap; }
+  /* Two stats aligned at the top (primary + per-location) read as a clear pair.
+     column-gap spaces them side-by-side on desktop; row-gap keeps them tight when
+     they wrap to a stack on mobile (was a single 100px gap → huge vertical hole). */
+  .sc-rtop { display: flex; align-items: flex-start; justify-content: flex-start; column-gap: 100px; row-gap: var(--space-24); flex-wrap: wrap; }
   .sc-stat { text-align: left; }
   .sc-stat-l { font-size: var(--text-body-sm); }
   .sc-result-n { display: block; font-family: var(--font-body); font-size: var(--text-h3); line-height: 1.05; font-weight: var(--fw-medium); color: #1a1620; font-variant-numeric: tabular-nums; margin-top: var(--space-4); }
@@ -250,6 +252,15 @@ const bookHref = lp('/book-a-demo');
       position: sticky; left: 0; z-index: 2; background: #fff;
       box-shadow: 8px 0 10px -8px rgba(0, 0, 0, 0.14);
     }
+  }
+
+  /* Phones: tighten the stacked layout so the inputs and both result values sit
+     close enough to read together while the user drags the sliders. */
+  @media (max-width: 640px) {
+    .sc-inner { gap: var(--space-24); }
+    .sc-inputs { padding: var(--space-24); gap: var(--space-24); }
+    .sc-card { padding: var(--space-24); gap: var(--space-24); }
+    .sc-rtop { row-gap: var(--space-16); }
   }
 </style>
 

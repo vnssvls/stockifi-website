@@ -5,7 +5,10 @@
 *, *::before, *::after { box-sizing: border-box; }
 * { margin: 0; }
 
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+/* overflow-x clipped on BOTH html and body: body alone doesn't stop iOS Safari
+   from revealing horizontal overflow on pinch-zoom (html is the zoom container).
+   `clip` (not `hidden`) so it doesn't create a scroll container — sticky nav stays. */
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; overflow-x: clip; }
 
 body {
   overflow-x: clip;
