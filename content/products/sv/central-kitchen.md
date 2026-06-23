@@ -12,9 +12,9 @@ howItWorks:
   heading: "Stockifi behandlar ditt kök som en intern leverantör"
   body: "Dina enheter lägger sina beställningar i Stockifi. Centralköket tar emot varje beställning där, tillverkar den och skickar den till enheten. Stockifi fångar varje ingrediens och dess kostnad längs vägen och för den kostnaden vidare till priset varje enhet betalar."
   points:
-    - heading: "Beställt i Stockifi"
+    - heading: "Förfrågan från appen"
       body: "Enheterna beställer direkt i Stockifi från centralköket."
-    - heading: "Tillverkat och skickat"
+    - heading: "Skickad från appen"
       body: "Köket slutför varje beställning, och varje ingrediens och dess värde fångas."
   imageSide: "right"
   image: "/media/photos/teams-kitchen.png"

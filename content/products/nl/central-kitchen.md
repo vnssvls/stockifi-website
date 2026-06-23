@@ -12,9 +12,9 @@ howItWorks:
   heading: "Stockifi behandelt je keuken als een interne leverancier"
   body: "Je vestigingen plaatsen hun bestellingen in Stockifi. De centrale keuken ontvangt elke bestelling daar, produceert die en levert die aan de vestiging. Stockifi legt onderweg elk ingrediënt en de kosten ervan vast, en brengt die kosten door naar de prijs die elke vestiging betaalt."
   points:
-    - heading: "Besteld in Stockifi"
+    - heading: "Aanvraag vanuit de app"
       body: "Vestigingen bestellen rechtstreeks in Stockifi bij de centrale keuken."
-    - heading: "Geproduceerd en geleverd"
+    - heading: "Verzonden vanuit de app"
       body: "De keuken verwerkt elke bestelling, en elk ingrediënt en de waarde ervan worden vastgelegd."
   imageSide: "right"
   image: "/media/photos/teams-kitchen.png"

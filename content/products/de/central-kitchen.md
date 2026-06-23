@@ -12,9 +12,9 @@ howItWorks:
   heading: "Stockifi behandelt Ihre Küche als internen Lieferanten"
   body: "Ihre Standorte geben ihre Bestellungen in Stockifi auf. Die Zentralküche erhält jede Bestellung dort, produziert sie und liefert sie an den Standort. Stockifi erfasst dabei jede Zutat und deren Kosten und trägt diese Kosten in den Preis, den jeder Standort zahlt."
   points:
-    - heading: "In Stockifi bestellt"
+    - heading: "Anforderung aus der App"
       body: "Standorte bestellen direkt in Stockifi bei der Zentralküche."
-    - heading: "Produziert und geliefert"
+    - heading: "Versand aus der App"
       body: "Die Küche erfüllt jede Bestellung, und jede Zutat und ihr Wert werden erfasst."
   imageSide: "right"
   image: "/media/photos/teams-kitchen.png"

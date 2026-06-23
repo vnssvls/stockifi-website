@@ -12,9 +12,9 @@ howItWorks:
   heading: "Stockifi treats your kitchen as an internal supplier"
   body: "Your outlets place their orders in Stockifi. The central kitchen receives each order there, produces it, and ships it to the outlet. Stockifi captures every ingredient and its cost along the way, and carries that cost into the price each outlet pays."
   points:
-    - heading: "Ordered in Stockifi"
+    - heading: "Request from the app"
       body: "Outlets order from the central kitchen straight in Stockifi."
-    - heading: "Produced and shipped"
+    - heading: "Sent from the app"
       body: "The kitchen fulfills each order, and every ingredient and its value is captured."
   imageSide: "right"
   image: "/media/photos/teams-kitchen.png"
