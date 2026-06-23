@@ -4,7 +4,7 @@ metaDescription: "Führen Sie Inventuren auf Mobilgerät oder im Web durch, onli
 eyebrow: "Inventur"
 heading: "Zählungen, die mit dem Regal übereinstimmen"
 subhead: "Zählen Sie per Mobilgerät oder im Browser, online oder offline. Sobald Sie die Inventur abschließen, sehen Sie die Abweichung gegenüber dem, was Ihre Rezepte und Umsatzzahlen prognostiziert haben."
-heroImage: "/media/product-stock-counting.png"
+heroImage: "/media/photos/stock-counting-header.png"
 order: 21
 category: inventory-management
 howItWorks:
@@ -17,7 +17,7 @@ howItWorks:
     - heading: "Geprüft, dann gespeichert"
       body: "Auffällige Werte werden vor dem Abschluss markiert."
   imageSide: "right"
-  image: "/media/photos/teams-finance.png"
+  image: "/media/photos/stock-counting-tablet.png"
   imageAlt: ""
 showIntegrations: false
 benefits:

@@ -4,7 +4,7 @@ metaDescription: "Tæl varelageret periodisk på mobil eller web, online eller o
 eyebrow: "Varetælling"
 heading: "Tællinger der matcher hylden"
 subhead: "Tæl på mobil eller web, online eller offline. Se afvigelsen fra det, dine opskrifter og salg forudsagde, i det øjeblik du lukker tællingen."
-heroImage: "/media/product-stock-counting.png"
+heroImage: "/media/photos/stock-counting-header.png"
 order: 21
 category: inventory-management
 howItWorks:
@@ -17,7 +17,7 @@ howItWorks:
     - heading: "Godkendt, derefter låst"
       body: "Mærkelige tal markeres, inden tællingen lukkes."
   imageSide: "right"
-  image: "/media/photos/teams-finance.png"
+  image: "/media/photos/stock-counting-tablet.png"
   imageAlt: ""
 showIntegrations: false
 benefits:

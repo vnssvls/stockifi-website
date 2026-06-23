@@ -4,7 +4,7 @@ metaDescription: "Run stock counts on mobile or web, online or offline. Stockifi
 eyebrow: "Stock counting"
 heading: "Counts that match the shelf"
 subhead: "Count on mobile or web, online or offline. See the variance against what your recipes and sales predicted the moment you close."
-heroImage: "/media/product-stock-counting.png"
+heroImage: "/media/photos/stock-counting-header.png"
 order: 21
 category: inventory-management
 howItWorks:
@@ -17,7 +17,7 @@ howItWorks:
     - heading: "Verified, then locked"
       body: "Odd figures are flagged before the count closes."
   imageSide: "right"
-  image: "/media/photos/teams-finance.png"
+  image: "/media/photos/stock-counting-tablet.png"
   imageAlt: ""
 showIntegrations: false
 benefits:

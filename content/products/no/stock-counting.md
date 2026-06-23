@@ -4,7 +4,7 @@ metaDescription: "Gjennomfør varetelling på mobil eller nett, online eller off
 eyebrow: "Varetelling"
 heading: "Tellinger som stemmer med hyllen"
 subhead: "Tell på mobil eller nett, online eller offline. Se avviket mot hva oppskriftene og salget forutsa, i det øyeblikket du lukker tellingen."
-heroImage: "/media/product-stock-counting.png"
+heroImage: "/media/photos/stock-counting-header.png"
 order: 21
 category: inventory-management
 howItWorks:
@@ -17,7 +17,7 @@ howItWorks:
     - heading: "Verifisert, deretter låst"
       body: "Merkelige tall flagges før tellingen lukkes."
   imageSide: "right"
-  image: "/media/photos/teams-finance.png"
+  image: "/media/photos/stock-counting-tablet.png"
   imageAlt: ""
 showIntegrations: false
 benefits:

@@ -4,7 +4,7 @@ metaDescription: "Gör inventeringar på mobil eller webb, online eller offline.
 eyebrow: "Inventering"
 heading: "Inventeringar som stämmer med hyllan"
 subhead: "Inventera på mobil eller webb, online eller offline. Se avvikelsen mot vad dina recept och din försäljning förutsåg i det ögonblick du stänger."
-heroImage: "/media/product-stock-counting.png"
+heroImage: "/media/photos/stock-counting-header.png"
 order: 21
 category: inventory-management
 howItWorks:
@@ -17,7 +17,7 @@ howItWorks:
     - heading: "Verifierad, sedan låst"
       body: "Avvikande siffror flaggas innan inventeringen stängs."
   imageSide: "right"
-  image: "/media/photos/teams-finance.png"
+  image: "/media/photos/stock-counting-tablet.png"
   imageAlt: ""
 showIntegrations: false
 benefits:

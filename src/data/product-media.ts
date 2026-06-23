@@ -21,7 +21,7 @@ export const productMedia: Record<string, ProductMedia> = {
   'ordering-suggestions': { overlay: 'OrderSuggestions' },
   // inventory-management
   'recipe-building': { overlay: 'RecipeCost' },
-  'stock-counting': { image: '/media/product-stock-counting.png', overlay: 'StockCount' },
+  'stock-counting': { image: '/media/photos/stock-counting-tablet.png', overlay: 'StockCount' },
   'inventory-transfers': { image: '/media/product-inventory-transfers.png', overlay: 'InventoryTransfer' },
   'sales-and-usage': { image: '/media/product-sales-and-usage.png', overlay: 'SalesReport' },
   'wastage-tracking': { overlay: 'WastageLog' },

@@ -4,7 +4,7 @@ metaDescription: "Tel je voorraad op mobiel of desktop, online of offline, en zi
 eyebrow: "Voorraadtelling"
 heading: "Tellingen die kloppen met de plank"
 subhead: "Tel op mobiel of desktop, online of offline. Zie de afwijking ten opzichte van wat je recepten en verkopen hadden voorspeld op het moment dat je afsluit."
-heroImage: "/media/product-stock-counting.png"
+heroImage: "/media/photos/stock-counting-header.png"
 order: 21
 category: inventory-management
 howItWorks:
@@ -17,7 +17,7 @@ howItWorks:
     - heading: "Geverifieerd, dan vergrendeld"
       body: "Afwijkende waarden worden gemarkeerd voordat de telling sluit."
   imageSide: "right"
-  image: "/media/photos/teams-finance.png"
+  image: "/media/photos/stock-counting-tablet.png"
   imageAlt: ""
 showIntegrations: false
 benefits:
