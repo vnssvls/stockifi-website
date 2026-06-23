@@ -14,7 +14,7 @@ export default defineConfig({
     locales: ['en', 'no', 'de', 'da', 'sv', 'nl'],
     routing: { prefixDefaultLocale: false },
   },
-  // Non-trailing-slash canonical, one policy site-wide (see docs/audit/09-redirect-map.md).
+  // Non-trailing-slash canonical, one policy site-wide (redirect map in archived migration audit).
   trailingSlash: 'never',
   integrations: [
     sitemap({
