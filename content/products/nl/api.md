@@ -4,7 +4,7 @@ metaDescription: "Haal je Stockifi-data, foodcostpercentage, afwijkingen, recept
 eyebrow: "API"
 heading: "Haal je Stockifi-data op in je eigen tools"
 subhead: "Je team werkt met Stockifi-cijfers in de BI-tools die het al gebruikt. Een overzichtelijke API geeft directe toegang tot je prestatiedata."
-heroImage: "/media/bi-api.jpg"
+heroImage: "/media/photos/api-header.png"
 order: 31
 category: business-intelligence
 showIntegrations: false

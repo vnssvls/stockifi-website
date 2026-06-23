@@ -4,7 +4,7 @@ metaDescription: "Koble Stockifi til dine egne BI-verktøy eller datalager. Hent
 eyebrow: "API"
 heading: "Hent Stockifi-dataene dine inn i dine egne verktøy"
 subhead: "Teamet ditt kan jobbe med Stockifis tall inne i BI-verktøyene det allerede bruker. Et ryddig API gir direkte tilgang til ytelsesdataene dine."
-heroImage: "/media/bi-api.jpg"
+heroImage: "/media/photos/api-header.png"
 order: 31
 category: business-intelligence
 showIntegrations: false

@@ -29,6 +29,6 @@ export const productMedia: Record<string, ProductMedia> = {
   'performance-dashboards': { image: '/media/product-performance-dashboards.png', overlay: 'Performance' },
   'data-quality': { image: '/media/product-data-quality.png', overlay: 'DataQuality' },
   'variance-analysis': { image: '/media/bi-variance-analysis.jpg', overlay: 'Variance' },
-  'api': { image: '/media/product-api.png' },
+  'api': { image: '/media/product-api.png', overlay: 'ApiSync' },
   'profitability': { image: '/media/product-profitability.png', overlay: 'Profitability' },
 };

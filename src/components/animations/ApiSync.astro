@@ -1,0 +1,123 @@
+---
+// API — data sync. Orthogonal routing: a trunk leaves the Stockifi origin and
+// branches up / straight / down with rounded elbows to each BI tool (Power BI,
+// Looker, the customer's own dashboard). The lines flow as a continuous dashed
+// stream AND purple packet-dots route along them into each tool, which lights up
+// on arrival. No arrowheads, plain text, single origin point.
+// Motion is SMIL (animateMotion) so packets track the elbow paths cross-browser;
+// JS pauses SMIL + drops the .api-anim class under prefers-reduced-motion, leaving
+// a static dashed fan. "live" + "Your dashboard" localise; brand names kept as-is.
+const locale = Astro.currentLocale ?? 'en';
+const T: Record<string, { live: string; dash: string }> = {
+  en: { live: 'live', dash: 'Your dashboard' },
+  de: { live: 'live', dash: 'Ihr Dashboard' },
+  nl: { live: 'live', dash: 'Je dashboard' },
+  no: { live: 'live', dash: 'Dashbordet ditt' },
+  sv: { live: 'live', dash: 'Din dashboard' },
+  da: { live: 'live', dash: 'Dit dashboard' },
+};
+const t = T[locale] ?? T.en;
+---
+
+<div class="api-wrap">
+  <div class="api-card">
+    <div class="api-top">
+      <span class="api-doc">API</span>
+      <span class="api-live"><span class="api-dot"></span> {t.live}</span>
+    </div>
+
+    <div class="api-flow">
+      <svg class="api-svg" viewBox="0 0 280 92" role="img"
+        aria-label={`Stockifi data flowing to Power BI, Looker and ${t.dash}`}>
+        <!-- visible orthogonal manifold (flowing dashed stream) -->
+        <path class="api-link" d="M52 46 L176 46 M104 46 L104 22 Q104 14 112 14 L176 14 M104 46 L104 70 Q104 78 112 78 L176 78" />
+
+        <!-- single origin node -->
+        <circle class="api-origin" cx="52" cy="46" r="2.6" />
+
+        <!-- source + tool labels (plain text) -->
+        <text class="api-src" x="0" y="46" dominant-baseline="middle">Stockifi</text>
+        <text id="api-t1" class="api-tool" x="182" y="14" dominant-baseline="middle">Power BI</text>
+        <text id="api-t2" class="api-tool" x="182" y="46" dominant-baseline="middle">Looker</text>
+        <text id="api-t3" class="api-tool" x="182" y="78" dominant-baseline="middle">{t.dash}</text>
+
+        <!-- invisible routes the packet-dots follow -->
+        <path id="api-r1" d="M52 46 L104 46 L104 22 Q104 14 112 14 L176 14" fill="none" />
+        <path id="api-r2" d="M52 46 L176 46" fill="none" />
+        <path id="api-r3" d="M52 46 L104 46 L104 70 Q104 78 112 78 L176 78" fill="none" />
+
+        <!-- packet-dots routing into each tool -->
+        <circle class="api-pulse" r="3">
+          <animateMotion dur="2.4s" begin="0s" repeatCount="indefinite"><mpath href="#api-r1" /></animateMotion>
+          <animate attributeName="opacity" dur="2.4s" begin="0s" repeatCount="indefinite" values="0;1;1;0" keyTimes="0;0.12;0.82;1" />
+        </circle>
+        <circle class="api-pulse" r="3">
+          <animateMotion dur="2.4s" begin="0.8s" repeatCount="indefinite"><mpath href="#api-r2" /></animateMotion>
+          <animate attributeName="opacity" dur="2.4s" begin="0.8s" repeatCount="indefinite" values="0;1;1;0" keyTimes="0;0.12;0.82;1" />
+        </circle>
+        <circle class="api-pulse" r="3">
+          <animateMotion dur="2.4s" begin="1.6s" repeatCount="indefinite"><mpath href="#api-r3" /></animateMotion>
+          <animate attributeName="opacity" dur="2.4s" begin="1.6s" repeatCount="indefinite" values="0;1;1;0" keyTimes="0;0.12;0.82;1" />
+        </circle>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<style>
+  .api-wrap { width: 100%; padding-block: 24px; display: flex; justify-content: flex-start; }
+  .api-card {
+    width: 100%;
+    max-width: 330px;
+    background: rgba(255, 255, 255, 0.055);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: var(--radius-lg, 12px);
+    padding: 16px 18px;
+    font-family: var(--font-body, 'Inter', sans-serif);
+  }
+  .api-top { display: flex; align-items: center; justify-content: space-between; }
+  .api-doc { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255, 255, 255, 0.62); }
+  .api-live { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; color: rgba(255, 255, 255, 0.55); }
+  .api-dot { width: 7px; height: 7px; border-radius: 50%; background: #34d399; }
+  .api-card.api-anim .api-dot { animation: api-blink 1.6s ease-in-out infinite; }
+  @keyframes api-blink { 0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.5); } 50% { opacity: 0.45; box-shadow: 0 0 0 5px rgba(52, 211, 153, 0); } }
+
+  .api-flow { margin-top: 18px; padding-top: 16px; border-top: 1px solid rgba(255, 255, 255, 0.14); }
+  .api-svg { width: 100%; height: auto; display: block; overflow: visible; font-family: var(--font-body, 'Inter', sans-serif); }
+
+  /* flowing dashed stream */
+  .api-link { stroke: rgba(255, 255, 255, 0.28); stroke-width: 1.4; fill: none; stroke-dasharray: 3 7; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+  .api-card.api-anim .api-link { animation: api-flow 1s linear infinite; }
+  @keyframes api-flow { to { stroke-dashoffset: -20; } }
+
+  .api-origin { fill: rgba(255, 255, 255, 0.65); }
+  .api-pulse { fill: var(--primary, #bb86fc); opacity: 0; filter: drop-shadow(0 0 4px rgba(187, 134, 252, 0.85)); }
+
+  .api-src { fill: rgba(255, 255, 255, 0.96); font-size: 13px; font-weight: 600; }
+  .api-tool { fill: rgba(255, 255, 255, 0.82); font-size: 12px; }
+  .api-card.api-anim #api-t1 { animation: api-glow 2.4s linear infinite 0s; }
+  .api-card.api-anim #api-t2 { animation: api-glow 2.4s linear infinite 0.8s; }
+  .api-card.api-anim #api-t3 { animation: api-glow 2.4s linear infinite 1.6s; }
+  @keyframes api-glow {
+    0%, 70% { fill: rgba(255, 255, 255, 0.82); }
+    82% { fill: #fff; }
+    100% { fill: rgba(255, 255, 255, 0.82); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .api-pulse { opacity: 0 !important; }
+    .api-link, .api-tool, .api-dot { animation: none !important; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.api-card').forEach((card) => {
+    const svg = card.querySelector('svg');
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      // freeze SMIL packets at the origin (invisible); leave the static dashed fan
+      try { (svg as any)?.pauseAnimations?.(); (svg as any)?.setCurrentTime?.(0); } catch (_) {}
+      return;
+    }
+    card.classList.add('api-anim');
+  });
+</script>

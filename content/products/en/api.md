@@ -4,7 +4,7 @@ metaDescription: "Connect Stockifi to your own BI tools or data warehouse. Pull 
 eyebrow: "API"
 heading: "Pull your Stockifi data into your own tools"
 subhead: "Your team can work with Stockifi's numbers inside the BI tools it already runs. A clean API gives them direct access to your performance data."
-heroImage: "/media/bi-api.jpg"
+heroImage: "/media/photos/api-header.png"
 order: 31
 category: business-intelligence
 showIntegrations: false
