@@ -10,12 +10,12 @@ category: procurement
 howItWorks:
   tagline: "So funktioniert es"
   heading: "Stockifi behandelt Ihre Küche als internen Lieferanten"
-  body: "Wenn Sie in einer Küche produzieren und an mehrere Standorte liefern, gehen die tatsächlichen Kosten des Produzierten leicht verloren. Stockifi behandelt die Zentralküche als Lieferanten Ihrer Standorte: Es summiert Zutaten und Vorbereitung hinter jedem Artikel und trägt diese Kosten in den Preis, den jeder Standort zahlt."
+  body: "Ihre Standorte geben ihre Bestellungen in Stockifi auf. Die Zentralküche erhält jede Bestellung dort, produziert sie und liefert sie an den Standort. Stockifi erfasst dabei jede Zutat und deren Kosten und trägt diese Kosten in den Preis, den jeder Standort zahlt."
   points:
-    - heading: "Kosten von Grund auf berechnet"
-      body: "Zutaten und Vorbereitung ergeben die realen Kosten jedes Zentralküchen-Artikels."
-    - heading: "An jeden Standort weitergegeben"
-      body: "Standorte zahlen diese Kosten, damit ihre Rezepte und Margen korrekt bleiben."
+    - heading: "In Stockifi bestellt"
+      body: "Standorte bestellen direkt in Stockifi bei der Zentralküche."
+    - heading: "Produziert und geliefert"
+      body: "Die Küche erfüllt jede Bestellung, und jede Zutat und ihr Wert werden erfasst."
   imageSide: "right"
   image: "/media/photos/teams-kitchen.png"
   imageAlt: ""

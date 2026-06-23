@@ -10,12 +10,12 @@ category: procurement
 howItWorks:
   tagline: "How it works"
   heading: "Stockifi treats your kitchen as an internal supplier"
-  body: "When you produce in one kitchen and ship to several outlets, the real cost of what you make is easy to lose. Stockifi treats the central kitchen as a supplier to your outlets: it adds up the ingredients and prep behind each item, then carries that cost into the price every outlet pays."
+  body: "Your outlets place their orders in Stockifi. The central kitchen receives each order there, produces it, and ships it to the outlet. Stockifi captures every ingredient and its cost along the way, and carries that cost into the price each outlet pays."
   points:
-    - heading: "Costed from the ground up"
-      body: "Ingredients and prep add up to the real cost of each central-kitchen item."
-    - heading: "Carried to each outlet"
-      body: "Outlets pay that cost, so their recipes and margins stay true."
+    - heading: "Ordered in Stockifi"
+      body: "Outlets order from the central kitchen straight in Stockifi."
+    - heading: "Produced and shipped"
+      body: "The kitchen fulfills each order, and every ingredient and its value is captured."
   imageSide: "right"
   image: "/media/photos/teams-kitchen.png"
   imageAlt: ""

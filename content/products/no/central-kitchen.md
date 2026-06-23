@@ -10,12 +10,12 @@ category: procurement
 howItWorks:
   tagline: "Slik fungerer det"
   heading: "Stockifi behandler kjøkkenet ditt som en intern leverandør"
-  body: "Når du produserer på ett kjøkken og leverer til flere utsalgssteder, er det lett å miste oversikten over den reelle kostnaden for det du lager. Stockifi behandler sentralkjøkkenet som en leverandør til utsalgsstedene dine: det summerer ingredienser og tilberedning bak hvert produkt, og fører den kostnaden videre til prisen hvert utsalgssted betaler."
+  body: "Utsalgsstedene dine legger inn bestillingene sine i Stockifi. Sentralkjøkkenet mottar hver bestilling der, produserer den og sender den til utsalgsstedet. Stockifi fanger opp hver ingrediens og kostnaden underveis, og fører den kostnaden videre til prisen hvert utsalgssted betaler."
   points:
-    - heading: "Kostnadsberegnet fra grunnen av"
-      body: "Ingredienser og tilberedning summeres til den reelle kostnaden for hvert sentralkjøkkenprodukt."
-    - heading: "Videreført til hvert utsalgssted"
-      body: "Utsalgsstedene betaler den kostnaden, slik at oppskriftene og marginen holder seg korrekt."
+    - heading: "Bestilt i Stockifi"
+      body: "Utsalgsstedene bestiller direkte i Stockifi fra sentralkjøkkenet."
+    - heading: "Produsert og sendt"
+      body: "Kjøkkenet fullfører hver bestilling, og hver ingrediens og verdi fanges opp."
   imageSide: "right"
   image: "/media/photos/teams-kitchen.png"
   imageAlt: ""

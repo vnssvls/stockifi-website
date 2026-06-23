@@ -10,12 +10,12 @@ category: procurement
 howItWorks:
   tagline: "Så fungerar det"
   heading: "Stockifi behandlar ditt kök som en intern leverantör"
-  body: "När du producerar i ett kök och levererar till flera enheter är det lätt att tappa den verkliga kostnaden för vad du tillverkar. Stockifi behandlar centralköket som en leverantör till dina enheter: det summerar ingredienser och förberedelse bakom varje artikel och för sedan den kostnaden vidare till priset varje enhet betalar."
+  body: "Dina enheter lägger sina beställningar i Stockifi. Centralköket tar emot varje beställning där, tillverkar den och skickar den till enheten. Stockifi fångar varje ingrediens och dess kostnad längs vägen och för den kostnaden vidare till priset varje enhet betalar."
   points:
-    - heading: "Kostnadsberäknat från grunden"
-      body: "Ingredienser och förberedelse summeras till den verkliga kostnaden för varje artikel från centralköket."
-    - heading: "Förs vidare till varje enhet"
-      body: "Enheterna betalar den kostnaden, så deras recept och marginaler stämmer."
+    - heading: "Beställt i Stockifi"
+      body: "Enheterna beställer direkt i Stockifi från centralköket."
+    - heading: "Tillverkat och skickat"
+      body: "Köket slutför varje beställning, och varje ingrediens och dess värde fångas."
   imageSide: "right"
   image: "/media/photos/teams-kitchen.png"
   imageAlt: ""

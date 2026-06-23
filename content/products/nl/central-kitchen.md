@@ -10,12 +10,12 @@ category: procurement
 howItWorks:
   tagline: "Hoe het werkt"
   heading: "Stockifi behandelt je keuken als een interne leverancier"
-  body: "Wanneer je produceert in één keuken en levert aan meerdere vestigingen, is het makkelijk om de werkelijke kosten van wat je maakt kwijt te raken. Stockifi behandelt de centrale keuken als leverancier aan je vestigingen: het telt de ingrediënten en bereiding op tot de werkelijke kostprijs van elk artikel en brengt die kostprijs door naar de prijs die elke vestiging betaalt."
+  body: "Je vestigingen plaatsen hun bestellingen in Stockifi. De centrale keuken ontvangt elke bestelling daar, produceert die en levert die aan de vestiging. Stockifi legt onderweg elk ingrediënt en de kosten ervan vast, en brengt die kosten door naar de prijs die elke vestiging betaalt."
   points:
-    - heading: "Kostprijs van de grond af"
-      body: "Ingrediënten en bereiding vormen samen de werkelijke kostprijs van elk artikel uit de centrale keuken."
-    - heading: "Doorberekend naar elke vestiging"
-      body: "Vestigingen betalen die kostprijs, zodat hun recepten en marges kloppen."
+    - heading: "Besteld in Stockifi"
+      body: "Vestigingen bestellen rechtstreeks in Stockifi bij de centrale keuken."
+    - heading: "Geproduceerd en geleverd"
+      body: "De keuken verwerkt elke bestelling, en elk ingrediënt en de waarde ervan worden vastgelegd."
   imageSide: "right"
   image: "/media/photos/teams-kitchen.png"
   imageAlt: ""
