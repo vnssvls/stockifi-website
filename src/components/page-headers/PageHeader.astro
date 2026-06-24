@@ -40,7 +40,9 @@ const hasExtra = Astro.slots.has('default');
     content: '';
     position: absolute;
     left: 50%;
-    top: -6%;
+    /* Pulled up so the gradient's bright centre sits behind the heading itself,
+       not in the gap below the subhead. */
+    top: -32%;
     transform: translateX(-50%);
     width: min(1200px, 150%);
     aspect-ratio: 600 / 500;
