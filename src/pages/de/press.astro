@@ -1,0 +1,29 @@
+---
+// Press & Media — locale variant. Identical to /press.astro; content + strings
+// resolve per locale from src/data/press.ts via Astro.currentLocale.
+import Layout from '../../layouts/Layout.astro';
+import PageHeader from '../../components/page-headers/PageHeader.astro';
+import PressList from '../../components/PressList.astro';
+import PressContact from '../../components/PressContact.astro';
+import { getPressItems, getPressPage } from '../../data/press';
+
+const locale = Astro.currentLocale ?? 'en';
+const items = getPressItems(locale);
+const t = getPressPage(locale);
+
+const PRESS_EMAIL = 'pr@stockl.io';
+const BRAND_KIT_HREF = '#';
+---
+
+<Layout title={t.metaTitle} description={t.metaDescription}>
+  <PageHeader eyebrow={t.eyebrow} heading={t.heading} subhead={t.subhead} subheadWide />
+  <PressList items={items} readLabel={t.readArticle} />
+  <PressContact
+    heading={t.inquiriesHeading}
+    body={t.inquiriesBody}
+    email={PRESS_EMAIL}
+    contactLabel={t.contactLabel}
+    brandKitLabel={t.brandKitLabel}
+    brandKitHref={BRAND_KIT_HREF}
+  />
+</Layout>

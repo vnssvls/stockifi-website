@@ -1,0 +1,138 @@
+---
+// Press & Media — coverage list (wireframe "Portfolio" layout, node 237-30).
+// A vertical list of rows separated by dividers (no card chrome): text column
+// (outlet + year tags, heading, pull, "Read article" link) beside the article
+// thumbnail. Headerless and section-aware by design — it provides its own section.
+// Content comes from src/data/press.ts via getPressItems(locale); pass readLabel
+// localized. Rows with no image render a neutral placeholder tile.
+import type { PressItem } from '../data/press';
+
+interface Props {
+  items: PressItem[];
+  readLabel?: string;
+}
+const { items, readLabel = 'Read article' } = Astro.props;
+---
+
+<section class="section press-list">
+  <div class="pl-wide">
+    {items.map((it) => (
+      <article class="pl-row">
+        <div class="pl-body">
+          <div class="pl-tags">
+            <span class="pl-tag">{it.outlet}</span>
+            <span class="pl-tag">{it.year}</span>
+          </div>
+          <h2 class="pl-heading">{it.heading}</h2>
+          <p class="pl-pull text-muted">{it.pull}</p>
+          <a class="pl-link" href={it.href} target="_blank" rel="noopener noreferrer">
+            {readLabel}
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7" /><path d="M8 7h9v9" /></svg>
+          </a>
+        </div>
+        <div class="pl-media">
+          {it.image ? (
+            <img src={it.image} alt={it.alt ?? it.heading} loading="lazy" decoding="async" />
+          ) : (
+            <span class="pl-media-ph" aria-hidden="true">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" /><circle cx="9" cy="9" r="2" /><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21" /></svg>
+              <span class="pl-media-ph-label">{it.outlet}</span>
+            </span>
+          )}
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
+
+<style>
+  .pl-wide {
+    width: 100%;
+    max-width: 80rem;
+    margin-inline: auto;
+    padding-inline: var(--gutter-wide);
+  }
+
+  /* Divider-separated rows: a hairline above every row after the first. */
+  .pl-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-24);
+    padding-block: var(--space-48);
+    border-top: 1px solid var(--border);
+  }
+  .pl-row:first-child {
+    padding-top: 0;
+    border-top: none;
+  }
+
+  .pl-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-8);
+  }
+  .pl-tag {
+    font-size: var(--text-body-sm);
+    color: var(--muted-foreground);
+    padding: var(--space-4) var(--space-12);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-full);
+    line-height: 1.4;
+  }
+
+  .pl-heading {
+    font-size: var(--text-h3);
+    margin-top: var(--space-16);
+    max-width: 22ch;
+  }
+  .pl-pull {
+    font-size: var(--text-body-lg);
+    margin-top: var(--space-12);
+    max-width: 56ch;
+  }
+
+  .pl-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-8);
+    margin-top: var(--space-24);
+    color: var(--foreground);
+    font-size: var(--text-body-sm);
+    font-weight: var(--fw-semibold);
+  }
+  .pl-link svg { color: var(--muted-foreground); transition: color 0.18s ease, transform 0.18s ease; }
+  .pl-link:hover { color: var(--primary-light); text-decoration: none; }
+  .pl-link:hover svg { color: var(--primary-light); transform: translate(2px, -2px); }
+
+  /* Media — fixed 3:2 frame so every thumbnail and placeholder reads the same height. */
+  .pl-media {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--muted);
+  }
+  .pl-media img,
+  .pl-media-ph {
+    display: block;
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+  }
+  .pl-media-ph {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-12);
+    color: var(--muted-foreground);
+  }
+  .pl-media-ph-label { font-size: var(--text-body-sm); font-weight: var(--fw-semibold); }
+
+  @media (min-width: 1024px) {
+    .pl-wide { padding-inline: 80px; }
+    .pl-row {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-64);
+      align-items: center;
+    }
+  }
+</style>

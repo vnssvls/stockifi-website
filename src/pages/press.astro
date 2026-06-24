@@ -1,0 +1,31 @@
+---
+// Press & Media (Figma 237-30, wireframe "Portfolio" layout): centered no-background
+// PageHeader → divider-separated coverage list (PressList) → media-inquiries +
+// brand-kit band (PressContact). Content + all locales live in src/data/press.ts.
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/page-headers/PageHeader.astro';
+import PressList from '../components/PressList.astro';
+import PressContact from '../components/PressContact.astro';
+import { getPressItems, getPressPage } from '../data/press';
+
+const locale = Astro.currentLocale ?? 'en';
+const items = getPressItems(locale);
+const t = getPressPage(locale);
+
+// brand-kit link is a placeholder until the asset zip exists.
+const PRESS_EMAIL = 'pr@stockl.io';
+const BRAND_KIT_HREF = '#';
+---
+
+<Layout title={t.metaTitle} description={t.metaDescription}>
+  <PageHeader eyebrow={t.eyebrow} heading={t.heading} subhead={t.subhead} subheadWide />
+  <PressList items={items} readLabel={t.readArticle} />
+  <PressContact
+    heading={t.inquiriesHeading}
+    body={t.inquiriesBody}
+    email={PRESS_EMAIL}
+    contactLabel={t.contactLabel}
+    brandKitLabel={t.brandKitLabel}
+    brandKitHref={BRAND_KIT_HREF}
+  />
+</Layout>

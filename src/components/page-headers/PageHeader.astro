@@ -5,8 +5,10 @@ interface Props {
   eyebrow?: string;
   heading: string;
   subhead?: string;
+  /** Drop the 62ch cap so a longer subhead sits on one line on desktop (e.g. /press). */
+  subheadWide?: boolean;
 }
-const { eyebrow, heading, subhead } = Astro.props;
+const { eyebrow, heading, subhead, subheadWide = false } = Astro.props;
 const hasExtra = Astro.slots.has('default');
 ---
 
@@ -14,7 +16,7 @@ const hasExtra = Astro.slots.has('default');
   <div class="container ph-inner">
     {eyebrow && <p class="tagline">{eyebrow}</p>}
     <h1 class="ph-heading">{heading}</h1>
-    {subhead && <p class="ph-subhead text-muted">{subhead}</p>}
+    {subhead && <p class:list={['ph-subhead text-muted', subheadWide && 'ph-subhead--wide']}>{subhead}</p>}
     {hasExtra && <div class="ph-extra"><slot /></div>}
   </div>
 </section>
@@ -24,5 +26,8 @@ const hasExtra = Astro.slots.has('default');
   .ph-heading { font-size: var(--text-h1); }
   .tagline + .ph-heading { margin-top: var(--space-12); }
   .ph-subhead { margin-top: var(--space-16); margin-inline: auto; max-width: 62ch; font-size: var(--text-body-lg); }
+  /* Wide variant: no character cap (bounded by .ph-inner's 76rem) so a longer subhead
+     stays on one line on desktop; balance avoids a lonely last word when it does wrap. */
+  .ph-subhead--wide { max-width: none; text-wrap: balance; }
   .ph-extra { margin-top: var(--space-48); }
 </style>
