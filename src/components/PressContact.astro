@@ -59,14 +59,17 @@ const { heading, body, email, contactLabel, brandKitLabel, brandKitHref } = Astr
     gap: var(--space-16);
     margin-top: var(--space-8);
   }
-  /* Understated download link — small and muted, deliberately not a CTA. */
+  /* Understated download link — small and muted, deliberately not a CTA. Extra
+     margin-top sits on top of the card's 16px gap (~40px total) so it reads as its
+     own quiet tier, clearly detached from the Email button. */
   .pc-kit {
     display: inline-flex;
     align-items: center;
     gap: var(--space-8);
-    font-size: var(--text-body-sm);
+    margin-top: var(--space-24);
+    font-size: var(--text-caption);
     color: var(--muted-foreground);
   }
-  .pc-kit svg { opacity: 0.85; }
+  .pc-kit svg { width: 13px; height: 13px; opacity: 0.85; }
   .pc-kit:hover { color: var(--foreground); text-decoration: none; }
 </style>
