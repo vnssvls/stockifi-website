@@ -80,10 +80,13 @@ const { items, readLabel = 'Read article' } = Astro.props;
     line-height: 1.4;
   }
 
+  /* Real article headlines vary in length (Shifter's runs a full sentence), so the
+     heading fills the text column rather than a fixed character cap, at h4 so long
+     titles stay readable. */
   .pl-heading {
-    font-size: var(--text-h3);
+    font-size: var(--text-h4);
     margin-top: var(--space-16);
-    max-width: 22ch;
+    text-wrap: balance;
   }
   .pl-pull {
     font-size: var(--text-body-lg);
