@@ -1,12 +1,12 @@
 ---
-// Button / CTA. variant: primary (filled) | secondary (outline) | ghost (borderless text link).
+// Button / CTA. variant: primary (filled) | white (off-white fill) | secondary (outline) | ghost (borderless text link).
 // Renders <a> when href is set, else <button>.
 // Primary buttons get a HOVER ripple: the white fill expands from the cursor's entry
 // point to cover the button (vs an instant flip). Triggered on hover, not click —
 // the click navigates/submits, so a click ripple would be redundant. Secondary/ghost
 // keep their simple hovers.
 interface Props {
-  variant?: 'primary' | 'secondary' | 'ghost';
+  variant?: 'primary' | 'white' | 'secondary' | 'ghost';
   href?: string;
   type?: 'button' | 'submit';
   block?: boolean;
@@ -81,6 +81,15 @@ const isPrimary = variant === 'primary';
   /* Border flips to white too, so no purple rim peeks around the ripple (overflow
      clips the ripple at the padding box, but the purple fill sits under the border). */
   .btn-primary.is-rippling { color: var(--background); border-color: var(--foreground); }
+
+  /* White: off-white fill with dark text. Calmer than the purple primary — suits
+     non-conversion CTAs (e.g. the press inquiries band). No ripple. */
+  .btn-white {
+    background: var(--foreground);
+    color: var(--background);
+    border-color: var(--foreground);
+  }
+  .btn-white:hover { opacity: 0.88; }
 
   .btn-secondary {
     background: transparent;

@@ -21,15 +21,16 @@ const { heading, body, email, contactLabel, brandKitLabel, brandKitHref } = Astr
       <h2 class="pc-heading">{heading}</h2>
       <p class="pc-body text-muted">{body}</p>
       <div class="pc-actions">
-        <Button variant="primary" href={`mailto:${email}`}>
+        <Button variant="white" href={`mailto:${email}`}>
           {contactLabel}
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 7 9 6 9-6" /></svg>
         </Button>
-        <Button variant="secondary" href={brandKitHref}>
-          {brandKitLabel}
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12" /><path d="m7 10 5 5 5-5" /><path d="M5 21h14" /></svg>
-        </Button>
       </div>
+      <!-- Brand kit: present, not pitched. Quiet text link, smaller than the body. -->
+      <a class="pc-kit" href={brandKitHref} download>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12" /><path d="m7 10 5 5 5-5" /><path d="M5 21h14" /></svg>
+        {brandKitLabel}
+      </a>
     </div>
   </div>
 </section>
@@ -58,4 +59,14 @@ const { heading, body, email, contactLabel, brandKitLabel, brandKitHref } = Astr
     gap: var(--space-16);
     margin-top: var(--space-8);
   }
+  /* Understated download link — small and muted, deliberately not a CTA. */
+  .pc-kit {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-8);
+    font-size: var(--text-body-sm);
+    color: var(--muted-foreground);
+  }
+  .pc-kit svg { opacity: 0.85; }
+  .pc-kit:hover { color: var(--foreground); text-decoration: none; }
 </style>
