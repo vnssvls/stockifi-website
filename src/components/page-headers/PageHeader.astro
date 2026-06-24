@@ -7,12 +7,14 @@ interface Props {
   subhead?: string;
   /** Drop the 62ch cap so a longer subhead sits on one line on desktop (e.g. /press). */
   subheadWide?: boolean;
+  /** Soft brand gradient glow behind the header (same backdrop as the pricing hero). */
+  glow?: boolean;
 }
-const { eyebrow, heading, subhead, subheadWide = false } = Astro.props;
+const { eyebrow, heading, subhead, subheadWide = false, glow = false } = Astro.props;
 const hasExtra = Astro.slots.has('default');
 ---
 
-<section class="page-header section">
+<section class:list={['page-header section', glow && 'page-header--glow']}>
   <div class="container ph-inner">
     {eyebrow && <p class="tagline">{eyebrow}</p>}
     <h1 class="ph-heading">{heading}</h1>
@@ -30,4 +32,24 @@ const hasExtra = Astro.slots.has('default');
      stays on one line on desktop; balance avoids a lonely last word when it does wrap. */
   .ph-subhead--wide { max-width: none; text-wrap: balance; }
   .ph-extra { margin-top: var(--space-48); }
+
+  /* Optional brand gradient glow (matches the pricing hero) — bleeds behind the header
+     and feathers down into the section below. Decorative, sits behind content. */
+  .page-header--glow { position: relative; isolation: isolate; }
+  .page-header--glow::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: -6%;
+    transform: translateX(-50%);
+    width: min(1200px, 150%);
+    aspect-ratio: 600 / 500;
+    background-image: url('/media/gradient-centered.png');
+    background-size: contain;
+    background-position: center top;
+    background-repeat: no-repeat;
+    opacity: 0.4;
+    z-index: -1;
+    pointer-events: none;
+  }
 </style>
