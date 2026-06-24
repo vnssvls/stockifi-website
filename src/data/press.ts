@@ -241,7 +241,7 @@ const PAGE: Record<Locale, PressPageStrings> = {
     inquiriesBody: 'Writing about Stockifi or want to feature us? Get in touch.',
     contactLabel: 'Email us',
     brandKitLabel: 'Download brand kit',
-    metaTitle: 'Press & Media | Stockifi',
+    metaTitle: 'Press & Media Archive | Stockifi',
     metaDescription: 'Press coverage of Stockifi and resources for media. Read featured articles, reach us for inquiries, and download our brand assets.',
   },
   no: {
@@ -253,7 +253,7 @@ const PAGE: Record<Locale, PressPageStrings> = {
     inquiriesBody: 'Skriver du om Stockifi eller vil omtale oss? Ta kontakt.',
     contactLabel: 'Send oss en e-post',
     brandKitLabel: 'Last ned merkevarepakke',
-    metaTitle: 'Presse & Medier | Stockifi',
+    metaTitle: 'Presse- og mediearkiv | Stockifi',
     metaDescription: 'Medieomtale av Stockifi og ressurser for presse. Les utvalgte artikler, ta kontakt for henvendelser, og last ned merkevareelementene våre.',
   },
   da: {
@@ -265,7 +265,7 @@ const PAGE: Record<Locale, PressPageStrings> = {
     inquiriesBody: 'Skriver du om Stockifi eller vil omtale os? Tag kontakt.',
     contactLabel: 'Skriv til os',
     brandKitLabel: 'Download brand kit',
-    metaTitle: 'Presse & Medier | Stockifi',
+    metaTitle: 'Presse- og mediearkiv | Stockifi',
     metaDescription: 'Medieomtale af Stockifi og ressourcer til presse. Læs udvalgte artikler, tag kontakt for henvendelser, og download vores brandelementer.',
   },
   sv: {
@@ -277,7 +277,7 @@ const PAGE: Record<Locale, PressPageStrings> = {
     inquiriesBody: 'Skriver du om Stockifi eller vill uppmärksamma oss? Hör av dig.',
     contactLabel: 'Mejla oss',
     brandKitLabel: 'Ladda ner brand kit',
-    metaTitle: 'Press & Media | Stockifi',
+    metaTitle: 'Press- och mediearkiv | Stockifi',
     metaDescription: 'Medieomtal av Stockifi och resurser för press. Läs utvalda artiklar, hör av dig för förfrågningar, och ladda ner vårt varumärkesmaterial.',
   },
   nl: {
@@ -289,7 +289,7 @@ const PAGE: Record<Locale, PressPageStrings> = {
     inquiriesBody: 'Schrijft u over Stockifi of wilt u ons uitlichten? Neem contact op.',
     contactLabel: 'Mail ons',
     brandKitLabel: 'Download merkpakket',
-    metaTitle: 'Pers & Media | Stockifi',
+    metaTitle: 'Pers- en media-archief | Stockifi',
     metaDescription: 'Persberichtgeving over Stockifi en bronnen voor media. Lees uitgelichte artikelen, neem contact op voor aanvragen, en download onze merkmaterialen.',
   },
   de: {
@@ -301,7 +301,7 @@ const PAGE: Record<Locale, PressPageStrings> = {
     inquiriesBody: 'Sie schreiben über Stockifi oder möchten uns vorstellen? Nehmen Sie Kontakt auf.',
     contactLabel: 'Schreiben Sie uns',
     brandKitLabel: 'Brand-Kit herunterladen',
-    metaTitle: 'Presse & Medien | Stockifi',
+    metaTitle: 'Presse- und Medienarchiv | Stockifi',
     metaDescription: 'Pressestimmen zu Stockifi und Ressourcen für Medien. Lesen Sie ausgewählte Artikel, nehmen Sie Kontakt auf, und laden Sie unsere Markenelemente herunter.',
   },
 };
