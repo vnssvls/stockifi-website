@@ -712,10 +712,13 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
     .has-panel:has(.mega) { position: static; }
     .nav-panel.mega { right: 0; }
     /* Resources has only an image + one column, so it shouldn't stretch edge-to-edge
-       like Product/Solutions. Anchor it to its own trigger (relative li) and size to
-       content, so it opens directly under "Resources" instead of far right. */
+       like Product/Solutions. Anchor it to its own trigger (relative li) and CENTER it
+       under the button (left:50% + translateX(-50%)) so it reads centred like the others
+       instead of hanging off to the right. The translateX is preserved in the open state
+       (which otherwise resets transform to none). */
     .has-panel:has(.mega-resources) { position: relative; }
-    .nav-panel.mega-resources { left: 0; right: auto; }
+    .nav-panel.mega-resources { left: 50%; right: auto; transform: translate(-50%, -6px); }
+    .nav-item.is-open .nav-panel.mega-resources { transform: translateX(-50%); }
   }
 </style>
 
