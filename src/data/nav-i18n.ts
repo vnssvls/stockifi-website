@@ -3,6 +3,9 @@
 // Add a `desc` map if full translation is needed later.
 
 export interface NavStrings {
+  blogFeatureHeading: string;
+  blogFeatureDesc: string;
+  readBlog: string;
   product: string;
   solutions: string;
   resources: string;
@@ -64,6 +67,7 @@ export interface NavStrings {
 }
 
 const en: NavStrings = {
+  blogFeatureHeading: 'From the Stockifi blog', blogFeatureDesc: 'Practical guides for cutting food cost and running a tighter kitchen.', readBlog: 'Read the blog',
   product: 'Product', solutions: 'Solutions', resources: 'Resources', pricing: 'Pricing', company: 'Company',
   login: 'Log in', bookDemo: 'Book a demo',
   procurementGroup: 'Procurement', inventoryGroup: 'Inventory Management', biGroup: 'Business Intelligence',
@@ -94,6 +98,7 @@ const en: NavStrings = {
 };
 
 const no: NavStrings = {
+  blogFeatureHeading: 'Fra Stockifi-bloggen', blogFeatureDesc: 'Praktiske guider for å kutte varekost og drive et strammere kjøkken.', readBlog: 'Les bloggen',
   product: 'Produkt', solutions: 'Løsninger', resources: 'Ressurser', pricing: 'Priser', company: 'Om oss',
   login: 'Logg inn', bookDemo: 'Book en demo',
   procurementGroup: 'Innkjøp', inventoryGroup: 'Lagerstyring', biGroup: 'Business Intelligence',
@@ -126,6 +131,7 @@ const no: NavStrings = {
 
 
 const de: NavStrings = {
+  blogFeatureHeading: 'Aus dem Stockifi-Blog', blogFeatureDesc: 'Praktische Leitfäden, um Warenkosten zu senken und die Küche straffer zu führen.', readBlog: 'Zum Blog',
   product: 'Produkt', solutions: 'Lösungen', resources: 'Ressourcen', pricing: 'Preise', company: 'Unternehmen',
   login: 'Anmelden', bookDemo: 'Demo buchen',
   procurementGroup: 'Einkauf', inventoryGroup: 'Lagerverwaltung', biGroup: 'Business Intelligence',
@@ -156,6 +162,7 @@ const de: NavStrings = {
 };
 
 const da: NavStrings = {
+  blogFeatureHeading: 'Fra Stockifi-bloggen', blogFeatureDesc: 'Praktiske guides til at skære i råvareomkostninger og drive et strammere køkken.', readBlog: 'Læs bloggen',
   product: 'Produkt', solutions: 'Løsninger', resources: 'Ressourcer', pricing: 'Priser', company: 'Om os',
   login: 'Log ind', bookDemo: 'Book en demo',
   procurementGroup: 'Indkøb', inventoryGroup: 'Lagerstyring', biGroup: 'Business Intelligence',
@@ -186,6 +193,7 @@ const da: NavStrings = {
 };
 
 const sv: NavStrings = {
+  blogFeatureHeading: 'Från Stockifi-bloggen', blogFeatureDesc: 'Praktiska guider för att sänka råvarukostnaden och driva ett stramare kök.', readBlog: 'Läs bloggen',
   product: 'Produkt', solutions: 'Lösningar', resources: 'Resurser', pricing: 'Priser', company: 'Om oss',
   login: 'Logga in', bookDemo: 'Boka en demo',
   procurementGroup: 'Inköp', inventoryGroup: 'Lagerhantering', biGroup: 'Business Intelligence',
@@ -216,6 +224,7 @@ const sv: NavStrings = {
 };
 
 const nl: NavStrings = {
+  blogFeatureHeading: 'Van de Stockifi-blog', blogFeatureDesc: 'Praktische gidsen om inkoopkosten te verlagen en strakker te koken.', readBlog: 'Lees de blog',
   product: 'Product', solutions: 'Oplossingen', resources: "Bronnen", pricing: 'Prijzen', company: 'Over ons',
   login: 'Inloggen', bookDemo: 'Boek een demo',
   procurementGroup: 'Inkoop', inventoryGroup: 'Voorraadbeheer', biGroup: 'Business Intelligence',
@@ -253,6 +262,7 @@ export function getNavStrings(locale: string): NavStrings {
 
 // ── Mega menu item descriptions — one line per feature/solution ──────────────
 export interface NavDescs {
+  blog: string; customerStories: string; faq: string; pressAndMedia: string;
   invoiceAutomation: string; supplierPriceTracking: string; centralKitchen: string;
   anomalyDetection: string; orderingSuggestions: string;
   recipeBuilding: string; stockCounting: string; inventoryTransfers: string;
@@ -264,6 +274,7 @@ export interface NavDescs {
 }
 
 const enDescs: NavDescs = {
+  blog: 'Guides and ideas for operators', customerStories: 'How real venues run on Stockifi', faq: 'Answers before you start', pressAndMedia: 'Where Stockifi has been featured',
   invoiceAutomation: 'Supplier invoices read line by line, automatically.',
   supplierPriceTracking: 'Every price change caught the day it lands.',
   centralKitchen: 'Cost production and supply your own outlets.',
@@ -290,6 +301,7 @@ const enDescs: NavDescs = {
 };
 
 const noDescs: NavDescs = {
+  blog: 'Guider og ideer for driftere', customerStories: 'Hvordan ekte steder drives på Stockifi', faq: 'Svar før du starter', pressAndMedia: 'Der Stockifi har blitt omtalt',
   invoiceAutomation: 'Leverandørfakturaer leses linje for linje, automatisk.',
   supplierPriceTracking: 'Alle prisendringer fanges opp samme dag de skjer.',
   centralKitchen: 'Kalkuler produksjonskostnader og forsyn dine egne utsalgssteder.',
@@ -316,6 +328,7 @@ const noDescs: NavDescs = {
 };
 
 const deDescs: NavDescs = {
+  blog: 'Leitfäden und Ideen für Betreiber', customerStories: 'Wie echte Betriebe mit Stockifi arbeiten', faq: 'Antworten, bevor Sie starten', pressAndMedia: 'Wo Stockifi vorgestellt wurde',
   invoiceAutomation: 'Lieferantenrechnungen werden Zeile für Zeile automatisch gelesen.',
   supplierPriceTracking: 'Jede Preisänderung am Tag ihres Eingangs erfasst.',
   centralKitchen: 'Produktionskosten kalkulieren und eigene Standorte beliefern.',
@@ -342,6 +355,7 @@ const deDescs: NavDescs = {
 };
 
 const daDescs: NavDescs = {
+  blog: 'Guides og idéer til operatører', customerStories: 'Hvordan rigtige steder drives på Stockifi', faq: 'Svar før du starter', pressAndMedia: 'Hvor Stockifi har været omtalt',
   invoiceAutomation: 'Leverandørfakturaer læses linje for linje, automatisk.',
   supplierPriceTracking: 'Alle prisændringer fanget den dag, de sker.',
   centralKitchen: 'Beregn produktionsomkostninger og forsyner egne salgssteder.',
@@ -368,6 +382,7 @@ const daDescs: NavDescs = {
 };
 
 const svDescs: NavDescs = {
+  blog: 'Guider och idéer för operatörer', customerStories: 'Hur riktiga verksamheter drivs på Stockifi', faq: 'Svar innan du börjar', pressAndMedia: 'Där Stockifi har uppmärksammats',
   invoiceAutomation: 'Leverantörsfakturor läses rad för rad, automatiskt.',
   supplierPriceTracking: 'Varje prisändring fångad den dag den sker.',
   centralKitchen: 'Beräkna produktionskostnader och försörj dina egna enheter.',
@@ -394,6 +409,7 @@ const svDescs: NavDescs = {
 };
 
 const nlDescs: NavDescs = {
+  blog: 'Gidsen en ideeën voor operators', customerStories: 'Hoe echte zaken draaien op Stockifi', faq: 'Antwoorden voordat je begint', pressAndMedia: 'Waar Stockifi is uitgelicht',
   invoiceAutomation: 'Leveranciersfacturen worden regel voor regel automatisch gelezen.',
   supplierPriceTracking: 'Elke prijswijziging gevangen op de dag dat die binnenkomt.',
   centralKitchen: 'Bereken productiekosten en bevoorraad je eigen vestigingen.',

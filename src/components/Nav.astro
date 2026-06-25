@@ -58,10 +58,10 @@ const solutionsGroups = [
   ] },
 ];
 const resourcesItems = [
-  { label: t.blog, href: lp('/blog') },
-  { label: t.customerStories, href: lp('/customer-stories') },
-  { label: t.faq, href: lp('/faq') },
-  { label: t.pressAndMedia, href: lp('/press') },
+  { label: t.blog, href: lp('/blog'), icon: 'book', desc: d.blog },
+  { label: t.customerStories, href: lp('/customer-stories'), icon: 'message', desc: d.customerStories },
+  { label: t.faq, href: lp('/faq'), icon: 'help-circle', desc: d.faq },
+  { label: t.pressAndMedia, href: lp('/press'), icon: 'newspaper', desc: d.pressAndMedia },
   // Post-launch: Savings Calculator, Comparisons
 ];
 const LOGIN_URL = 'https://web.stockifi.io/#/login';
@@ -112,7 +112,7 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
             <svg class="caret" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg>
           </button>
           <div class="nav-panel mega mega-solutions" id="panel-solutions">
-            <a class="mega-intro" href={lp('/solutions')} aria-label={t.viewAllSolutions}>
+            <a class="mega-intro" href={lp('/solutions')} aria-label={t.viewAllSolutions} style="--mega-intro-img: url('/media/megamenu-solutions.jpg')">
               <p class="mega-intro-heading">{t.solutionsTailored}</p>
               <p class="mega-intro-desc">{t.solutionsTailoredDesc}</p>
               <span class="mega-cta-btn">
@@ -146,13 +146,25 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
             {t.resources}
             <svg class="caret" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg>
           </button>
-          <div class="nav-panel" id="panel-resources">
-            <ul class="dropdown-list">
+          <div class="nav-panel mega mega-resources" id="panel-resources">
+            <a class="mega-intro" href={lp('/blog')} aria-label={t.readBlog} style="--mega-intro-img: url('/media/megamenu-resources.jpg')">
+              <p class="mega-intro-heading">{t.blogFeatureHeading}</p>
+              <p class="mega-intro-desc">{t.blogFeatureDesc}</p>
+              <span class="mega-cta-btn">
+                {t.readBlog}
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              </span>
+            </a>
+            <ul class="mega-col">
               {resourcesItems.map((i) => (
                 <li>
-                  {i.soon
-                    ? <span class="dropdown-link is-soon">{i.label}<span class="badge">Soon</span></span>
-                    : <a class="dropdown-link" href={i.href}>{i.label}</a>}
+                  <a class="mega-item" href={i.href}>
+                    <span class="mega-ico" aria-hidden="true" set:html={navIcons[i.icon]}></span>
+                    <span class="mega-item-body">
+                      <span class="mega-item-title">{i.label}</span>
+                      <span class="mega-item-desc">{i.desc}</span>
+                    </span>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -238,9 +250,7 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
           </button>
           <div class="m-acc-panel" id="m-resources" hidden>
             {resourcesItems.map((i) => (
-              i.soon
-                ? <span class="m-link is-soon">{i.label}<span class="badge">Soon</span></span>
-                : <a class="m-link" href={i.href}>{i.label}</a>
+              <a class="m-link" href={i.href}>{i.label}</a>
             ))}
           </div>
         </div>
@@ -421,6 +431,23 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
     grid-template-columns: repeat(3, 1fr);
     gap: var(--space-24) var(--space-40);
   }
+  /* Resources mega: image-backed blog hero (left) + a single column of icon/desc
+     links (right). Matches the Solutions intro block, fewer links so one column. */
+  .mega-resources {
+    display: grid;
+    grid-template-columns: 320px 340px;
+    gap: var(--space-24) var(--space-32);
+    align-items: stretch;
+  }
+  .mega-col {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--space-8);
+  }
   .mega-group ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: var(--space-8); }
   .mega-group-title {
     margin: 0 0 var(--space-16);
@@ -488,7 +515,7 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
     overflow: hidden;
     background-image:
       linear-gradient(to bottom, rgba(10, 10, 15, 0.95) 0%, rgba(10, 10, 15, 0.74) 38%, rgba(10, 10, 15, 0.74) 60%, rgba(10, 10, 15, 0.96) 100%),
-      url('/media/cta-bg-1.jpg');
+      var(--mega-intro-img, url('/media/cta-bg-1.jpg'));
     background-size: cover;
     background-position: center;
     text-decoration: none;
