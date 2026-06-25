@@ -710,9 +710,10 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
     .has-panel:has(.mega) { position: static; }
     .nav-panel.mega { right: 0; }
     /* Resources has only an image + one column, so it shouldn't stretch edge-to-edge
-       like Product/Solutions. Dropping the inherited left:0 lets it size to its content
-       and right-align (no dead space). */
-    .nav-panel.mega-resources { left: auto; }
+       like Product/Solutions. Anchor it to its own trigger (relative li) and size to
+       content, so it opens directly under "Resources" instead of far right. */
+    .has-panel:has(.mega-resources) { position: relative; }
+    .nav-panel.mega-resources { left: 0; right: auto; }
   }
 </style>
 
