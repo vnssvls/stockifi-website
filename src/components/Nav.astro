@@ -709,6 +709,10 @@ const LOGIN_URL = 'https://web.stockifi.io/#/login';
        stretches from the nav-bar's left edge to its right edge (same as the pill). */
     .has-panel:has(.mega) { position: static; }
     .nav-panel.mega { right: 0; }
+    /* Resources has only an image + one column, so it shouldn't stretch edge-to-edge
+       like Product/Solutions. Dropping the inherited left:0 lets it size to its content
+       and right-align (no dead space). */
+    .nav-panel.mega-resources { left: auto; }
   }
 </style>
 
