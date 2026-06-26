@@ -6,6 +6,8 @@ import Layout from '../../layouts/Layout.astro';
 import PageHeader from '../../components/page-headers/PageHeader.astro';
 import FaqHub from '../../components/faq/FaqHub.astro';
 import CtaEmail from '../../components/CtaEmail.astro';
+import JsonLd from '../../components/JsonLd.astro';
+import { faqPage, flattenFaqs } from '../../lib/schema';
 import faqs from '../../data/faqs.json';
 ---
 
@@ -13,6 +15,8 @@ import faqs from '../../data/faqs.json';
   title="Häufige Fragen | Stockifi"
   description="Möchten Sie mehr über Stockifi erfahren? Lernen Sie mehr über die Plattform, Integrationen, Preise, das Produkt, Onboarding und finden Sie heraus, ob es zu Ihrem Betrieb passt."
 >
+  <JsonLd slot="head" schema={faqPage(flattenFaqs(faqs))} />
+
   <PageHeader
     eyebrow="FAQs"
     heading="Wonach suchen Sie?"

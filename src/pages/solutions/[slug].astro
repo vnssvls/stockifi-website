@@ -13,6 +13,8 @@ import FeatureShowcase from '../../components/features/FeatureShowcase.astro';
 import FaqSplit from '../../components/faq/FaqSplit.astro';
 import TestimonialSliderCollage from '../../components/TestimonialSliderCollage.astro';
 import CtaEmail from '../../components/CtaEmail.astro';
+import JsonLd from '../../components/JsonLd.astro';
+import { breadcrumbs, faqPage } from '../../lib/schema';
 import { solutionImages } from '../../data/solution-section-images';
 import navIcons from '../../data/nav-icons.json';
 import { solutionBenefitIcons, solutionShowcaseIcons } from '../../data/solution-benefit-icons';
@@ -30,9 +32,21 @@ const benefitIcons = solutionBenefitIcons[p.id] ?? [];
 const benefitItems = d.benefits.map((b, i) => ({ ...b, icon: (navIcons as Record<string, string>)[benefitIcons[i]] }));
 const showcaseIconKeys = solutionShowcaseIcons[p.id] ?? [];
 const showcaseItems = d.showcaseSubs.map((s, i) => ({ ...s, icon: (navIcons as Record<string, string>)[showcaseIconKeys[i]] }));
+
+const pageUrl = `/solutions/${p.id}`;
+const jsonLd = [
+  breadcrumbs([
+    { name: 'Stockifi', path: '/' },
+    { name: 'Solutions', path: '/solutions' },
+    { name: d.heading, path: pageUrl },
+  ]),
+  ...(d.faqs.length ? [faqPage(d.faqs)] : []),
+];
 ---
 
 <Layout title={d.metaTitle} description={d.metaDescription}>
+  <JsonLd slot="head" schema={jsonLd} />
+
   <!-- 1. Hero page header -->
   <PageHeaderHero
     eyebrow={d.eyebrow}

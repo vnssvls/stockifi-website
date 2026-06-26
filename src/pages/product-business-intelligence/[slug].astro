@@ -12,6 +12,8 @@ import IntegrationGrid from '../../components/integrations/IntegrationGrid.astro
 import ImageCardGrid from '../../components/ImageCardGrid.astro';
 import FaqSplit from '../../components/faq/FaqSplit.astro';
 import CtaEmail from '../../components/CtaEmail.astro';
+import JsonLd from '../../components/JsonLd.astro';
+import { breadcrumbs, faqPage } from '../../lib/schema';
 import integrations from '../../data/integrations-home.json';
 import navIcons from '../../data/nav-icons.json';
 import { productHowItWorksIcons } from '../../data/product-howitworks-icons';
@@ -33,9 +35,21 @@ const benefitCards = businessIntelligenceCards.map((c, i) => ({
   icon: icons[c.iconKey],
   image: c.image,
 }));
+
+const pageUrl = `/product-business-intelligence/${p.id}`;
+const jsonLd = [
+  breadcrumbs([
+    { name: 'Stockifi', path: '/' },
+    { name: 'Business Intelligence', path: '/product-business-intelligence' },
+    { name: d.heading, path: pageUrl },
+  ]),
+  ...(d.faqs.length ? [faqPage(d.faqs)] : []),
+];
 ---
 
 <Layout title={d.metaTitle} description={d.metaDescription}>
+  <JsonLd slot="head" schema={jsonLd} />
+
   <PageHeaderImage
     eyebrow={d.eyebrow}
     heading={d.heading}

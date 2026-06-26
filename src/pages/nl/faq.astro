@@ -6,6 +6,8 @@ import Layout from '../../layouts/Layout.astro';
 import PageHeader from '../../components/page-headers/PageHeader.astro';
 import FaqHub from '../../components/faq/FaqHub.astro';
 import CtaEmail from '../../components/CtaEmail.astro';
+import JsonLd from '../../components/JsonLd.astro';
+import { faqPage, flattenFaqs } from '../../lib/schema';
 import faqs from '../../data/faqs.json';
 ---
 
@@ -13,6 +15,8 @@ import faqs from '../../data/faqs.json';
   title="FAQ | Stockifi"
   description="Antwoorden over hoe Stockifi werkt, integraties, prijzen, het product, onboarding en of het past bij jouw restaurant."
 >
+  <JsonLd slot="head" schema={faqPage(flattenFaqs(faqs))} />
+
   <PageHeader
     eyebrow="FAQ"
     heading="Wat zoek je?"

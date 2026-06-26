@@ -3,6 +3,9 @@
 import { getCollection, render } from 'astro:content';
 import Layout from '../../../layouts/Layout.astro';
 import CtaEmail from '../../../components/CtaEmail.astro';
+import JsonLd from '../../../components/JsonLd.astro';
+import { article, breadcrumbs } from '../../../lib/schema';
+import { getNavStrings } from '../../../data/nav-i18n';
 
 export async function getStaticPaths() {
   const posts = (await getCollection('blogNo')).filter((p) => !p.data.draft);
@@ -16,6 +19,19 @@ const dateLabel = d.publishDate
   ? d.publishDate.toLocaleDateString('nb-NO', { day: 'numeric', month: 'long', year: 'numeric' })
   : '';
 const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
+const nav = getNavStrings('no');
+const pageUrl = `/no/blog/${post.id}`;
+const jsonLd = [
+  breadcrumbs([{ name: 'Stockifi', path: '/no' }, { name: nav.blog, path: '/no/blog' }, { name: d.title, path: pageUrl }]),
+  article({
+    headline: d.metaTitle ?? d.title,
+    description: d.metaDescription ?? d.excerpt,
+    url: pageUrl,
+    image: d.heroImage,
+    datePublished: d.publishDate?.toISOString(),
+    inLanguage: 'no',
+  }),
+];
 ---
 
 <Layout
@@ -23,6 +39,8 @@ const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
   description={d.metaDescription ?? d.excerpt}
   image={d.heroImage}
 >
+  <JsonLd slot="head" schema={jsonLd} />
+
   <!-- Split header -->
   <header class="bi-header">
     <div class="bi-hwide">

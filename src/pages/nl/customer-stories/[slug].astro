@@ -4,6 +4,9 @@ import { getCollection, render } from 'astro:content';
 import Layout from '../../../layouts/Layout.astro';
 import CustomerStoryHeader from '../../../components/CustomerStoryHeader.astro';
 import CtaEmail from '../../../components/CtaEmail.astro';
+import JsonLd from '../../../components/JsonLd.astro';
+import { article, breadcrumbs } from '../../../lib/schema';
+import { getNavStrings } from '../../../data/nav-i18n';
 
 export async function getStaticPaths() {
   const stories = (await getCollection('customerStoriesNl')).filter((s) => !s.data.draft);
@@ -24,6 +27,20 @@ const shares = [
   { label: 'Delen op X', href: `https://twitter.com/intent/tweet?url=${enc}`, path: 'M18.9 2H22l-7.6 8.7L23 22h-6.8l-5-6.6L5.5 22H2.4l8.2-9.3L2 2h6.9l4.5 6 5.5-6zm-1.2 18h1.7L7.5 3.8H5.7z' },
   { label: 'Delen op Facebook', href: `https://www.facebook.com/sharer/sharer.php?u=${enc}`, path: 'M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.55-1.5h1.65V3.6c-.8-.1-1.6-.15-2.4-.15-2.4 0-4.05 1.46-4.05 4.16V9.9H7.5V13h2.75v8z' },
 ];
+
+const nav = getNavStrings('nl');
+const pageUrl = `/nl/customer-stories/${story.id}`;
+const jsonLd = [
+  breadcrumbs([{ name: 'Stockifi', path: '/nl' }, { name: nav.customerStories, path: '/nl/customer-stories' }, { name: d.articleTitle, path: pageUrl }]),
+  article({
+    type: 'Article',
+    headline: d.articleTitle,
+    description: d.metaDescription ?? d.oneLiner ?? d.featuredQuote,
+    url: pageUrl,
+    image: d.thumbnail,
+    inLanguage: 'nl',
+  }),
+];
 ---
 
 <Layout
@@ -31,6 +48,8 @@ const shares = [
   description={d.metaDescription ?? d.oneLiner ?? d.featuredQuote}
   image={d.thumbnail}
 >
+  <JsonLd slot="head" schema={jsonLd} />
+
   <CustomerStoryHeader
     title={d.articleTitle}
     image={d.thumbnail ?? d.singleImage}

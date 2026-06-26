@@ -10,6 +10,9 @@ import IntegrationGrid from '../../../components/integrations/IntegrationGrid.as
 import ImageCardGrid from '../../../components/ImageCardGrid.astro';
 import FaqSplit from '../../../components/faq/FaqSplit.astro';
 import CtaEmail from '../../../components/CtaEmail.astro';
+import JsonLd from '../../../components/JsonLd.astro';
+import { breadcrumbs, faqPage } from '../../../lib/schema';
+import { getNavStrings } from '../../../data/nav-i18n';
 import integrations from '../../../data/integrations-home.json';
 import navIcons from '../../../data/nav-icons.json';
 import { productHowItWorksIcons } from '../../../data/product-howitworks-icons';
@@ -31,9 +34,21 @@ const benefitCards = getCategoryCards('business-intelligence', Astro.currentLoca
   icon: icons[c.iconKey],
   image: c.image,
 }));
+const nav = getNavStrings('sv');
+const pageUrl = `/sv/product-business-intelligence/${p.id}`;
+const jsonLd = [
+  breadcrumbs([
+    { name: 'Stockifi', path: '/sv' },
+    { name: nav.biGroup, path: '/sv/product-business-intelligence' },
+    { name: d.heading, path: pageUrl },
+  ]),
+  ...(d.faqs.length ? [faqPage(d.faqs)] : []),
+];
 ---
 
 <Layout title={d.metaTitle} description={d.metaDescription}>
+  <JsonLd slot="head" schema={jsonLd} />
+
   <PageHeaderImage
     eyebrow={d.eyebrow}
     heading={d.heading}
