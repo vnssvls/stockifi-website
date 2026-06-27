@@ -4,15 +4,15 @@
 // locales, so this single slug-keyed map covers every language.
 export const solutionBenefitIcons: Record<string, string[]> = {
   // by type
-  'independent-restaurants': ['book', 'receipt-2', 'presention-chart', 'setting-2'],
-  'restaurant-groups': ['book', 'presention-chart', 'buildings-2', 'fluent-finance'],
-  hotels: ['buildings-2', 'book', 'presention-chart', 'reserve'],
-  bars: ['cocktail', 'box-search', 'receipt-2', 'flash'],
+  'independent-restaurants': ['bolt', 'receipt-2', 'presention-chart', 'setting-2'],
+  'restaurant-groups': ['book', 'presention-chart', 'buildings-2', 'bolt'],
+  hotels: ['buildings-2', 'bolt', 'presention-chart', 'reserve'],
+  bars: ['trend-up', 'cocktail', 'receipt-2', 'flash'],
   // by team
   management: ['element-4', 'box-search', 'presention-chart', 'buildings-2'],
   operations: ['bolt', 'convert-3d-cube', 'presention-chart', 'fluent-wand'],
-  kitchen: ['book', 'percentage-circle', 'chef-hat', 'box'],
-  finance: ['fluent-finance', 'box-search', 'presention-chart', 'book'],
+  kitchen: ['bolt', 'percentage-circle', 'chef-hat', 'box'],
+  finance: ['fluent-finance', 'box-search', 'presention-chart', 'newspaper'],
 };
 
 // Icon key per showcase sub-point (FeatureShowcase "how it helps", 2 per page),
