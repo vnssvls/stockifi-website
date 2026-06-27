@@ -37,10 +37,9 @@ const t = STRINGS[locale as keyof typeof STRINGS] ?? STRINGS.en;
 
     <!-- Right: title + per-category FAQ panels (only the selected one shows) -->
     <div class="fh-content">
-      <h2 class="fh-content-title">{t.title}</h2>
       {categories.map((c, i) => (
         <div class="fh-panel" data-cat={c.id} hidden={i !== 0}>
-          <p class="fh-panel-cat">{c.name}</p>
+          <h2 class="fh-panel-cat">{c.name}</h2>
           <div class="fh-faqs">
             {c.items.map((it) => (
               <div class="fh-faq" data-faq data-text={`${it.question} ${it.answer}`.toLowerCase()}>
@@ -97,11 +96,10 @@ const t = STRINGS[locale as keyof typeof STRINGS] ?? STRINGS.en;
   .fh-note a:hover { color: var(--primary-light); }
 
   /* ── Right content ──────────────────────────────────────────────── */
-  .fh-content-title { font-size: var(--text-h3); margin-bottom: var(--space-32); }
   .fh-panel[hidden] { display: none; }
-  /* Category label above each FAQ group (also groups results during search). */
-  .fh-panel-cat { margin-bottom: var(--space-16); font-size: var(--text-body-sm); font-weight: var(--fw-semibold); letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted-foreground); }
-  .fh-panel + .fh-panel .fh-panel-cat { margin-top: var(--space-32); }
+  /* Category name doubles as the section heading (also groups results during search). */
+  .fh-panel-cat { margin-bottom: var(--space-32); font-size: var(--text-h3); font-weight: var(--fw-semibold); color: var(--foreground); }
+  .fh-panel + .fh-panel .fh-panel-cat { margin-top: var(--space-48); }
 
   /* FAQ accordions. */
   .fh-faq { border-top: 1px solid var(--border); }
