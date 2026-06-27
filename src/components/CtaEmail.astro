@@ -197,6 +197,18 @@ const single = imgs.length === 1 ? imgs[0] : '';
   }
   .cta-email--bg .ce-input::placeholder { color: color-mix(in srgb, var(--foreground) 70%, transparent); }
 
+  /* Keep the photo band a consistent height on desktop regardless of heading length;
+     content stays vertically centered. min-height (not a fixed height) so it can still
+     grow rather than clip if the content ever gets taller. */
+  @media (min-width: 1024px) {
+    .cta-email--bg {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 30rem;
+    }
+  }
+
   /* Dialog — display goes on the inner div, not .ce-dialog, to keep dialog:not([open]) working */
   .ce-dialog {
     /* The global `* { margin: 0 }` reset overrides the UA `margin: auto` that
