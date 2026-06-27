@@ -156,13 +156,13 @@ const single = imgs.length === 1 ? imgs[0] : '';
 
   .ce-form {
     display: flex;
+    flex-direction: column;
     gap: var(--space-12);
     max-width: 38rem;
     margin: var(--space-32) auto 0;
   }
   .ce-input {
-    flex: 1;
-    min-width: 0;
+    width: 100%;
     padding: var(--space-12) var(--space-16);
     background: var(--card);
     color: var(--foreground);
@@ -175,7 +175,9 @@ const single = imgs.length === 1 ? imgs[0] : '';
 
   /* White-fill submit button — the CTA sits on a dark photo, so white reads stronger
      than the purple primary. Ripple (built for the purple base) is hidden. */
+  /* Submit drops below the field and hugs its content (centered), never stretched. */
   .ce-form :global(.btn-primary) {
+    align-self: center;
     background: var(--foreground);
     color: var(--background);
   }
@@ -184,7 +186,7 @@ const single = imgs.length === 1 ? imgs[0] : '';
   }
   .ce-form :global(.btn-primary .btn-ripple) { display: none; }
 
-  .ce-hidden { display: none; }
+  .ce-hidden { display: none !important; }
   .ce-success {
     display: flex;
     align-items: center;
@@ -211,10 +213,6 @@ const single = imgs.length === 1 ? imgs[0] : '';
     color: var(--foreground);
   }
   .cta-email--bg .ce-input::placeholder { color: color-mix(in srgb, var(--foreground) 70%, transparent); }
-
-  @media (max-width: 639px) {
-    .ce-form { flex-direction: column; }
-  }
 
   /* Dialog — display goes on the inner div, not .ce-dialog, to keep dialog:not([open]) working */
   .ce-dialog {
