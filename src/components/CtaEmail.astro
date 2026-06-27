@@ -12,7 +12,6 @@ interface Props {
   placeholder?: string;
   buttonLabel?: string;
   action?: string;
-  termsHref?: string;
   bgImage?: string;
   /** Pass 2+ to cycle a random one per page load. */
   bgImages?: string[];
@@ -23,52 +22,45 @@ const {
   placeholder = 'Enter your email',
   buttonLabel = 'Get started',
   action = '/intro',
-  termsHref = '/terms-conditions',
   bgImage,
   bgImages,
 } = Astro.props;
 
 const TERMS: Record<string, {
-  pre: string; mid: string; link: string; post: string; success: string;
+  success: string;
   successH: string; successP: string; successAlt: string; successCta: string; successCtaHref: string;
 }> = {
   en: {
-    pre: 'By clicking', mid: "you're confirming that you agree with our", link: 'Terms and Conditions', post: '.',
     success: "Got it! Someone will be in touch shortly.",
     successH: "Got it!", successP: "Someone will be in touch shortly.",
     successAlt: "In the meantime, read about how other businesses improved their operations with Stockifi.",
     successCta: "Read customer stories", successCtaHref: "/customer-stories",
   },
   de: {
-    pre: 'Mit Klick auf', mid: 'bestätigen Sie, dass Sie unseren', link: 'Allgemeinen Geschäftsbedingungen', post: ' zustimmen.',
     success: 'Alles klar! Jemand meldet sich in Kürze.',
     successH: "Alles klar!", successP: "Jemand aus unserem Team meldet sich in Kürze.",
     successAlt: "Lesen Sie in der Zwischenzeit, wie andere Betriebe ihre Abläufe mit Stockifi verbessert haben.",
     successCta: "Kundenberichte lesen", successCtaHref: "/de/customer-stories",
   },
   no: {
-    pre: 'Ved å klikke på', mid: 'bekrefter du at du godtar våre', link: 'Vilkår og betingelser', post: '.',
     success: 'Mottatt! Noen tar kontakt snart.',
     successH: "Mottatt!", successP: "Noen tar kontakt med deg snart.",
     successAlt: "Les i mellomtiden hvordan andre virksomheter har forbedret driften sin med Stockifi.",
     successCta: "Les kundehistorier", successCtaHref: "/no/customer-stories",
   },
   sv: {
-    pre: 'Genom att klicka på', mid: 'bekräftar du att du godkänner våra', link: 'Villkor', post: '.',
     success: 'Klart! Någon hör av sig inom kort.',
     successH: "Klart!", successP: "Någon hör av sig till dig inom kort.",
     successAlt: "Läs under tiden hur andra verksamheter har förbättrat sin verksamhet med Stockifi.",
     successCta: "Läs kundberättelser", successCtaHref: "/sv/customer-stories",
   },
   nl: {
-    pre: 'Door op', mid: 'te klikken, bevestigt u dat u akkoord gaat met onze', link: 'Algemene voorwaarden', post: '.',
     success: 'Gelukt! Iemand neemt binnenkort contact op.',
     successH: "Gelukt!", successP: "Iemand neemt binnenkort contact met je op.",
     successAlt: "Lees ondertussen hoe andere bedrijven hun bedrijfsvoering hebben verbeterd met Stockifi.",
     successCta: "Lees klantverhalen", successCtaHref: "/nl/customer-stories",
   },
   da: {
-    pre: 'Ved at klikke på', mid: 'bekræfter du, at du accepterer vores', link: 'Vilkår og betingelser', post: '.',
     success: 'Modtaget! Nogen kontakter dig snart.',
     successH: "Modtaget!", successP: "Nogen kontakter dig snart.",
     successAlt: "Læs i mellemtiden, hvordan andre virksomheder har forbedret deres drift med Stockifi.",
@@ -108,9 +100,6 @@ const single = imgs.length === 1 ? imgs[0] : '';
       <p class="ce-success ce-hidden" data-ce-success data-msg={t.success}></p>
     </div>
 
-    <p class="ce-terms text-muted" data-ce-terms>
-      {t.pre} {buttonLabel} {t.mid} <a href={termsHref}>{t.link}</a>{t.post}
-    </p>
   </div>
 
   <dialog class="ce-dialog" data-ce-dialog>
@@ -198,15 +187,9 @@ const single = imgs.length === 1 ? imgs[0] : '';
     color: var(--foreground);
   }
 
-  .ce-terms { margin-top: var(--space-16); font-size: var(--text-caption); }
-  .ce-terms a { color: var(--muted-foreground); text-decoration: underline; }
-  .ce-terms a:hover { color: var(--foreground); }
-
   /* On an image background: brighten the secondary text and make the input a
      transparent white-outlined field (matches the wireframe). */
-  .cta-email--bg .ce-subhead,
-  .cta-email--bg .ce-terms { color: color-mix(in srgb, var(--foreground) 82%, transparent); }
-  .cta-email--bg .ce-terms a { color: var(--foreground); }
+  .cta-email--bg .ce-subhead { color: color-mix(in srgb, var(--foreground) 82%, transparent); }
   .cta-email--bg .ce-input {
     background: transparent;
     border-color: color-mix(in srgb, var(--foreground) 55%, transparent);
@@ -358,10 +341,9 @@ const single = imgs.length === 1 ? imgs[0] : '';
 
         if (!res.ok) throw new Error(`${res.status}`);
 
-        // Clear the page state behind the dialog: hide the form, subhead and terms,
-        // then show the inline confirmation so the band reads clean once dismissed.
+        // Clear the page state behind the dialog: hide the form, then show the
+        // inline confirmation so the band reads clean once dismissed.
         form.classList.add('ce-hidden');
-        section?.querySelector('.ce-terms')?.classList.add('ce-hidden');
         if (successEl) {
           successEl.textContent = successEl.dataset.msg ?? '';
           successEl.classList.remove('ce-hidden');
