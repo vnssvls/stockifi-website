@@ -5,7 +5,7 @@
 export const solutionBenefitIcons: Record<string, string[]> = {
   // by type
   'independent-restaurants': ['bolt', 'receipt-2', 'presention-chart', 'setting-2'],
-  'restaurant-groups': ['book', 'presention-chart', 'buildings-2', 'bolt'],
+  'restaurant-groups': ['data', '3dcube', 'radar', 'bolt'],
   hotels: ['buildings-2', 'bolt', 'presention-chart', 'reserve'],
   bars: ['trend-up', 'cocktail', 'receipt-2', 'flash'],
   // by team
