@@ -8,7 +8,7 @@ order: 1
 group: "segment"
 problemTagline: "Your real food cost"
 problemHeading: "Want the small leaks to stop slipping by?"
-problemBody: "Stockifi puts a number on them. Supplier creep, portion drift, and waste each cost a little, and Stockifi tracks them against what you sold so you can see the gap and close it."
+problemBody: "Stockifi puts a number on them. Supplier creep, portion drift, and waste each cost a little, and Stockifi tracks them against what you sold. You see the gap and close it."
 problem: []
 benefits:
   - heading: "Live recipe costs"
@@ -34,7 +34,7 @@ faqs:
   - question: "How long does setup take?"
     answer: "Most independents are running quickly once recipes and integrations are connected. We set the recipe baseline with you."
   - question: "What does it cost?"
-    answer: "Pricing depends on your setup, so we look at it together on a short call to make sure Stockifi is the right fit."
+    answer: "Pricing depends on your setup, which is why we look at it together on a short call to make sure Stockifi is the right fit."
   - question: "Does it work with my systems?"
     answer: "Stockifi connects with 70+ accounting and POS systems. Check the full list on the integrations page, and we can confirm yours on a quick call."
 testimonials:

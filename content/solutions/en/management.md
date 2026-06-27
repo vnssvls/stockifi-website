@@ -8,7 +8,7 @@ order: 5
 group: "team"
 problemTagline: "The profit picture"
 problemHeading: "Want to see your profit without building a report?"
-problemBody: "Stockifi keeps it ready for you. Profit and margin update as invoices and sales land, so the read is there whenever you open it."
+problemBody: "Stockifi keeps it ready for you. Profit and margin update as invoices and sales land, which puts the read there whenever you open it."
 problem: []
 benefits:
   - heading: "Margin at a glance"
@@ -21,7 +21,7 @@ benefits:
     body: "A consolidated view across all your sites."
 showcaseTagline: "How it helps"
 showcaseHeading: "What changes for owners and GMs?"
-showcaseBody: "You catch a problem while the month is still open. The read updates through the period, so a slipping margin is something you can fix in time."
+showcaseBody: "You catch a problem while the month is still open. The read updates through the period, which means a slipping margin is something you can fix in time."
 showcaseSubs:
   - heading: "Act in time"
     body: "See a slip during the period, while you can still act."
@@ -30,11 +30,11 @@ showcaseSubs:
 faqHeading: "Questions owners and GMs ask"
 faqs:
   - question: "Can I see margin without building reports?"
-    answer: "Yes. Stockifi calculates profit and margin as your data lands, so the view is ready without anyone assembling a report."
+    answer: "Yes. Stockifi calculates profit and margin as your data lands, which leaves the view ready without anyone assembling a report."
   - question: "Does it cover multiple locations?"
     answer: "Yes. Owners and GMs get a consolidated view across sites plus the detail to drill into any one of them."
   - question: "How current are the numbers?"
-    answer: "As current as your invoices and sales, which flow in automatically, so you act on this week rather than last month."
+    answer: "As current as your invoices and sales, which flow in automatically. You act on this week rather than last month."
   - question: "Will my team have to do extra work?"
     answer: "No. The data comes from the invoices, sales, and counts they already produce. The reporting is done for you."
 testimonials:

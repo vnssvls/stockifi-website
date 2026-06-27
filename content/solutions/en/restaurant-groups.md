@@ -36,7 +36,7 @@ faqs:
   - question: "Do you support a central kitchen?"
     answer: "Yes. A central kitchen can supply your outlets as an internal supplier, with its production costs flowing into each site's food cost."
   - question: "How does it handle stock moving between sites?"
-    answer: "Inventory transfers are recorded within each count, so stock that moves between locations does not show up as a false gain or loss."
+    answer: "Inventory transfers are recorded within each count, which keeps stock that moves between locations from showing up as a false gain or loss."
 testimonials:
   - quote: "\"It's more than just an inventory tool. Stockifi provides insights that help us focus on profit-driving areas.\""
     name: "Kim Søyland & Jama Awaleh"

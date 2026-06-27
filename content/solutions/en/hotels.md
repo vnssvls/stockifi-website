@@ -8,7 +8,7 @@ order: 3
 group: "segment"
 problemTagline: "One F&B picture"
 problemHeading: "Want every outlet on one set of numbers?"
-problemBody: "Stockifi brings them together for you. Restaurant, bar, and banqueting all report into one F&B view, so the cost in each outlet is visible rather than buried in the hotel P&L."
+problemBody: "Stockifi brings them together for you. Restaurant, bar, and banqueting all report into one F&B view, which makes the cost in each outlet visible rather than buried in the hotel P&L."
 problem: []
 benefits:
   - heading: "Every outlet, one view"

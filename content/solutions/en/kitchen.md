@@ -8,7 +8,7 @@ order: 7
 group: "team"
 problemTagline: "Live recipe costs"
 problemHeading: "Want recipe costs that keep up with prices?"
-problemBody: "Stockifi keeps them current for you. As supplier prices move, every recipe that uses the ingredient updates, so the cost on your menu is today's cost."
+problemBody: "Stockifi keeps them current for you. As supplier prices move, every recipe that uses the ingredient updates, which keeps the cost on your menu at today's cost."
 problem: []
 benefits:
   - heading: "Recipes cost themselves"

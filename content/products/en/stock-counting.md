@@ -1,6 +1,6 @@
 ---
 metaTitle: "Stock Counting App for Restaurants | Stockifi"
-metaDescription: "Run stock counts on mobile or web, online or offline. Stockifi shows the gap between theoretical and actual usage so you know exactly where stock went."
+metaDescription: "Run stock counts on mobile or web, online or offline. Stockifi shows the gap between theoretical and actual usage, revealing exactly where stock went."
 eyebrow: "Stock counting"
 heading: "Counts that match the shelf"
 subhead: "Count on mobile or web, online or offline. See the variance against what your recipes and sales predicted the moment you close."
@@ -10,7 +10,7 @@ category: inventory-management
 howItWorks:
   tagline: "How it works"
   heading: "A count won't lock until it checks out"
-  body: "You count on the phone or tablet your team already carries, in the order your shelves are arranged, online or off. Before it closes, Stockifi flags anything that looks off, like an unusually high or low figure on an item, so a likely miskey gets caught. Only a verified count locks in your stock for the period."
+  body: "You count on the phone or tablet your team already carries, in the order your shelves are arranged, online or off. Before it closes, Stockifi flags anything that looks off, like an unusually high or low figure on an item, and a likely miskey gets caught. Only a verified count locks in your stock for the period."
   points:
     - heading: "In shelf order"
       body: "Counting follows how your shelves are arranged."
@@ -26,7 +26,7 @@ benefits:
   - heading: "Works offline"
     body: "Counts keep running with no signal and sync once you reconnect."
   - heading: "Variance you trust"
-    body: "Counts feed straight into variance, so the number reflects real stock."
+    body: "Counts feed straight into variance. The number reflects real stock."
   - heading: "One source"
     body: "Every count lives in Stockifi, with no separate version to reconcile."
 faqHeading: "Questions about stock counting"

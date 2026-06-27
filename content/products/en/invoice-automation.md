@@ -1,9 +1,9 @@
 ---
 metaTitle: "Invoice Automation for Restaurants | Stockifi"
-metaDescription: "Stockifi reads every supplier invoice and feeds ingredient prices and quantities into your food cost automatically, so it stays current without manual entry."
+metaDescription: "Stockifi reads every supplier invoice and feeds ingredient prices and quantities into your food cost automatically. It stays current without manual entry."
 eyebrow: "Invoice automation"
 heading: "Food cost without the data entry"
-subhead: "Your food cost can stay current without anyone typing in an invoice. Stockifi reads them straight from your accounting, so prices and quantities flow in on their own."
+subhead: "Your food cost can stay current without anyone typing in an invoice. Stockifi reads them straight from your accounting, and prices and quantities flow in on their own."
 heroImage: "/media/product-invoice-automation.png"
 order: 10
 category: procurement
@@ -27,15 +27,15 @@ benefits:
   - heading: "Always current"
     body: "Prices update as invoices arrive, before month-end."
   - heading: "No keying errors"
-    body: "Numbers come off the invoice, so typos go away."
+    body: "Numbers come straight off the invoice. Typos go away."
   - heading: "Changes nothing"
     body: "Stockifi reads your accounting and leaves it as is."
 faqHeading: "Questions about invoice automation"
 faqs:
   - question: "Do I need to check the invoices Stockifi reads?"
-    answer: "Stockifi reads each line for you and flags anything that looks off, like an overcharge or a double-bill, so you review the exceptions rather than every invoice."
+    answer: "Stockifi reads each line for you and flags anything that looks off, like an overcharge or a double-bill. You review the exceptions rather than every invoice."
   - question: "What happens if an invoice never reaches my accounting?"
-    answer: "Stockifi reads what lands in your accounting, so an invoice that never gets there will not be captured. Routing supplier invoices through your accounting keeps the picture complete."
+    answer: "Stockifi reads what lands in your accounting. An invoice that never gets there will not be captured. Routing supplier invoices through your accounting keeps the picture complete."
   - question: "Which accounting systems does this work with?"
     answer: "Stockifi connects with the accounting systems you already use. Tell us what you run and we will confirm it on a quick call."
   - question: "Does it work alongside my current setup?"

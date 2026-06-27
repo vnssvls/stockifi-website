@@ -34,7 +34,7 @@ faqs:
   - question: "What does Stockifi base its ordering suggestions on?"
     answer: "How much of each ingredient your kitchen goes through, drawn from your sales and recipes, measured against your most recent stock count."
   - question: "Do the suggestions stay current?"
-    answer: "Yes. They sharpen as new sales and counts come in, so the longer you run Stockifi, the better it knows your patterns."
+    answer: "Yes. They sharpen as new sales and counts come in. The longer you run Stockifi, the better it knows your patterns."
   - question: "Do I stay in control of what I order?"
     answer: "Always. The suggestions shape the order and you place it. Nothing goes to a supplier without you."
 ctaHeading: "See it on your numbers"

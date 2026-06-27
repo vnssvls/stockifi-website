@@ -21,7 +21,7 @@ benefits:
     body: "Cost of goods that ties back to your ledger."
 showcaseTagline: "How it helps"
 showcaseHeading: "What changes for finance?"
-showcaseBody: "Stockifi builds your cost of goods as the data lands. By month-end the number is ready, so your time goes to what it means."
+showcaseBody: "Stockifi builds your cost of goods as the data lands. By month-end the number is ready, which frees your time for what it means."
 showcaseSubs:
   - heading: "Less assembling"
     body: "Nothing to compile at the close; the figure is already built."
@@ -30,7 +30,7 @@ showcaseSubs:
 faqHeading: "Questions finance teams ask"
 faqs:
   - question: "Where does the COGS figure come from?"
-    answer: "From your real supplier invoices and POS sales, so cost of goods reflects what actually happened rather than a manual estimate."
+    answer: "From your real supplier invoices and POS sales. Cost of goods reflects what actually happened rather than a manual estimate."
   - question: "Does this speed up month-end?"
     answer: "Yes. Because the data is current and reconciled as it lands, closing the month stops being a spreadsheet reconciliation."
   - question: "Can I see the detail behind the numbers?"

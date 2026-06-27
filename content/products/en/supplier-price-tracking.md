@@ -1,16 +1,16 @@
 ---
 metaTitle: "Supplier Price Tracking for Restaurants | Stockifi"
-metaDescription: "Every time a supplier changes a price, Stockifi catches it from your invoices, re-costs every affected recipe, and flags trends so nothing slips through."
+metaDescription: "Every time a supplier changes a price, Stockifi catches it from your invoices, re-costs every affected recipe, and flags the trends you would miss by eye."
 eyebrow: "Supplier price tracking"
 heading: "Know when a supplier price moves"
-subhead: "A supplier's prices drift in small steps you would never catch by eye. Stockifi tracks every move and the dishes it touches, so you can act on a rise while there's still time."
+subhead: "A supplier's prices drift in small steps you would never catch by eye. Stockifi tracks every move and the dishes it touches, leaving you time to act on a rise before it bites."
 heroImage: "/media/product-supplier-price-tracking.png"
 order: 2
 category: procurement
 howItWorks:
   tagline: "How it works"
   heading: "Stockifi watches every price you pay"
-  body: "Supplier prices drift constantly, and most of the movement is too small to notice on any single invoice. Stockifi checks every price against its own history and re-costs the recipes it touches, so a steady climb shows up long before it dents a margin."
+  body: "Supplier prices drift constantly, and most of the movement is too small to notice on any single invoice. Stockifi checks every price against its own history and re-costs the recipes it touches. A steady climb shows up long before it dents a margin."
   points:
     - heading: "Checked against history"
       body: "Every price is measured against what that ingredient normally costs."
@@ -35,9 +35,9 @@ faqs:
   - question: "How does Stockifi tell a normal price rise from an overcharge?"
     answer: "It checks each charge against the ingredient's own price history. A rise that fits the trend passes without fuss. One that jumps above it is flagged for you to query."
   - question: "How far back does the price history go?"
-    answer: "The history builds from the first invoice Stockifi reads and grows with every invoice after, so the record gets richer the longer you run it."
+    answer: "The history builds from the first invoice Stockifi reads and grows with every invoice after. The longer you run it, the richer the record gets."
   - question: "Does this work across several locations?"
-    answer: "Yes. For a group, every site's invoices feed one price history, so a rise from a shared supplier is caught once and re-costs every location."
+    answer: "Yes. For a group, every site's invoices feed one price history. A rise from a shared supplier is caught once and re-costs every location."
   - question: "Which accounting systems does this work with?"
     answer: "Stockifi connects with the accounting systems you already use. Tell us what you run and we will confirm it on a quick call."
 ctaHeading: "See what your suppliers are really charging"

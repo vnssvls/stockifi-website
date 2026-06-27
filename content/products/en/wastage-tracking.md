@@ -1,9 +1,9 @@
 ---
 metaTitle: "Wastage Tracking for Restaurants | Stockifi"
-metaDescription: "Log spoilage, kitchen mistakes, and over-production against actual consumption. Stockifi puts a real cost on every loss so waste stops hiding in your variance."
+metaDescription: "Log spoilage, kitchen mistakes, and over-production against actual consumption. Stockifi puts a real cost on every loss. Waste stops hiding in your variance."
 eyebrow: "Wastage tracking"
 heading: "Turn wastage into a number you can act on"
-subhead: "Stockifi puts a real cost on what you waste and shows it against what you use, so it stops hiding in your variance."
+subhead: "Stockifi puts a real cost on what you waste and shows it against what you use. It stops hiding in your variance."
 heroImage: "/media/product-wastage-tracking.png"
 order: 24
 category: inventory-management
@@ -32,13 +32,13 @@ benefits:
 faqHeading: "Questions about wastage tracking"
 faqs:
   - question: "What types of waste can I capture?"
-    answer: "Spoilage, cooking mistakes, and over-production. Each entry is tagged by ingredient and reason, so the cost lands in the right place."
+    answer: "Spoilage, cooking mistakes, and over-production. Each entry is tagged by ingredient and reason, which lands the cost in the right place."
   - question: "What about prep trim and cutaway, like the off-cuts from a whole fish?"
     answer: "That is handled by recipe yield rather than waste capture. You set how much of an ingredient a recipe actually uses, and Stockifi costs the trim into every portion for you. Wastage capture is for losses outside the recipe, like spoilage or a dropped tray."
   - question: "How is wastage tracking different from variance analysis?"
     answer: "Variance is the whole gap between expected and actual usage. Wastage is one cause of it. Capturing waste moves that loss out of the unexplained gap and into a number you can act on."
   - question: "Does capturing waste slow the kitchen down?"
-    answer: "No. An entry takes seconds on the app, so the line keeps moving and the loss still gets captured."
+    answer: "No. An entry takes seconds on the app. The line keeps moving and the loss still gets captured."
   - question: "Do I have to capture every item for it to be worth it?"
     answer: "No. Even capturing your highest-cost items, like proteins, surfaces where most of the money goes, and you can widen it from there."
 ctaHeading: "See what waste is really costing you"

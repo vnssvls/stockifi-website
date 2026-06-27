@@ -1,14 +1,14 @@
 ---
 metaTitle: "Restaurant Operations Cost Control | Stockifi"
-metaDescription: "Stockifi surfaces waste, over-portioning, and supplier price drift early so cost problems get caught before they compound across your sites."
+metaDescription: "Stockifi surfaces waste, over-portioning, and supplier price drift early, catching cost problems before they compound across your sites."
 eyebrow: "Operations"
 heading: "Tight cost control across every site"
-subhead: "Stockifi catches waste, over-portioning, and price drift early. Every site runs on the same numbers, so standards hold as you grow."
+subhead: "Stockifi catches waste, over-portioning, and price drift early. Every site runs on the same numbers, which holds your standards as you grow."
 order: 6
 group: "team"
 problemTagline: "Cost control across sites"
 problemHeading: "Want to catch the leaks before month-end?"
-problemBody: "Stockifi flags them early for you. As invoices and counts land, it compares what each site should have used against what it did, so problems show up in days."
+problemBody: "Stockifi flags them early for you. As invoices and counts land, it compares what each site should have used against what it did. Problems show up in days."
 problem: []
 benefits:
   - heading: "Early warning"
@@ -21,7 +21,7 @@ benefits:
     body: "Runs on the invoices, sales, and counts you already produce."
 showcaseTagline: "How it helps"
 showcaseHeading: "What changes for operations?"
-showcaseBody: "Problems surface within days, well before the close. A new site opens on the same recipes, so it runs like the rest from day one."
+showcaseBody: "Problems surface within days, well before the close. A new site opens on the same recipes and runs like the rest from day one."
 showcaseSubs:
   - heading: "Caught early"
     body: "Leaks surface as invoices and counts come in."
@@ -30,13 +30,13 @@ showcaseSubs:
 faqHeading: "Questions operations teams ask"
 faqs:
   - question: "Does this add work for my team?"
-    answer: "No. Stockifi runs on the invoices, sales, and counts your sites already produce, so there is no extra admin."
+    answer: "No. Stockifi runs on the invoices, sales, and counts your sites already produce. There is no extra admin."
   - question: "Can I keep standards consistent across sites?"
-    answer: "Yes. Recipes and reporting are shared across locations, so every site works to the same numbers."
+    answer: "Yes. Recipes and reporting are shared across locations, which keeps every site working to the same numbers."
   - question: "How early do I see a problem?"
-    answer: "As invoices and counts land, so you catch waste, over-portioning, and price rises in days rather than at month-end."
+    answer: "As invoices and counts land, you catch waste, over-portioning, and price rises in days rather than at month-end."
   - question: "Does it scale as we add locations?"
-    answer: "Yes. New sites slot into the same recipes and reporting, so consistency holds as you grow."
+    answer: "Yes. New sites slot into the same recipes and reporting, which holds consistency as you grow."
 testimonials:
   - quote: "\"That single alert alone paid for the system many times over.\""
     name: Tommy Verpe

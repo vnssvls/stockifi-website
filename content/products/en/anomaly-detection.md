@@ -3,14 +3,14 @@ metaTitle: "Invoice Anomaly Detection for Restaurants | Stockifi"
 metaDescription: "Stockifi checks every supplier invoice and flags overcharges, and unusual price spikes before they get into your food cost. Book a demo to learn more."
 eyebrow: "Anomaly detection"
 heading: "Stop overpaying your suppliers"
-subhead: "An overcharge looks just like every other line on the invoice. Stockifi checks each one for you and flags what's worth a second look, so billing errors get caught while you can still claw them back."
+subhead: "An overcharge looks just like every other line on the invoice. Stockifi checks each one for you and flags what's worth a second look, catching billing errors while you can still claw them back."
 heroImage: "/media/product-anomaly-detection.png"
 order: 13
 category: procurement
 howItWorks:
   tagline: "How it works"
   heading: "The odd charge stands out"
-  body: "A month of invoices runs to hundreds of lines, and an overcharge or a double-bill looks just like every other entry. Stockifi checks each line against what that ingredient normally costs and flags the ones that do not fit, so a billing error gets caught while you can still query it."
+  body: "A month of invoices runs to hundreds of lines, and an overcharge or a double-bill looks just like every other entry. Stockifi checks each line against what that ingredient normally costs and flags the ones that do not fit, catching a billing error while you can still query it."
   points:
     - heading: "Every line checked"
       body: "Stockifi compares each charge against the ingredient's normal price."
@@ -35,9 +35,9 @@ faqs:
   - question: "Will Stockifi flag a normal price rise as an error?"
     answer: "No. A rise that fits an ingredient's usual trend is treated as a price change. Stockifi flags the charges that jump above what its own history would expect."
   - question: "What happens after an anomaly is flagged?"
-    answer: "The invoice is surfaced for you to review, with the charge and what it was checked against, so you can query the supplier while it is still recent."
+    answer: "The invoice is surfaced for you to review, with the charge and what it was checked against, ready for you to query the supplier while it is still recent."
   - question: "How is this different from supplier price tracking?"
-    answer: "Price tracking follows how prices move over time. Anomaly detection flags the individual invoices that look wrong, so you can query them."
+    answer: "Price tracking follows how prices move over time. Anomaly detection flags the individual invoices that look wrong and gives you what you need to query them."
   - question: "Does Stockifi need price history before it can catch errors?"
     answer: "It starts checking against each ingredient's prices as invoices come in, and its flags get sharper as that history builds."
 ctaHeading: "Stop paying for invoice errors"

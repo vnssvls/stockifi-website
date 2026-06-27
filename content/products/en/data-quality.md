@@ -1,6 +1,6 @@
 ---
 metaTitle: "Clean Restaurant Data for Accurate Food Cost | Stockifi"
-metaDescription: "Stockifi keeps your ingredient and recipe data clean, reliable, and consistent so the food cost numbers you act on are always accurate. Book a demo now."
+metaDescription: "Stockifi keeps your ingredient and recipe data clean, reliable, and consistent. The food cost numbers you act on stay accurate. Book a demo now."
 eyebrow: "Data quality"
 heading: "Clean data behind every decision"
 subhead: "A single miskeyed invoice or an unmapped till button quietly skews every report it touches. Stockifi checks and validates your data as it flows in, keeping every dashboard on numbers that hold up."

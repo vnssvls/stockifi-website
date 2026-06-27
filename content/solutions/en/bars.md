@@ -1,6 +1,6 @@
 ---
 metaTitle: "Bar Inventory & Cost Software | Stockifi"
-metaDescription: "Track pour cost, supplier price changes, and beverage variance. Stockifi connects your invoices and POS so you see exactly where your bar margin goes."
+metaDescription: "Track pour cost, supplier price changes, and beverage variance. Stockifi connects your invoices and POS to show exactly where your bar margin goes."
 eyebrow: "Bars"
 heading: "Control the margin behind your bar"
 subhead: "Stockifi turns your invoices and sales into the real cost of every drink. You see where your margin goes and catch supplier price rises before they cost you."
@@ -21,7 +21,7 @@ benefits:
     body: "Count the whole bar on your phone, into variance."
 showcaseTagline: "How it helps"
 showcaseHeading: "The real cost of every drink"
-showcaseBody: "Every drink carries its recipe cost, with spirits, mixers, and garnish all counted. As supplier prices move, the cost of each serve updates, so the margin on your drinks menu stays current."
+showcaseBody: "Every drink carries its recipe cost, with spirits, mixers, and garnish all counted. As supplier prices move, the cost of each serve updates, which keeps the margin on your drinks menu current."
 showcaseSubs:
   - heading: "Pattern recognition"
     body: "Counting follows how your shelves are arranged."
@@ -30,9 +30,9 @@ showcaseSubs:
 faqHeading: "Questions bars ask"
 faqs:
   - question: "Does Stockifi work for bars?"
-    answer: "Yes. Bars use Stockifi to track pour cost, beverage variance, and supplier prices, so you can see where bar margin goes."
+    answer: "Yes. Bars use Stockifi to track pour cost, beverage variance, and supplier prices, which shows you where bar margin goes."
   - question: "Can it track pour cost?"
-    answer: "Yes. Every drink carries its real cost from its recipe, so you know the margin on each serve."
+    answer: "Yes. Every drink carries its real cost from its recipe. You know the margin on each serve."
   - question: "Does it catch over-pouring?"
     answer: "Yes. By comparing theoretical pours against what sold and what you counted, Stockifi surfaces where over-pouring is costing you."
   - question: "Does it work with my POS?"

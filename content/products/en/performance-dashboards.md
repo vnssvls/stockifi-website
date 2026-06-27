@@ -32,9 +32,9 @@ benefits:
 faqHeading: "Questions about dashboards and reporting"
 faqs:
   - question: "What is COGS development?"
-    answer: "COGS development is how your cost of goods sold moves over time. Stockifi tracks it alongside food cost and margin, so you see the trend rather than a single month."
+    answer: "COGS development is how your cost of goods sold moves over time. Stockifi tracks it alongside food cost and margin, showing you the trend rather than a single month."
   - question: "How current are the numbers? Is this real time?"
-    answer: "Your invoices and sales feed in continuously, so cost and margin reflect your latest data. Stock figures follow your periodic counts rather than live tracking, in line with how Stockifi handles inventory."
+    answer: "Your invoices and sales feed in continuously, which keeps cost and margin on your latest data. Stock figures follow your periodic counts rather than live tracking, in line with how Stockifi handles inventory."
   - question: "Can a head office see every location in one place?"
     answer: "Yes. Groups get a consolidated view across locations, and you can drill into any single site or dish."
   - question: "What if I haven't connected all my data yet?"
