@@ -12,13 +12,13 @@ problemBody: "Stockifi brings them together for you. Restaurant, bar, and banque
 problem: []
 benefits:
   - heading: "Every outlet, one view"
-    body: "Cost and margin across restaurant, bar, and events."
+    body: "Cost and margin across every outlet."
   - heading: "Live recipe costs"
-    body: "Dishes and drinks re-cost as supplier prices move."
+    body: "Dishes re-cost as prices move."
   - heading: "Variance by outlet"
-    body: "Find which outlet is leaking margin, and why."
+    body: "See which outlet leaks margin."
   - heading: "Built for full F&B"
-    body: "Each department sees the numbers it needs."
+    body: "Each department sees what it needs."
 showcaseTagline: "How it helps"
 showcaseHeading: "Every outlet rolls into one F&B number"
 showcaseBody: "Each outlet keeps its own cost and variance, and they roll into one F&B number. You see the whole operation, then open any outlet for the detail."

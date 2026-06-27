@@ -12,13 +12,13 @@ problemBody: "Stockifi builds it for you. It reads the supplier invoices in your
 problem: []
 benefits:
   - heading: "Faster month-end"
-    body: "Current, reconciled numbers, ready when you close."
+    body: "Reconciled numbers ready at close."
   - heading: "Drill into numbers"
-    body: "Open any cost down to the dish, ingredient, or supplier."
+    body: "Trace any cost to its source."
   - heading: "Actual vs theoretical"
-    body: "See what should have been used against what was."
+    body: "Planned usage against actual."
   - heading: "Reconciles to your books"
-    body: "Cost of goods that ties back to your ledger."
+    body: "Cost of goods that ties to your books."
 showcaseTagline: "How it helps"
 showcaseHeading: "What changes for finance?"
 showcaseBody: "Stockifi builds your cost of goods as the data lands. By month-end the number is ready, which frees your time for what it means."

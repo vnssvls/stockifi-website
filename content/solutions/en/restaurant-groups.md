@@ -12,13 +12,13 @@ problemBody: "Stockifi keeps them aligned for you. A recipe is costed once and a
 problem: []
 benefits:
   - heading: "Recipe costs in sync"
-    body: "One recipe cost, applied across every site."
+    body: "One recipe cost across every site."
   - heading: "Consolidated variance"
-    body: "Cost and variance for the group and per site."
+    body: "Group and per-site cost and variance."
   - heading: "Spot the outlier site"
-    body: "Find the site drifting before it drags the group down."
+    body: "Catch the drifting site early."
   - heading: "Faster month-end"
-    body: "Numbers reconcile across locations on their own."
+    body: "Locations reconcile on their own."
 showcaseTagline: "How it helps"
 showcaseHeading: "Run the group on one set of numbers"
 showcaseBody: "Every site reports into the same numbers. You see the group at a glance and open any location for the detail behind it."

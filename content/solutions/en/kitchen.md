@@ -12,13 +12,13 @@ problemBody: "Stockifi keeps them current for you. As supplier prices move, ever
 problem: []
 benefits:
   - heading: "Recipes cost themselves"
-    body: "Every dish carries its live cost as prices move."
+    body: "Every dish carries its live cost."
   - heading: "Catch portion drift"
-    body: "Variance flags the dishes using more than the recipe."
+    body: "Variance flags over-portioned dishes."
   - heading: "Cost a new dish fast"
-    body: "Build the recipe, see cost and margin straight away."
+    body: "Build a recipe, see cost and margin."
   - heading: "Count on your phone"
-    body: "Count the kitchen in its own order, no paperwork."
+    body: "Count the kitchen, no paperwork."
 showcaseTagline: "How it helps"
 showcaseHeading: "What changes in the kitchen?"
 showcaseBody: "Menu calls run on real numbers. You see the margin on every dish and, when a price jumps, exactly which dishes it hits."

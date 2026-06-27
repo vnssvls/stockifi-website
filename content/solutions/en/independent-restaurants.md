@@ -14,7 +14,7 @@ benefits:
   - heading: "Live recipe costs"
     body: "Recipes re-cost as supplier prices move."
   - heading: "Automated invoices"
-    body: "Invoices read automatically, with price hikes flagged."
+    body: "Invoices read in, price hikes flagged."
   - heading: "Variance you can act on"
     body: "See where food cost drifts from plan."
   - heading: "Set up with you"

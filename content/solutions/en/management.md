@@ -12,13 +12,13 @@ problemBody: "Stockifi keeps it ready for you. Profit and margin update as invoi
 problem: []
 benefits:
   - heading: "Margin at a glance"
-    body: "Food cost, profit, and margin on one screen."
+    body: "Cost, profit, and margin in one view."
   - heading: "Find the leak fast"
-    body: "Drill the headline number to the dish, site, or supplier."
+    body: "Drill any number to its source."
   - heading: "Decisions on facts"
     body: "Walk in with this week's real numbers."
   - heading: "Every location"
-    body: "A consolidated view across all your sites."
+    body: "One view across all your sites."
 showcaseTagline: "How it helps"
 showcaseHeading: "What changes for owners and GMs?"
 showcaseBody: "You catch a problem while the month is still open. The read updates through the period, which means a slipping margin is something you can fix in time."

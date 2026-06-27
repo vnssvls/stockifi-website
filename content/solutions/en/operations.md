@@ -12,13 +12,13 @@ problemBody: "Stockifi flags them early for you. As invoices and counts land, it
 problem: []
 benefits:
   - heading: "Early warning"
-    body: "Catch over-portioning, waste, and price rises while you can act."
+    body: "Catch waste and price rises early."
   - heading: "Same numbers everywhere"
-    body: "Recipes and reporting are consistent across sites."
+    body: "Consistent recipes and reporting."
   - heading: "Variance by site"
-    body: "See which location is drifting, and on what."
+    body: "See which location is drifting."
   - heading: "No extra admin"
-    body: "Runs on the invoices, sales, and counts you already produce."
+    body: "Runs on data you already produce."
 showcaseTagline: "How it helps"
 showcaseHeading: "What changes for operations?"
 showcaseBody: "Problems surface within days, well before the close. A new site opens on the same recipes and runs like the rest from day one."

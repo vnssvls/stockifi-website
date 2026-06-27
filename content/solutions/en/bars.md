@@ -12,13 +12,13 @@ problemBody: "Stockifi works it out for you. It costs every drink from its recip
 problem: []
 benefits:
   - heading: "Margin on every drink"
-    body: "Know what each drink costs to make and what it earns."
+    body: "What each drink costs and earns."
   - heading: "Catch the over-pour"
-    body: "See where what was poured outruns what sold."
+    body: "See where pours exceed sales."
   - heading: "Spirit prices in check"
-    body: "A rise on spirits or mixers, flagged the day it lands."
+    body: "A rise on spirits or mixers, flagged."
   - heading: "Count in minutes"
-    body: "Count the whole bar on your phone, into variance."
+    body: "Count the whole bar on your phone."
 showcaseTagline: "How it helps"
 showcaseHeading: "The real cost of every drink"
 showcaseBody: "Every drink carries its recipe cost, with spirits, mixers, and garnish all counted. As supplier prices move, the cost of each serve updates, which keeps the margin on your drinks menu current."
