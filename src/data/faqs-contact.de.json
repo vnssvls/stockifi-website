@@ -9,11 +9,11 @@
   },
   {
     "question": "Funktioniert Stockifi mit den Systemen, die ich bereits habe?",
-    "answer": "Ja. Es verbindet sich mit Ihrem Kassensystem und Ihrer Buchhaltungssoftware, um die Daten zu lesen, und lässt Ihr bestehendes Setup unverändert. Es ersetzt sie nicht."
+    "answer": "Ja. Stockifi verbindet sich mit Ihrem Kassensystem und Ihrer Buchhaltungssoftware, um die nötigen Daten zu lesen, und lässt Ihr bestehendes Setup unverändert. Es ersetzt nichts, womit Sie heute arbeiten."
   },
   {
     "question": "Was kostet Stockifi?",
-    "answer": "Der Preis hängt von der Größe und Komplexität Ihres Setups ab, daher schauen wir es uns gemeinsam in einem kurzen Gespräch an. Dieses Gespräch bestätigt auch, dass Stockifi zu Ihrem Betrieb passt."
+    "answer": "Der Preis hängt von der Größe und Komplexität Ihres Setups ab. Wir schauen es uns gemeinsam in einem kurzen Gespräch an, das auch bestätigt, ob Stockifi zu Ihrem Betrieb passt."
   },
   {
     "question": "Findet Stockifi versteckte Verluste in meinen ersten 30 Tagen?",
@@ -21,7 +21,7 @@
   },
   {
     "question": "Was brauche ich für den Start?",
-    "answer": "Ein Buchhaltungssystem, idealerweise ein Kassensystem, mit dem sich Stockifi verbinden kann, und Ihre Menürezepte. Wir übernehmen die Einrichtung gemeinsam mit Ihnen, sodass auf Ihrer Seite keine manuelle Dateneingabe anfällt."
+    "answer": "Nur Ihre Rezepte. Wir bauen sie für Sie in Stockifi auf und erstellen Ihre Artikelliste aus Ihren Lieferantenrechnungen. Wenn das erledigt ist, entsprechen alle Zutatenkosten bereits dem, was Sie aktuell zahlen."
   },
   {
     "question": "Ist Stockifi das Richtige für mein Restaurant?",

@@ -1,7 +1,7 @@
 [
   { "question": "Does Stockifi connect to my accounting and POS?", "answer": "Yes. Stockifi connects with 70+ accounting and POS systems and syncs your invoices, sales, and recipes automatically. You get a single source of truth without manual work." },
   { "question": "Can I get started in 48 hours?", "answer": "Yes. Stockifi handles the heavy lifting. We import your item lists and recipes, set up the integrations, and prepare everything for your first stock count, within 48 hours." },
-  { "question": "How much does Stockifi cost?", "answer": "Pricing depends on the size and complexity of your setup, so we look at it together on a short call. That call also confirms Stockifi is the right fit for your operation." },
+  { "question": "How much does Stockifi cost?", "answer": "Pricing depends on the size and complexity of your setup. We look at it together on a short call, which also confirms whether Stockifi is the right fit for your operation." },
   { "question": "Is Stockifi a good fit for my restaurant?", "answer": "Yes, if you have established processes. Stockifi fits independent restaurants, hotel restaurants with full food and drink service, and multi-location groups. It is less suited to very early-stage venues still building theirs." },
-  { "question": "Can my team use Stockifi in our language?", "answer": "Yes. Your data stays in your language and the app is in English. We run a short training so your team is comfortable from the start." }
+  { "question": "Can my team use Stockifi in our language?", "answer": "Yes. Your data stays in your language and the app is in English. We run a short training to get your team comfortable from the start." }
 ]

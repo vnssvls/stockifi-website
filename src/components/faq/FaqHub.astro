@@ -4,7 +4,7 @@
 // just the FAQ items are accordions (so nothing "peeks"). The header search filters FAQs
 // across every category. Categories come from the `categories` prop, so a page can pass a
 // subset (e.g. a solutions-only slice) and the same component renders it.
-interface Item { question: string; answer: string; }
+interface Item { question: string; answer: string; link?: { label: string; href: string }; }
 interface Category { id: string; name: string; items: Item[]; }
 interface Props { categories: Category[]; }
 const { categories } = Astro.props;
@@ -50,7 +50,7 @@ const t = STRINGS[locale as keyof typeof STRINGS] ?? STRINGS.en;
                     <svg class="fh-faq-chev" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
                   </button>
                 </h3>
-                <div class="fh-faq-a"><div class="fh-faq-a-inner"><p>{it.answer}</p></div></div>
+                <div class="fh-faq-a"><div class="fh-faq-a-inner"><p>{it.answer}{it.link && (<> <a class="fh-faq-link" href={lp(it.link.href)}>{it.link.label}</a></>)}</p></div></div>
               </div>
             ))}
           </div>
@@ -130,6 +130,8 @@ const t = STRINGS[locale as keyof typeof STRINGS] ?? STRINGS.en;
   .fh-faq.is-open .fh-faq-a { grid-template-rows: 1fr; }
   .fh-faq-a-inner { overflow: hidden; min-height: 0; }
   .fh-faq-a p { padding-bottom: var(--space-16); color: var(--muted-foreground); line-height: var(--lh-body); }
+  .fh-faq-link { color: var(--foreground); text-decoration: underline; text-underline-offset: 2px; white-space: nowrap; }
+  .fh-faq-link:hover { color: var(--primary-light); }
 
   .fh-empty { padding: var(--space-32) 0; color: var(--muted-foreground); }
 

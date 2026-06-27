@@ -16,17 +16,17 @@
       { "question": "Can I get started in 48 hours?", "answer": "Yes. Stockifi handles the heavy lifting. We import your item lists and recipes, set up the integrations, and prepare everything for your first stock count, within 48 hours." },
       { "question": "Do you set up our recipes for us?", "answer": "Yes. You share your recipes and we build them in, with ingredient costs tracked from the start. The manual setup is handled for you." },
       { "question": "Is my phone all I need to get started?", "answer": "Yes. Download the app and you are ready to go. No extra hardware is required." },
-      { "question": "What do I need to get started?", "answer": "An accounting system, ideally a POS Stockifi can connect to, and your menu recipes. We handle the setup with you, so there is no manual data entry on your side." }
+      { "question": "What do I need to get started?", "answer": "Just your recipes. We build them into Stockifi for you and set up your item list from your supplier invoices. By the time that is done, every ingredient cost already reflects what you are paying now." }
     ]
   },
   {
     "id": "features-reports",
     "name": "Features & reports",
     "items": [
-      { "question": "Does Stockifi calculate recipe and dish costs automatically?", "answer": "Yes. Stockifi keeps the cost of every recipe and dish current as supplier prices change, so you always know your real margin." },
-      { "question": "Can I see which dishes make or lose money?", "answer": "Yes. Stockifi shows profit and margin by dish, location, and period, so you can see what earns and what quietly loses margin." },
-      { "question": "Does Stockifi track wastage?", "answer": "Yes. You log wastage in the app and Stockifi factors it into your variance and food cost, so spoilage stops hiding in the numbers." },
-      { "question": "Does Stockifi flag unusual supplier price changes?", "answer": "Yes. Stockifi watches every invoice and flags anomalies like overcharging or sudden price jumps, so you catch them before they reach your margin." },
+      { "question": "Does Stockifi calculate recipe and dish costs automatically?", "answer": "Yes. Stockifi keeps the cost of every recipe and dish current as supplier prices change. You always know your real margin." },
+      { "question": "Can I see which dishes make or lose money?", "answer": "Yes. Stockifi shows profit and margin by dish, location, and period. You can see what earns and what quietly loses margin." },
+      { "question": "Does Stockifi track wastage?", "answer": "Yes. You log it in the app, from spoilage to the trim and offcuts that come off during prep, and Stockifi factors all of it into your variance and food cost. Waste stops hiding in the numbers." },
+      { "question": "Does Stockifi flag unusual supplier price changes?", "answer": "Yes. Stockifi watches every invoice and flags anomalies like overcharging or sudden price jumps. You catch them before they reach your margin." },
       { "question": "Can I manage stock across multiple locations?", "answer": "Yes. Multi-location groups get consolidated visibility, and you record inventory transfers between sites within each count." },
       { "question": "What reports does Stockifi give me?", "answer": "Stockifi gives you variance and wastage reports, COGS development, over-portioning, supplier price deviations, and profit reports, with full visibility over actual against theoretical consumption." }
     ]
@@ -36,8 +36,8 @@
     "name": "Integrations",
     "items": [
       { "question": "Does Stockifi connect to my accounting and POS?", "answer": "Yes. Stockifi connects with 70+ accounting and POS systems and syncs your invoices, sales, and recipes automatically. You get a single source of truth without manual work." },
-      { "question": "Does Stockifi work with the systems I already have?", "answer": "Yes. It connects to your POS and accounting software to read the data and leaves your existing setup in place. It does not replace them." },
-      { "question": "How does the accounting integration work?", "answer": "Stockifi reads your supplier invoices line by line, so ingredient prices and quantities update automatically and recipe costs stay current as prices move." },
+      { "question": "Does Stockifi work with the systems I already have?", "answer": "Yes. Stockifi connects to your POS and accounting software to read the data it needs and leaves your existing setup in place. It does not replace anything you run today.", "link": { "label": "See all integrations", "href": "/integrations" } },
+      { "question": "How does the accounting integration work?", "answer": "The integration with your accounting system lets Stockifi read every supplier invoice as it comes in. It tracks how your ingredient prices move over time, then feeds those changes straight into your recipe costs. The moment an ingredient gets more expensive, the recipes that use it are already updated." },
       { "question": "What if my system is not on the list?", "answer": "Tell us what you run and we will confirm it on a quick call. Custom integrations are available on the Custom plan." }
     ]
   },
@@ -46,10 +46,10 @@
     "name": "Pricing & guarantee",
     "items": [
       { "question": "Will Stockifi find hidden losses in my first 30 days?", "answer": "Yes. Stockifi guarantees to uncover at least €3,000 in hidden losses within your first 30 days, or you pay nothing. In most cases the amount is significantly higher." },
-      { "question": "How much does Stockifi cost?", "answer": "Pricing depends on the size and complexity of your setup, so we look at it together on a short call. That call also confirms Stockifi is the right fit for your operation." },
-      { "question": "Is my price fixed?", "answer": "Yes. Your monthly price is fixed. The 30-day guarantee removes the risk of trying Stockifi." },
+      { "question": "How much does Stockifi cost?", "answer": "Pricing depends on the size and complexity of your setup. We look at it together on a short call, which also confirms whether Stockifi is the right fit for your operation." },
+      { "question": "Is Stockifi a fixed monthly price?", "answer": "Yes. Stockifi is a flat monthly subscription, not a percentage of your sales. What you pay reflects the size and complexity of your operation." },
       { "question": "Can I start without a credit card or a long-term contract?", "answer": "Yes. You can start without a credit card and without a long-term contract. Stockifi earns its place by delivering value, not by locking you in." },
-      { "question": "What plans does Stockifi offer?", "answer": "Stockifi has three plans: Automated, Full Control, and Custom. Higher tiers add recipe cost calculations, variance and wastage reports, POS integrations, and multi-location setup." }
+      { "question": "How does Stockifi's pricing work?", "answer": "Stockifi scales to the size and complexity of your operation, whether you run a single kitchen or a group of locations. What you need depends on your setup, which we work out together on a short call." }
     ]
   },
   {
@@ -66,7 +66,7 @@
     "id": "data-support",
     "name": "Data & support",
     "items": [
-      { "question": "Can my team use Stockifi in our language?", "answer": "Yes. Your data stays in your language and the app is in English. We run a short training so your team is comfortable from the start." },
+      { "question": "Can my team use Stockifi in our language?", "answer": "Yes. Your data stays in your language and the app is in English. We run a short training to get your team comfortable from the start." },
       { "question": "What support do I get?", "answer": "Advanced support on every plan, dedicated customer care on Full Control, and a quarterly business review on Custom." },
       { "question": "Can I export my data from Stockifi?", "answer": "Yes. Your data is yours and you can export it." }
     ]

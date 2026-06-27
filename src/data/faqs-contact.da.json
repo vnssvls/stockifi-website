@@ -9,11 +9,11 @@
   },
   {
     "question": "Fungerer Stockifi med de systemer, jeg allerede har?",
-    "answer": "Ja. Det forbinder til dit kassesystem og din regnskabssoftware for at læse data og lader din nuværende opsætning være. Det erstatter dem ikke."
+    "answer": "Ja. Stockifi forbinder til dit kassesystem og din regnskabssoftware for at læse de nødvendige data og lader din nuværende opsætning være. Det erstatter ikke noget af det, du bruger i dag."
   },
   {
     "question": "Hvad koster Stockifi?",
-    "answer": "Prisen afhænger af størrelsen og kompleksiteten af din opsætning, så vi ser på det sammen på et kort opkald. Det opkald bekræfter også, at Stockifi passer til din virksomhed."
+    "answer": "Prisen afhænger af størrelsen og kompleksiteten af din opsætning. Vi ser på det sammen på et kort opkald, som også bekræfter, om Stockifi passer til din virksomhed."
   },
   {
     "question": "Finder Stockifi skjulte tab i mine første 30 dage?",
@@ -21,7 +21,7 @@
   },
   {
     "question": "Hvad skal jeg bruge for at komme i gang?",
-    "answer": "Et regnskabssystem, helst et kassesystem Stockifi kan forbinde til, og dine menuopskrifter. Vi håndterer opsætningen sammen med dig, så der er ingen manuel dataindtastning fra din side."
+    "answer": "Bare dine opskrifter. Vi bygger dem ind i Stockifi for dig og opretter din vareliste ud fra dine leverandørfakturaer. Når det er gjort, afspejler alle råvarepriser allerede det, du betaler nu."
   },
   {
     "question": "Passer Stockifi til min restaurant?",
