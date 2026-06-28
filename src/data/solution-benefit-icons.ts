@@ -4,14 +4,14 @@
 // locales, so this single slug-keyed map covers every language.
 export const solutionBenefitIcons: Record<string, string[]> = {
   // by type
-  'independent-restaurants': ['bolt', 'receipt-2', 'presention-chart', 'setting-2'],
+  'independent-restaurants': ['bolt', 'receipt-2', 'presention-chart', 'messages-2'],
   'restaurant-groups': ['data', '3dcube', 'radar', 'bolt'],
   hotels: ['buildings-2', 'bolt', 'presention-chart', 'reserve'],
   bars: ['trend-up', 'cocktail', 'receipt-2', 'flash'],
   // by team
-  management: ['element-4', 'box-search', 'presention-chart', 'buildings-2'],
-  operations: ['bolt', 'convert-3d-cube', 'presention-chart', 'fluent-wand'],
-  kitchen: ['bolt', 'percentage-circle', 'chef-hat', 'box'],
+  management: ['element-4', 'sparkle', 'presention-chart', 'buildings-2'],
+  operations: ['shield', 'menu-board', 'presention-chart', 'fluent-wand'],
+  kitchen: ['bolt', 'sparkle', 'chef-hat', 'box'],
   finance: ['fluent-finance', 'box-search', 'presention-chart', 'newspaper'],
 };
 
