@@ -37,7 +37,7 @@ faqs:
   - question: "Vad händer om en faktura aldrig når min redovisning?"
     answer: "Stockifi läser det som landar i din redovisning, så en faktura som aldrig kommer dit registreras inte. Att skicka leverantörsfakturor via din redovisning håller bilden fullständig."
   - question: "Vilka redovisningssystem fungerar det med?"
-    answer: "Stockifi kopplas till de redovisningssystem du redan använder. Berätta vilket du kör så bekräftar vi det på ett kort samtal."
+    answer: "Stockifi kopplas till de redovisningssystem du redan använder. Är du osäker på ditt, tittar vi gärna på det."
   - question: "Fungerar det tillsammans med min nuvarande setup?"
     answer: "Ja. Stockifi läser datan och lämnar ditt redovisningssystem precis som det är."
 ctaHeading: "Redo att slippa fakturainmatning?"

@@ -37,7 +37,7 @@ faqs:
   - question: "Hvad sker der, hvis en faktura aldrig når mit regnskab?"
     answer: "Stockifi læser det, der lander i dit regnskabsprogram, så en faktura, der aldrig kommer derind, vil ikke blive registreret. Hvis leverandørfakturaer routes igennem dit regnskab, holder det det samlede billede komplet."
   - question: "Hvilke regnskabsprogrammer virker det med?"
-    answer: "Stockifi forbinder sig med de regnskabsprogrammer, du allerede bruger. Fortæl os, hvad du kører, og vi bekræfter det på et kort opkald."
+    answer: "Stockifi forbinder sig med de regnskabsprogrammer, du allerede bruger. Er du i tvivl om dit, ser vi gerne på det."
   - question: "Virker det sammen med min nuværende opsætning?"
     answer: "Ja. Stockifi læser dataene og lader dit regnskabsprogram forblive præcis, som det er."
 ctaHeading: "Klar til at overlade fakturahåndteringen?"

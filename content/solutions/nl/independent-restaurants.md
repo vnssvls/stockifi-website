@@ -36,7 +36,7 @@ faqs:
   - question: "Wat kost het?"
     answer: "De prijs hangt af van je setup, dus die bekijken we samen op een kort gesprek om te controleren of Stockifi de juiste keuze is."
   - question: "Werkt het met mijn systemen?"
-    answer: "Stockifi koppelt met 70+ boekhoud- en kassasystemen. Bekijk de volledige lijst op de integratiespagina en we bevestigen die van jou tijdens een kort gesprek."
+    answer: "Stockifi koppelt met 70+ boekhoud- en kassasystemen. Bekijk de volledige lijst op de integratiepagina, en staat die van jou er niet bij, dan kijken we er graag naar."
 testimonials:
   - quote: "\"It's more than just an inventory tool. Stockifi provides insights that help us focus on profit-driving areas.\""
     name: "Kim Søyland & Jama Awaleh"

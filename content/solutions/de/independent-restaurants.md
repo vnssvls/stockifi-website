@@ -36,7 +36,7 @@ faqs:
   - question: "Was kostet es?"
     answer: "Der Preis hängt von Ihrem Setup ab, deshalb besprechen wir das gemeinsam in einem kurzen Gespräch, um sicherzustellen, dass Stockifi die richtige Wahl für Sie ist."
   - question: "Funktioniert es mit meinen Systemen?"
-    answer: "Stockifi verbindet sich mit mehr als 70 Buchhaltungs- und Kassensystemen. Die vollständige Liste finden Sie auf der Integrationsseite, und wir können Ihr System in einem kurzen Gespräch bestätigen."
+    answer: "Stockifi verbindet sich mit mehr als 70 Buchhaltungs- und Kassensystemen. Die vollständige Liste finden Sie auf der Integrationsseite, und wenn Ihres nicht dabei ist, schauen wir es uns gern an."
 testimonials:
   - quote: "\"It's more than just an inventory tool. Stockifi provides insights that help us focus on profit-driving areas.\""
     name: "Kim Søyland & Jama Awaleh"

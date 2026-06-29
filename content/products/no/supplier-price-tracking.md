@@ -39,7 +39,7 @@ faqs:
   - question: "Fungerer dette på tvers av flere lokasjoner?"
     answer: "Ja. For en kjede samles fakturaene fra alle steder i én felles prishistorikk, slik at en prisøkning fra en felles leverandør fanges opp én gang og oppdaterer kostnadene på alle lokasjoner."
   - question: "Hvilke regnskapssystemer fungerer dette med?"
-    answer: "Stockifi kobler seg til regnskapssystemene du allerede bruker. Fortell oss hva du kjører, så bekrefter vi det på en kort samtale."
+    answer: "Stockifi kobler seg til regnskapssystemene du allerede bruker. Er du usikker på ditt, ser vi gjerne på det."
   - question: "Kan jeg holde oversikt over alle leverandørene mine på ett sted?"
     answer: "Ja. Stockifi leser fakturaene fra hver leverandør og holder én samlet prishistorikk for alle. Du ser hvordan prisene til hver leverandør beveger seg, og fanger opp dem som sniker seg oppover."
 ctaHeading: "Se hva leverandørene dine faktisk tar betalt"

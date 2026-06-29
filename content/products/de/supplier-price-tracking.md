@@ -39,7 +39,7 @@ faqs:
   - question: "Funktioniert das auch über mehrere Standorte hinweg?"
     answer: "Ja. Bei einer Restaurantgruppe fließen die Rechnungen aller Standorte in eine gemeinsame Preishistorie. Ein Anstieg bei einem gemeinsamen Lieferanten wird einmalig erkannt und sofort für alle Standorte neu kalkuliert."
   - question: "Mit welchen Buchhaltungssystemen ist das kompatibel?"
-    answer: "Stockifi verbindet sich mit den Buchhaltungssystemen, die Sie bereits nutzen. Teilen Sie uns mit, welches System Sie einsetzen, und wir bestätigen die Kompatibilität in einem kurzen Gespräch."
+    answer: "Stockifi verbindet sich mit den Buchhaltungssystemen, die Sie bereits nutzen. Wenn Sie bei Ihrem unsicher sind, schauen wir es uns gern an."
   - question: "Behalte ich alle meine Lieferanten an einem Ort im Blick?"
     answer: "Ja. Stockifi liest die Rechnungen jedes Lieferanten und führt eine gemeinsame Preishistorie für alle. Sie sehen, wie sich die Preise jedes Lieferanten entwickeln, und erkennen die, die schleichend steigen."
 ctaHeading: "Sehen Sie, was Ihre Lieferanten wirklich berechnen"

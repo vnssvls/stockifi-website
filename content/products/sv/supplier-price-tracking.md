@@ -39,7 +39,7 @@ faqs:
   - question: "Fungerar det över flera anläggningar?"
     answer: "Ja. För en grupp matar varje anläggnings fakturor in i en gemensam prishistorik, så en höjning från en delad leverantör fångas en gång och räknar om varje anläggning."
   - question: "Vilka bokföringssystem fungerar det med?"
-    answer: "Stockifi kopplas till de bokföringssystem du redan använder. Berätta vilket du kör så bekräftar vi det på ett kort samtal."
+    answer: "Stockifi kopplas till de bokföringssystem du redan använder. Är du osäker på ditt, tittar vi gärna på det."
   - question: "Kan jag hålla koll på alla mina leverantörer på ett ställe?"
     answer: "Ja. Stockifi läser fakturorna från varje leverantör och håller en samlad prishistorik för alla. Du ser hur varje leverantörs priser rör sig och fångar dem som smyger uppåt."
 ctaHeading: "Se vad dina leverantörer faktiskt debiterar"

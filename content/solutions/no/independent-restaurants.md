@@ -36,7 +36,7 @@ faqs:
   - question: "Hva koster det?"
     answer: "Prisen avhenger av oppsettet ditt, så vi ser på det sammen på en kort samtale for å forsikre oss om at Stockifi er riktig løsning."
   - question: "Fungerer det med systemene mine?"
-    answer: "Stockifi kobler seg til over 70 regnskaps- og kassesystemer. Se hele listen på integrasjonssiden, så bekrefter vi ditt på en rask prat."
+    answer: "Stockifi kobler seg til over 70 regnskaps- og kassesystemer. Se hele listen på integrasjonssiden, og finner du ikke ditt, ser vi gjerne på det."
 testimonials:
   - quote: "\"It's more than just an inventory tool. Stockifi provides insights that help us focus on profit-driving areas.\""
     name: "Kim Søyland & Jama Awaleh"

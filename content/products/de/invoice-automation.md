@@ -37,7 +37,7 @@ faqs:
   - question: "Was passiert, wenn eine Rechnung nie in meiner Buchhaltung ankommt?"
     answer: "Stockifi liest, was in Ihrer Buchhaltung eingeht. Eine Rechnung, die dort nie ankommt, wird nicht erfasst. Wenn Lieferantenrechnungen konsequent über die Buchhaltung laufen, bleibt das Bild vollständig."
   - question: "Mit welchen Buchhaltungssystemen funktioniert das?"
-    answer: "Stockifi verbindet sich mit den Buchhaltungssystemen, die Sie bereits nutzen. Teilen Sie uns mit, was Sie einsetzen, und wir bestätigen es in einem kurzen Gespräch."
+    answer: "Stockifi verbindet sich mit den Buchhaltungssystemen, die Sie bereits nutzen. Wenn Sie bei Ihrem unsicher sind, schauen wir es uns gern an."
   - question: "Funktioniert es neben meinem bestehenden Setup?"
     answer: "Ja. Stockifi liest die Daten und lässt Ihre Buchhaltungssoftware genau so, wie sie ist."
 ctaHeading: "Bereit, die Rechnungserfassung abzugeben?"

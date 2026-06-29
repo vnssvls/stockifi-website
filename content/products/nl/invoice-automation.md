@@ -37,7 +37,7 @@ faqs:
   - question: "Wat gebeurt er als een factuur mijn boekhouding nooit bereikt?"
     answer: "Stockifi leest wat er in je boekhouding binnenkomt, dus een factuur die daar nooit aankomt wordt niet vastgelegd. Leveranciersfacturen via je boekhouding routeren houdt het beeld compleet."
   - question: "Met welke boekhoudprogramma's werkt dit?"
-    answer: "Stockifi koppelt met de boekhoudprogramma's die je al gebruikt. Vertel ons wat je draait en we bevestigen het in een kort gesprek."
+    answer: "Stockifi koppelt met de boekhoudprogramma's die je al gebruikt. Twijfel je over die van jou, dan kijken we er graag naar."
   - question: "Werkt het naast mijn huidige setup?"
     answer: "Ja. Stockifi leest de gegevens en laat je boekhoudsoftware precies zoals die is."
 ctaHeading: "Klaar om factuurinvoer uit handen te geven?"

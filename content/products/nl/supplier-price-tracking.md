@@ -39,7 +39,7 @@ faqs:
   - question: "Werkt dit over meerdere locaties?"
     answer: "Ja. Voor een groep voeden de facturen van alle locaties één prijsgeschiedenis, zodat een stijging van een gedeelde leverancier één keer wordt opgemerkt en elke locatie wordt herberekend."
   - question: "Met welke boekhoudprogramma's werkt dit?"
-    answer: "Stockifi koppelt met de boekhoudprogramma's die je al gebruikt. Vertel ons wat je draait en we bevestigen het in een kort gesprek."
+    answer: "Stockifi koppelt met de boekhoudprogramma's die je al gebruikt. Twijfel je over die van jou, dan kijken we er graag naar."
   - question: "Kan ik al mijn leveranciers op één plek bijhouden?"
     answer: "Ja. Stockifi leest de facturen van elke leverancier en houdt één doorlopende prijshistorie voor allemaal bij. Je ziet hoe de prijzen van elke leverancier bewegen en pikt de prijzen eruit die stiekem oplopen."
 ctaHeading: "Zie wat je leveranciers echt in rekening brengen"

@@ -36,7 +36,7 @@ faqs:
   - question: "Vad kostar det?"
     answer: "Priset beror på din konfiguration, så vi tittar på det tillsammans under ett kort samtal för att se till att Stockifi passar dig."
   - question: "Fungerar det med mina system?"
-    answer: "Stockifi ansluter till över 70 bokförings- och kassasystem. Se hela listan på integrationssidan, så bekräftar vi ditt under ett snabbt samtal."
+    answer: "Stockifi ansluter till över 70 bokförings- och kassasystem. Se hela listan på integrationssidan, och hittar du inte ditt, tittar vi gärna på det."
 testimonials:
   - quote: "\"It's more than just an inventory tool. Stockifi provides insights that help us focus on profit-driving areas.\""
     name: "Kim Søyland & Jama Awaleh"

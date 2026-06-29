@@ -37,7 +37,7 @@ faqs:
   - question: "Hva skjer hvis en faktura aldri når regnskapet mitt?"
     answer: "Stockifi leser det som lander i regnskapet ditt, så en faktura som aldri kommer dit vil ikke bli registrert. Å rute leverandørfakturaer gjennom regnskapet ditt holder bildet komplett."
   - question: "Hvilke regnskapssystemer fungerer dette med?"
-    answer: "Stockifi kobler seg til regnskapssystemene du allerede bruker. Fortell oss hva du kjører, og vi bekrefter det på en kort samtale."
+    answer: "Stockifi kobler seg til regnskapssystemene du allerede bruker. Er du usikker på ditt, ser vi gjerne på det."
   - question: "Fungerer det sammen med oppsettet mitt?"
     answer: "Ja. Stockifi leser dataene og lar regnskapsprogrammet ditt stå nøyaktig som det er."
 ctaHeading: "Klar til å gi fra deg fakturainntastingen?"

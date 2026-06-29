@@ -39,7 +39,7 @@ faqs:
   - question: "Virker dette på tværs af flere lokationer?"
     answer: "Ja. For en kæde føder alle lokationernes fakturaer én samlet prishistorik, så en stigning fra en delt leverandør opdages én gang og genprisberegner alle lokationer."
   - question: "Hvilke regnskabssystemer virker det med?"
-    answer: "Stockifi forbinder sig med de regnskabssystemer, du allerede bruger. Fortæl os, hvad du kører, og vi bekræfter det på et kort opkald."
+    answer: "Stockifi forbinder sig med de regnskabssystemer, du allerede bruger. Er du i tvivl om dit, ser vi gerne på det."
   - question: "Kan jeg holde styr på alle mine leverandører ét sted?"
     answer: "Ja. Stockifi læser fakturaerne fra hver leverandør og holder én samlet prishistorik for dem alle. Du kan se, hvordan hver leverandørs priser bevæger sig, og fange dem, der sniger sig op."
 ctaHeading: "Se, hvad dine leverandører reelt opkræver"
