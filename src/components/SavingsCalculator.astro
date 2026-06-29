@@ -10,12 +10,12 @@ const locale = Astro.currentLocale ?? 'en';
 const lp = (p: string) => (locale === 'en' ? p : `/${locale}${p}`);
 
 const STRINGS = {
-  en: { eyebrow: 'Savings calculator', heading: 'See the impact Stockifi could have on your profit', subhead: 'Share your numbers below to calculate your potential savings.', revenue: 'Annual revenue per location', locations: 'Number of locations', current: 'Current food & drink cost %', target: 'Target food & drink cost %', saveHeadline: 'Stockifi could save you', inYear: 'in a year', withWord: 'with', unitLoc: 'location', unitLocs: 'locations', perYear: 'per year', perLoc: 'Savings per location', colBefore: 'Before Stockifi', colY1: 'Year 1', colY2: 'Year 2', colY3: 'Year 3', colTotal: 'Total', rowCost: 'Food & drink cost', rowSavings: 'Your savings', cta: 'Get my savings plan' },
-  no: { eyebrow: 'Besparingskalkulator', heading: 'Se hvilken effekt Stockifi kan ha på fortjenesten din', subhead: 'Del tallene dine nedenfor for å beregne din potensielle besparelse.', revenue: 'Årlig omsetning per lokasjon', locations: 'Antall lokasjoner', current: 'Nåværende varekost %', target: 'Mål for varekost %', saveHeadline: 'Stockifi kan spare deg', inYear: 'i året', withWord: 'med', unitLoc: 'lokasjon', unitLocs: 'lokasjoner', perYear: 'per år', perLoc: 'Besparelse per lokasjon', colBefore: 'Før Stockifi', colY1: 'År 1', colY2: 'År 2', colY3: 'År 3', colTotal: 'Totalt', rowCost: 'Varekost', rowSavings: 'Din besparelse', cta: 'Få spareplanen min' },
-  da: { eyebrow: 'Besparelsesberegner', heading: 'Se, hvilken effekt Stockifi kan have på din fortjeneste', subhead: 'Del dine tal nedenfor for at beregne din potentielle besparelse.', revenue: 'Årlig omsætning per lokation', locations: 'Antal lokationer', current: 'Nuværende vareforbrug %', target: 'Mål for vareforbrug %', saveHeadline: 'Stockifi kan spare dig', inYear: 'om året', withWord: 'med', unitLoc: 'lokation', unitLocs: 'lokationer', perYear: 'om året', perLoc: 'Besparelse per lokation', colBefore: 'Før Stockifi', colY1: 'År 1', colY2: 'År 2', colY3: 'År 3', colTotal: 'I alt', rowCost: 'Vareforbrug', rowSavings: 'Din besparelse', cta: 'Få min besparelsesplan' },
-  sv: { eyebrow: 'Besparingskalkylator', heading: 'Se vilken effekt Stockifi kan ha på din vinst', subhead: 'Dela dina siffror nedan för att beräkna din potentiella besparing.', revenue: 'Årlig omsättning per restaurang', locations: 'Antal restauranger', current: 'Nuvarande råvarukostnad %', target: 'Mål för råvarukostnad %', saveHeadline: 'Stockifi kan spara dig', inYear: 'per år', withWord: 'med', unitLoc: 'restaurang', unitLocs: 'restauranger', perYear: 'per år', perLoc: 'Besparing per restaurang', colBefore: 'Före Stockifi', colY1: 'År 1', colY2: 'År 2', colY3: 'År 3', colTotal: 'Totalt', rowCost: 'Råvarukostnad', rowSavings: 'Din besparing', cta: 'Få min besparingsplan' },
-  nl: { eyebrow: 'Besparingscalculator', heading: 'Zie welke impact Stockifi op je winst kan hebben', subhead: 'Deel hieronder je cijfers om je mogelijke besparing te berekenen.', revenue: 'Jaaromzet per locatie', locations: 'Aantal locaties', current: 'Huidige foodcost %', target: 'Doel-foodcost %', saveHeadline: 'Stockifi kan je besparen', inYear: 'per jaar', withWord: 'met', unitLoc: 'locatie', unitLocs: 'locaties', perYear: 'per jaar', perLoc: 'Besparing per locatie', colBefore: 'Vóór Stockifi', colY1: 'Jaar 1', colY2: 'Jaar 2', colY3: 'Jaar 3', colTotal: 'Totaal', rowCost: 'Foodcost', rowSavings: 'Jouw besparing', cta: 'Ontvang mijn besparingsplan' },
-  de: { eyebrow: 'Einsparungsrechner', heading: 'Sehen Sie, welchen Einfluss Stockifi auf Ihren Gewinn haben kann', subhead: 'Geben Sie unten Ihre Zahlen ein, um Ihre möglichen Einsparungen zu berechnen.', revenue: 'Jahresumsatz pro Standort', locations: 'Anzahl der Standorte', current: 'Aktueller Wareneinsatz %', target: 'Ziel-Wareneinsatz %', saveHeadline: 'Stockifi kann Ihnen sparen', inYear: 'pro Jahr', withWord: 'mit', unitLoc: 'Standort', unitLocs: 'Standorte', perYear: 'pro Jahr', perLoc: 'Einsparungen pro Standort', colBefore: 'Vor Stockifi', colY1: 'Jahr 1', colY2: 'Jahr 2', colY3: 'Jahr 3', colTotal: 'Gesamt', rowCost: 'Wareneinsatz', rowSavings: 'Ihre Einsparung', cta: 'Meinen Einsparungsplan erhalten' },
+  en: { eyebrow: 'Savings calculator', heading: 'See the impact Stockifi could have on your profit', subhead: 'Share your numbers below to calculate your potential savings.', revenue: 'Annual revenue per location', locations: 'Number of locations', current: 'Current food & drink cost %', target: 'Target food & drink cost %', saveHeadline: 'Stockifi could save you', inYear: 'in a year', withWord: 'with', unitLoc: 'location', unitLocs: 'locations', perYear: 'per year', perLoc: 'Savings per location', colBefore: 'Before Stockifi', colY1: 'Year 1', colY2: 'Year 2', colY3: 'Year 3', colTotal: 'Total', rowCost: 'Food & drink cost', rowSavings: 'Your savings', cta: 'Get my savings plan', emailPrompt: 'Where should we send your savings plan?', emailPh: 'you@restaurant.com', send: 'Send', sending: 'Sending…', errEmail: 'Please enter a valid email.', errSend: 'Something went wrong. Please try again.' },
+  no: { eyebrow: 'Besparingskalkulator', heading: 'Se hvilken effekt Stockifi kan ha på fortjenesten din', subhead: 'Del tallene dine nedenfor for å beregne din potensielle besparelse.', revenue: 'Årlig omsetning per lokasjon', locations: 'Antall lokasjoner', current: 'Nåværende varekost %', target: 'Mål for varekost %', saveHeadline: 'Stockifi kan spare deg', inYear: 'i året', withWord: 'med', unitLoc: 'lokasjon', unitLocs: 'lokasjoner', perYear: 'per år', perLoc: 'Besparelse per lokasjon', colBefore: 'Før Stockifi', colY1: 'År 1', colY2: 'År 2', colY3: 'År 3', colTotal: 'Totalt', rowCost: 'Varekost', rowSavings: 'Din besparelse', cta: 'Få spareplanen min', emailPrompt: 'Hvor skal vi sende spareplanen din?', emailPh: 'deg@restaurant.no', send: 'Send', sending: 'Sender…', errEmail: 'Skriv inn en gyldig e-postadresse.', errSend: 'Noe gikk galt. Prøv igjen.' },
+  da: { eyebrow: 'Besparelsesberegner', heading: 'Se, hvilken effekt Stockifi kan have på din fortjeneste', subhead: 'Del dine tal nedenfor for at beregne din potentielle besparelse.', revenue: 'Årlig omsætning per lokation', locations: 'Antal lokationer', current: 'Nuværende vareforbrug %', target: 'Mål for vareforbrug %', saveHeadline: 'Stockifi kan spare dig', inYear: 'om året', withWord: 'med', unitLoc: 'lokation', unitLocs: 'lokationer', perYear: 'om året', perLoc: 'Besparelse per lokation', colBefore: 'Før Stockifi', colY1: 'År 1', colY2: 'År 2', colY3: 'År 3', colTotal: 'I alt', rowCost: 'Vareforbrug', rowSavings: 'Din besparelse', cta: 'Få min besparelsesplan', emailPrompt: 'Hvor skal vi sende din besparelsesplan?', emailPh: 'dig@restaurant.dk', send: 'Send', sending: 'Sender…', errEmail: 'Indtast en gyldig e-mailadresse.', errSend: 'Noget gik galt. Prøv igen.' },
+  sv: { eyebrow: 'Besparingskalkylator', heading: 'Se vilken effekt Stockifi kan ha på din vinst', subhead: 'Dela dina siffror nedan för att beräkna din potentiella besparing.', revenue: 'Årlig omsättning per restaurang', locations: 'Antal restauranger', current: 'Nuvarande råvarukostnad %', target: 'Mål för råvarukostnad %', saveHeadline: 'Stockifi kan spara dig', inYear: 'per år', withWord: 'med', unitLoc: 'restaurang', unitLocs: 'restauranger', perYear: 'per år', perLoc: 'Besparing per restaurang', colBefore: 'Före Stockifi', colY1: 'År 1', colY2: 'År 2', colY3: 'År 3', colTotal: 'Totalt', rowCost: 'Råvarukostnad', rowSavings: 'Din besparing', cta: 'Få min besparingsplan', emailPrompt: 'Vart ska vi skicka din besparingsplan?', emailPh: 'du@restaurang.se', send: 'Skicka', sending: 'Skickar…', errEmail: 'Ange en giltig e-postadress.', errSend: 'Något gick fel. Försök igen.' },
+  nl: { eyebrow: 'Besparingscalculator', heading: 'Zie welke impact Stockifi op je winst kan hebben', subhead: 'Deel hieronder je cijfers om je mogelijke besparing te berekenen.', revenue: 'Jaaromzet per locatie', locations: 'Aantal locaties', current: 'Huidige foodcost %', target: 'Doel-foodcost %', saveHeadline: 'Stockifi kan je besparen', inYear: 'per jaar', withWord: 'met', unitLoc: 'locatie', unitLocs: 'locaties', perYear: 'per jaar', perLoc: 'Besparing per locatie', colBefore: 'Vóór Stockifi', colY1: 'Jaar 1', colY2: 'Jaar 2', colY3: 'Jaar 3', colTotal: 'Totaal', rowCost: 'Foodcost', rowSavings: 'Jouw besparing', cta: 'Ontvang mijn besparingsplan', emailPrompt: 'Waar mogen we je besparingsplan naartoe sturen?', emailPh: 'jij@restaurant.nl', send: 'Versturen', sending: 'Versturen…', errEmail: 'Voer een geldig e-mailadres in.', errSend: 'Er ging iets mis. Probeer het opnieuw.' },
+  de: { eyebrow: 'Einsparungsrechner', heading: 'Sehen Sie, welchen Einfluss Stockifi auf Ihren Gewinn haben kann', subhead: 'Geben Sie unten Ihre Zahlen ein, um Ihre möglichen Einsparungen zu berechnen.', revenue: 'Jahresumsatz pro Standort', locations: 'Anzahl der Standorte', current: 'Aktueller Wareneinsatz %', target: 'Ziel-Wareneinsatz %', saveHeadline: 'Stockifi kann Ihnen sparen', inYear: 'pro Jahr', withWord: 'mit', unitLoc: 'Standort', unitLocs: 'Standorte', perYear: 'pro Jahr', perLoc: 'Einsparungen pro Standort', colBefore: 'Vor Stockifi', colY1: 'Jahr 1', colY2: 'Jahr 2', colY3: 'Jahr 3', colTotal: 'Gesamt', rowCost: 'Wareneinsatz', rowSavings: 'Ihre Einsparung', cta: 'Meinen Einsparungsplan erhalten', emailPrompt: 'Wohin sollen wir Ihren Einsparungsplan senden?', emailPh: 'sie@restaurant.de', send: 'Senden', sending: 'Senden…', errEmail: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.', errSend: 'Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.' },
 };
 const s = STRINGS[locale as keyof typeof STRINGS] ?? STRINGS.en;
 
@@ -130,6 +130,22 @@ const bookHref = lp('/book-a-demo');
           <span>{s.cta}</span>
           <svg class="sc-cta-arrow" width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
+
+        <!-- Email capture: revealed on CTA click. Results above stay visible (ungated).
+             Submits to the HubSpot Savings Calculator form, then continues to book-a-demo. -->
+        <form class="sc-capture sc-hidden" id="sc-capture" novalidate
+          data-erremail={s.errEmail} data-errsend={s.errSend} data-sending={s.sending}>
+          <label class="sc-cap-label" for="sc-email">{s.emailPrompt}</label>
+          <div class="sc-cap-row">
+            <input class="sc-input sc-cap-input" id="sc-email" type="email" inputmode="email"
+              autocomplete="email" placeholder={s.emailPh} required />
+            <button class="sc-cta sc-cap-btn" id="sc-send" type="submit">
+              <span>{s.send}</span>
+              <svg class="sc-cta-arrow" width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+          <p class="sc-cap-err" id="sc-cap-err" aria-live="polite"></p>
+        </form>
       </div>
     </div>
   </div>
@@ -237,6 +253,16 @@ const bookHref = lp('/book-a-demo');
   .sc-cta:hover { background: var(--primary-dark); }
   .sc-cta-arrow { transition: transform 0.18s ease; }
   .sc-cta:hover .sc-cta-arrow { transform: translateX(3px); }
+  .sc-cta:disabled { opacity: 0.65; cursor: default; }
+
+  /* Email capture (revealed on CTA click) */
+  .sc-hidden { display: none !important; }
+  .sc-capture { margin-top: auto; display: flex; flex-direction: column; gap: var(--space-12); }
+  .sc-cap-label { font-size: var(--text-body-sm); font-weight: var(--fw-medium); color: #1a1620; }
+  .sc-cap-row { display: flex; gap: var(--space-12); flex-wrap: wrap; }
+  .sc-cap-input { flex: 1 1 240px; }
+  .sc-cap-btn { align-self: auto; margin-top: 0; height: 56px; flex: 0 0 auto; white-space: nowrap; }
+  .sc-cap-err { font-size: var(--text-body-sm); color: #c0392b; min-height: 1.1em; }
 
   @media (min-width: 1024px) {
     /* Inputs narrower, results + table wider (Fin layout). */
@@ -329,12 +355,94 @@ const bookHref = lp('/book-a-demo');
     loc.addEventListener('change', calc);
     [curS, tgtS].forEach((el) => el.addEventListener('input', calc));
 
+    // HubSpot "Savings Calculator" form (portal 48915892). annualrevenue +
+    // number_of_venues map to the Company object (0-2), email + message to Contact (0-1),
+    // mirroring the book-a-demo form's object mapping.
+    const PORTAL_ID = '48915892';
+    const FORM_GUID = '815a7d5c-eb14-4078-a5a7-f16cdeb4b36a';
+    const capture = $('sc-capture') as HTMLFormElement;
+    const emailEl = $('sc-email') as HTMLInputElement;
+    const sendBtn = $('sc-send') as HTMLButtonElement;
+    const sendLabel = sendBtn.querySelector('span')!;
+    const capErr = $('sc-cap-err');
+    const sendDefault = sendLabel.textContent || '';
+    const T = {
+      email: capture.dataset.erremail || 'Please enter a valid email.',
+      send: capture.dataset.errsend || 'Something went wrong. Please try again.',
+      sending: capture.dataset.sending || 'Sending…',
+    };
+
+    // Team-facing notification line, packed into the HubSpot Message field. English on
+    // purpose (internal alert), but currency follows what the visitor saw on screen.
+    function buildMessage(d: ReturnType<typeof calc>) {
+      const venues = d.locations === 1 ? 'venue' : 'venues';
+      return `They're at ${d.current}% food cost and want to bring it down to ${d.target}%, `
+        + `across ${d.locations} ${venues} at around ${money.format(d.revenue)} revenue each. `
+        + `That's about ${money.format(d.annualSavings)} in savings a year, or `
+        + `${money.format(d.threeYearSavings)} over three years. `
+        + `Sent from the savings calculator on the pricing page.`;
+    }
+
+    const validEmail = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+
     cta.addEventListener('click', () => {
-      const data = calc();
-      // PROVISIONAL: stash inputs + result and route to book-a-demo. HubSpot carry-over
-      // wired once V picks the approach; number_of_venues bucket already included.
-      try { sessionStorage.setItem('stockifi_savings', JSON.stringify(data)); } catch (_) {}
-      window.location.href = bookHref;
+      const d = calc();
+      // Anonymous usage signal — every click, no email needed. Picked up by whichever
+      // analytics tool ends up installed (dataLayer push + a generic CustomEvent).
+      try {
+        (window as any).dataLayer = (window as any).dataLayer || [];
+        (window as any).dataLayer.push({
+          event: 'savings_plan_clicked',
+          annual_savings: d.annualSavings, three_year_savings: d.threeYearSavings,
+          locations: d.locations, current_food_cost: d.current, target_food_cost: d.target,
+          revenue: d.revenue, currency: cur,
+        });
+        document.dispatchEvent(new CustomEvent('savings_plan_clicked', { detail: d }));
+      } catch (_) {}
+      cta.classList.add('sc-hidden');
+      capture.classList.remove('sc-hidden');
+      emailEl.focus();
+    });
+
+    capture.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = emailEl.value.trim();
+      if (!validEmail(email)) { capErr.textContent = T.email; emailEl.focus(); return; }
+      capErr.textContent = '';
+
+      const d = calc();
+      sendBtn.disabled = true;
+      sendLabel.textContent = T.sending;
+
+      const fields = [
+        { objectTypeId: '0-1', name: 'email', value: email },
+        { objectTypeId: '0-2', name: 'annualrevenue', value: String(d.revenue) },
+        { objectTypeId: '0-2', name: 'number_of_venues', value: d.number_of_venues },
+        { objectTypeId: '0-1', name: 'message', value: buildMessage(d) },
+      ];
+      const hutk = document.cookie.split(';').map((x) => x.trim()).find((x) => x.startsWith('hubspotutk='))?.split('=')[1];
+
+      try {
+        const res = await fetch(
+          `https://api.hsforms.com/submissions/v3/integration/submit/${PORTAL_ID}/${FORM_GUID}`,
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              fields,
+              context: { pageUri: window.location.href, pageName: document.title, ...(hutk && { hutk }) },
+            }),
+          }
+        );
+        if (!res.ok) throw new Error('hs');
+        // Carry the inputs onward so the demo form can pre-fill from them later.
+        try { sessionStorage.setItem('stockifi_savings', JSON.stringify(d)); } catch (_) {}
+        window.location.href = bookHref;
+      } catch (_) {
+        sendBtn.disabled = false;
+        sendLabel.textContent = sendDefault;
+        capErr.textContent = T.send;
+      }
     });
 
     calc();
