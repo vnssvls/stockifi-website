@@ -40,7 +40,7 @@
       { "question": "Does Stockifi connect to my accounting and POS?", "answer": "Yes. Stockifi connects with 70+ accounting and POS systems and syncs your invoices, sales, and recipes automatically. You get a single source of truth without manual work." },
       { "question": "Does Stockifi work with the systems I already have?", "answer": "Yes. Stockifi connects to your POS and accounting software to read the data it needs and leaves your existing setup in place. It does not replace anything you run today.", "link": { "label": "See all integrations", "href": "/integrations" } },
       { "question": "How does the accounting integration work?", "answer": "The integration with your accounting system lets Stockifi read every supplier invoice as it comes in. It tracks how your ingredient prices move over time, then feeds those changes straight into your recipe costs. The moment an ingredient gets more expensive, the recipes that use it are already updated." },
-      { "question": "What if my system is not on the list?", "answer": "Tell us what you run and we will confirm it on a quick call. Custom integrations are available on the Custom plan." },
+      { "question": "What if my system is not on the list?", "answer": "Most systems already connect, and the list keeps growing. If yours is not there yet, we are glad to look at what it would take to add it." },
       { "question": "Can I keep track of all my suppliers in one place?", "answer": "Yes. Stockifi reads every supplier's invoices and keeps one running price history for all of them. You can see how each supplier's prices are moving and catch the ones creeping up." }
     ]
   },
