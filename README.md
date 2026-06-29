@@ -40,11 +40,22 @@ assets/         harvested source images (mostly git-ignored; see assets/asset-ma
 
 ## Styleguide
 
-`/styleguide` is a living component library — it imports the same components the real pages use, so it never drifts. It is **internal**: auto-flagged `noindex` and disallowed in `robots.txt`. If you want it behind real access control (not just noindex), add Firebase Hosting auth / a rewrite rule — there is no platform-level gate by default.
+`/styleguide` is a living component library — it imports the same components the real pages use, so it never drifts. It is **internal**: auto-flagged `noindex` and disallowed in `robots.txt`.
+
+It ships only to the **staging/build environment**, never to production: the production build (`npm run build:prod`) strips `dist/styleguide` after building, so the live site has no styleguide routes at all. Staging keeps it (build with `npm run build`) as the team reference. See **Deploy** for the per-environment build commands.
 
 ## Deploy
 
-Static site → **Firebase Hosting**. Build `npm run build` (output `dist/`), deploy `firebase deploy`. Config is in [`firebase.json`](firebase.json): `public: dist`, `cleanUrls: true`, `trailingSlash: false` (matches Astro's `trailingSlash: 'never'` in [`astro.config.mjs`](astro.config.mjs)), long-cache headers for `/media` + fingerprinted assets, and the `/product` redirect.
+Static site → **Firebase Hosting**. Output is `dist/`; deploy `firebase deploy`. Config is in [`firebase.json`](firebase.json): `public: dist`, `cleanUrls: true`, `trailingSlash: false` (matches Astro's `trailingSlash: 'never'` in [`astro.config.mjs`](astro.config.mjs)), long-cache headers for `/media` + fingerprinted assets, and the `/product` redirect.
+
+**Two environments, two build commands** — the only difference is the internal `/styleguide`:
+
+| Environment | Build command | Includes `/styleguide`? |
+|---|---|---|
+| Staging / build | `npm run build` | yes (team reference) |
+| Production / live | `npm run build:prod` | no (stripped from `dist/` after build) |
+
+Point each Firebase environment's build command at the matching script. `build:prod` runs the normal build, then removes `dist/styleguide`.
 
 - **Build is self-contained.** A clean `git clone && npm ci && npm run build` produces the full site — all images are committed under [`public/media/`](public/media/) and bundle into `dist/`. The git-ignored `assets/` directory is only harvest *source* (regenerable from `assets/asset-map.csv`), not needed to build or deploy. No env vars, no secrets.
 - **Host canonicalization** (non-www → www) is a domain-level setting in Firebase (connect `www.stockifi.io` as primary and redirect the apex). It is not in `firebase.json` because Firebase redirects are path-based, not host-based.

@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "build:prod": "astro build && node -e \"require('fs').rmSync('dist/styleguide',{recursive:true,force:true})\"",
     "preview": "astro preview",
     "check": "astro check",
     "lint:css": "stylelint \"src/**/*.{css,astro}\""
