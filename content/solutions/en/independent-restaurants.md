@@ -36,7 +36,7 @@ faqs:
   - question: "What does it cost?"
     answer: "Pricing depends on your setup, which is why we look at it together on a short call to make sure Stockifi is the right fit."
   - question: "Does it work with my systems?"
-    answer: "Stockifi connects with 70+ accounting and POS systems. Check the full list on the integrations page, and we can confirm yours on a quick call."
+    answer: "Stockifi connects with 70+ accounting and POS systems. Check the full list on the integrations page, and if yours isn't there, we're glad to look into it."
 testimonials:
   - quote: "\"It's more than just an inventory tool. Stockifi provides insights that help us focus on profit-driving areas.\""
     name: "Kim Søyland & Jama Awaleh"

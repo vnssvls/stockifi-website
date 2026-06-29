@@ -37,7 +37,7 @@ faqs:
   - question: "What happens if an invoice never reaches my accounting?"
     answer: "Stockifi reads what lands in your accounting. An invoice that never gets there will not be captured. Routing supplier invoices through your accounting keeps the picture complete."
   - question: "Which accounting systems does this work with?"
-    answer: "Stockifi connects with the accounting systems you already use. Tell us what you run and we will confirm it on a quick call."
+    answer: "Stockifi connects with the accounting systems you already use. If you're not sure about yours, we're glad to look into it."
   - question: "Does it work alongside my current setup?"
     answer: "Yes. Stockifi reads the data and leaves your accounting software exactly as it is."
 ctaHeading: "Ready to hand off invoice entry?"

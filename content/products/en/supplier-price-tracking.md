@@ -39,7 +39,7 @@ faqs:
   - question: "Does this work across several locations?"
     answer: "Yes. For a group, every site's invoices feed one price history. A rise from a shared supplier is caught once and re-costs every location."
   - question: "Which accounting systems does this work with?"
-    answer: "Stockifi connects with the accounting systems you already use. Tell us what you run and we will confirm it on a quick call."
+    answer: "Stockifi connects with the accounting systems you already use. If you're not sure about yours, we're glad to look into it."
   - question: "Can I keep track of all my suppliers in one place?"
     answer: "Yes. Stockifi reads every supplier's invoices and keeps one running price history for all of them. You can see how each supplier's prices are moving and catch the ones creeping up."
 ctaHeading: "See what your suppliers are really charging"
