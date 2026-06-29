@@ -38,7 +38,7 @@ faqs:
   - question: "Hoe actueel is de data die de API teruggeeft?"
     answer: "Even actueel als Stockifi zelf. De cijfers weerspiegelen je laatste facturen, verkopen en tellingen, of je nu real-time of op een schema ophaalt."
   - question: "Welk abonnement bevat de API?"
-    answer: "API-toegang zit in onze hogere abonnementen en het Custom-abonnement. We bevestigen wat het beste past bij je situatie op een gesprek."
+    answer: "API-toegang zit in onze hogere abonnementen en het Custom-abonnement. We helpen je graag de juiste keuze voor je situatie te vinden."
 ctaHeading: "Zet je Stockifi-data aan het werk"
 ctaSubhead: "Boek een kort gesprek en we laten je zien wat Stockifi blootlegt in je eerste 30 dagen."
 ---

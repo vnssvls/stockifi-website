@@ -38,7 +38,7 @@ faqs:
   - question: "Wie aktuell sind die Daten, die die API zurückgibt?"
     answer: "So aktuell wie Stockifi selbst. Die Zahlen spiegeln Ihre neuesten Rechnungen, Umsätze und Inventuren wider, unabhängig davon, ob Sie in Echtzeit oder nach einem Zeitplan abrufen."
   - question: "In welchem Plan ist die API enthalten?"
-    answer: "Der API-Zugang ist in unseren höheren Tarifen und im Custom-Plan verfügbar. Ob das zu Ihrem Setup passt, klären wir gerne in einem kurzen Gespräch."
+    answer: "Der API-Zugang ist in unseren höheren Tarifen und im Custom-Plan verfügbar. Wir helfen Ihnen gern, die passende Lösung für Ihr Setup zu finden."
 ctaHeading: "Nutzen Sie Ihre Stockifi-Daten gezielt"
 ctaSubhead: "Vereinbaren Sie ein kurzes Gespräch und wir zeigen Ihnen, was Stockifi in Ihren ersten 30 Tagen sichtbar macht."
 ---

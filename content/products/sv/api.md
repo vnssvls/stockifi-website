@@ -38,7 +38,7 @@ faqs:
   - question: "Hur aktuell är datan som API:et returnerar?"
     answer: "Lika aktuell som Stockifi självt. Siffrorna speglar dina senaste fakturor, försäljning och inventeringar, oavsett om du hämtar i realtid eller enligt ett schema."
   - question: "Vilket abonnemang inkluderar API:et?"
-    answer: "API-åtkomst ingår i våra högre abonnemang och Custom-planen. Vi bekräftar vad som passar din uppsättning på ett samtal."
+    answer: "API-åtkomst ingår i våra högre abonnemang och Custom-planen. Vi hjälper dig gärna att hitta det som passar din uppsättning."
 ctaHeading: "Sätt din Stockifi-data i arbete"
 ctaSubhead: "Boka ett kort samtal så visar vi vad Stockifi synliggör under dina första 30 dagar."
 ---

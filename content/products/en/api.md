@@ -38,7 +38,7 @@ faqs:
   - question: "How current is the data the API returns?"
     answer: "As current as Stockifi itself. The numbers reflect your latest invoices, sales, and counts, whether you pull in real time or on a schedule."
   - question: "Which plan includes the API?"
-    answer: "API access sits with our higher-tier and Custom plans. We'll confirm the fit for your setup on a call."
+    answer: "API access sits with our higher-tier and Custom plans. We're glad to help you find the right fit for your setup."
 ctaHeading: "Put your Stockifi data to work"
 ctaSubhead: "Book a short call and we'll show you what Stockifi surfaces in your first 30 days."
 ---

@@ -38,7 +38,7 @@ faqs:
   - question: "Hvor oppdaterte er dataene API-et returnerer?"
     answer: "Like oppdaterte som Stockifi selv. Tallene gjenspeiler de nyeste fakturaene, salget og tellingene dine, enten du henter i sanntid eller etter en plan."
   - question: "Hvilken plan inkluderer API-et?"
-    answer: "API-tilgang følger med våre høyere nivåer og Custom-planen. Vi bekrefter hva som passer for oppsettet ditt på en samtale."
+    answer: "API-tilgang følger med våre høyere nivåer og Custom-planen. Vi hjelper deg gjerne med å finne det som passer oppsettet ditt."
 ctaHeading: "Sett Stockifi-dataene dine i arbeid"
 ctaSubhead: "Book en kort samtale, så viser vi deg hva Stockifi avdekker i løpet av de første 30 dagene."
 ---
