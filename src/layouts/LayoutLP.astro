@@ -6,6 +6,7 @@ import Logo from '../components/Logo.astro';
 import Button from '../components/Button.astro';
 import Footer from '../components/Footer.astro';
 import PaletteToggle from '../components/PaletteToggle.astro';
+import { getNavStrings } from '../data/nav-i18n';
 
 interface Props {
   title?: string;
@@ -21,13 +22,14 @@ const {
 } = Astro.props;
 
 const DEMO_HREF = 'https://calendly.com/simon-stockifi/profit-potential';
+const t = getNavStrings(Astro.currentLocale ?? 'en');
 ---
 
 <Layout {title} {description} {noindex} bare>
   <div class="lp-shell">
     <header class="lp-nav">
       <Logo height={28} />
-      <Button variant="primary" href={DEMO_HREF}>Book a Demo</Button>
+      <Button variant="primary" href={DEMO_HREF}>{t.bookDemo}</Button>
     </header>
 
     <main>

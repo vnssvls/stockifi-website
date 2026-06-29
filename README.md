@@ -40,11 +40,16 @@ assets/         harvested source images (mostly git-ignored; see assets/asset-ma
 
 ## Styleguide
 
-`/styleguide` is a living component library — it imports the same components the real pages use, so it never drifts. It is **internal**: auto-flagged `noindex`, disallowed in `robots.txt`, and should sit behind Cloudflare Access in production.
+`/styleguide` is a living component library — it imports the same components the real pages use, so it never drifts. It is **internal**: auto-flagged `noindex` and disallowed in `robots.txt`. If you want it behind real access control (not just noindex), add Firebase Hosting auth / a rewrite rule — there is no platform-level gate by default.
 
 ## Deploy
 
-Static site → **Cloudflare Pages** (build `npm run build`, output `dist/`). Slug-preserving migration, so redirects are near-zero — see [`docs/audit/09-redirect-map.md`](docs/audit/09-redirect-map.md) and [`public/_redirects`](public/_redirects). Host canonicalization (non-www → www) is set as a Cloudflare rule; trailing-slash policy is `trailingSlash: 'never'` in [`astro.config.mjs`](astro.config.mjs).
+Static site → **Firebase Hosting**. Build `npm run build` (output `dist/`), deploy `firebase deploy`. Config is in [`firebase.json`](firebase.json): `public: dist`, `cleanUrls: true`, `trailingSlash: false` (matches Astro's `trailingSlash: 'never'` in [`astro.config.mjs`](astro.config.mjs)), long-cache headers for `/media` + fingerprinted assets, and the `/product` redirect.
+
+- **Build is self-contained.** A clean `git clone && npm ci && npm run build` produces the full site — all images are committed under [`public/media/`](public/media/) and bundle into `dist/`. The git-ignored `assets/` directory is only harvest *source* (regenerable from `assets/asset-map.csv`), not needed to build or deploy. No env vars, no secrets.
+- **Host canonicalization** (non-www → www) is a domain-level setting in Firebase (connect `www.stockifi.io` as primary and redirect the apex). It is not in `firebase.json` because Firebase redirects are path-based, not host-based.
+- **Redirects:** the slug-preserving migration means near-zero per-URL redirects — see [`docs/audit/09-redirect-map.md`](docs/audit/09-redirect-map.md). The old [`public/_redirects`](public/_redirects) is Cloudflare-Pages syntax (currently empty/no-op) and is ignored by Firebase; port any future redirects into `firebase.json`.
+- **Analytics** (GTM `GTM-MLCJD2PB`) is host-gated in [`src/layouts/Layout.astro`](src/layouts/Layout.astro) to `stockifi.io` / `www.stockifi.io` so staging + localhost never pollute it. Update that allow-list if the production hostname changes.
 
 ## Migration background
 
