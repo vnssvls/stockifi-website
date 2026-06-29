@@ -35,8 +35,8 @@ faqs:
     answer: "De voorraad die je verkopen onttrokken. Stockifi leest elke verkoop via het recept en telt de ingrediënten erachter op, zodat je de voorraad krijgt die je menu had moeten gebruiken."
   - question: "Hoe hangt dit samen met mijn voorraadtellingen?"
     answer: "Verbruik is wat je verkopen hadden moeten gebruiken. Je telling laat zien wat er werkelijk uit het schap ging. Het gat ertussen is je afwijking."
-  - question: "Moet mijn kassasysteem gekoppeld zijn?"
-    answer: "Ja. Verkopen komen rechtstreeks uit je kassasysteem en worden aan je recepten gekoppeld. Vertel ons wat je gebruikt, dan bevestigen we het in een kort gesprek."
+  - question: "Kan Stockifi gekoppeld worden aan mijn kassasysteem?"
+    answer: "Ja. Stockifi koppelt met een breed scala aan kassasystemen en haalt je verkopen automatisch op. Bekijk de volledige lijst op de integratiepagina. Staat die van jou er niet bij, neem dan contact op en kijken we samen naar je opzet."
 ctaHeading: "Zie het in jouw cijfers"
 ctaSubhead: "Plan een kort gesprek en we laten je zien wat Stockifi in je eerste 30 dagen aan de oppervlakte brengt."
 draft: false

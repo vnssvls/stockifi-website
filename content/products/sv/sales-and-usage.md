@@ -35,8 +35,8 @@ faqs:
     answer: "Lagret din försäljning drog ned. Stockifi läser varje försäljning genom receptet och summerar ingredienserna bakom den, så att du får lagret din meny borde ha använt."
   - question: "Hur hänger det ihop med mina inventeringar?"
     answer: "Förbrukning är vad din försäljning borde ha använt. Inventeringen visar vad som faktiskt lämnade hyllan. Gapet mellan dem är din avvikelse."
-  - question: "Krävs det att mitt kassasystem är anslutet?"
-    answer: "Ja. Försäljningen kommer direkt från ditt kassasystem och kopplas till dina recept. Berätta vad du kör så bekräftar vi det på ett kort samtal."
+  - question: "Kan Stockifi integreras med mitt kassasystem?"
+    answer: "Ja. Stockifi ansluter till en rad olika kassasystem och hämtar din försäljning automatiskt. Se hela listan på integrationssidan. Hittar du inte ditt, hör av dig så tittar vi på din uppsättning tillsammans."
 ctaHeading: "Se det i dina egna siffror"
 ctaSubhead: "Boka ett kort samtal så visar vi dig vad Stockifi hittar under dina första 30 dagar."
 draft: false

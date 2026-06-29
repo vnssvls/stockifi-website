@@ -35,8 +35,8 @@ faqs:
     answer: "Det lager, dit salg trak ned. Stockifi læser hvert salg gennem opskriften og lægger ingredienserne bag det sammen, så du får det lager, din menu burde have brugt."
   - question: "Hvordan hænger det sammen med mine varetællinger?"
     answer: "Forbrug er det, dit salg burde have brugt. Tællingen viser, hvad der faktisk forlod hylden. Gabet mellem dem er din afvigelse."
-  - question: "Kræver det, at mit kassesystem er forbundet?"
-    answer: "Ja. Salget kommer direkte fra dit kassesystem og knyttes til dine opskrifter. Fortæl os, hvad du bruger, så bekræfter vi det på et kort opkald."
+  - question: "Kan Stockifi integreres med mit kassesystem?"
+    answer: "Ja. Stockifi forbinder med en lang række kassesystemer og henter dit salg automatisk. Se den fulde liste på integrationssiden. Hvis dit ikke er der, så kontakt os, og vi ser på din opsætning sammen."
 ctaHeading: "Se det på dine egne tal"
 ctaSubhead: "Book et kort opkald, og vi viser dig, hvad Stockifi afdækker i dine første 30 dage."
 draft: false

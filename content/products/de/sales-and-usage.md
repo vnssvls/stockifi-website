@@ -35,8 +35,8 @@ faqs:
     answer: "Der Bestand, den Ihre Verkäufe abgezogen haben. Stockifi liest jeden Verkauf über sein Rezept und summiert die Zutaten dahinter, sodass Sie den Bestand erhalten, den Ihre Speisekarte hätte verbrauchen sollen."
   - question: "Wie hängt das mit meinen Inventuren zusammen?"
     answer: "Verbrauch ist das, was Ihre Verkäufe hätten verbrauchen sollen. Ihre Inventur zeigt, was tatsächlich das Regal verlassen hat. Die Lücke dazwischen ist Ihre Abweichung."
-  - question: "Muss mein Kassensystem verbunden sein?"
-    answer: "Ja. Die Verkäufe kommen direkt aus Ihrem Kassensystem und werden Ihren Rezepten zugeordnet. Sagen Sie uns, was Sie nutzen, und wir bestätigen es in einem kurzen Gespräch."
+  - question: "Lässt sich Stockifi mit meinem Kassensystem verbinden?"
+    answer: "Ja. Stockifi verbindet sich mit einer Vielzahl von Kassensystemen und übernimmt Ihre Verkäufe automatisch. Die vollständige Liste finden Sie auf der Integrationsseite. Ist Ihres nicht dabei, melden Sie sich, und wir schauen uns Ihr Setup gemeinsam an."
 ctaHeading: "Sehen Sie es an Ihren eigenen Zahlen"
 ctaSubhead: "Buchen Sie ein kurzes Gespräch und wir zeigen Ihnen, was Stockifi in Ihren ersten 30 Tagen aufdeckt."
 draft: false
