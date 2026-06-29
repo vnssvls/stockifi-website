@@ -35,8 +35,8 @@ faqs:
     answer: "The stock your sales drew down. Stockifi reads each sale through its recipe and adds up the ingredients behind it, giving you the stock your menu should have used."
   - question: "How does this connect to my stock counts?"
     answer: "Usage is what your sales should have used. Your count shows what actually left the shelf. The gap between them is your variance."
-  - question: "Does it need my POS connected?"
-    answer: "Yes. Sales come straight from your POS and map to your recipes. Tell us what you run and we'll confirm it on a quick call."
+  - question: "Can Stockifi be integrated with my POS?"
+    answer: "Yes. Stockifi connects with a wide range of POS systems and pulls your sales in automatically. Check the integrations page for the full list. If you do not see yours, get in touch and we'll look at your setup together."
 ctaHeading: "See it on your numbers"
 ctaSubhead: "Book a short call and we'll show you what Stockifi surfaces in your first 30 days."
 draft: false
